@@ -5,7 +5,6 @@ public class Envido {
 	private Jugador EquipoAceptor;
 	
 	public Envido(){
-			
 	}
 	
 	public void cantarEnvido(Jugador jugadorQueCanta){

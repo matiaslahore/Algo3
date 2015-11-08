@@ -1,8 +1,9 @@
 package fiuba.algo3.tp2.modelo;
 
 public class Jugada {
-
-	int puntoEq1;
-	int puntoEq2;
+	Envido envido;
 	
+	public Jugada(){
+		this.envido = new Envido();
+	}
 }
