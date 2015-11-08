@@ -34,18 +34,12 @@ public class PartidaDeTruco {
 	}
 
 	public void repartirCartas() {
-		
-		/*for (Equipo unEquipo : listaDeEquipo){
-			
-			unEquipo.recibirCartas();
-		}*/
+	
 	}
 
 	public String verCartasEnManoDeJugadorComoString(String nombreJugador){
-				
-		//Jugador unJugador = listaDeEquipo.get(0).obtenerJugador(nombreJugador);
 		
-		return ""; //unJugador.verCartasEnMano();
+		return ""; 
 	}
 	
 }
