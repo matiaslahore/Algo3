@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public class PartidaDeTruco {
 	
@@ -18,19 +17,21 @@ public class PartidaDeTruco {
 		equipoDos = new Equipo(mesa,cantidadJugadores);
 	}
 		
-	//SOLO PARA MANTENER UN ORDEN, EN EQUIPO LO EXPLICO.
-	public void cargarJugadoresEnEquipoUno(String jugadorUno, String jugadorDos, String jugador3){
-	//ESTO SE LLAMARIA DOS VECES UNA PARA CADA EQUIPO.
-	//ES MEDIO LOCO PERO SI EXISTIESEN 3 EQUIPOS LO LLAMARIA 3 VECES Y ANDARIA TODO BIEN
-		this.equipoUno.cargarJugadores(jugadorUno,jugadorDos,jugador3);
+	public void cargarJugadoresEnEquipoUno(String jugadorUno, String jugadorDos, String jugadorTres){
+		LinkedList<String> nombreJugadores = new LinkedList<String>();
+		nombreJugadores.add(jugadorUno);
+		nombreJugadores.add(jugadorDos);
+		nombreJugadores.add(jugadorTres);
+		this.equipoUno.cargarJugadores(nombreJugadores);
 	}
 	
-	//SOLO PARA MANTENER UN ORDEN, EN EQUIPO LO EXPLICO.
-		public void cargarJugadoresEnEquipoDos(String jugadorUno, String jugadorDos, String jugador3){
-		//ESTO SE LLAMARIA DOS VECES UNA PARA CADA EQUIPO.
-		//ES MEDIO LOCO PERO SI EXISTIESEN 3 EQUIPOS LO LLAMARIA 3 VECES Y ANDARIA TODO BIEN
-			this.equipoDos.cargarJugadores(jugadorUno,jugadorDos,jugador3);
-		}
+	public void cargarJugadoresEnEquipoDos(String jugadorUno, String jugadorDos, String jugadorTres){
+			LinkedList<String> nombreJugadores = new LinkedList<String>();
+			nombreJugadores.add(jugadorUno);
+			nombreJugadores.add(jugadorDos);
+			nombreJugadores.add(jugadorTres);
+			this.equipoDos.cargarJugadores(nombreJugadores);
+	}
 
 	public void repartirCartas() {
 		
