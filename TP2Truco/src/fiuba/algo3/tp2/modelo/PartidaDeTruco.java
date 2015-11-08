@@ -14,8 +14,8 @@ public class PartidaDeTruco {
 
 	public PartidaDeTruco(int cantidadJugadores){
 		mesa = new Mesa();
-		equipoUno = new Equipo(mesa);
-		equipoDos = new Equipo(mesa);
+		equipoUno = new Equipo(mesa,cantidadJugadores);
+		equipoDos = new Equipo(mesa,cantidadJugadores);
 	}
 		
 	//SOLO PARA MANTENER UN ORDEN, EN EQUIPO LO EXPLICO.
