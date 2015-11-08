@@ -16,9 +16,9 @@ public class PartidaDeTruco {
 		
 		mesa = new Mesa();
 	}
-	
+		
 	//SOLO PARA MANTENER UN ORDEN, EN EQUIPO LO EXPLICO.
-	public void cargarJugadoresEnEq(String jugadorUno, String jugadorDos, String jugador3){
+	public void cargarJugadoresEnEquipo(String jugadorUno, String jugadorDos, String jugador3){
 	//ESTO SE LLAMARIA DOS VECES UNA PARA CADA EQUIPO.
 	//ES MEDIO LOCO PERO SI EXISTIESEN 3 EQUIPOS LO LLAMARIA 3 VECES Y ANDARIA TODO BIEN
 		Equipo newEq = new Equipo(mesa);
