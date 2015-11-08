@@ -9,6 +9,7 @@ public class test {
 	@Test
 	public void test() {
 		System.out.println("hola");
+		System.out.println("hola desde eclipse");
 	}
 
 }
