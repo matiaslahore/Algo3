@@ -12,6 +12,7 @@ public class Mesa {
 	ArrayList<Carta> cartasEnJuego;
 	
 	public Mesa(){
+		
 		juez = new Juez();
 		jugada = new Jugada();
 		ganadoresRonda = new ArrayList<String>();

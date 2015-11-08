@@ -39,7 +39,6 @@ public class Equipo {
 	}//repito codigo, ver si se puede cambiar.
 
 	public void recibirCartas() {
-	
 		
 		for (Jugador unJugador : listJugadores){
 				

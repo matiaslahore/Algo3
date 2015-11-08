@@ -10,6 +10,7 @@ public class Maso {
 	//EVITANDO REPETIR LAS CARTAS.
 	public Maso(){
 		/*
+		 * CAMBIAR!
 		* BASTO = 1
 		* COPA = 2
 		* ESPADA = 3
