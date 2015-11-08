@@ -1,28 +1,25 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Maso {
 
-	ArrayList<Carta> cartas = new ArrayList<Carta>();
-	//POR CADA MANO HAGO UN NEW MASO ASI CUANDO SACO UNA CARTA LA BORRO DE LA LISTA
-	//EVITANDO REPETIR LAS CARTAS.
+	ArrayList<Carta> maso = new ArrayList<Carta>();
+	
 	public Maso(){
-		/*
-		 * CAMBIAR!
-		* BASTO = 1
-		* COPA = 2
-		* ESPADA = 3
-		* ORO = 4
-		*/
-		//no es seguro que ande todo.. hay que testearlo!
-		for (int i=1 ; i<=4 ; i=i+1 ){
-			for (int j=1 ; j<=7 ; j=j+1 ){
-				this.cartas.add( new Carta(i,j) );
+		
+		List<Palo> listaDePalos = Arrays.asList(new Basto(), new Copa(), new Espada(), new Oro());
+
+		for (Palo unPalo : listaDePalos){
+			
+			for (int valor=1 ; valor<=7 ; valor = valor + 1 ){
+				this.maso.add( new Carta(unPalo, valor) );
 			}
-			for (int j=10 ; j<=12 ; j=j+1 ){
-				this.cartas.add( new Carta(i,j) );
+			for (int valor=10 ; valor <= 12 ; valor = valor +1 ){
+				this.maso.add( new Carta(unPalo, valor ));
 			}
 		}
 	}
@@ -30,12 +27,11 @@ public class Maso {
 	public Carta dameCarta(){
 		//genero numero random entre 0 y 40
 		Random rnd = new Random();
-		int index = (int) (rnd.nextDouble() * (cartas.size()));
+		int index = (int) (rnd.nextDouble() * (maso.size()));
 		//agarro carta random entre 0 y 40
-		Carta CartaRetorno = new Carta(0,0);
-		CartaRetorno = this.cartas.get(index);
+		Carta CartaRetorno = this.maso.get(index);
 		//borro la carta que ya use
-		this.cartas.remove(index);
+		this.maso.remove(index);
 		//retorno la carta
 		return CartaRetorno;
 		/*

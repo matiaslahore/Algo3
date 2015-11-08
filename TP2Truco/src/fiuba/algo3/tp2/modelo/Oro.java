@@ -1,8 +1,11 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Oro {
+public class Oro extends Palo {
 
-public Oro(){
+	@Override
+	public String obtenerPalo() {
 
-}
+		return "Oro";
+	}
+	
 }

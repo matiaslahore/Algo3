@@ -1,8 +1,10 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Espada {
+public class Espada extends Palo{
 
-public Espada(){
-
-}
+	@Override
+	public String obtenerPalo() {
+		
+		return "Espada";
+	}
 }

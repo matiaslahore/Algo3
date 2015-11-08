@@ -1,8 +1,10 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Basto {
+public class Basto extends Palo {
 
-public Basto(){
-
-}
+	@Override
+	public String obtenerPalo() {
+		
+		return "Basto";
+	}
 }
