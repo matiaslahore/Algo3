@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PartidaDeTruco {
 	
@@ -26,4 +27,20 @@ public class PartidaDeTruco {
 		arrayEq.add(newEq);
 	}
 
+	public void repartirCartas() {
+		
+		for (Equipo unEquipo : arrayEq){
+			
+			unEquipo.recibirCartas();
+		}
+	}
+
+	public String verCartasEnManoDeJugadorComoString(String nombreJugador){
+		
+					
+		Jugador unJugador = arrayEq.get(0).obtenerJugador(nombreJugador);
+		
+		return unJugador.verCartasEnMano();
+	}
+	
 }

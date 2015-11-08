@@ -6,7 +6,7 @@ public class Juez {
 	Estado estado = new Estado();
 	
 	public Juez(){
-		
+		maso = new Maso();
 	}
 	
 	public Carta repartir(){

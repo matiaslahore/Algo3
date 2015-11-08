@@ -22,5 +22,15 @@ public class Mesa {
 	// esta es la carta q pone cada Jugador.
 		cartasEnJuego.add(c);
 	}
+
+	public Carta repartirCarta() {
+		
+		return juez.repartir();
+	}
+	
+	public void repartirCartas() {
+		
+		juez.repartir();
+	}
 	
 }

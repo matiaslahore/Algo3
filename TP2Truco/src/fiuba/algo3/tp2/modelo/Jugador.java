@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Jugador {
 
@@ -19,9 +20,23 @@ public class Jugador {
 		cartas.add(c2);
 		cartas.add(c3);
 	}
-	
-	public void jugarCarta(){
-		//
+
+	public void recibirUnaCarta(Carta carta){
+		cartas.add(carta);
 	}
 	
+	public void jugarCarta(){
+		
+		
+	}
+	
+	public String verCartasEnMano() {
+		
+		String cartasComoString = "";
+		for (Carta unaCarta : cartas){
+			
+			cartasComoString += unaCarta.obtenerCartaComoString();
+		}
+		return cartasComoString;
+	}
 }

@@ -16,11 +16,11 @@ public class Maso {
 		* ORO = 4
 		*/
 		//no es seguro que ande todo.. hay que testearlo!
-		for (int i=1 ; i>4 ; i=i+1 ){
-			for (int j=1 ; j>7 ; j=j+1 ){
+		for (int i=1 ; i<=4 ; i=i+1 ){
+			for (int j=1 ; j<=7 ; j=j+1 ){
 				this.cartas.add( new Carta(i,j) );
 			}
-			for (int j=10 ; j>12 ; j=j+1 ){
+			for (int j=10 ; j<=12 ; j=j+1 ){
 				this.cartas.add( new Carta(i,j) );
 			}
 		}

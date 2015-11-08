@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Equipo {
 	//VER SI LE PONEMOS NOMBRE AL EQUIPO
+	String nombreEquipo;
 	ArrayList<Jugador> listJugadores;
 	Mesa refMesa;
 	
@@ -31,9 +32,26 @@ public class Equipo {
 		newJugador = new Jugador(j2,refMesa);
 		listJugadores.add(newJugador);
 		
-		newJugador = new Jugador(j3,refMesa);
-		listJugadores.add(newJugador);
+		/*newJugador = new Jugador(j3,refMesa);
+		listJugadores.add(newJugador);*/
+		
+		
 	}//repito codigo, ver si se puede cambiar.
+
+	public void recibirCartas() {
+	
+		
+		for (Jugador unJugador : listJugadores){
+				
+			unJugador.recibirCartas(refMesa.repartirCarta(),refMesa.repartirCarta(),refMesa.repartirCarta());
+		}
+	
+	}
+
+	public Jugador obtenerJugador(String nombreJugador) {
+		
+		return listJugadores.get(0);
+	}
 	
 	
 	
