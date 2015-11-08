@@ -8,6 +8,18 @@ public class AlgoTruco {
 		this.partida.cargarJugadoresEnEquipoUno(Equipo1, "", "");
 		this.partida.cargarJugadoresEnEquipoDos(Equipo2, "", "");
 	}
+
+	public void cantarEnvido(String jugador) {
+		//partida.cantarEnvido(jugador);		
+	}
+
+	public void quererEnvido(String jugador) {
+		//partida.quererEnvido(jugador);		
+	}
+
+	public String obtenerGanadorEnvido() {
+		return "";
+	}
 	
 	
 }
