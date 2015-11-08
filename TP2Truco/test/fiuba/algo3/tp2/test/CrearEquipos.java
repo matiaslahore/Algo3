@@ -8,8 +8,15 @@ public class CrearEquipos {
 	AlgoTruco truco;
 	
 	
+	public void Inicializar(){
+		this.truco = new AlgoTruco();
+	}
+	
 	@Test
-	public void crearEquiposYValidar(){
-		
+	public void crearEquiposYValidarLosNombres(){
+		this.truco = new AlgoTruco(2,"Nico","Matias");
+		this.truco.envido.cantar("Nico");
+		this.truco.envido.querer("Matias");
+		println(this.truco.envido.obtenerGanador());
 	}
 }
