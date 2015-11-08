@@ -12,19 +12,25 @@ public class PartidaDeTruco {
 	public static void main (String[] args){	
 	}
 
-	public PartidaDeTruco(){
-		
+	public PartidaDeTruco(int cantidadJugadores){
 		mesa = new Mesa();
+		equipoUno = new Equipo(mesa);
+		equipoDos = new Equipo(mesa);
 	}
 		
 	//SOLO PARA MANTENER UN ORDEN, EN EQUIPO LO EXPLICO.
-	public void cargarJugadoresEnEquipo(String jugadorUno, String jugadorDos, String jugador3){
+	public void cargarJugadoresEnEquipoUno(String jugadorUno, String jugadorDos, String jugador3){
 	//ESTO SE LLAMARIA DOS VECES UNA PARA CADA EQUIPO.
 	//ES MEDIO LOCO PERO SI EXISTIESEN 3 EQUIPOS LO LLAMARIA 3 VECES Y ANDARIA TODO BIEN
-		Equipo newEq = new Equipo(mesa);
-		newEq.cargarJugadores(jugadorUno,jugadorDos,jugador3);
-		//listaDeEquipo.add(newEq);
+		this.equipoUno.cargarJugadores(jugadorUno,jugadorDos,jugador3);
 	}
+	
+	//SOLO PARA MANTENER UN ORDEN, EN EQUIPO LO EXPLICO.
+		public void cargarJugadoresEnEquipoDos(String jugadorUno, String jugadorDos, String jugador3){
+		//ESTO SE LLAMARIA DOS VECES UNA PARA CADA EQUIPO.
+		//ES MEDIO LOCO PERO SI EXISTIESEN 3 EQUIPOS LO LLAMARIA 3 VECES Y ANDARIA TODO BIEN
+			this.equipoDos.cargarJugadores(jugadorUno,jugadorDos,jugador3);
+		}
 
 	public void repartirCartas() {
 		
