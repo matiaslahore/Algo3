@@ -1,24 +1,28 @@
 package fiuba.algo3.tp2.modelo;
 
 public class Envido {
-	private Jugador EquipoCantor;
-	private Jugador EquipoAceptor;
+	private Equipo EquipoCantor;
+	private Equipo EquipoAceptor;
+	private int puntaje;
 	
 	public Envido(){
 	}
 	
-	public void cantarEnvido(Jugador jugadorQueCanta){
-		this.EquipoCantor = jugadorQueCanta;
+	public void cantarEnvido(Equipo equipoQueCanta){
+		this.EquipoCantor = equipoQueCanta;
 	}
 	
-	public void querer(Jugador jugadorQueQuiere){
-		this.EquipoAceptor = jugadorQueQuiere;
+	public void querer(Equipo equipoQueQuiere){
+		this.EquipoAceptor = equipoQueQuiere;
 	}
 	
-	public String obtenerGanador(Jugador jugadorQueQuiere){
+	public String obtenerGanador(){
 		return "";
 	}
 	
+	public int obtenerPuntajeGanador(){
+		return this.puntaje;
+	}
 	
 }
 
