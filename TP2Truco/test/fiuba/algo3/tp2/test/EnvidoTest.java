@@ -4,15 +4,15 @@ import org.junit.Test;
 
 import fiuba.algo3.tp2.modelo.AlgoTruco;
 
-public class PartidoDeEnvidoTest {
-	AlgoTruco algoTruco;
-	
+public class EnvidoTest {
+	Envido envido;
 	
 	@Test
-	public void crearEquiposYJugarEnvido(){
-		this.algoTruco = new AlgoTruco(2,"Nico","Matias");
-		this.algoTruco.cantarEnvido("Nico");
-		this.algoTruco.quererEnvido("Matias");
-		System.out.println(this.algoTruco.obtenerGanadorEnvido());
+	public void equipo1CantaEnvidoYEquipo2NoQuiereEntoncesEquipo1GanaUnPunto(){
+		this.envido.cantarEnvido("Nico");
+		this.envido.noQuerer("Matias");
+		Assert.assertEquals("Nico",System.out.println(this.envido.obtenerGanadorEnvido()));
+		Assert.assertEquals(1,this.envido.obtenerPuntosGanados()));
 	}
+	
 }
