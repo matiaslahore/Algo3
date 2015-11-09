@@ -38,4 +38,8 @@ public class Jugador {
 		}
 		return cartasComoString;
 	}
+	
+	public String obtenerNombre(){
+		return(this.nombre);
+	}
 }
