@@ -25,7 +25,7 @@ public class Envido {
 		return this.puntaje;
 	}
 	
-	public void noQuerer(Equipo equipo2){
+	public void noQuerer(){
 		this.ganador = this.equipoCantor;
 	}
 

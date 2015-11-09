@@ -16,11 +16,11 @@ public class EnvidooTest {
 	
 	@Before
 	public void Inicializar(){
-		this.equipo1 = new Equipo(null,1);
+		this.equipo1 = new Equipo();
 		LinkedList<String> nombreJugadores1 = new LinkedList<String>();
 		nombreJugadores1.add("Nico");
 		this.equipo1.cargarJugadores(nombreJugadores1);
-		this.equipo2 = new Equipo(null,1);
+		this.equipo2 = new Equipo();
 		LinkedList<String> nombreJugadores2 = new LinkedList<String>();
 		nombreJugadores2.add("Matias");
 		this.equipo1.cargarJugadores(nombreJugadores2);

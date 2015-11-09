@@ -24,7 +24,7 @@ public class EnvidoTest {
 	public void equipo1CantaEnvidoYEquipo2NoQuiereEntoncesEquipo1GanaUnPunto(){
 		
 		this.envido.cantarEnvido(this.equipo1);
-		this.envido.noQuerer(this.equipo2);
+		this.envido.noQuerer();
 		//ESTO NO ANDA ASI , HAY QUE PASARLE UNA FUNCION DE COMPARACION
 		// POR QUE java no sabe como comparar objetos Equipo.
 		//Assert.assertEquals(this.equipo1,this.envido.obtenerGanadorEnvido());
@@ -34,7 +34,7 @@ public class EnvidoTest {
 	@Test
 	public void equipo2CantaEnvidoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
 		this.envido.cantarEnvido(this.equipo2);
-		this.envido.noQuerer(this.equipo1);
+		this.envido.noQuerer();
 		//ESTO NO ANDA ASI , HAY QUE PASARLE UNA FUNCION DE COMPARACION
 		// POR QUE java no sabe como comparar objetos Equipo.
 		//Assert.assertEquals(this.equipo1,this.envido.obtenerGanadorEnvido());
