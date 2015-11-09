@@ -2,12 +2,8 @@ package fiuba.algo3.tp2.test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.tp2.modelo.Carta;
 import fiuba.algo3.tp2.modelo.Maso;
 

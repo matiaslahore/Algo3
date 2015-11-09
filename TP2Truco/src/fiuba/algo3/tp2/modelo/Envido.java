@@ -25,8 +25,18 @@ public class Envido {
 		return this.puntaje;
 	}
 	
-	public void noQuerer(){
+	public void noQuerer(Equipo equipo2){
 		this.ganador = this.equipoCantor;
+	}
+
+	public int obtenerPuntosGanados() {
+		
+		return 1;
+	}
+
+	public char[] obtenerGanadorEnvido() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -5,9 +5,10 @@ public class Carta {
 	Palo palo;
 	int valor;
 		
-	public Carta(Palo unPalo, int valor){
-		this.palo = unPalo;
-		this.valor = valor;
+	public Carta(Palo unPalo, int unValor){
+		
+		palo = unPalo;
+		valor = unValor;
 	}
 	
 	public String obtenerPalo(){
@@ -17,7 +18,7 @@ public class Carta {
 	
 	public int obtenerValor(){
 		
-		return this.valor;
+		return valor;
 	}
 
 	public Object obtenerCartaComoString() {

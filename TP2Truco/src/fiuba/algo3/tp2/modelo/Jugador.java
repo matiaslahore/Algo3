@@ -6,21 +6,22 @@ public class Jugador {
 
 	String nombre;
 	ArrayList<Carta> cartas;
-	Mesa mesa;
-
-	public Jugador(String name, Mesa refMesa){
-		this.nombre = name;
-		mesa = refMesa;
+	
+	public Jugador(String name){
+		
+		nombre = name;
 		cartas = new ArrayList<Carta>(); 
 	}
 	
 	public void recibirCartas(Carta c1, Carta c2, Carta c3){
+		
 		cartas.add(c1);
 		cartas.add(c2);
 		cartas.add(c3);
 	}
 
 	public void recibirUnaCarta(Carta carta){
+		
 		cartas.add(carta);
 	}
 	
@@ -29,7 +30,7 @@ public class Jugador {
 		
 	}
 	
-	public String verCartasEnMano() {
+	public String verCartasEnManoComoString() {
 		
 		String cartasComoString = "";
 		for (Carta unaCarta : cartas){
