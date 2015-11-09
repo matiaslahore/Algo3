@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.test;
+package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 import java.util.List;

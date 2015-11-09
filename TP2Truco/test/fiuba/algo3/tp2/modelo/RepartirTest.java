@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.test;
+package fiuba.algo3.tp2.modelo;
 
 public class RepartirTest {
 
