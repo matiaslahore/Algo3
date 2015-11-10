@@ -7,7 +7,7 @@ import fiuba.algo3.tp2.modelo.AlgoTruco;
 public class PartidoDeEnvidoTest {
 	
 	AlgoTruco algoTruco;
-	 //prueba desde la maquina de pabliyo
+	 //prueba yoooooo haber esta mierda
 	@Test
 	public void crearEquiposYJugarEnvido(){
 		
