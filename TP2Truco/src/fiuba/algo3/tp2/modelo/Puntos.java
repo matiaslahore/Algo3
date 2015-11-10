@@ -10,6 +10,14 @@ public class Puntos {
 		this.puntajeDos=0;
 	}
 	
+	public void anotarPuntajeUno (int cantidad){
+		this.puntajeUno+=cantidad;
+	}
+	
+	public void anotarPuntajeDos (int cantidad){
+		this.puntajeDos+=cantidad;
+	}
+	
 	public int getPuntajeUno(){
 		return this.puntajeUno;
 	}

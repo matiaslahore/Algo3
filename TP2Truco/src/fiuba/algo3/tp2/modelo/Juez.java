@@ -15,5 +15,6 @@ public class Juez {
 		// PartidaDeTruco LE PIDE AL JUEZ Q REPARTA Y VA A IR DANDO CARTAS EN UN CICLO Q CORTA CON LA EXCEPCION
 		return this.maso.dameCarta();
 	}
+
 	
 }
