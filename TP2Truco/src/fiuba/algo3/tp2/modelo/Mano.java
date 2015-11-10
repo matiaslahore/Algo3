@@ -8,7 +8,9 @@ public class Mano{
     	 estado=new EstadoManoInicial();
      }
      
-     public void rondaUno
+     public void rondaUno (){
+    	 
+     }
      
      public void cantarTruco (){
     	 this.estado.cantarTruco(); //dependiendo en el estado que este 
