@@ -4,11 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tp2.modelo.AlgoTruco;
-import fiuba.algo3.tp2.modelo.Envido;
-import fiuba.algo3.tp2.modelo.Equipo;
-import fiuba.algo3.tp2.modelo.Mesa;
-
 public class EnvidoTest {
 	Envido envido;
 	Equipo equipo1;
@@ -24,16 +19,33 @@ public class EnvidoTest {
 	@Test
 	public void equipo1CantaEnvidoYEquipo2NoQuiereEntoncesEquipo1GanaUnPunto(){
 		this.envido.cantarEnvido(this.equipo1);
-		this.envido.noQuerer();
-		Assert.assertEquals(this.equipo1.obtenerNombre(),this.envido.obtenerGanador().obtenerNombre());
-		Assert.assertEquals(1,this.envido.obtenerPuntosGanados());
+		this.envido.noQuerer(this.equipo2);
+		Assert.assertEquals(this.equipo1,this.envido.obtenerGanador());
+		Assert.assertEquals(1,this.envido.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void equipo2CantaEnvidoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
 		this.envido.cantarEnvido(this.equipo2);
-		this.envido.noQuerer();
-		Assert.assertEquals(this.equipo2.obtenerNombre(),this.envido.obtenerGanador().obtenerNombre());
-		Assert.assertEquals(1,this.envido.obtenerPuntosGanados());
+		this.envido.noQuerer(this.equipo1);
+		Assert.assertEquals(this.equipo2,this.envido.obtenerGanador());
+		Assert.assertEquals(1,this.envido.obtenerPuntajeGanador());
 	}
+	
+	@Test
+	public void elEquipoQueCantaNoPuedeQuererElEnvido(){
+		this.envido.cantarEnvido(this.equipo2);
+		this.envido.querer(this.equipo2);
+		Assert.assertNotEquals(this.equipo1,this.envido.obtenerGanador());
+		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
+	}
+	
+	@Test
+	public void elEquipoQueCantaNoPuedeNoQuererElEnvido(){
+		this.envido.cantarEnvido(this.equipo2);
+		this.envido.noQuerer(this.equipo2);
+		Assert.assertNotEquals(this.equipo1,this.envido.obtenerGanador());
+		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
+	}
+	
 }

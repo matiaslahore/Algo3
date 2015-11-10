@@ -16,6 +16,8 @@ public class Envido {
 	}
 	
 	public void querer(Equipo equipoQueQuiere){
+		if(equipoQueQuiere == this.equipoCantor)
+			return;
 		this.equipoAceptor = equipoQueQuiere;
 	}
 	
@@ -27,18 +29,11 @@ public class Envido {
 		return this.puntaje;
 	}
 	
-	public void noQuerer(){
+	public void noQuerer(Equipo equipoQueNoQuiere){
+		if(equipoQueNoQuiere == this.equipoCantor)
+			return;
 		this.ganador = this.equipoCantor;
-	}
-
-	public int obtenerPuntosGanados() {
-		
-		return 1;
-	}
-
-	public char[] obtenerGanadorEnvido() {
-		// TODO Auto-generated method stub
-		return null;
+		this.puntaje = 1;		
 	}
 	
 }
