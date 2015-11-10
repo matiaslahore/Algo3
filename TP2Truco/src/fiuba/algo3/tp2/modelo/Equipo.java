@@ -7,7 +7,7 @@ public class Equipo {
 	String nombreEquipo;
 	ArrayList<Jugador> Jugadores;
 	int cantidadJugadores;
-	Mesa refMesa;
+	Mesa refMesa; 
 	
 	public Equipo(){
 	//ESTO TIENE Q SER UNA LISTA CIRCULAR DSPS VER IMPLEMENTACION HAY MUCHAS, SINO LA HACEMOS ES UNA BOLUDES
@@ -42,7 +42,8 @@ public class Equipo {
 		return(this.Jugadores);
 	}
 
-		
+	// public cantarEnvido (){
+	// this.refMesa.cantar
 	
 	
 	
