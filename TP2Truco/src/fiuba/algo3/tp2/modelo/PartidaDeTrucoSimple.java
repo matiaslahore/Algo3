@@ -4,14 +4,15 @@ import java.util.LinkedList;
 
 
 public class PartidaDeTrucoSimple extends PartidaDeTruco{
-
+        
+	    @Override
 		public void cargarJugadoresEnEquipoUno(String JugadorUno) {
 			
 			LinkedList<String> nombreJugadores = new LinkedList<String>();
 			nombreJugadores.add(JugadorUno);
 			this.equipoUno.cargarJugadores(nombreJugadores);
 		}
-
+        @Override
 		public void cargarJugadoresEnEquipoDos(String jugadorDos) {
 			
 			LinkedList<String> nombreJugadores = new LinkedList<String>();
@@ -22,6 +23,11 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 		@Override
 		public void cantarEnvido(String jugador) {
 			
+			
+		}
+		
+		@Override
+		public void asignarMesa(){
 			
 		}
 	}
