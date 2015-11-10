@@ -42,8 +42,9 @@ public class Equipo {
 		return(this.Jugadores);
 	}
 
-	// public cantarEnvido (){
-	// this.refMesa.cantar
+	public String obtenerNombre(){
+		return(this.nombreEquipo);
+	}
 	
 	
 	

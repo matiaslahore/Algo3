@@ -7,6 +7,8 @@ public class Envido {
 	private Equipo ganador;
 	
 	public Envido(){
+		this.puntaje = 0;
+		this.equipoAceptor = this.equipoCantor = this.ganador = null;
 	}
 	
 	public void cantarEnvido(Equipo equipoQueCanta){

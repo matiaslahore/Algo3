@@ -16,18 +16,16 @@ public class EnvidoTest {
 	
 	@Before
 	public void Inicializar(){
+		this.envido = new Envido();
 		this.equipo1 = new Equipo();
 		this.equipo2 = new Equipo();
 	}
 	
 	@Test
 	public void equipo1CantaEnvidoYEquipo2NoQuiereEntoncesEquipo1GanaUnPunto(){
-		
 		this.envido.cantarEnvido(this.equipo1);
 		this.envido.noQuerer();
-		//ESTO NO ANDA ASI , HAY QUE PASARLE UNA FUNCION DE COMPARACION
-		// POR QUE java no sabe como comparar objetos Equipo.
-		//Assert.assertEquals(this.equipo1,this.envido.obtenerGanadorEnvido());
+		Assert.assertEquals(this.equipo1.obtenerNombre(),this.envido.obtenerGanador().obtenerNombre());
 		Assert.assertEquals(1,this.envido.obtenerPuntosGanados());
 	}
 	
@@ -35,9 +33,7 @@ public class EnvidoTest {
 	public void equipo2CantaEnvidoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
 		this.envido.cantarEnvido(this.equipo2);
 		this.envido.noQuerer();
-		//ESTO NO ANDA ASI , HAY QUE PASARLE UNA FUNCION DE COMPARACION
-		// POR QUE java no sabe como comparar objetos Equipo.
-		//Assert.assertEquals(this.equipo1,this.envido.obtenerGanadorEnvido());
+		Assert.assertEquals(this.equipo2.obtenerNombre(),this.envido.obtenerGanador().obtenerNombre());
 		Assert.assertEquals(1,this.envido.obtenerPuntosGanados());
 	}
 }
