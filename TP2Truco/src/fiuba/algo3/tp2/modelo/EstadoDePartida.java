@@ -5,5 +5,5 @@ public interface EstadoDePartida {
 	
 	//normal
 	
-	//pica pica
+	//pica pica   estas clases deberian implementarla
 }
