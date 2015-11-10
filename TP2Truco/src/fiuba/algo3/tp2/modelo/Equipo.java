@@ -9,12 +9,13 @@ public class Equipo {
 	int cantidadJugadores;
 	Mesa refMesa; 
 	
-	public Equipo(){
+	public Equipo(String nombreDelEquipo){
 	//ESTO TIENE Q SER UNA LISTA CIRCULAR DSPS VER IMPLEMENTACION HAY MUCHAS, SINO LA HACEMOS ES UNA BOLUDES
 	//SI ES CIRCULAR LA LISTA NO ME IMPORTA LA CANT DE JUGADORES TRATO A TODOS POR IGUAL
 		this.Jugadores = new ArrayList<Jugador>();
 		//this.refMesa = mesa;
 		//this.cantidadJugadores = cantidadJugadores;
+		this.nombreEquipo = nombreDelEquipo;
 	}
 	
 	public void cargarJugadores(LinkedList<String> nombreJugadores) {

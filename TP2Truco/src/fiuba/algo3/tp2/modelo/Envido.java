@@ -16,8 +16,9 @@ public class Envido {
 	}
 	
 	public void querer(Equipo equipoQueQuiere){
-		if(equipoQueQuiere == this.equipoCantor)
+		if(equipoQueQuiere == this.equipoCantor){
 			return;
+		}
 		this.equipoAceptor = equipoQueQuiere;
 	}
 	
@@ -30,8 +31,9 @@ public class Envido {
 	}
 	
 	public void noQuerer(Equipo equipoQueNoQuiere){
-		if(equipoQueNoQuiere == this.equipoCantor)
+		if(equipoQueNoQuiere == this.equipoCantor){
 			return;
+		}
 		this.ganador = this.equipoCantor;
 		this.puntaje = 1;		
 	}
