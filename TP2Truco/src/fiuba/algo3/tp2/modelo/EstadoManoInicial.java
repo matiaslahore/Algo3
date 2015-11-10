@@ -5,12 +5,11 @@ public class EstadoManoInicial implements EstadoDeMano {
 	Envido envido;
     Truco truco;
     
+    @Override
     public void cantarEnvido(){
     	this.envido= new Envido();
     }
-    
-    
-    
+    @Override 
     public void cantarTruco(){
     	//si cantan truco en este estado inicial de la partida
     	// le tiene que dejar la posibilidad de cantar el envido 
