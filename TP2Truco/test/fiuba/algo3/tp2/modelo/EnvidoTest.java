@@ -8,12 +8,14 @@ public class EnvidoTest {
 	Envido envido;
 	Equipo equipo1;
 	Equipo equipo2;
+	Mesa mesa;
 	
 	@Before
 	public void Inicializar(){
+		this.mesa = new Mesa();
 		this.envido = new Envido();
-		this.equipo1 = new Equipo("Nico");
-		this.equipo2 = new Equipo("Tute");
+		this.equipo1 = new Equipo("Nico",mesa);
+		this.equipo2 = new Equipo("Tute",mesa);
 	}
 	
 	@Test

@@ -14,7 +14,6 @@ public class Jugador {
 	}
 	
 	public void recibirCartas(Carta c1, Carta c2, Carta c3){
-		
 		cartas.add(c1);
 		cartas.add(c2);
 		cartas.add(c3);
@@ -42,5 +41,9 @@ public class Jugador {
 	
 	public String obtenerNombre(){
 		return(this.nombre);
+	}
+	
+	public int cantidadDeCartas(){
+		return cartas.size();
 	}
 }
