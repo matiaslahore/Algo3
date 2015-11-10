@@ -45,7 +45,7 @@ public class EnvidoTest {
 	public void elEquipoQueCantaNoPuedeNoQuererElEnvido(){
 		this.envido.cantarEnvido(this.equipo2);
 		this.envido.noQuerer(this.equipo2);
-		Assert.assertNotEquals(this.equipo1.ob2enerNombre(),this.envido.obtenerGanador().obtenerNombre());
+		Assert.assertNotEquals(this.equipo1.obtenerNombre(),this.envido.obtenerGanador().obtenerNombre());
 		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
 	}
 	
