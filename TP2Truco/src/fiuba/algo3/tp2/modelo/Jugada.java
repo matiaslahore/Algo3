@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Jugada {
+public class Jugada  {
 	Envido envido;
 	
 	public Jugada(){

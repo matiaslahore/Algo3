@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Mesa {
     
 	Juez juez;
-	Jugada jugada;
 	Puntos puntos;
 	ArrayList<String> ganadoresRonda;
 	// ganadoresRonda ME SIRVE PARA SABER X EJ CUANDO ES PARDA EN LA ULTIMA Y GANA EL Q HIZO PRIMERA
