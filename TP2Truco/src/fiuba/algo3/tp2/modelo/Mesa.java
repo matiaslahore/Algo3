@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class Mesa {
-
+    
 	Juez juez;
 	Jugada jugada;
 	Puntos puntos;
@@ -14,8 +14,7 @@ public class Mesa {
 	
 	public Mesa(){
 		
-		juez = new Juez();
-		jugada = new Jugada();
+		juez = new Juez(this);
 	    puntos = new Puntos();
 		ganadoresRonda = new ArrayList<String>();
 		cartasEnJuego = new ArrayList<Carta>();
