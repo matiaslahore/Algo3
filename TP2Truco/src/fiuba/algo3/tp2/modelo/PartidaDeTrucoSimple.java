@@ -53,7 +53,6 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 		public void anotarPuntos() {
 			Jugador ganador =  this.mesa.ganadorDeMano();
 			//String equipo = ganador.returnEquipo();
-			//haberrr
 			this.mesa.anotarPuntosEquipoDos(1);
 		}
 
