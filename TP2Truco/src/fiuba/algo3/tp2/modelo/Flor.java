@@ -25,8 +25,8 @@ public class Flor {
 		if(equipoQueQuiere == this.equipoCantor)
 			return;
 		this.equipoAceptor = equipoQueQuiere;
-		this.sumarCartasEnvido();
-		this.puntosGanados = (2 * this.cantidadDeFloresCantadas);
+		this.sumarCartasFlor();
+		this.puntosGanados = (3 * this.cantidadDeFloresCantadas);
 	}
 	
 	public Equipo obtenerGanador(){
@@ -44,18 +44,18 @@ public class Flor {
 		this.puntosGanados = this.cantidadDeFloresCantadas;		
 	}
 	
-	//Falta que Jugador sepa supar los puntos del envido
-	private void sumarCartasEnvido(){
+	//Falta que Jugador sepa sumar los puntos de la flor
+	private void sumarCartasFlor(){
 		ArrayList<Jugador> jugadoresEquipo1 = this.equipoCantor.obtenerJugadores(); //Una vez creada la clase juez, pedir a
 		ArrayList<Jugador> jugadoresEquipo2 = this.equipoAceptor.obtenerJugadores();//juez quien es la mano y ponerlo como eq1
 		int puntajeMaximo = 0;
 		for(int i=1; i<= 3; i++){
-			if(jugadoresEquipo1.get(i).obtenerPuntosEnvido() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvido();
+			if(jugadoresEquipo1.get(i).obtenerPuntosFlor() > puntajeMaximo){
+				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosFlor();
 				this.ganador = this.equipoCantor;
 			}
-			if(jugadoresEquipo2.get(i).obtenerPuntosEnvido() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvido();
+			if(jugadoresEquipo2.get(i).obtenerPuntosFlor() > puntajeMaximo){
+				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosFlor();
 				this.ganador = this.equipoAceptor;
 			}
 		}
