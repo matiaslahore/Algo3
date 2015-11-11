@@ -41,7 +41,7 @@ public class Flor {
 		if(equipoQueNoQuiere == this.equipoCantor)
 			return;
 		this.ganador = this.equipoCantor;
-		this.puntosGanados = this.cantidadDeFloresCantadas;		
+		this.puntosGanados = (this.cantidadDeFloresCantadas * 3);		
 	}
 	
 	//Falta que Jugador sepa sumar los puntos de la flor
