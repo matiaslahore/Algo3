@@ -7,14 +7,18 @@ public class Envido {
 	private Equipo equipoAceptor;
 	private int puntosGanados;
 	private Equipo ganador;
+	private int cantidadDeEnvidosCantados;
 	
 	public Envido(){
-		this.puntosGanados = 0;
+		this.puntosGanados = cantidadDeEnvidosCantados = 0;
 		this.equipoAceptor = this.equipoCantor = this.ganador = null;
 	}
 	
 	public void cantarEnvido(Equipo equipoQueCanta){
-		this.equipoCantor = equipoQueCanta;
+		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeEnvidosCantados < 2)){ 
+			this.equipoCantor = equipoQueCanta;
+			this.cantidadDeEnvidosCantados++;
+		}
 	}
 	
 	public void querer(Equipo equipoQueQuiere){
@@ -22,6 +26,7 @@ public class Envido {
 			return;
 		this.equipoAceptor = equipoQueQuiere;
 		this.sumarCartasEnvido();
+		this.puntosGanados = (2 * this.cantidadDeEnvidosCantados);
 	}
 	
 	public Equipo obtenerGanador(){
@@ -36,9 +41,10 @@ public class Envido {
 		if(equipoQueNoQuiere == this.equipoCantor)
 			return;
 		this.ganador = this.equipoCantor;
-		this.puntosGanados = 1;		
+		this.puntosGanados = this.cantidadDeEnvidosCantados;		
 	}
 	
+	//Falta que Jugador sepa supar los puntos del envido
 	private void sumarCartasEnvido(){
 		ArrayList<Jugador> jugadoresEquipo1 = this.equipoCantor.obtenerJugadores();
 		ArrayList<Jugador> jugadoresEquipo2 = this.equipoAceptor.obtenerJugadores();
