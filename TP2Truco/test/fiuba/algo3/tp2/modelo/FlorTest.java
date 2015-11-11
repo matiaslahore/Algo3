@@ -33,15 +33,16 @@ public class FlorTest {
 		Assert.assertEquals(this.equipo2.obtenerNombre(),this.flor.obtenerGanador().obtenerNombre());
 		Assert.assertEquals(3,this.flor.obtenerPuntajeGanador());
 	}
-	/*
-	@Test
-	public void elEquipoQueCantaNoPuedeQuererLaFlor(){
-		this.flor.cantarFlor(this.equipo2);
-		this.flor.querer(this.equipo2);
-		Assert.assertEquals(null,this.flor.obtenerGanador());
-		Assert.assertEquals(0,this.flor.obtenerPuntajeGanador());
-	}
 	
+	@Test
+	public void elEquipo1CantaFlorElEquipo2CantaContraFlorElEquipo1NoQuiereEntoncesElEquipo2Obitene4Puntos(){
+		this.flor.cantarFlor(this.equipo1);
+		this.flor.cantarFlor(this.equipo2);
+		this.flor.noQuerer(this.equipo1);
+		Assert.assertEquals(this.equipo2.obtenerNombre(),this.flor.obtenerGanador().obtenerNombre());
+		Assert.assertEquals(4,this.flor.obtenerPuntajeGanador());
+	}
+	/*
 	@Test
 	public void elEquipoQueCantaNoPuedeNoQuererElEnvido(){
 		this.flor.cantarFlor(this.equipo2);
