@@ -8,6 +8,7 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 	    Mesa mesa;
 	    Equipo equipoUno;
 	    Equipo equipoDos;
+	    Puntos puntos;
       	
 		public PartidaDeTrucoSimple(String eq1, String eq2){
 			this.mesa = new Mesa();
@@ -40,9 +41,8 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 		}
 		
 		public void iniciarMano(){
-			Mano mano = new Mano(this.equipoUno,this.equipoDos,new Juez(this.mesa));
-			mano.rondaUno();
-		//commit prueba
+			this.mesa.iniciarMano(this.equipoUno,this.equipoDos);
+		
 		}
 
 		public void jugarCartas() {

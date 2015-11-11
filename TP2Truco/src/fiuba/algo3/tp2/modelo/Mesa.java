@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Mesa {
     
 	Juez juez;
-	Puntos puntos;
 	ArrayList<String> ganadoresRonda;
 	// ganadoresRonda ME SIRVE PARA SABER X EJ CUANDO ES PARDA EN LA ULTIMA Y GANA EL Q HIZO PRIMERA
 	// nose si conviene guardar el nombre o guardar el Equipo.
@@ -13,7 +12,6 @@ public class Mesa {
 	
 	public Mesa(){
 		juez = new Juez(this);
-	    puntos = new Puntos();
 		ganadoresRonda = new ArrayList<String>();
 		cartasEnJuego = new ArrayList<Carta>();
 	}
@@ -32,11 +30,11 @@ public class Mesa {
 	}
 	
 	public void anotarPuntosEquipoUno(int cantidad) {
-		this.puntos.anotarPuntajeUno(cantidad);
+		
 	}
 	
 	public void anotarPuntosEquipoDos (int cantidad) {
-		this.puntos.anotarPuntajeDos(cantidad);
+		
 	}
 
 	public Jugador ganadorDeMano() {
@@ -44,8 +42,13 @@ public class Mesa {
 	}
 
 	public int returnPuntosEquipoDos() {
-		return this.puntos.getPuntajeDos();
+		int numero=0;
+		return numero;
 	}
 	
+	public void iniciarMano(Equipo equipoUno,Equipo equipoDos){
+		Mano mano = new Mano(equipoUno,equipoDos,juez);
+		mano.rondaUno();
+	}
 	
 }
