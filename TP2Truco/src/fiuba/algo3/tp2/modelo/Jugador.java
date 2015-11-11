@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Jugador {
 
@@ -55,6 +56,15 @@ public class Jugador {
 	
 	public String returnEquipo(){
 		return this.equipo;
+	}
+
+	public int obtenerPuntosEnvido() {
+		Carta c1 = cartas.get(0);
+		Carta c2 = cartas.get(1);
+		Carta c3 = cartas.get(2);
+		
+		int puntos = 20;
+		return puntos + c1.sumarMismoPalo(c2,c3);
 	}
 	
 }

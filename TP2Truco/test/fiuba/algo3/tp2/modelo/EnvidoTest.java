@@ -50,4 +50,11 @@ public class EnvidoTest {
 		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
 	}
 	
+	@Test
+	public void jugadorSuma33deEnvido(){
+		Jugador jug = new Jugador("pepe");
+		jug.recibirCartas(new Carta(new Basto(), 7), new Carta(new Basto(), 6) , new Carta(new Basto(), 1));
+		Assert.assertEquals(33,jug.obtenerPuntosEnvido());
+	}
+	
 }

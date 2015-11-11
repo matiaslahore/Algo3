@@ -24,7 +24,7 @@ public class AlgoTruco {
 
 	public void nuevaPartidaDeTrucoUnoContraUno(String equipoUno, String equipoDos) {
 		
-		partida = new PartidaDeTrucoSimple();	
+		partida = new PartidaDeTrucoSimple("","");	
 		partida.cargarJugadoresEnEquipoUno(equipoUno);
 		partida.cargarJugadoresEnEquipoDos(equipoDos);
 	}
