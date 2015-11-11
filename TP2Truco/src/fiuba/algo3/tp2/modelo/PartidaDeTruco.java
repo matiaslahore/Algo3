@@ -43,7 +43,7 @@ public abstract class PartidaDeTruco {
 	}*/
 
 	public void asignarQuienReparte() {
-		
+		//flout
 		float random =  (float) Math.random();
 		
 		if (random > 0.5) {
