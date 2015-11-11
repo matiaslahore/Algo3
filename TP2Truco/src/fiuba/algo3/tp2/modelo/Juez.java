@@ -18,7 +18,6 @@ public class Juez {
 		//JUGADOR Q ES MANO LANZA EXCEPCION CUANDO TIENE MAS DE 3 CARTAS Y NO SE LA QUEDA LA 4TA
 		//ASI EVITO SABER CUANTOS JUGADORES HAY JUGANDO.
 		// PartidaDeTruco LE PIDE AL JUEZ Q REPARTA Y VA A IR DANDO CARTAS EN UN CICLO Q CORTA CON LA EXCEPCION
-		
 		return this.maso.dameCarta();
 	}
        // solo el juez puede anotar puntos. PRIVATE
