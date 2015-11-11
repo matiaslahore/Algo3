@@ -15,7 +15,6 @@ public abstract class PartidaDeTruco {
 	
 	public abstract void cantarEnvido(String jugador);
 	
-	public abstract void asignarMesa();
 	/*public void cargarJugadoresEnEquipoUno(String jugadorUno, String jugadorDos, String jugadorTres){
 		
 		LinkedList<String> nombreJugadores = new LinkedList<String>();

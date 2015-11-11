@@ -30,12 +30,6 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 			
 		}
 		
-		@Override
-		public void asignarMesa(){
-			//eso para que esta?
-			//cree mesa en PartidaDeTruco
-		}
-		
 		public void repartir(){
 			equipoUno.recibirCartas();
 			equipoDos.recibirCartas();
