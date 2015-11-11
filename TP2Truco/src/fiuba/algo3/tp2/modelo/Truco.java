@@ -15,8 +15,11 @@ public class Truco {
 		this.cantidadDetrucosCantados = 1;
 	}
 	
-	public void cantarTruco(Equipo equiporQueCanta){
-		this.equipoCantor = equiporQueCanta;
+	public void cantarTruco(Equipo equipoQueCanta){
+		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDetrucosCantados < 4)){ 
+			this.equipoCantor = equipoQueCanta;
+			this.cantidadDetrucosCantados++;
+		}
 	}
 	
 	public void querer(Equipo equipoQueQuiere){
