@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 
 public class PartidaDeTrucoSimple extends PartidaDeTruco{
@@ -56,7 +55,5 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 			//String equipo = ganador.returnEquipo();
 			this.mesa.anotarPuntosEquipoDos(1);
 		}
-		
-		
 	}
 
