@@ -57,5 +57,15 @@ public class SituacionesDeJuegoTest {
 		
 		
 	}
+	
+	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
+		
+		PartidaDeTruco partidaDeTruco = new PartidaDeTrucoSimple("EquipoUno", "EquipoDos");
+		
+		partidaDeTruco.cargarJugadoresEnEquipoUno("pipi");
+		partidaDeTruco.cargarJugadoresEnEquipoDos("elDiegote");
+
+		partidaDeTruco.asignarQuienReparte();
+	}
 
 }

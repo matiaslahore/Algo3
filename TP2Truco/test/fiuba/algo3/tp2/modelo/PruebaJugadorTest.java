@@ -58,7 +58,22 @@ public class PruebaJugadorTest {
 		
 		unJugador.recibirCartas(new Carta(new Basto(), 10), new Carta(new Oro(), 11), new Carta(new Espada(),12));
 		
-		assertEquals(0, unJugador.obtenerPuntosEnvido());
+		assertEquals(0, unJugador.obtenerPuntosEnvido());	
+	}
+	
+	@Test
+	public void pruebaCalcularEnvidoConFlorConTresCartasNegras(){
 		
+		unJugador.recibirCartas(new Carta(new Oro(), 10), new Carta(new Oro(), 11), new Carta(new Oro(),12));
+		
+		assertEquals(20, unJugador.obtenerPuntosEnvidoConFlor());
+	}
+	
+	@Test
+	public void pruebaCalcularEnvidoConFlorConTresCartasComunes(){
+		
+		unJugador.recibirCartas(new Carta(new Oro(), 5), new Carta(new Oro(), 6), new Carta(new Oro(),7));
+		
+		assertEquals(38, unJugador.obtenerPuntosEnvidoConFlor());
 	}
 }

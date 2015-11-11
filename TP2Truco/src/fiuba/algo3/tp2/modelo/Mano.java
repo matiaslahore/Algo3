@@ -2,10 +2,17 @@ package fiuba.algo3.tp2.modelo;
 
 public class Mano{
      
-     EstadoDeMano estado;
+     Juez juez;
+     Equipo equipoUno;
+     Equipo equipoDos;
      
-     public Mano(){
-    	 estado=new EstadoManoInicial();
+     
+     public Mano(Equipo equipoUno, Equipo equipoDos, Juez juez){
+    	 
+    	 this.juez=juez;
+    	 this.equipoUno=equipoUno;
+    	 this.equipoDos=equipoDos;
+    	 
      }
      
      public void rondaUno (){
@@ -13,17 +20,11 @@ public class Mano{
      }
      
      public void cantarTruco (){
-    	 this.estado.cantarTruco(); //dependiendo en el estado que este 
-    	                            // va a poder responder con envido
-    	                            // o solo seguir el truco.
+    	
      }
      
      public void cantarEnvido (){
-    	 this.estado.cantarEnvido();
-    	 // espero respuesta haber que sucede
-    	 
-    	 // y cambio de estado la partida 
-    	 this.estado= new EstadoManoFinal(); 
+    	
     	
      }
 }

@@ -91,7 +91,6 @@ public class Jugador {
 		
 		if (listaConEnvido.size()==1) return this.dameValorDeCartaMayor(cartas);	
 		
-		
 		Collections.sort(listaConEnvido);
 		if (listaConEnvido.size() == 3) listaConEnvido.remove(0);
 		
@@ -116,7 +115,6 @@ public class Jugador {
 				cartasNoNegras.add(unaCarta);
 			}
 		}
-		
 		switch (cartasNoNegras.size()){
 		
 		case 0:
@@ -143,6 +141,7 @@ public class Jugador {
 		}
 		return maximo;
 	}
+
 	public Carta jugarPrimera(){
 		Carta actual = cartas.get(0);
 		cartas.remove(0);
@@ -150,8 +149,21 @@ public class Jugador {
 	}
 
 	public int obtenerPuntosTruco() {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
-	
+
+	public int obtenerPuntosEnvidoConFlor() {
+
+		int envidoConFlor = 0;
+		
+		for (Carta unaCarta : cartas){
+			
+			if (unaCarta.obtenerValor()<= 7){
+			
+				envidoConFlor += unaCarta.obtenerValor();
+			}
+		}
+		return envidoConFlor + 20;
+	}
 }

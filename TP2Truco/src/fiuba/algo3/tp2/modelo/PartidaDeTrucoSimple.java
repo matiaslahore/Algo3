@@ -5,6 +5,10 @@ import java.util.Random;
 
 
 public class PartidaDeTrucoSimple extends PartidaDeTruco{
+	
+	    Mesa mesa;
+	    Equipo equipoUno;
+	    Equipo equipoDos;
       	
 		public PartidaDeTrucoSimple(String eq1, String eq2){
 			this.mesa = new Mesa();
@@ -31,15 +35,15 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 			
 		}
 		
-		@Override
-		public void asignarMesa(){
-			//eso para que esta?
-			//cree mesa en PartidaDeTruco
-		}
-		
 		public void repartir(){
 			equipoUno.recibirCartas();
 			equipoDos.recibirCartas();
+		}
+		
+		public void iniciarMano(){
+			Mano mano = new Mano(this.equipoUno,this.equipoDos,new Juez(this.mesa));
+			mano.rondaUno();
+		//commit prueba
 		}
 
 		public void jugarCartas() {
@@ -50,7 +54,6 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 		public void anotarPuntos() {
 			Jugador ganador =  this.mesa.ganadorDeMano();
 			//String equipo = ganador.returnEquipo();
-			//ME QDO ACA POR HOY..
 			this.mesa.anotarPuntosEquipoDos(1);
 		}
 		
