@@ -42,7 +42,7 @@ public class FlorTest {
 		Assert.assertEquals(this.equipo2.obtenerNombre(),this.flor.obtenerGanador().obtenerNombre());
 		Assert.assertEquals(4,this.flor.obtenerPuntajeGanador());
 	}
-	/*
+	/* 
 	@Test
 	public void elEquipoQueCantaNoPuedeNoQuererElEnvido(){
 		this.flor.cantarFlor(this.equipo2);
