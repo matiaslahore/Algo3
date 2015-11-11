@@ -41,5 +41,15 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals(2,j1.cantidadDeCartas());
 		Assert.assertEquals(2,j2.cantidadDeCartas());
 	}
+	
+	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
+		
+		PartidaDeTruco partidaDeTruco = new PartidaDeTrucoSimple("EquipoUno", "EquipoDos");
+		
+		partidaDeTruco.cargarJugadoresEnEquipoUno("pipi");
+		partidaDeTruco.cargarJugadoresEnEquipoDos("elDiegote");
+
+		partidaDeTruco.asignarQuienReparte();
+	}
 
 }

@@ -42,4 +42,9 @@ public abstract class PartidaDeTruco {
 		
 		return ""; 
 	}*/
+
+	public void asignarQuienReparte() {
+		
+		
+	}
 }

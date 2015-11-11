@@ -50,12 +50,12 @@ public class Flor {
 		ArrayList<Jugador> jugadoresEquipo2 = this.equipoAceptor.obtenerJugadores();//juez quien es la mano y ponerlo como eq1
 		int puntajeMaximo = 0;
 		for(int i=1; i<= 3; i++){
-			if(jugadoresEquipo1.get(i).obtenerPuntosFlor() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosFlor();
+			if(jugadoresEquipo1.get(i).obtenerPuntosEnvidoConFlor() > puntajeMaximo){
+				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvidoConFlor();
 				this.ganador = this.equipoCantor;
 			}
-			if(jugadoresEquipo2.get(i).obtenerPuntosFlor() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosFlor();
+			if(jugadoresEquipo2.get(i).obtenerPuntosEnvidoConFlor() > puntajeMaximo){
+				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvidoConFlor();
 				this.ganador = this.equipoAceptor;
 			}
 		}
