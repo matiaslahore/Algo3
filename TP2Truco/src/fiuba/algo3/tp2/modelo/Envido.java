@@ -1,13 +1,15 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
+
 public class Envido {
 	private Equipo equipoCantor;
 	private Equipo equipoAceptor;
-	private int puntaje;
+	private int puntosGanados;
 	private Equipo ganador;
 	
 	public Envido(){
-		this.puntaje = 0;
+		this.puntosGanados = 0;
 		this.equipoAceptor = this.equipoCantor = this.ganador = null;
 	}
 	
@@ -16,9 +18,8 @@ public class Envido {
 	}
 	
 	public void querer(Equipo equipoQueQuiere){
-		if(equipoQueQuiere == this.equipoCantor){
+		if(equipoQueQuiere == this.equipoCantor)
 			return;
-		}
 		this.equipoAceptor = equipoQueQuiere;
 	}
 	
@@ -27,16 +28,40 @@ public class Envido {
 	}
 	
 	public int obtenerPuntajeGanador(){
-		return this.puntaje;
+		return this.puntosGanados;
 	}
 	
 	public void noQuerer(Equipo equipoQueNoQuiere){
-		if(equipoQueNoQuiere == this.equipoCantor){
+		if(equipoQueNoQuiere == this.equipoCantor)
 			return;
-		}
 		this.ganador = this.equipoCantor;
-		this.puntaje = 1;		
+		this.puntosGanados = 1;		
 	}
+	
+	private void sumarCartasEnvido(){
+		ArrayList<Jugador> jugadoresEquipo1 = this.equipoCantor.obtenerJugadores();
+		ArrayList<Jugador> jugadoresEquipo2 = this.equipoAceptor.obtenerJugadores();
+		int puntajeMaximo = 0;
+		for(int i=1; i<= 3; i++){
+			if(jugadoresEquipo1.get(i).obtenerPuntosEnvido() > puntajeMaximo){
+				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvido();
+				this.ganador = this.equipoCantor;
+			}
+			if(jugadoresEquipo2.get(i).obtenerPuntosEnvido() > puntajeMaximo){
+				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvido();
+				this.ganador = this.equipoAceptor;
+			}
+		}
+		if(puntajeMaximo == 0){
+			this.ganador = this.equipoCantor;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 }
 
