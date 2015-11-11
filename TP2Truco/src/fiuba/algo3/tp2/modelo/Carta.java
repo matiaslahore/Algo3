@@ -1,5 +1,9 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Carta {
 
 	Palo palo;
@@ -33,6 +37,33 @@ public class Carta {
 			}else this.jerarquia = 8;//1 de oro o copa
 		//ESTO ESTA HECHO A MODO GROSERO PARA CHEQUEAR UNAS COSAS
 		//HAY QUE PONERLO LINDO
+	}
+	
+	public static Object decimeElEnvidoDeEstasCartas(List<Carta> cartas){
+		
+		Map<String,Integer> cuentoElEnvido = new HashMap<String,Integer>();
+		int valorEnvido = 0;
+		int valorCarta = 0;
+		
+		for (Carta unaCarta : cartas){
+			
+			valorCarta = unaCarta.obtenerValor();
+			valorEnvido = unaCarta.obtenerValor();
+			
+			if (cuentoElEnvido.containsKey(unaCarta.obtenerPalo())){
+				
+				int valorCartaGuardada = cuentoElEnvido.get(unaCarta.obtenerPalo());
+				if ((valorCarta < 7) && (valorCartaGuardada < 7)) valorEnvido = valorCarta + valorCartaGuardada;
+				else
+					if (valorCarta > 7) valorEnvido = valorCartaGuardada;
+					else
+						if (valorCartaGuardada > 7) valorEnvido = valorCarta;
+						else
+							valorEnvido = 20;
+			}
+			cuentoElEnvido.put(unaCarta.obtenerPalo(), valorEnvido);				
+		}	
+		return null;
 	}
 	
 	public String obtenerPalo(){
