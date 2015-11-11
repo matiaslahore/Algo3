@@ -12,7 +12,7 @@ public class Truco {
 	public Truco(){
 		this.equipoAceptor = this.equipoCantor = this.ganador = null;
 		this.puntosGanados = 0;
-		this.cantidadDetrucosCantados = 1;
+		this.cantidadDetrucosCantados = 0;
 	}
 	
 	public void cantarTruco(Equipo equipoQueCanta){
@@ -30,7 +30,7 @@ public class Truco {
 		this.puntosGanados = (this.cantidadDetrucosCantados);
 	}
 	
-	public Equipo obtenerGanador(Equipo equiporQueQuiere){
+	public Equipo obtenerGanador(){
 		return(this.ganador);
 	}
 	
