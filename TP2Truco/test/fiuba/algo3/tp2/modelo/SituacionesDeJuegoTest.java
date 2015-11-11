@@ -66,6 +66,8 @@ public class SituacionesDeJuegoTest {
 		partidaDeTruco.cargarJugadoresEnEquipoDos("elDiegote");
 
 		partidaDeTruco.asignarQuienReparte();
+		
+		
 	}
 
 }

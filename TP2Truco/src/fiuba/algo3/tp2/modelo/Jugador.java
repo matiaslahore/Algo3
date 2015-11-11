@@ -15,7 +15,7 @@ public class Jugador {
 	public Object cantaLosPuntos(){
 		return cartas;
 	}
-	
+
 	public Jugador(String name){
 		nombre = name;
 		cartas = new ArrayList<Carta>(); 

@@ -73,5 +73,10 @@ public class Equipo {
 		//refMesa.recibirCarta(actual.jugarCarta((int)random));
 		refMesa.recibirCarta(actual.jugarPrimera());
 	}
+
+	public void asignarQuienReparte() {
+		
+		
+	}
 	
 }
