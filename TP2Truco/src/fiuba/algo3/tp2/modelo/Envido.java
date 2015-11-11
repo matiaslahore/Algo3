@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Envido {
 	private Equipo equipoCantor;
 	private Equipo equipoAceptor;
-	private int puntosGanados;
 	private Equipo ganador;
+	private int puntosGanados;
 	private int cantidadDeEnvidosCantados;
 	
 	public Envido(){
