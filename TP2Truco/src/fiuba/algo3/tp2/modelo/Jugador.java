@@ -14,8 +14,6 @@ public class Jugador {
 	
 	public Object cantaLosPuntos(){
 		return cartas;
-		
-		
 	}
 	
 	public Jugador(String name){
@@ -34,12 +32,12 @@ public class Jugador {
 		cartas.add(carta);
 	}
 	
-	public Carta jugarCarta(){
-		//ACA ENTRA LA DECISION DEL JUGADOR.. PUSE LA PRIMERA POR PONER
-		Carta actual = cartas.get(0);
-		cartas.remove(0);
+	/* ESTA ES LA QUE VA A IR A LO ULTIMO
+	 * public Carta jugarCarta(int n){
+		Carta actual = cartas.get(n-1); //-1 xq sino no da el index
+		cartas.remove(n-1);
 		return actual;
-	}
+	}*/
 	
 	public String verCartasEnManoComoString() {
 		

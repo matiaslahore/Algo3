@@ -25,14 +25,10 @@ public class Maso {
 	}
 	
 	public Carta dameCarta(){
-		//genero numero random entre 0 y 40
 		Random rnd = new Random();
 		int index = (int) (rnd.nextDouble() * (maso.size()));
-		//agarro carta random entre 0 y 40
 		Carta CartaRetorno = this.maso.get(index);
-		//borro la carta que ya use
 		this.maso.remove(index);
-		//retorno la carta
 		return CartaRetorno;
 		/*
 		 * LE PASO (cartas.size()) AL RANDOM PARA NUNCA PASARME DEL RANGO, XQ CUANDO ELIMINO
