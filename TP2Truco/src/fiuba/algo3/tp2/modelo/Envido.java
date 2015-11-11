@@ -21,6 +21,7 @@ public class Envido {
 		if(equipoQueQuiere == this.equipoCantor)
 			return;
 		this.equipoAceptor = equipoQueQuiere;
+		this.sumarCartasEnvido();
 	}
 	
 	public Equipo obtenerGanador(){
@@ -56,11 +57,6 @@ public class Envido {
 			this.ganador = this.equipoCantor;
 		}
 	}
-	
-	
-	
-	
-	
 	
 	
 }
