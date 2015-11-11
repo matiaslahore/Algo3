@@ -14,7 +14,7 @@ public class Flor {
 		this.equipoAceptor = this.equipoCantor = this.ganador = null;
 	}
 	
-	public void cantarEnvido(Equipo equipoQueCanta){
+	public void cantarFlor(Equipo equipoQueCanta){
 		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeFloresCantadas < 2)){ 
 			this.equipoCantor = equipoQueCanta;
 			this.cantidadDeFloresCantadas++;
