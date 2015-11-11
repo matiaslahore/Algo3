@@ -42,7 +42,7 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 		public void iniciarMano(){
 			Mano mano = new Mano(this.equipoUno,this.equipoDos,new Juez(this.mesa));
 			mano.rondaUno();
-		
+		//commit
 		}
 
 		public void jugarCartas() {
