@@ -15,7 +15,7 @@ public class Flor {
 	}
 	
 	public void cantarFlor(Equipo equipoQueCanta){
-		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeFloresCantadas < 2)){ 
+		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeFloresCantadas < 1)){ 
 			this.equipoCantor = equipoQueCanta;
 			this.cantidadDeFloresCantadas++;
 		}
