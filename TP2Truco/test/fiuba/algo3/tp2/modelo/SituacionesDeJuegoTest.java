@@ -25,5 +25,21 @@ public class SituacionesDeJuegoTest {
 		
 		Assert.assertEquals(1,partida.puntosEquipoDos());
 	}
+	
+	@Test
+	public void testGanaJugadorConAncho() {
+		Jugador j1 = new Jugador("Diegote");
+		Jugador j2 = new Jugador("pepe");
+		
+		j1.recibirCartas(new Carta(new Espada(),1), new Carta(new Espada(),3), new Carta(new Espada(),2));
+		j2.recibirCartas(new Carta(new Basto(),1), new Carta(new Basto(),4), new Carta(new Basto(),5));
+		
+		Carta cJ1 = j1.jugarPrimera();
+		Carta cJ2 = j2.jugarPrimera();
+		
+		Assert.assertFalse(cJ1.esMenorQue(cJ2));
+		Assert.assertEquals(2,j1.cantidadDeCartas());
+		Assert.assertEquals(2,j2.cantidadDeCartas());
+	}
 
 }

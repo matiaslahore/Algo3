@@ -67,4 +67,10 @@ public class Jugador {
 		return puntos + c1.sumarMismoPalo(c2,c3);
 	}
 	
+	public Carta jugarPrimera(){
+		Carta actual = cartas.get(0);
+		cartas.remove(0);
+		return actual;
+	}
+	
 }
