@@ -15,7 +15,7 @@ public class Flor {
 	}
 	
 	public void cantarFlor(Equipo equipoQueCanta){
-		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeFloresCantadas < 1)){ 
+		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeFloresCantadas < 2)){ 
 			this.equipoCantor = equipoQueCanta;
 			this.cantidadDeFloresCantadas++;
 		}
@@ -41,7 +41,9 @@ public class Flor {
 		if(equipoQueNoQuiere == this.equipoCantor)
 			return;
 		this.ganador = this.equipoCantor;
-		this.puntosGanados = (this.cantidadDeFloresCantadas * 3);		
+		this.puntosGanados = 3;
+		if(this.cantidadDeFloresCantadas == 2)
+			this.puntosGanados++;		
 	}
 	
 	//Falta que Jugador sepa sumar los puntos de la flor
