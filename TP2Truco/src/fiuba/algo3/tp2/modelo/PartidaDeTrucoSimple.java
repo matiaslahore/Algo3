@@ -4,6 +4,10 @@ import java.util.LinkedList;
 
 
 public class PartidaDeTrucoSimple extends PartidaDeTruco{
+	
+	    Mesa mesa;
+	    Equipo equipoUno;
+	    Equipo equipoDos;
       	
 		public PartidaDeTrucoSimple(String eq1, String eq2){
 			this.mesa = new Mesa();
@@ -33,6 +37,12 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 		public void repartir(){
 			equipoUno.recibirCartas();
 			equipoDos.recibirCartas();
+		}
+		
+		public void iniciarMano(){
+			Mano mano = new Mano(this.equipoUno,this.equipoDos,new Juez(this.mesa));
+			mano.rondaUno();
+			
 		}
 
 		public void jugarCartas() {
