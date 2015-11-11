@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,35 +41,8 @@ public class Carta {
 		//HAY QUE PONERLO LINDO
 	}
 	
-	public static Object decimeElEnvidoDeEstasCartas(List<Carta> cartas){
-		
-		Map<String,Integer> cuentoElEnvido = new HashMap<String,Integer>();
-		int valorEnvido = 0;
-		int valorCarta = 0;
-		
-		for (Carta unaCarta : cartas){
-			
-			valorCarta = unaCarta.obtenerValor();
-			valorEnvido = unaCarta.obtenerValor();
-			
-			if (cuentoElEnvido.containsKey(unaCarta.obtenerPalo())){
-				
-				int valorCartaGuardada = cuentoElEnvido.get(unaCarta.obtenerPalo());
-				if ((valorCarta < 7) && (valorCartaGuardada < 7)) valorEnvido = valorCarta + valorCartaGuardada;
-				else
-					if (valorCarta > 7) valorEnvido = valorCartaGuardada;
-					else
-						if (valorCartaGuardada > 7) valorEnvido = valorCarta;
-						else
-							valorEnvido = 20;
-			}
-			cuentoElEnvido.put(unaCarta.obtenerPalo(), valorEnvido);				
-		}	
-		return null;
-	}
-	
-	public String obtenerPalo(){
-		return palo.obtenerPalo();
+	public String obtenerPaloComoString(){
+		return palo.obtenerPaloComoString();
 	}
 	
 	public int obtenerValor(){
@@ -75,10 +50,10 @@ public class Carta {
 	}
 
 	public Object obtenerCartaComoString() {
-		return "'" + this.obtenerValor()+ " de " + this.obtenerPalo() + "' ";
+		return "'" + this.obtenerValor()+ " de " + this.obtenerPaloComoString() + "' ";
 	}
 
-	public Palo palo(){
+	public Palo obtenerPalo(){
 		return this.palo;
 	}
 	
@@ -102,27 +77,5 @@ public class Carta {
 	
 	public void cargarJugador(Jugador jug){
 		this.jugador = jug;
-	}
-
-	public int sumarMismoPalo(Carta c2, Carta c3) {
-		int a = 0;
-		int b = 0;
-		int c = 0;
-		
-		if (this.palo.getClass() == c2.palo().getClass()) {
-			a = (this.valor + c2.valor());
-		}
-		if (this.palo.getClass() == c3.palo().getClass()) {
-			b = (this.valor + c3.valor());
-		}
-		if (c3.palo().getClass() == c2.palo().getClass()) {
-			c = (c3.valor() + c2.valor());
-		}
-		
-		if (a>b && a>c) return a;
-		else if (b>c) return b;
-		else return c;
-		//ESTA FEO PERO ES PARA IR SAFANDO LAS PRUEBAS..
-	}
-	
+	}	
 }
