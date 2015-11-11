@@ -30,7 +30,7 @@ public class Truco {
 		this.puntosGanados = (this.cantidadDetrucosCantados);
 	}
 	
-	public Equipo obtenerGanador(Equipo equiporQueQuiere){
+	public Equipo obtenerGanador(){
 		return(this.ganador);
 	}
 	
