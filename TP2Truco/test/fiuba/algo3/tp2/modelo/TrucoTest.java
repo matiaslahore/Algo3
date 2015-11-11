@@ -25,9 +25,9 @@ public class TrucoTest {
 		Assert.assertEquals(this.equipo1.obtenerNombre(),this.truco.obtenerGanador().obtenerNombre());
 		Assert.assertEquals(1,this.truco.obtenerPuntajeGanador());
 	}
-	/*
+	
 	@Test
-	public void equipo2CantaEnvidoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
+	public void equipo2CantaTrucoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
 		this.truco.cantarTruco(this.equipo2);
 		this.truco.noQuerer(this.equipo1);
 		Assert.assertEquals(this.equipo2.obtenerNombre(),this.truco.obtenerGanador().obtenerNombre());
@@ -35,7 +35,7 @@ public class TrucoTest {
 	}
 	
 	@Test
-	public void elEquipoQueCantaNoPuedeQuererElEnvido(){
+	public void elEquipoQueCantaNoPuedeQuererElTruco(){
 		this.truco.cantarTruco(this.equipo2);
 		this.truco.querer(this.equipo2);
 		Assert.assertEquals(null,this.truco.obtenerGanador());
@@ -43,11 +43,11 @@ public class TrucoTest {
 	}
 	
 	@Test
-	public void elEquipoQueCantaNoPuedeNoQuererElEnvido(){
+	public void elEquipoQueCantaNoPuedeNoQuererElTruco(){
 		this.truco.cantarTruco(this.equipo2);
 		this.truco.noQuerer(this.equipo2);
 		Assert.assertEquals(null,this.truco.obtenerGanador());
 		Assert.assertEquals(0,this.truco.obtenerPuntajeGanador());
 	}
-	*/
+	
 }
