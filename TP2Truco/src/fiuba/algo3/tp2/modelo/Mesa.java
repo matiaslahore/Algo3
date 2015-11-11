@@ -12,7 +12,6 @@ public class Mesa {
 	ArrayList<Carta> cartasEnJuego;
 	
 	public Mesa(){
-		
 		juez = new Juez(this);
 	    puntos = new Puntos();
 		ganadoresRonda = new ArrayList<String>();
@@ -25,22 +24,28 @@ public class Mesa {
 	}
 
 	public Carta repartirCarta() {
-		
 		return juez.repartir();
 	}
 	
 	public void repartirCartas() {
-		
 		juez.repartir();
 	}
 	
-	public void anotarPuntosEquipoUno(int cantidad){
-		
+	public void anotarPuntosEquipoUno(int cantidad) {
 		this.puntos.anotarPuntajeUno(cantidad);
 	}
 	
-	public void anotarPuntosEquipoDos (int cantidad){
-		
+	public void anotarPuntosEquipoDos (int cantidad) {
 		this.puntos.anotarPuntajeDos(cantidad);
 	}
+
+	public Jugador ganadorDeMano() {
+		return this.juez.quienGana(cartasEnJuego); //VER!
+	}
+
+	public int returnPuntosEquipoDos() {
+		return this.puntos.getPuntajeDos();
+	}
+	
+	
 }

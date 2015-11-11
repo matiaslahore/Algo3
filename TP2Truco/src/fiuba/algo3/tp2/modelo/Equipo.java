@@ -24,13 +24,21 @@ public class Equipo {
 		while(itr.hasNext()) {
 			String nombre = (String) itr.next();
 			Jugador newJugador = new Jugador(nombre);
+			newJugador.cargarEquipo(nombreEquipo);
 			jugadores.add(newJugador);
 		}
 	}
 
 	public void recibirCartas() {
 		for (Jugador unJugador : jugadores){
-			unJugador.recibirCartas(refMesa.repartirCarta(),refMesa.repartirCarta(),refMesa.repartirCarta());
+			Carta c1 = refMesa.repartirCarta();
+			c1.cargarJugador(unJugador);
+			Carta c2 = refMesa.repartirCarta();
+			c2.cargarJugador(unJugador);
+			Carta c3 = refMesa.repartirCarta();
+			c3.cargarJugador(unJugador);
+			
+			unJugador.recibirCartas(c1,c2,c3);
 		}
 	}
 
@@ -50,6 +58,11 @@ public class Equipo {
 
 	public String obtenerNombre(){
 		return(this.nombreEquipo);
+	}
+
+	public void jugarCarta() {
+		Jugador actual = jugadores.get(0);
+		refMesa.recibirCarta(actual.jugarCarta());
 	}
 	
 }

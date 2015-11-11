@@ -7,6 +7,7 @@ public abstract class PartidaDeTruco {
 	//faltaria una objeto Turno que maneje el turno de la ronda.
 	Equipo equipoUno;
 	Equipo equipoDos;
+	Mesa mesa;
 	
 	public abstract void cargarJugadoresEnEquipoUno(String jugadorUno);
 	
@@ -14,7 +15,7 @@ public abstract class PartidaDeTruco {
 	
 	public abstract void cantarEnvido(String jugador);
 	
-	public abstract void asignarMesa ();
+	public abstract void asignarMesa();
 	/*public void cargarJugadoresEnEquipoUno(String jugadorUno, String jugadorDos, String jugadorTres){
 		
 		LinkedList<String> nombreJugadores = new LinkedList<String>();

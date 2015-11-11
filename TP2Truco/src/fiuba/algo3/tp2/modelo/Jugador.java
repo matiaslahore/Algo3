@@ -6,9 +6,9 @@ public class Jugador {
 
 	String nombre;
 	ArrayList<Carta> cartas;
+	String equipo;
 	
 	public Jugador(String name){
-		
 		nombre = name;
 		cartas = new ArrayList<Carta>(); 
 	}
@@ -24,9 +24,11 @@ public class Jugador {
 		cartas.add(carta);
 	}
 	
-	public void jugarCarta(){
-		
-		
+	public Carta jugarCarta(){
+		//ACA ENTRA LA DECISION DEL JUGADOR.. PUSE LA PRIMERA POR PONER
+		Carta actual = cartas.get(0);
+		cartas.remove(0);
+		return actual;
 	}
 	
 	public String verCartasEnManoComoString() {
@@ -46,4 +48,13 @@ public class Jugador {
 	public int cantidadDeCartas(){
 		return cartas.size();
 	}
+	
+	public void cargarEquipo(String nombre){
+		this.equipo = nombre;
+	}
+	
+	public String returnEquipo(){
+		return this.equipo;
+	}
+	
 }

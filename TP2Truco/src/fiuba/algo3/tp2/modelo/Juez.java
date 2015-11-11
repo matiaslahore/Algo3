@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Juez {
 
 	Maso maso;
@@ -8,7 +11,7 @@ public class Juez {
 	
 	public Juez(Mesa mesa){
 		maso = new Maso();
-		this.mesa= mesa;
+		this.mesa = mesa;
 	}
 	
 	public Carta repartir(){
@@ -26,5 +29,19 @@ public class Juez {
 	
 	private void anotarPuntosEquipoDos (int cantidad){
 		this.mesa.anotarPuntosEquipoDos(cantidad);
+	}
+
+	public Jugador quienGana(ArrayList<Carta> cartas) {
+		//SIRVE PARA MUCHAS CARTAS!!
+		Carta a = cartas.get(0);
+		Iterator<Carta> itr = cartas.iterator();
+		while(itr.hasNext()) {
+			Carta b = (Carta) itr.next();
+			if (a.esMenorQue(b)){
+				a = b;
+			}
+		}
+		//A cada Carta le pongo de quien es.. es medio flashero pero sino nose quien me la dio
+		return a.deQuienSos();
 	}
 }
