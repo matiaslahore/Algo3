@@ -3,12 +3,13 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Equipo {
 	String nombreEquipo;
 	ArrayList<Jugador> jugadores;
 	int cantidadJugadores;
-	Mesa refMesa; 
+	Mesa refMesa;
 	
 	public Equipo(String nombreDelEquipo, Mesa mesa){
 	//ESTO TIENE Q SER UNA LISTA CIRCULAR DSPS VER IMPLEMENTACION HAY MUCHAS, SINO LA HACEMOS ES UNA BOLUDES
@@ -61,8 +62,21 @@ public class Equipo {
 	}
 
 	public void jugarCarta() {
+		
 		Jugador actual = jugadores.get(0);
-		refMesa.recibirCarta(actual.jugarCarta());
+		//0 en get xq es el unico jugador VER CASO GENERAL
+		
+		System.out.println(actual.verCartasEnManoComoString());
+		//Scanner leer = new Scanner(System.in);
+		//System.out.println("Ingerese numero de carta a jugar: ");
+		//int n = leer.nextInt();
+		//refMesa.recibirCarta(actual.jugarCarta((int)random));
+		refMesa.recibirCarta(actual.jugarPrimera());
+	}
+
+	public void asignarQuienReparte() {
+		
+		
 	}
 	
 }

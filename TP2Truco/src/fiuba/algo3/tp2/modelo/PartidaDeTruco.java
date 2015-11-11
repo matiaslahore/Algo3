@@ -44,6 +44,12 @@ public abstract class PartidaDeTruco {
 
 	public void asignarQuienReparte() {
 		
+		float random =  (float) Math.random();
 		
+		if (random > 0.5) {
+				equipoDos.asignarQuienReparte();
+				return;
+		}
+		equipoDos.asignarQuienReparte();	
 	}
 }
