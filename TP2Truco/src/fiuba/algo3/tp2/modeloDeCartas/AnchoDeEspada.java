@@ -1,13 +1,14 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
+import fiuba.algo3.tp2.modelo.Espada;
 import fiuba.algo3.tp2.modelo.Palo;
 
 public class AnchoDeEspada implements TipoDeCartas{
 	
 	Palo palo;
 	
-	public AnchoDeEspada(Palo newPalo){
-		this.palo = newPalo;
+	public AnchoDeEspada(){
+		this.palo = new Espada();
 	}
 	
 	public TipoDeCartas vs(TipoDeCartas contra) {

@@ -1,23 +1,15 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-import fiuba.algo3.tp2.modelo.Palo;
+public abstract class Tres implements TipoDeCartas{
 
-public class Tres implements TipoDeCartas{
-
-	Palo palo;
-	
-	public Tres(Palo newPalo){
-		this.palo = newPalo;
-	}
-	
 	public TipoDeCartas vs(TipoDeCartas contra){
-		return this.vs(contra);
+		return contra.vs(this);
 	}
 
-	public TipoDeCartas vs(AnchoDeEspada contra){
+	public TipoDeCartas vs(AnchoDeEspada contra) {	
 		return contra;
 	}
-
+	
 	public TipoDeCartas vs(AnchoDeBasto contra){
 		return contra;
 	}
@@ -69,5 +61,4 @@ public class Tres implements TipoDeCartas{
 	public TipoDeCartas vs(Cuatro contra){
 		return this;
 	}
-
 }

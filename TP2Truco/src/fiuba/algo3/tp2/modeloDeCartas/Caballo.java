@@ -1,17 +1,9 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-import fiuba.algo3.tp2.modelo.Palo;
-
-public class Caballo implements TipoDeCartas{
-
-	Palo palo;
-	
-	public Caballo(Palo newPalo){
-		this.palo = newPalo;
-	}
+public abstract class Caballo implements TipoDeCartas{
 	
 	public TipoDeCartas vs(TipoDeCartas contra){
-		return this.vs(contra);
+		return contra.vs(this);
 	}
 
 	public TipoDeCartas vs(AnchoDeEspada contra){

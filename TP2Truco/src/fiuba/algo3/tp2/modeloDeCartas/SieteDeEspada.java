@@ -11,7 +11,7 @@ public class SieteDeEspada implements TipoDeCartas{
 	}
 	
 	public TipoDeCartas vs(TipoDeCartas contra){
-		return this.vs(contra);
+		return contra.vs(this);
 	}
 
 	public TipoDeCartas vs(AnchoDeEspada contra){

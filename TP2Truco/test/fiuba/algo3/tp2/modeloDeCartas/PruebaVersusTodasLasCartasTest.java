@@ -11,8 +11,8 @@ public class PruebaVersusTodasLasCartasTest {
 	@Test
 	public void elAnchoDeEspadaLeGanaATodos(){
 		
-		carta = new AnchoDeEspada(null);
-		cartaContra = new AnchoDeBasto(null);
+		carta = new AnchoDeEspada();
+		cartaContra = new AnchoDeBasto();
 		
 		Assert.assertEquals(carta,carta.vs(cartaContra));
 			/*
@@ -30,5 +30,14 @@ public class PruebaVersusTodasLasCartasTest {
 			new Cinco(null)
 			new Cuatro(null)
 			*/
+	}
+	
+	@Test
+	public void elAnchoDeCopaEmpataConElAnchoDeOro(){
+		
+		carta = new AnchoDeCopa();
+		cartaContra = new AnchoDeOro();
+		
+		Assert.assertEquals(cartaContra, carta.vs(cartaContra));
 	}
 }
