@@ -6,10 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fiuba.algo3.tp2.modeloDeCartas.*;
+
 public class Jugador {
 
 	String nombre;
-	ArrayList<Carta> cartas;
+	ArrayList<TipoDeCartas> cartas;
 	String equipo;
 	
 	public Object cantaLosPuntos(){
@@ -18,16 +20,16 @@ public class Jugador {
 
 	public Jugador(String name){
 		nombre = name;
-		cartas = new ArrayList<Carta>(); 
+		cartas = new ArrayList<TipoDeCartas>(); 
 	}
 	
-	public void recibirCartas(Carta c1, Carta c2, Carta c3){
+	public void recibirCartas(TipoDeCartas c1, TipoDeCartas c2, TipoDeCartas c3){
 		cartas.add(c1);
 		cartas.add(c2);
 		cartas.add(c3);
 	}
 
-	public void recibirUnaCarta(Carta carta){
+	public void recibirUnaCarta(TipoDeCartas carta){
 		
 		cartas.add(carta);
 	}
@@ -39,6 +41,7 @@ public class Jugador {
 		return actual;
 	}*/
 	
+	//VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER
 	public String verCartasEnManoComoString() {
 		
 		String cartasComoString = "";
@@ -75,7 +78,9 @@ public class Jugador {
 		mapaDeCartas.put("Copa", new ArrayList<Integer>());
 		
 		for (Carta unaCarta : cartas){
-		
+		//NICO NO TE CAMBIO ESTO XQ SINO ME VAS A QUERER MATAR ESTUVISTE UNA BANDA
+		//ASI Q TE LO DEJO ASI EN ROJO COMO TE GUSTA A VOS JAJA
+		//AVISAME Y LO CAMBIO!
 			mapaDeCartas.get(unaCarta.obtenerPaloComoString()).add(unaCarta.obtenerValor());
 		}
 		
@@ -142,8 +147,8 @@ public class Jugador {
 		return maximo;
 	}
 
-	public Carta jugarPrimera(){
-		Carta actual = cartas.get(0);
+	public TipoDeCartas jugarPrimera(){
+		TipoDeCartas actual = cartas.get(0);
 		cartas.remove(0);
 		return actual;
 	}
@@ -158,7 +163,7 @@ public class Jugador {
 		int envidoConFlor = 0;
 		
 		for (Carta unaCarta : cartas){
-			
+			//ESTO ES LO MISMO QUE EL CASO ANTERIOR NOSE COMO FUNCIONA DSPS LO CAMBIO
 			if (unaCarta.obtenerValor()<= 7){
 			
 				envidoConFlor += unaCarta.obtenerValor();

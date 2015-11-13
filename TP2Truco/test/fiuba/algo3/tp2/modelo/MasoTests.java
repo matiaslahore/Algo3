@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import fiuba.algo3.tp2.modelo.Carta;
 import fiuba.algo3.tp2.modelo.Maso;
+import fiuba.algo3.tp2.modeloDeCartas.*;
 
 public class MasoTests {
 
@@ -14,14 +15,14 @@ public class MasoTests {
 		
 		Maso unMaso = new Maso();
 		
-		List<Carta> listaDeCartas = new ArrayList<Carta>();
-		Carta unaCarta ;
+		List<TipoDeCartas> listaDeCartas = new ArrayList<TipoDeCartas>();
+		TipoDeCartas unaCarta ;
 		
 		for (int i=0; i<40; i=i+1){
 			
 			unaCarta = unMaso.dameCarta();
 			if (listaDeCartas.contains(unaCarta)){
-				
+			
 				break;
 			}
 			listaDeCartas.add(unaCarta);

@@ -3,6 +3,8 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import fiuba.algo3.tp2.modeloDeCartas.*;
+
 public class Juez {
 
 	Maso maso;
@@ -14,7 +16,7 @@ public class Juez {
 		this.mesa = mesa;
 	}
 	
-	public Carta repartir(){
+	public TipoDeCartas repartir(){
 		//JUGADOR Q ES MANO LANZA EXCEPCION CUANDO TIENE MAS DE 3 CARTAS Y NO SE LA QUEDA LA 4TA
 		//ASI EVITO SABER CUANTOS JUGADORES HAY JUGANDO.
 		// PartidaDeTruco LE PIDE AL JUEZ Q REPARTA Y VA A IR DANDO CARTAS EN UN CICLO Q CORTA CON LA EXCEPCION
@@ -29,6 +31,9 @@ public class Juez {
 		this.mesa.anotarPuntosEquipoDos(cantidad);
 	}
 
+	/*
+	 * REIMPLEMENTAAAAAAAAAAAAAAAAAAAAAAR
+	 */
 	public Jugador quienGana(ArrayList<Carta> cartas) {
 		//SIRVE PARA MUCHAS CARTAS!!
 		Carta a = cartas.get(0);

@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import fiuba.algo3.tp2.modeloDeCartas.*;
+
 public class Equipo {
 	String nombreEquipo;
 	ArrayList<Jugador> jugadores;
@@ -32,12 +34,15 @@ public class Equipo {
 
 	public void recibirCartas() {
 		for (Jugador unJugador : jugadores){
-			Carta c1 = refMesa.repartirCarta();
-			c1.cargarJugador(unJugador);
-			Carta c2 = refMesa.repartirCarta();
-			c2.cargarJugador(unJugador);
-			Carta c3 = refMesa.repartirCarta();
-			c3.cargarJugador(unJugador);
+			TipoDeCartas c1 = refMesa.repartirCarta();
+			//c1.cargarJugador(unJugador);
+			TipoDeCartas c2 = refMesa.repartirCarta();
+			//c2.cargarJugador(unJugador);
+			TipoDeCartas c3 = refMesa.repartirCarta();
+			//c3.cargarJugador(unJugador);
+			
+			//COMENTE ESTO XQ A LA CARTA SE LE PONIA DE QUIEN ERA..
+			//NOSE SI AHORA VAMOS A SEGUIR HACIENDO ESTO
 			
 			unJugador.recibirCartas(c1,c2,c3);
 		}

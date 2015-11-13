@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 import java.util.List;
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modeloDeCartas.*;
 
 public class Mesa {
     
@@ -10,7 +11,7 @@ public class Mesa {
 	ArrayList<String> ganadoresRonda;
 	// ganadoresRonda ME SIRVE PARA SABER X EJ CUANDO ES PARDA EN LA ULTIMA Y GANA EL Q HIZO PRIMERA
 	// nose si conviene guardar el nombre o guardar el Equipo.
-	ArrayList<Carta> cartasEnJuego;
+	ArrayList<TipoDeCartas> cartasEnJuego;
 	List<Jugador> jugadores;
 	int mano;
 	
@@ -18,16 +19,16 @@ public class Mesa {
 		jugadores = new ListaCircular<Jugador>();
 		juez = new Juez(this);
 		ganadoresRonda = new ArrayList<String>();
-		cartasEnJuego = new ArrayList<Carta>();
+		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		mano = 0; //indice de la lista circular
 	}
 	
-	public void recibirCarta(Carta c){
+	public void recibirCarta(TipoDeCartas c){
 	// esta es la carta q pone cada Jugador.
 		cartasEnJuego.add(c);
 	}
 
-	public Carta repartirCarta() {
+	public TipoDeCartas repartirCarta() {
 		return juez.repartir();
 	}
 	

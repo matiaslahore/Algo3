@@ -5,36 +5,47 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import fiuba.algo3.tp2.modeloDeCartas.*;
+
 public class Maso {
 
-	ArrayList<Carta> maso = new ArrayList<Carta>();
+	ArrayList<TipoDeCartas> maso = new ArrayList<TipoDeCartas>();
 	
 	public Maso(){
+		//CASO UNICO PALO
+		this.maso.add(new AnchoDeEspada(new Espada()));
+		this.maso.add(new AnchoDeBasto(new Basto()));
+		this.maso.add(new SieteDeEspada(new Espada()));
+		this.maso.add(new SieteDeOro(new Oro()));
 		
+		//CASO DOS PALOS
+		this.maso.add(new SieteFalso(new Basto()));
+		this.maso.add(new SieteFalso(new Copa()));
+		this.maso.add(new AnchoFalso(new Copa()));
+		this.maso.add(new AnchoFalso(new Oro()));
+		
+		//CASO TODOS LOS PALOS
 		List<Palo> listaDePalos = Arrays.asList(new Basto(), new Copa(), new Espada(), new Oro());
-
 		for (Palo unPalo : listaDePalos){
-			
-			for (int valor=1 ; valor<=7 ; valor = valor + 1 ){
-				this.maso.add( new Carta(unPalo, valor) );
-			}
-			for (int valor=10 ; valor <= 12 ; valor = valor +1 ){
-				this.maso.add( new Carta(unPalo, valor ));
+			for (int valor = 1 ; valor <= 8 ; valor = valor + 1 ){
+				this.maso.add(new Dos(unPalo));
+				this.maso.add(new Tres(unPalo));
+				this.maso.add(new Cuatro(unPalo));
+				this.maso.add(new Cinco(unPalo));
+				this.maso.add(new Seis(unPalo));
+				this.maso.add(new Sota(unPalo));
+				this.maso.add(new Caballo(unPalo));
+				this.maso.add(new Rey(unPalo));
 			}
 		}
 	}
 	
-	public Carta dameCarta(){
+	public TipoDeCartas dameCarta(){
 		Random rnd = new Random();
 		int index = (int) (rnd.nextDouble() * (maso.size()));
-		Carta CartaRetorno = this.maso.get(index);
+		TipoDeCartas CartaRetorno = this.maso.get(index);
 		this.maso.remove(index);
 		return CartaRetorno;
-		/*
-		 * LE PASO (cartas.size()) AL RANDOM PARA NUNCA PASARME DEL RANGO, XQ CUANDO ELIMINO
-		 * PUEDE SER QUE EL RANDOM ME DE UN NUMERO QUE SE PASE DEL NUEVO VALOR DEL SIZE
-		 * ASI NUNCA ME PASO Y SIEMPRE REPARTO UNA CARTA DISTINTA A CADA UNO.
-		 */
 	}
 	
 }
