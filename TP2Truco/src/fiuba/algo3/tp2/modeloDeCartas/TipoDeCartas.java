@@ -31,4 +31,15 @@ public interface TipoDeCartas {
 	public abstract TipoDeCartas vs(Cinco contra);
 
 	public abstract TipoDeCartas vs(Cuatro contra);
+	
+	//SUMAR TANTOS
+	
+	public abstract int sumarTanto(TipoDeCartas sumar);
+	public abstract int sumarTanto(AnchoDeEspada sumar);
+	public abstract int sumarTanto(AnchoDeBasto sumar);
+	public abstract int sumarTanto(SieteDeEspada sumar);
+	public abstract int sumarTanto(SieteDeOro sumar);
+	public abstract int sumarTanto(AnchoFalso sumar);
+	public abstract int sumarTanto(SieteFalso sumar);
+	
 }
