@@ -1,13 +1,14 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
+import fiuba.algo3.tp2.modelo.Oro;
 import fiuba.algo3.tp2.modelo.Palo;
 
 public class SieteDeOro implements TipoDeCartas{
 
 	Palo palo;
 	
-	public SieteDeOro(Palo newPalo){
-		this.palo = newPalo;
+	public SieteDeOro(){
+		this.palo = new Oro();
 	}
 	
 	public TipoDeCartas vs(TipoDeCartas contra){

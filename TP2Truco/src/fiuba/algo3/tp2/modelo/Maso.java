@@ -12,13 +12,11 @@ public class Maso {
 	ArrayList<TipoDeCartas> maso = new ArrayList<TipoDeCartas>();
 	
 	public Maso(){
-		//CASO UNICO PALO
-		this.maso.add(new AnchoDeEspada(new Espada()));
-		this.maso.add(new AnchoDeBasto(new Basto()));
-		this.maso.add(new SieteDeEspada(new Espada()));
-		this.maso.add(new SieteDeOro(new Oro()));
 		
-		//CASO DOS PALOS
+		this.maso.add(new AnchoDeEspada());
+		this.maso.add(new AnchoDeBasto());
+		this.maso.add(new SieteDeEspada());
+		this.maso.add(new SieteDeOro(new Oro()));
 		this.maso.add(new SieteFalso(new Basto()));
 		this.maso.add(new SieteFalso(new Copa()));
 		this.maso.add(new AnchoFalso(new Copa()));
