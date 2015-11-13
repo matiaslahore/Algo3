@@ -54,7 +54,7 @@ public class Mesa {
 	}
 	
 	public void iniciarMano(Equipo equipoUno,Equipo equipoDos){
-		Mano mano = new Mano(equipoUno,equipoDos,juez);
+		ManoViejaCambiarNombre mano = new ManoViejaCambiarNombre(equipoUno,equipoDos,juez);
 		mano.rondaUno();
 	}
 	

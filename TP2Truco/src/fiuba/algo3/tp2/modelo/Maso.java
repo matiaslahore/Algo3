@@ -16,34 +16,52 @@ public class Maso {
 		this.maso.add(new AnchoDeEspada());
 		this.maso.add(new AnchoDeBasto());
 		this.maso.add(new SieteDeEspada());
-		this.maso.add(new SieteDeOro(new Oro()));
-		this.maso.add(new SieteFalso(new Basto()));
-		this.maso.add(new SieteFalso(new Copa()));
-		this.maso.add(new AnchoFalso(new Copa()));
-		this.maso.add(new AnchoFalso(new Oro()));
-		
-		//CASO TODOS LOS PALOS
-		List<Palo> listaDePalos = Arrays.asList(new Basto(), new Copa(), new Espada(), new Oro());
-		for (Palo unPalo : listaDePalos){
-			for (int valor = 1 ; valor <= 8 ; valor = valor + 1 ){
-				this.maso.add(new Dos(unPalo));
-				this.maso.add(new Tres(unPalo));
-				this.maso.add(new Cuatro(unPalo));
-				this.maso.add(new Cinco(unPalo));
-				this.maso.add(new Seis(unPalo));
-				this.maso.add(new Sota(unPalo));
-				this.maso.add(new Caballo(unPalo));
-				this.maso.add(new Rey(unPalo));
-			}
-		}
+		this.maso.add(new SieteDeOro());
+		this.maso.add(new TresDeOro());
+		this.maso.add(new TresDeCopa());
+		this.maso.add(new TresDeBasto());
+		this.maso.add(new TresDeEspada());
+		this.maso.add(new DosDeOro());
+		this.maso.add(new DosDeCopa());
+		this.maso.add(new DosDeBasto());
+		this.maso.add(new DosDeEspada());
+		this.maso.add(new AnchoDeCopa());
+		this.maso.add(new AnchoDeOro());
+		this.maso.add(new ReyDeOro());
+		this.maso.add(new ReyDeCopa());
+		this.maso.add(new ReyDeBasto());
+		this.maso.add(new ReyDeEspada());
+		this.maso.add(new CaballoDeOro());
+		this.maso.add(new CaballoDeCopa());
+		this.maso.add(new CaballoDeBasto());
+		this.maso.add(new CaballoDeEspada());
+		this.maso.add(new SotaDeOro());
+		this.maso.add(new SotaDeCopa());
+		this.maso.add(new SotaDeBasto());
+		this.maso.add(new SotaDeEspada());
+		this.maso.add(new SieteDeBasto());
+		this.maso.add(new SieteDeCopa());
+		this.maso.add(new SeisDeOro());
+		this.maso.add(new SeisDeCopa());
+		this.maso.add(new SeisDeBasto());
+		this.maso.add(new SeisDeEspada());
+		this.maso.add(new CincoDeOro());
+		this.maso.add(new CincoDeCopa());
+		this.maso.add(new CincoDeBasto());
+		this.maso.add(new CincoDeEspada());
+		this.maso.add(new CuatroDeOro());
+		this.maso.add(new CuatroDeCopa());
+		this.maso.add(new CuatroDeBasto());
+		this.maso.add(new CuatroDeEspada());
 	}
 	
 	public TipoDeCartas dameCarta(){
+		
 		Random rnd = new Random();
-		int index = (int) (rnd.nextDouble() * (maso.size()));
+		int index = (int) (rnd.nextDouble() * (maso.size() + 1));
 		TipoDeCartas CartaRetorno = this.maso.get(index);
 		this.maso.remove(index);
 		return CartaRetorno;
 	}
-	
+
 }

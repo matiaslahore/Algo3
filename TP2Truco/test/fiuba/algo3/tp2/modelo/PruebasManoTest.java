@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class PruebasManoTest {
 
-	private Mano mano;
+	private ManoViejaCambiarNombre mano;
 	
 	@Before
 	public void inicializarPruebas(){

@@ -9,7 +9,7 @@ public class Juez {
 
 	Maso maso;
 	Mesa mesa;
-	Mano mano;
+	ManoViejaCambiarNombre mano;
 	
 	public Juez(Mesa mesa){
 		maso = new Maso();
