@@ -72,10 +72,10 @@ public class Jugador {
 		
 		Map<String,List<Integer>> mapaDeCartas = new HashMap<String,List<Integer>>();
 		
-		mapaDeCartas.put("Oro", new ArrayList<Integer>());
-		mapaDeCartas.put("Espada", new ArrayList<Integer>());
-		mapaDeCartas.put("Basto", new ArrayList<Integer>());
-		mapaDeCartas.put("Copa", new ArrayList<Integer>());
+		mapaDeCartas.put(new Oro().obtenerPaloComoString(), new ArrayList<Integer>());
+		mapaDeCartas.put(new Espada().obtenerPaloComoString(), new ArrayList<Integer>());
+		mapaDeCartas.put(new Basto().obtenerPaloComoString(), new ArrayList<Integer>());
+		mapaDeCartas.put(new Copa().obtenerPaloComoString(), new ArrayList<Integer>());
 		
 		for (Carta unaCarta : cartas){
 		//NICO NO TE CAMBIO ESTO XQ SINO ME VAS A QUERER MATAR ESTUVISTE UNA BANDA
@@ -97,6 +97,7 @@ public class Jugador {
 		if (listaConEnvido.size()==1) return this.dameValorDeCartaMayor(cartas);	
 		
 		Collections.sort(listaConEnvido);
+		
 		if (listaConEnvido.size() == 3) listaConEnvido.remove(0);
 		
 		int envido = 0;
