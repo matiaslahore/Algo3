@@ -15,4 +15,8 @@ public class Mano {
 		this.cartaTres = cartaTres;
 	}
 	
+	public int calcularEnvido(){
+		return Math.max(Math.max(cartaUno.sumarTanto(cartaDos), cartaUno.sumarTanto(cartaTres)), cartaTres.sumarTanto(cartaDos));
+	}
+	
 }
