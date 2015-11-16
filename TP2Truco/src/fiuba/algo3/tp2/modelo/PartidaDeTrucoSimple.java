@@ -40,11 +40,6 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 			equipoDos.recibirCartas();
 		}
 		
-		public void iniciarMano(){
-			this.mesa.iniciarMano(this.equipoUno,this.equipoDos);
-		
-		}
-
 		public void jugarCartas() {
 			equipoDos.jugarCarta();
 			equipoUno.jugarCarta();
@@ -55,6 +50,15 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 			//String equipo = ganador.returnEquipo();
 			this.mesa.anotarPuntosEquipoDos(1);
 		}
+
+		public void sentarJugadores() {
+			this.mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoDos.obtenerJugadores());
+		}
+
+		public void iniciar() {
+			this.mesa.iniciar();
+		}
+		
 	}
 
 //

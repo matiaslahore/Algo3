@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modeloDeCartas.*;
@@ -8,24 +9,23 @@ import fiuba.algo3.tp2.modeloDeCartas.*;
 public class Mesa {
     
 	Juez juez;
-	ArrayList<String> ganadoresRonda;
-	// ganadoresRonda ME SIRVE PARA SABER X EJ CUANDO ES PARDA EN LA ULTIMA Y GANA EL Q HIZO PRIMERA
-	// nose si conviene guardar el nombre o guardar el Equipo.
+	ArrayList<String> ganadoresRonda; //guarda el nombre del quipo q gano las rondas
 	ArrayList<TipoDeCartas> cartasEnJuego;
-	List<Jugador> jugadores;
-	int mano;
+	ListaCircular<Jugador> jugadores;
+	Puntos puntos;
+	Rondas ronda;
 	
-	public Mesa(){
+	public Mesa(String equipoUno, String equipoDos){
 		jugadores = new ListaCircular<Jugador>();
 		juez = new Juez(this);
 		ganadoresRonda = new ArrayList<String>();
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
-		mano = 0; //indice de la lista circular
+		puntos = new Puntos(equipoUno,equipoDos);
+		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.ronda);
 	}
 	
-	public void recibirCarta(TipoDeCartas c){
-	// esta es la carta q pone cada Jugador.
-		cartasEnJuego.add(c);
+	public void recibirCarta(TipoDeCartas carta){
+		ronda.recibirCarta(carta);
 	}
 
 	public TipoDeCartas repartirCarta() {
@@ -36,31 +36,29 @@ public class Mesa {
 		juez.repartir();
 	}
 	
-	public void anotarPuntosEquipoUno(int cantidad) {
-		
-	}
-	
-	public void anotarPuntosEquipoDos (int cantidad) {
-		
-	}
-
-	public Jugador ganadorDeMano() {
-		return this.juez.quienGana(cartasEnJuego); //VER!
+	public void anotarPuntos(String equipo, int cantidad){
+		this.puntos.anotarPuntos(equipo, cantidad);
 	}
 
 	public int returnPuntosEquipoDos() {
 		int numero=0;
 		return numero;
 	}
-	
-	public void iniciarMano(Equipo equipoUno,Equipo equipoDos){
-		ManoViejaCambiarNombre mano = new ManoViejaCambiarNombre(equipoUno,equipoDos,juez);
-		mano.rondaUno();
+
+	public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
+		Iterator<Jugador> itrEqUno = equipoUno.iterator();
+		Iterator<Jugador> itrEqDos = equipoUno.iterator();
+		
+		while(itrEqUno.hasNext()) {
+			Jugador jugadorEqUno = (Jugador) itrEqUno.next();
+			jugadores.add(jugadorEqUno);
+			Jugador jugadorEqDos = (Jugador) itrEqDos.next();
+			jugadores.add(jugadorEqDos);
+		}
 	}
-	
-	public void sentarJugadores(Jugador jugador){
-		//VER EL TEMA DE CARGAR JUGADORES EN ORDEN
-		jugadores.add(jugador);
+
+	public void iniciar() {
+		ronda.jugar();
 	}
 	
 }

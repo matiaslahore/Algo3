@@ -1,28 +1,24 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.Map;
+
 public class Puntos {
     
-	private int puntajeUno;
-	private int puntajeDos;
+	private Map<String, Integer> mapa;
 	
-	public Puntos(){
-		this.puntajeUno=0;
-		this.puntajeDos=0;
+	public Puntos(String equipoUno, String equipoDos){
+		mapa.put(equipoUno, 0);
+		mapa.put(equipoDos, 0);
 	}
 	
-	public void anotarPuntajeUno (int cantidad){
-		this.puntajeUno+=cantidad;
+	public void anotarPuntos(String equipo, int cantidad){
+		int puntos = mapa.get(equipo);
+		puntos = puntos + cantidad;
+		mapa.put(equipo,puntos);
 	}
 	
-	public void anotarPuntajeDos (int cantidad){
-		this.puntajeDos+=cantidad;
+	public int getPuntaje(String equipo){
+		return this.mapa.get(equipo);
 	}
-	
-	public int getPuntajeUno(){
-		return this.puntajeUno;
-	}
-	
-	public int getPuntajeDos(){
-		return this.puntajeDos;
-	}
+
 }

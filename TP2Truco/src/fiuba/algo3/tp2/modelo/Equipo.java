@@ -14,8 +14,6 @@ public class Equipo {
 	Mesa refMesa;
 	
 	public Equipo(String nombreDelEquipo, Mesa mesa){
-	//ESTO TIENE Q SER UNA LISTA CIRCULAR DSPS VER IMPLEMENTACION HAY MUCHAS, SINO LA HACEMOS ES UNA BOLUDES
-	//SI ES CIRCULAR LA LISTA NO ME IMPORTA LA CANT DE JUGADORES TRATO A TODOS POR IGUAL
 		this.jugadores = new ArrayList<Jugador>();
 		this.refMesa = mesa;
 		//this.cantidadJugadores = cantidadJugadores;
@@ -26,7 +24,7 @@ public class Equipo {
 		Iterator<String> itr = nombreJugadores.iterator();
 		while(itr.hasNext()) {
 			String nombre = (String) itr.next();
-			Jugador newJugador = new Jugador(nombre);
+			Jugador newJugador = new Jugador(nombre,refMesa);
 			newJugador.cargarEquipo(nombreEquipo);
 			jugadores.add(newJugador);
 		}
@@ -35,14 +33,8 @@ public class Equipo {
 	public void recibirCartas() {
 		for (Jugador unJugador : jugadores){
 			TipoDeCartas c1 = refMesa.repartirCarta();
-			//c1.cargarJugador(unJugador);
 			TipoDeCartas c2 = refMesa.repartirCarta();
-			//c2.cargarJugador(unJugador);
 			TipoDeCartas c3 = refMesa.repartirCarta();
-			//c3.cargarJugador(unJugador);
-			
-			//COMENTE ESTO XQ A LA CARTA SE LE PONIA DE QUIEN ERA..
-			//NOSE SI AHORA VAMOS A SEGUIR HACIENDO ESTO
 			
 			unJugador.recibirCartas(c1,c2,c3);
 		}
@@ -54,7 +46,7 @@ public class Equipo {
 			Jugador actual = (Jugador) itr.next();
 			if (nombreJugador == actual.obtenerNombre()) return actual;
 		}
-		return new Jugador("ERROR"); //aca hay q tirar una excepcion xq no encontro al jugador
+		return new Jugador("ERROR",refMesa); //aca hay q tirar una excepcion xq no encontro al jugador
 		//puse eso para q no me joda eclipse
 	}
 

@@ -9,7 +9,8 @@ public class Juez {
 
 	Maso maso;
 	Mesa mesa;
-	ManoViejaCambiarNombre mano;
+	Rondas mano;
+	Puntos puntos;
 	
 	public Juez(Mesa mesa){
 		maso = new Maso();
@@ -17,34 +18,26 @@ public class Juez {
 	}
 	
 	public TipoDeCartas repartir(){
-		//JUGADOR Q ES MANO LANZA EXCEPCION CUANDO TIENE MAS DE 3 CARTAS Y NO SE LA QUEDA LA 4TA
-		//ASI EVITO SABER CUANTOS JUGADORES HAY JUGANDO.
-		// PartidaDeTruco LE PIDE AL JUEZ Q REPARTA Y VA A IR DANDO CARTAS EN UN CICLO Q CORTA CON LA EXCEPCION
 		return this.maso.dameCarta();
 	}
-       // solo el juez puede anotar puntos. PRIVATE
-	private void anotarPuntosEquipoUno (int cantidad){
-		this.mesa.anotarPuntosEquipoUno(cantidad);
-	}
-	
-	private void anotarPuntosEquipoDos (int cantidad){
-		this.mesa.anotarPuntosEquipoDos(cantidad);
+	// solo el juez puede anotar puntos. PRIVATE
+	public void anotarPuntos (String equipo, int cantidad){
+		this.mesa.anotarPuntos(equipo, cantidad);
 	}
 
-	/*
-	 * REIMPLEMENTAAAAAAAAAAAAAAAAAAAAAAR
-	 */
-	public Jugador quienGana(ArrayList<Carta> cartas) {
-		//SIRVE PARA MUCHAS CARTAS!!
-		Carta a = cartas.get(0);
-		Iterator<Carta> itr = cartas.iterator();
+	public TipoDeCartas quienGana(ArrayList<TipoDeCartas> cartasEnJuego) {
+		TipoDeCartas ganadora = cartasEnJuego.get(0); //me obliga a inicializar
+		Iterator<TipoDeCartas> itr = cartasEnJuego.iterator();
+		//Siempre van a ser cantidad de cartas pares (2,4,6)
 		while(itr.hasNext()) {
-			Carta b = (Carta) itr.next();
-			if (a.esMenorQue(b)){
-				a = b;
-			}
+			TipoDeCartas a = (TipoDeCartas) itr.next();
+			TipoDeCartas b = (TipoDeCartas) itr.next();
+			ganadora = ganador(a,b);
 		}
-		//A cada Carta le pongo de quien es.. es medio flashero pero sino nose quien me la dio
-		return a.deQuienSos();
+		return ganadora;
+	}
+	
+	private TipoDeCartas ganador(TipoDeCartas a, TipoDeCartas b){
+		return a.vs(b);
 	}
 }

@@ -61,4 +61,5 @@ public abstract class Tres implements TipoDeCartas{
 	public TipoDeCartas vs(Cuatro contra){
 		return this;
 	}
+	
 }

@@ -60,13 +60,15 @@ public class SituacionesDeJuegoTest {
 	
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		
-		PartidaDeTruco partidaDeTruco = new PartidaDeTrucoSimple("EquipoUno", "EquipoDos");
+		PartidaDeTrucoSimple partida = new PartidaDeTrucoSimple("EquipoUno", "EquipoDos");
 		
-		partidaDeTruco.cargarJugadoresEnEquipoUno("pipi");
-		partidaDeTruco.cargarJugadoresEnEquipoDos("elDiegote");
-
-		partidaDeTruco.asignarQuienReparte();
+		partida.cargarJugadoresEnEquipoUno("pipi");
+		partida.cargarJugadoresEnEquipoDos("elDiegote");
+		partida.sentarJugadores();
 		
+		partida.repartir();
+		
+		partida.iniciar();
 		
 	}
 

@@ -5,33 +5,24 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
 
 public class Jugador {
 
 	String nombre;
-	ArrayList<TipoDeCartas> cartas;
 	String equipo;
-	
-	public Object cantaLosPuntos(){
-		return cartas;
-	}
+	Mano manoDelJugador;
+	Mesa refMesa;
 
-	public Jugador(String name){
+	public Jugador(String name, Mesa mesa){
 		nombre = name;
-		cartas = new ArrayList<TipoDeCartas>(); 
-	}
-	
-	public void recibirCartas(TipoDeCartas c1, TipoDeCartas c2, TipoDeCartas c3){
-		cartas.add(c1);
-		cartas.add(c2);
-		cartas.add(c3);
+		refMesa = mesa;
 	}
 
-	public void recibirUnaCarta(TipoDeCartas carta){
-		
-		cartas.add(carta);
+	public void recibirCartas(TipoDeCartas c1, TipoDeCartas c2, TipoDeCartas c3){
+		manoDelJugador = new Mano(c1,c2,c3);
 	}
 	
 	/* ESTA ES LA QUE VA A IR A LO ULTIMO
@@ -41,8 +32,15 @@ public class Jugador {
 		return actual;
 	}*/
 	
-	//VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER
-	public String verCartasEnManoComoString() {
+	//NO SIRVE MAS.. O HABRIA Q CAMBIARLA CON LO Q DICE ABAJO
+	/*public String verCartasEnManoComoString() {
+		///////////////////////////////////////////////////////////////////
+		AHORA ESTA NO SIRVE.. XQ HABRIA Q HACER PARA CADA CARTA ESTO
+		Ejemplo AnchoDeEspada
+		public String verCartaComoString(){
+			return "Ancho de espada";
+		}
+		///////////////////////////////////////////////////////////////////
 		
 		String cartasComoString = "";
 		for (Carta unaCarta : cartas){
@@ -58,7 +56,7 @@ public class Jugador {
 	
 	public int cantidadDeCartas(){
 		return cartas.size();
-	}
+	}*/
 	
 	public void cargarEquipo(String nombre){
 		this.equipo = nombre;
@@ -69,48 +67,11 @@ public class Jugador {
 	}
 
 	public int obtenerPuntosEnvido(){
-		
-		Map<String,List<Integer>> mapaDeCartas = new HashMap<String,List<Integer>>();
-		
-		mapaDeCartas.put(new Oro().obtenerPaloComoString(), new ArrayList<Integer>());
-		mapaDeCartas.put(new Espada().obtenerPaloComoString(), new ArrayList<Integer>());
-		mapaDeCartas.put(new Basto().obtenerPaloComoString(), new ArrayList<Integer>());
-		mapaDeCartas.put(new Copa().obtenerPaloComoString(), new ArrayList<Integer>());
-		
-		for (Carta unaCarta : cartas){
-		//NICO NO TE CAMBIO ESTO XQ SINO ME VAS A QUERER MATAR ESTUVISTE UNA BANDA
-		//ASI Q TE LO DEJO ASI EN ROJO COMO TE GUSTA A VOS JAJA
-		//AVISAME Y LO CAMBIO!
-			mapaDeCartas.get(unaCarta.obtenerPaloComoString()).add(unaCarta.obtenerValor());
-		}
-		
-		int maximoTamanio = 0;
-		List<Integer> listaConEnvido = new ArrayList<Integer>();
-		for (List<Integer> listaDeValores : mapaDeCartas.values()){
-			
-			if (listaDeValores.size() > maximoTamanio){
-				maximoTamanio = listaDeValores.size();
-				listaConEnvido = listaDeValores;
-			}
-		}
-		
-		if (listaConEnvido.size()==1) return this.dameValorDeCartaMayor(cartas);	
-		
-		Collections.sort(listaConEnvido);
-		
-		if (listaConEnvido.size() == 3) listaConEnvido.remove(0);
-		
-		int envido = 0;
-		
-		for(int i=0; i<2; i=i+1){
-			if (listaConEnvido.get(i) <= 7 ){
-				envido = envido + listaConEnvido.get(i);
-			}
-		}
-		return envido + 20;
+		return this.manoDelJugador.calcularEnvido();
 	}
 	
-	private int dameValorDeCartaMayor(ArrayList<Carta> cartas) {
+	/* NO SIRVE MAS CREO
+	 private int dameValorDeCartaMayor(ArrayList<Carta> cartas) {
 		
 		List<Carta> cartasNoNegras = new ArrayList<Carta>();
 		
@@ -146,30 +107,46 @@ public class Jugador {
 			}
 		}
 		return maximo;
-	}
+	}*/
 
 	public TipoDeCartas jugarPrimera(){
-		TipoDeCartas actual = cartas.get(0);
-		cartas.remove(0);
-		return actual;
+		return this.manoDelJugador.returnPrimera();
 	}
 
-	public int obtenerPuntosTruco() {
-
+	/*public int obtenerPuntosTruco() {
 		return 0;
-	}
+	}*/
 
-	public int obtenerPuntosEnvidoConFlor() {
-
+	/*public int obtenerPuntosEnvidoConFlor() {
 		int envidoConFlor = 0;
 		
 		for (Carta unaCarta : cartas){
-			//ESTO ES LO MISMO QUE EL CASO ANTERIOR NOSE COMO FUNCIONA DSPS LO CAMBIO
 			if (unaCarta.obtenerValor()<= 7){
-			
 				envidoConFlor += unaCarta.obtenerValor();
 			}
 		}
 		return envidoConFlor + 20;
+	}*/
+	
+	public int obtenerPuntosEnvidoConFlor() {
+		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
 	}
+
+	public TipoDeCartas jugarCarta() {
+		return this.manoDelJugador.returnPrimera();
+	}
+	/* CUANDO SOLUCIONEMOS SI USAMOS LISTA EN LA MANO....
+	public void jugarCarta() {
+		verCartasEnManoComoString();
+		
+		Scanner leer = new Scanner(System.in);
+		System.out.println("Ingerese numero de carta a jugar: ");
+		int n = leer.nextInt();
+		
+		return this.manoDelJugador.tirar(n);
+	}
+	//*/
+	
+	
+	
 }
