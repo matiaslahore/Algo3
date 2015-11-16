@@ -15,6 +15,7 @@ public abstract class Rondas{
 	Rondas refRonda;
 	int jugadorMano;
 	int auxMano;
+	boolean sigue;
 
 	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano){
 		this.juez=juez;
@@ -31,7 +32,7 @@ public abstract class Rondas{
 	
 	public abstract void repartir();
 	
-	public void jugar(int aQuienLeToca) {
+	public Rondas jugar(int aQuienLeToca) {
 		//VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER condicion for
 		repartir();
 		auxMano = aQuienLeToca;
@@ -41,10 +42,10 @@ public abstract class Rondas{
 			cartasEnJuego.add(actual.jugarCarta()); //VER!!
 		}
 		System.out.println(this.cartasEnJuego);
-		ganador();
+		return ganador();
 	}
 	
-	public abstract void ganador();
+	public abstract Rondas ganador();
 
 	public void cantarTruco(){
 		this.juez.puntosEnJuego(2);
@@ -70,6 +71,10 @@ public abstract class Rondas{
 	
 	public void cantarFlor(){
 		this.juez.puntosEnJuego(3);
+	}
+
+	public Rondas siguiente(Juez juez2, ArrayList<String> ganadoresRonda2, ListaCircular<Jugador> jugadores2, int indexMano) {
+		return new RondaUno(juez, ganadoresRonda, jugadores, indexMano);
 	}
 	
 }

@@ -65,13 +65,23 @@ public class Mesa {
 			jugadores.add(equipoDos);
 	}
 
-	public void iniciar() {
+	/*public void iniciar() {
 		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano);
 		ronda.jugar(this.indexMano);
 		ronda = new RondaDos(juez, ganadoresRonda, this.jugadores, this.indexMano);
 		ronda.jugar(this.indexMano);
 		ronda = new RondaTres(juez, ganadoresRonda, this.jugadores, this.indexMano);
 		ronda.jugar(this.indexMano);
+	}*/
+	
+	public void iniciar() {
+		
+		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano);
+		
+		ronda = ronda.jugar(this.indexMano);
+		ronda = ronda.jugar(this.indexMano);
+		ronda = ronda.jugar(this.indexMano);
+		
 	}
 
 }

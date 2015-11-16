@@ -11,7 +11,7 @@ public class RondaTres extends Rondas{
 		super(juez, ganadoresRonda, jugadores, indexMano);
 	}
 
-	public void ganador(){
+	public Rondas ganador(){
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
@@ -24,14 +24,18 @@ public class RondaTres extends Rondas{
 		this.ganadoresRonda = new ArrayList<String>();
 		this.cartasEnJuego.clear();
 		
-		System.out.println(ganador.nombre);
-		System.out.println("RONDA TRES");
-		//jugar(this.jugadorMano);
+		System.out.println("RONDA TRES gana " + ganador.nombre);
+		
+		return new RondaUno(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora);
 	}
 
 	@Override
 	public void repartir() {
 		//no hace nada
+	}
+	
+	public Rondas siguiente(Juez juez2, ArrayList<String> ganadoresRonda2, ListaCircular<Jugador> jugadores2, int indexMano) {
+		return new RondaUno(juez, ganadoresRonda, jugadores, indexMano);
 	}
 
 }

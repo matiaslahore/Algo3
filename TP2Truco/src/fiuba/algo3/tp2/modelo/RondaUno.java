@@ -23,7 +23,7 @@ public class RondaUno extends Rondas{
 		System.out.println("REPARTEN");
 	}
 	
-	public void ganador(){
+	public Rondas ganador(){
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
@@ -31,9 +31,9 @@ public class RondaUno extends Rondas{
 		ganadoresRonda.add(ganador.returnEquipo());
 		this.cartasEnJuego.clear();
 		
-		System.out.println(ganador.nombre);
-		System.out.println("RONDA UNO");
-		//jugar(this.jugadorMano + indexCartaGanadora);
+		System.out.println("RONDA UNO gana " + ganador.nombre);
+		
+		return new RondaDos(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora);
 	}
 
 }
