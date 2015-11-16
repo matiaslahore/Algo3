@@ -48,45 +48,4 @@ public class SeisDeEspada extends Seis {
 	public int sumarTanto(ReyDeEspada sumar){
 		return 26;
 	}
-	public int sumarTanto(Dos sumar){
-		return 6;
-	}
-	public int sumarTanto(Tres sumar){
-		return 6;
-	}
-	public int sumarTanto(Cuatro sumar){
-		return 6;
-	}
-	public int sumarTanto(Cinco sumar){
-		return 6;
-	}
-	public int sumarTanto(Seis sumar){
-		return 6;
-	}
-	public int sumarTanto(SieteFalso sumar){
-		return 7;
-	}
-	public int sumarTanto(SieteDeOro sumar){
-		return 7;
-	}
-	public int sumarTanto(Sota sumar){
-		return 6;
-	}
-	public int sumarTanto(Caballo sumar){
-		return 6;
-	}
-	public int sumarTanto(Rey sumar){
-		return 6;
-	}
-	
-	@Override
-	public int sumarTanto(AnchoDeBasto sumar) {
-		return 6;
-	}
-
-	@Override
-	public int sumarTanto(AnchoFalso sumar) {
-		return 6;
-	}
-	
 }

@@ -48,45 +48,4 @@ public class SotaDeEspada extends Sota{
 	public int sumarTanto(ReyDeEspada sumar){
 		return 20;
 	}
-	public int sumarTanto(Dos sumar){
-		return 2;
-	}
-	public int sumarTanto(Tres sumar){
-		return 3;
-	}
-	public int sumarTanto(Cuatro sumar){
-		return 4;
-	}
-	public int sumarTanto(Cinco sumar){
-		return 5;
-	}
-	public int sumarTanto(Seis sumar){
-		return 6;
-	}
-	public int sumarTanto(SieteFalso sumar){
-		return 7;
-	}
-	public int sumarTanto(SieteDeOro sumar){
-		return 7;
-	}
-	public int sumarTanto(Sota sumar){
-		return 0;
-	}
-	public int sumarTanto(Caballo sumar){
-		return 0;
-	}
-	public int sumarTanto(Rey sumar){
-		return 0;
-	}
-	
-	@Override
-	public int sumarTanto(AnchoDeBasto sumar) {
-		return 1;
-	}
-
-	@Override
-	public int sumarTanto(AnchoFalso sumar) {
-		return 1;
-	}
-	
 }

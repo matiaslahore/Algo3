@@ -48,38 +48,7 @@ public class CaballoDeBasto extends Caballo{
 	public int sumarTanto(ReyDeBasto sumar){
 		return 20;
 	}
-	public int sumarTanto(Dos sumar){
-		return 2;
-	}
-	public int sumarTanto(Tres sumar){
-		return 3;
-	}
-	public int sumarTanto(Cuatro sumar){
-		return 4;
-	}
-	public int sumarTanto(Cinco sumar){
-		return 5;
-	}
-	public int sumarTanto(Seis sumar){
-		return 6;
-	}
-	public int sumarTanto(SieteFalso sumar){
-		return 7;
-	}
-	public int sumarTanto(SieteDeOro sumar){
-		return 7;
-	}
-	public int sumarTanto(Sota sumar){
-		return 0;
-	}
-	public int sumarTanto(Caballo sumar){
-		return 0;
-	}
-	public int sumarTanto(Rey sumar){
-		return 0;
-	}
 
-	@Override
 	public int sumarTanto(AnchoDeEspada sumar) {
 		return 1;
 	}
@@ -90,8 +59,165 @@ public class CaballoDeBasto extends Caballo{
 	}
 
 	@Override
-	public int sumarTanto(AnchoFalso sumar) {
+	public int sumarTanto(TresDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 3;
+	}
+
+	@Override
+	public int sumarTanto(TresDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 3;
+	}
+
+	@Override
+	public int sumarTanto(TresDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 3;
+	}
+
+	@Override
+	public int sumarTanto(DosDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 2;
+	}
+
+	@Override
+	public int sumarTanto(DosDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 2;
+	}
+
+	@Override
+	public int sumarTanto(DosDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 2;
+	}
+
+	@Override
+	public int sumarTanto(AnchoDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 2;
+	}
+
+	@Override
+	public int sumarTanto(AnchoDeOro sumar) {
+		// TODO Auto-generated method stub
 		return 1;
+	}
+
+	@Override
+	public int sumarTanto(ReyDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(ReyDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(ReyDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(CaballoDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(CaballoDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(CaballoDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(SotaDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(SotaDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(SotaDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumarTanto(SieteDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 7;
+	}
+
+	@Override
+	public int sumarTanto(SeisDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 6;
+	}
+
+	@Override
+	public int sumarTanto(SeisDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 6;
+	}
+
+	@Override
+	public int sumarTanto(SeisDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 6;
+	}
+
+	@Override
+	public int sumarTanto(CincoDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 5;
+	}
+
+	@Override
+	public int sumarTanto(CincoDeCopa sumar) {
+		// TODO Auto-generated method stub
+		return 5;
+	}
+
+	@Override
+	public int sumarTanto(CincoDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 5;
+	}
+
+	@Override
+	public int sumarTanto(CuatroDeEspada sumar) {
+		// TODO Auto-generated method stub
+		return 4;
+	}
+
+	@Override
+	public int sumarTanto(CuatroDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 4;
+	}
+
+	@Override
+	public int sumarTanto(SieteDeOro sumar) {
+		// TODO Auto-generated method stub
+		return 7;
 	}
 
 }
