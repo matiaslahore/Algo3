@@ -60,4 +60,9 @@ public class Juez {
 	public int puntosEquipo(String equipo) {
 		return this.puntos.getPuntaje(equipo);
 	}
+
+	public int puntosDeLaFalta() {
+		return this.puntos.puntosDeLaFalta();
+		//esta mal xq solo devuelve lo q faltan para 30 y no para las malas o las buenas!!!!
+	}
 }

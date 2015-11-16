@@ -37,5 +37,11 @@ public class RondaDos extends Rondas{
 	public void cantarEnvido(){
 		//NO HACE NADA
 	}
+	public void cantarRealEnvido(){
+		//NO HACE NADA
+	}
+	public void cantarFaltaEnvido(){
+		//NO HACE NADA
+	}
 
 }

@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +23,12 @@ public class Puntos {
 	
 	public int getPuntaje(String equipo){
 		return this.mapa.get(equipo);
+	}
+
+	public int puntosDeLaFalta() {
+		Collection<Integer> coleccion = mapa.values();
+		int max = Collections.max(coleccion);
+		return (30-max);
 	}
 
 }

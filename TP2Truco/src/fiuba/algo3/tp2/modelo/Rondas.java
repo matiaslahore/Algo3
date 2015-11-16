@@ -40,7 +40,13 @@ public abstract class Rondas{
 		this.juez.puntosEnJuego(1);
 		auxMano = aQuienLeToca;
 		
-		cantarEnvido();
+		//cantarEnvido();
+		//cantarFaltaEnvido();
+		//cantarRealEnvido();
+		//cantarTruco();
+		//cantarQuieroReTruco();
+		//cantarQuieroValeCuatro();
+		//ESTO LO UNICO QUE CHEQUEA ES QUE SE SUMEN LOS PUNTOS CORRECTAMENE
 		
 		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
@@ -62,23 +68,28 @@ public abstract class Rondas{
 		this.juez.puntosEnJuego(4);
 	}
 
-	public void cantarRealEnvido(){
-		this.juez.puntosEnJuego(3);
-	}
-	public void cantarFaltaEnvido(){
-		int puntosFalta = 4;
-		//agregar un metodo que calcule los ptos que irian ACA
-		this.juez.puntosEnJuego(puntosFalta);
-	}
-	
 	public void cantarFlor(){
 		this.juez.puntosEnJuego(3);
+		tantoCantado();
 	}
 	
 	//CASO ENVIDO
 	public void cantarEnvido(){
-		//VER COMO HACER PARA QUE QUIERAN..
 		this.juez.puntosEnJuego(2);
+		tantoCantado();
+	}
+	public void cantarRealEnvido(){
+		this.juez.puntosEnJuego(3);
+		tantoCantado();
+	}
+	public void cantarFaltaEnvido(){
+		int puntosFalta = this.juez.puntosDeLaFalta();
+		this.juez.puntosEnJuego(puntosFalta);
+		tantoCantado();
+	}
+	
+	public void tantoCantado(){
+		//VER COMO HACER PARA QUE QUIERAN..
 		auxMano = jugadorMano;
 		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);

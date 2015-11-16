@@ -40,9 +40,11 @@ public class RondaTres extends Rondas{
 	public void cantarEnvido(){
 		//NO HACE NADA
 	}
-	
-	public Rondas siguiente(Juez juez2, ArrayList<String> ganadoresRonda2, ListaCircular<Jugador> jugadores2, int indexMano) {
-		return new RondaUno(juez, ganadoresRonda, jugadores, indexMano);
+	public void cantarRealEnvido(){
+		//NO HACE NADA
+	}
+	public void cantarFaltaEnvido(){
+		//NO HACE NADA
 	}
 
 }
