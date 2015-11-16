@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
@@ -13,10 +14,11 @@ public class Juez {
 	Puntos puntos;
 	int puntosEnJuego;
 	
-	public Juez(Mesa mesa){
+	public Juez(Mesa mesa, String equipoUno, String equipoDos){
 		this.maso = new Maso();
 		this.mesa = mesa;
 		this.puntosEnJuego = 0;
+		this.puntos = new Puntos(equipoUno, equipoDos);
 	}
 	
 	public TipoDeCartas repartir(){
@@ -24,7 +26,7 @@ public class Juez {
 	}
 	// solo el juez puede anotar puntos. PRIVATE
 	public void anotarPuntos (String equipo){
-		this.mesa.anotarPuntos(equipo, puntosEnJuego);
+		this.puntos.anotarPuntos(equipo, puntosEnJuego);
 	}
 	
 	public void mezclar(){
@@ -49,5 +51,13 @@ public class Juez {
 
 	public void puntosEnJuego(int puntos) {
 		this.puntosEnJuego = puntos;
+	}
+
+	public int quienGanaElTanto(ArrayList<Integer> tantoEnJuego) {
+		return Collections.max(tantoEnJuego);
+	}
+
+	public int puntosEquipo(String equipo) {
+		return this.puntos.getPuntaje(equipo);
 	}
 }

@@ -12,6 +12,7 @@ public abstract class Rondas{
 	ArrayList<String> ganadoresRonda;
 	ListaCircular<Jugador> jugadores;
 	ArrayList<TipoDeCartas> cartasEnJuego;
+	ArrayList<Integer> tantoEnJuego;
 	Rondas refRonda;
 	int jugadorMano;
 	int auxMano;
@@ -22,6 +23,7 @@ public abstract class Rondas{
 		this.ganadoresRonda = ganadoresRonda;
 		this.jugadores = jugadores;
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
+		tantoEnJuego = new ArrayList<Integer>();
 		jugadorMano = indexMano;
 		auxMano = 0;
 	}
@@ -35,7 +37,10 @@ public abstract class Rondas{
 	public Rondas jugar(int aQuienLeToca) {
 		//VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER condicion for
 		repartir();
+		this.juez.puntosEnJuego(1);
 		auxMano = aQuienLeToca;
+		
+		cantarEnvido();
 		
 		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
@@ -57,9 +62,6 @@ public abstract class Rondas{
 		this.juez.puntosEnJuego(4);
 	}
 
-	public void cantarEnvido(){
-		this.juez.puntosEnJuego(2);
-	}
 	public void cantarRealEnvido(){
 		this.juez.puntosEnJuego(3);
 	}
@@ -72,9 +74,27 @@ public abstract class Rondas{
 	public void cantarFlor(){
 		this.juez.puntosEnJuego(3);
 	}
-
-	public Rondas siguiente(Juez juez2, ArrayList<String> ganadoresRonda2, ListaCircular<Jugador> jugadores2, int indexMano) {
-		return new RondaUno(juez, ganadoresRonda, jugadores, indexMano);
-	}
 	
+	//CASO ENVIDO
+	public void cantarEnvido(){
+		//VER COMO HACER PARA QUE QUIERAN..
+		this.juez.puntosEnJuego(2);
+		auxMano = jugadorMano;
+		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
+			Jugador actual = this.jugadores.get(i);
+			tantoEnJuego.add(actual.obtenerPuntosEnvido());
+		}
+		
+		int tantoGanador = this.juez.quienGanaElTanto(this.tantoEnJuego);
+		int indexCartaGanadora = this.tantoEnJuego.lastIndexOf(tantoGanador);
+		//esto esta mal xq si empatan en tanto gana el q no es mano.
+		
+		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+		this.juez.anotarPuntos(ganador.returnEquipo());
+		this.juez.puntosEnJuego(1);
+		this.tantoEnJuego.clear();
+		
+		System.out.println("EL TANTO LO GANA " + ganador.nombre);
+	}
+
 }

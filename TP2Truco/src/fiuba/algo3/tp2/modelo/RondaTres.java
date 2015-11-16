@@ -18,7 +18,7 @@ public class RondaTres extends Rondas{
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 		ganadoresRonda.add(ganador.returnEquipo());
 		this.cartasEnJuego.clear();
-
+		
 		this.juez.anotarPuntos(ganador.returnEquipo());
 		this.jugadorMano = this.jugadorMano + 1;
 		this.ganadoresRonda = new ArrayList<String>();
@@ -26,12 +26,19 @@ public class RondaTres extends Rondas{
 		
 		System.out.println("RONDA TRES gana " + ganador.nombre);
 		
+		System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
+		System.out.println("PTOS EQ2 " +juez.puntosEquipo("EquipoDos"));
+		
 		return new RondaUno(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora);
 	}
 
 	@Override
 	public void repartir() {
 		//no hace nada
+	}
+	
+	public void cantarEnvido(){
+		//NO HACE NADA
 	}
 	
 	public Rondas siguiente(Juez juez2, ArrayList<String> ganadoresRonda2, ListaCircular<Jugador> jugadores2, int indexMano) {

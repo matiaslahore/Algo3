@@ -18,7 +18,7 @@ public class Mesa {
 	
 	public Mesa(String equipoUno, String equipoDos){
 		jugadores = new ListaCircular<Jugador>();
-		juez = new Juez(this);
+		juez = new Juez(this, equipoUno, equipoDos);
 		ganadoresRonda = new ArrayList<String>();
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		puntos = new Puntos(equipoUno,equipoDos);
@@ -39,11 +39,6 @@ public class Mesa {
 	
 	public void anotarPuntos(String equipo, int cantidad){
 		this.puntos.anotarPuntos(equipo, cantidad);
-	}
-
-	public int returnPuntosEquipoDos() {
-		int numero=0;
-		return numero;
 	}
 
 	/*public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {

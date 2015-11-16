@@ -33,5 +33,9 @@ public class RondaDos extends Rondas{
 	public void repartir() {
 		//no hace nada
 	}
+	
+	public void cantarEnvido(){
+		//NO HACE NADA
+	}
 
 }
