@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Puntos {
@@ -7,6 +8,7 @@ public class Puntos {
 	private Map<String, Integer> mapa;
 	
 	public Puntos(String equipoUno, String equipoDos){
+		mapa = new HashMap<String, Integer>();
 		mapa.put(equipoUno, 0);
 		mapa.put(equipoDos, 0);
 	}

@@ -34,12 +34,15 @@ public abstract class Rondas{
 	
 	public void jugar(int aQuienLeToca) {
 		//VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER condicion for
+		repartir();
 		auxMano = aQuienLeToca;
 		
-		for ( int i = auxMano ; i == (this.jugadores.size() - 1) ; i=i+1 ){
+		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
 			cartasEnJuego.add(actual.jugarCarta()); //VER!!
+			System.out.println(actual.nombre);
 		}
+		System.out.println("JUEGAN!!!");
 		ganador();
 	}
 	

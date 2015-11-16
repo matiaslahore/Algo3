@@ -17,12 +17,15 @@ public class RondaTres extends Rondas{
 		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 		ganadoresRonda.add(ganador.returnEquipo());
+		this.cartasEnJuego.clear();
 
-		this.juez.anotarPuntos(ganador.returnEquipo(),1); //SACAR ESTE UNO!!!!!!!!!!!!!!1
+		this.juez.anotarPuntos(ganador.returnEquipo());
 		this.jugadorMano = this.jugadorMano + 1;
+		this.ganadoresRonda = new ArrayList<String>();
+		this.cartasEnJuego = new ArrayList<TipoDeCartas>();
 		this.refRonda = new RondaUno(juez, ganadoresRonda, jugadores, refRonda);
-		
-		jugar(this.jugadorMano);
+		System.out.println("RONDA TRES");
+		//jugar(this.jugadorMano);
 	}
 
 	@Override

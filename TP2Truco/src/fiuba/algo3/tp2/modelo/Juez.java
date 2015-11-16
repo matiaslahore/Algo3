@@ -11,22 +11,28 @@ public class Juez {
 	Mesa mesa;
 	Rondas mano;
 	Puntos puntos;
+	int puntosEnJuego;
 	
 	public Juez(Mesa mesa){
-		maso = new Maso();
+		this.maso = new Maso();
 		this.mesa = mesa;
+		this.puntosEnJuego = 0;
 	}
 	
 	public TipoDeCartas repartir(){
 		return this.maso.dameCarta();
 	}
 	// solo el juez puede anotar puntos. PRIVATE
-	public void anotarPuntos (String equipo, int cantidad){
-		this.mesa.anotarPuntos(equipo, cantidad);
+	public void anotarPuntos (String equipo){
+		this.mesa.anotarPuntos(equipo, puntosEnJuego);
+	}
+	
+	public void mezclar(){
+		this.maso = new Maso();
 	}
 
 	public TipoDeCartas quienGana(ArrayList<TipoDeCartas> cartasEnJuego) {
-		TipoDeCartas ganadora = cartasEnJuego.get(0); //me obliga a inicializar
+		TipoDeCartas ganadora = null; // = cartasEnJuego.get(0); //me obliga a inicializar
 		Iterator<TipoDeCartas> itr = cartasEnJuego.iterator();
 		//Siempre van a ser cantidad de cartas pares (2,4,6)
 		while(itr.hasNext()) {
@@ -39,5 +45,9 @@ public class Juez {
 	
 	private TipoDeCartas ganador(TipoDeCartas a, TipoDeCartas b){
 		return a.vs(b);
+	}
+
+	public void puntosEnJuego(int puntos) {
+		this.puntosEnJuego = puntos;
 	}
 }

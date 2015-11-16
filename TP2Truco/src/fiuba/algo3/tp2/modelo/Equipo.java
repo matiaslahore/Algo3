@@ -20,7 +20,7 @@ public class Equipo {
 		this.nombreEquipo = nombreDelEquipo;
 	}
 	
-	public void cargarJugadores(LinkedList<String> nombreJugadores) {
+	/*public void cargarJugadores(LinkedList<String> nombreJugadores) {
 		Iterator<String> itr = nombreJugadores.iterator();
 		while(itr.hasNext()) {
 			String nombre = (String) itr.next();
@@ -28,6 +28,11 @@ public class Equipo {
 			newJugador.cargarEquipo(nombreEquipo);
 			jugadores.add(newJugador);
 		}
+	}*/
+	public void cargarJugadores(String nombre) {
+		Jugador newJugador = new Jugador(nombre,refMesa);
+		newJugador.cargarEquipo(nombreEquipo);
+		jugadores.add(newJugador);
 	}
 
 	public void recibirCartas() {
@@ -50,8 +55,11 @@ public class Equipo {
 		//puse eso para q no me joda eclipse
 	}
 
-	public ArrayList<Jugador> obtenerJugadores(){
+	/*public ArrayList<Jugador> obtenerJugadores(){
 		return(this.jugadores);
+	}*/
+	public Jugador obtenerJugadores(){
+		return(this.jugadores.get(0));
 	}
 
 	public String obtenerNombre(){

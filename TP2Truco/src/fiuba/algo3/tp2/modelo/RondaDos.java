@@ -17,10 +17,11 @@ public class RondaDos extends Rondas{
 		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 		ganadoresRonda.add(ganador.returnEquipo());
+		this.cartasEnJuego.clear();
 
 		this.refRonda = new RondaTres(juez, ganadoresRonda, jugadores, refRonda);
-		
-		jugar(this.jugadorMano + indexCartaGanadora);
+		System.out.println("RONDA DOS");
+		//jugar(this.jugadorMano + indexCartaGanadora);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
@@ -13,13 +14,13 @@ public class RondaUno extends Rondas{
 	
 	//EN RONDA UNO SE REPARTE
 	public void repartir(){
-		for (Jugador unJugador : this.jugadores){
-			TipoDeCartas c1 = this.juez.repartir();
-			TipoDeCartas c2 = this.juez.repartir();
-			TipoDeCartas c3 = this.juez.repartir();
-			
-			unJugador.recibirCartas(c1,c2,c3);
+		this.juez.mezclar();
+		Iterator<Jugador> itr = this.jugadores.iterator();
+		while(itr.hasNext()) {
+			Jugador unJugador = (Jugador) itr.next();
+			unJugador.recibirCartas(juez.repartir(), juez.repartir(), juez.repartir());
 		}
+		System.out.println("REPARTEN");
 	}
 	
 	public void ganador(){
@@ -28,9 +29,10 @@ public class RondaUno extends Rondas{
 		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 		ganadoresRonda.add(ganador.returnEquipo());
+		this.cartasEnJuego.clear();
 
 		this.refRonda = new RondaDos(juez, ganadoresRonda, jugadores, refRonda);
-		
+		System.out.println("RONDA UNO");
 		jugar(this.jugadorMano + indexCartaGanadora);
 	}
 

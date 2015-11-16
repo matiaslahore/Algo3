@@ -45,7 +45,7 @@ public class Mesa {
 		return numero;
 	}
 
-	public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
+	/*public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
 		Iterator<Jugador> itrEqUno = equipoUno.iterator();
 		Iterator<Jugador> itrEqDos = equipoUno.iterator();
 		
@@ -54,11 +54,18 @@ public class Mesa {
 			jugadores.add(jugadorEqUno);
 			Jugador jugadorEqDos = (Jugador) itrEqDos.next();
 			jugadores.add(jugadorEqDos);
+			
+			System.out.println(jugadorEqUno.nombre);
+			System.out.println(jugadorEqDos.nombre);
 		}
+	}*/
+	public void sentarJugadores(Jugador equipoUno, Jugador equipoDos) {
+			jugadores.add(equipoUno);
+			jugadores.add(equipoDos);
 	}
 
 	public void iniciar() {
-		ronda.jugar();
+		ronda.jugar(0); //0 para q juege el primero
 	}
 	
 }
