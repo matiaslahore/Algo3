@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.modeloDeCartas.*;
 public class Mesa {
     
 	Juez juez;
-	ArrayList<String> ganadoresRonda; //guarda el nombre del quipo q gano las rondas
+	ArrayList<String> ganadoresRonda; //guarda el nombre del equipo q gano las rondas
 	ArrayList<TipoDeCartas> cartasEnJuego;
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;

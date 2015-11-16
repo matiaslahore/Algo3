@@ -22,9 +22,16 @@ public class RondaUno extends Rondas{
 		}
 	}
 	
-	@Override
-	public void completarGanador() {
+	public void ganador(){
+		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
+		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
+		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
+		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+		ganadoresRonda.add(ganador.returnEquipo());
+
 		this.refRonda = new RondaDos(juez, ganadoresRonda, jugadores, refRonda);
+		
+		jugar(this.jugadorMano + indexCartaGanadora);
 	}
 
 }

@@ -34,6 +34,8 @@ public abstract class Rondas{
 	
 	public void jugar(int aQuienLeToca) {
 		//VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER condicion for
+		auxMano = aQuienLeToca;
+		
 		for ( int i = auxMano ; i == (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
 			cartasEnJuego.add(actual.jugarCarta()); //VER!!
@@ -41,17 +43,8 @@ public abstract class Rondas{
 		ganador();
 	}
 	
-	private void ganador(){
-		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
-		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
-		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
-		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-		ganadoresRonda.add(ganador.returnEquipo());
-		completarGanador();
-	}
+	public abstract void ganador();
 
-	public abstract void completarGanador();
-	
 	public void cantarTruco(){
 		this.juez.puntosEnJuego(2);
 	}
