@@ -16,13 +16,12 @@ public abstract class Rondas{
 	int jugadorMano;
 	int auxMano;
 
-	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, Rondas ronda){
+	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano){
 		this.juez=juez;
 		this.ganadoresRonda = ganadoresRonda;
 		this.jugadores = jugadores;
-		this.refRonda = ronda;
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
-		jugadorMano = 0;
+		jugadorMano = indexMano;
 		auxMano = 0;
 	}
 
@@ -40,9 +39,8 @@ public abstract class Rondas{
 		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
 			cartasEnJuego.add(actual.jugarCarta()); //VER!!
-			System.out.println(actual.nombre);
 		}
-		System.out.println("JUEGAN!!!");
+		System.out.println(this.cartasEnJuego);
 		ganador();
 	}
 	

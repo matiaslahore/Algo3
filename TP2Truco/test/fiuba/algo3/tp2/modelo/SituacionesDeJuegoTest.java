@@ -66,9 +66,7 @@ public class SituacionesDeJuegoTest {
 		partida.cargarJugadoresEnEquipoUno("pipi");
 		partida.cargarJugadoresEnEquipoDos("diegote");
 		partida.sentarJugadores();
-		
-		partida.repartir();
-		
+				
 		partida.iniciar();
 		
 	}

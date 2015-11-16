@@ -14,6 +14,7 @@ public class Mesa {
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;
 	Rondas ronda;
+	int indexMano;
 	
 	public Mesa(String equipoUno, String equipoDos){
 		jugadores = new ListaCircular<Jugador>();
@@ -21,7 +22,7 @@ public class Mesa {
 		ganadoresRonda = new ArrayList<String>();
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		puntos = new Puntos(equipoUno,equipoDos);
-		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.ronda);
+		indexMano = 0;
 	}
 	
 	public void recibirCarta(TipoDeCartas carta){
@@ -65,7 +66,12 @@ public class Mesa {
 	}
 
 	public void iniciar() {
-		ronda.jugar(0); //0 para q juege el primero
+		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano);
+		ronda.jugar(this.indexMano);
+		ronda = new RondaDos(juez, ganadoresRonda, this.jugadores, this.indexMano);
+		ronda.jugar(this.indexMano);
+		ronda = new RondaTres(juez, ganadoresRonda, this.jugadores, this.indexMano);
+		ronda.jugar(this.indexMano);
 	}
-	
+
 }

@@ -7,8 +7,8 @@ import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class RondaTres extends Rondas{
 
-	public RondaTres(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, Rondas ronda) {
-		super(juez, ganadoresRonda, jugadores, ronda);
+	public RondaTres(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano) {
+		super(juez, ganadoresRonda, jugadores, indexMano);
 	}
 
 	public void ganador(){
@@ -22,8 +22,9 @@ public class RondaTres extends Rondas{
 		this.juez.anotarPuntos(ganador.returnEquipo());
 		this.jugadorMano = this.jugadorMano + 1;
 		this.ganadoresRonda = new ArrayList<String>();
-		this.cartasEnJuego = new ArrayList<TipoDeCartas>();
-		this.refRonda = new RondaUno(juez, ganadoresRonda, jugadores, refRonda);
+		this.cartasEnJuego.clear();
+		
+		System.out.println(ganador.nombre);
 		System.out.println("RONDA TRES");
 		//jugar(this.jugadorMano);
 	}

@@ -29,8 +29,8 @@ public class PruebaVersusTodasLasCartasTest {
 	@Test 
 	public void sieteDeEspadaLeGanaAlSieteDeOro(){
 		
-		carta = new SieteDeEspada();
-		cartaContra = new SieteDeOro();
+		carta = new CuatroDeOro();
+		cartaContra = new CuatroDeCopa();
 		
 		Assert.assertEquals(carta, carta.vs(cartaContra));
 	}

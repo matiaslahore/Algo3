@@ -58,7 +58,7 @@ public class Maso {
 	public TipoDeCartas dameCarta(){
 		
 		Random rnd = new Random();
-		int index = (int) (rnd.nextDouble() * (maso.size() + 1));
+		int index = (int) (rnd.nextDouble() * (maso.size()));
 		TipoDeCartas CartaRetorno = this.maso.get(index);
 		this.maso.remove(index);
 		return CartaRetorno;
