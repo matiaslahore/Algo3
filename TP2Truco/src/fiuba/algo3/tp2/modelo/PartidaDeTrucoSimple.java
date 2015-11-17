@@ -52,11 +52,11 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 			equipoUno.jugarCarta();
 		}
 
-		public void anotarPuntos() {
+		/*public void anotarPuntos() {
 			Jugador ganador =  this.mesa.ganadorDeMano();
 			//String equipo = ganador.returnEquipo();
 			this.mesa.anotarPuntosEquipoDos(1);
-		}
+		}*/
 
 		public void sentarJugadores() {
 			this.mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoDos.obtenerJugadores());

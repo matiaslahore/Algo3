@@ -80,7 +80,7 @@ public class Mesa {
 	}
 	
 	public Jugador ganadorDeMano (){
-		return ronda.getGanadores().get(this.index).
+		return ronda.getGanadores().get(this.index);
 	}
 
 }
