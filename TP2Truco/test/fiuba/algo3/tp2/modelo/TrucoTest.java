@@ -12,9 +12,9 @@ public class TrucoTest {
 	
 	@Before
 	public void Inicializar(){
-		this.mesa = new Mesa();
+		this.mesa = new Mesa("Pablo", "Tute");
 		this.truco = new Truco();
-		this.equipo1 = new Equipo("Nico",mesa);
+		this.equipo1 = new Equipo("Pablo",mesa);
 		this.equipo2 = new Equipo("Tute",mesa);
 	}
 	

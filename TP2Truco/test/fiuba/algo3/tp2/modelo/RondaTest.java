@@ -2,6 +2,8 @@ package fiuba.algo3.tp2.modelo;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+
+import org.junit.Before;
 import org.junit.Test;
 import fiuba.algo3.colecciones.ListaCircular;
 
@@ -9,20 +11,21 @@ public class RondaTest {
 
 	Rondas ronda;
 	
-	@Test
+	@Before
 	public void test() {
 		Mesa mesa = new Mesa("eq1","eq2");
-		Juez juez = new Juez(mesa);
+		Juez juez = new Juez(mesa, "eq1", "eq2");
 		
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> ganadores = new ArrayList<String>();
 		
-		ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-		lista.add(new Jugador("pepe", mesa));
-		lista.add(new Jugador("juan", mesa));
+		ListaCircular<Jugador> listaCirc = new ListaCircular<Jugador>();
+		listaCirc.add(new Jugador("pepe", mesa));
+		listaCirc.add(new Jugador("juan", mesa));
+		int index=0;
+		ronda = new RondaUno(juez, ganadores, listaCirc, index);
 		
-		ronda = new RondaUno(juez, list, lista, ronda);
 		
-		ronda.jugar(0);
+		ronda.jugar();
 		
 	}
 

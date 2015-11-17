@@ -58,8 +58,8 @@ public class Equipo {
 	/*public ArrayList<Jugador> obtenerJugadores(){
 		return(this.jugadores);
 	}*/
-	public Jugador obtenerJugadores(){
-		return(this.jugadores.get(0));
+	public ArrayList<Jugador> obtenerJugadores(){
+		return this.jugadores;
 	}
 	
 	public String obtenerNombre(){

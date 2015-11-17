@@ -45,10 +45,10 @@ public class Mano {
 	}
 
 	public int calcularPuntosEnvidoConFlor() {
-		// Una vez q nico suba lo q hizo el termino esto.. xq hay varias formas
-		// de hacerlo.
-		//int puntos = cartaUno.sumarTanto(cartaDos) + cartaTres.valorTanto();
-		return 0;
+		TipoDeCartas cartaUno = cartas.get(0);
+		TipoDeCartas cartaDos = cartas.get(1);
+		TipoDeCartas cartaTres = cartas.get(2);
+		return (cartaUno.sumarTanto);
 	}
 
 	public TipoDeCartas tirar(int n) {
