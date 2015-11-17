@@ -50,9 +50,7 @@ public class Jugador {
 		return cartasComoString;
 	}
 	
-	public String obtenerNombre(){
-		return nombre;
-	}
+	
 	
 	public int cantidadDeCartas(){
 		return cartas.size();
@@ -64,6 +62,10 @@ public class Jugador {
 	
 	public String returnEquipo(){
 		return this.equipo;
+	}
+	
+	public String obtenerNombre(){
+		return nombre;
 	}
 
 	public int obtenerPuntosEnvido(){
@@ -89,7 +91,7 @@ public class Jugador {
 		case 1:
 			return cartasNoNegras.get(0).obtenerValor();
 		case 2:
-			if (cartasNoNegras.get(0).obtenerValor() < cartasNoNegras.get(1).obtenerValor()){
+		if (cartasNoNegras.get(0).obtenerValor() < cartasNoNegras.get(1).obtenerValor()){
 				return cartasNoNegras.get(1).obtenerValor();
 			}
 			else{
