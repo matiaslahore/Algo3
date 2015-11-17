@@ -4,6 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.tp2.modeloDeCartas.AnchoDeBasto;
+import fiuba.algo3.tp2.modeloDeCartas.SeisDeBasto;
+import fiuba.algo3.tp2.modeloDeCartas.SieteDeBasto;
+
 public class EnvidoTest {
 	Envido envido;
 	Equipo equipo1;
@@ -12,7 +16,7 @@ public class EnvidoTest {
 	
 	@Before
 	public void Inicializar(){
-		this.mesa = new Mesa();
+		this.mesa = new Mesa("Nico", "Tute");
 		this.envido = new Envido();
 		this.equipo1 = new Equipo("Nico",mesa);
 		this.equipo2 = new Equipo("Tute",mesa);
@@ -52,8 +56,8 @@ public class EnvidoTest {
 	
 	@Test
 	public void jugadorSuma33deEnvido(){
-		Jugador jug = new Jugador("pepe");
-		jug.recibirCartas(new Carta(new Basto(), 7), new Carta(new Basto(), 6) , new Carta(new Basto(), 1));
+		Jugador jug = new Jugador("pepe", this.mesa);
+		jug.recibirCartas(new SieteDeBasto(), new SeisDeBasto(), new AnchoDeBasto());
 		Assert.assertEquals(33,jug.obtenerPuntosEnvido());
 	}
 	
