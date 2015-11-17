@@ -38,7 +38,7 @@ public abstract class Rondas{
 		repartir();
 		this.juez.puntosEnJuego(1);
 		
-		cantarEnvido();
+        cantarEnvido();
 		//cantarFaltaEnvido();
 		//cantarRealEnvido();
 		//cantarTruco();
