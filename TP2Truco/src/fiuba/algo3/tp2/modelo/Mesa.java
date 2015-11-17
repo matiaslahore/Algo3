@@ -68,6 +68,10 @@ public class Mesa {
 			ronda = ronda.jugar();
 		}while(juez.termina());
 		
+		System.out.println("JUEGO TERMINADO\nPUNTAJE FINAL");
+		System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
+		System.out.println("PTOS EQ2 " +juez.puntosEquipo("EquipoDos") + "\n");
+		
 	}
 	
 	/*public Jugador ganadorDeMano (){

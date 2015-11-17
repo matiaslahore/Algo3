@@ -66,19 +66,6 @@ public class Equipo {
 		return(this.nombreEquipo);
 	}
 
-	public void jugarCarta() {
-		
-		Jugador actual = jugadores.get(0);
-		//0 en get xq es el unico jugador VER CASO GENERAL
-		
-		System.out.println(actual.verCartasEnManoComoString());
-		//Scanner leer = new Scanner(System.in);
-		//System.out.println("Ingerese numero de carta a jugar: ");
-		//int n = leer.nextInt();
-		//refMesa.recibirCarta(actual.jugarCarta((int)random));
-		refMesa.recibirCarta(actual.jugarPrimera());
-	}
-
 	public void asignarQuienReparte() {
 		
 		

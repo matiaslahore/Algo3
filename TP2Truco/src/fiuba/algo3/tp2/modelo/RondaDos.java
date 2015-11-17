@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
@@ -22,8 +23,16 @@ public class RondaDos extends Rondas{
 		System.out.println("RONDA DOS gana " + ganador.nombre);
 		
 		if (this.ganadoresRonda.get(0) == this.ganadoresRonda.get(1)){
-			System.out.println("TERMINOOOOOOOOOOOOOOOOOOOOOOOOOO");
-			//esto es xq hace primera y segunda el jugador
+			System.out.println("TERMINOOOOOOOOO gano 1ra y 2da el mismo");
+			
+			this.juez.anotarPuntos(ganador.returnEquipo());
+			this.ganadoresRonda = new ArrayList<String>();
+			
+			System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
+			System.out.println("PTOS EQ2 " +juez.puntosEquipo("EquipoDos") + "\n");
+			
+			this.indexMano = this.indexMano + 1;
+			return new RondaUno(juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);
 		}
 		
 		return new RondaTres(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
@@ -42,6 +51,25 @@ public class RondaDos extends Rondas{
 	}
 	public void cantarFaltaEnvido(){
 		//NO HACE NADA
+	}
+
+	public void interfaz(Jugador actual){
+		Scanner leer = new Scanner(System.in);
+		System.out.println("Seleccione una opcion: ");
+		System.out.println(" 1-Jugar una carta\n 2-Cantar Truco\n");
+		int opcion = leer.nextInt();
+		
+		switch (opcion) {
+			case 1:
+				cartasEnJuego.add(actual.jugarCarta());
+				break;
+			case 2:
+				cantarTruco();
+				cartasEnJuego.add(actual.jugarCarta());
+				break;
+				//cantarQuieroReTruco();
+				//cantarQuieroValeCuatro();
+		}
 	}
 	
 }

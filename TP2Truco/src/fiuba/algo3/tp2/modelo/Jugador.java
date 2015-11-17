@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.omg.CORBA.SystemException;
+
 import fiuba.algo3.tp2.modeloDeCartas.*;
 
 public class Jugador {
@@ -15,14 +17,17 @@ public class Jugador {
 	String equipo;
 	Mano manoDelJugador;
 	Mesa refMesa;
+	int envido;
 
 	public Jugador(String name, Mesa mesa){
 		nombre = name;
 		refMesa = mesa;
+		envido = 0;
 	}
 
 	public void recibirCartas(TipoDeCartas c1, TipoDeCartas c2, TipoDeCartas c3){
 		manoDelJugador = new Mano(c1,c2,c3);
+		this.envido = this.manoDelJugador.calcularEnvido();
 	}
 	
 	/* ESTA ES LA QUE VA A IR A LO ULTIMO
@@ -30,30 +35,6 @@ public class Jugador {
 		Carta actual = cartas.get(n-1); //-1 xq sino no da el index
 		cartas.remove(n-1);
 		return actual;
-	}*/
-	
-	//NO SIRVE MAS.. O HABRIA Q CAMBIARLA CON LO Q DICE ABAJO
-	/*public String verCartasEnManoComoString() {
-		///////////////////////////////////////////////////////////////////
-		AHORA ESTA NO SIRVE.. XQ HABRIA Q HACER PARA CADA CARTA ESTO
-		Ejemplo AnchoDeEspada
-		public String verCartaComoString(){
-			return "Ancho de espada";
-		}
-		///////////////////////////////////////////////////////////////////
-		
-		String cartasComoString = "";
-		for (Carta unaCarta : cartas){
-			
-			cartasComoString += unaCarta.obtenerCartaComoString();
-		}
-		return cartasComoString;
-	}
-	
-	
-	
-	public int cantidadDeCartas(){
-		return cartas.size();
 	}*/
 	
 	public void cargarEquipo(String nombre){
@@ -69,55 +50,12 @@ public class Jugador {
 	}
 
 	public int obtenerPuntosEnvido(){
-		return this.manoDelJugador.calcularEnvido();
+		return this.envido;
 	}
 	
-	/* NO SIRVE MAS CREO
-	 private int dameValorDeCartaMayor(ArrayList<Carta> cartas) {
-		
-		List<Carta> cartasNoNegras = new ArrayList<Carta>();
-		
-		for (Carta unaCarta : cartas){
-			
-			if (unaCarta.obtenerValor() <= 7){
-				
-				cartasNoNegras.add(unaCarta);
-			}
-		}
-		switch (cartasNoNegras.size()){
-		
-		case 0:
-			return 0;
-		case 1:
-			return cartasNoNegras.get(0).obtenerValor();
-		case 2:
-		if (cartasNoNegras.get(0).obtenerValor() < cartasNoNegras.get(1).obtenerValor()){
-				return cartasNoNegras.get(1).obtenerValor();
-			}
-			else{
-				return cartasNoNegras.get(0).obtenerValor();
-			}
-		}
-		int maximo = cartasNoNegras.get(0).obtenerValor();
-		
-		if (maximo < cartasNoNegras.get(1).obtenerValor()){
-			maximo = cartasNoNegras.get(1).obtenerValor();
-		}
-		else{
-			if (maximo < cartasNoNegras.get(2).obtenerValor()){
-				maximo = cartasNoNegras.get(2).obtenerValor();
-			}
-		}
-		return maximo;
-	}*/
-
 	public TipoDeCartas jugarPrimera(){
 		return this.manoDelJugador.returnPrimera();
 	}
-
-	/*public int obtenerPuntosTruco() {
-		return 0;
-	}*/
 
 	/*public int obtenerPuntosEnvidoConFlor() {
 		int envidoConFlor = 0;
@@ -134,11 +72,10 @@ public class Jugador {
 		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
 	}
 
-	public TipoDeCartas jugarCarta() {
-		return this.manoDelJugador.returnPrimera();
-	}
-	
 	/*public TipoDeCartas jugarCarta() {
+		return this.manoDelJugador.returnPrimera();
+	}*/
+	public TipoDeCartas jugarCarta() { //////////////////////////////////////////////PRIVATE
 		verCartasEnManoComoString();
 		
 		Scanner leer = new Scanner(System.in);
@@ -147,15 +84,10 @@ public class Jugador {
 		int n = leer.nextInt();
 		
 		return this.manoDelJugador.tirar(n);
-	}*/
-	
-
-	public String verCartasEnManoComoString() {
-	    String cartas= "deberia devolver los strings";
-	    return cartas;
 	}
 
-	
-	
+	private void verCartasEnManoComoString() {
+		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
+	}
 	
 }

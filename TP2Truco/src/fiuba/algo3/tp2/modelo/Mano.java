@@ -56,5 +56,13 @@ public class Mano {
 		cartas.remove(n-1);
 		return carta;
 	}
+
+	public String verCartasEnManoComoString() {
+		String cartasComoString = "| ";
+		for (TipoDeCartas unaCarta : cartas){
+			cartasComoString += unaCarta.cartaComoString() + " | ";
+		}
+		return cartasComoString;
+	}
 	
 }

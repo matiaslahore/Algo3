@@ -38,26 +38,15 @@ public abstract class Rondas{
 		repartir();
 		this.juez.puntosEnJuego(1);
 		
-        cantarEnvido();
-		//cantarFaltaEnvido();
-		//cantarRealEnvido();
-		//cantarTruco();
-		//cantarQuieroReTruco();
-		//cantarQuieroValeCuatro();
-		//ESTO LO UNICO QUE CHEQUEA ES QUE SE SUMEN LOS PUNTOS CORRECTAMENE
-		
-		//VER SI CONVIENE HACER OTRO TIPO DE CICLO..
-		//le sumo aux mano xq sino esto siempre seria 2 y cuando le toqe jugar primero
-		//al jugador 2, i=2 y corta en 2.. osea nunca juega el 1 que es el i=3 (lista circular)
-		for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
+        for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
-			cartasEnJuego.add(actual.jugarCarta()); //VER!!
-			System.out.println("JUEGA: " + actual.nombre);
+			System.out.println("TURNO DE: " + actual.nombre);
+			interfaz(actual);
 		}
 		System.out.println(cartasEnJuego.get(0).cartaComoString() + " vs " + cartasEnJuego.get(1).cartaComoString());
 		return ganador();
 	}
-	
+
 	public abstract Rondas ganador();
 
 	public void cantarTruco(){
@@ -90,7 +79,7 @@ public abstract class Rondas{
 		tantoCantado();
 	}
 	
-	public void tantoCantado(){
+	private void tantoCantado(){
 		//VER COMO HACER PARA QUE QUIERAN..
 		for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
@@ -112,5 +101,8 @@ public abstract class Rondas{
 	public ArrayList<String> getGanadores (){
 		return this.ganadoresRonda;
 	}
+	
+	public abstract void interfaz(Jugador actual);
+	
 	
 }
