@@ -7,8 +7,8 @@ import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class RondaDos extends Rondas{
 
-	public RondaDos(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano) {
-		super(juez, ganadoresRonda, jugadores, indexMano);
+	public RondaDos(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+		super(juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
 	
 	public Rondas ganador(){
@@ -26,7 +26,7 @@ public class RondaDos extends Rondas{
 			//esto es xq hace primera y segunda el jugador
 		}
 		
-		return new RondaTres(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora);
+		return new RondaTres(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}
 
 	@Override

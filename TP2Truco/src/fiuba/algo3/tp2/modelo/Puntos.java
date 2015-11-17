@@ -31,4 +31,9 @@ public class Puntos {
 		return (max-30);
 	}
 
+	public int getPuntajeMaximo() {
+		Collection<Integer> coleccion = mapa.values();
+		return Collections.max(coleccion);
+	}
+
 }

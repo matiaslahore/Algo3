@@ -15,15 +15,17 @@ public abstract class Rondas{
 	ArrayList<Integer> tantoEnJuego;
 	Rondas refRonda;
 	int jugadorMano;
+	int indexMano;
 	boolean sigue;
 
-	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano){
+	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
 		this.ganadoresRonda = ganadoresRonda;
 		this.jugadores = jugadores;
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		tantoEnJuego = new ArrayList<Integer>();
-		jugadorMano = new Integer(indexMano);
+		this.jugadorMano = new Integer(indexManoAux);
+		this.indexMano = indexMano; //esto no se toca nunca salvo en la ronda 3 para indicar la mano sig.
 	}
 
 	public void recibirCarta(TipoDeCartas carta){

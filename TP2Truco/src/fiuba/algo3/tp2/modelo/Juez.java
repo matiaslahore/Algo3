@@ -62,7 +62,12 @@ public class Juez {
 	}
 
 	public int puntosDeLaFalta() {
-		return this.puntos.puntosDeLaFalta();
+		return this.puntos.puntosDeLaFalta(null);
 		//esta mal xq solo devuelve lo q faltan para 30 y no para las malas o las buenas!!!!
+	}
+
+	public boolean termina() {
+		if (puntos.getPuntajeMaximo() >= 30) return false;
+		else return true;
 	}
 }

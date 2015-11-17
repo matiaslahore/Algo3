@@ -7,8 +7,8 @@ import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class RondaTres extends Rondas{
 
-	public RondaTres(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano) {
-		super(juez, ganadoresRonda, jugadores, indexMano);
+	public RondaTres(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+		super(juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
 
 	public Rondas ganador(){
@@ -27,8 +27,9 @@ public class RondaTres extends Rondas{
 		
 		System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
 		System.out.println("PTOS EQ2 " +juez.puntosEquipo("EquipoDos"));
-		return null;
-		//return new RondaUno(juez, ganadoresRonda, jugadores, aca va INDEXMANO de la mesa);
+		//return null;
+		this.indexMano = this.indexMano + 1;
+		return new RondaUno(juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);
 		//como ultimo parametro hay que pasarle indexMano de la mesa + 1 si se quiere hacer
 		// que juege solo!. O sea de manera automatica cortando cuando uno equipo llege a 30.
 	}

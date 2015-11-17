@@ -59,34 +59,15 @@ public class Mesa {
 			jugadores.add(equipoUno);
 			jugadores.add(equipoDos);
 	}
-
-	/*public void iniciar() {
-		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano);
-		ronda.jugar(this.indexMano);
-		ronda = new RondaDos(juez, ganadoresRonda, this.jugadores, this.indexMano);
-		ronda.jugar(this.indexMano);
-		ronda = new RondaTres(juez, ganadoresRonda, this.jugadores, this.indexMano);
-		ronda.jugar(this.indexMano);
-	}*/
 	
 	public void iniciar() {
 		
-		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano);
-		ronda = ronda.jugar();
-		ronda = ronda.jugar();
-		ronda = ronda.jugar();
+		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano, this.indexMano);
 		
-		this.indexMano = this.indexMano + 1; 
-		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano);
-		ronda = ronda.jugar();
-		ronda = ronda.jugar();
-		ronda = ronda.jugar();
+		do{
+			ronda = ronda.jugar();
+		}while(juez.termina());
 		
-		this.indexMano = this.indexMano + 1;
-		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano);
-		ronda = ronda.jugar();
-		ronda = ronda.jugar();
-		ronda = ronda.jugar();
 	}
 	
 	/*public Jugador ganadorDeMano (){

@@ -8,8 +8,8 @@ import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class RondaUno extends Rondas{
 
-	public RondaUno(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano) {
-		super(juez, ganadoresRonda, jugadores, indexMano);
+	public RondaUno(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+		super(juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
 	
 	//EN RONDA UNO SE REPARTE
@@ -33,7 +33,7 @@ public class RondaUno extends Rondas{
 		
 		System.out.println("RONDA UNO gana " + ganador.nombre);
 		
-		return new RondaDos(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora);
+		return new RondaDos(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}
 	
 }
