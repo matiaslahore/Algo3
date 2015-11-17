@@ -13,8 +13,8 @@ public class RepartirTest {
 	
 	@Before
 	public void Inicializar(){
-		this.mesa = new Mesa();
-		this.jugador = new Jugador("pepito");
+		this.mesa = new Mesa(new Equipo());
+		this.jugador = new Jugador("pepito", this.mesa);
 	}
 	
 	@Test

@@ -148,6 +148,12 @@ public class Jugador {
 		return this.manoDelJugador.tirar(n);
 	}
 	//*/
+
+	public String verCartasEnManoComoString() {
+	    String cartas= "deberia devolver los strings";
+	    return cartas;
+	}
+
 	
 	
 	

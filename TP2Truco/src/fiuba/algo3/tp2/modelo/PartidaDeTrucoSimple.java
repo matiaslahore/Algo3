@@ -66,6 +66,7 @@ public class PartidaDeTrucoSimple extends PartidaDeTruco{
 			this.mesa.iniciar();
 		}
 		
+	
 	}
 
 //

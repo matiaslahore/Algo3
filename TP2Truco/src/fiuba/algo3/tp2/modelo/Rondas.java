@@ -107,5 +107,8 @@ public abstract class Rondas{
 		
 		System.out.println("EL TANTO LO GANA " + ganador.nombre);
 	}
-
+    
+	public ArrayList<String> getGanadores (){
+		return this.ganadoresRonda;
+	}
 }

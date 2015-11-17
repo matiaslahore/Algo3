@@ -27,6 +27,22 @@ public class Mano {
 		cartas.remove(0);
 		return carta;
 	}
+	
+	public TipoDeCartas returnSegunda() {
+		TipoDeCartas carta = cartas.get(1);
+		cartas.remove(1);
+		return carta;
+	}
+	
+	public TipoDeCartas returnTercera() {
+		TipoDeCartas carta = cartas.get(2);
+		cartas.remove(2);
+		return carta;
+	}
+	
+	public ArrayList<TipoDeCartas> returnCartas(){
+		return this.cartas;
+	}
 
 	public int calcularPuntosEnvidoConFlor() {
 		// Una vez q nico suba lo q hizo el termino esto.. xq hay varias formas

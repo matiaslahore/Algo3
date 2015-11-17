@@ -78,5 +78,9 @@ public class Mesa {
 		ronda = ronda.jugar(this.indexMano);
 		
 	}
+	
+	public Jugador ganadorDeMano (){
+		return ronda.getGanadores().get(this.index).
+	}
 
 }
