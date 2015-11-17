@@ -284,4 +284,10 @@ public class SieteDeOro implements TipoDeCartas{
 		// TODO Auto-generated method stub
 		return 7;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Siete De Oro";
+	}
+	
 }

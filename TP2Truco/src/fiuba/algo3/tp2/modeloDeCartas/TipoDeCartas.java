@@ -77,6 +77,8 @@ public interface TipoDeCartas {
 	public abstract int sumarTanto(CuatroDeOro sumar);
 	public abstract int sumarTanto(CuatroDeBasto sumar);
 	public abstract int sumarTanto(CuatroDeCopa sumar);
+	
+	public abstract String cartaComoString();
 
 }
 

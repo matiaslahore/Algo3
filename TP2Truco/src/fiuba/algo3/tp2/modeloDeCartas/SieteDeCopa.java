@@ -48,4 +48,10 @@ public class SieteDeCopa extends SieteFalso{
 	public int sumarTanto(ReyDeCopa sumar){
 		return 27;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Siete De Copa";
+	}
+	
 }

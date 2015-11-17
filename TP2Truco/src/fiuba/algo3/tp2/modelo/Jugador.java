@@ -137,17 +137,18 @@ public class Jugador {
 	public TipoDeCartas jugarCarta() {
 		return this.manoDelJugador.returnPrimera();
 	}
-	/* CUANDO SOLUCIONEMOS SI USAMOS LISTA EN LA MANO....
-	public void jugarCarta() {
+	
+	/*public TipoDeCartas jugarCarta() {
 		verCartasEnManoComoString();
 		
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Ingerese numero de carta a jugar: ");
+		System.out.println(this.manoDelJugador.cartas);
 		int n = leer.nextInt();
 		
 		return this.manoDelJugador.tirar(n);
-	}
-	//*/
+	}*/
+	
 
 	public String verCartasEnManoComoString() {
 	    String cartas= "deberia devolver los strings";

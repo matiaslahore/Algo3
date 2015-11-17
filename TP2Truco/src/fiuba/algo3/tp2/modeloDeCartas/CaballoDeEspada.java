@@ -57,4 +57,10 @@ public class CaballoDeEspada extends Caballo{
 	public int sumarTanto(ReyDeEspada sumar){
 		return 20;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Once De Espada";
+	}
+	
 }

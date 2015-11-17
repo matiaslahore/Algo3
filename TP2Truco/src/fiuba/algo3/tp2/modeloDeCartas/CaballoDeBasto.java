@@ -219,5 +219,10 @@ public class CaballoDeBasto extends Caballo{
 		// TODO Auto-generated method stub
 		return 7;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Once De Basto";
+	}
 
 }

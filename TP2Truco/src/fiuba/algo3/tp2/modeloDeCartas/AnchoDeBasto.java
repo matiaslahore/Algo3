@@ -306,5 +306,10 @@ public class AnchoDeBasto implements TipoDeCartas{
 	public int sumarTanto(CuatroDeCopa sumar) {
 		// TODO Auto-generated method stub
 		return 4;
-	}	
+	}
+
+	@Override
+	public String cartaComoString() {
+		return "Ancho De Basto";
+	}
 }

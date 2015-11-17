@@ -288,4 +288,10 @@ public class AnchoDeEspada implements TipoDeCartas{
 		// TODO Auto-generated method stub
 		return 4;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Ancho De Espada";
+	}
+	
 }

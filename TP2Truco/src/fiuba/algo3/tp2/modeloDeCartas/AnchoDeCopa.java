@@ -49,4 +49,10 @@ public class AnchoDeCopa extends AnchoFalso{
 	public int sumarTanto(ReyDeCopa sumar){
 		return 21;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Uno De Copa";
+	}
+	
 }

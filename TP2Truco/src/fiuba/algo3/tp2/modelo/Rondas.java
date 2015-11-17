@@ -15,7 +15,6 @@ public abstract class Rondas{
 	ArrayList<Integer> tantoEnJuego;
 	Rondas refRonda;
 	int jugadorMano;
-	int auxMano;
 	boolean sigue;
 
 	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexMano){
@@ -24,8 +23,7 @@ public abstract class Rondas{
 		this.jugadores = jugadores;
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		tantoEnJuego = new ArrayList<Integer>();
-		jugadorMano = indexMano;
-		auxMano = 0;
+		jugadorMano = new Integer(indexMano);
 	}
 
 	public void recibirCarta(TipoDeCartas carta){
@@ -34,11 +32,9 @@ public abstract class Rondas{
 	
 	public abstract void repartir();
 	
-	public Rondas jugar(int aQuienLeToca) {
-		//VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER condicion for
+	public Rondas jugar() {
 		repartir();
 		this.juez.puntosEnJuego(1);
-		auxMano = aQuienLeToca;
 		
 		//cantarEnvido();
 		//cantarFaltaEnvido();
@@ -48,11 +44,15 @@ public abstract class Rondas{
 		//cantarQuieroValeCuatro();
 		//ESTO LO UNICO QUE CHEQUEA ES QUE SE SUMEN LOS PUNTOS CORRECTAMENE
 		
-		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
+		//VER SI CONVIENE HACER OTRO TIPO DE CICLO..
+		//le sumo aux mano xq sino esto siempre seria 2 y cuando le toqe jugar primero
+		//al jugador 2, i=2 y corta en 2.. osea nunca juega el 1 que es el i=3 (lista circular)
+		for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
 			cartasEnJuego.add(actual.jugarCarta()); //VER!!
+			System.out.println("JUEGA: " + actual.nombre);
 		}
-		System.out.println(this.cartasEnJuego);
+		System.out.println(cartasEnJuego.get(0).cartaComoString() + " vs " + cartasEnJuego.get(1).cartaComoString());
 		return ganador();
 	}
 	
@@ -90,8 +90,7 @@ public abstract class Rondas{
 	
 	public void tantoCantado(){
 		//VER COMO HACER PARA QUE QUIERAN..
-		auxMano = jugadorMano;
-		for ( int i = auxMano ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
+		for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
 			tantoEnJuego.add(actual.obtenerPuntosEnvido());
 		}
@@ -111,4 +110,5 @@ public abstract class Rondas{
 	public ArrayList<String> getGanadores (){
 		return this.ganadoresRonda;
 	}
+	
 }

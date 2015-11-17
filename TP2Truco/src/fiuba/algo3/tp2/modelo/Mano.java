@@ -50,5 +50,11 @@ public class Mano {
 		//int puntos = cartaUno.sumarTanto(cartaDos) + cartaTres.valorTanto();
 		return 0;
 	}
+
+	public TipoDeCartas tirar(int n) {
+		TipoDeCartas carta = cartas.get(n-1);
+		cartas.remove(n-1);
+		return carta;
+	}
 	
 }

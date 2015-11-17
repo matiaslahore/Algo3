@@ -57,4 +57,10 @@ public class CaballoDeCopa extends Caballo{
 	public int sumarTanto(ReyDeCopa sumar){
 		return 20;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Once De Copa";
+	}
+	
 }

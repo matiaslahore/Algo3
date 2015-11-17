@@ -35,5 +35,5 @@ public class RondaUno extends Rondas{
 		
 		return new RondaDos(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora);
 	}
-
+	
 }

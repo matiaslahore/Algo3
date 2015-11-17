@@ -48,4 +48,10 @@ public class SeisDeEspada extends Seis {
 	public int sumarTanto(ReyDeEspada sumar){
 		return 26;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Seis De Espada";
+	}
+	
 }

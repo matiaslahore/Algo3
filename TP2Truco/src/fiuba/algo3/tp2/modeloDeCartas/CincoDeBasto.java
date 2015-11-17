@@ -57,4 +57,10 @@ public class CincoDeBasto extends Cinco{
 	public int sumarTanto(ReyDeBasto sumar){
 		return 25;
 	}
+	
+	@Override
+	public String cartaComoString() {
+		return "Cinco De Basto";
+	}
+	
 }

@@ -20,7 +20,6 @@ public class RondaTres extends Rondas{
 		this.cartasEnJuego.clear();
 		
 		this.juez.anotarPuntos(ganador.returnEquipo());
-		this.jugadorMano = this.jugadorMano + 1;
 		this.ganadoresRonda = new ArrayList<String>();
 		this.cartasEnJuego.clear();
 		
@@ -28,8 +27,10 @@ public class RondaTres extends Rondas{
 		
 		System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
 		System.out.println("PTOS EQ2 " +juez.puntosEquipo("EquipoDos"));
-		
-		return new RondaUno(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora);
+		return null;
+		//return new RondaUno(juez, ganadoresRonda, jugadores, aca va INDEXMANO de la mesa);
+		//como ultimo parametro hay que pasarle indexMano de la mesa + 1 si se quiere hacer
+		// que juege solo!. O sea de manera automatica cortando cuando uno equipo llege a 30.
 	}
 
 	@Override
