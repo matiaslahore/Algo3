@@ -25,10 +25,10 @@ public class Puntos {
 		return this.mapa.get(equipo);
 	}
 
-	public int puntosDeLaFalta() {
+	public int puntosDeLaFalta(String equipo) {
 		Collection<Integer> coleccion = mapa.values();
 		int max = Collections.max(coleccion);
-		return (30-max);
+		return (max-30);
 	}
 
 }
