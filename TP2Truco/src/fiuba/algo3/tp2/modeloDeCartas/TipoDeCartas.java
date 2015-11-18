@@ -38,9 +38,8 @@ public interface TipoDeCartas {
 
 	public default int sumarTantosConFlor(TipoDeCartas cartaUno, TipoDeCartas cartaDos){
 		
-		// despues te agrego la exception
 		
-		return this.valorParaEnvido() + cartaUno.valorParaEnvido() + cartaDos.valorParaEnvido();
+		return this.valorParaEnvido() + cartaUno.sumarTanto(cartaDos);
 	}
 	
 	public abstract int sumarTanto(TipoDeCartas sumar);
