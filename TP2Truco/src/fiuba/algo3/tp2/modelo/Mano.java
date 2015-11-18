@@ -65,4 +65,8 @@ public class Mano {
 		return cartasComoString;
 	}
 	
+	public int returnCantidadDeCartas(){
+		return this.cartas.size();
+	}
+	
 }

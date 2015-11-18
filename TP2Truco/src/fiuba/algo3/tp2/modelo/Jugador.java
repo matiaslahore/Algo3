@@ -87,5 +87,9 @@ public class Jugador {
 	private void verCartasEnManoComoString() {
 		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
 	}
+
+	public int cantidadDeCartas() {
+	    return this.manoDelJugador.returnCantidadDeCartas();	
+	}
 	
 }
