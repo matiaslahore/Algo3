@@ -66,7 +66,7 @@ public class SituacionesDeJuegoTest {
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		
-		PartidaDeTrucoSimple partida = new PartidaDeTrucoSimple("EquipoUno", "EquipoDos");
+		PartidaDeTrucoConFlor partida = new PartidaDeTrucoConFlor("EquipoUno", "EquipoDos");
 		
 		partida.cargarJugadoresEnEquipoUno("pipi");
 		partida.cargarJugadoresEnEquipoDos("diegote");
