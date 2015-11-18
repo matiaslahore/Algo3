@@ -55,14 +55,12 @@ public class RondaTres extends Rondas{
 		
 		switch (opcion) {
 			case 1:
-				cartasEnJuego.add(actual.jugarCarta());
+				actual.jugarCarta();
 				break;
 			case 2:
-				cantarTruco();
-				cartasEnJuego.add(actual.jugarCarta());
+				actual.cantarTruco();
+				actual.jugarCarta();
 				break;
-				//cantarQuieroReTruco();
-				//cantarQuieroValeCuatro();
 		}
 	}
 	

@@ -50,6 +50,7 @@ public abstract class Rondas{
 	public abstract Rondas ganador();
 
 	public void cantarTruco(){
+		//actual.cantarTruco();
 		this.juez.puntosEnJuego(2);
 	}
 	public void cantarQuieroReTruco(){
@@ -107,4 +108,5 @@ public abstract class Rondas{
 	public int aQuienLeToca(){
 		return this.jugadorMano;
 	}
+
 }
