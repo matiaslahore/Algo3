@@ -15,7 +15,6 @@ public class Flor {
 	}
 	
 	public void cantarFlor(Equipo equipoQueCanta){
-		if()
 		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeFloresCantadas < 2)){ 
 			this.equipoCantor = equipoQueCanta;
 			this.cantidadDeFloresCantadas++;
@@ -26,7 +25,6 @@ public class Flor {
 		if(equipoQueQuiere == this.equipoCantor)
 			return;
 		this.equipoAceptor = equipoQueQuiere;
-		this.sumarCartasFlor();
 		this.puntosGanados = (3 * this.cantidadDeFloresCantadas);
 	}
 	
