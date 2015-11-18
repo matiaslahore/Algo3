@@ -12,34 +12,7 @@ public abstract class PartidaDeTruco {
 	public abstract void cargarJugadoresEnEquipoUno(String jugadorUno);
 	
 	public abstract void cargarJugadoresEnEquipoDos(String jugadorUno);
-		
-	/*public void cargarJugadoresEnEquipoUno(String jugadorUno, String jugadorDos, String jugadorTres){
-		
-		LinkedList<String> nombreJugadores = new LinkedList<String>();
-		nombreJugadores.add(jugadorUno);
-		nombreJugadores.add(jugadorDos);
-		nombreJugadores.add(jugadorTres);
-		this.equipoUno.cargarJugadores(nombreJugadores);
-	}/*
 	
-	public void cargarJugadoresEnEquipoDos(String jugadorUno, String jugadorDos, String jugadorTres){
-			
-		LinkedList<String> nombreJugadores = new LinkedList<String>();
-		nombreJugadores.add(jugadorUno);
-		nombreJugadores.add(jugadorDos);
-		nombreJugadores.add(jugadorTres);
-		this.equipoDos.cargarJugadores(nombreJugadores);
-	}
-
-	public void repartirCartas() {
-	
-	}
-
-	/*public String verCartasEnManoDeJugadorComoString(String nombreJugador){
-		
-		return ""; 
-	}*/
-
 	public void asignarQuienReparte() {
 		
 		float random =  (float) Math.random();
