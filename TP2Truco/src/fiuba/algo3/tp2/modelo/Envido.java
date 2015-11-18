@@ -3,45 +3,40 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class Envido {
-	private Equipo equipoCantor;
-	private Equipo equipoAceptor;
-	private Equipo ganador;
+	private String equipoCantor;
+	private String equipoAceptor;
+	private String equipoGanador;
 	private int puntosGanados;
 	private int cantidadDeEnvidosCantados;
 	
 	public Envido(){
-		this.puntosGanados = cantidadDeEnvidosCantados = 0;
-		this.equipoAceptor = this.equipoCantor = this.ganador = null;
+		this.cantidadDeEnvidosCantados = this.puntosGanados = 0;
+		this.equipoAceptor = this.equipoCantor = this.equipoGanador = "";
 	}
 	
-	public void cantarEnvido(Equipo equipoQueCanta){
-		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeEnvidosCantados < 2)){ 
-			this.equipoCantor = equipoQueCanta;
+	public void cantarEnvido(Jugador jugadorQueCanta){
+		if((equipoCantor != jugadorQueCanta.obtenerEquipoQuePertenece()) && (this.cantidadDeEnvidosCantados < 2)){ 
+			this.equipoCantor = jugadorQueCanta.obtenerEquipoQuePertenece();
 			this.cantidadDeEnvidosCantados++;
 		}
 	}
 	
-	public void querer(Equipo equipoQueQuiere){
-		if(equipoQueQuiere == this.equipoCantor)
+	public void querer(Jugador jugadorQueQuiere){
+		if(jugadorQueQuiere.obtenerEquipoQuePertenece() == this.equipoCantor)
 			return;
-		this.equipoAceptor = equipoQueQuiere;
-		this.sumarCartasEnvido();
+		this.equipoAceptor = jugadorQueQuiere.obtenerEquipoQuePertenece();
 		this.puntosGanados = (2 * this.cantidadDeEnvidosCantados);
 	}
-	
-	public Equipo obtenerGanador(){
-		return ganador;
+
+	public void noQuerer(Jugador jugadorQueNoQuiere){
+		if(jugadorQueNoQuiere.obtenerEquipoQuePertenece() == this.equipoCantor)
+			return;
+		this.equipoGanador = this.equipoCantor;
+		this.puntosGanados = this.cantidadDeEnvidosCantados;		
 	}
 	
 	public int obtenerPuntajeGanador(){
 		return this.puntosGanados;
-	}
-	
-	public void noQuerer(Equipo equipoQueNoQuiere){
-		if(equipoQueNoQuiere == this.equipoCantor)
-			return;
-		this.ganador = this.equipoCantor;
-		this.puntosGanados = this.cantidadDeEnvidosCantados;		
 	}
 	
 }
