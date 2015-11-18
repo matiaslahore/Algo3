@@ -1,10 +1,12 @@
-package fiuba.algo3.tp2.modelo;
+package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modelo.Juez;
+import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public abstract class Rondas{
@@ -42,7 +44,7 @@ public abstract class Rondas{
 		
         for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
-			System.out.println("TURNO DE: " + actual.nombre);
+			System.out.println("TURNO DE: " + actual.obtenerNombre());
 			interfaz(actual);
 		}
 		System.out.println(cartasEnJuego.get(0).cartaComoString() + " vs " + cartasEnJuego.get(1).cartaComoString());
@@ -123,7 +125,7 @@ public abstract class Rondas{
 		this.juez.puntosEnJuego(1);
 		this.tantoEnJuego.clear();
 		
-		System.out.println("EL TANTO LO GANA " + ganador.nombre);
+		System.out.println("EL TANTO LO GANA " + ganador.obtenerNombre());
 	}
 
 }

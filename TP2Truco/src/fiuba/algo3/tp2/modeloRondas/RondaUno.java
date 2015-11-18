@@ -1,10 +1,12 @@
-package fiuba.algo3.tp2.modelo;
+package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modelo.Juez;
+import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
@@ -38,7 +40,7 @@ public class RondaUno extends Rondas{
 		ganadoresRonda.add(ganador.returnEquipo());
 		this.cartasEnJuego.clear();
 		
-		System.out.println("RONDA UNO gana " + ganador.nombre);
+		System.out.println("RONDA UNO gana " + ganador.obtenerNombre());
 		
 		return new RondaDos(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}

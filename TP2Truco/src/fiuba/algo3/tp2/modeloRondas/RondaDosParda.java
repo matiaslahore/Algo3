@@ -1,9 +1,11 @@
-package fiuba.algo3.tp2.modelo;
+package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modelo.Juez;
+import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class RondaDosParda extends Rondas{
@@ -22,9 +24,9 @@ public class RondaDosParda extends Rondas{
 		}else{
 			ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 			ganadoresRonda.add(ganador.returnEquipo());
-			System.out.println("RONDA DOS gana " + ganador.nombre);
+			System.out.println("RONDA DOS gana " + ganador.obtenerNombre());
 			this.juez.anotarPuntos(ganador.returnEquipo());
-			System.out.println("RONDA TRES gana " + ganador.nombre);
+			System.out.println("RONDA TRES gana " + ganador.obtenerNombre());
 		}
 		
 		this.cartasEnJuego.clear();

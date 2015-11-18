@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
+import fiuba.algo3.tp2.modeloRondas.Rondas;
 
 public class Juez {
 
