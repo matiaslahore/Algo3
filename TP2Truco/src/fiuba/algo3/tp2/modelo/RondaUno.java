@@ -92,7 +92,8 @@ public class RondaUno extends Rondas{
 		
 		switch (opcion) {
 			case 1:
-				actual.cantarEnvido();
+				interfazTanto(actual);
+				//actual.cantarEnvido();
 				break;
 			case 2:
 				actual.cantarRealEnvido();
