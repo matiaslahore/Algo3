@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
@@ -37,7 +38,7 @@ public abstract class Rondas{
 	
 	public Rondas jugar() {
 		repartir();
-		this.juez.puntosEnJuego(1);
+		//this.juez.puntosEnJuego(1);
 		
         for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
@@ -63,43 +64,24 @@ public abstract class Rondas{
 
 	public void cantarFlor(){
 		this.juez.puntosEnJuego(3);
-		tantoCantado();
+		//tantoCantado();
 	}
 	
 	//CASO ENVIDO
 	public void cantarEnvido(){
 		this.juez.puntosEnJuego(2);
-		tantoCantado();
+		//tantoCantado();
 	}
 	public void cantarRealEnvido(){
 		this.juez.puntosEnJuego(3);
-		tantoCantado();
+		//tantoCantado();
 	}
 	public void cantarFaltaEnvido(){
 		int puntosFalta = this.juez.puntosDeLaFalta();
 		this.juez.puntosEnJuego(puntosFalta);
-		tantoCantado();
+		//tantoCantado();
 	}
 	
-	private void tantoCantado(){
-		//VER COMO HACER PARA QUE QUIERAN..
-		for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
-			Jugador actual = this.jugadores.get(i);
-			tantoEnJuego.add(actual.obtenerPuntosEnvido());
-		}
-		
-		int tantoGanador = this.juez.quienGanaElTanto(this.tantoEnJuego);
-		int indexCartaGanadora = this.tantoEnJuego.lastIndexOf(tantoGanador);
-		//esto esta mal xq si empatan en tanto gana el q no es mano.
-		
-		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-		this.juez.anotarPuntos(ganador.returnEquipo());
-		this.juez.puntosEnJuego(1);
-		this.tantoEnJuego.clear();
-		
-		System.out.println("EL TANTO LO GANA " + ganador.nombre);
-	}
-    
 	public ArrayList<String> getGanadores (){
 		return this.ganadoresRonda;
 	}
@@ -108,6 +90,40 @@ public abstract class Rondas{
 	
 	public int aQuienLeToca(){
 		return this.jugadorMano;
+	}
+	
+	public void interfazTanto(Jugador actual){
+		Scanner leer = new Scanner(System.in);
+		System.out.println("Acepta el tanto?: ");
+		System.out.println(" 1-Si\n 2-No\n");
+		int opcion = leer.nextInt();
+		
+		switch (opcion) {
+			case 1:
+				tantoAceptado();
+				break;
+			case 2:
+				juez.puntosEnJuego(1);
+				juez.anotarPuntos(actual.returnEquipo());
+				break;
+		}
+	}
+	
+	private void tantoAceptado(){
+		for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
+			Jugador actual = this.jugadores.get(i);
+			tantoEnJuego.add(actual.obtenerPuntosEnvido());
+		}
+		
+		int tantoGanador = this.juez.quienGanaElTanto(this.tantoEnJuego);
+		int indexCartaGanadora = this.tantoEnJuego.indexOf(tantoGanador);
+		
+		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+		this.juez.anotarPuntos(ganador.returnEquipo());
+		this.juez.puntosEnJuego(1);
+		this.tantoEnJuego.clear();
+		
+		System.out.println("EL TANTO LO GANA " + ganador.nombre);
 	}
 
 }
