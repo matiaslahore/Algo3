@@ -44,26 +44,5 @@ public class Envido {
 		this.puntosGanados = this.cantidadDeEnvidosCantados;		
 	}
 	
-	//Falta que Jugador sepa supar los puntos del envido
-	private void sumarCartasEnvido(){
-		ArrayList<Jugador> jugadoresEquipo1 = this.equipoCantor.obtenerJugadores(); //Una vez creada la clase juez, pedir a
-		ArrayList<Jugador> jugadoresEquipo2 = this.equipoAceptor.obtenerJugadores();//juez quien es la mano y ponerlo como eq1
-		int puntajeMaximo = 0;
-		for(int i=1; i<= 3; i++){
-			if(jugadoresEquipo1.get(i).obtenerPuntosEnvido() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvido();
-				this.ganador = this.equipoCantor;
-			}
-			if(jugadoresEquipo2.get(i).obtenerPuntosEnvido() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvido();
-				this.ganador = this.equipoAceptor;
-			}
-		}
-		if(puntajeMaximo == 0){
-			this.ganador = this.equipoCantor;
-		}
-	}
-	
-	
 }
 

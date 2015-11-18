@@ -3,14 +3,16 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class Truco {
-	private Equipo equipoCantor;
-	private Equipo equipoAceptor;
-	private Equipo ganador;
+	private String equipo1;
+	private String equipo2;
+	private String equipoGanador;
 	private int puntosGanados;
 	private int cantidadDetrucosCantados;
 	
-	public Truco(){
-		this.equipoAceptor = this.equipoCantor = this.ganador = null;
+	public Truco(String equipo1,String equipo2){
+		this.equipo1 = equipo1;
+		this.equipo2 = equipo2;
+		this.equipoGanador = "";
 		this.puntosGanados = 0;
 		this.cantidadDetrucosCantados = 0;
 	}
@@ -44,25 +46,4 @@ public class Truco {
 		this.ganador = this.equipoCantor;
 		this.puntosGanados = this.cantidadDetrucosCantados;		
 	}
-	
-	//Falta que Jugador sepa sumar los puntos del truco
-		private void sumarCartasTruco(){
-			ArrayList<Jugador> jugadoresEquipo1 = this.equipoCantor.obtenerJugadores(); //Una vez creada la clase juez, pedir a
-			ArrayList<Jugador> jugadoresEquipo2 = this.equipoAceptor.obtenerJugadores();//juez quien es la mano y ponerlo como eq1
-			int puntajeMaximo = 0;
-			for(int i=1; i<= 3; i++){
-				if(jugadoresEquipo1.get(i).obtenerPuntosTruco() > puntajeMaximo){
-					puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosTruco();
-					this.ganador = this.equipoCantor;
-				}
-				if(jugadoresEquipo2.get(i).obtenerPuntosTruco() > puntajeMaximo){
-					puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosTruco();
-					this.ganador = this.equipoAceptor;
-				}
-			}
-			if(puntajeMaximo == 0){
-				this.ganador = this.equipoCantor;
-			}
-		}
-	
 }

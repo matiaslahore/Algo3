@@ -15,6 +15,7 @@ public class Flor {
 	}
 	
 	public void cantarFlor(Equipo equipoQueCanta){
+		if()
 		if((equipoQueCanta != this.equipoCantor) && (this.cantidadDeFloresCantadas < 2)){ 
 			this.equipoCantor = equipoQueCanta;
 			this.cantidadDeFloresCantadas++;
@@ -45,25 +46,4 @@ public class Flor {
 		if(this.cantidadDeFloresCantadas == 2)
 			this.puntosGanados++;		
 	}
-	
-	//Falta que Jugador sepa sumar los puntos de la flor
-	private void sumarCartasFlor(){
-		ArrayList<Jugador> jugadoresEquipo1 = this.equipoCantor.obtenerJugadores(); //Una vez creada la clase juez, pedir a
-		ArrayList<Jugador> jugadoresEquipo2 = this.equipoAceptor.obtenerJugadores();//juez quien es la mano y ponerlo como eq1
-		int puntajeMaximo = 0;
-		for(int i=1; i<= 3; i++){
-			if(jugadoresEquipo1.get(i).obtenerPuntosEnvidoConFlor() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvidoConFlor();
-				this.ganador = this.equipoCantor;
-			}
-			if(jugadoresEquipo2.get(i).obtenerPuntosEnvidoConFlor() > puntajeMaximo){
-				puntajeMaximo = jugadoresEquipo1.get(i).obtenerPuntosEnvidoConFlor();
-				this.ganador = this.equipoAceptor;
-			}
-		}
-		if(puntajeMaximo == 0){
-			this.ganador = this.equipoCantor;
-		}
-	}
-	
 }
