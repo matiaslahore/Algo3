@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
+import modeloJugador.Jugador;
 
 public class Equipo {
 	String nombreEquipo;

@@ -7,6 +7,7 @@ import org.junit.Test;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.SeisDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeBasto;
+import modeloJugador.Jugador;
 
 public class EnvidoTest {
 	Envido envido;

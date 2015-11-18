@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.modelo;
+package modeloJugador;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import org.omg.CORBA.SystemException;
 
+import fiuba.algo3.tp2.modelo.Mano;
+import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 
 public class Jugador {

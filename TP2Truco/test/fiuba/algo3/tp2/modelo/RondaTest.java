@@ -8,6 +8,7 @@ import org.junit.Test;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modeloRondas.RondaUno;
 import fiuba.algo3.tp2.modeloRondas.Rondas;
+import modeloJugador.Jugador;
 
 public class RondaTest {
 
