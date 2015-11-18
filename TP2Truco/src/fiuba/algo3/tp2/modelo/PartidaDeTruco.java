@@ -12,9 +12,7 @@ public abstract class PartidaDeTruco {
 	public abstract void cargarJugadoresEnEquipoUno(String jugadorUno);
 	
 	public abstract void cargarJugadoresEnEquipoDos(String jugadorUno);
-	
-	public abstract void cantarEnvido(String jugador);
-	
+		
 	/*public void cargarJugadoresEnEquipoUno(String jugadorUno, String jugadorDos, String jugadorTres){
 		
 		LinkedList<String> nombreJugadores = new LinkedList<String>();
