@@ -10,7 +10,7 @@ public class Visualizador extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		Image image = new Image();
+		//Image image = new Image();
 		
 	
 	}
