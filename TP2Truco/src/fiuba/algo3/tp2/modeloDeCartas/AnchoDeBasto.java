@@ -1,14 +1,8 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-import fiuba.algo3.tp2.modelo.Basto;
-import fiuba.algo3.tp2.modelo.Palo;
-
 public class AnchoDeBasto implements TipoDeCartas{
 	
-	Palo palo;
-	
 	public AnchoDeBasto(){
-		this.palo = new Basto();
 	}
 	
 	public int valorParaEnvido(){
