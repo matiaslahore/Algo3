@@ -2,8 +2,6 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 
-import modeloJugador.Jugador;
-
 public class Truco {
 	private String equipoCantor;
 	private String equipoAceptor;
