@@ -11,7 +11,7 @@ public class RondaDosParda extends Rondas{
 	public RondaDosParda(Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 		super(juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
 	}
-
+	
 	public Rondas ganador(){
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
 		Jugador ganador = null;
