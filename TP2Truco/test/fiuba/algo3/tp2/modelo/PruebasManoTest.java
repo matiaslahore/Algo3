@@ -14,6 +14,6 @@ public class PruebasManoTest {
 		//mano = new Mano(new AnchoDeCopa(), new SieteDeEspada(), new SeisDeEspada());
 		//Assert.assertEquals(33,mano.calcularEnvido());
 		mano = new Mano(new TresDeCopa(), new SieteDeEspada(), new CuatroDeCopa());
-		Assert.assertEquals(25,mano.calcularEnvido());
+		Assert.assertEquals(27,mano.calcularEnvido());
 	}
 }

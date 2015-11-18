@@ -48,7 +48,7 @@ public class Mano {
 		TipoDeCartas cartaUno = cartas.get(0);
 		TipoDeCartas cartaDos = cartas.get(1);
 		TipoDeCartas cartaTres = cartas.get(2);
-		return (cartaUno.sumarTanto);
+		return (cartaUno.sumarTantosConFlor(cartaDos, cartaTres));
 	}
 
 	public TipoDeCartas tirar(int n) {
