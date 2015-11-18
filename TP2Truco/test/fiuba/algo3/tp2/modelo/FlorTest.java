@@ -58,4 +58,9 @@ public class FlorTest {
 		Assert.assertEquals(null,this.flor.obtenerGanador());
 		Assert.assertEquals(0,this.flor.obtenerPuntajeGanador());
 	}
+	
+	@Test
+	public void jugadorEquipo1CantaFlorYNoTieneDevuelveError(){
+		Assert.assertFalse(this.flor.cantarFlor(this.equipo1));
+	}
 }
