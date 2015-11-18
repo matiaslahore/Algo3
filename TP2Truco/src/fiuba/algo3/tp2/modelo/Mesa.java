@@ -67,7 +67,7 @@ public class Mesa {
 	
 	public void iniciar() {
 		
-		ronda = new RondaUno(juez, ganadoresRonda, this.jugadores, this.indexMano, this.indexMano);
+		ronda = new RondaUno(juez, ganadoresRonda, cartasEnJuego, this.jugadores, this.indexMano, this.indexMano);
 		
 		do{
 			ronda = ronda.jugar();

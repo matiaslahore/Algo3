@@ -18,9 +18,10 @@ public abstract class Rondas{
 	int indexMano;
 	boolean sigue;
 
-	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
+	public Rondas(Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
 		this.ganadoresRonda = ganadoresRonda;
+		this.cartasEnJuego = cartasEnJuego;
 		this.jugadores = jugadores;
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		tantoEnJuego = new ArrayList<Integer>();

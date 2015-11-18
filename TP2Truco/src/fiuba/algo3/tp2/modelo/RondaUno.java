@@ -5,12 +5,13 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class RondaUno extends Rondas{
 
-	public RondaUno(Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
-		super(juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+	public RondaUno(Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+		super(juez, ganadoresRonda, cartasEnJuego,jugadores, indexManoAux, indexMano);
 	}
 	
 	//EN RONDA UNO SE REPARTE
@@ -26,7 +27,12 @@ public class RondaUno extends Rondas{
 	
 	public Rondas ganador(){
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
-		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
+		
+		//int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
+		int indexCartaGanadora = this.cartasEnJuego.indexOf(new AnchoDeEspada());
+		if (indexCartaGanadora == -1){ //es parda
+			return new RondaUnoParda(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
+		}
 		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 		ganadoresRonda.add(ganador.returnEquipo());
@@ -34,7 +40,7 @@ public class RondaUno extends Rondas{
 		
 		System.out.println("RONDA UNO gana " + ganador.nombre);
 		
-		return new RondaDos(juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
+		return new RondaDos(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}
 	
 	public void interfaz(Jugador actual){

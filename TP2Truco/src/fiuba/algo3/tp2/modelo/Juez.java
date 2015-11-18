@@ -45,6 +45,10 @@ public class Juez {
 		return ganadora;
 	}
 	
+	//public boolean hayParda(TipoDeCartas a , TipoDeCartas b){
+	//	
+	//}
+	
 	private TipoDeCartas ganador(TipoDeCartas a, TipoDeCartas b){
 		return a.vs(b);
 	}
