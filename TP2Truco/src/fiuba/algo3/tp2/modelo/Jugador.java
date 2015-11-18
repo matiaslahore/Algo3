@@ -53,6 +53,10 @@ public class Jugador {
 		return this.envido;
 	}
 	
+	public int obtenerPuntosFlor(){
+		return this.envido;
+	}
+	
 	public TipoDeCartas jugarPrimera(){
 		return this.manoDelJugador.returnPrimera();
 	}
@@ -92,4 +96,7 @@ public class Jugador {
 	    return this.manoDelJugador.returnCantidadDeCartas();	
 	}
 	
+	public String obtenerEquipoQuePertenece(){
+		return(this.equipo);
+	}
 }
