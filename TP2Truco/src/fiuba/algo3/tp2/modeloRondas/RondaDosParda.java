@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
+import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class RondaDosParda extends Rondas{
 

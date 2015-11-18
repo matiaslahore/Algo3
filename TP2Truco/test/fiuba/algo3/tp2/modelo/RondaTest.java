@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.RondaUno;
 import fiuba.algo3.tp2.modeloRondas.Rondas;
 
