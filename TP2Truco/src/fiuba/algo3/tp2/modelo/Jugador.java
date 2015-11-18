@@ -79,13 +79,13 @@ public class Jugador {
 	/*public TipoDeCartas jugarCarta() {
 		return this.manoDelJugador.returnPrimera();
 	}*/
-	public TipoDeCartas jugarCarta() { //////////////////////////////////////////////PRIVATE
+	public void jugarCarta() { //////////////////////////////////////////////PRIVATE
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Ingerese numero de carta a jugar: ");
 		verCartasEnManoComoString();
 		int n = leer.nextInt();
-		
-		return this.manoDelJugador.tirar(n);
+		this.refMesa.recibirCarta(this.manoDelJugador.tirar(n));
+	
 	}
 
 	private void verCartasEnManoComoString() {

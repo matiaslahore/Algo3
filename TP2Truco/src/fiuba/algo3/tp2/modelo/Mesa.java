@@ -26,7 +26,7 @@ public class Mesa {
 	}
 	
 	public void recibirCarta(TipoDeCartas carta){
-		ronda.recibirCarta(carta);
+		this.cartasEnJuego.add(carta);
 	}
 
 	public TipoDeCartas repartirCarta() {
