@@ -1,7 +1,12 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modeloDeCartas.*;
 
 public class SituacionesDeJuegoTest {
 
@@ -70,5 +75,25 @@ public class SituacionesDeJuegoTest {
 		partida.iniciar();
 		
 	}
-
+	
+	/*@Test
+	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
+		
+		Juez juez = new Juez(new Mesa("eq1","eq2"),"eq1","eq2");
+		
+		ArrayList<TipoDeCartas> cartasEnJuego = new ArrayList<TipoDeCartas>();
+		
+		Jugador j1 = new Jugador("eq1", new Mesa("eq1","eq2"));
+		Jugador j2 = new Jugador("eq2", new Mesa("eq1","eq2"));
+		
+		j1.recibirCartas(new CuatroDeCopa(), new DosDeCopa(), new TresDeCopa());
+		j2.recibirCartas(new CincoDeBasto(), new DosDeBasto(), new TresDeBasto());
+		
+		cartasEnJuego.add(j1.jugarPrimera());
+		cartasEnJuego.add(j2.jugarPrimera());
+		
+		Assert.assertEquals(cartasEnJuego.get(1),juez.quienGana(cartasEnJuego));
+		
+	}*/
+	
 }

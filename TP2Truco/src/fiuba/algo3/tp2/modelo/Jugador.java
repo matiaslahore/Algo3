@@ -76,11 +76,9 @@ public class Jugador {
 		return this.manoDelJugador.returnPrimera();
 	}*/
 	public TipoDeCartas jugarCarta() { //////////////////////////////////////////////PRIVATE
-		verCartasEnManoComoString();
-		
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Ingerese numero de carta a jugar: ");
-		System.out.println(this.manoDelJugador.cartas);
+		verCartasEnManoComoString();
 		int n = leer.nextInt();
 		
 		return this.manoDelJugador.tirar(n);

@@ -104,5 +104,7 @@ public abstract class Rondas{
 	
 	public abstract void interfaz(Jugador actual);
 	
-	
+	public int aQuienLeToca(){
+		return this.jugadorMano;
+	}
 }
