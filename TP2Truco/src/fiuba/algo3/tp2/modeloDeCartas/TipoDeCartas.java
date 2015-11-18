@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
 public interface TipoDeCartas {
-	
+
 	public abstract TipoDeCartas vs(TipoDeCartas contra);
 	
 	public abstract TipoDeCartas vs(AnchoDeEspada contra);
@@ -36,6 +36,13 @@ public interface TipoDeCartas {
 	
 	public abstract int valorParaEnvido();
 
+	public default int sumarTantosConFlor(TipoDeCartas cartaUno, TipoDeCartas cartaDos){
+		
+		// despues te agrego la exception
+		
+		return this.valorParaEnvido() + cartaUno.valorParaEnvido() + cartaDos.valorParaEnvido();
+	}
+	
 	public abstract int sumarTanto(TipoDeCartas sumar);
 	public abstract int sumarTanto(AnchoDeEspada sumar);
 	public abstract int sumarTanto(AnchoDeBasto sumar);
