@@ -6,13 +6,11 @@ public class Truco {
 	private String equipoCantor;
 	private String equipoAceptor;
 	private String equipoGanador;
-	private int puntosGanados;
 	private int cantidadDetrucosCantados;
 	
 	public Truco(){
 		this.equipoCantor = this.equipoAceptor = this.equipoGanador = "";
-		this.puntosGanados = 0;
-		this.cantidadDetrucosCantados = 0;
+		this.cantidadDetrucosCantados = 1;
 	}
 	
 	public void cantarTruco(Jugador jugadorQueCanta){
@@ -25,23 +23,18 @@ public class Truco {
 	public void querer(Jugador jugadorQueQuiere){
 		if(jugadorQueQuiere.obtenerEquipoQuePertenece() == this.equipoCantor)
 			return;
-		this.equipoAceptor = equipoQueQuiere;
-		this.sumarCartasTruco();
-		this.puntosGanados = (this.cantidadDetrucosCantados);
+		this.equipoAceptor = jugadorQueQuiere.obtenerEquipoQuePertenece();
 	}
 	
-	public Equipo obtenerGanador(){
-		return(this.ganador);
-	}
+	public void noQuerer(Jugador jugadorQueNoQuiere){
+		if(jugadorQueNoQuiere.obtenerEquipoQuePertenece() == this.equipoCantor)
+			return;
+		this.equipoGanador = this.equipoCantor;	
+	}	
 	
 	public int obtenerPuntajeGanador(){
-		return this.puntosGanados;
+		return this.cantidadDetrucosCantados;
 	}
 	
-	public void noQuerer(Equipo equipoQueNoQuiere){
-		if(equipoQueNoQuiere == this.equipoCantor)
-			return;
-		this.ganador = this.equipoCantor;
-		this.puntosGanados = this.cantidadDetrucosCantados;		
-	}
+	
 }
