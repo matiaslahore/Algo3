@@ -38,6 +38,10 @@ public class Envido {
 	public int obtenerPuntajeGanador(){
 		return this.puntosGanados;
 	}
+
+	public boolean puedeCantar(Jugador jugador) {
+		return(!(this.equipoCantor == jugador.obtenerEquipoQuePertenece()));
+	}
 	
 }
 

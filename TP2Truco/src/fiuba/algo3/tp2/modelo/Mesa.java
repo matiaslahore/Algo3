@@ -94,4 +94,8 @@ public class Mesa {
 	public void cantarFaltaEnvido( Jugador jugadorQueCanta){
 		
 	}
+
+	public boolean puedeCantarEnvido(Jugador jugador) {
+		return(this.envido.puedeCantar(jugador));
+	}
 }

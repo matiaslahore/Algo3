@@ -37,7 +37,7 @@ public abstract class Rondas{
 	
 	public Rondas jugar() {
 		repartir();
-		this.juez.puntosEnJuego(1);
+		//this.juez.puntosEnJuego(1);
 		
         for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);

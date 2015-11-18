@@ -81,6 +81,10 @@ public class RondaUno extends Rondas{
 	}
 	
 	private void casoEnvido(Jugador actual){
+		
+		if(!actual.puedeCantarEnvido())
+			return;
+		
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Seleccione una opcion: ");
 		System.out.println(" 1-Cantar envido\n 2-Cantar real envido\n 3-Cantar falta envido");

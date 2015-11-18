@@ -115,5 +115,9 @@ public class Jugador {
 	public void cantarFaltaEnvido(){
 		
 	}
+
+	public boolean puedeCantarEnvido() {
+		return(this.refMesa.puedeCantarEnvido(this));
+	}
 	
 }
