@@ -99,4 +99,21 @@ public class Jugador {
 	public String obtenerEquipoQuePertenece(){
 		return(this.equipo);
 	}
+	
+	public void cantarTruco (){
+		this.refMesa.cantarTruco(this);
+	}
+	
+	public void cantarEnvido(){
+		this.refMesa.cantarEnvido(this);
+	}
+	
+	public void cantarRealEnvido (){
+		
+	}
+	
+	public void cantarFaltaEnvido(){
+		
+	}
+	
 }

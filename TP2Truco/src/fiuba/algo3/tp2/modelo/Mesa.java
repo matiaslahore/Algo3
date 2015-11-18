@@ -15,6 +15,9 @@ public class Mesa {
 	Puntos puntos;
 	Rondas ronda;
 	int indexMano;
+	Truco truco;
+	Envido envido;
+	
 	
 	public Mesa(String equipoUno, String equipoDos){
 		jugadores = new ListaCircular<Jugador>();
@@ -23,6 +26,8 @@ public class Mesa {
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		puntos = new Puntos(equipoUno,equipoDos);
 		indexMano = 0;
+		this.truco= new Truco();
+		this.envido = new Envido();
 	}
 	
 	public void recibirCarta(TipoDeCartas carta){
@@ -77,5 +82,16 @@ public class Mesa {
 	/*public Jugador ganadorDeMano (){
 		return ronda.getGanadores().get(this.indexMano);
 	}*/
-
+    
+	public void cantarTruco(Jugador jugadorQueCanta){
+		this.truco.cantarTruco(jugadorQueCanta);
+	}
+	
+	public void cantarEnvido( Jugador jugadorQueCanta){
+		this.envido.cantarEnvido(jugadorQueCanta);
+	}
+	
+	public void cantarFaltaEnvido( Jugador jugadorQueCanta){
+		
+	}
 }
