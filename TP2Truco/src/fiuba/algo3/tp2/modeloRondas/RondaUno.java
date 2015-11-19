@@ -31,7 +31,6 @@ public class RondaUno extends Rondas{
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
 		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
-		//int indexCartaGanadora = this.cartasEnJuego.indexOf(new AnchoDeEspada());
 		if (indexCartaGanadora == -1){ //es parda
 			return new RondaUnoParda(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
 		}

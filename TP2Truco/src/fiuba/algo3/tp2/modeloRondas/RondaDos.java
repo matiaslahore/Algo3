@@ -17,13 +17,12 @@ public class RondaDos extends Rondas{
 	
 	public Rondas ganador(){
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
-		Jugador ganador = null; //si no lo pongo me hincha los huevos
 		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		if (indexCartaGanadora == -1){ //es parda
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 		}else{
-			ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 			ganadoresRonda.add(ganador.returnEquipo());
 			System.out.println("RONDA DOS gana " + ganador.returnEquipo() + "\n");
 		}

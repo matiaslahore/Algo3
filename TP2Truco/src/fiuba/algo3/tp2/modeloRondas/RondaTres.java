@@ -17,18 +17,18 @@ public class RondaTres extends Rondas{
 
 	public Rondas ganador(){
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
-		Jugador ganador = null;
+		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		if (indexCartaGanadora == -1){ //es parda
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 			this.juez.anotarPuntos(ganadoresRonda.get(0));
 		}else{
-			ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 			ganadoresRonda.add(ganador.returnEquipo());
-			System.out.println("RONDA DOS gana " + ganador.obtenerNombre());
 			this.juez.anotarPuntos(ganador.returnEquipo());
-			System.out.println("RONDA TRES gana " + ganador.returnEquipo() + "\n");
 		}
+		
+		System.out.println("RONDA TRES la gana: " + ganadoresRonda.get(2) + "\n");
 		
 		this.cartasEnJuego.clear();
 		this.ganadoresRonda = new ArrayList<String>();
