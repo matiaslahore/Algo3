@@ -32,7 +32,7 @@ public class RondaUno extends Rondas{
 		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		if (indexCartaGanadora == -1){ //es parda
-			return new RondaUnoParda(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
+			return new RondaDosParda(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
 		}
 		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);

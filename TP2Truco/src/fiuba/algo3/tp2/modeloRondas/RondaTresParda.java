@@ -5,33 +5,31 @@ import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class RondaUnoParda extends Rondas{
+public class RondaTresParda extends Rondas{
 
-	public RondaUnoParda(Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
-		super(juez, ganadoresRonda, cartasEnJuego,jugadores, indexManoAux, indexMano);
+	public RondaTresParda(Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+		super(juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
 	}
-
+	
 	public Rondas ganador(){
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
+		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
-		//int indexCartaGanadora = this.cartasEnJuego.indexOf(new AnchoDeEspada());
 		if (indexCartaGanadora == -1){ //es parda
-			return new RondaDosParda(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
+			ganadoresRonda.add(jugadores.get(indexMano).returnEquipo());
+			this.juez.anotarPuntos(jugadores.get(indexMano).returnEquipo()); //gana el q es mano
+		}else{
+			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+			ganadoresRonda.add(ganador.returnEquipo());
+			this.juez.anotarPuntos(ganador.returnEquipo());
 		}
-		//JUGADOR GANADOR ES: indexCartaGanadora + indexMano
-		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-		ganadoresRonda.add(ganador.returnEquipo());
+		
+		System.out.println("RONDA TRES la gana: " + ganadoresRonda.get(0) + "\n");
+		
 		this.cartasEnJuego.clear();
-		
-		System.out.println("RONDA DOS gana " + ganador.obtenerNombre());
-		
-		System.out.println("TERMINOOOOOOOOO gano 1ra y 2da el mismo");
-			
-		this.juez.anotarPuntos(ganador.returnEquipo());
 		this.ganadoresRonda = new ArrayList<String>();
 		
 		System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
@@ -39,7 +37,6 @@ public class RondaUnoParda extends Rondas{
 		
 		this.indexMano = this.indexMano + 1;
 		return new RondaUno(juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
-		
 	}
 
 	@Override
