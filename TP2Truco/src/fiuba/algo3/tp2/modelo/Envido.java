@@ -45,5 +45,9 @@ public class Envido {
 		return(!(this.equipoCantor == jugador.obtenerEquipoQuePertenece()));
 	}
 	
+	public String obtenerGanador(){
+		return(this.equipoGanador);
+	}
+	
 }
 
