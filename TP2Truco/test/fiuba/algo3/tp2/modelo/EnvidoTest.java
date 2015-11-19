@@ -27,32 +27,32 @@ public class EnvidoTest {
 	
 	@Test
 	public void equipo1CantaEnvidoYEquipo2NoQuiereEntoncesEquipo1GanaUnPunto(){
-		this.envido.cantarEnvido(this.equipo1.obtenerJugadores());
-		this.envido.noQuerer(this.equipo2.obtenerJugadores());
+		this.envido.cantarEnvido(this.equipo1.obtenerJugadores().get(0));
+		this.envido.noQuerer(this.equipo2.obtenerJugadores().get(0));
 		Assert.assertEquals(this.equipo1.obtenerNombre(),this.envido.obtenerGanador());
 		Assert.assertEquals(1,this.envido.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void equipo2CantaEnvidoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
-		this.envido.cantarEnvido(this.equipo2.obtenerJugadores());
-		this.envido.noQuerer(this.equipo1.obtenerJugadores());
+		this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
+		this.envido.noQuerer(this.equipo1.obtenerJugadores().get(0));
 		Assert.assertEquals(this.equipo2.obtenerNombre(),this.envido.obtenerGanador());
 		Assert.assertEquals(1,this.envido.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void elEquipoQueCantaNoPuedeQuererElEnvido(){
-		this.envido.cantarEnvido(this.equipo2.obtenerJugadores());
-		this.envido.querer(this.equipo2.obtenerJugadores());
+		this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
+		this.envido.querer(this.equipo2.obtenerJugadores().get(0));
 		Assert.assertEquals("",this.envido.obtenerGanador());
 		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void elEquipoQueCantaNoPuedeNoQuererElEnvido(){
-		this.envido.cantarEnvido(this.equipo2.obtenerJugadores());
-		this.envido.noQuerer(this.equipo2.obtenerJugadores());
+		this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
+		this.envido.noQuerer(this.equipo2.obtenerJugadores().get(0));
 		Assert.assertEquals("",this.envido.obtenerGanador());
 		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
 	}
