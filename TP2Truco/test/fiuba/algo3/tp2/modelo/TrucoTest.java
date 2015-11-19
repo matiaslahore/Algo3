@@ -12,42 +12,44 @@ public class TrucoTest {
 	
 	@Before
 	public void Inicializar(){
-		this.mesa = new Mesa("Pablo", "Tute");
+		this.mesa = new Mesa("EquipoNico", "EquipoTute");
 		this.truco = new Truco();
-		this.equipo1 = new Equipo("Pablo",mesa);
-		this.equipo2 = new Equipo("Tute",mesa);
+		this.equipo1 = new Equipo("EquipoNico",mesa);
+		this.equipo1.cargarJugadores("Nico");
+		this.equipo2 = new Equipo("EquipoTute",mesa);
+		this.equipo2.cargarJugadores("Tute");
 	}
 	
 	@Test
 	public void equipo1CantaTrucoYEquipo2NoQuiereEntoncesEquipo1GanaUnPunto(){
-		this.truco.cantarTruco(this.equipo1);
-		this.truco.noQuerer(this.equipo2);
-		Assert.assertEquals(this.equipo1.obtenerNombre(),this.truco.obtenerGanador().obtenerNombre());
+		this.truco.cantarTruco(this.equipo1.obtenerJugadores());
+		this.truco.noQuerer(this.equipo2.obtenerJugadores());
+		Assert.assertEquals(this.equipo1.obtenerNombre(),this.truco.obtenerGanador());
 		Assert.assertEquals(1,this.truco.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void equipo2CantaTrucoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
-		this.truco.cantarTruco(this.equipo2);
-		this.truco.noQuerer(this.equipo1);
-		Assert.assertEquals(this.equipo2.obtenerNombre(),this.truco.obtenerGanador().obtenerNombre());
+		this.truco.cantarTruco(this.equipo2.obtenerJugadores());
+		this.truco.noQuerer(this.equipo1.obtenerJugadores());
+		Assert.assertEquals(this.equipo2.obtenerNombre(),this.truco.obtenerGanador());
 		Assert.assertEquals(1,this.truco.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void elEquipoQueCantaNoPuedeQuererElTruco(){
-		this.truco.cantarTruco(this.equipo2);
-		this.truco.querer(this.equipo2);
-		Assert.assertEquals(null,this.truco.obtenerGanador());
-		Assert.assertEquals(0,this.truco.obtenerPuntajeGanador());
+		this.truco.cantarTruco(this.equipo2.obtenerJugadores());
+		this.truco.querer(this.equipo2.obtenerJugadores());
+		Assert.assertEquals("",this.truco.obtenerGanador());
+		Assert.assertEquals(1,this.truco.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void elEquipoQueCantaNoPuedeNoQuererElTruco(){
-		this.truco.cantarTruco(this.equipo2);
-		this.truco.noQuerer(this.equipo2);
-		Assert.assertEquals(null,this.truco.obtenerGanador());
-		Assert.assertEquals(0,this.truco.obtenerPuntajeGanador());
+		this.truco.cantarTruco(this.equipo2.obtenerJugadores());
+		this.truco.noQuerer(this.equipo2.obtenerJugadores());
+		Assert.assertEquals("",this.truco.obtenerGanador());
+		Assert.assertEquals(1,this.truco.obtenerPuntajeGanador());
 	}
 	
 }
