@@ -24,7 +24,7 @@ public class RondaUno extends Rondas{
 			Jugador unJugador = (Jugador) itr.next();
 			unJugador.recibirCartas(juez.repartir(), juez.repartir(), juez.repartir());
 		}
-		System.out.println("REPARTEN");
+		System.out.println("NUEVA RONDA\n");
 	}
 	
 	public Rondas ganador(){
@@ -40,7 +40,7 @@ public class RondaUno extends Rondas{
 		ganadoresRonda.add(ganador.returnEquipo());
 		this.cartasEnJuego.clear();
 		
-		System.out.println("RONDA UNO gana " + ganador.obtenerNombre());
+		System.out.println("RONDA UNO la gana: " + ganador.returnEquipo() + "\n");
 		
 		return new RondaDos(juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}

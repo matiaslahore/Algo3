@@ -35,13 +35,16 @@ public class Juez {
 	}
 
 	public TipoDeCartas quienGana(ArrayList<TipoDeCartas> cartasEnJuego) {
-		TipoDeCartas ganadora = null; // = cartasEnJuego.get(0); //me obliga a inicializar
 		Iterator<TipoDeCartas> itr = cartasEnJuego.iterator();
-		//Siempre van a ser cantidad de cartas pares (2,4,6)
+		
+		TipoDeCartas cartaUno = (TipoDeCartas) itr.next();
+		TipoDeCartas cartaDos = (TipoDeCartas) itr.next();
+		TipoDeCartas ganadora = ganador(cartaUno,cartaDos);
+		System.out.println(ganadora);
 		while(itr.hasNext()) {
-			TipoDeCartas a = (TipoDeCartas) itr.next();
-			TipoDeCartas b = (TipoDeCartas) itr.next();
-			ganadora = ganador(a,b);
+			TipoDeCartas otraCarta = (TipoDeCartas) itr.next();
+			ganadora = ganador(ganadora,otraCarta);
+			System.out.println(ganadora);
 		}
 		return ganadora;
 	}

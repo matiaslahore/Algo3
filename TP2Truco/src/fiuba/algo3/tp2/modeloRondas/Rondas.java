@@ -40,15 +40,23 @@ public abstract class Rondas{
 	
 	public Rondas jugar() {
 		repartir();
-		//this.juez.puntosEnJuego(1);
+		this.juez.puntosEnJuego(1);
 		
         for ( int i = jugadorMano ; i <= (this.jugadores.size() - 1 + jugadorMano) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
-			System.out.println("TURNO DE: " + actual.obtenerNombre());
+			System.out.println("ES EL TURNO DE: " + actual.obtenerNombre() + "\n");
 			interfaz(actual);
 		}
-		System.out.println(cartasEnJuego.get(0).cartaComoString() + " vs " + cartasEnJuego.get(1).cartaComoString());
+		imprimirCartasEnJuego();
 		return ganador();
+	}
+
+	private void imprimirCartasEnJuego() {
+		String linea="CARTAS EN JUEGO: | ";
+		for (TipoDeCartas carta:cartasEnJuego){
+			linea = linea + carta.cartaComoString() + " | ";
+		}
+		System.out.println(linea);
 	}
 
 	public abstract Rondas ganador();

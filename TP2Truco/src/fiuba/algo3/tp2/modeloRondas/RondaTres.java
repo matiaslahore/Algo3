@@ -19,7 +19,6 @@ public class RondaTres extends Rondas{
 		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
 		Jugador ganador = null;
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
-		//int indexCartaGanadora = this.cartasEnJuego.indexOf(new AnchoDeEspada());
 		if (indexCartaGanadora == -1){ //es parda
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 			this.juez.anotarPuntos(ganadoresRonda.get(0));
@@ -28,7 +27,7 @@ public class RondaTres extends Rondas{
 			ganadoresRonda.add(ganador.returnEquipo());
 			System.out.println("RONDA DOS gana " + ganador.obtenerNombre());
 			this.juez.anotarPuntos(ganador.returnEquipo());
-			System.out.println("RONDA TRES gana " + ganador.obtenerNombre());
+			System.out.println("RONDA TRES gana " + ganador.returnEquipo() + "\n");
 		}
 		
 		this.cartasEnJuego.clear();

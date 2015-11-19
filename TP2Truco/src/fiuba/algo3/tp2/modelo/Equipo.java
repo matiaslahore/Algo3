@@ -56,11 +56,8 @@ public class Equipo {
 		//puse eso para q no me joda eclipse
 	}
 
-	/*public ArrayList<Jugador> obtenerJugadores(){
+	public ArrayList<Jugador> obtenerJugadores(){
 		return(this.jugadores);
-	}*/
-	public Jugador obtenerJugadores(){
-		return(this.jugadores.get(0));
 	}
 	
 	public String obtenerNombre(){

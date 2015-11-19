@@ -69,7 +69,11 @@ public class SituacionesDeJuegoTest {
 		PartidaDeTrucoConFlor partida = new PartidaDeTrucoConFlor("EquipoUno", "EquipoDos");
 		
 		partida.cargarJugadoresEnEquipoUno("pipi");
-		partida.cargarJugadoresEnEquipoDos("diegote");
+		partida.cargarJugadoresEnEquipoUno("bufa");
+		partida.cargarJugadoresEnEquipoUno("caute");
+		partida.cargarJugadoresEnEquipoDos("carlitos");
+		partida.cargarJugadoresEnEquipoDos("juancito");
+		partida.cargarJugadoresEnEquipoDos("miguelito");
 		partida.sentarJugadores();
 				
 		partida.iniciar();

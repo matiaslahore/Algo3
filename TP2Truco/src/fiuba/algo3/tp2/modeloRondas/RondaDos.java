@@ -20,19 +20,16 @@ public class RondaDos extends Rondas{
 		Jugador ganador = null; //si no lo pongo me hincha los huevos
 		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
-		//int indexCartaGanadora = this.cartasEnJuego.indexOf(new AnchoDeEspada());
 		if (indexCartaGanadora == -1){ //es parda
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 		}else{
 			ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 			ganadoresRonda.add(ganador.returnEquipo());
-			System.out.println("RONDA DOS gana " + ganador.obtenerNombre());
+			System.out.println("RONDA DOS gana " + ganador.returnEquipo() + "\n");
 		}
 		this.cartasEnJuego.clear();
 		
 		if (this.ganadoresRonda.get(0) == this.ganadoresRonda.get(1)){
-			System.out.println("TERMINOOOOOOOOO gano 1ra y 2da el mismo");
-			
 			this.juez.anotarPuntos(this.ganadoresRonda.get(0));
 			this.ganadoresRonda = new ArrayList<String>();
 			

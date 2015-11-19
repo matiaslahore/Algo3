@@ -49,23 +49,19 @@ public class Mesa {
 		this.puntos.anotarPuntos(equipo, cantidad);
 	}
 
-	/*public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
+	public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
 		Iterator<Jugador> itrEqUno = equipoUno.iterator();
-		Iterator<Jugador> itrEqDos = equipoUno.iterator();
-		
-		while(itrEqUno.hasNext()) {
+		Iterator<Jugador> itrEqDos = equipoDos.iterator();
+				
+		while(itrEqUno.hasNext() && itrEqDos.hasNext()) {
 			Jugador jugadorEqUno = (Jugador) itrEqUno.next();
 			jugadores.add(jugadorEqUno);
 			Jugador jugadorEqDos = (Jugador) itrEqDos.next();
 			jugadores.add(jugadorEqDos);
 			
-			System.out.println(jugadorEqUno.nombre);
-			System.out.println(jugadorEqDos.nombre);
+			System.out.println("SENTE A:" + jugadorEqUno.obtenerNombre());
+			System.out.println("SENTE A:" + jugadorEqDos.obtenerNombre());
 		}
-	}*/
-	public void sentarJugadores(Jugador equipoUno, Jugador equipoDos) {
-			jugadores.add(equipoUno);
-			jugadores.add(equipoDos);
 	}
 	
 	public void iniciar() {
