@@ -5,13 +5,13 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
-import fiuba.algo3.tp2.modeloRondas.Rondas;
+import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
 
 public class Juez {
 
 	Maso maso;
 	Mesa mesa;
-	Rondas mano;
+	EstadoRondas mano;
 	Puntos puntos;
 	int puntosEnJuego;
 	
@@ -25,7 +25,7 @@ public class Juez {
 	public TipoDeCartas repartir(){
 		return this.maso.dameCarta();
 	}
-	// solo el juez puede anotar puntos. PRIVATE
+	// solo el juez puede anotar puntos
 	public void anotarPuntos (String equipo){
 		this.puntos.anotarPuntos(equipo, puntosEnJuego);
 	}
@@ -40,12 +40,12 @@ public class Juez {
 		TipoDeCartas cartaUno = (TipoDeCartas) itr.next();
 		TipoDeCartas cartaDos = (TipoDeCartas) itr.next();
 		TipoDeCartas ganadora = ganador(cartaUno,cartaDos);
-		System.out.println(ganadora);
+		
 		while(itr.hasNext()) {
 			TipoDeCartas otraCarta = (TipoDeCartas) itr.next();
 			ganadora = ganador(ganadora,otraCarta);
-			System.out.println(ganadora);
 		}
+		
 		return ganadora;
 	}
 	

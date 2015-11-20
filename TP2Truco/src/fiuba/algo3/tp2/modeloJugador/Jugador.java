@@ -59,10 +59,6 @@ public class Jugador {
 		return this.envido;
 	}
 	
-	public TipoDeCartas jugarPrimera(){
-		return this.manoDelJugador.returnPrimera();
-	}
-
 	/*public int obtenerPuntosEnvidoConFlor() {
 		int envidoConFlor = 0;
 		
@@ -78,16 +74,12 @@ public class Jugador {
 		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
 	}
 
-	/*public TipoDeCartas jugarCarta() {
-		return this.manoDelJugador.returnPrimera();
-	}*/
 	public void jugarCarta() { //////////////////////////////////////////////PRIVATE
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Ingerese numero de carta a jugar: ");
 		verCartasEnManoComoString();
 		int n = leer.nextInt();
 		this.refMesa.recibirCarta(this.manoDelJugador.tirar(n));
-	
 	}
 
 	private void verCartasEnManoComoString() {
@@ -100,6 +92,20 @@ public class Jugador {
 	
 	public String obtenerEquipoQuePertenece(){
 		return(this.equipo);
+	}
+	
+	public void jugarPrimera(){
+		this.refMesa.recibirCarta(this.manoDelJugador.returnPrimera());
+	}
+	public void jugarSegunda(){
+		this.refMesa.recibirCarta(this.manoDelJugador.returnSegunda());
+	}
+	public void jugarTercera(){
+		this.refMesa.recibirCarta(this.manoDelJugador.returnTercera());
+	}
+	
+	public int jugarPuntosEnvido(){
+		return this.envido;
 	}
 	
 	public void cantarTruco (){
@@ -120,6 +126,10 @@ public class Jugador {
 
 	public boolean puedeCantarEnvido() {
 		return(this.refMesa.puedeCantarEnvido(this));
+	}
+	
+	public void quiero(){
+		this.refMesa.quiero(this);
 	}
 	
 }

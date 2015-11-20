@@ -7,12 +7,12 @@ import org.junit.Before;
 import org.junit.Test;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.modeloRondas.RondaUno;
-import fiuba.algo3.tp2.modeloRondas.Rondas;
+import fiuba.algo3.tp2.modeloRondas.EstadoRondaUno;
+import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
 
 public class RondaTest {
 
-	Rondas ronda;
+	EstadoRondas ronda;
 	
 	@Before
 	public void test() {
@@ -25,7 +25,7 @@ public class RondaTest {
 		listaCirc.add(new Jugador("pepe", mesa));
 		listaCirc.add(new Jugador("juan", mesa));
 		int index=0;
-		ronda = new RondaUno(juez, ganadores, listaCirc, index);
+		ronda = new EstadoRondaUno(juez, ganadores, listaCirc, index);
 		
 		
 		ronda.jugar();

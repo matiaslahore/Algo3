@@ -2,12 +2,10 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.modeloRondas.RondaUno;
-import fiuba.algo3.tp2.modeloRondas.Rondas;
+import fiuba.algo3.tp2.modeloRondas.*;
 
 public class Mesa {
     
@@ -16,7 +14,7 @@ public class Mesa {
 	ArrayList<TipoDeCartas> cartasEnJuego;
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;
-	Rondas ronda;
+	EstadoRondas ronda;
 	int indexMano;
 	Truco truco;
 	Envido envido;
@@ -31,9 +29,15 @@ public class Mesa {
 		indexMano = 0;
 		this.truco= new Truco();
 		this.envido = new Envido();
+		//this.ronda = new EstadoRondaUno(ronda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+	}
+	
+	public void iniciarRonda(){
+		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 	}
 	
 	public void recibirCarta(TipoDeCartas carta){
+		System.out.println("Mesa recibe: " + carta.cartaComoString());
 		this.cartasEnJuego.add(carta);
 	}
 
@@ -62,20 +66,32 @@ public class Mesa {
 			System.out.println("SENTE A:" + jugadorEqUno.obtenerNombre());
 			System.out.println("SENTE A:" + jugadorEqDos.obtenerNombre());
 		}
+		System.out.println("\n");
 	}
 	
 	public void iniciar() {
 		
-		ronda = new RondaUno(juez, ganadoresRonda, cartasEnJuego, this.jugadores, this.indexMano, this.indexMano);
+		/*ronda = new EstadoRondaUno(ronda,juez, ganadoresRonda, cartasEnJuego, this.jugadores, this.indexMano, this.indexMano);
 		
 		do{
 			ronda = ronda.jugar();
 		}while(juez.termina());
 		
+		
+		Jugador actual = ronda.siguiente();
+		actual.jugarPrimera();
+		actual = ronda.siguiente();
+		actual.jugarSegunda();*/
+		
 		System.out.println("JUEGO TERMINADO\nPUNTAJE FINAL");
 		System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
 		System.out.println("PTOS EQ2 " +juez.puntosEquipo("EquipoDos") + "\n");
 		
+	}
+	
+	public Jugador siguiente(){
+		this.ronda = this.ronda.acualizarRonda();
+		return this.ronda.turnoDe();
 	}
 	
 	/*public Jugador ganadorDeMano (){
@@ -96,5 +112,9 @@ public class Mesa {
 
 	public boolean puedeCantarEnvido(Jugador jugador) {
 		return(this.envido.puedeCantar(jugador));
+	}
+
+	public String ultimoGanador() {
+		return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
 	}
 }
