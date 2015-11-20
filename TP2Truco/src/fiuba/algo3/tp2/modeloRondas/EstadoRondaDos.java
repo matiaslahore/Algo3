@@ -51,5 +51,10 @@ public class EstadoRondaDos extends EstadoRondas{
 	public EstadoRondas quiero(Jugador jugador) {
 		throw new RuntimeException();
 	}
+	
+	@Override
+	public EstadoRondas noQuiero(Jugador jugador) {
+		throw new RuntimeException();
+	}
 
 }

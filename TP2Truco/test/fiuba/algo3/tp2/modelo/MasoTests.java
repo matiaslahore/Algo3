@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
-import fiuba.algo3.tp2.modelo.Carta;
 import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 
