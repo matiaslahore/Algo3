@@ -1,7 +1,5 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -165,5 +163,126 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("eq2",mesa.ultimoGanador());
 	}
+	
+	@Test
+	public void pruebaSimulacionDePartidaJ3QuiereTrucoCantadoPorJ2(){
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		Jugador actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarTruco();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.quiero();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j4",actual.obtenerNombre());
+	}
+	
+	@Test
+	public void pruebaSimulacionDePartidaJ3NOQuiereTrucoCantadoPorJ2(){
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		Jugador actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarTruco();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.noQuiero();
+		Assert.assertEquals(1,mesa.puntosEquipo("eq2"));
+	}
+	
+	@Test
+	public void pruebaSimulacionDePartidaJ3QuiereEnvidoCantadoPorJ2(){
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		//doy la vuelta para repartir...
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new SieteDeEspada(), new AnchoDeBasto(), new SeisDeOro());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new CuatroDeOro(), new TresDeBasto(), new DosDeCopa());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new TresDeOro(), new SieteDeCopa(), new SeisDeCopa());
+		actual = mesa.siguiente();
 
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarEnvido();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.quiero();
+		Assert.assertEquals(2,mesa.puntosEquipo("eq2"));
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
+	}
+	
+	@Test
+	public void pruebaSimulacionDePartidaJ3NOQuiereEnvidoCantadoPorJ2(){
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		Jugador actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarEnvido();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.noQuiero();
+		Assert.assertEquals(1,mesa.puntosEquipo("eq2"));
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
+	}
+	
 }

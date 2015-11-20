@@ -20,6 +20,8 @@ public abstract class EstadoRondas{
 	int indexMano;
 	boolean sigue;
 	EstadoRondas refEstadoRonda;
+	TipoDeCantos cantosTruco;
+	TipoDeCantos cantosEnvido;
 
 	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
@@ -27,10 +29,13 @@ public abstract class EstadoRondas{
 		this.cartasEnJuego = cartasEnJuego;
 		this.jugadores = jugadores;
 		//cartasEnJuego = new ArrayList<TipoDeCartas>();
-		tantoEnJuego = new ArrayList<Integer>();
 		this.jugadorMano = new Integer(indexManoAux);
 		this.indexMano = indexMano; //esto no se toca nunca salvo en la ronda 3 para indicar la mano sig.
 		this.refEstadoRonda = estadoRonda;
+		this.cantosTruco = new Truco();
+
+		tantoEnJuego = new ArrayList<Integer>();
+		//this.cantosEnvido = new Envido();
 	}
 	
 	public EstadoRondas acualizarRonda() {
@@ -49,5 +54,27 @@ public abstract class EstadoRondas{
 	}
 
 	public abstract EstadoRondas ganador();
+
+	public abstract EstadoRondas quiero(Jugador jugador);
+	
+	public abstract EstadoRondas noQuiero(Jugador jugador);
+	
+	public EstadoRondas cantarTruco(Jugador jugador) {
+		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
+		else{
+			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+			this.refEstadoRonda = this; //guardo estado de la ronda actual
+			return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		}
+	}
+
+	public EstadoRondas cantarEnvido(Jugador jugador) {
+		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
+		else{
+			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+			this.refEstadoRonda = this; //guardo estado de la ronda actual
+			return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		}
+	}
 
 }

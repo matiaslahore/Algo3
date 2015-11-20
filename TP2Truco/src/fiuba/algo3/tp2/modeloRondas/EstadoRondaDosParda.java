@@ -45,4 +45,9 @@ public class EstadoRondaDosParda extends EstadoRondas{
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);		
 	}
 	
+	@Override
+	public EstadoRondas quiero(Jugador jugador) {
+		throw new RuntimeException();
+	}
+	
 }

@@ -26,7 +26,7 @@ public class Juez {
 		return this.maso.dameCarta();
 	}
 	// solo el juez puede anotar puntos
-	public void anotarPuntos (String equipo){
+	public void anotarPuntos(String equipo){
 		this.puntos.anotarPuntos(equipo, puntosEnJuego);
 	}
 	
@@ -78,4 +78,9 @@ public class Juez {
 		if (puntos.getPuntajeMaximo() >= 30) return false;
 		else return true;
 	}
+
+	public void AumentarPuntosEnJuego(int puntos) {
+		this.puntosEnJuego = this.puntosEnJuego + puntos;
+	}
+
 }

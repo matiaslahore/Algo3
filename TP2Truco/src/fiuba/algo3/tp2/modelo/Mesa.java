@@ -62,48 +62,17 @@ public class Mesa {
 			jugadores.add(jugadorEqUno);
 			Jugador jugadorEqDos = (Jugador) itrEqDos.next();
 			jugadores.add(jugadorEqDos);
-			
-			System.out.println("SENTE A:" + jugadorEqUno.obtenerNombre());
-			System.out.println("SENTE A:" + jugadorEqDos.obtenerNombre());
 		}
 		System.out.println("\n");
-	}
-	
-	public void iniciar() {
-		
-		/*ronda = new EstadoRondaUno(ronda,juez, ganadoresRonda, cartasEnJuego, this.jugadores, this.indexMano, this.indexMano);
-		
-		do{
-			ronda = ronda.jugar();
-		}while(juez.termina());
-		
-		
-		Jugador actual = ronda.siguiente();
-		actual.jugarPrimera();
-		actual = ronda.siguiente();
-		actual.jugarSegunda();*/
-		
-		System.out.println("JUEGO TERMINADO\nPUNTAJE FINAL");
-		System.out.println("PTOS EQ1 " +juez.puntosEquipo("EquipoUno"));
-		System.out.println("PTOS EQ2 " +juez.puntosEquipo("EquipoDos") + "\n");
-		
 	}
 	
 	public Jugador siguiente(){
 		this.ronda = this.ronda.acualizarRonda();
 		return this.ronda.turnoDe();
 	}
-	
-	/*public Jugador ganadorDeMano (){
-		return ronda.getGanadores().get(this.indexMano);
-	}*/
     
-	public void cantarTruco(Jugador jugadorQueCanta){
-		this.truco.cantarTruco(jugadorQueCanta);
-	}
-	
-	public void cantarEnvido( Jugador jugadorQueCanta){
-		this.envido.cantarEnvido(jugadorQueCanta);
+	public void cantarEnvido( Jugador jugador){
+		this.ronda = this.ronda.cantarEnvido(jugador);
 	}
 	
 	public void cantarFaltaEnvido( Jugador jugadorQueCanta){
@@ -117,4 +86,27 @@ public class Mesa {
 	public String ultimoGanador() {
 		return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
 	}
+
+	public void cantarTruco(Jugador jugador){
+		this.ronda = this.ronda.cantarTruco(jugador);
+	}
+
+	public void quiero(Jugador jugador){
+		this.ronda = this.ronda.quiero(jugador);
+	}
+
+	public void noQuiero(Jugador jugador) {
+		this.ronda = this.ronda.noQuiero(jugador);
+	}
+
+	public int puntosEquipo(String equipo) {
+		return this.juez.puntosEquipo(equipo);
+	}
+	
+	/*
+	do{
+		ronda = ronda.jugar();
+	}while(juez.termina());
+	*/
+	
 }
