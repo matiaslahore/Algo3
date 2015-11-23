@@ -55,24 +55,16 @@ public abstract class EstadoRondas{
 
 	public abstract EstadoRondas ganador();
 
-	public EstadoRondas quieroTruco(Jugador jugador){
-		try{
-			this.cantosTruco.quiero(jugador.obtenerNombreEquipo());
-		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
-			//Desarrollar como continua el juego
-		}
-		//devolver el nuevo estado de rondas
-	}
+	public EstadoRondas quiero(Jugador jugador);
 	
-	public EstadoRondas noQuieroTruco(Jugador jugador){
+	public EstadoRondas noQuiero(Jugador jugador){
 		int puntosEnJuego = 0;
 		try{
 			puntosEnJuego = this.cantosTruco.noQuiero(jugador.obtenerNombreEquipo());
 		}catch(EquipoQueCantaNoPuedeNoQuererElCantoException e){
-			//devuelve error
 		}
 		this.juez.puntosEnJuego(puntosEnJuego);
-		//como continua el juego aca?
+		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
 	}
 	
 	public EstadoRondas cantarTruco(Jugador jugador) {

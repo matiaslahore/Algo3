@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
@@ -46,9 +47,15 @@ public class EstadoRondaUno extends EstadoRondas{
 	}
 
 	@Override
-	public EstadoRondas quiero(Jugador jugador) {
-		throw new RuntimeException();
+	public EstadoRondas quiero(Jugador jugador){
+		try{
+			this.cantosTruco.quiero(jugador.obtenerNombreEquipo());
+		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
+			//Desarrollar como continua el juego
+		}
+		//devolver el nuevo estado de rondas
 	}
+	
 
 	@Override
 	public EstadoRondas noQuiero(Jugador jugador) {
