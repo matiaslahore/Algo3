@@ -30,7 +30,7 @@ public class EstadoRondaDos extends EstadoRondas{
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 		}else{
 			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-			ganadoresRonda.add(ganador.returnEquipo());
+			ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		}
 		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1) + "\n");
 		

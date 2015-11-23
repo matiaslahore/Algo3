@@ -39,7 +39,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexTantoGanador);
 		
 		this.juez.puntosEnJuego(2);
-		this.juez.anotarPuntos(ganador.returnEquipo());
+		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
 		
 		this.tantoEnJuego.clear();
 		
@@ -49,7 +49,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public EstadoRondas noQuiero(Jugador jugador) {
 		this.juez.puntosEnJuego(1);
 		//ESTO ES FEO PERO NO SE ME OCURRE JUSTO AHORA OTRA MANERA
-		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).returnEquipo());
+		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
 		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
 	}

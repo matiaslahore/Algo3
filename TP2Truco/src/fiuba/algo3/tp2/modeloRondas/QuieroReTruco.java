@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modeloRondas;
 public class QuieroReTruco extends TipoDeCantos{
 
 	@Override
-	public boolean canto(String equipo) {
+	public void canto(String equipo) {
 		if (this.equipoQueCanta == equipo){
 			return false;
 		}

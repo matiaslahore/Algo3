@@ -20,12 +20,12 @@ public class EstadoRondaTresParda extends EstadoRondas{
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		
 		if (indexCartaGanadora == -1){ //es parda
-			ganadoresRonda.add(jugadores.get(indexMano).returnEquipo()); //gana el eq q es mano
-			this.juez.anotarPuntos(jugadores.get(indexMano).returnEquipo());
+			ganadoresRonda.add(jugadores.get(indexMano).obtenerNombreEquipo()); //gana el eq q es mano
+			this.juez.anotarPuntos(jugadores.get(indexMano).obtenerNombreEquipo());
 		}else{
 			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-			ganadoresRonda.add(ganador.returnEquipo());
-			this.juez.anotarPuntos(ganador.returnEquipo());
+			ganadoresRonda.add(ganador.obtenerNombreEquipo());
+			this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
 		}
 		
 		System.out.println("RONDA TRES gana: " + ganadoresRonda.get(2) + "\n");

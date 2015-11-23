@@ -1,16 +1,14 @@
 package fiuba.algo3.tp2.modeloRondas;
 
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
+
 public class Truco extends TipoDeCantos{
 
 	@Override
-	public boolean canto(String equipo) {
-		if (this.equipoQueCanta == equipo){
-			return false;
-		}
-		else{
-			this.equipoQueCanta = equipo;
-			return true;
-		}
+	public void canto(String equipo)throws EquipoQueCantaNoPuedeQuererElCantoException{
+		if(this.equipoQueCanta == equipo)
+			throw new EquipoQueCantaNoPuedeQuererElCantoException();
+		this.equipoQueCanta = equipo;
 	}
 
 	@Override

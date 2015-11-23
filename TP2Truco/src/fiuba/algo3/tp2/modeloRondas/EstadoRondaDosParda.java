@@ -33,9 +33,9 @@ public class EstadoRondaDosParda extends EstadoRondas{
 			return new EstadoRondaTresParda(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
 		}
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-		ganadoresRonda.add(ganador.returnEquipo());
+		ganadoresRonda.add(ganador.obtenerNombreEquipo());
 
-		this.juez.anotarPuntos(ganador.returnEquipo());
+		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
 		
 		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1) + "\n");
 

@@ -30,7 +30,7 @@ public class EstadoRondaTres extends EstadoRondas{
 			ganadoresRonda.add(ganadoresRonda.get(1)); //gana el q gano segunda
 		}else{
 			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-			ganadoresRonda.add(ganador.returnEquipo());
+			ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		}
 		
 		this.juez.anotarPuntos(ganadoresRonda.get(2));

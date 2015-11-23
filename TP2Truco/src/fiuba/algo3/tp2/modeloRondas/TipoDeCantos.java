@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modeloRondas;
 
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
+
 public abstract class TipoDeCantos {
 
 	String equipoQueCanta;
@@ -8,7 +10,7 @@ public abstract class TipoDeCantos {
 		equipoQueCanta = "";
 	}
 	
-	public abstract boolean canto(String equipo);
+	public abstract void canto(String equipo)throws EquipoQueCantaNoPuedeQuererElCantoException;
 	
 	public abstract void quiero();
 	

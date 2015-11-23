@@ -1,10 +1,9 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -60,36 +59,39 @@ public abstract class EstadoRondas{
 	public abstract EstadoRondas noQuiero(Jugador jugador);
 	
 	public EstadoRondas cantarTruco(Jugador jugador) {
-		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
-		else{
-			this.cantosTruco = new QuieroReTruco();
-			this.cantosTruco.canto(jugador.returnEquipo()); //le paso el eq q canto el truco
-			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
-			this.refEstadoRonda = this; //guardo estado de la ronda actual
-			return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		try{
+			this.cantosTruco.canto(jugador.obtenerNombreEquipo());
+		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 		}
+		this.cantosTruco = new QuieroReTruco();
+		this.jugadorMano = (this.jugadorMano - 1); //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 	}
 	
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
-		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
-		else{
-			this.cantosTruco = new QuieroValeCuatro();
-			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
-			this.refEstadoRonda = this; //guardo estado de la ronda actual
-			return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		try{
+			this.cantosTruco.canto(jugador.obtenerNombreEquipo());
+		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 		}
+		this.cantosTruco = new QuieroValeCuatro();
+		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 	}
 	
 	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
-		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
-		else{
-			this.cantosTruco = null;
-			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
-			this.refEstadoRonda = this; //guardo estado de la ronda actual
-			return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		try{
+			this.cantosTruco.canto(jugador.obtenerNombreEquipo());
+		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 		}
+		this.cantosTruco = null;
+		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 	}
-
+	
+	/*
 	public EstadoRondas cantarEnvido(Jugador jugador) {
 		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
 		else{
@@ -97,6 +99,6 @@ public abstract class EstadoRondas{
 			this.refEstadoRonda = this; //guardo estado de la ronda actual
 			return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 		}
-	}
+	}*/
 
 }

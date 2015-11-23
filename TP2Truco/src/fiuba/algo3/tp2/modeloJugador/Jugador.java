@@ -43,7 +43,7 @@ public class Jugador {
 		this.equipo = nombre;
 	}
 	
-	public String returnEquipo(){
+	public String obtenerNombreEquipo(){
 		return this.equipo;
 	}
 	

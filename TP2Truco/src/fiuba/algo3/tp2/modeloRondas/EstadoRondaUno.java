@@ -36,7 +36,7 @@ public class EstadoRondaUno extends EstadoRondas{
 			return new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
 		}
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
-		ganadoresRonda.add(ganador.returnEquipo());
+		ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		
 		this.cartasEnJuego.clear();
 		
