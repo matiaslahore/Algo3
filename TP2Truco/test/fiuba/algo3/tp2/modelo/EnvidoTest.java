@@ -4,10 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tp2.modeloDeCartas.AnchoDeBasto;
-import fiuba.algo3.tp2.modeloDeCartas.SeisDeBasto;
-import fiuba.algo3.tp2.modeloDeCartas.SieteDeBasto;
-import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
+import fiuba.algo3.tp2.excepciones.NoSePuedeCantarMasDeDosEnvidosException;
 
 public class EnvidoTest {
 	Envido envido;
@@ -27,32 +27,52 @@ public class EnvidoTest {
 	
 	@Test
 	public void equipo1CantaEnvidoYEquipo2NoQuiereEntoncesEquipo1GanaUnPunto(){
-		this.envido.cantarEnvido(this.equipo1.obtenerJugadores().get(0));
-		this.envido.noQuerer(this.equipo2.obtenerJugadores().get(0));
+		try{
+			this.envido.cantarEnvido(this.equipo1.obtenerJugadores().get(0));
+			this.envido.noQuerer(this.equipo2.obtenerJugadores().get(0));
+		}
+		catch(EquipoQueCantaNoPuedeVolverACantarException e){}
+		catch(NoSePuedeCantarMasDeDosEnvidosException e2){}
+		catch(EquipoQueCantaNoPuedeNoQuererElCantoException e3){}
 		Assert.assertEquals(this.equipo1.obtenerNombre(),this.envido.obtenerGanador());
 		Assert.assertEquals(1,this.envido.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void equipo2CantaEnvidoYEquipo1NoQuiereEntoncesEquipo2GanaUnPunto(){
-		this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
-		this.envido.noQuerer(this.equipo1.obtenerJugadores().get(0));
+		try{
+			this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
+			this.envido.noQuerer(this.equipo1.obtenerJugadores().get(0));
+		}
+		catch(EquipoQueCantaNoPuedeVolverACantarException e){}
+		catch(NoSePuedeCantarMasDeDosEnvidosException e2){}
+		catch(EquipoQueCantaNoPuedeNoQuererElCantoException e3){}
 		Assert.assertEquals(this.equipo2.obtenerNombre(),this.envido.obtenerGanador());
 		Assert.assertEquals(1,this.envido.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void elEquipoQueCantaNoPuedeQuererElEnvido(){
-		this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
-		this.envido.querer(this.equipo2.obtenerJugadores().get(0));
+		try{
+			this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
+			this.envido.querer(this.equipo2.obtenerJugadores().get(0));
+		}
+		catch(EquipoQueCantaNoPuedeVolverACantarException e){}
+		catch(NoSePuedeCantarMasDeDosEnvidosException e2){}
+		catch(EquipoQueCantaNoPuedeQuererElCantoException e3){}
 		Assert.assertEquals("",this.envido.obtenerGanador());
 		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
 	}
 	
 	@Test
 	public void elEquipoQueCantaNoPuedeNoQuererElEnvido(){
-		this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
-		this.envido.noQuerer(this.equipo2.obtenerJugadores().get(0));
+		try{
+			this.envido.cantarEnvido(this.equipo2.obtenerJugadores().get(0));
+			this.envido.noQuerer(this.equipo2.obtenerJugadores().get(0));
+		}
+		catch(EquipoQueCantaNoPuedeVolverACantarException e){}
+		catch(NoSePuedeCantarMasDeDosEnvidosException e2){}
+		catch(EquipoQueCantaNoPuedeNoQuererElCantoException e3){}
 		Assert.assertEquals("",this.envido.obtenerGanador());
 		Assert.assertEquals(0,this.envido.obtenerPuntajeGanador());
 	}
