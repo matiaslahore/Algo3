@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import org.omg.CORBA.SystemException;
 
+import fiuba.algo3.tp2.excepciones.CantoInvalidoExcepcion;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.*;
@@ -112,6 +113,10 @@ public class Jugador {
 		this.refMesa.cantarTruco(this);
 	}
 	
+	public void cantarQuieroReTruco() {
+		this.refMesa.cantarQuieroReTruco(this);
+	}
+	
 	public void cantarEnvido(){
 		this.refMesa.cantarEnvido(this);
 	}
@@ -132,12 +137,8 @@ public class Jugador {
 		this.refMesa.quiero(this);
 	}
 
-	public void noQuiero() {
+	public void noQuiero(){
 		this.refMesa.noQuiero(this);
-	}
-
-	public void cantarQuieroReTruco() {
-		this.refMesa.cantarQuieroReTruco(this);
 	}
 	
 }

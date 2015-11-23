@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoExcepcion;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.*;
@@ -94,8 +95,12 @@ public class Mesa {
 	public void quiero(Jugador jugador){
 		this.ronda = this.ronda.quiero(jugador);
 	}
+	
+	public void cantarQuieroReTruco(Jugador jugador) {
+		this.ronda = this.ronda.cantarQuieroReTruco(jugador);
+	}
 
-	public void noQuiero(Jugador jugador) {
+	public void noQuiero(Jugador jugador){
 		this.ronda = this.ronda.noQuiero(jugador);
 	}
 
@@ -103,10 +108,6 @@ public class Mesa {
 		return this.juez.puntosEquipo(equipo);
 	}
 
-	public void cantarQuieroReTruco(Jugador jugador) {
-		this.ronda = this.ronda.cantarQuieroReTruco(jugador);
-	}
-	
 	/*
 	do{
 		ronda = ronda.jugar();

@@ -26,13 +26,16 @@ public class EstadoRondaTruco extends EstadoRondas{
 		Jugador jugador = this.jugadores.get(this.jugadorMano + 2); //2 es manejo de indices //aclarar
 		return jugador;
 	}
-
+	
+	@Override
 	public EstadoRondas quiero(Jugador jugador) {
+		refEstadoRonda.juez.puntosEnJuego(this.cantosTruco.quiso());
 		return this.refEstadoRonda;
 	}
 	
+	@Override
 	public EstadoRondas noQuiero(Jugador jugador) {
-		this.juez.puntosEnJuego(1);
+		this.juez.puntosEnJuego(this.cantosTruco.noQuiso());
 		//ESTO ES FEO PERO NO SE ME OCURRE JUSTO AHORA OTRA MANERA
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
 		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano

@@ -42,15 +42,5 @@ public class EstadoRondaTres extends EstadoRondas{
 		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
 	}
-	
-	@Override
-	public EstadoRondas quiero(Jugador jugador) {
-		throw new RuntimeException();
-	}
-	
-	@Override
-	public EstadoRondas noQuiero(Jugador jugador) {
-		throw new RuntimeException();
-	}
 
 }

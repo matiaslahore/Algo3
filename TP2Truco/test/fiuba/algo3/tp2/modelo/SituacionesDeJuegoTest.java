@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class SituacionesDeJuegoTest {
 
-	/*@Test
+	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		Mesa mesa = new Mesa("eq1", "eq2");
 		Equipo eq1 = new Equipo("eq1", mesa);
@@ -21,28 +21,28 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 		//R1
 		Jugador actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.returnEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
 		actual.recibirCartas(new SieteDeEspada(), new AnchoDeBasto(), new SeisDeEspada());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.returnEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
 		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
 		Assert.assertEquals("eq2",mesa.ultimoGanador());
 		//R2
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.returnEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.returnEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
 		Assert.assertEquals("eq1",mesa.ultimoGanador());
 		//R3
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.returnEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.returnEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
 		Assert.assertEquals("eq1",mesa.ultimoGanador());
@@ -340,6 +340,6 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.cantarQuieroReTruco();
-	}*/
+	}
 	
 }

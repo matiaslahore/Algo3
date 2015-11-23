@@ -13,20 +13,18 @@ public abstract class TiposDeCanto {
 	}
 	
 	public void canto(String equipo)throws EquipoQueCantaNoPuedeQuererElCantoException{
-		if(this.equipoQueCanta == equipo)
-			throw new EquipoQueCantaNoPuedeQuererElCantoException();
+		if(this.equipoQueCanta == equipo){
+			throw new EquipoQueCantaNoPuedeQuererElCantoException(); //aca es equipo q canta no puede cantar de nuevo
+		}
 		this.equipoQueCanta = equipo;
 	}
 	
-	public void quiero(String equipo)throws EquipoQueCantaNoPuedeQuererElCantoException{
-		if(equipo == this.equipoQueCanta)
-			throw new EquipoQueCantaNoPuedeQuererElCantoException();
+	public void equipoQueCanta(String equipo) {
+		this.equipoQueCanta = equipo;
 	}
-
-	public abstract int noQuiero(String equipo)throws EquipoQueCantaNoPuedeNoQuererElCantoException;
-
-	public String equipoQueCanta() {
-		return this.equipoQueCanta;
-	}
+	
+	public abstract int quiso();
+	
+	public abstract int noQuiso();
 	
 }

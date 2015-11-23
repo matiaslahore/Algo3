@@ -6,9 +6,12 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 public class ValeCuatro extends TiposDeCanto{
 	
 	@Override
-	public int noQuiero(String equipo)throws EquipoQueCantaNoPuedeNoQuererElCantoException{
-		if(equipoQueCanta == equipo)
-			throw new EquipoQueCantaNoPuedeNoQuererElCantoException();
+	public int quiso() {
+		return 4;
+	}
+
+	@Override
+	public int noQuiso() {
 		return 3;
 	}
 
