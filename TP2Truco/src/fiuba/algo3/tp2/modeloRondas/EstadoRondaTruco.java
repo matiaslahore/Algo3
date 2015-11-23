@@ -36,9 +36,9 @@ public class EstadoRondaTruco extends EstadoRondas{
 	@Override
 	public EstadoRondas noQuiero(Jugador jugador) {
 		this.juez.puntosEnJuego(this.cantosTruco.noQuiso());
-		//ESTO ES FEO PERO NO SE ME OCURRE JUSTO AHORA OTRA MANERA
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
 		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
+		//Termina las Rondas, y se vuelve a tirar las cartas, para una nueva mano
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
 	}
 	
