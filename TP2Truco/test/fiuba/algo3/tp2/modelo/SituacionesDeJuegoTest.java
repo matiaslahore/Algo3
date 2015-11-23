@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class SituacionesDeJuegoTest {
 
-	@Test
+	/*@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		Mesa mesa = new Mesa("eq1", "eq2");
 		Equipo eq1 = new Equipo("eq1", mesa);
@@ -284,5 +284,62 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testFallaCantoTrucoyQuieroReTrucoElMismoJugador() {
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		Jugador actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarTruco();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.quiero();
+		actual = mesa.siguiente();
+		actual.cantarQuieroReTruco();
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testFallaCantoTrucoyQuieroReTrucoElMismoEquipo() {
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		Jugador actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarTruco();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.quiero();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j4",actual.obtenerNombre());
+		actual.cantarQuieroReTruco();
+	}*/
 	
 }

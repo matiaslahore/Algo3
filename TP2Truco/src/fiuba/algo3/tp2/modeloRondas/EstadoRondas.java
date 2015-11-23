@@ -62,6 +62,28 @@ public abstract class EstadoRondas{
 	public EstadoRondas cantarTruco(Jugador jugador) {
 		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
 		else{
+			this.cantosTruco = new QuieroReTruco();
+			this.cantosTruco.canto(jugador.returnEquipo()); //le paso el eq q canto el truco
+			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+			this.refEstadoRonda = this; //guardo estado de la ronda actual
+			return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		}
+	}
+	
+	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
+		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
+		else{
+			this.cantosTruco = new QuieroValeCuatro();
+			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+			this.refEstadoRonda = this; //guardo estado de la ronda actual
+			return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		}
+	}
+	
+	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
+		if(!this.cantosTruco.canto(jugador.returnEquipo())) throw new RuntimeException(); //canta el mismo eq
+		else{
+			this.cantosTruco = null;
 			this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
 			this.refEstadoRonda = this; //guardo estado de la ronda actual
 			return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);

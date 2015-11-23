@@ -5,7 +5,7 @@ public abstract class TipoDeCantos {
 	String equipoQueCanta;
 	
 	public TipoDeCantos(){
-		
+		equipoQueCanta = "";
 	}
 	
 	public abstract boolean canto(String equipo);

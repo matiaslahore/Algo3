@@ -102,6 +102,10 @@ public class Mesa {
 	public int puntosEquipo(String equipo) {
 		return this.juez.puntosEquipo(equipo);
 	}
+
+	public void cantarQuieroReTruco(Jugador jugador) {
+		this.ronda = this.ronda.cantarQuieroReTruco(jugador);
+	}
 	
 	/*
 	do{

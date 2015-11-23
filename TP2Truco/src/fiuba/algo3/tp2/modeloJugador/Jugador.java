@@ -135,5 +135,9 @@ public class Jugador {
 	public void noQuiero() {
 		this.refMesa.noQuiero(this);
 	}
+
+	public void cantarQuieroReTruco() {
+		this.refMesa.cantarQuieroReTruco(this);
+	}
 	
 }
