@@ -19,8 +19,8 @@ public abstract class EstadoRondas{
 	int indexMano;
 	boolean sigue;
 	EstadoRondas refEstadoRonda;
-	TipoDeCantos cantosTruco;
-	TipoDeCantos cantosEnvido;
+	TiposDeCanto cantosTruco;
+	TiposDeCanto cantosEnvido;
 
 	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
