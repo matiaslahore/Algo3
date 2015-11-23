@@ -17,7 +17,7 @@ public class EstadoRondaUno extends EstadoRondas{
 	public EstadoRondaUno(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, indexManoAux, indexMano);
 	}
-	
+	//OPCIONES EN ESTA RONDA:
 	//EN RONDA UNO SE REPARTE
 	//SE CANTA EL ENVIDO
 	//SE CANTA EL TRUCO
