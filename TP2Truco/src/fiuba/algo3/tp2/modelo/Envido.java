@@ -1,10 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.ArrayList;
-
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantar;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeCantarMasDeDosEnvidosException;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
