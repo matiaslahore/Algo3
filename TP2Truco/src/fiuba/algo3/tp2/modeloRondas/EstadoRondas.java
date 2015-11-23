@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modeloRondas;
 import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
@@ -64,13 +65,14 @@ public abstract class EstadoRondas{
 	}
 	
 	public EstadoRondas noQuieroTruco(Jugador jugador){
+		int puntosEnJuego = 0;
 		try{
-			this.cantosTruco.noQuiero(Jugador.obtenerNombreEquipo());
-		}catch(){
-			
+			puntosEnJuego = this.cantosTruco.noQuiero(jugador.obtenerNombreEquipo());
+		}catch(EquipoQueCantaNoPuedeNoQuererElCantoException e){
+			//devuelve error
 		}
-		this.juez.puntosEnJuego(this.cantosTruco.obtenerPuntosEnJuego());
-		
+		this.juez.puntosEnJuego(puntosEnJuego);
+		//como continua el juego aca?
 	}
 	
 	public EstadoRondas cantarTruco(Jugador jugador) {
