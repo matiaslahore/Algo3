@@ -63,7 +63,15 @@ public abstract class EstadoRondas{
 		//devolver el nuevo estado de rondas
 	}
 	
-	public abstract EstadoRondas noQuieroTruco(Jugador jugador);
+	public EstadoRondas noQuieroTruco(Jugador jugador){
+		try{
+			this.cantosTruco.noQuiero(Jugador.obtenerNombreEquipo());
+		}catch(){
+			
+		}
+		this.juez.puntosEnJuego(this.cantosTruco.obtenerPuntosEnJuego());
+		
+	}
 	
 	public EstadoRondas cantarTruco(Jugador jugador) {
 		try{
