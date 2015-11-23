@@ -2,12 +2,7 @@ package fiuba.algo3.tp2.modeloRondas;
 
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 
-public class QuieroReTruco extends TiposDeCanto{
-
-	@Override
-	public void quiero() {
-		//ver
-	}
+public class ReTruco extends TiposDeCanto{
 
 	@Override
 	public void noQuiero() {

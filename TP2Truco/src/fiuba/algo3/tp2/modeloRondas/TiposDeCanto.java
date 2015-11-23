@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
+import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class TiposDeCanto {
 
@@ -16,8 +17,11 @@ public abstract class TiposDeCanto {
 		this.equipoQueCanta = equipo;
 	}
 	
-	public abstract void quiero();
-	
+	public void quiero(String equipo)throws EquipoQueCantaNoPuedeQuererElCantoException{
+		if(equipo == this.equipoQueCanta)
+			throw new EquipoQueCantaNoPuedeQuererElCantoException();
+	}
+
 	public abstract void noQuiero();
 
 	public String equipoQueCanta() {

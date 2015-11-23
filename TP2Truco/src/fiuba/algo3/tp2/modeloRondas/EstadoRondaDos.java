@@ -1,11 +1,10 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
@@ -47,11 +46,6 @@ public class EstadoRondaDos extends EstadoRondas{
 		return new EstadoRondaTres(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}
 
-	@Override
-	public EstadoRondas quiero(Jugador jugador) {
-		throw new RuntimeException();
-	}
-	
 	@Override
 	public EstadoRondas noQuiero(Jugador jugador) {
 		throw new RuntimeException();
