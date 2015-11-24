@@ -46,5 +46,16 @@ public class EstadoRondaUno extends EstadoRondas{
 		
 		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}
+	
+	public EstadoRondas cantarEnvido(Jugador jugador,String canto) {
+		try{
+			this.cantosTruco.canto(jugador.obtenerNombreEquipo());
+		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
+			throw new RuntimeException(); //y aca tmb..
+		}
+		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,canto);
+	}
 
 }

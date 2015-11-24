@@ -22,7 +22,7 @@ public abstract class EstadoRondas{
 	boolean sigue;
 	EstadoRondas refEstadoRonda;
 	TiposDeCanto cantosTruco;
-	TiposDeCanto cantosEnvido;
+	TiposDeCantoEnvido cantosEnvido;
 
 	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
@@ -100,21 +100,5 @@ public abstract class EstadoRondas{
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 	}
-	
-	public EstadoRondas cantarEnvido(Jugador jugador) {
-		try{
-			this.cantosTruco.canto(jugador.obtenerNombreEquipo());
-		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
-			throw new RuntimeException(); //y aca tmb..
-		}
-		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
-		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
-	}
-	/*
-	public abstract EstadoRondas quieroEnvido(Jugador jugador);
-	
-	public abstract EstadoRondas noQuieroEnvido(Jugador jugador);
-	*/
 
 }
