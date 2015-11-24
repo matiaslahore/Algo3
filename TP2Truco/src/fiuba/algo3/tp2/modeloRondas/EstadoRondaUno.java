@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
-import fiuba.algo3.tp2.excepciones.CantoInvalidoExcepcion;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
@@ -45,27 +45,6 @@ public class EstadoRondaUno extends EstadoRondas{
 		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
 		
 		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
-	}
-	
-	public EstadoRondas cantarEnvido(Jugador jugador) {
-		Envido envido = new Envido(jugador.obtenerEquipoQuePertenece());
-		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
-		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,envido);
-	}
-	
-	public EstadoRondas cantarRealEnvido(Jugador jugador) {
-		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipoQuePertenece());
-		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
-		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,realEnvido);
-	}
-	
-	public EstadoRondas cantarFaltaEnvido(Jugador jugador) {
-		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipoQuePertenece());
-		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
-		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,faltaEnvido);
 	}
 
 }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import org.omg.CORBA.SystemException;
 
-import fiuba.algo3.tp2.excepciones.CantoInvalidoExcepcion;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.*;

@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modeloRondas;
 import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
-import fiuba.algo3.tp2.excepciones.CantoInvalidoExcepcion;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -31,21 +31,21 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public void cantarEnvido(String equipoQueCanta){
 		try{
 			this.cantosEnvido = this.cantosEnvido.cantarEnvido(equipoQueCanta);
-		}catch(CantoInvalidoExcepcion e){
+		}catch(CantoInvalidoException e){
 		}
 	}
 	
 	public void cantarRealEnvido(String equipoQueCanta){
 		try {
 			this.cantosEnvido = this.cantosEnvido.cantarRealEnvido(equipoQueCanta);
-		} catch (CantoInvalidoExcepcion e) {
+		} catch (CantoInvalidoException e) {
 		}
 	}
 	
 	public void cantarFaltaEnvido(String equipoQueCanta){
 		try {
 			this.cantosEnvido = this.cantosEnvido.cantarFaltaEnvido(equipoQueCanta);
-		} catch (CantoInvalidoExcepcion e) {
+		} catch (CantoInvalidoException e) {
 		}
 	}
 	

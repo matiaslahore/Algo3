@@ -1,8 +1,5 @@
 package fiuba.algo3.tp2.modeloRondas;
 
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
-
 public class ReTruco extends TiposDeCantoTruco{
 
 	public ReTruco(String equipo) {
@@ -17,6 +14,14 @@ public class ReTruco extends TiposDeCantoTruco{
 	@Override
 	public int noQuiso() {
 		return 2;
+	}
+
+	@Override
+	public TiposDeCantoTruco cantar(String equipo) throws EquipoQueCantaNoPuedeVolverACantarException {
+		if(this.equipoQueCanta == equipo){
+			throw new EquipoQueCantaNoPuedeVolverACantarException();
+		}
+		return(new ValeCuatro(equipo));
 	}
 
 }

@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modeloRondas;
 
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 
 public class ValeCuatro extends TiposDeCantoTruco{
 	
@@ -17,6 +16,11 @@ public class ValeCuatro extends TiposDeCantoTruco{
 	@Override
 	public int noQuiso() {
 		return 3;
+	}
+
+	@Override
+	public TiposDeCantoTruco cantar(String equipo) throws CantoInvalidoException {
+		throw new CantoInvalidoException();
 	}
 
 }
