@@ -1,23 +1,23 @@
 package fiuba.algo3.tp2.modeloRondas;
 
-public class Envido extends TiposDeCantoEnvido{
+public class FaltaEnvido extends TiposDeCantoEnvido{
 	
-	public Envido(String equipoQueCanta){
+	public FaltaEnvido(String equipoQueCanta){
 		super(equipoQueCanta);
 	}
 	
 	@Override
 	public EnvidoEnvido cantarEnvido(String equipoQueCanta){
-		return(new EnvidoEnvido(equipoQueCanta));
+		return null;
 	}
 	
 	public EnvidoRealEnvido cantarRealEnvido(String equipoQueCanta){
-		return(new EnvidoRealEnvido(equipoQueCanta));
+		return null;
 	}
 
 	@Override
 	public TiposDeCantoEnvido cantarFaltaEnvido(String equipoQueCanta) {
-		return(new EnvidoFaltaEnvido(equipoQueCanta));
+		return null;
 	}
 
 	@Override
@@ -27,6 +27,7 @@ public class Envido extends TiposDeCantoEnvido{
 
 	@Override
 	public int quiso() {
-		return 2;
+		return 0;
+		//ver como contabilizar los puntos
 	}
 }

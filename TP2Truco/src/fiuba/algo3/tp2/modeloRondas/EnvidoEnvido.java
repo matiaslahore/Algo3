@@ -7,15 +7,18 @@ public class EnvidoEnvido extends TiposDeCantoEnvido{
 	}
 	
 	@Override
-	public TiposDeCantoEnvido cantarRealEnvido(String equipoQueCanta) {
-		// TODO Auto-generated method stub
+	public TiposDeCantoEnvido cantarEnvido(String equipoQueCanta) {
 		return null;
+	}
+	
+	@Override
+	public TiposDeCantoEnvido cantarRealEnvido(String equipoQueCanta) {
+		return(new EnvidoEnvidoRealEnvido(equipoQueCanta));
 	}
 
 	@Override
 	public TiposDeCantoEnvido cantarFaltaEnvido(String equipoQueCanta) {
-		// TODO Auto-generated method stub
-		return null;
+		return(new EnvidoEnvidoFaltaEnvido(equipoQueCanta));
 	}
 
 	@Override
@@ -26,12 +29,6 @@ public class EnvidoEnvido extends TiposDeCantoEnvido{
 	@Override
 	public int quiso() {
 		return 4;
-	}
-
-	@Override
-	public TiposDeCantoEnvido cantarEnvido(String equipoQueCanta) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

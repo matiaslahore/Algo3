@@ -8,7 +8,8 @@ import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaEnvido extends EstadoRondas{
-
+	private TiposDeCantoEnvido cantosEnvido;
+	
 	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, String canto) {
 		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
 		//crear una nueva clase por el nombre, get.class .... y el nombre es el "canto"
