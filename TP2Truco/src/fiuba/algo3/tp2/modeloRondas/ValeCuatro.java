@@ -5,6 +5,10 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 
 public class ValeCuatro extends TiposDeCantoTruco{
 	
+	public ValeCuatro(String equipo) {
+		super(equipo);
+	}
+
 	@Override
 	public int quiso() {
 		return 4;

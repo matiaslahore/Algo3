@@ -7,18 +7,13 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 public abstract class TiposDeCantoTruco {
 	String equipoQueCanta;
 	
-	public TiposDeCantoTruco(){
-		equipoQueCanta = "";
+	public TiposDeCantoTruco(String equipo){
+		equipoQueCanta = equipo;
 	}
 	
-	public void canto(String equipo)throws EquipoQueCantaNoPuedeQuererElCantoException{
-		if(this.equipoQueCanta == equipo){
-			throw new EquipoQueCantaNoPuedeQuererElCantoException(); //aca es equipo q canta no puede cantar de nuevo
-		}
-		this.equipoQueCanta = equipo;
-	}
-	
-	public void equipoQueCanta(String equipo) {
+	public void cantar(String equipo)throws EquipoQueCantaNoPuedeVolverACantarException{
+		if(this.equipoQueCanta == equipo)
+			throw new EquipoQueCantaNoPuedeVolverACantarException();
 		this.equipoQueCanta = equipo;
 	}
 	
