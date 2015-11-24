@@ -47,15 +47,25 @@ public class EstadoRondaUno extends EstadoRondas{
 		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}
 	
-	public EstadoRondas cantarEnvido(Jugador jugador,String canto) {
-		try{
-			this.cantosTruco.canto(jugador.obtenerNombreEquipo());
-		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
-			throw new RuntimeException(); //y aca tmb..
-		}
+	public EstadoRondas cantarEnvido(Jugador jugador) {
+		Envido envido = new Envido(jugador.obtenerEquipoQuePertenece());
 		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,canto);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,envido);
+	}
+	
+	public EstadoRondas cantarRealEnvido(Jugador jugador) {
+		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipoQuePertenece());
+		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,realEnvido);
+	}
+	
+	public EstadoRondas cantarFaltaEnvido(Jugador jugador) {
+		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipoQuePertenece());
+		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,faltaEnvido);
 	}
 
 }

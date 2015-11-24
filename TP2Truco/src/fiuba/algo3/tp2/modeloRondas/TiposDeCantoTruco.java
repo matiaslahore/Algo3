@@ -4,11 +4,10 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public abstract class TiposDeCanto {
-
+public abstract class TiposDeCantoTruco {
 	String equipoQueCanta;
 	
-	public TiposDeCanto(){
+	public TiposDeCantoTruco(){
 		equipoQueCanta = "";
 	}
 	

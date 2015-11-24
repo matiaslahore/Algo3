@@ -11,12 +11,23 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 public class EstadoRondaEnvido extends EstadoRondas{
 	private TiposDeCantoEnvido cantosEnvido;
 	
-	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, String canto) {
+	//Constructores <van a depender de lo que el jugador canto <Envido,Real,Falta>>
+	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, Envido envido) {
 		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
-		//crear una nueva clase por el nombre, get.class .... y el nombre es el "canto"
-		//asignar el nuevo objeto, al cantosEnvido
+		this.cantosEnvido = envido;
 	}
 	
+	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, RealEnvido realEnvido) {
+		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
+		this.cantosEnvido = realEnvido;
+	}
+	
+	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano,FaltaEnvido faltaEnvido) {
+		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
+		this.cantosEnvido = faltaEnvido;
+	}
+	
+	//Funciones	
 	public void cantarEnvido(String equipoQueCanta){
 		try{
 			this.cantosEnvido = this.cantosEnvido.cantarEnvido(equipoQueCanta);
