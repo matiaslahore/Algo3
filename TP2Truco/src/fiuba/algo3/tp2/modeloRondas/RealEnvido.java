@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modeloRondas;
 
+import fiuba.algo3.tp2.excepciones.CantoInvalidoExcepcion;
+
 public class RealEnvido extends TiposDeCantoEnvido{
 	
 	public RealEnvido(String equipoQueCanta){
@@ -7,12 +9,12 @@ public class RealEnvido extends TiposDeCantoEnvido{
 	}
 	
 	@Override
-	public EnvidoEnvido cantarEnvido(String equipoQueCanta){
-		return null;
+	public EnvidoEnvido cantarEnvido(String equipoQueCanta) throws CantoInvalidoExcepcion {
+		throw new CantoInvalidoExcepcion();
 	}
 	
-	public EnvidoRealEnvido cantarRealEnvido(String equipoQueCanta){
-		return null;
+	public EnvidoRealEnvido cantarRealEnvido(String equipoQueCanta) throws CantoInvalidoExcepcion {
+		throw new CantoInvalidoExcepcion();
 	}
 
 	@Override

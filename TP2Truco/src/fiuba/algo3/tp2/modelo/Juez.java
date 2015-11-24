@@ -83,4 +83,8 @@ public class Juez {
 		this.puntosEnJuego = this.puntosEnJuego + puntos;
 	}
 
+	public int obtenerPuntosFaltaEnvido(String Equipo){
+		return 0;
+		//Desarrollar este metodo
+	}
 }

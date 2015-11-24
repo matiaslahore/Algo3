@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modeloRondas;
 
+import fiuba.algo3.tp2.excepciones.CantoInvalidoExcepcion;
+
 public class EnvidoEnvidoRealEnvidoFaltaEnvido extends TiposDeCantoEnvido {
 
 	public EnvidoEnvidoRealEnvidoFaltaEnvido(String equipoQueCanta) {
@@ -7,20 +9,20 @@ public class EnvidoEnvidoRealEnvidoFaltaEnvido extends TiposDeCantoEnvido {
 	}
 
 	@Override
-	public TiposDeCantoEnvido cantarEnvido(String equipoQueCanta) {
-		return null;
+	public TiposDeCantoEnvido cantarEnvido(String equipoQueCanta)throws CantoInvalidoExcepcion {
+		throw new CantoInvalidoExcepcion();
+	}
+	
+	@Override
+	public TiposDeCantoEnvido cantarRealEnvido(String equipoQueCanta)throws CantoInvalidoExcepcion {
+		throw new CantoInvalidoExcepcion();
 	}
 
 	@Override
-	public TiposDeCantoEnvido cantarRealEnvido(String equipoQueCanta) {
-		return null;
+	public TiposDeCantoEnvido cantarFaltaEnvido(String equipoQueCanta)throws CantoInvalidoExcepcion {
+		throw new CantoInvalidoExcepcion();
 	}
-
-	@Override
-	public TiposDeCantoEnvido cantarFaltaEnvido(String equipoQueCanta) {
-		return null;
-	}
-
+	
 	@Override
 	public int noQuiso() {
 		return 8;
@@ -28,8 +30,6 @@ public class EnvidoEnvidoRealEnvidoFaltaEnvido extends TiposDeCantoEnvido {
 
 	@Override
 	public int quiso() {
-		return 0;
-		//ver como saber los puntos cuando se canta la faltaEnvido
+		return -1;
 	}
-
 }
