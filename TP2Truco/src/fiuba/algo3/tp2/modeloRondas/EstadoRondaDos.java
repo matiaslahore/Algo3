@@ -7,6 +7,7 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public class EstadoRondaDos extends EstadoRondas{
 	//SE CANTA EL TRUCO
@@ -45,8 +46,9 @@ public class EstadoRondaDos extends EstadoRondas{
 			this.jugadorMano = this.jugadorMano + 1;
 			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 		}
-		
-		return new EstadoRondaTres(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
+		refEstadoRonda = new EstadoRondaTres(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
+		refEstadoRonda.modificarCantoTruco(this.cantosTruco);
+		return this.refEstadoRonda;
 	}
 
 }

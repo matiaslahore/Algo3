@@ -8,6 +8,7 @@ import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public class EstadoRondaDosParda extends EstadoRondas{
 	//SE CANTA EL TRUCO
@@ -32,7 +33,10 @@ public class EstadoRondaDosParda extends EstadoRondas{
 			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA DOS PARDA");
 			ganadoresRonda.add("Parda"); //esto se podria sacar..pero es para el test
-			return new EstadoRondaTresParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
+		
+			refEstadoRonda = new EstadoRondaTresParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
+			refEstadoRonda.modificarCantoTruco(this.cantosTruco);
+			return this.refEstadoRonda;
 		}
 
 		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);

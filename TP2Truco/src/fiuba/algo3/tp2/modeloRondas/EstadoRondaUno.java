@@ -11,6 +11,8 @@ import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.tiposDeCanto.EmpezarTruco;
+import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public class EstadoRondaUno extends EstadoRondas{
 	//OPCIONES EN ESTA RONDA:
@@ -25,6 +27,7 @@ public class EstadoRondaUno extends EstadoRondas{
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+		this.cantosTruco = new EmpezarTruco(); //ronda uno empiezo desde cero
 	}
 	
 	public EstadoRondas ganador(){
@@ -37,7 +40,10 @@ public class EstadoRondaUno extends EstadoRondas{
 			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA UNO PARDA");
 			ganadoresRonda.add("Parda"); //esto se podria sacar..pero es para el test
-			return new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
+			/* HACER LO DEL RETURN */
+			refEstadoRonda = new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
+			refEstadoRonda.modificarCantoTruco(this.cantosTruco);
+			return this.refEstadoRonda;
 		}
 		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
 		ganadoresRonda.add(ganador.obtenerNombreEquipo());
@@ -46,7 +52,9 @@ public class EstadoRondaUno extends EstadoRondas{
 		
 		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
 		
-		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
+		refEstadoRonda = new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
+		refEstadoRonda.modificarCantoTruco(this.cantosTruco);
+		return this.refEstadoRonda;
 	}
 
 }

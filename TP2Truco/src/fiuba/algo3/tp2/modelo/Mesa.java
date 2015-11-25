@@ -110,17 +110,25 @@ public class Mesa {
 			//QueDevuelvo
 		}
 	}
-
-	public void quiero(Jugador jugador){
-		this.ronda = this.ronda.quiero(jugador);
-	}
 	
 	public void cantarQuieroReTruco(Jugador jugador) {
 		try {
-			this.ronda = this.ronda.cantarTruco(jugador);
+			this.ronda = this.ronda.cantarQuieroReTruco(jugador);
 		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
 			//QueDevuelvo
 		}
+	}
+	
+	public void cantarQuieroValeCuatro(Jugador jugador) {
+		try {
+			this.ronda = this.ronda.cantarQuieroValeCuatro(jugador);
+		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
+			//QueDevuelvo
+		}
+	}
+
+	public void quiero(Jugador jugador){
+		this.ronda = this.ronda.quiero(jugador);
 	}
 
 	public void noQuiero(Jugador jugador){

@@ -8,6 +8,7 @@ import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public class EstadoRondaTres extends EstadoRondas{
 	//SE CANTA EL TRUCO

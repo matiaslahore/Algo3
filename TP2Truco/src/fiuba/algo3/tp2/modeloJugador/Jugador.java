@@ -117,6 +117,10 @@ public class Jugador {
 		this.refMesa.cantarQuieroReTruco(this);
 	}
 	
+	public void cantarQuieroValeCuatro() {
+		this.refMesa.cantarQuieroValeCuatro(this);
+	}
+	
 	public void cantarEnvido() throws CantoInvalidoException{
 		try {
 			this.refMesa.cantarEnvido(this);
