@@ -20,6 +20,7 @@ public class Visualizador extends Application  {
 	
         private Jugador jugador;
         private Mesa mesa;
+       
         
         public static void main(String[] args)
     	{
@@ -117,21 +118,26 @@ public class Visualizador extends Application  {
 	        HBox contenedorCantos = new HBox(50,botonEnvido,botonTruco);
 	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 	        
-
-	        VBox contenedorPrincipal = new VBox(contenedorCartas,contenedorCantos,contenedorOpcion);
+	        Label etiqueta = new Label();
+	        
+	        VBox contenedorPrincipal = new VBox(contenedorCartas,contenedorCantos,contenedorOpcion, etiqueta);
 	        contenedorPrincipal.setSpacing(8);
 	        contenedorPrincipal.setPadding(new Insets(20));
-
-	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador);
-	        botonEnvido.setOnAction(botonEnvidoEventHandler);
 	        
-            Group root = new Group();
-            root.getChildren().add(imagen);
+	        
+	        Group root = new Group();
+	        root.getChildren().add(imagen);
             root.getChildren().addAll(carta1,carta2,carta3);
             root.getChildren().add(contenedorPrincipal);
              
 	        
 	        Scene scene = new Scene(root, 600, 800);
+	        
+
+	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador, etiqueta);
+	        botonEnvido.setOnAction(botonEnvidoEventHandler);
+	        
+            
 	        
 	        return scene;
 	    }
