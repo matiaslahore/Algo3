@@ -6,9 +6,15 @@ import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.tiposDeCanto.EmpezarTruco;
+import fiuba.algo3.tp2.tiposDeCanto.Envido;
+import fiuba.algo3.tp2.tiposDeCanto.FaltaEnvido;
+import fiuba.algo3.tp2.tiposDeCanto.RealEnvido;
+import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public abstract class EstadoRondas{
 
@@ -103,21 +109,21 @@ public abstract class EstadoRondas{
 	}
 	*/
 	
-	public EstadoRondas cantarEnvido(Jugador jugador) {
+	public EstadoRondas cantarEnvido(Jugador jugador) throws CantoInvalidoException {
 		Envido envido = new Envido(jugador.obtenerEquipoQuePertenece());
 		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,envido);
 	}
 	
-	public EstadoRondas cantarRealEnvido(Jugador jugador) {
+	public EstadoRondas cantarRealEnvido(Jugador jugador)throws CantoInvalidoException {
 		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipoQuePertenece());
 		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano,realEnvido);
 	}
 	
-	public EstadoRondas cantarFaltaEnvido(Jugador jugador) {
+	public EstadoRondas cantarFaltaEnvido(Jugador jugador)throws CantoInvalidoException {
 		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipoQuePertenece());
 		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual

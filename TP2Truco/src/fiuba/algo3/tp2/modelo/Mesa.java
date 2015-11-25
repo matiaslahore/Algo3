@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.*;
@@ -72,16 +73,28 @@ public class Mesa {
 		return this.ronda.turnoDe();
 	}
     
-	public void cantarEnvido( Jugador jugador){
-		this.ronda = this.ronda.cantarEnvido(jugador);
+	public void cantarEnvido( Jugador jugador) throws CantoInvalidoException{
+		try {
+			this.ronda = this.ronda.cantarEnvido(jugador);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
 	}
 	
-	public void cantarRealEnvido(Jugador jugador) {
-		this.ronda = this.ronda.cantarRealEnvido(jugador);
+	public void cantarRealEnvido(Jugador jugador) throws CantoInvalidoException {
+		try {
+			this.ronda = this.ronda.cantarRealEnvido(jugador);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
 	}
 	
-	public void cantarFaltaEnvido( Jugador jugador){
-		this.ronda = this.ronda.cantarFaltaEnvido(jugador);
+	public void cantarFaltaEnvido( Jugador jugador) throws CantoInvalidoException{
+		try {
+			this.ronda = this.ronda.cantarFaltaEnvido(jugador);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
 	}
 
 	public boolean puedeCantarEnvido(Jugador jugador) {

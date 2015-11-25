@@ -117,16 +117,28 @@ public class Jugador {
 		this.refMesa.cantarQuieroReTruco(this);
 	}
 	
-	public void cantarEnvido(){
-		this.refMesa.cantarEnvido(this);
+	public void cantarEnvido() throws CantoInvalidoException{
+		try {
+			this.refMesa.cantarEnvido(this);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
 	}
 	
-	public void cantarRealEnvido (){
-		this.refMesa.cantarRealEnvido(this);
+	public void cantarRealEnvido () throws CantoInvalidoException{
+		try {
+			this.refMesa.cantarRealEnvido(this);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
 	}
 	
-	public void cantarFaltaEnvido(){
-		this.refMesa.cantarFaltaEnvido(this);
+	public void cantarFaltaEnvido() throws CantoInvalidoException{
+		try {
+			this.refMesa.cantarFaltaEnvido(this);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
 	}
 
 	public boolean puedeCantarEnvido() {

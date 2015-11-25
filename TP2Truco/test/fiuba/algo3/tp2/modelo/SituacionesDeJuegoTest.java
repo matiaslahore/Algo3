@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
@@ -453,19 +454,28 @@ public class SituacionesDeJuegoTest {
 		actual.recibirCartas(new TresDeOro(), new SieteDeCopa(), new SeisDeCopa());
 		actual = mesa.siguiente();
 
+		
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual = mesa.siguiente();
+		
 		Assert.assertEquals("j2",actual.obtenerNombre());
-		actual.cantarEnvido();
+		try {
+			actual.cantarEnvido(); //Canta Envido
+		} catch (CantoInvalidoException e) {}
 		actual = mesa.siguiente();
+		
 		Assert.assertEquals("j3",actual.obtenerNombre());
-		actual.cantarEnvido(); //aca canto Envido Envido el J3
-		
+		try {
+			actual.cantarEnvido();
+		} catch (CantoInvalidoException e) {} //aca canto Envido Envido el J3
 		actual = mesa.siguiente();
+		
 		Assert.assertEquals("j4",actual.obtenerNombre());
-		actual.cantarRealEnvido(); //j4 canto envido envido realenvido
-		
+		try {
+			actual.cantarRealEnvido();
+		} catch (CantoInvalidoException e) {} //j4 canto envido envido realenvido
 		actual = mesa.siguiente();
+		
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.quiero(); //j1 quiere envido envido realenvido
 		

@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.modeloRondas;
+package fiuba.algo3.tp2.tiposDeCanto;
 
 public class Envido extends TiposDeCantoEnvido{
 	

@@ -7,6 +7,7 @@ import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoEnvido;
 
 public class EstadoRondaEnvido extends EstadoRondas{
 	
@@ -107,22 +108,37 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
 	}
 	
-	public EstadoRondas cantarEnvido(Jugador jugador) {
-		EnvidoEnvido envidoEnvido = new EnvidoEnvido(jugador.obtenerEquipoQuePertenece());
+	public EstadoRondas cantarEnvido(Jugador jugador)throws CantoInvalidoException{
+		TiposDeCantoEnvido unTipoDeEnvido = null;
+		try{
+			unTipoDeEnvido = this.cantosEnvido.cantarEnvido(jugador.obtenerEquipoQuePertenece());
+		}catch(CantoInvalidoException e){
+			throw e;
+		}
 		this.jugadorMano = this.jugadorMano + 1;
-		return new EstadoRondaEnvidoEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,envidoEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,unTipoDeEnvido);
 	}
 	
-	public EstadoRondas cantarRealEnvido(Jugador jugador) {
-		EnvidoRealEnvido envidoRealEnvido = new EnvidoRealEnvido(jugador.obtenerEquipoQuePertenece());
+	public EstadoRondas cantarRealEnvido(Jugador jugador) throws CantoInvalidoException {
+		TiposDeCantoEnvido unTipoDeRealEnvido = null;
+		try{
+			unTipoDeRealEnvido = this.cantosEnvido.cantarRealEnvido(jugador.obtenerEquipoQuePertenece());
+		}catch(CantoInvalidoException e){
+			throw e;
+		}
 		this.jugadorMano = this.jugadorMano + 1;
-		return new EstadoRondaEnvidoRealEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,envidoRealEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,unTipoDeRealEnvido);
 	}
 	
-	public EstadoRondas cantarFaltaEnvido(Jugador jugador) {
-		EnvidoFaltaEnvido envidoFaltaEnvido = new EnvidoFaltaEnvido(jugador.obtenerEquipoQuePertenece());
+	public EstadoRondas cantarFaltaEnvido(Jugador jugador) throws CantoInvalidoException {
+		TiposDeCantoEnvido unTipoDeFaltaEnvido = null;
+		try{
+			unTipoDeFaltaEnvido = this.cantosEnvido.cantarFaltaEnvido(jugador.obtenerEquipoQuePertenece());
+		}catch(CantoInvalidoException e){
+			throw e;
+		}
 		this.jugadorMano = this.jugadorMano + 1;
-		return new EstadoRondaEnvidoFaltaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,envidoFaltaEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,unTipoDeFaltaEnvido);
 	}
 	
 }
