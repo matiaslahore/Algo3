@@ -9,8 +9,6 @@ public class PartidaDeTrucoConFlor extends PartidaDeTruco{
 		super(eq1, eq2);
 	}
 
-	Puntos puntos;
-
 	@Override
 	public void cargarJugadoresEnEquipoUno(String nombre) {
 		this.equipoUno.cargarJugadores(nombre);
