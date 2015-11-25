@@ -22,7 +22,7 @@ public class EstadoRondaTres extends EstadoRondas{
 	//SE GANA (SI O SI)
 
 	public EstadoRondas ganador(){
-		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
+		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		

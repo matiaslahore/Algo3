@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
@@ -15,11 +16,16 @@ public class Juez {
 	Puntos puntos;
 	int puntosEnJuego;
 	
+	
 	public Juez(Mesa mesa, String equipoUno, String equipoDos){
 		this.maso = new Maso();
 		this.mesa = mesa;
 		this.puntosEnJuego = 0;
 		this.puntos = new Puntos(equipoUno, equipoDos);
+	}
+
+	public List<TipoDeCartas> obtenerListaDeCartasEnJuego(){
+		return this.mesa.obtenerListaDeCartasEnJuego();
 	}
 	
 	public TipoDeCartas repartir(){
@@ -34,29 +40,16 @@ public class Juez {
 		this.maso = new Maso();
 	}
 
-	public TipoDeCartas quienGana(ArrayList<TipoDeCartas> cartasEnJuego) {
-		Iterator<TipoDeCartas> itr = cartasEnJuego.iterator();
+	public TipoDeCartas obtenerCartaGanadoraDeRonda() {
 		
-		TipoDeCartas cartaUno = (TipoDeCartas) itr.next();
-		TipoDeCartas cartaDos = (TipoDeCartas) itr.next();
-		TipoDeCartas ganadora = ganador(cartaUno,cartaDos);
-		
-		while(itr.hasNext()) {
-			TipoDeCartas otraCarta = (TipoDeCartas) itr.next();
-			ganadora = ganador(ganadora,otraCarta);
-		}
-		
-		return ganadora;
+		return this.mesa.obtenerCartaGanadoraDeRonda();
 	}
 	
-	//public boolean hayParda(TipoDeCartas a , TipoDeCartas b){
-	//	
-	//}
-	
-	private TipoDeCartas ganador(TipoDeCartas a, TipoDeCartas b){
-		return a.vs(b);
+	public boolean hayParda(){
+		
+		return this.mesa.hayParda();
 	}
-
+	
 	public void puntosEnJuego(int puntos) {
 		this.puntosEnJuego = puntos;
 	}
@@ -86,5 +79,9 @@ public class Juez {
 	public int obtenerPuntosFaltaEnvido(String Equipo){
 		return 0;
 		//Desarrollar este metodo
+	}
+
+	public void limpiarCartasEnJuegoDeRondaAnterior() {
+		this.mesa.limpiarCartasEnJuegoDeRondaAnterior();
 	}
 }

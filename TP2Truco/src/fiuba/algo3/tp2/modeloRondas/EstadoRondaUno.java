@@ -28,7 +28,7 @@ public class EstadoRondaUno extends EstadoRondas{
 	public EstadoRondas ganador(){
 		this.ganadoresRonda.clear();
 		
-		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
+		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		
 		if (indexCartaGanadora == -1){ //es parda
@@ -40,7 +40,7 @@ public class EstadoRondaUno extends EstadoRondas{
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 		ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		
-		this.cartasEnJuego.clear();
+		this.juez.limpiarCartasEnJuegoDeRondaAnterior();
 		
 		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
 		

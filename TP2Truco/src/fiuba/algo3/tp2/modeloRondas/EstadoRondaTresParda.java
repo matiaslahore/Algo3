@@ -15,7 +15,7 @@ public class EstadoRondaTresParda extends EstadoRondas{
 	}
 	
 	public EstadoRondas ganador(){
-		TipoDeCartas ganadora = this.juez.quienGana(this.cartasEnJuego);
+		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		
 		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
 		

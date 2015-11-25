@@ -2,6 +2,9 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
@@ -65,7 +68,6 @@ public class Mesa {
 			Jugador jugadorEqDos = (Jugador) itrEqDos.next();
 			jugadores.add(jugadorEqDos);
 		}
-		System.out.println("\n");
 	}
 	
 	public Jugador siguiente(){
@@ -131,6 +133,63 @@ public class Mesa {
 
 	public int puntosEquipo(String equipo) {
 		return this.juez.puntosEquipo(equipo);
+	}
+
+	public TipoDeCartas obtenerCartaGanadoraDeRonda() {
+		Iterator<TipoDeCartas> itr = cartasEnJuego.iterator();
+		
+		TipoDeCartas cartaUno = (TipoDeCartas) itr.next();
+		TipoDeCartas cartaDos = (TipoDeCartas) itr.next();
+		TipoDeCartas ganadora = ganador(cartaUno,cartaDos);
+		
+		while(itr.hasNext()) {
+			TipoDeCartas otraCarta = (TipoDeCartas) itr.next();
+			ganadora = ganador(ganadora,otraCarta);
+		}
+		
+		return ganadora;		
+	}	
+	
+	private TipoDeCartas ganador(TipoDeCartas a, TipoDeCartas b){
+		return a.vs(b);
+	}
+
+	public List<TipoDeCartas> obtenerListaDeCartasEnJuego() {
+		return this.cartasEnJuego;
+	}
+
+	public void limpiarCartasEnJuegoDeRondaAnterior() {
+		this.cartasEnJuego.clear();
+	}
+
+	public boolean hayParda() {
+		
+		Iterator<TipoDeCartas> itr = this.cartasEnJuego.iterator();
+
+		List<TipoDeCartas> cartasEquipoUno = new LinkedList<TipoDeCartas>();
+		List<TipoDeCartas> cartasEquipoDos = new LinkedList<TipoDeCartas>();
+		
+		while (itr.hasNext()){
+			cartasEquipoUno.add(itr.next());
+			cartasEquipoDos.add(itr.next());
+		}
+		
+		TipoDeCartas mejorCartaEquipoUno = this.obtenerMejorCartaDeLaLista(cartasEquipoUno);
+		TipoDeCartas mejorCartaEquipoDos = this.obtenerMejorCartaDeLaLista(cartasEquipoDos);
+		
+		return mejorCartaEquipoUno.hayParda(mejorCartaEquipoDos);
+	}
+
+	private TipoDeCartas obtenerMejorCartaDeLaLista(List<TipoDeCartas> cartas) {
+		Iterator<TipoDeCartas> iterador = cartas.iterator();
+		
+		TipoDeCartas mejorCarta = iterador.next();
+		
+		while(iterador.hasNext()){
+			
+			mejorCarta = iterador.next().vs(mejorCarta);
+		}
+		return mejorCarta;
 	}
 
 	/*

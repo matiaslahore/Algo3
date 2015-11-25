@@ -21,7 +21,6 @@ public abstract class EstadoRondas{
 	Juez juez;
 	ArrayList<String> ganadoresRonda;
 	ListaCircular<Jugador> jugadores;
-	ArrayList<TipoDeCartas> cartasEnJuego;
 	ArrayList<Integer> tantoEnJuego;
 	int jugadorMano;
 	int indexMano;
@@ -29,28 +28,22 @@ public abstract class EstadoRondas{
 	EstadoRondas refEstadoRonda;
 	TiposDeCantoTruco cantosTruco;
 
-	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
+	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
 		this.ganadoresRonda = ganadoresRonda;
-		this.cartasEnJuego = cartasEnJuego;
 		this.jugadores = jugadores;
-		//cartasEnJuego = new ArrayList<TipoDeCartas>();
 		this.jugadorMano = new Integer(indexManoAux);
 		this.indexMano = indexMano; //esto no se toca nunca salvo en la ronda 3 para indicar la mano sig.
 		this.refEstadoRonda = estadoRonda;
 		this.cantosTruco = new EmpezarTruco();
-
 		tantoEnJuego = new ArrayList<Integer>();
-		//this.cantosEnvido = new Envido();
 	}
 	
 	public EstadoRondas acualizarRonda() {
 		if (this.cartasEnJuego.size() == this.jugadores.size()){ //se jugaron todas las cartas
 			return ganador();
 		}
-		else {
-			return this;
-		}
+		return this;		
 	}
 
 	public Jugador turnoDe() {

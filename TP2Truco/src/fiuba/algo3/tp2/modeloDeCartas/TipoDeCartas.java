@@ -2,6 +2,11 @@ package fiuba.algo3.tp2.modeloDeCartas;
 
 public interface TipoDeCartas {
 
+	public default boolean hayParda(TipoDeCartas contra){
+		
+		return (this.vs(contra) != contra.vs(this));
+	}
+	
 	public abstract TipoDeCartas vs(TipoDeCartas contra);
 	
 	public abstract TipoDeCartas vs(AnchoDeEspada contra);
@@ -85,6 +90,5 @@ public interface TipoDeCartas {
 	public abstract int sumarTanto(CuatroDeCopa sumar);
 	
 	public abstract String cartaComoString();
-
 }
 
