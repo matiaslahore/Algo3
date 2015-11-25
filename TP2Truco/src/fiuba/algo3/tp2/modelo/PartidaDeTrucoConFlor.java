@@ -5,16 +5,11 @@ import java.util.LinkedList;
 
 public class PartidaDeTrucoConFlor extends PartidaDeTruco{
 
-	Mesa mesa;
-	Equipo equipoUno;
-	Equipo equipoDos;
-	Puntos puntos;
-
-	public PartidaDeTrucoConFlor(String eq1, String eq2){
-		this.mesa = new Mesa(eq1, eq2);
-		this.equipoUno = new Equipo(eq1,mesa);
-		this.equipoDos = new Equipo(eq2,mesa);
+	public PartidaDeTrucoConFlor(String eq1, String eq2) {
+		super(eq1, eq2);
 	}
+
+	Puntos puntos;
 
 	@Override
 	public void cargarJugadoresEnEquipoUno(String nombre) {

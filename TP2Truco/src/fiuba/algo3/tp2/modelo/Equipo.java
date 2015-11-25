@@ -68,5 +68,10 @@ public class Equipo {
 		
 		
 	}
+
+	public boolean tieneEsteNombre(String nombreDelEquipo) {
+		
+		return (this.nombreEquipo == nombreDelEquipo);
+	}
 	
 }
