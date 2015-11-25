@@ -23,10 +23,10 @@ public class EstadoRondaTresParda extends EstadoRondas{
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 		
 		if (this.juez.hayParda()){ //es parda
-			ganadoresRonda.add(jugadores.get(indexMano).obtenerNombreEquipo()); //gana el eq q es mano
-			this.juez.anotarPuntos(jugadores.get(indexMano).obtenerNombreEquipo());
+			ganadoresRonda.add(jugadores.get(jugadorMano).obtenerNombreEquipo()); //gana el eq q es mano
+			this.juez.anotarPuntos(jugadores.get(jugadorMano).obtenerNombreEquipo());
 		}else{
-			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+			Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
 			ganadoresRonda.add(ganador.obtenerNombreEquipo());
 			this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
 		}
@@ -35,8 +35,8 @@ public class EstadoRondaTresParda extends EstadoRondas{
 		
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
-		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);
+		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 	}
 	
 }

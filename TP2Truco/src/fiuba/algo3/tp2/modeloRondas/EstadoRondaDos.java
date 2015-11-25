@@ -30,7 +30,7 @@ public class EstadoRondaDos extends EstadoRondas{
 		if (this.juez.hayParda()){ //es parda
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 		}else{
-			Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+			Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
 			ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		}
 				
@@ -42,11 +42,11 @@ public class EstadoRondaDos extends EstadoRondas{
 			this.juez.anotarPuntos(this.ganadoresRonda.get(1));
 			this.ganadoresRonda.clear();
 			
-			this.indexMano = this.indexMano + 1;
-			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);
+			this.jugadorMano = this.jugadorMano + 1;
+			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 		}
 		
-		return new EstadoRondaTres(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
+		return new EstadoRondaTres(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
 	}
 
 }

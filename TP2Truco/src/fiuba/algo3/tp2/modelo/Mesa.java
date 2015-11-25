@@ -21,8 +21,8 @@ public class Mesa {
 	Puntos puntos;
 	EstadoRondas ronda;
 	int indexMano;
-	Truco truco;
-	Envido envido;
+	//Truco truco;
+	//Envido envido;
 	
 	
 	public Mesa(String equipoUno, String equipoDos){
@@ -32,8 +32,8 @@ public class Mesa {
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		puntos = new Puntos(equipoUno,equipoDos);
 		indexMano = 0;
-		this.truco= new Truco();
-		this.envido = new Envido();
+		//this.truco= new Truco();
+		//this.envido = new Envido();
 		//this.ronda = new EstadoRondaUno(ronda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 	}
 	
@@ -97,10 +97,6 @@ public class Mesa {
 		} catch (CantoInvalidoException e) {
 			throw e;
 		}
-	}
-
-	public boolean puedeCantarEnvido(Jugador jugador) {
-		return(this.envido.puedeCantar(jugador));
 	}
 
 	public String ultimoGanador() {

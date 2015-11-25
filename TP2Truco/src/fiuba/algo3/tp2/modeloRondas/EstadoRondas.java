@@ -22,8 +22,8 @@ public abstract class EstadoRondas{
 	ArrayList<String> ganadoresRonda;
 	ListaCircular<Jugador> jugadores;
 	ArrayList<Integer> tantoEnJuego;
+	int jugadorManoDeLaRondaActual;
 	int jugadorMano;
-	int indexMano;
 	boolean sigue;
 	EstadoRondas refEstadoRonda;
 	TiposDeCantoTruco cantosTruco;
@@ -32,8 +32,8 @@ public abstract class EstadoRondas{
 		this.juez=juez;
 		this.ganadoresRonda = ganadoresRonda;
 		this.jugadores = jugadores;
-		this.jugadorMano = new Integer(indexManoAux);
-		this.indexMano = indexMano; //esto no se toca nunca salvo en la ronda 3 para indicar la mano sig.
+		this.jugadorManoDeLaRondaActual = new Integer(indexManoAux);
+		this.jugadorMano = indexMano; //esto no se toca nunca salvo en la ronda 3 para indicar la mano sig.
 		this.refEstadoRonda = estadoRonda;
 		this.cantosTruco = new EmpezarTruco();
 		this.tantoEnJuego = new ArrayList<Integer>();
@@ -51,8 +51,8 @@ public abstract class EstadoRondas{
 	}
 
 	public Jugador turnoDe() {
-		Jugador jugador = this.jugadores.get(this.jugadorMano);
-		this.jugadorMano = this.jugadorMano + 1;
+		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual);
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return jugador;
 	}
 
@@ -75,9 +75,9 @@ public abstract class EstadoRondas{
 		 catch(EquipoQueCantaNoPuedeVolverACantarException e2){
 			throw e2;
 		}
-		this.jugadorMano = (this.jugadorMano - 1); //asi dsps vuelve al q canto la mano
+		this.jugadorManoDeLaRondaActual = (this.jugadorManoDeLaRondaActual - 1); //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, indexMano, indexMano);
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano);
 	}
 	
 	/*
@@ -108,23 +108,23 @@ public abstract class EstadoRondas{
 	
 	public EstadoRondas cantarEnvido(Jugador jugador) throws CantoInvalidoException {
 		Envido envido = new Envido(jugador.obtenerEquipoQuePertenece());
-		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, indexMano, indexMano,envido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,envido);
 	}
 	
 	public EstadoRondas cantarRealEnvido(Jugador jugador)throws CantoInvalidoException {
 		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipoQuePertenece());
-		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, indexMano, indexMano,realEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,realEnvido);
 	}
 	
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador)throws CantoInvalidoException {
 		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipoQuePertenece());
-		this.jugadorMano = this.jugadorMano - 1; //asi dsps vuelve al q canto la mano
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, indexMano, indexMano,faltaEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,faltaEnvido);
 	}
 	
 }

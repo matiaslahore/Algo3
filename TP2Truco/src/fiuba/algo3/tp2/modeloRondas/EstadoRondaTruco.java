@@ -25,7 +25,7 @@ public class EstadoRondaTruco extends EstadoRondas{
 	}
 
 	public Jugador turnoDe() {
-		Jugador jugador = this.jugadores.get(this.jugadorMano + 2); //2 es manejo de indices //aclarar
+		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual + 2); //2 es manejo de indices //aclarar
 		return jugador;
 	}
 	
@@ -39,9 +39,9 @@ public class EstadoRondaTruco extends EstadoRondas{
 	public EstadoRondas noQuiero(Jugador jugador) {
 		this.juez.puntosEnJuego(this.cantosTruco.noQuiso());
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
-		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
+		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		//Termina las Rondas, y se vuelve a tirar las cartas, para una nueva mano
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 	}
 	
 }
