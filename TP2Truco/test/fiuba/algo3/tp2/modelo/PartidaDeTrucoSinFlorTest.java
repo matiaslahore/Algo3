@@ -26,52 +26,55 @@ public class PartidaDeTrucoSinFlorTest {
 		partidaDeTruco.cargarJugadoresEnEquipoUno("Nicolas");
 		partidaDeTruco.cargarJugadoresEnEquipoDos("Matias");
 		
-		
-		Jugador nicolas = partidaDeTruco.obtenerEquipo("equipoUno").obtenerJugador("Nicolas");
-		Jugador matias = partidaDeTruco.obtenerEquipo("EquipoDos").obtenerJugador("Matias");
-		
-		nicolas.recibirCartas(new AnchoDeBasto(), new CuatroDeBasto(), new SieteDeEspada());
-		matias.recibirCartas(new AnchoDeCopa(), new AnchoDeOro(), new SieteDeCopa());
-		
 		partidaDeTruco.iniciarRonda();
 		
-		nicolas.cantarEnvido();
+		Jugador nicolas = partidaDeTruco.siguiente();
+		nicolas.recibirCartas(new AnchoDeBasto(), new CuatroDeBasto(), new SieteDeEspada());
+		Jugador matias = partidaDeTruco.siguiente();
+		matias.recibirCartas(new AnchoDeCopa(), new AnchoDeOro(), new SieteDeCopa());
 		
+		nicolas = partidaDeTruco.siguiente();
+		nicolas.cantarEnvido();
+		matias = partidaDeTruco.siguiente();
 		matias.quiero();
 		
-		Assert.assertEquals(2, partidaDeTruco.obtenerPuntajeDeEquipo("equipoUno"));
-		Assert.assertEquals(0, partidaDeTruco.obtenerPuntajeDeEquipo("equipoDos"));
+		Assert.assertEquals(0, partidaDeTruco.obtenerPuntajeDeEquipo("equipoUno"));
+		Assert.assertEquals(2, partidaDeTruco.obtenerPuntajeDeEquipo("equipoDos"));
 	}
 	
 	@Test
 	public void partidaDeTrucoSinFlorDos(){
 		
-		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
+partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
 		
 		partidaDeTruco.cargarJugadoresEnEquipoUno("Nicolas");
 		partidaDeTruco.cargarJugadoresEnEquipoDos("Matias");
 		
-		
-		Jugador nicolas = partidaDeTruco.obtenerEquipo("equipoUno").obtenerJugador("Nicolas");
-		Jugador matias = partidaDeTruco.obtenerEquipo("EquipoDos").obtenerJugador("Matias");
-		
-		nicolas.recibirCartas(new AnchoDeBasto(), new CuatroDeBasto(), new SieteDeEspada());
-		matias.recibirCartas(new AnchoDeCopa(), new AnchoDeOro(), new SieteDeCopa());
-		
 		partidaDeTruco.iniciarRonda();
 		
-		nicolas.cantarTruco();
+		Jugador nicolas = partidaDeTruco.siguiente();
+		nicolas.recibirCartas(new AnchoDeBasto(), new CuatroDeBasto(), new SieteDeEspada());
+		Jugador matias = partidaDeTruco.siguiente();
+		matias.recibirCartas(new AnchoDeCopa(), new AnchoDeOro(), new SieteDeCopa());
 		
+		nicolas = partidaDeTruco.siguiente();
+		nicolas.cantarTruco();
+		matias = partidaDeTruco.siguiente();
 		matias.quiero();
 		
+		nicolas = partidaDeTruco.siguiente();
 		nicolas.jugarPrimera();
 		
+		matias = partidaDeTruco.siguiente();
 		matias.jugarTercera();
 		
+		nicolas = partidaDeTruco.siguiente();
 		nicolas.jugarSegunda();
 		
+		matias = partidaDeTruco.siguiente();
 		matias.jugarSegunda();
 		
+		matias = partidaDeTruco.siguiente();
 		Assert.assertEquals(2, partidaDeTruco.obtenerPuntajeDeEquipo("equipoUno"));
 		Assert.assertEquals(0, partidaDeTruco.obtenerPuntajeDeEquipo("equipoDos"));
 	}
