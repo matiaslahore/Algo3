@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class SituacionesDeJuegoTest {
 
-	/*@Test
+	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		Mesa mesa = new Mesa("eq1", "eq2");
 		Equipo eq1 = new Equipo("eq1", mesa);
@@ -427,7 +427,7 @@ public class SituacionesDeJuegoTest {
 		
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
-	}*/
+	}
 	
 	@Test
 	public void pruebaJ4CantaEnvidoEnvidoRealEnvidoJ1Acepta(){
