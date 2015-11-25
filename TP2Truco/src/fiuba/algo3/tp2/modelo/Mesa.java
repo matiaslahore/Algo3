@@ -99,10 +99,6 @@ public class Mesa {
 		}
 	}
 
-	/*public boolean puedeCantarEnvido(Jugador jugador) {
-		return(this.envido.puedeCantar(jugador));
-	}*/
-
 	public String ultimoGanador() {
 		return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
 	}
