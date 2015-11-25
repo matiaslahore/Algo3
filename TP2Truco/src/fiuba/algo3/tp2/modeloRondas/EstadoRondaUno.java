@@ -33,20 +33,20 @@ public class EstadoRondaUno extends EstadoRondas{
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 		
-		if (indexCartaGanadora == -1){ //es parda
+		if (this.juez.hayParda()){ //es parda
 			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA UNO PARDA");
 			ganadoresRonda.add("Parda"); //esto se podria sacar..pero es para el test
-			return new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.indexMano);
+			return new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
 		}
-		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
 		ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
 		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
 		
-		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
+		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
 	}
 
 }

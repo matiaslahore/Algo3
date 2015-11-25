@@ -32,10 +32,10 @@ public class EstadoRondaDosParda extends EstadoRondas{
 			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA DOS PARDA");
 			ganadoresRonda.add("Parda"); //esto se podria sacar..pero es para el test
-			return new EstadoRondaTresParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.indexMano);
+			return new EstadoRondaTresParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
 		}
 
-		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
+		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
 		ganadoresRonda.add(ganador.obtenerNombreEquipo());
 
 		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
@@ -44,8 +44,8 @@ public class EstadoRondaDosParda extends EstadoRondas{
 
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 
-		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);		
+		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);		
 	}
 	
 }

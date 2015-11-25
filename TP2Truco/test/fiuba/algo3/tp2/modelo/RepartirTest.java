@@ -17,13 +17,6 @@ public class RepartirTest {
 	@Before
 	public void Inicializar(){
 		this.mesa = new Mesa("EquipoUno","EquipoDos");
-		this.jugador = new Jugador("pepito", this.mesa);
-	}
-	
-	@Test
-	public void jugadorRecibeCartas(){
-		jugador.recibirCartas(new SeisDeCopa(), new AnchoDeCopa(), new CincoDeEspada());
-		Assert.assertEquals("'6 de Copa' '1 de Copa' '5 de Espada' ",jugador.verCartasEnManoComoString());
 	}
 	
 	@Test
@@ -42,5 +35,4 @@ public class RepartirTest {
 		player = eq.obtenerJugador("Tevez");
 		Assert.assertEquals(3,player.cantidadDeCartas());
 	}
-	
 }
