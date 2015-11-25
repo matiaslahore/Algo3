@@ -61,21 +61,34 @@ public class Visualizador extends Application  {
 	    	
 	    		
 	    	String direccionImagen = "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/images.jpeg";
-	        String direccionCarta = "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/b1.jpeg"; 
-	    	
-	    	Image fondo = new Image(direccionImagen);
-	    	Image unoBasto = new Image(direccionCarta);
+	        String direccionCarta1= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/b1.jpg"; 
+	        String direccionCarta2= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/e1.jpg";
+	    	String direccionCarta3= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/e7.jpg";
+	        
+	    	Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
 	        ImageView imagen = new ImageView();
 		    imagen.setImage(fondo);
-            imagen.setFitHeight(700);
-            imagen.setFitWidth(800);
+		    
+		    Image unoBasto = new Image(direccionCarta1);
+            ImageView carta1 = new ImageView();
+            carta1.setImage(unoBasto);
+            carta1.setLayoutX(160);
+            carta1.setLayoutY(400);
             
-            ImageView carta = new ImageView();
-            carta.setImage(unoBasto);
-            carta.setFitHeight(200);
-            carta.setFitWidth(130);
-            carta.setLayoutX(200);
-            carta.setLayoutY(500);
+            Image unoEspada = new Image(direccionCarta2);
+            ImageView carta2 = new ImageView();
+            carta2.setImage(unoEspada);
+            carta2.setLayoutX(250);
+            carta2.setLayoutY(400);
+            
+            Image sieteEspada = new Image(direccionCarta3);
+            ImageView carta3 = new ImageView();
+            carta3.setImage(sieteEspada);
+            carta3.setLayoutX(340);
+            carta3.setLayoutY(400);
+            
+           
+            
             
 	        Button botonEnvido = new Button();
 	        botonEnvido.setText("Envido");
@@ -100,9 +113,9 @@ public class Visualizador extends Application  {
 	        botonCarta3.setText("Carta 3");
 	        
 
-	        HBox contenedorCartas = new HBox(botonCarta1,botonCarta2,botonCarta3);
-	        HBox contenedorCantos = new HBox(botonEnvido,botonTruco);
-	        HBox contenedorOpcion = new HBox(botonQuerer,botonNoQuerer,botonIrseAlMazo);
+	        HBox contenedorCartas = new HBox(10, botonCarta1,botonCarta2,botonCarta3);
+	        HBox contenedorCantos = new HBox(50,botonEnvido,botonTruco);
+	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 	        
 
 	        VBox contenedorPrincipal = new VBox(contenedorCartas,contenedorCantos,contenedorOpcion);
@@ -114,7 +127,7 @@ public class Visualizador extends Application  {
 	        
             Group root = new Group();
             root.getChildren().add(imagen);
-            root.getChildren().add(carta);
+            root.getChildren().addAll(carta1,carta2,carta3);
             root.getChildren().add(contenedorPrincipal);
              
 	        
