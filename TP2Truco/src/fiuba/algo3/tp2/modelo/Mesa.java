@@ -38,7 +38,7 @@ public class Mesa {
 	}
 	
 	public void iniciarRonda(){
-		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
+		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda, jugadores, indexMano, indexMano);
 	}
 	
 	public void recibirCarta(TipoDeCartas carta){
@@ -158,7 +158,7 @@ public class Mesa {
 		return this.cartasEnJuego;
 	}
 
-	public void limpiarCartasEnJuegoDeRondaAnterior() {
+	public void limpiarCartasEnJuegoDeRondaActual() {
 		this.cartasEnJuego.clear();
 	}
 
@@ -190,6 +190,10 @@ public class Mesa {
 			mejorCarta = iterador.next().vs(mejorCarta);
 		}
 		return mejorCarta;
+	}
+
+	public int cantidadDeCartasEnJuego() {
+		return this.cartasEnJuego.size();
 	}
 
 	/*

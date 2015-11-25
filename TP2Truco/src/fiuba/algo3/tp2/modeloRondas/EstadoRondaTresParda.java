@@ -10,16 +10,19 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaTresParda extends EstadoRondas{
 
-	public EstadoRondaTresParda(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
-		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
+	public EstadoRondaTresParda(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+
+		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
-	
+
 	public EstadoRondas ganador(){
+		
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		
-		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
+		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 		
-		if (indexCartaGanadora == -1){ //es parda
+		if (this.juez.hayParda()){ //es parda
 			ganadoresRonda.add(jugadores.get(indexMano).obtenerNombreEquipo()); //gana el eq q es mano
 			this.juez.anotarPuntos(jugadores.get(indexMano).obtenerNombreEquipo());
 		}else{
@@ -30,10 +33,10 @@ public class EstadoRondaTresParda extends EstadoRondas{
 		
 		System.out.println("RONDA TRES gana: " + ganadoresRonda.get(2) + "\n");
 		
-		this.cartasEnJuego.clear();
+		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
 		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);
 	}
 	
 }

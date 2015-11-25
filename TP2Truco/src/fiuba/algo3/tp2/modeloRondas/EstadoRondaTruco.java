@@ -9,8 +9,10 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaTruco extends EstadoRondas{
 
-	public EstadoRondaTruco(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
-		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
+	public EstadoRondaTruco(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+		
+		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
 
 	@Override
@@ -39,7 +41,7 @@ public class EstadoRondaTruco extends EstadoRondas{
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
 		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
 		//Termina las Rondas, y se vuelve a tirar las cartas, para una nueva mano
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.indexMano, this.indexMano);
 	}
 	
 }

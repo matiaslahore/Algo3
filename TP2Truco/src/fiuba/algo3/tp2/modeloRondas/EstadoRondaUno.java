@@ -13,10 +13,6 @@ import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaUno extends EstadoRondas{
-
-	public EstadoRondaUno(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego,ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
-		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, indexManoAux, indexMano);
-	}
 	//OPCIONES EN ESTA RONDA:
 	//EN RONDA UNO SE REPARTE
 	//SE CANTA EL ENVIDO
@@ -25,26 +21,32 @@ public class EstadoRondaUno extends EstadoRondas{
 	//SE EMPARDA
 	//IRSE AL MAZO
 	
+	public EstadoRondaUno(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+
+		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+	}
+	
 	public EstadoRondas ganador(){
 		this.ganadoresRonda.clear();
 		
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
-		int indexCartaGanadora = this.cartasEnJuego.lastIndexOf(ganadora);
+		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 		
 		if (indexCartaGanadora == -1){ //es parda
-			this.cartasEnJuego.clear();
+			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA UNO PARDA");
 			ganadoresRonda.add("Parda"); //esto se podria sacar..pero es para el test
-			return new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano, this.indexMano);
+			return new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.indexMano);
 		}
 		Jugador ganador = this.jugadores.get(this.jugadorMano + indexCartaGanadora);
 		ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		
-		this.juez.limpiarCartasEnJuegoDeRondaAnterior();
+		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
 		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
 		
-		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
+		return new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano + indexCartaGanadora, this.indexMano);
 	}
 
 }
