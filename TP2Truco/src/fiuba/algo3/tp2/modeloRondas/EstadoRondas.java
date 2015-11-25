@@ -10,11 +10,7 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.EmpezarTruco;
-import fiuba.algo3.tp2.tiposDeCanto.Envido;
-import fiuba.algo3.tp2.tiposDeCanto.FaltaEnvido;
-import fiuba.algo3.tp2.tiposDeCanto.RealEnvido;
-import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
+import fiuba.algo3.tp2.tiposDeCanto.*;
 
 public abstract class EstadoRondas{
 
@@ -107,14 +103,14 @@ public abstract class EstadoRondas{
 		Envido envido = new Envido(jugador.obtenerEquipoQuePertenece());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,envido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
 	}
 	
 	public EstadoRondas cantarRealEnvido(Jugador jugador)throws CantoInvalidoException {
 		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipoQuePertenece());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,realEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,realEnvido);
 	}
 	
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador)throws CantoInvalidoException {
@@ -126,6 +122,21 @@ public abstract class EstadoRondas{
 
 	public void modificarCantoTruco(TiposDeCantoTruco estadoTruco) {
 		this.cantosTruco = estadoTruco;
+	}
+	
+	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {
+		Flor envido = new Flor(jugador.obtenerEquipoQuePertenece());
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
+	}
+
+	public EstadoRondas cantarContraFlor(Jugador jugador) {
+		throw new RuntimeException();
+	}
+
+	public EstadoRondas cantarContraFlorAJuego(Jugador jugador) {
+		throw new RuntimeException();
 	}
 	
 }

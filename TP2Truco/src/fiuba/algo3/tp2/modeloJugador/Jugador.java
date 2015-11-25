@@ -145,6 +145,30 @@ public class Jugador {
 		}
 	}
 	
+	public void cantarFlor() {
+		try {
+			this.refMesa.cantarFlor(this);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
+	}
+	
+	public void cantarContraFlor() {
+		try {
+			this.refMesa.cantarContraFlor(this);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
+	}
+	
+	public void cantarContraFlorAJuego() {
+		try {
+			this.refMesa.cantarContraFlorAJuego(this);
+		} catch (CantoInvalidoException e) {
+			throw e;
+		}
+	}
+	
 	public void quiero(){
 		this.refMesa.quiero(this);
 	}
@@ -152,5 +176,5 @@ public class Jugador {
 	public void noQuiero(){
 		this.refMesa.noQuiero(this);
 	}
-	
+
 }

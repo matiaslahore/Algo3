@@ -20,51 +20,6 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		this.cantosEnvido = tipoDeCanto;
 	}
 	
-	//Constructores <van a depender de lo que el jugador canto <Envido,Real,Falta>>
-	/*
-	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, Envido envido) {
-		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
-		this.cantosEnvido = envido;
-	}
-	
-	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, RealEnvido realEnvido) {
-		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
-		this.cantosEnvido = realEnvido;
-	}
-	
-	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano,FaltaEnvido faltaEnvido) {
-		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
-		this.cantosEnvido = faltaEnvido;
-	}
-	
-	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, EnvidoEnvido envidoEnvido) {
-		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
-		this.cantosEnvido = envidoEnvido;
-	}
-	*/
-	
-	//Funciones	
-	/*public void cantarEnvido(String equipoQueCanta){
-		try{
-			this.cantosEnvido = this.cantosEnvido.cantarEnvido(equipoQueCanta);
-		}catch(CantoInvalidoException e){
-		}
-	}
-	
-	public void cantarRealEnvido(String equipoQueCanta){
-		try {
-			this.cantosEnvido = this.cantosEnvido.cantarRealEnvido(equipoQueCanta);
-		} catch (CantoInvalidoException e) {
-		}
-	}
-	
-	public void cantarFaltaEnvido(String equipoQueCanta){
-		try {
-			this.cantosEnvido = this.cantosEnvido.cantarFaltaEnvido(equipoQueCanta);
-		} catch (CantoInvalidoException e) {
-		}
-	}*/
-	
 	@Override
 	public EstadoRondas ganador() {
 		return this.refEstadoRonda;
@@ -108,7 +63,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		//ESTO ES FEO PERO NO SE ME OCURRE JUSTO AHORA OTRA MANERA
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		return this.refEstadoRonda;
 	}
 	
 	public EstadoRondas cantarEnvido(Jugador jugador)throws CantoInvalidoException{

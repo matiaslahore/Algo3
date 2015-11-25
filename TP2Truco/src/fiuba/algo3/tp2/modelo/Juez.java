@@ -88,4 +88,5 @@ public class Juez {
 	public int cantidadDeCartasEnJuego() {
 		return this.mesa.cantidadDeCartasEnJuego();
 	}
+	
 }

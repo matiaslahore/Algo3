@@ -126,6 +126,30 @@ public class Mesa {
 			//QueDevuelvo
 		}
 	}
+	
+	public void cantarFlor(Jugador jugador) {
+		try {
+			this.ronda = this.ronda.cantarFlor(jugador);
+		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
+			//QueDevuelvo
+		}
+	}
+	
+	public void cantarContraFlor(Jugador jugador) {
+		try {
+			this.ronda = this.ronda.cantarContraFlor(jugador);
+		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
+			//QueDevuelvo
+		}
+	}
+	
+	public void cantarContraFlorAJuego(Jugador jugador) {
+		try {
+			this.ronda = this.ronda.cantarContraFlorAJuego(jugador);
+		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
+			//QueDevuelvo
+		}
+	}
 
 	public void quiero(Jugador jugador){
 		this.ronda = this.ronda.quiero(jugador);

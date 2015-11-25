@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class SituacionesDeJuegoTest {
-
+	/*
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		Mesa mesa = new Mesa("eq1", "eq2");
@@ -459,21 +459,15 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		
 		Assert.assertEquals("j2",actual.obtenerNombre());
-		try {
-			actual.cantarEnvido(); //Canta Envido
-		} catch (CantoInvalidoException e) {}
+		actual.cantarEnvido(); //Canta Envido
 		actual = mesa.siguiente();
 		
 		Assert.assertEquals("j3",actual.obtenerNombre());
-		try {
-			actual.cantarEnvido();
-		} catch (CantoInvalidoException e) {} //aca canto Envido Envido el J3
+		actual.cantarEnvido();
 		actual = mesa.siguiente();
 		
 		Assert.assertEquals("j4",actual.obtenerNombre());
-		try {
-			actual.cantarRealEnvido();
-		} catch (CantoInvalidoException e) {} //j4 canto envido envido realenvido
+		actual.cantarRealEnvido();
 		actual = mesa.siguiente();
 		
 		Assert.assertEquals("j1",actual.obtenerNombre());
@@ -694,6 +688,123 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals(4,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
 		
+	}
+	*/
+	@Test
+	public void pruebaJ1CantaFlorJ2noQuiere(){
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		//doy la vuelta para repartir...
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new SieteDeEspada(), new SeisDeEspada(), new CincoDeEspada());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new SeisDeOro());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new CuatroDeOro(), new TresDeBasto(), new DosDeCopa());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new TresDeOro(), new SieteDeCopa(), new SeisDeCopa());
+		
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual.cantarFlor();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.noQuiero();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		
+		Assert.assertEquals(3,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		
+	}
+	
+	@Test
+	public void pruebaJ1CantaFlorJ2ContraFlorJ1Quiere(){
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		//doy la vuelta para repartir...
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new SieteDeEspada(), new SeisDeEspada(), new CincoDeEspada());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new SeisDeOro());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new CuatroDeOro(), new TresDeBasto(), new DosDeCopa());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new TresDeOro(), new SieteDeCopa(), new SeisDeCopa());
+		
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual.cantarFlor();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarContraFlor();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.quiero();
+		
+		Assert.assertEquals(6,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+	}
+	
+	@Test
+	public void pruebaJ1CantaFlorJ2ContraFlorAlRestoJ1Quiere(){
+		Mesa mesa = new Mesa("eq1", "eq2");
+		Equipo eq1 = new Equipo("eq1", mesa);
+		Equipo eq2 = new Equipo("eq2", mesa);
+		
+		eq1.cargarJugadores("j1");
+		eq1.cargarJugadores("j3");
+		eq2.cargarJugadores("j2");
+		eq2.cargarJugadores("j4");
+		
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+		
+		//doy la vuelta para repartir...
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new SieteDeEspada(), new SeisDeEspada(), new CincoDeEspada());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new SeisDeOro());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new CuatroDeOro(), new TresDeBasto(), new DosDeCopa());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new TresDeOro(), new SieteDeCopa(), new SeisDeCopa());
+		
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual.cantarFlor();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		actual.cantarContraFlorAJuego();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.quiero();
+		
+		Assert.assertEquals(30,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
 	}
 	
 }
