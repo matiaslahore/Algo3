@@ -9,9 +9,6 @@ public class PartidaDeTrucoSinFlor extends PartidaDeTruco{
 		super(eq1, eq2);
 	}
 
-	Mesa mesa;
-	Puntos puntos;
-
 	@Override
 	public void cargarJugadoresEnEquipoUno(String nombre) {
 		this.equipoUno.cargarJugadores(nombre);
@@ -30,7 +27,7 @@ public class PartidaDeTrucoSinFlor extends PartidaDeTruco{
 	}
 	
 	public int obtenerPuntajeDeEquipo(String nombreEquipo) {
-		return this.puntos.getPuntaje(nombreEquipo);
+		return this.mesa.obtenerPuntajeDeEquipo(nombreEquipo);
 	}
 
 }

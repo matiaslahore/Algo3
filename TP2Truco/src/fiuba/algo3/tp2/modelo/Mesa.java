@@ -224,6 +224,10 @@ public class Mesa {
 		return this.cartasEnJuego.size();
 	}
 
+	public int obtenerPuntajeDeEquipo(String nombreEquipo) {
+		return this.puntos.getPuntaje(nombreEquipo);
+	}
+
 	/*
 	do{
 		ronda = ronda.jugar();
