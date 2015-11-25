@@ -76,8 +76,12 @@ public class Mesa {
 		this.ronda = this.ronda.cantarEnvido(jugador);
 	}
 	
-	public void cantarFaltaEnvido( Jugador jugadorQueCanta){
-		
+	public void cantarRealEnvido(Jugador jugador) {
+		this.ronda = this.ronda.cantarRealEnvido(jugador);
+	}
+	
+	public void cantarFaltaEnvido( Jugador jugador){
+		this.ronda = this.ronda.cantarFaltaEnvido(jugador);
 	}
 
 	public boolean puedeCantarEnvido(Jugador jugador) {

@@ -122,11 +122,11 @@ public class Jugador {
 	}
 	
 	public void cantarRealEnvido (){
-		
+		this.refMesa.cantarRealEnvido(this);
 	}
 	
 	public void cantarFaltaEnvido(){
-		
+		this.refMesa.cantarFaltaEnvido(this);
 	}
 
 	public boolean puedeCantarEnvido() {

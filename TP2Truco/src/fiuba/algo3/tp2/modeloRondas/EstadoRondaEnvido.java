@@ -9,9 +9,11 @@ import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaEnvido extends EstadoRondas{
+	
 	private TiposDeCantoEnvido cantosEnvido;
 	
 	//Constructores <van a depender de lo que el jugador canto <Envido,Real,Falta>>
+	/*
 	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, Envido envido) {
 		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
 		this.cantosEnvido = envido;
@@ -27,8 +29,18 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		this.cantosEnvido = faltaEnvido;
 	}
 	
+	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, EnvidoEnvido envidoEnvido) {
+		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
+		this.cantosEnvido = envidoEnvido;
+	}
+	*/
+	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ArrayList<TipoDeCartas> cartasEnJuego, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, TiposDeCantoEnvido tipoDeCanto) {
+		super(estadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexManoAux, indexMano);
+		this.cantosEnvido = tipoDeCanto;
+	}
+	
 	//Funciones	
-	public void cantarEnvido(String equipoQueCanta){
+	/*public void cantarEnvido(String equipoQueCanta){
 		try{
 			this.cantosEnvido = this.cantosEnvido.cantarEnvido(equipoQueCanta);
 		}catch(CantoInvalidoException e){
@@ -47,7 +59,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 			this.cantosEnvido = this.cantosEnvido.cantarFaltaEnvido(equipoQueCanta);
 		} catch (CantoInvalidoException e) {
 		}
-	}
+	}*/
 	
 	@Override
 	public EstadoRondas ganador() {
@@ -57,7 +69,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public EstadoRondas acualizarRonda() {
 		return this;
 	}
-
+	
 	public Jugador turnoDe() {
 		Jugador jugador = this.jugadores.get(this.jugadorMano + 2); //2 es manejo de indices //aclarar
 		return jugador;
@@ -93,6 +105,24 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
 		this.indexMano = this.indexMano + 1; //aumento quien empieza la prox mano
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego,jugadores, this.indexMano, this.indexMano);
+	}
+	
+	public EstadoRondas cantarEnvido(Jugador jugador) {
+		EnvidoEnvido envidoEnvido = new EnvidoEnvido(jugador.obtenerEquipoQuePertenece());
+		this.jugadorMano = this.jugadorMano + 1;
+		return new EstadoRondaEnvidoEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,envidoEnvido);
+	}
+	
+	public EstadoRondas cantarRealEnvido(Jugador jugador) {
+		EnvidoRealEnvido envidoRealEnvido = new EnvidoRealEnvido(jugador.obtenerEquipoQuePertenece());
+		this.jugadorMano = this.jugadorMano + 1;
+		return new EstadoRondaEnvidoRealEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,envidoRealEnvido);
+	}
+	
+	public EstadoRondas cantarFaltaEnvido(Jugador jugador) {
+		EnvidoFaltaEnvido envidoFaltaEnvido = new EnvidoFaltaEnvido(jugador.obtenerEquipoQuePertenece());
+		this.jugadorMano = this.jugadorMano + 1;
+		return new EstadoRondaEnvidoFaltaEnvido(refEstadoRonda, juez, ganadoresRonda, cartasEnJuego, jugadores, jugadorMano, indexMano,envidoFaltaEnvido);
 	}
 	
 }
