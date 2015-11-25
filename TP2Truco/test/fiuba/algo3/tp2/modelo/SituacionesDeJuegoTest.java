@@ -54,7 +54,7 @@ public class SituacionesDeJuegoTest {
 		Mesa mesa = new Mesa("eq1", "eq2");
 		Equipo eq1 = new Equipo("eq1", mesa);
 		Equipo eq2 = new Equipo("eq2", mesa);
-		
+				
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
