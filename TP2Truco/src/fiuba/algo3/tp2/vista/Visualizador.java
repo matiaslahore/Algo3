@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -20,12 +21,17 @@ public class Visualizador extends Application  {
         private Jugador jugador;
         private Mesa mesa;
         
+        public static void main(String[] args)
+    	{
+        	 launch(args);
+    	}
+        
 	
 	    @Override
 	    public void start(Stage stage) throws Exception {
 	        
 	    	Scene scene= this.ventanaPrincipal();
-	        stage.setTitle("Cuenta de Correos ALGOMAIL");
+	        stage.setTitle("Partida de Truco");
 	        stage.setScene(scene);
 	        stage.show();
 	    }
@@ -46,12 +52,31 @@ public class Visualizador extends Application  {
 	    	
 	    	
 	    }
-	    public Scene ventanaPrincipal(){
+	
+		public Scene ventanaPrincipal(){
 	    	
 	    	this.mesa= new Mesa("equipo1","equipo2");
 	    	this.jugador= new Jugador("pablo",this.mesa);
 	    	
-
+	    	
+	    		
+	    	String direccionImagen = "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/images.jpeg";
+	        String direccionCarta = "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/b1.jpeg"; 
+	    	
+	    	Image fondo = new Image(direccionImagen);
+	    	Image unoBasto = new Image(direccionCarta);
+	        ImageView imagen = new ImageView();
+		    imagen.setImage(fondo);
+            imagen.setFitHeight(700);
+            imagen.setFitWidth(800);
+            
+            ImageView carta = new ImageView();
+            carta.setImage(unoBasto);
+            carta.setFitHeight(200);
+            carta.setFitWidth(130);
+            carta.setLayoutX(200);
+            carta.setLayoutY(500);
+            
 	        Button botonEnvido = new Button();
 	        botonEnvido.setText("Envido");
 
@@ -64,6 +89,9 @@ public class Visualizador extends Application  {
 	        Button botonNoQuerer = new Button();
 	        botonNoQuerer.setText("No Querer");
 	        
+	        Button botonIrseAlMazo = new Button();
+	        botonIrseAlMazo.setText("Irse al Mazo");
+	        
 	        Button botonCarta1 = new Button();
 	        botonCarta1.setText("Carta 1");
 	        Button botonCarta2 = new Button();
@@ -74,7 +102,8 @@ public class Visualizador extends Application  {
 
 	        HBox contenedorCartas = new HBox(botonCarta1,botonCarta2,botonCarta3);
 	        HBox contenedorCantos = new HBox(botonEnvido,botonTruco);
-	        HBox contenedorOpcion = new HBox(botonQuerer,botonNoQuerer);
+	        HBox contenedorOpcion = new HBox(botonQuerer,botonNoQuerer,botonIrseAlMazo);
+	        
 
 	        VBox contenedorPrincipal = new VBox(contenedorCartas,contenedorCantos,contenedorOpcion);
 	        contenedorPrincipal.setSpacing(8);
@@ -83,13 +112,17 @@ public class Visualizador extends Application  {
 	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador);
 	        botonEnvido.setOnAction(botonEnvidoEventHandler);
 	        
+            Group root = new Group();
+            root.getChildren().add(imagen);
+            root.getChildren().add(carta);
+            root.getChildren().add(contenedorPrincipal);
              
 	        
-	        Scene scene = new Scene(contenedorPrincipal, 700, 600);
+	        Scene scene = new Scene(root, 600, 800);
 	        
 	        return scene;
-	    	
 	    }
-
+	    	
 }
+
 
