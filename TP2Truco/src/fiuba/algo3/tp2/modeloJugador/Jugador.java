@@ -141,9 +141,9 @@ public class Jugador {
 		}
 	}
 
-	public boolean puedeCantarEnvido() {
+	/*public boolean puedeCantarEnvido() {
 		return(this.refMesa.puedeCantarEnvido(this));
-	}
+	}*/
 	
 	public void quiero(){
 		this.refMesa.quiero(this);
