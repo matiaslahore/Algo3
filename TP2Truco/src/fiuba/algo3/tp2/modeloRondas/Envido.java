@@ -16,7 +16,7 @@ public class Envido extends TiposDeCantoEnvido{
 	}
 
 	@Override
-	public TiposDeCantoEnvido cantarFaltaEnvido(String equipoQueCanta) {
+	public EnvidoFaltaEnvido cantarFaltaEnvido(String equipoQueCanta) {
 		return(new EnvidoFaltaEnvido(equipoQueCanta));
 	}
 
