@@ -40,30 +40,16 @@ public abstract class EstadoRondas{
 	}
 	
 	public EstadoRondas acualizarRonda() {
-		if (esPicaPica()) {
-			if (this.juez.cantidadDeCartasEnJuego() == 2){ //2 jugadores
-				return ganador();
-			}
-			return this;
-		}else{
-			if (this.juez.cantidadDeCartasEnJuego() == this.cantidadDeJugadores()){ //se jugaron todas las cartas
-				return ganador();
-			}
-			return this;
+		if (this.juez.cantidadDeCartasEnJuego() == this.cantidadDeJugadores()){ //se jugaron todas las cartas
+			return ganador();
 		}
+		return this;
 	}
 
 	public Jugador turnoDe() {
-		System.out.println(esPicaPica());
-		if (esPicaPica()) {
-			Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual);
-			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 3;
-			return jugador;
-		}else{
 		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual);
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return jugador;
-		}
 	}
 
 	public abstract EstadoRondas ganador();
@@ -167,7 +153,6 @@ public abstract class EstadoRondas{
 	public void actualizarPP(){
 		this.activadorPicaPica = !this.activadorPicaPica;
 		this.activadorPicaPica = true;
-		System.out.println(this.activadorPicaPica);
 	}
 	
 	public boolean esPicaPica(){

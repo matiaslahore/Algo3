@@ -1,25 +1,17 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
-public class EstadoRondaTres extends EstadoRondas{
-	//SE CANTA EL TRUCO
-	//SE JUEGAN CARTAS
-	//SE EMPARDA
-	//IRSE AL MAZO
-	//SE GANA (SI O SI)
+public class EstadoRondaTresPicaPica extends EstadoRondaPicaPica{
 
-	public EstadoRondaTres(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+	public EstadoRondaTresPicaPica(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
-
+		
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
 
@@ -31,7 +23,7 @@ public class EstadoRondaTres extends EstadoRondas{
 		if (this.juez.hayParda()){ //es parda
 			ganadoresRonda.add(ganadoresRonda.get(1)); //gana el q gano segunda
 		}else{
-			Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
+			Jugador ganador = this.nuevosJugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
 			ganadoresRonda.add(ganador.obtenerNombreEquipo());
 		}
 		
@@ -41,11 +33,9 @@ public class EstadoRondaTres extends EstadoRondas{
 				
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
-		actualizarPP();
-		
-		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+		//this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		//return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
-		return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano + 1, this.jugadorMano);
 	}
-
+	
 }
