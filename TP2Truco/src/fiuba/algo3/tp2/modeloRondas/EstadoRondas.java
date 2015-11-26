@@ -81,11 +81,8 @@ public abstract class EstadoRondas{
 		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
 		}
-		//this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
-		/*agrege*/
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		/**/
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
 	}
 	
@@ -95,8 +92,12 @@ public abstract class EstadoRondas{
 		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
 		}
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
-		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
+		
+		//this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
+		//return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
 	}
 	
 	public EstadoRondas cantarEnvido(Jugador jugador) throws CantoInvalidoException {

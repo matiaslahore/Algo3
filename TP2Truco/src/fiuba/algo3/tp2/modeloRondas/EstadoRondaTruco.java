@@ -57,7 +57,17 @@ public class EstadoRondaTruco extends EstadoRondas{
 		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
 		}
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; //asi dsps vuelve al q canto la mano
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
+	}
+	
+	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
+		try{
+			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerNombreEquipo());
+		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
+			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
+		}
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; //asi dsps vuelve al q canto la mano
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
 	}
 	

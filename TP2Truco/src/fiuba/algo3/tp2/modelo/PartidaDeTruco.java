@@ -41,4 +41,9 @@ public abstract class PartidaDeTruco {
 	public String ultimoGanador() {
 		return this.mesa.ultimoGanador();
 	}
+	
+
+	public int obtenerPuntajeDeEquipo(String nombreEquipo) {
+		return this.mesa.puntosEquipo(nombreEquipo);
+	}
 }

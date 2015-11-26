@@ -25,9 +25,5 @@ public class PartidaDeTrucoSinFlor extends PartidaDeTruco{
 	public void sentarJugadores() {
 		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoDos.obtenerJugadores());
 	}
-	
-	public int obtenerPuntajeDeEquipo(String nombreEquipo) {
-		return this.mesa.obtenerPuntajeDeEquipo(nombreEquipo);
-	}
 
 }
