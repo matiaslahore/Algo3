@@ -10,9 +10,11 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 public class EstadoRondaTresPicaPica extends EstadoRondaPicaPica{
 
 	public EstadoRondaTresPicaPica(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+			ListaCircular<Jugador> jugadoresOriginal, int indexManoAux, int indexMano, ListaCircular<Jugador> jugadores) {
 		
-		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+		super(estadoRonda, juez, ganadoresRonda, jugadoresOriginal, indexManoAux, indexMano, jugadores);
+		
+		nuevosJugadores = jugadores;
 	}
 
 	public EstadoRondas ganador(){
@@ -35,7 +37,8 @@ public class EstadoRondaTresPicaPica extends EstadoRondaPicaPica{
 		
 		//this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		//return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
-		return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano + 1, this.jugadorMano);
+		
+		return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano + 1, this.jugadorMano, nuevosJugadores);
 	}
 	
 }

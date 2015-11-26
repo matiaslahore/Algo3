@@ -11,10 +11,20 @@ import fiuba.algo3.tp2.tiposDeCanto.EmpezarTruco;
 public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 
 	public EstadoRondaUnoPicaPica(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+			ListaCircular<Jugador> jugadoresOriginal, int indexManoAux, int indexMano, ListaCircular<Jugador> jugadores) {
 		
-		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+		super(estadoRonda, juez, ganadoresRonda, jugadoresOriginal, indexManoAux, indexMano, jugadores);
+		
 		this.cantosTruco = new EmpezarTruco(); //ronda uno empiezo desde cero
+		
+		nuevosJugadores = new ListaCircular<Jugador>();
+		nuevosJugadores.add(listaOriginal().get(indexManoAux));//(this.jugadores.get(indexManoAux));
+		nuevosJugadores.add(listaOriginal().get(indexManoAux + 3));//(this.jugadores.get(indexManoAux + 3));
+		
+		System.out.println(nuevosJugadores.get(0).obtenerNombre());
+		System.out.println(nuevosJugadores.get(1).obtenerNombre());
+		
+		jugadorManoDeLaRondaActual = 0;
 	}
 
 	public EstadoRondas ganador(){
@@ -40,7 +50,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		
 		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
 		
-		refEstadoRonda = new EstadoRondaDosPicaPica(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
+		refEstadoRonda = new EstadoRondaDosPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano, nuevosJugadores);
 		refEstadoRonda.modificarCantoTruco(this.cantosTruco);
 		return this.refEstadoRonda;
 	}

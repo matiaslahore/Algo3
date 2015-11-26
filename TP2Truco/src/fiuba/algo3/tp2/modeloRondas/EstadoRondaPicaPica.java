@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Juez;
@@ -11,18 +13,13 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 	ListaCircular<Jugador> nuevosJugadores;
 	
 	public EstadoRondaPicaPica(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+			ListaCircular<Jugador> jugadoresOriginal, int indexManoAux, int indexMano, ListaCircular<Jugador> jugadores) {
 		
-		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
-		
-		nuevosJugadores = new ListaCircular<Jugador>();
-		nuevosJugadores.add(this.jugadores.get(indexManoAux));
-		nuevosJugadores.add(this.jugadores.get(indexManoAux + 3));
-	
-		jugadorManoDeLaRondaActual = 0;
+		super(estadoRonda, juez, ganadoresRonda, jugadoresOriginal, indexManoAux, indexMano);
 	}
 
 	public EstadoRondas acualizarRonda() {
+		
 		if (this.juez.termino()){
 			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 		}

@@ -43,7 +43,7 @@ public class EstadoRondaTres extends EstadoRondas{
 		
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		//return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
-		return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
 	}
 
 }

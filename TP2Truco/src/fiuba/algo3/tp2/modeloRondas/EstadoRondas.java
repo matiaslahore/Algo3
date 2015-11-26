@@ -40,6 +40,7 @@ public abstract class EstadoRondas{
 	}
 	
 	public EstadoRondas acualizarRonda() {
+		
 		if (this.juez.termino()){
 			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 		}
@@ -165,6 +166,11 @@ public abstract class EstadoRondas{
 			return this.activadorPicaPica;
 		}
 		else return false;
+	}
+	
+	public ListaCircular<Jugador> listaOriginal(){
+		System.out.println(this.jugadores.toString());
+		return this.jugadores;
 	}
 	
 }
