@@ -225,6 +225,10 @@ public class Mesa {
 		return this.cartasEnJuego.size();
 	}
 
+	public void imprimirResultados() {
+		this.juez.imprimirResultados();
+	}
+
 	/*
 	do{
 		ronda = ronda.jugar();

@@ -16,6 +16,8 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 			ListaCircular<Jugador> jugadoresOriginal, int indexManoAux, int indexMano, ListaCircular<Jugador> jugadores) {
 		
 		super(estadoRonda, juez, ganadoresRonda, jugadoresOriginal, indexManoAux, indexMano);
+	
+		juez.puntosEnJuego(1);
 	}
 
 	public EstadoRondas acualizarRonda() {

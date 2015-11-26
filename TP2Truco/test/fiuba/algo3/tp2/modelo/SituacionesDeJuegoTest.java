@@ -1034,6 +1034,8 @@ public class SituacionesDeJuegoTest {
 		
 		Assert.assertEquals(7,mesa.puntosEquipo("eq1"));
 		Assert.assertEquals(4,mesa.puntosEquipo("eq2"));
+		
+		mesa.imprimirResultados();
 		//la proxima tiene que ser picapica
 		
 		actual.recibirCartas(new SieteDeEspada(), new AnchoDeBasto(), new SeisDeEspada());
@@ -1121,6 +1123,8 @@ public class SituacionesDeJuegoTest {
 		actual.jugarPrimera();
 		
 		actual = mesa.siguiente();
+		
+		mesa.imprimirResultados();
 	}
 	
 }
