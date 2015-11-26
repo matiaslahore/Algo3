@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.tiposDeCanto.*;
 
@@ -23,6 +21,9 @@ public abstract class EstadoRondas{
 	boolean sigue;
 	EstadoRondas refEstadoRonda;
 	TiposDeCantoTruco cantosTruco;
+	
+	private boolean activadorPicaPica = false;
+	private int cantidadJugadas = 1;
 
 	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
@@ -34,21 +35,35 @@ public abstract class EstadoRondas{
 		this.tantoEnJuego = new ArrayList<Integer>();
 	}
 	
-	public EstadoRondas acualizarRonda() {
-		if (this.juez.cantidadDeCartasEnJuego() == this.cantidadDeJugadores()){ //se jugaron todas las cartas
-			return ganador();
-		}
-		return this;		
-	}
-
 	private int cantidadDeJugadores() {
 		return this.jugadores.size();
 	}
+	
+	public EstadoRondas acualizarRonda() {
+		if (esPicaPica()) {
+			if (this.juez.cantidadDeCartasEnJuego() == 2){ //2 jugadores
+				return ganador();
+			}
+			return this;
+		}else{
+			if (this.juez.cantidadDeCartasEnJuego() == this.cantidadDeJugadores()){ //se jugaron todas las cartas
+				return ganador();
+			}
+			return this;
+		}
+	}
 
 	public Jugador turnoDe() {
+		System.out.println(esPicaPica());
+		if (esPicaPica()) {
+			Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual);
+			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 3;
+			return jugador;
+		}else{
 		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual);
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return jugador;
+		}
 	}
 
 	public abstract EstadoRondas ganador();
@@ -138,6 +153,29 @@ public abstract class EstadoRondas{
 
 	public EstadoRondas cantarContraFlorAJuego(Jugador jugador) {
 		throw new RuntimeException();
+	}
+	
+	public void actualizarPicaPica(){
+		if (this.jugadores.size() == 6) {
+			if (this.cantidadJugadas == 3){
+				this.activadorPicaPica = !this.activadorPicaPica;
+				this.cantidadJugadas = 1;
+			}
+		}
+	}
+	
+	public void actualizarPP(){
+		this.activadorPicaPica = !this.activadorPicaPica;
+		this.activadorPicaPica = true;
+		System.out.println(this.activadorPicaPica);
+	}
+	
+	public boolean esPicaPica(){
+		if (this.jugadores.size()==6){ // && juez.rangoPicaPica()){
+			this.cantidadJugadas = this.cantidadJugadas + 1;
+			return this.activadorPicaPica;
+		}
+		else return false;
 	}
 	
 }

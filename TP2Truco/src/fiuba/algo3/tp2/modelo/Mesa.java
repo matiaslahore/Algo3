@@ -32,9 +32,9 @@ public class Mesa {
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
 		puntos = new Puntos(equipoUno,equipoDos);
 		indexMano = 0;
+		//this.ronda = new EstadoRondas(ronda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 		//this.truco= new Truco();
 		//this.envido = new Envido();
-		//this.ronda = new EstadoRondaUno(ronda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
 	}
 	
 	public void iniciarRonda(){
@@ -45,13 +45,14 @@ public class Mesa {
 		System.out.println("Mesa recibe: " + carta.cartaComoString());
 		this.cartasEnJuego.add(carta);
 	}
-
-	public TipoDeCartas repartirCarta() {
-		return juez.repartir();
-	}
 	
 	public void repartirCartas() {
-		juez.repartir();
+		Iterator<Jugador> itr = this.jugadores.iterator();
+		
+		while(itr.hasNext()) {
+			Jugador jugador = (Jugador) itr.next();
+			jugador.recibirCartas(this.juez.repartir(), this.juez.repartir(), this.juez.repartir());
+		}
 	}
 	
 	public void anotarPuntos(String equipo, int cantidad){

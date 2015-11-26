@@ -16,11 +16,10 @@ public class Juez {
 	Puntos puntos;
 	int puntosEnJuego;
 	
-	
 	public Juez(Mesa mesa, String equipoUno, String equipoDos){
 		this.maso = new Maso();
 		this.mesa = mesa;
-		this.puntosEnJuego = 0;
+		this.puntosEnJuego = 1;
 		this.puntos = new Puntos(equipoUno, equipoDos);
 	}
 
@@ -87,6 +86,10 @@ public class Juez {
 
 	public int cantidadDeCartasEnJuego() {
 		return this.mesa.cantidadDeCartasEnJuego();
+	}
+
+	public boolean rangoPicaPica() {
+		return this.puntos.rangoPicaPica();
 	}
 	
 }

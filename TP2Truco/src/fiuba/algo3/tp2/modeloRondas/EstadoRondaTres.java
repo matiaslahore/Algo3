@@ -41,6 +41,8 @@ public class EstadoRondaTres extends EstadoRondas{
 				
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
+		actualizarPP();
+		
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 	}
