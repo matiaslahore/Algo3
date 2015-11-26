@@ -39,7 +39,7 @@ public class EstadoRondaTresPicaPica extends EstadoRondaPicaPica{
 		
 		if (cantidadJugadas == 4){
 			cantidadJugadas = 1;
-			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano - 2, this.jugadorMano);
 		}
 		else {
 			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, nuevosJugadores);
