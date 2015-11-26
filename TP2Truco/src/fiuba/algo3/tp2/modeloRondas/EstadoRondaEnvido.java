@@ -53,6 +53,8 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		}
 		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
 		
+		this.juez.puntosEnJuego(1);
+		
 		this.tantoEnJuego.clear();
 		
 		return this.refEstadoRonda;

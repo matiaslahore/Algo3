@@ -11,6 +11,7 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 public class EstadoRondaPicaPica extends EstadoRondas{
 	
 	ListaCircular<Jugador> nuevosJugadores;
+	static int cantidadJugadas = 1;
 	
 	public EstadoRondaPicaPica(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
 			ListaCircular<Jugador> jugadoresOriginal, int indexManoAux, int indexMano, ListaCircular<Jugador> jugadores) {
@@ -18,6 +19,14 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 		super(estadoRonda, juez, ganadoresRonda, jugadoresOriginal, indexManoAux, indexMano);
 	
 		juez.puntosEnJuego(1);
+	}
+	
+	public void actualizarCantidadJugadas(){
+		this.cantidadJugadas = this.cantidadJugadas + 1;
+	}
+	
+	public int cantidadDeJugadas(){
+		return this.cantidadJugadas;
 	}
 
 	public EstadoRondas acualizarRonda() {

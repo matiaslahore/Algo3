@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.tiposDeCanto.EmpezarTruco;
 
 public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
-
+	
 	public EstadoRondaUnoPicaPica(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
 			ListaCircular<Jugador> jugadoresOriginal, int indexManoAux, int indexMano, ListaCircular<Jugador> jugadores) {
 		
@@ -25,6 +25,8 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		System.out.println(nuevosJugadores.get(1).obtenerNombre());
 		
 		jugadorManoDeLaRondaActual = 0;
+		
+		actualizarCantidadJugadas();
 	}
 
 	public EstadoRondas ganador(){

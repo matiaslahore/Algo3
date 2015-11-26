@@ -22,8 +22,7 @@ public abstract class EstadoRondas{
 	EstadoRondas refEstadoRonda;
 	TiposDeCantoTruco cantosTruco;
 	
-	private boolean activadorPicaPica = false;
-	private int cantidadJugadas = 1;
+	static boolean activadorPicaPica = false;
 
 	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
@@ -149,22 +148,11 @@ public abstract class EstadoRondas{
 	}
 	
 	public void actualizarPicaPica(){
-		if (this.jugadores.size() == 6) {
-			if (this.cantidadJugadas == 3){
-				this.activadorPicaPica = !this.activadorPicaPica;
-				this.cantidadJugadas = 1;
-			}
-		}
-	}
-	
-	public void actualizarPP(){
 		this.activadorPicaPica = !this.activadorPicaPica;
-		this.activadorPicaPica = true;
 	}
 	
 	public boolean esPicaPica(){
-		if (this.jugadores.size()==6){ // && juez.rangoPicaPica()){
-			this.cantidadJugadas = this.cantidadJugadas + 1;
+		if (this.jugadores.size()==6 && juez.rangoPicaPica()){
 			return this.activadorPicaPica;
 		}
 		else return false;

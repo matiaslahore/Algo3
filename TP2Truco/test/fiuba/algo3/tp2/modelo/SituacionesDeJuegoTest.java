@@ -1123,7 +1123,7 @@ public class SituacionesDeJuegoTest {
 		actual.jugarPrimera();
 		
 		actual = mesa.siguiente();
-		
+		Assert.assertEquals("j3",actual.obtenerNombre());
 		mesa.imprimirResultados();
 	}
 	

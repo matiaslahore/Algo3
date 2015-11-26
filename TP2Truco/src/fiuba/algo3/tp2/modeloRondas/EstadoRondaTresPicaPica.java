@@ -36,9 +36,14 @@ public class EstadoRondaTresPicaPica extends EstadoRondaPicaPica{
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
-		//return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 		
-		return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, nuevosJugadores);
+		if (cantidadJugadas == 4){
+			cantidadJugadas = 1;
+			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		}
+		else {
+			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, nuevosJugadores);
+		}
 	}
 	
 }
