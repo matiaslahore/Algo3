@@ -6,7 +6,6 @@ import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoEnvido;
 import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoFlor;
 
 public class EstadoRondaFlor extends EstadoRondas {

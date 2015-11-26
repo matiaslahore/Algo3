@@ -1,8 +1,6 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Juez;

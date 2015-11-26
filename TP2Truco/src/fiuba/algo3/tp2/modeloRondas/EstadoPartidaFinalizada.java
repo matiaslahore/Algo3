@@ -4,15 +4,10 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.Envido;
-import fiuba.algo3.tp2.tiposDeCanto.FaltaEnvido;
-import fiuba.algo3.tp2.tiposDeCanto.Flor;
-import fiuba.algo3.tp2.tiposDeCanto.RealEnvido;
 import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public class EstadoPartidaFinalizada extends EstadoRondas{
