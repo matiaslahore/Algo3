@@ -17,11 +17,6 @@ public class PartidaDeTrucoSinFlor extends PartidaDeTruco{
 		this.equipoDos.cargarJugadores(nombre);
 	}
 
-	public void repartir(){
-		equipoUno.recibirCartas();
-		equipoDos.recibirCartas();
-	}
-
 	public void sentarJugadores() {
 		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoDos.obtenerJugadores());
 	}

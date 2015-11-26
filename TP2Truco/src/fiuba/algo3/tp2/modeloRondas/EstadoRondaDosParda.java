@@ -45,9 +45,9 @@ public class EstadoRondaDosParda extends EstadoRondas{
 		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
 		
 		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1) + "\n");
-
+		
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
-
+		
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);		
 	}

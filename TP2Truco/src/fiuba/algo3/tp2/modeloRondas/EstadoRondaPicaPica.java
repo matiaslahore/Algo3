@@ -23,6 +23,10 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 	}
 
 	public EstadoRondas acualizarRonda() {
+		if (this.juez.termino()){
+			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		}
+		
 		if (this.juez.cantidadDeCartasEnJuego() == 2){ //2 jugadores
 			return ganador();
 		}

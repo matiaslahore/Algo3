@@ -42,7 +42,10 @@ public abstract class PartidaDeTruco {
 		return this.mesa.ultimoGanador();
 	}
 	
-
+	public void repartir(){
+		this.mesa.repartirCartas();
+	}
+	
 	public int obtenerPuntajeDeEquipo(String nombreEquipo) {
 		return this.mesa.puntosEquipo(nombreEquipo);
 	}

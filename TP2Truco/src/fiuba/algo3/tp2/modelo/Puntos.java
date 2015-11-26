@@ -1,9 +1,16 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class Puntos {
     
@@ -42,6 +49,19 @@ public class Puntos {
 		if (max>5 && max<25){
 			return true;
 		}else return false;
+	}
+
+	public void imprimirResultados() {
+		Collection<Integer> coleccion = mapa.values();
+		Set<String> set = mapa.keySet();
+	
+		Iterator<String> itrK = set.iterator();
+		Iterator<Integer> itrV = coleccion.iterator();
+		
+		while (itrK.hasNext()){
+			System.out.println("Equipo: " + itrK.next() + ", puntos: " + itrV.next());
+		}
+		System.out.println("\n");
 	}
 
 }

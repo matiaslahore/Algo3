@@ -40,6 +40,10 @@ public abstract class EstadoRondas{
 	}
 	
 	public EstadoRondas acualizarRonda() {
+		if (this.juez.termino()){
+			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		}
+		
 		if (this.juez.cantidadDeCartasEnJuego() == this.cantidadDeJugadores()){ //se jugaron todas las cartas
 			return ganador();
 		}

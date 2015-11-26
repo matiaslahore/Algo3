@@ -66,9 +66,9 @@ public class Juez {
 		//esta mal xq solo devuelve lo q faltan para 30 y no para las malas o las buenas!!!!
 	}
 
-	public boolean termina() {
-		if (puntos.getPuntajeMaximo() >= 30) return false;
-		else return true;
+	public boolean termino() {
+		if (puntos.getPuntajeMaximo() >= 30) return true;
+		else return false;
 	}
 
 	public void AumentarPuntosEnJuego(int puntos) {
@@ -90,6 +90,10 @@ public class Juez {
 
 	public boolean rangoPicaPica() {
 		return this.puntos.rangoPicaPica();
+	}
+
+	public void imprimirResultados() {
+		this.puntos.imprimirResultados();
 	}
 	
 }

@@ -34,17 +34,7 @@ public class Equipo {
 		Jugador newJugador = new Jugador(nombre,refMesa);
 		newJugador.cargarEquipo(nombreEquipo);
 		jugadores.add(newJugador);
-	}
-
-	public void recibirCartas() {
-		for (Jugador unJugador : jugadores){
-			TipoDeCartas c1 = refMesa.repartirCarta();
-			TipoDeCartas c2 = refMesa.repartirCarta();
-			TipoDeCartas c3 = refMesa.repartirCarta();
-			
-			unJugador.recibirCartas(c1,c2,c3);
-		}
-	}
+	}	
 
 	public Jugador obtenerJugador(String nombreJugador) {	
 		Iterator<Jugador> itr = jugadores.iterator();
@@ -62,11 +52,6 @@ public class Equipo {
 	
 	public String obtenerNombre(){
 		return(this.nombreEquipo);
-	}
-
-	public void asignarQuienReparte() {
-		
-		
 	}
 
 	public boolean tieneEsteNombre(String nombreDelEquipo) {
