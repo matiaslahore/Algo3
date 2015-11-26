@@ -168,9 +168,4 @@ public abstract class EstadoRondas{
 		else return false;
 	}
 	
-	public ListaCircular<Jugador> listaOriginal(){
-		System.out.println(this.jugadores.toString());
-		return this.jugadores;
-	}
-	
 }

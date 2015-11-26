@@ -18,8 +18,8 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		this.cantosTruco = new EmpezarTruco(); //ronda uno empiezo desde cero
 		
 		nuevosJugadores = new ListaCircular<Jugador>();
-		nuevosJugadores.add(listaOriginal().get(indexManoAux));//(this.jugadores.get(indexManoAux));
-		nuevosJugadores.add(listaOriginal().get(indexManoAux + 3));//(this.jugadores.get(indexManoAux + 3));
+		nuevosJugadores.add(jugadoresOriginal.get(indexManoAux));//(this.jugadores.get(indexManoAux));
+		nuevosJugadores.add(jugadoresOriginal.get(indexManoAux + 3));//(this.jugadores.get(indexManoAux + 3));
 		
 		System.out.println(nuevosJugadores.get(0).obtenerNombre());
 		System.out.println(nuevosJugadores.get(1).obtenerNombre());

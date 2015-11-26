@@ -1062,11 +1062,65 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarPrimera();
-		
+		// SEGUNDA RONDA DE PICA PICA
 		actual = mesa.siguiente();
+		actual.recibirCartas(new SieteDeEspada(), new AnchoDeBasto(), new SeisDeEspada());
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
 		Assert.assertEquals("j6",actual.obtenerNombre());
+		//r1
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.jugarPrimera();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j6",actual.obtenerNombre());
+		actual.jugarPrimera();
+		//r2
+		actual = mesa.siguiente();
+		Assert.assertEquals("j6",actual.obtenerNombre());
+		actual.jugarPrimera();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.jugarPrimera();
+		//r3
+		actual = mesa.siguiente();
+		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual.jugarPrimera();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j6",actual.obtenerNombre());
+		actual.jugarPrimera();
+		
+		// TERCERA RONDA DE PICA PICA
+		actual = mesa.siguiente();
+		actual.recibirCartas(new SieteDeEspada(), new AnchoDeBasto(), new SeisDeEspada());
+		Assert.assertEquals("j4",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		//r1
+		actual = mesa.siguiente();
+		Assert.assertEquals("j4",actual.obtenerNombre());
+		actual.jugarPrimera();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual.jugarPrimera();
+		//r2
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual.jugarPrimera();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j4",actual.obtenerNombre());
+		actual.jugarPrimera();
+		//r3
+		actual = mesa.siguiente();
+		Assert.assertEquals("j4",actual.obtenerNombre());
+		actual.jugarPrimera();
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual.jugarPrimera();
+		
+		actual = mesa.siguiente();
 	}
 	
 }
