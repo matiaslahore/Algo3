@@ -61,10 +61,10 @@ public class Visualizador extends Application  {
 	    	
 	    	
 	    		
-	    	String direccionImagen = "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/images.jpeg";
-	        String direccionCarta1= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/b1.jpg"; 
-	        String direccionCarta2= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/e1.jpg";
-	    	String direccionCarta3= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/colecciones/e7.jpg";
+	    	String direccionImagen = "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
+	        String direccionCarta1= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/b1.jpg"; 
+	        String direccionCarta2= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/e1.jpg";
+	    	String direccionCarta3= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/e7.jpg";
 	        
 	    	Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
 	        ImageView imagen = new ImageView();
