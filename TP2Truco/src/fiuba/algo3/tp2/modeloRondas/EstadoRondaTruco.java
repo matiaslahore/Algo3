@@ -18,7 +18,7 @@ public class EstadoRondaTruco extends EstadoRondas{
 	}
 
 	@Override
-	public EstadoRondas ganador() {
+	public EstadoRondas siguienteRonda() {
 		return this.refEstadoRonda;
 	}
 	

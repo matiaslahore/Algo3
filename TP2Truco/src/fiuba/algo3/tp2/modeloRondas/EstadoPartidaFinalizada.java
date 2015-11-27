@@ -18,7 +18,7 @@ public class EstadoPartidaFinalizada extends EstadoRondas{
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
 
-	public EstadoRondas ganador() {
+	public EstadoRondas siguienteRonda() {
 		finalizo();
 		throw new NoSePuedeSeguirJugandoExcepcion();
 	}

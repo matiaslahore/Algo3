@@ -20,7 +20,7 @@ public class EstadoRondaTres extends EstadoRondas{
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 	}
 
-	public EstadoRondas ganador(){
+	public EstadoRondas siguienteRonda(){
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);

@@ -24,7 +24,7 @@ public class EstadoRondaUno extends EstadoRondas{
 		this.cantosTruco = new EmpezarTruco(); //ronda uno empiezo desde cero
 	}
 	
-	public EstadoRondas ganador(){
+	public EstadoRondas siguienteRonda(){
 		this.ganadoresRonda.clear();
 		
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();

@@ -17,7 +17,7 @@ public class EstadoRondaDosPicaPica extends EstadoRondaPicaPica{
 		nuevosJugadores = jugadores;
 	}
 
-	public EstadoRondas ganador(){
+	public EstadoRondas siguienteRonda(){
 
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 

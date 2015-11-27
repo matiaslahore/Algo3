@@ -19,7 +19,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 
 	@Override
-	public EstadoRondas ganador() {
+	public EstadoRondas siguienteRonda() {
 		return this.refEstadoRonda;
 	}
 	

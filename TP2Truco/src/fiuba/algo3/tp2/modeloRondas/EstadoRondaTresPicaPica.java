@@ -17,7 +17,7 @@ public class EstadoRondaTresPicaPica extends EstadoRondaPicaPica{
 		nuevosJugadores = jugadores;
 	}
 
-	public EstadoRondas ganador(){
+	public EstadoRondas siguienteRonda(){
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);

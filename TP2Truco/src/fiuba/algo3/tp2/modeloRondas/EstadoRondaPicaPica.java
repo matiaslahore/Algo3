@@ -34,7 +34,7 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 		}
 		
 		if (this.juez.cantidadDeCartasEnJuego() == 2){ //2 jugadores
-			return ganador();
+			return siguienteRonda();
 		}
 		return this;
 	}
@@ -46,7 +46,7 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 	}
 
 	@Override
-	public EstadoRondas ganador(){
+	public EstadoRondas siguienteRonda(){
 		return null;
 	}
 

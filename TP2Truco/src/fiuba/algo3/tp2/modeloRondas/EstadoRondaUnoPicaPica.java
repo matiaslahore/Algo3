@@ -29,7 +29,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		actualizarCantidadJugadas();
 	}
 
-	public EstadoRondas ganador(){
+	public EstadoRondas siguienteRonda(){
 		this.ganadoresRonda.clear();
 		
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();

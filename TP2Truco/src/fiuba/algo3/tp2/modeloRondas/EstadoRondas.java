@@ -47,7 +47,7 @@ public abstract class EstadoRondas{
 		}
 		
 		if (this.juez.cantidadDeCartasEnJuego() == this.cantidadDeJugadores()){ //se jugaron todas las cartas
-			return ganador();
+			return siguienteRonda();
 		}
 		return this;
 	}
@@ -58,7 +58,7 @@ public abstract class EstadoRondas{
 		return jugador;
 	}
 
-	public abstract EstadoRondas ganador();
+	public abstract EstadoRondas siguienteRonda();
 
 	public EstadoRondas quiero(Jugador jugador){
 		throw new RuntimeException();
