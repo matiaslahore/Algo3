@@ -35,6 +35,16 @@ public class EstadoRondaTresParda extends EstadoRondas{
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+		
+		if (esPicaPica()){
+			if (this.juez.cantidadDeJugadas() == 4){
+				this.juez.resetearcantidadDeJugadas();
+				return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano - 2, this.jugadorMano);
+			}
+			else {
+				return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
+			}
+		}
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 	}
 	

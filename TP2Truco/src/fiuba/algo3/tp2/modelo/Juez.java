@@ -15,6 +15,9 @@ public class Juez {
 	Puntos puntos;
 	int puntosEnJuego;
 	
+	boolean activadorPicaPica = false;
+	int cantidadJugadas = 1;
+	
 	public Juez(Mesa mesa, String equipoUno, String equipoDos){
 		this.maso = new Maso();
 		this.mesa = mesa;
@@ -93,6 +96,29 @@ public class Juez {
 
 	public void imprimirResultados() {
 		this.puntos.imprimirResultados();
+	}
+	
+	public void actualizarPicaPica(){
+		this.activadorPicaPica = !this.activadorPicaPica;
+	}
+	
+	public boolean esPicaPica(){
+		if (this.mesa.cantidadDeJugadores()==6 && rangoPicaPica()){
+			return this.activadorPicaPica;
+		}
+		else return false;
+	}
+	
+	public void actualizarCantidadJugadas(){
+		this.cantidadJugadas = this.cantidadJugadas + 1;
+	}
+	
+	public int cantidadDeJugadas(){
+		return this.cantidadJugadas;
+	}
+
+	public void resetearcantidadDeJugadas() {
+		this.cantidadJugadas = 1;
 	}
 	
 }

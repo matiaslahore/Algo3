@@ -21,7 +21,7 @@ public class EstadoRondaDosParda extends EstadoRondas{
 	}
 
 	public EstadoRondas siguienteRonda(){
-	
+
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
@@ -30,7 +30,7 @@ public class EstadoRondaDosParda extends EstadoRondas{
 			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA DOS PARDA");
 			ganadoresRonda.add("Parda"); //esto se podria sacar..pero es para el test
-		
+
 			refEstadoRonda = new EstadoRondaTresParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
 			refEstadoRonda.modificarCantoTruco(this.cantosTruco);
 			return this.refEstadoRonda;
@@ -40,13 +40,24 @@ public class EstadoRondaDosParda extends EstadoRondas{
 		ganadoresRonda.add(ganador.obtenerNombreEquipo());
 
 		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
-		
+
 		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1) + "\n");
-		
+
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
-		
+
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+
+		if (esPicaPica()){
+			if (this.juez.cantidadDeJugadas() == 4){
+				this.juez.resetearcantidadDeJugadas();
+				return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano - 2, this.jugadorMano);
+			}
+			else {
+				return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
+			}
+		}
+
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);		
 	}
-	
+
 }

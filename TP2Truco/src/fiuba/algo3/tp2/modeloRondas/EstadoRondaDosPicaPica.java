@@ -11,9 +11,9 @@ public class EstadoRondaDosPicaPica extends EstadoRondaPicaPica{
 
 	public EstadoRondaDosPicaPica(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
 			ListaCircular<Jugador> jugadoresOriginal, int indexManoAux, int indexMano, ListaCircular<Jugador> jugadores) {
-		
+
 		super(estadoRonda, juez, ganadoresRonda, jugadoresOriginal, indexManoAux, indexMano, jugadores);
-		
+
 		nuevosJugadores = jugadores;
 	}
 
@@ -39,7 +39,15 @@ public class EstadoRondaDosPicaPica extends EstadoRondaPicaPica{
 			this.ganadoresRonda.clear();
 
 			this.jugadorMano = this.jugadorMano + 1;
-			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+
+			if (this.juez.cantidadDeJugadas() == 4){
+				this.juez.resetearcantidadDeJugadas();
+				return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano - 2, this.jugadorMano);
+			}
+			else {
+				return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, nuevosJugadores);
+			}
+
 		}
 		refEstadoRonda = new EstadoRondaTresPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano, nuevosJugadores);
 		refEstadoRonda.modificarCantoTruco(this.cantosTruco);

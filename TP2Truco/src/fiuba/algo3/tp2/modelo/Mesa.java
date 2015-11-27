@@ -229,6 +229,10 @@ public class Mesa {
 		this.juez.imprimirResultados();
 	}
 
+	public int cantidadDeJugadores() {
+		return jugadores.size();
+	}
+
 	/*
 	do{
 		ronda = ronda.jugar();

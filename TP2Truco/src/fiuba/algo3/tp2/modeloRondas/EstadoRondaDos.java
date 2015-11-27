@@ -42,6 +42,11 @@ public class EstadoRondaDos extends EstadoRondas{
 			this.ganadoresRonda.clear();
 			
 			this.jugadorMano = this.jugadorMano + 1;
+			
+			if (esPicaPica()){
+				return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
+			}
+			
 			return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 		}
 		refEstadoRonda = new EstadoRondaTres(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);

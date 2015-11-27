@@ -20,11 +20,11 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 	}
 	
 	public void actualizarCantidadJugadas(){
-		this.cantidadJugadas = this.cantidadJugadas + 1;
+		this.juez.actualizarCantidadJugadas();
 	}
 	
 	public int cantidadDeJugadas(){
-		return this.cantidadJugadas;
+		return this.juez.cantidadDeJugadas();
 	}
 
 	public EstadoRondas acualizarRonda() {

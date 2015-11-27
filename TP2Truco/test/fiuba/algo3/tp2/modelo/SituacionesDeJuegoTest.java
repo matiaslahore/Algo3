@@ -4,12 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class SituacionesDeJuegoTest {
 	
-	/*@Test
+	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		Mesa mesa = new Mesa("eq1", "eq2");
 		Equipo eq1 = new Equipo("eq1", mesa);
@@ -767,8 +768,8 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j1",actual.obtenerNombre());
 	}
 	
-	@Test
-	public void pruebaJ1CantaFlorJ2ContraFlorAlRestoJ1Quiere(){
+	@Test(expected = NoSePuedeSeguirJugandoExcepcion.class)
+	public void pruebaJ1CantaFlorJ2ContraFlorAlRestoJ1QuiereSeTerminaLaPartida(){
 		Mesa mesa = new Mesa("eq1", "eq2");
 		Equipo eq1 = new Equipo("eq1", mesa);
 		Equipo eq2 = new Equipo("eq2", mesa);
@@ -801,10 +802,9 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
 		
-		Assert.assertEquals(30,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		Assert.assertEquals(30,mesa.puntosEquipo("eq1")); //gana eq1
 		
-		actual = mesa.siguiente();
-		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente(); //esto produce excepcion xq termino la partida y quiero seguir jugando
 	}
 	
 	@Test
@@ -938,7 +938,7 @@ public class SituacionesDeJuegoTest {
 		
 		Assert.assertEquals(7,mesa.puntosEquipo("eq1"));
 		Assert.assertEquals(4,mesa.puntosEquipo("eq2"));
-	}*/
+	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaPicaPica(){
@@ -1124,6 +1124,17 @@ public class SituacionesDeJuegoTest {
 		
 		actual = mesa.siguiente();
 		Assert.assertEquals("j3",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j4",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j5",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j6",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j1",actual.obtenerNombre());
+		actual = mesa.siguiente();
+		Assert.assertEquals("j2",actual.obtenerNombre());
+		//demuestra que da la vuelta bien dsps del picapica
 		mesa.imprimirResultados();
 	}
 	
