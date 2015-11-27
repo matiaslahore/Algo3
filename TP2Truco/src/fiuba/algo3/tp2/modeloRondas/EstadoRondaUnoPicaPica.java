@@ -22,9 +22,6 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		nuevosJugadores.add(jugadoresOriginal.get(indexManoAux));//(this.jugadores.get(indexManoAux));
 		nuevosJugadores.add(jugadoresOriginal.get(indexManoAux + 3));//(this.jugadores.get(indexManoAux + 3));
 		
-		System.out.println(nuevosJugadores.get(0).obtenerNombre());
-		System.out.println(nuevosJugadores.get(1).obtenerNombre());
-		
 		jugadorManoDeLaRondaActual = 0;
 		
 		actualizarCantidadJugadas();
