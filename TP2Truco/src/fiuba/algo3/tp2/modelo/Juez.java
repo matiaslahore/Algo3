@@ -14,7 +14,6 @@ public class Juez {
 	EstadoRondas mano;
 	Puntos puntos;
 	int puntosEnJuego;
-	
 	boolean activadorPicaPica = false;
 	int cantidadJugadas = 1;
 	
@@ -118,5 +117,8 @@ public class Juez {
 	public void resetearcantidadDeJugadas() {
 		this.cantidadJugadas = 1;
 	}
-	
+
+	public boolean seJugaronTodasLasCartas() {
+		return (this.cantidadDeCartasEnJuego() == this.mesa.cantidadDeJugadores());
+	}
 }

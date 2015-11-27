@@ -42,8 +42,7 @@ public abstract class EstadoRondas{
 		if (this.juez.termino()){
 			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 		}
-		
-		if (this.juez.cantidadDeCartasEnJuego() == this.cantidadDeJugadores()){ //se jugaron todas las cartas
+		if (this.juez.seJugaronTodasLasCartas()){
 			return siguienteRonda();
 		}
 		return this;
