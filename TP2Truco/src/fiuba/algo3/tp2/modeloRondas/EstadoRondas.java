@@ -6,6 +6,7 @@ import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
+import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.tiposDeCanto.*;
@@ -13,7 +14,7 @@ import fiuba.algo3.tp2.tiposDeCanto.*;
 public abstract class EstadoRondas{
 
 	Juez juez;
-	ArrayList<String> ganadoresRonda;
+	ArrayList<Equipo> ganadoresRonda;
 	ListaCircular<Jugador> jugadores;
 	ArrayList<Integer> tantoEnJuego;
 	int jugadorManoDeLaRondaActual;
@@ -22,7 +23,7 @@ public abstract class EstadoRondas{
 	EstadoRondas refEstadoRonda;
 	TiposDeCantoTruco cantosTruco;
 
-	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
+	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
 		this.ganadoresRonda = ganadoresRonda;
 		this.jugadores = jugadores;
@@ -68,7 +69,7 @@ public abstract class EstadoRondas{
 	
 	public EstadoRondas cantarTruco(Jugador jugador)throws CantoInvalidoException, EquipoQueCantaNoPuedeVolverACantarException {
 		try{
-			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerNombreEquipo());
+			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
 			throw e;
 		}
@@ -82,7 +83,7 @@ public abstract class EstadoRondas{
 	
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
 		try{
-			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerNombreEquipo());
+			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());
 		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
 		}
@@ -93,7 +94,7 @@ public abstract class EstadoRondas{
 	
 	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
 		try{
-			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerNombreEquipo());
+			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());
 		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
 		}

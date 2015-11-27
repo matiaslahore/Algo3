@@ -1,13 +1,15 @@
 package fiuba.algo3.tp2.tiposDeCanto;
 
+import fiuba.algo3.tp2.modelo.Equipo;
+
 public class EmpezarTruco extends TiposDeCantoTruco {
 
 	public EmpezarTruco() {
-		super("");
+		super(null);
 	}
 	
 	@Override
-	public Truco cantar(String equipo){
+	public Truco cantar(Equipo equipo){
 		return(new Truco(equipo));
 	}
 

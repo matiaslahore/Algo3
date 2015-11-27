@@ -10,6 +10,7 @@ import java.util.Scanner;
 import org.omg.CORBA.SystemException;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.*;
@@ -17,14 +18,15 @@ import fiuba.algo3.tp2.modeloDeCartas.*;
 public class Jugador {
 
 	String nombre;
-	String equipo;
+	Equipo equipo;
 	Mano manoDelJugador;
 	Mesa refMesa;
 	int envido;
 
-	public Jugador(String name, Mesa mesa){
+	public Jugador(String name, Mesa mesa, Equipo team){
 		nombre = name;
 		refMesa = mesa;
+		equipo = team;
 		envido = 0;
 	}
 
@@ -40,11 +42,7 @@ public class Jugador {
 		return actual;
 	}*/
 	
-	public void cargarEquipo(String nombre){
-		this.equipo = nombre;
-	}
-	
-	public String obtenerNombreEquipo(){
+	public Equipo obtenerEquipo(){
 		return this.equipo;
 	}
 	
@@ -92,7 +90,7 @@ public class Jugador {
 	}
 	
 	public String obtenerEquipoQuePertenece(){
-		return(this.equipo);
+		return this.equipo.obtenerNombre();
 	}
 	
 	public void jugarPrimera(){

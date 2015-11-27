@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
+import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public class EstadoRondaTruco extends EstadoRondas{
 
-	public EstadoRondaTruco(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+	public EstadoRondaTruco(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano,TiposDeCantoTruco estadoTruco) {
 		
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
@@ -41,7 +42,7 @@ public class EstadoRondaTruco extends EstadoRondas{
 	@Override
 	public EstadoRondas noQuiero(Jugador jugador) {
 		this.juez.puntosEnJuego(this.cantosTruco.noQuiso());
-		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
+		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo());
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		//Termina las Rondas, y se vuelve a tirar las cartas, para una nueva mano
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
@@ -49,7 +50,7 @@ public class EstadoRondaTruco extends EstadoRondas{
 	
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
 		try{
-			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerNombreEquipo());
+			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());
 		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
 		}
@@ -59,7 +60,7 @@ public class EstadoRondaTruco extends EstadoRondas{
 	
 	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
 		try{
-			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerNombreEquipo());
+			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());
 		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
 			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
 		}

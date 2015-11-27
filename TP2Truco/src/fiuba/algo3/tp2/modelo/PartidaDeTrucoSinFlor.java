@@ -1,12 +1,9 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.LinkedList;
-
-
 public class PartidaDeTrucoSinFlor extends PartidaDeTruco{
 
-	public PartidaDeTrucoSinFlor(String eq1, String eq2) {
-		super(eq1, eq2);
+	public PartidaDeTrucoSinFlor(String nombreEq1, String nombreEq2) {
+		super(nombreEq1, nombreEq2);
 	}
 
 	@Override

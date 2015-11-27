@@ -31,8 +31,7 @@ public class Equipo {
 		}
 	}*/
 	public void cargarJugadores(String nombre) {
-		Jugador newJugador = new Jugador(nombre,refMesa);
-		newJugador.cargarEquipo(nombreEquipo);
+		Jugador newJugador = new Jugador(nombre,refMesa,this);
 		jugadores.add(newJugador);
 	}
 
@@ -52,7 +51,7 @@ public class Equipo {
 			Jugador actual = (Jugador) itr.next();
 			if (nombreJugador == actual.obtenerNombre()) return actual;
 		}
-		return new Jugador("ERROR",refMesa); //aca hay q tirar una excepcion xq no encontro al jugador
+		return new Jugador("ERROR",refMesa,this); //aca hay q tirar una excepcion xq no encontro al jugador
 		//puse eso para q no me joda eclipse
 	}
 

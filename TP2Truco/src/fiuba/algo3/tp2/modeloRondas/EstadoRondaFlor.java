@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoFlor;
@@ -12,7 +13,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	
 	private TiposDeCantoFlor cantosFlor;
 
-	public EstadoRondaFlor(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+	public EstadoRondaFlor(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, TiposDeCantoFlor tipoDeCanto) {
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 		this.cantosFlor = tipoDeCanto;
@@ -45,7 +46,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 		
 		this.juez.puntosEnJuego(this.cantosFlor.quiso());
 		
-		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
+		this.juez.anotarPuntos(ganador.obtenerEquipo());
 		
 		this.tantoEnJuego.clear();
 		
@@ -55,7 +56,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	public EstadoRondas noQuiero(Jugador jugador) {
 		this.juez.puntosEnJuego(this.cantosFlor.noQuiso());
 		
-		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
+		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo());
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		return this.refEstadoRonda;
 	}

@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class PartidaDeTrucoConFlor extends PartidaDeTruco{
 
-	public PartidaDeTrucoConFlor(String eq1, String eq2) {
+	public PartidaDeTrucoConFlor(Equipo eq1, Equipo eq2) {
 		super(eq1, eq2);
 	}
 

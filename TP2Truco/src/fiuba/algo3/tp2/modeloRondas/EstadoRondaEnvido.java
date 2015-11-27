@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoEnvido;
@@ -12,7 +13,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	
 	private TiposDeCantoEnvido cantosEnvido;
 	
-	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, TiposDeCantoEnvido tipoDeCanto) {
+	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, TiposDeCantoEnvido tipoDeCanto) {
 		
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 		this.cantosEnvido = tipoDeCanto;
@@ -49,7 +50,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		else{
 			this.juez.puntosEnJuego(this.cantosEnvido.quiso());
 		}
-		this.juez.anotarPuntos(ganador.obtenerNombreEquipo());
+		this.juez.anotarPuntos(ganador.obtenerEquipo());
 		
 		this.juez.puntosEnJuego(1);
 		
@@ -61,7 +62,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public EstadoRondas noQuiero(Jugador jugador) {
 		this.juez.puntosEnJuego(this.cantosEnvido.noQuiso());
 		//ESTO ES FEO PERO NO SE ME OCURRE JUSTO AHORA OTRA MANERA
-		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerNombreEquipo());
+		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo());
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		return this.refEstadoRonda;
 	}

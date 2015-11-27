@@ -15,7 +15,7 @@ import fiuba.algo3.tp2.modeloRondas.*;
 public class Mesa {
     
 	Juez juez;
-	ArrayList<String> ganadoresRonda; //guarda el nombre del equipo q gano las rondas
+	ArrayList<Equipo> ganadoresRonda; //guarda el nombre del equipo q gano las rondas
 	ArrayList<TipoDeCartas> cartasEnJuego;
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;
@@ -25,16 +25,15 @@ public class Mesa {
 	//Envido envido;
 	
 	
-	public Mesa(String equipoUno, String equipoDos){
+	public Mesa(){
 		jugadores = new ListaCircular<Jugador>();
-		juez = new Juez(this, equipoUno, equipoDos);
-		ganadoresRonda = new ArrayList<String>();
+		ganadoresRonda = new ArrayList<Equipo>();
 		cartasEnJuego = new ArrayList<TipoDeCartas>();
-		puntos = new Puntos(equipoUno,equipoDos);
 		indexMano = 0;
-		//this.ronda = new EstadoRondas(ronda, juez, ganadoresRonda, cartasEnJuego, jugadores, indexMano, indexMano);
-		//this.truco= new Truco();
-		//this.envido = new Envido();
+	}
+	
+	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos) {
+		juez = new Juez(this, equipoUno, equipoDos);
 	}
 	
 	public void iniciarRonda(){
@@ -53,10 +52,6 @@ public class Mesa {
 			Jugador jugador = (Jugador) itr.next();
 			jugador.recibirCartas(this.juez.repartir(), this.juez.repartir(), this.juez.repartir());
 		}
-	}
-	
-	public void anotarPuntos(String equipo, int cantidad){
-		this.puntos.anotarPuntos(equipo, cantidad);
 	}
 
 	public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
@@ -100,7 +95,7 @@ public class Mesa {
 		}
 	}
 
-	public String ultimoGanador() {
+	public Equipo ultimoGanador() {
 		return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
 	}
 
@@ -160,6 +155,10 @@ public class Mesa {
 		this.ronda = this.ronda.noQuiero(jugador);
 	}
 
+	public int puntosEquipo(Equipo equipo) {
+		return this.juez.puntosEquipo(equipo);
+	}
+	
 	public int puntosEquipo(String equipo) {
 		return this.juez.puntosEquipo(equipo);
 	}
@@ -232,11 +231,5 @@ public class Mesa {
 	public int cantidadDeJugadores() {
 		return jugadores.size();
 	}
-
-	/*
-	do{
-		ronda = ronda.jugar();
-	}while(juez.termina());
-	*/
 	
 }

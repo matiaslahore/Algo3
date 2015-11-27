@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modeloRondas;
 import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -14,7 +15,7 @@ public class EstadoRondaDos extends EstadoRondas{
 	//IRSE AL MAZO
 	//SE GANA
 	
-	public EstadoRondaDos(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+	public EstadoRondaDos(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
@@ -30,7 +31,7 @@ public class EstadoRondaDos extends EstadoRondas{
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 		}else{
 			Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
-			ganadoresRonda.add(ganador.obtenerNombreEquipo());
+			ganadoresRonda.add(ganador.obtenerEquipo());
 		}
 				
 		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1) + "\n");

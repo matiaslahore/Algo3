@@ -6,13 +6,14 @@ import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
+import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
 
 public class EstadoPartidaFinalizada extends EstadoRondas{
 
-	public EstadoPartidaFinalizada(EstadoRondas estadoRonda, Juez juez, ArrayList<String> ganadoresRonda,
+	public EstadoPartidaFinalizada(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 	
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);

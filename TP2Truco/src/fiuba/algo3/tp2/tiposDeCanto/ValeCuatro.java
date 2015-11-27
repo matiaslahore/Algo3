@@ -1,10 +1,11 @@
 package fiuba.algo3.tp2.tiposDeCanto;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.modelo.Equipo;
 
 public class ValeCuatro extends TiposDeCantoTruco{
 	
-	public ValeCuatro(String equipo) {
+	public ValeCuatro(Equipo equipo) {
 		super(equipo);
 	}
 
@@ -19,7 +20,7 @@ public class ValeCuatro extends TiposDeCantoTruco{
 	}
 
 	@Override
-	public TiposDeCantoTruco cantar(String equipo) throws CantoInvalidoException {
+	public TiposDeCantoTruco cantar(Equipo equipo) throws CantoInvalidoException {
 		throw new CantoInvalidoException();
 	}
 

@@ -1,7 +1,5 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.LinkedList;
-
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class PartidaDeTruco {
@@ -11,10 +9,11 @@ public abstract class PartidaDeTruco {
 	Equipo equipoDos;
 	Mesa mesa;
 	
-	public PartidaDeTruco(String eq1, String eq2){
-		this.mesa = new Mesa(eq1, eq2);
-		this.equipoUno = new Equipo(eq1,mesa);
-		this.equipoDos = new Equipo(eq2,mesa);
+	public PartidaDeTruco(String nombreEq1, String nombreEq2){
+		this.mesa = new Mesa();
+		this.equipoUno = new Equipo(nombreEq1, mesa);
+		this.equipoDos = new Equipo(nombreEq2, mesa);
+		this.mesa.instanciarJuez(equipoUno,equipoDos);
 	}
 	
 	public abstract void cargarJugadoresEnEquipoUno(String jugadorUno);
@@ -39,14 +38,14 @@ public abstract class PartidaDeTruco {
 	}
 
 	public String ultimoGanador() {
-		return this.mesa.ultimoGanador();
+		return this.mesa.ultimoGanador().obtenerNombre();
 	}
 	
 	public void repartir(){
 		this.mesa.repartirCartas();
 	}
 	
-	public int obtenerPuntajeDeEquipo(String nombreEquipo) {
-		return this.mesa.puntosEquipo(nombreEquipo);
+	public int obtenerPuntajeDeEquipo(String equipo) {
+		return this.mesa.puntosEquipo(equipo);
 	}
 }

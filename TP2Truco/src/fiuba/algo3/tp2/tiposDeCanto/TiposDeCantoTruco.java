@@ -1,19 +1,17 @@
 package fiuba.algo3.tp2.tiposDeCanto;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeNoQuererElCantoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
-import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.modelo.Equipo;
 
 public abstract class TiposDeCantoTruco {
-	String equipoQueCanta;
+	Equipo equipoQueCanta;
 	
-	public TiposDeCantoTruco(String equipo){
+	public TiposDeCantoTruco(Equipo equipo){
 		equipoQueCanta = equipo;
 	}
 	
-	public abstract TiposDeCantoTruco cantar(String equipo) throws EquipoQueCantaNoPuedeVolverACantarException, CantoInvalidoException;
+	public abstract TiposDeCantoTruco cantar(Equipo equipo) throws EquipoQueCantaNoPuedeVolverACantarException, CantoInvalidoException;
 	
 	public abstract int quiso();
 	

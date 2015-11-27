@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
@@ -10,12 +11,20 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class SituacionesDeJuegoTest {
 	
+	private Mesa mesa;
+	private Equipo eq1;
+	private Equipo eq2;
+	
+	@Before
+	public void setup() {
+		mesa = new Mesa();
+		eq1 = new Equipo("eq1", mesa);
+		eq2 = new Equipo("eq2", mesa);
+		mesa.instanciarJuez(eq1,eq2);
+	}
+	
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq2.cargarJugadores("j2");
 		
@@ -23,39 +32,35 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 		//R1
 		Jugador actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
 		actual.recibirCartas(new SieteDeEspada(), new AnchoDeBasto(), new SeisDeEspada());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
 		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq2",mesa.ultimoGanador());
+		Assert.assertEquals(eq2,mesa.ultimoGanador());
 		//R2
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq1",mesa.ultimoGanador());
+		Assert.assertEquals(eq1,mesa.ultimoGanador());
 		//R3
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerNombreEquipo());
+		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq1",mesa.ultimoGanador());
+		Assert.assertEquals(eq1,mesa.ultimoGanador());
 	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleDosPorDos(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-				
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -77,7 +82,7 @@ public class SituacionesDeJuegoTest {
 		actual.recibirCartas(new TresDeOro(), new AnchoDeCopa(), new TresDeCopa());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq2",mesa.ultimoGanador());
+		Assert.assertEquals("eq2",mesa.ultimoGanador().obtenerNombre());
 		//R2
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
@@ -87,7 +92,7 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq1",mesa.ultimoGanador());
+		Assert.assertEquals("eq1",mesa.ultimoGanador().obtenerNombre());
 		//R3
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
@@ -97,15 +102,11 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq2",mesa.ultimoGanador());
+		Assert.assertEquals("eq2",mesa.ultimoGanador().obtenerNombre());
 	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleTresPorTres(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq1.cargarJugadores("j5");
@@ -135,7 +136,7 @@ public class SituacionesDeJuegoTest {
 		actual.recibirCartas(new CuatroDeCopa(), new CincoDeBasto(), new ReyDeOro());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq2",mesa.ultimoGanador());
+		Assert.assertEquals(eq2,mesa.ultimoGanador());
 		//R2
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
@@ -149,7 +150,7 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq1",mesa.ultimoGanador());
+		Assert.assertEquals(eq1,mesa.ultimoGanador());
 		//R3
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
@@ -163,15 +164,11 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq2",mesa.ultimoGanador());
+		Assert.assertEquals(eq2,mesa.ultimoGanador());
 	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaJ3QuiereTrucoCantadoPorJ2(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -199,10 +196,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test
 	public void pruebaSimulacionDePartidaJ3NOQuiereTrucoCantadoPorJ2(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -220,15 +213,11 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.noQuiero();
-		Assert.assertEquals(1,mesa.puntosEquipo("eq2"));
+		Assert.assertEquals(1,mesa.puntosEquipo(eq2));
 	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaJ3QuiereEnvidoCantadoPorJ2(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -255,17 +244,13 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
-		Assert.assertEquals(2,mesa.puntosEquipo("eq2"));
+		Assert.assertEquals(2,mesa.puntosEquipo(eq2));
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaJ3NOQuiereEnvidoCantadoPorJ2(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -282,17 +267,13 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.noQuiero();
-		Assert.assertEquals(1,mesa.puntosEquipo("eq2"));
+		Assert.assertEquals(1,mesa.puntosEquipo(eq2));
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 	}
 	
 	@Test(expected = RuntimeException.class)
 	public void testFallaCantoTrucoyQuieroReTrucoElMismoJugador() {
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -316,10 +297,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test(expected = RuntimeException.class)
 	public void testFallaCantoTrucoyQuieroReTrucoElMismoEquipo() {
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -347,10 +324,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test
 	public void pruebaJ3CantaEnvidoEnvidoJ4Acepta(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -381,7 +354,7 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.quiero(); //j4 quiere envido envido
-		Assert.assertEquals(4,mesa.puntosEquipo("eq2")); //gana eq2 xq tiene 33 J4
+		Assert.assertEquals(4,mesa.puntosEquipo(eq2)); //gana eq2 xq tiene 33 J4
 		
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
@@ -390,10 +363,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test
 	public void pruebaJ3CantaEnvidoEnvidoJ4NoAcepta(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -424,7 +393,7 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.noQuiero(); //j4 quiere envido envido
-		Assert.assertEquals(2,mesa.puntosEquipo("eq1")); //gana eq1, eq2 no quiere
+		Assert.assertEquals(2,mesa.puntosEquipo(eq1)); //gana eq1, eq2 no quiere
 		
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
@@ -432,10 +401,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test
 	public void pruebaJ4CantaEnvidoEnvidoRealEnvidoJ1Acepta(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -474,7 +439,7 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.quiero(); //j1 quiere envido envido realenvido
 		
-		Assert.assertEquals(7,mesa.puntosEquipo("eq2")); //gana eq2
+		Assert.assertEquals(7,mesa.puntosEquipo(eq2)); //gana eq2
 		
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
@@ -482,10 +447,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test
 	public void pruebaSimulacionDePartidaJ1QuiereValeCuatroCantadoPorJ4(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -520,10 +481,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test
 	public void pruebaEq1GanaValeCuatro(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -596,16 +553,12 @@ public class SituacionesDeJuegoTest {
 		actual.jugarPrimera();
 		
 		actual = mesa.siguiente();
-		Assert.assertEquals(4,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		Assert.assertEquals(4,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
 		
 	}
 	
 	@Test
 	public void pruebaEq1GanaValeCuatroSeCantaPorRondas(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -687,16 +640,12 @@ public class SituacionesDeJuegoTest {
 		actual.jugarPrimera();
 		
 		actual = mesa.siguiente();
-		Assert.assertEquals(4,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		Assert.assertEquals(4,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
 		
 	}
 	
 	@Test
 	public void pruebaJ1CantaFlorJ2noQuiere(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -724,16 +673,12 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		
-		Assert.assertEquals(3,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		Assert.assertEquals(3,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
 		
 	}
 	
 	@Test
 	public void pruebaJ1CantaFlorJ2ContraFlorJ1Quiere(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -762,7 +707,7 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
 		
-		Assert.assertEquals(6,mesa.puntosEquipo("eq1")); //gana eq1 vale 4
+		Assert.assertEquals(6,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
 		
 		actual = mesa.siguiente();
 		Assert.assertEquals("j1",actual.obtenerNombre());
@@ -770,10 +715,6 @@ public class SituacionesDeJuegoTest {
 	
 	@Test(expected = NoSePuedeSeguirJugandoExcepcion.class)
 	public void pruebaJ1CantaFlorJ2ContraFlorAlRestoJ1QuiereSeTerminaLaPartida(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -802,17 +743,13 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
 		
-		Assert.assertEquals(30,mesa.puntosEquipo("eq1")); //gana eq1
+		Assert.assertEquals(30,mesa.puntosEquipo(eq1)); //gana eq1
 		
 		actual = mesa.siguiente(); //esto produce excepcion xq termino la partida y quiero seguir jugando
 	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleTresPorTresCantaEnvioYValeCuatro(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq1.cargarJugadores("j5");
@@ -882,7 +819,7 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		actual.jugarPrimera(); //j6
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq2",mesa.ultimoGanador());
+		Assert.assertEquals(eq2,mesa.ultimoGanador());
 		//R2
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarPrimera(); //j2
@@ -908,7 +845,7 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarPrimera(); //j1
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq1",mesa.ultimoGanador());
+		Assert.assertEquals(eq1,mesa.ultimoGanador());
 		//R3
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarPrimera();
@@ -934,18 +871,14 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
-		Assert.assertEquals("eq2",mesa.ultimoGanador());
+		Assert.assertEquals(eq2,mesa.ultimoGanador());
 		
-		Assert.assertEquals(7,mesa.puntosEquipo("eq1"));
-		Assert.assertEquals(4,mesa.puntosEquipo("eq2"));
+		Assert.assertEquals(7,mesa.puntosEquipo(eq1));
+		Assert.assertEquals(4,mesa.puntosEquipo(eq2));
 	}
 	
 	@Test
 	public void pruebaSimulacionDePartidaPicaPica(){
-		Mesa mesa = new Mesa("eq1", "eq2");
-		Equipo eq1 = new Equipo("eq1", mesa);
-		Equipo eq2 = new Equipo("eq2", mesa);
-		
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq1.cargarJugadores("j5");
@@ -1032,8 +965,8 @@ public class SituacionesDeJuegoTest {
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
 		
-		Assert.assertEquals(7,mesa.puntosEquipo("eq1"));
-		Assert.assertEquals(4,mesa.puntosEquipo("eq2"));
+		Assert.assertEquals(7,mesa.puntosEquipo(eq1));
+		Assert.assertEquals(4,mesa.puntosEquipo(eq2));
 		
 		mesa.imprimirResultados();
 		//la proxima tiene que ser picapica

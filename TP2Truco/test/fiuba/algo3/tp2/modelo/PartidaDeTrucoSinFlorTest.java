@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.Arrays;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeBasto;
@@ -10,9 +9,7 @@ import fiuba.algo3.tp2.modeloDeCartas.AnchoDeOro;
 import fiuba.algo3.tp2.modeloDeCartas.CuatroDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeCopa;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeEspada;
-import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import junit.framework.Assert;
 
 public class PartidaDeTrucoSinFlorTest {
 

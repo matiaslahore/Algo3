@@ -18,7 +18,7 @@ public class Juez {
 	boolean activadorPicaPica = false;
 	int cantidadJugadas = 1;
 	
-	public Juez(Mesa mesa, String equipoUno, String equipoDos){
+	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos){
 		this.maso = new Maso();
 		this.mesa = mesa;
 		this.puntosEnJuego = 1;
@@ -33,7 +33,7 @@ public class Juez {
 		return this.maso.dameCarta();
 	}
 	// solo el juez puede anotar puntos
-	public void anotarPuntos(String equipo){
+	public void anotarPuntos(Equipo equipo){
 		this.puntos.anotarPuntos(equipo, puntosEnJuego);
 	}
 	
@@ -59,6 +59,10 @@ public class Juez {
 		return Collections.max(tantoEnJuego);
 	}
 
+	public int puntosEquipo(Equipo equipo) {
+		return this.puntos.getPuntaje(equipo);
+	}
+	
 	public int puntosEquipo(String equipo) {
 		return this.puntos.getPuntaje(equipo);
 	}
