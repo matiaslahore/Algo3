@@ -20,8 +20,8 @@ public class PruebaJugadorTest {
 	@Before
 	public void inicializado(){
 		
-		mesa = new Mesa("EquipoUno", "EquipoDos");
-		unJugador = new Jugador("Nicolas", mesa);
+		mesa = new Mesa();
+		unJugador = new Jugador("Nicolas", mesa, new Equipo("EquipoUno",mesa));
 	}
 	
 	@Test

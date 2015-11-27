@@ -1,18 +1,34 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugador;
 import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
 
 public class Mano {
 
-	ArrayList<TipoDeCartas> cartas;
+	List<TipoDeCartas> cartas;
 	
+	//este lo deje para que no rompa los test pero habria que sacarlo
 	public Mano(TipoDeCartas cartaUno,TipoDeCartas cartaDos,TipoDeCartas cartaTres){
 		this.cartas = new ArrayList<TipoDeCartas>();
 		this.cartas.add(cartaUno);
 		this.cartas.add(cartaDos);
 		this.cartas.add(cartaTres);
+	}
+	
+	public Mano(List<TipoDeCartas> listaDeCartas){
+		this.cartas = new ArrayList<TipoDeCartas>();
+		this.cartas = listaDeCartas;
+	}
+	
+	public TipoDeCartas obtenerCarta(TipoDeCartas unaCarta) {
+		try {
+			return this.cartas.get(this.cartas.lastIndexOf(unaCarta));
+		} catch (ArrayIndexOutOfBoundsException e){
+			throw new CartaInexistenteEnManoDeJugador();
+		}
 	}
 	
 	public int calcularEnvido(){
@@ -40,7 +56,7 @@ public class Mano {
 		return carta;
 	}
 	
-	public ArrayList<TipoDeCartas> returnCartas(){
+	public List<TipoDeCartas> returnCartas(){
 		return this.cartas;
 	}
 
@@ -67,6 +83,5 @@ public class Mano {
 	
 	public int returnCantidadDeCartas(){
 		return this.cartas.size();
-	}
-	
+	}	
 }

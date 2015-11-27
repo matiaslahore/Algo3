@@ -16,7 +16,7 @@ public class RepartirTest {
 	
 	@Before
 	public void Inicializar(){
-		this.mesa = new Mesa("EquipoUno","EquipoDos");
+		this.mesa = new Mesa();
 	}
 	
 	@Test

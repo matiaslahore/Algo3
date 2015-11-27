@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +26,7 @@ public class SituacionesDeJuegoTest {
 	
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
+		
 		eq1.cargarJugadores("j1");
 		eq2.cargarJugadores("j2");
 		
@@ -32,11 +35,17 @@ public class SituacionesDeJuegoTest {
 		//R1
 		Jugador actual = mesa.siguiente();
 		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
-		actual.recibirCartas(new SieteDeEspada(), new AnchoDeBasto(), new SeisDeEspada());
-		actual.jugarPrimera();
+		TipoDeCartas sieteDeEspada = new SieteDeEspada();
+		TipoDeCartas anchoDeBasto = new AnchoDeBasto();
+		TipoDeCartas seisDeEspada = new SeisDeEspada();
+		actual.recibirCartas(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada));
+		actual.jugarCarta(sieteDeEspada);
 		actual = mesa.siguiente();
 		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
-		actual.recibirCartas(new AnchoDeEspada(), new SieteDeOro(), new CincoDeOro());
+		TipoDeCartas anchoDeEspada = new AnchoDeEspada();
+		TipoDeCartas sieteDeOro = new SieteDeOro();
+		TipoDeCartas cincoDeOro = new CincoDeOro();
+		actual.recibirCartas(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro));
 		actual.jugarPrimera();
 		actual = mesa.siguiente();
 		Assert.assertEquals(eq2,mesa.ultimoGanador());

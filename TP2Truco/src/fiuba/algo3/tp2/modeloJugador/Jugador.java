@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modeloJugador;
 
+import java.util.List;
+
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
@@ -23,6 +25,13 @@ public class Jugador {
 
 	public void recibirCartas(TipoDeCartas c1, TipoDeCartas c2, TipoDeCartas c3){
 		manoDelJugador = new Mano(c1,c2,c3);
+		this.envido = this.manoDelJugador.calcularEnvido();
+	}
+	
+	// habria que decidir por uno de los dos metodos, el profe nos recomendo una lista
+	
+	public void recibirCartas(List<TipoDeCartas> listaDeCartas){
+		manoDelJugador = new Mano(listaDeCartas);
 		this.envido = this.manoDelJugador.calcularEnvido();
 	}
 	
@@ -78,6 +87,12 @@ public class Jugador {
 
 	public int cantidadDeCartas() {
 	    return this.manoDelJugador.returnCantidadDeCartas();	
+	}
+	
+
+	public void jugarCarta(TipoDeCartas unaCarta) {
+		
+		this.refMesa.recibirCarta(this.manoDelJugador.obtenerCarta(unaCarta));
 	}
 	
 	public void jugarPrimera(){
@@ -161,5 +176,6 @@ public class Jugador {
 	public void noQuiero(){
 		this.refMesa.noQuiero(this);
 	}
+
 
 }
