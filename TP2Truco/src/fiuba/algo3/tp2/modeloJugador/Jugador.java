@@ -1,14 +1,5 @@
 package fiuba.algo3.tp2.modeloJugador;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
-import org.omg.CORBA.SystemException;
-
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
@@ -73,15 +64,15 @@ public class Jugador {
 		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
 	}
 
-	public void jugarCarta() { //////////////////////////////////////////////PRIVATE
+	/*public void jugarCarta() { //////////////////////////////////////////////PRIVATE
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Ingerese numero de carta a jugar: ");
 		verCartasEnManoComoString();
 		int n = leer.nextInt();
 		this.refMesa.recibirCarta(this.manoDelJugador.tirar(n));
-	}
+	}*/
 
-	private void verCartasEnManoComoString() {
+	public void verCartasEnManoComoString() {
 		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
 	}
 

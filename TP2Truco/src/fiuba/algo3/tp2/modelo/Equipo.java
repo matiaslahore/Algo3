@@ -2,10 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Scanner;
 
-import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class Equipo {
@@ -35,15 +32,15 @@ public class Equipo {
 		jugadores.add(newJugador);
 	}
 
-	public void recibirCartas() {
+	/*public void recibirCartas() {
 		for (Jugador unJugador : jugadores){
-			//TipoDeCartas c1 = refMesa.repartirCarta();
-			//TipoDeCartas c2 = refMesa.repartirCarta();
-			//TipoDeCartas c3 = refMesa.repartirCarta();
+			TipoDeCartas c1 = refMesa.repartirCarta();
+			TipoDeCartas c2 = refMesa.repartirCarta();
+			TipoDeCartas c3 = refMesa.repartirCarta();
 			
-		 	// unJugador.recibirCartas(c1,c2,c3);
+		 	unJugador.recibirCartas(c1,c2,c3);
 		}
-	}
+	}*/
 
 	public Jugador obtenerJugador(String nombreJugador) {	
 		Iterator<Jugador> itr = jugadores.iterator();

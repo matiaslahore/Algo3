@@ -1,7 +1,5 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
