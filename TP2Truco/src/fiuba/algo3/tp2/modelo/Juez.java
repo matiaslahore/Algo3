@@ -25,11 +25,11 @@ public class Juez {
 		this.puntos = new Puntos(equipoUno, equipoDos);
 	}
 
-	public List<TipoDeCartas> obtenerListaDeCartasEnJuego(){
+	public List<Carta> obtenerListaDeCartasEnJuego(){
 		return this.mesa.obtenerListaDeCartasEnJuego();
 	}
 	
-	public TipoDeCartas repartir(){
+	public Carta repartir(){
 		return this.maso.dameCarta();
 	}
 	// solo el juez puede anotar puntos
@@ -41,7 +41,7 @@ public class Juez {
 		this.maso = new Maso();
 	}
 
-	public TipoDeCartas obtenerCartaGanadoraDeRonda() {
+	public Carta obtenerCartaGanadoraDeRonda() {
 		
 		return this.mesa.obtenerCartaGanadoraDeRonda();
 	}

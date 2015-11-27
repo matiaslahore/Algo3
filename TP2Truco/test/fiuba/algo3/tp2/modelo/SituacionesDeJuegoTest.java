@@ -34,17 +34,23 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 		//R1
 		Jugador actual = mesa.siguiente();
+		
 		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
-		TipoDeCartas sieteDeEspada = new SieteDeEspada();
-		TipoDeCartas anchoDeBasto = new AnchoDeBasto();
-		TipoDeCartas seisDeEspada = new SeisDeEspada();
+		
+		Carta sieteDeEspada = new SieteDeEspada();
+		Carta anchoDeBasto = new AnchoDeBasto();
+		Carta seisDeEspada = new SeisDeEspada();
+		
 		actual.recibirCartas(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada));
 		actual.jugarCarta(sieteDeEspada);
 		actual = mesa.siguiente();
+		
 		System.out.println("Turno de: " + actual.obtenerNombre() + ", " + actual.obtenerEquipo());
-		TipoDeCartas anchoDeEspada = new AnchoDeEspada();
-		TipoDeCartas sieteDeOro = new SieteDeOro();
-		TipoDeCartas cincoDeOro = new CincoDeOro();
+		
+		Carta anchoDeEspada = new AnchoDeEspada();
+		Carta sieteDeOro = new SieteDeOro();
+		Carta cincoDeOro = new CincoDeOro();
+		
 		actual.recibirCartas(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro));
 		actual.jugarPrimera();
 		actual = mesa.siguiente();

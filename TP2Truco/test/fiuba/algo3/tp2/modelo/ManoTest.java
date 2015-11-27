@@ -10,16 +10,16 @@ import fiuba.algo3.tp2.modeloDeCartas.CuatroDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeCopa;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
-import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public class ManoTest {
 
 	@Test
 	public void pruebaObtenerCarta(){
 		
-		TipoDeCartas sieteDeCopa = new SieteDeCopa();
-		TipoDeCartas sieteDeBasto = new SieteDeBasto();
-		TipoDeCartas cuatroDeBasto = new CuatroDeBasto();
+		Carta sieteDeCopa = new SieteDeCopa();
+		Carta sieteDeBasto = new SieteDeBasto();
+		Carta cuatroDeBasto = new CuatroDeBasto();
 		
 		Mano mano = new Mano(Arrays.asList(sieteDeCopa, sieteDeBasto, cuatroDeBasto));
 		
@@ -32,9 +32,9 @@ public class ManoTest {
 	(expected = CartaInexistenteEnManoDeJugador.class)
 	public void pruebaConCartaInexistenteEnMano(){
 		
-		TipoDeCartas sieteDeCopa = new SieteDeCopa();
-		TipoDeCartas sieteDeBasto = new SieteDeBasto();
-		TipoDeCartas cuatroDeBasto = new CuatroDeBasto();
+		Carta sieteDeCopa = new SieteDeCopa();
+		Carta sieteDeBasto = new SieteDeBasto();
+		Carta cuatroDeBasto = new CuatroDeBasto();
 		
 		Mano mano = new Mano(Arrays.asList(sieteDeCopa, sieteDeBasto, cuatroDeBasto));
 		

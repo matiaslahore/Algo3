@@ -7,7 +7,7 @@ import fiuba.algo3.tp2.modeloDeCartas.*;
 
 public class Maso {
 
-	ArrayList<TipoDeCartas> maso = new ArrayList<TipoDeCartas>();
+	ArrayList<Carta> maso = new ArrayList<Carta>();
 	
 	public Maso(){
 		
@@ -53,11 +53,11 @@ public class Maso {
 		this.maso.add(new CuatroDeEspada());
 	}
 	
-	public TipoDeCartas dameCarta(){
+	public Carta dameCarta(){
 		
 		Random rnd = new Random();
 		int index = (int) (rnd.nextDouble() * (maso.size()));
-		TipoDeCartas CartaRetorno = this.maso.get(index);
+		Carta CartaRetorno = this.maso.get(index);
 		this.maso.remove(index);
 		return CartaRetorno;
 	}

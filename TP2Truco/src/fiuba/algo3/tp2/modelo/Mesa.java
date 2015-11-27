@@ -16,7 +16,7 @@ public class Mesa {
     
 	Juez juez;
 	ArrayList<Equipo> ganadoresRonda; //guarda el nombre del equipo q gano las rondas
-	ArrayList<TipoDeCartas> cartasEnJuego;
+	ArrayList<Carta> cartasEnJuego;
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;
 	EstadoRondas ronda;
@@ -28,7 +28,7 @@ public class Mesa {
 	public Mesa(){
 		jugadores = new ListaCircular<Jugador>();
 		ganadoresRonda = new ArrayList<Equipo>();
-		cartasEnJuego = new ArrayList<TipoDeCartas>();
+		cartasEnJuego = new ArrayList<Carta>();
 		indexMano = 0;
 	}
 	
@@ -40,7 +40,7 @@ public class Mesa {
 		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda, jugadores, indexMano, indexMano);
 	}
 	
-	public void recibirCarta(TipoDeCartas carta){
+	public void recibirCarta(Carta carta){
 		System.out.println("Mesa recibe: " + carta.cartaComoString());
 		this.cartasEnJuego.add(carta);
 	}
@@ -163,26 +163,26 @@ public class Mesa {
 		return this.juez.puntosEquipo(equipo);
 	}
 
-	public TipoDeCartas obtenerCartaGanadoraDeRonda() {
-		Iterator<TipoDeCartas> itr = cartasEnJuego.iterator();
+	public Carta obtenerCartaGanadoraDeRonda() {
+		Iterator<Carta> itr = cartasEnJuego.iterator();
 		
-		TipoDeCartas cartaUno = (TipoDeCartas) itr.next();
-		TipoDeCartas cartaDos = (TipoDeCartas) itr.next();
-		TipoDeCartas ganadora = ganador(cartaUno,cartaDos);
+		Carta cartaUno = (Carta) itr.next();
+		Carta cartaDos = (Carta) itr.next();
+		Carta ganadora = ganador(cartaUno,cartaDos);
 		
 		while(itr.hasNext()) {
-			TipoDeCartas otraCarta = (TipoDeCartas) itr.next();
+			Carta otraCarta = (Carta) itr.next();
 			ganadora = ganador(ganadora,otraCarta);
 		}
 		
 		return ganadora;		
 	}	
 	
-	private TipoDeCartas ganador(TipoDeCartas a, TipoDeCartas b){
+	private Carta ganador(Carta a, Carta b){
 		return a.vs(b);
 	}
 
-	public List<TipoDeCartas> obtenerListaDeCartasEnJuego() {
+	public List<Carta> obtenerListaDeCartasEnJuego() {
 		return this.cartasEnJuego;
 	}
 
@@ -192,26 +192,26 @@ public class Mesa {
 
 	public boolean hayParda() {
 		
-		Iterator<TipoDeCartas> itr = this.cartasEnJuego.iterator();
+		Iterator<Carta> itr = this.cartasEnJuego.iterator();
 
-		List<TipoDeCartas> cartasEquipoUno = new LinkedList<TipoDeCartas>();
-		List<TipoDeCartas> cartasEquipoDos = new LinkedList<TipoDeCartas>();
+		List<Carta> cartasEquipoUno = new LinkedList<Carta>();
+		List<Carta> cartasEquipoDos = new LinkedList<Carta>();
 		
 		while (itr.hasNext()){
 			cartasEquipoUno.add(itr.next());
 			cartasEquipoDos.add(itr.next());
 		}
 		
-		TipoDeCartas mejorCartaEquipoUno = this.obtenerMejorCartaDeLaLista(cartasEquipoUno);
-		TipoDeCartas mejorCartaEquipoDos = this.obtenerMejorCartaDeLaLista(cartasEquipoDos);
+		Carta mejorCartaEquipoUno = this.obtenerMejorCartaDeLaLista(cartasEquipoUno);
+		Carta mejorCartaEquipoDos = this.obtenerMejorCartaDeLaLista(cartasEquipoDos);
 		
 		return mejorCartaEquipoUno.hayParda(mejorCartaEquipoDos);
 	}
 
-	private TipoDeCartas obtenerMejorCartaDeLaLista(List<TipoDeCartas> cartas) {
-		Iterator<TipoDeCartas> iterador = cartas.iterator();
+	private Carta obtenerMejorCartaDeLaLista(List<Carta> cartas) {
+		Iterator<Carta> iterador = cartas.iterator();
 		
-		TipoDeCartas mejorCarta = iterador.next();
+		Carta mejorCarta = iterador.next();
 		
 		while(iterador.hasNext()){
 			

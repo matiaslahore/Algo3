@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.TipoDeCartas;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaDosParda extends EstadoRondas{
@@ -23,7 +23,7 @@ public class EstadoRondaDosParda extends EstadoRondas{
 
 	public EstadoRondas siguienteRonda(){
 
-		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
+		Carta ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 

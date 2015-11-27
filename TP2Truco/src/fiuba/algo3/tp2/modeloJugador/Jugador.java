@@ -23,14 +23,14 @@ public class Jugador {
 		envido = 0;
 	}
 
-	public void recibirCartas(TipoDeCartas c1, TipoDeCartas c2, TipoDeCartas c3){
+	public void recibirCartas(Carta c1, Carta c2, Carta c3){
 		manoDelJugador = new Mano(c1,c2,c3);
 		this.envido = this.manoDelJugador.calcularEnvido();
 	}
 	
 	// habria que decidir por uno de los dos metodos, el profe nos recomendo una lista
 	
-	public void recibirCartas(List<TipoDeCartas> listaDeCartas){
+	public void recibirCartas(List<Carta> listaDeCartas){
 		manoDelJugador = new Mano(listaDeCartas);
 		this.envido = this.manoDelJugador.calcularEnvido();
 	}
@@ -90,7 +90,7 @@ public class Jugador {
 	}
 	
 
-	public void jugarCarta(TipoDeCartas unaCarta) {
+	public void jugarCarta(Carta unaCarta) {
 		
 		this.refMesa.recibirCarta(this.manoDelJugador.obtenerCarta(unaCarta));
 	}

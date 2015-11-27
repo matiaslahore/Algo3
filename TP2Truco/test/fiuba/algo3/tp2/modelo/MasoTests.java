@@ -14,8 +14,8 @@ public class MasoTests {
 		
 		Maso unMaso = new Maso();
 		
-		List<TipoDeCartas> listaDeCartas = new ArrayList<TipoDeCartas>();
-		TipoDeCartas unaCarta ;
+		List<Carta> listaDeCartas = new ArrayList<Carta>();
+		Carta unaCarta ;
 		
 		for (int i=0; i<40; i=i+1){
 			
