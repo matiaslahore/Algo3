@@ -80,10 +80,6 @@ public class Jugador {
 	    return this.manoDelJugador.returnCantidadDeCartas();	
 	}
 	
-	public String obtenerEquipoQuePertenece(){
-		return this.equipo.obtenerNombre();
-	}
-	
 	public void jugarPrimera(){
 		this.refMesa.recibirCarta(this.manoDelJugador.returnPrimera());
 	}

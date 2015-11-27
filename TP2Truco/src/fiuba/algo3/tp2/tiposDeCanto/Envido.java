@@ -1,22 +1,24 @@
 package fiuba.algo3.tp2.tiposDeCanto;
 
+import fiuba.algo3.tp2.modelo.Equipo;
+
 public class Envido extends TiposDeCantoEnvido{
 	
-	public Envido(String equipoQueCanta){
+	public Envido(Equipo equipoQueCanta){
 		super(equipoQueCanta);
 	}
 	
 	@Override
-	public EnvidoEnvido cantarEnvido(String equipoQueCanta){
+	public EnvidoEnvido cantarEnvido(Equipo equipoQueCanta){
 		return(new EnvidoEnvido(equipoQueCanta));
 	}
 	
-	public EnvidoRealEnvido cantarRealEnvido(String equipoQueCanta){
+	public EnvidoRealEnvido cantarRealEnvido(Equipo equipoQueCanta){
 		return(new EnvidoRealEnvido(equipoQueCanta));
 	}
 
 	@Override
-	public EnvidoFaltaEnvido cantarFaltaEnvido(String equipoQueCanta) {
+	public EnvidoFaltaEnvido cantarFaltaEnvido(Equipo equipoQueCanta) {
 		return(new EnvidoFaltaEnvido(equipoQueCanta));
 	}
 

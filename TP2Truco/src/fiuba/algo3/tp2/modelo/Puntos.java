@@ -39,10 +39,11 @@ public class Puntos {
 		return 0;
 	}
 
-	public int puntosDeLaFalta(String equipo) {
-		Collection<Integer> coleccion = mapa.values();
-		int max = Collections.max(coleccion);
-		return (30-max);
+	public int puntosDeLaFalta(Equipo equipo) {
+		int puntaje = mapa.get(equipo);
+		
+		if (puntaje>15) return (30-puntaje);
+		else return (15-puntaje);
 	}
 
 	public int getPuntajeMaximo() {

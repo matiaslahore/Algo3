@@ -1,25 +1,26 @@
 package fiuba.algo3.tp2.tiposDeCanto;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.modelo.Equipo;
 
 public class EnvidoEnvidoRealEnvidoFaltaEnvido extends TiposDeCantoEnvido {
 
-	public EnvidoEnvidoRealEnvidoFaltaEnvido(String equipoQueCanta) {
+	public EnvidoEnvidoRealEnvidoFaltaEnvido(Equipo equipoQueCanta) {
 		super(equipoQueCanta);
 	}
 
 	@Override
-	public TiposDeCantoEnvido cantarEnvido(String equipoQueCanta)throws CantoInvalidoException {
+	public TiposDeCantoEnvido cantarEnvido(Equipo equipoQueCanta)throws CantoInvalidoException {
 		throw new CantoInvalidoException();
 	}
 	
 	@Override
-	public TiposDeCantoEnvido cantarRealEnvido(String equipoQueCanta)throws CantoInvalidoException {
+	public TiposDeCantoEnvido cantarRealEnvido(Equipo equipoQueCanta)throws CantoInvalidoException {
 		throw new CantoInvalidoException();
 	}
 
 	@Override
-	public TiposDeCantoEnvido cantarFaltaEnvido(String equipoQueCanta)throws CantoInvalidoException {
+	public TiposDeCantoEnvido cantarFaltaEnvido(Equipo equipoQueCanta)throws CantoInvalidoException {
 		throw new CantoInvalidoException();
 	}
 	

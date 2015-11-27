@@ -105,21 +105,21 @@ public abstract class EstadoRondas{
 	}
 	
 	public EstadoRondas cantarEnvido(Jugador jugador) throws CantoInvalidoException {
-		Envido envido = new Envido(jugador.obtenerEquipoQuePertenece());
+		Envido envido = new Envido(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
 	}
 	
 	public EstadoRondas cantarRealEnvido(Jugador jugador)throws CantoInvalidoException {
-		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipoQuePertenece());
+		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,realEnvido);
 	}
 	
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador)throws CantoInvalidoException {
-		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipoQuePertenece());
+		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,faltaEnvido);
@@ -130,7 +130,7 @@ public abstract class EstadoRondas{
 	}
 	
 	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {
-		Flor envido = new Flor(jugador.obtenerEquipoQuePertenece());
+		Flor envido = new Flor(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);

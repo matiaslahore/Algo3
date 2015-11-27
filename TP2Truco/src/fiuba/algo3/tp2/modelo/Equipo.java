@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
@@ -40,7 +39,7 @@ public class Equipo {
 			
 		 	unJugador.recibirCartas(c1,c2,c3);
 		}
-	}*/
+	}
 
 	public Jugador obtenerJugador(String nombreJugador) {	
 		Iterator<Jugador> itr = jugadores.iterator();
@@ -50,7 +49,7 @@ public class Equipo {
 		}
 		return new Jugador("ERROR",refMesa,this); //aca hay q tirar una excepcion xq no encontro al jugador
 		//puse eso para q no me joda eclipse
-	}
+	}*/
 
 	public ArrayList<Jugador> obtenerJugadores(){
 		return(this.jugadores);

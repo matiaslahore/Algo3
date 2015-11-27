@@ -67,11 +67,6 @@ public class Juez {
 		return this.puntos.getPuntaje(equipo);
 	}
 
-	public int puntosDeLaFalta() {
-		return this.puntos.puntosDeLaFalta(null);
-		//esta mal xq solo devuelve lo q faltan para 30 y no para las malas o las buenas!!!!
-	}
-
 	public boolean termino() {
 		if (puntos.getPuntajeMaximo() >= 30) return true;
 		else return false;
@@ -81,9 +76,8 @@ public class Juez {
 		this.puntosEnJuego = this.puntosEnJuego + puntos;
 	}
 
-	public int obtenerPuntosFaltaEnvido(String Equipo){
-		return 0;
-		//Desarrollar este metodo
+	public int obtenerPuntosFaltaEnvido(Equipo equipo) {
+		return this.puntos.puntosDeLaFalta(equipo);
 	}
 
 	public void limpiarCartasEnJuegoDeRondaActual() {

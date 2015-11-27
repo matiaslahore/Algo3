@@ -43,9 +43,10 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		int indexTantoGanador = this.tantoEnJuego.indexOf(tantoGanador); //gana el q es mano tmb
 		
 		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexTantoGanador);
+		Equipo eqPerdedor = (this.jugadores.get(this.jugadorManoDeLaRondaActual + indexTantoGanador + 1)).obtenerEquipo();
 		
 		if(this.cantosEnvido.quiso() == -1){
-			this.juez.obtenerPuntosFaltaEnvido(jugador.obtenerEquipoQuePertenece());
+			this.juez.obtenerPuntosFaltaEnvido(eqPerdedor);
 		}
 		else{
 			this.juez.puntosEnJuego(this.cantosEnvido.quiso());
@@ -70,7 +71,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public EstadoRondas cantarEnvido(Jugador jugador)throws CantoInvalidoException{
 		TiposDeCantoEnvido unTipoDeEnvido = null;
 		try{
-			unTipoDeEnvido = this.cantosEnvido.cantarEnvido(jugador.obtenerEquipoQuePertenece());
+			unTipoDeEnvido = this.cantosEnvido.cantarEnvido(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
 			throw e;
 		}
@@ -81,7 +82,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public EstadoRondas cantarRealEnvido(Jugador jugador) throws CantoInvalidoException {
 		TiposDeCantoEnvido unTipoDeRealEnvido = null;
 		try{
-			unTipoDeRealEnvido = this.cantosEnvido.cantarRealEnvido(jugador.obtenerEquipoQuePertenece());
+			unTipoDeRealEnvido = this.cantosEnvido.cantarRealEnvido(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
 			throw e;
 		}
@@ -92,7 +93,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador) throws CantoInvalidoException {
 		TiposDeCantoEnvido unTipoDeFaltaEnvido = null;
 		try{
-			unTipoDeFaltaEnvido = this.cantosEnvido.cantarFaltaEnvido(jugador.obtenerEquipoQuePertenece());
+			unTipoDeFaltaEnvido = this.cantosEnvido.cantarFaltaEnvido(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
 			throw e;
 		}

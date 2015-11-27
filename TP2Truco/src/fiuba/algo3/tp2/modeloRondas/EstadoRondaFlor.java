@@ -64,7 +64,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	public EstadoRondas cantarContraFlor(Jugador jugador)throws CantoInvalidoException{
 		TiposDeCantoFlor unTipoDeFlor = null;
 		try{
-			unTipoDeFlor = this.cantosFlor.cantarContraFlor(jugador.obtenerEquipoQuePertenece());
+			unTipoDeFlor = this.cantosFlor.cantarContraFlor(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
 			throw e;
 		}
@@ -75,7 +75,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	public EstadoRondas cantarContraFlorAJuego(Jugador jugador) throws CantoInvalidoException {
 		TiposDeCantoFlor unTipoDeFlor = null;
 		try{
-			unTipoDeFlor = this.cantosFlor.cantarContraFlorAJuego(jugador.obtenerEquipoQuePertenece());
+			unTipoDeFlor = this.cantosFlor.cantarContraFlorAJuego(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
 			throw e;
 		}
