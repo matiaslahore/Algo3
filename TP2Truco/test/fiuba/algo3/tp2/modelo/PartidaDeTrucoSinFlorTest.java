@@ -58,20 +58,24 @@ partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
 		nicolas.cantarTruco();
 		matias = partidaDeTruco.siguiente();
 		matias.quiero();
-		
+		//r1
+		nicolas = partidaDeTruco.siguiente();
+		nicolas.jugarPrimera();
+		matias = partidaDeTruco.siguiente();
+		matias.jugarTercera();
+		//r2
+		nicolas = partidaDeTruco.siguiente();
+		nicolas.jugarPrimera();
+		matias = partidaDeTruco.siguiente();
+		matias.jugarPrimera();
+		//r3
+		matias = partidaDeTruco.siguiente();
+		matias.jugarPrimera();
 		nicolas = partidaDeTruco.siguiente();
 		nicolas.jugarPrimera();
 		
 		matias = partidaDeTruco.siguiente();
-		matias.jugarTercera();
 		
-		nicolas = partidaDeTruco.siguiente();
-		nicolas.jugarSegunda();
-		
-		matias = partidaDeTruco.siguiente();
-		matias.jugarSegunda();
-		
-		matias = partidaDeTruco.siguiente();
 		Assert.assertEquals(2, partidaDeTruco.obtenerPuntajeDeEquipo("equipoUno"));
 		Assert.assertEquals(0, partidaDeTruco.obtenerPuntajeDeEquipo("equipoDos"));
 	}

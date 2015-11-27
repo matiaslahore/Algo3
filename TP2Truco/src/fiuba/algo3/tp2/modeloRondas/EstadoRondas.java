@@ -31,8 +31,6 @@ public abstract class EstadoRondas{
 		this.jugadorMano = indexMano; //esto no se toca nunca salvo en la ronda 3 para indicar la mano sig.
 		this.refEstadoRonda = estadoRonda;
 		this.tantoEnJuego = new ArrayList<Integer>();
-		
-		juez.puntosEnJuego(1);
 	}
 	
 	private int cantidadDeJugadores() {

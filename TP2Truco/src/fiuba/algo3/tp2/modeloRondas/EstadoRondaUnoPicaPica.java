@@ -28,6 +28,8 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		jugadorManoDeLaRondaActual = 0;
 		
 		actualizarCantidadJugadas();
+		
+		juez.puntosEnJuego(1);
 	}
 
 	public EstadoRondas siguienteRonda(){
