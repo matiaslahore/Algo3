@@ -17,11 +17,11 @@ public class EstadoRondaTresParda extends EstadoRondas{
 	}
 
 	public EstadoRondas siguienteRonda(){
-		
+
 		TipoDeCartas ganadora = this.juez.obtenerCartaGanadoraDeRonda();
-		
+
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
-		
+
 		if (this.juez.hayParda()){ //es parda
 			ganadoresRonda.add(jugadores.get(jugadorMano).obtenerEquipo()); //gana el eq q es mano
 			this.juez.anotarPuntos(jugadores.get(jugadorMano).obtenerEquipo());
@@ -30,12 +30,11 @@ public class EstadoRondaTresParda extends EstadoRondas{
 			ganadoresRonda.add(ganador.obtenerEquipo());
 			this.juez.anotarPuntos(ganador.obtenerEquipo());
 		}
-		
-		System.out.println("RONDA TRES gana: " + ganadoresRonda.get(2) + "\n");
-		
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
-		
+
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+
+		System.out.println("RONDA TRES gana: " + ganadoresRonda.get(0).obtenerNombre() + "\n");
 		
 		if (esPicaPica()){
 			if (this.juez.cantidadDeJugadas() == 4){
@@ -48,5 +47,5 @@ public class EstadoRondaTresParda extends EstadoRondas{
 		}
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 	}
-	
+
 }

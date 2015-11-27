@@ -35,7 +35,7 @@ public class EstadoRondaTres extends EstadoRondas{
 		
 		this.juez.anotarPuntos(ganadoresRonda.get(2));
 		
-		System.out.println("RONDA TRES gana: " + this.ganadoresRonda.get(2) + "\n");
+		System.out.println("RONDA TRES gana: " + this.ganadoresRonda.get(2).obtenerNombre() + "\n");
 				
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		

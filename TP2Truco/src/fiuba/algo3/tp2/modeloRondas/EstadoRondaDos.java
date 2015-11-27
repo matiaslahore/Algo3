@@ -34,7 +34,7 @@ public class EstadoRondaDos extends EstadoRondas{
 			ganadoresRonda.add(ganador.obtenerEquipo());
 		}
 				
-		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1) + "\n");
+		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1).obtenerNombre() + "\n");
 		
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		

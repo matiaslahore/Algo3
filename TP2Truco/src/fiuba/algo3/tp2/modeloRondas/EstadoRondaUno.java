@@ -48,7 +48,7 @@ public class EstadoRondaUno extends EstadoRondas{
 		
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
-		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
+		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0).obtenerNombre() + "\n");
 		
 		refEstadoRonda = new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
 		refEstadoRonda.modificarCantoTruco(this.cantosTruco);

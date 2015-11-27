@@ -52,7 +52,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 		
-		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0) + "\n");
+		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0).obtenerNombre() + "\n");
 		
 		refEstadoRonda = new EstadoRondaDosPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano, nuevosJugadores);
 		refEstadoRonda.modificarCantoTruco(this.cantosTruco);

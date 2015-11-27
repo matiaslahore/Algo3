@@ -41,7 +41,7 @@ public class EstadoRondaDosParda extends EstadoRondas{
 
 		this.juez.anotarPuntos(ganador.obtenerEquipo());
 
-		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(1) + "\n");
+		System.out.println("RONDA DOS gana " + this.ganadoresRonda.get(0).obtenerNombre() + "\n");
 
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 
