@@ -7,7 +7,7 @@ public class SeisDeCopa extends Seis {
 
 	//SUMAR ENVIDO
 	
-	public int sumarTanto(TipoDeCartas sumar) {
+	public int sumarTanto(Carta sumar) {
 		return sumar.sumarTanto(this);
 	}
 	

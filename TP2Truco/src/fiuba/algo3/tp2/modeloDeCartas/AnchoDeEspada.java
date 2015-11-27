@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-public class AnchoDeEspada implements TipoDeCartas{
+public class AnchoDeEspada implements Carta{
 	
 	public AnchoDeEspada(){
 	}
@@ -9,69 +9,69 @@ public class AnchoDeEspada implements TipoDeCartas{
 		return 1;
 	}
 	
-	public TipoDeCartas vs(TipoDeCartas contra) {
+	public Carta vs(Carta contra) {
 		return contra.vs(this);
 	}
 	
-	public TipoDeCartas vs(AnchoDeEspada contra){
+	public Carta vs(AnchoDeEspada contra){
 		return this;
 	}
 	
-	public TipoDeCartas vs(AnchoDeBasto contra){
+	public Carta vs(AnchoDeBasto contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(SieteDeEspada contra){
+	public Carta vs(SieteDeEspada contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(SieteDeOro contra){
+	public Carta vs(SieteDeOro contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Tres contra){
+	public Carta vs(Tres contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Dos contra){
+	public Carta vs(Dos contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(AnchoFalso contra){
+	public Carta vs(AnchoFalso contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Rey contra){
+	public Carta vs(Rey contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Caballo contra){
+	public Carta vs(Caballo contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Sota contra){
+	public Carta vs(Sota contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(SieteFalso contra){
+	public Carta vs(SieteFalso contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Seis contra){
+	public Carta vs(Seis contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Cinco contra){
+	public Carta vs(Cinco contra){
 		return this;
 	}
 
-	public TipoDeCartas vs(Cuatro contra){
+	public Carta vs(Cuatro contra){
 		return this;
 	}
 	
 	//SUMAR ENVIDO
 	
-	public int sumarTanto(TipoDeCartas sumar) {
+	public int sumarTanto(Carta sumar) {
 		return sumar.sumarTanto(this);
 	}
 	

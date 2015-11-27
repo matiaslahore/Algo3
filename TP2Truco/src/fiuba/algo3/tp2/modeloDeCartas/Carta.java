@@ -1,53 +1,53 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-public interface TipoDeCartas {
+public interface Carta {
 
-	public default boolean hayParda(TipoDeCartas contra){
+	public default boolean hayParda(Carta contra){
 		
 		return (this.vs(contra) != contra.vs(this));
 	}
 	
-	public abstract TipoDeCartas vs(TipoDeCartas contra);
+	public abstract Carta vs(Carta contra);
 	
-	public abstract TipoDeCartas vs(AnchoDeEspada contra);
+	public abstract Carta vs(AnchoDeEspada contra);
 
-	public abstract TipoDeCartas vs(AnchoDeBasto contra);
+	public abstract Carta vs(AnchoDeBasto contra);
 	
-	public abstract TipoDeCartas vs(SieteDeEspada contra);
+	public abstract Carta vs(SieteDeEspada contra);
 	
-	public abstract TipoDeCartas vs(SieteDeOro contra);
+	public abstract Carta vs(SieteDeOro contra);
 
-	public abstract TipoDeCartas vs(Tres contra);
+	public abstract Carta vs(Tres contra);
 	
-	public abstract TipoDeCartas vs(Dos contra);
+	public abstract Carta vs(Dos contra);
 	
-	public abstract TipoDeCartas vs(AnchoFalso contra);
+	public abstract Carta vs(AnchoFalso contra);
 	
-	public abstract TipoDeCartas vs(Rey contra);
+	public abstract Carta vs(Rey contra);
 	
-	public abstract TipoDeCartas vs(Caballo contra);
+	public abstract Carta vs(Caballo contra);
 	
-	public abstract TipoDeCartas vs(Sota contra);
+	public abstract Carta vs(Sota contra);
 
-	public abstract TipoDeCartas vs(SieteFalso contra);
+	public abstract Carta vs(SieteFalso contra);
 	
-	public abstract TipoDeCartas vs(Seis contra);
+	public abstract Carta vs(Seis contra);
 
-	public abstract TipoDeCartas vs(Cinco contra);
+	public abstract Carta vs(Cinco contra);
 
-	public abstract TipoDeCartas vs(Cuatro contra);
+	public abstract Carta vs(Cuatro contra);
 	
 	//SUMAR TANTOS
 	
 	public abstract int valorParaEnvido();
 
-	public default int sumarTantosConFlor(TipoDeCartas cartaUno, TipoDeCartas cartaDos){
+	public default int sumarTantosConFlor(Carta cartaUno, Carta cartaDos){
 		
 		
 		return this.valorParaEnvido() + cartaUno.sumarTanto(cartaDos);
 	}
 	
-	public abstract int sumarTanto(TipoDeCartas sumar);
+	public abstract int sumarTanto(Carta sumar);
 	public abstract int sumarTanto(AnchoDeEspada sumar);
 	public abstract int sumarTanto(AnchoDeBasto sumar);
 	public abstract int sumarTanto(SieteDeEspada sumar);

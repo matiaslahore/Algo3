@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-public class AnchoDeBasto implements TipoDeCartas{
+public class AnchoDeBasto implements Carta{
 	
 	public AnchoDeBasto(){
 	}
@@ -9,89 +9,89 @@ public class AnchoDeBasto implements TipoDeCartas{
 		return 1;
 	}
 	
-	public TipoDeCartas vs(TipoDeCartas contra){
+	public Carta vs(Carta contra){
 		return contra.vs(this);
 	}
 	
-	public TipoDeCartas vs(AnchoDeEspada contra){
+	public Carta vs(AnchoDeEspada contra){
 		return contra;
 	}
 
-	public TipoDeCartas vs(AnchoDeBasto contra) {
+	public Carta vs(AnchoDeBasto contra) {
 		return this;
 	}
 	
-	public TipoDeCartas vs(SieteDeEspada contra){
+	public Carta vs(SieteDeEspada contra){
 		return this;
 	}
 	
-	public TipoDeCartas vs(SieteDeOro contra){
+	public Carta vs(SieteDeOro contra){
 		return this;
 	}
 	
 	@Override
-	public TipoDeCartas vs(Tres contra) {
+	public Carta vs(Tres contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(Dos contra) {
+	public Carta vs(Dos contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(AnchoFalso contra) {
+	public Carta vs(AnchoFalso contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(Rey contra) {
+	public Carta vs(Rey contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(Caballo contra) {
+	public Carta vs(Caballo contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(Sota contra) {
+	public Carta vs(Sota contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(SieteFalso contra) {
+	public Carta vs(SieteFalso contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(Seis contra) {
+	public Carta vs(Seis contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(Cinco contra) {
+	public Carta vs(Cinco contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
-	public TipoDeCartas vs(Cuatro contra) {
+	public Carta vs(Cuatro contra) {
 		// TODO Auto-generated method stub
 		return this;
 	}
 	
 	//SUMAR ENVIDO
 	
-	public int sumarTanto(TipoDeCartas sumar) {
+	public int sumarTanto(Carta sumar) {
 		return sumar.sumarTanto(this);
 	}
 	

@@ -7,7 +7,7 @@ public class CaballoDeEspada extends Caballo{
 
 	//SUMAR TANTOS
 
-	public int sumarTanto(TipoDeCartas sumar) {
+	public int sumarTanto(Carta sumar) {
 		return sumar.sumarTanto(this);
 	}
 
