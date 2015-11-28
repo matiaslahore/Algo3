@@ -5,8 +5,8 @@ import org.junit.Test;
 
 public class PruebaVersusTodasLasCartasTest {
 	
-	TipoDeCartas carta;
-	TipoDeCartas cartaContra;
+	Carta carta;
+	Carta cartaContra;
 	
 	@Test
 	public void elAnchoDeEspadaLeGanaATodos(){

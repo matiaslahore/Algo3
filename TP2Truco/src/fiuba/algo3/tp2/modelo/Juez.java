@@ -25,7 +25,7 @@ public class Juez {
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuego(){
-		return this.mesa.obtenerListaDeCartasEnJuego();
+		return this.mesa.obtenerListaDeCartasEnJuegoDeRondaActual();
 	}
 	
 	public Carta repartir(){
@@ -84,7 +84,7 @@ public class Juez {
 	}
 
 	public int cantidadDeCartasEnJuego() {
-		return this.mesa.cantidadDeCartasEnJuego();
+		return this.mesa.cantidadDeCartasEnJuegoDeRondaActual();
 	}
 
 	public boolean rangoPicaPica() {

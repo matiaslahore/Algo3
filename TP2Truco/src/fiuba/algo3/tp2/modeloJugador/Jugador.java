@@ -58,6 +58,10 @@ public class Jugador {
 		return this.envido;
 	}
 	
+	public int obtenerPuntosEnvidoConFlor() {
+		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
+	}
+
 	/*public int obtenerPuntosEnvidoConFlor() {
 		int envidoConFlor = 0;
 		
@@ -69,9 +73,6 @@ public class Jugador {
 		return envidoConFlor + 20;
 	}*/
 	
-	public int obtenerPuntosEnvidoConFlor() {
-		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
-	}
 
 	/*public void jugarCarta() { //////////////////////////////////////////////PRIVATE
 		Scanner leer = new Scanner(System.in);
@@ -81,15 +82,14 @@ public class Jugador {
 		this.refMesa.recibirCarta(this.manoDelJugador.tirar(n));
 	}*/
 
-	public void verCartasEnManoComoString() {
-		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
+	public String verCartasEnManoComoString() {
+		return this.manoDelJugador.verCartasEnManoComoString();
 	}
-
+	
 	public int cantidadDeCartas() {
 	    return this.manoDelJugador.returnCantidadDeCartas();	
 	}
 	
-
 	public void jugarCarta(Carta unaCarta) {
 		
 		this.refMesa.recibirCarta(this.manoDelJugador.obtenerCarta(unaCarta));
@@ -176,6 +176,4 @@ public class Jugador {
 	public void noQuiero(){
 		this.refMesa.noQuiero(this);
 	}
-
-
 }

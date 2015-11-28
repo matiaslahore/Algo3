@@ -16,7 +16,7 @@ public class Mesa {
     
 	Juez juez;
 	ArrayList<Equipo> ganadoresRonda; //guarda el nombre del equipo q gano las rondas
-	ArrayList<Carta> cartasEnJuego;
+	ArrayList<Carta> cartasEnJuegoRondaActual;
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;
 	EstadoRondas ronda;
@@ -28,7 +28,7 @@ public class Mesa {
 	public Mesa(){
 		jugadores = new ListaCircular<Jugador>();
 		ganadoresRonda = new ArrayList<Equipo>();
-		cartasEnJuego = new ArrayList<Carta>();
+		cartasEnJuegoRondaActual = new ArrayList<Carta>();
 		indexMano = 0;
 	}
 	
@@ -42,7 +42,7 @@ public class Mesa {
 	
 	public void recibirCarta(Carta carta){
 		System.out.println("Mesa recibe: " + carta.cartaComoString());
-		this.cartasEnJuego.add(carta);
+		this.cartasEnJuegoRondaActual.add(carta);
 	}
 	
 	public void repartirCartas() {
@@ -164,7 +164,7 @@ public class Mesa {
 	}
 
 	public Carta obtenerCartaGanadoraDeRonda() {
-		Iterator<Carta> itr = cartasEnJuego.iterator();
+		Iterator<Carta> itr = cartasEnJuegoRondaActual.iterator();
 		
 		Carta cartaUno = (Carta) itr.next();
 		Carta cartaDos = (Carta) itr.next();
@@ -182,17 +182,17 @@ public class Mesa {
 		return a.vs(b);
 	}
 
-	public List<Carta> obtenerListaDeCartasEnJuego() {
-		return this.cartasEnJuego;
+	public List<Carta> obtenerListaDeCartasEnJuegoDeRondaActual() {
+		return this.cartasEnJuegoRondaActual;
 	}
 
 	public void limpiarCartasEnJuegoDeRondaActual() {
-		this.cartasEnJuego.clear();
+		this.cartasEnJuegoRondaActual.clear();
 	}
 
 	public boolean hayParda() {
 		
-		Iterator<Carta> itr = this.cartasEnJuego.iterator();
+		Iterator<Carta> itr = this.cartasEnJuegoRondaActual.iterator();
 
 		List<Carta> cartasEquipoUno = new LinkedList<Carta>();
 		List<Carta> cartasEquipoDos = new LinkedList<Carta>();
@@ -220,8 +220,8 @@ public class Mesa {
 		return mejorCarta;
 	}
 
-	public int cantidadDeCartasEnJuego() {
-		return this.cartasEnJuego.size();
+	public int cantidadDeCartasEnJuegoDeRondaActual() {
+		return this.cartasEnJuegoRondaActual.size();
 	}
 
 	public void imprimirResultados() {
@@ -231,5 +231,12 @@ public class Mesa {
 	public int cantidadDeJugadores() {
 		return jugadores.size();
 	}
-	
+
+	public boolean soyMano() {
+		return this.cantidadDeCartasEnJuegoDeRondaActual() == 0;
+	}
+
+	public Carta obtenerUltimaCartaJugada() {
+		return this.cartasEnJuegoRondaActual.get(0);
+	}	
 }
