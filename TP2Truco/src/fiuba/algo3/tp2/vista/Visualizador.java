@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 
+import fiuba.algo3.tp2.controlador.Administrador;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -19,10 +20,8 @@ import javafx.scene.paint.Color;
 
 public class Visualizador extends Application  {
 	
+        private Administrador administrador;
         private Jugador jugador;
-        private Mesa mesa;
-        private Equipo equipoUno;
-        private Equipo equipoDos;
        
         
         public static void main(String[] args)
@@ -59,10 +58,7 @@ public class Visualizador extends Application  {
 	
 		public Scene ventanaPrincipal(){
 	    	
-	    	this.mesa= new Mesa();
-	    	this.
-	    	this.mesa.instanciarJuez(equipoUno, equipoDos);
-	    	this.jugador= new Jugador("pablo",this.mesa);
+	    	
 	    	
 	    	
 	    		
