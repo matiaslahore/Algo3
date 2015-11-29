@@ -61,9 +61,9 @@ public class Visualizador extends Application  {
 	    	
 	    	
 	    	
-	    		
-	    	String direccionImagen = "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
-	        String direccionCarta1= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/b1.jpg"; 
+	
+	    	String direccionImagen= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
+	        String direccionCarta1= "file:C:/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/b1.jpg"; 
 	        String direccionCarta2= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/e1.jpg";
 	    	String direccionCarta3= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/e7.jpg";
 	        
@@ -76,6 +76,7 @@ public class Visualizador extends Application  {
             carta1.setImage(unoBasto);
             carta1.setLayoutX(160);
             carta1.setLayoutY(400);
+            carta1.setRotate(90);
             
             Image unoEspada = new Image(direccionCarta2);
             ImageView carta2 = new ImageView();
