@@ -32,7 +32,9 @@ public class Mesa {
 		indexMano = 0;
 	}
 	
-	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos) {
+	
+	//por que no puede estar en el constructor esto ????? 
+	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos){
 		juez = new Juez(this, equipoUno, equipoDos);
 	}
 	

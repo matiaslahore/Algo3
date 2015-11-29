@@ -39,6 +39,13 @@ public class Mano {
 		return Math.max(Math.max(cartaUno.sumarTanto(cartaDos), cartaUno.sumarTanto(cartaTres)), cartaTres.sumarTanto(cartaDos));
 	}
 
+	public Carta tirarCarta (int numero){//este seria el que hay q implementar
+		Carta carta =cartas.get(numero);
+		cartas.remove(numero);
+		return carta;
+	}
+	
+	
 	public Carta returnPrimera() {
 		Carta carta = cartas.get(0);
 		cartas.remove(0);
