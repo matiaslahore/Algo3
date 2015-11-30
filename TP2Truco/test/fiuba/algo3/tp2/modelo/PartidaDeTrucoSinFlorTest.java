@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -26,9 +28,9 @@ public class PartidaDeTrucoSinFlorTest {
 		partidaDeTruco.iniciarRonda();
 		
 		Jugador nicolas = partidaDeTruco.siguiente();
-		nicolas.recibirCartas(new AnchoDeBasto(), new CuatroDeBasto(), new SieteDeEspada());
+		nicolas.recibirCartas(Arrays.asList(new AnchoDeBasto(), new CuatroDeBasto(), new SieteDeEspada()));
 		Jugador matias = partidaDeTruco.siguiente();
-		matias.recibirCartas(new AnchoDeCopa(), new AnchoDeOro(), new SieteDeCopa());
+		matias.recibirCartas(Arrays.asList(new AnchoDeCopa(), new AnchoDeOro(), new SieteDeCopa()));
 		
 		nicolas = partidaDeTruco.siguiente();
 		nicolas.cantarEnvido();

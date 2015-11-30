@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,10 +50,12 @@ public class Mesa {
 	
 	public void repartirCartas() {
 		Iterator<Jugador> itr = this.jugadores.iterator();
+		List<Carta> listaCartas = new ArrayList<Carta>();
 		
 		while(itr.hasNext()) {
 			Jugador jugador = (Jugador) itr.next();
-			jugador.recibirCartas(this.juez.repartir(), this.juez.repartir(), this.juez.repartir());
+			listaCartas.addAll(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir()));
+			jugador.recibirCartas(listaCartas);
 		}
 	}
 

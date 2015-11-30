@@ -4,20 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugador;
+import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public class Mano {
 
 	List<Carta> cartas = new ArrayList();
-	
-	//este lo deje para que no rompa los test pero habria que sacarlo
-	public Mano(Carta cartaUno,Carta cartaDos,Carta cartaTres){
-		this.cartas = new ArrayList<Carta>();
-		this.cartas.add(cartaUno);
-		this.cartas.add(cartaDos);
-		this.cartas.add(cartaTres);
-	}
 	
 	public Mano(List<Carta> listaDeCartas){
 		this.cartas = listaDeCartas;
@@ -27,7 +19,7 @@ public class Mano {
 		try{
 			this.cartas.remove(this.cartas.lastIndexOf(unaCarta));			
 		}catch(ArrayIndexOutOfBoundsException e){
-			throw new CartaInexistenteEnManoDeJugador();
+			throw new CartaInexistenteEnManoDeJugadorExeption();
 		}
 	}
 		
@@ -41,25 +33,6 @@ public class Mano {
 	public Carta tirarCarta (int numero){//este seria el que hay q implementar
 		Carta carta =cartas.get(numero);
 		cartas.remove(numero);
-		return carta;
-	}
-	
-	
-	public Carta returnPrimera() {
-		Carta carta = cartas.get(0);
-		cartas.remove(0);
-		return carta;
-	}
-	
-	public Carta returnSegunda() {
-		Carta carta = cartas.get(1);
-		cartas.remove(1);
-		return carta;
-	}
-	
-	public Carta returnTercera() {
-		Carta carta = cartas.get(2);
-		cartas.remove(2);
 		return carta;
 	}
 
@@ -117,5 +90,13 @@ public class Mano {
 		copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
 		copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
 		return copiaCartas.get(0);
+	}
+
+	public Carta obtenerCarta(Carta unaCarta) {
+		try{
+			return this.cartas.get(this.cartas.lastIndexOf(unaCarta));			
+		}catch(ArrayIndexOutOfBoundsException e){
+			throw new CartaInexistenteEnManoDeJugadorExeption();
+		}
 	}
 }

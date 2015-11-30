@@ -49,11 +49,10 @@ public class PruebaSituacionesDeJuegoUnoVsUno {
 		List<Carta> cartasJugadorUno = new ArrayList<Carta>();
 		
 		Carta sieteDeEspada = new SieteDeEspada();
-		cartasJugadorUno.add(sieteDeEspada);
 		Carta anchoDeBasto = new AnchoDeBasto();
-		cartasJugadorUno.add(anchoDeBasto);
 		Carta seisDeEspada = new SeisDeEspada();
-		cartasJugadorUno.add(seisDeEspada);
+		
+		cartasJugadorUno.addAll(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada));
 		
 		jugadorUno.recibirCartas(cartasJugadorUno);
 		jugadorUno.jugarCarta(seisDeEspada);

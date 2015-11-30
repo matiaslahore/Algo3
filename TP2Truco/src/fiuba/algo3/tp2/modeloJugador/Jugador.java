@@ -22,13 +22,6 @@ public class Jugador {
 		equipo = team;
 		envido = 0;
 	}
-
-	public void recibirCartas(Carta c1, Carta c2, Carta c3){
-		manoDelJugador = new Mano(c1,c2,c3);
-		this.envido = this.manoDelJugador.calcularEnvido();
-	}
-	
-	// habria que decidir por uno de los dos metodos, el profe nos recomendo una lista
 	
 	public void recibirCartas(List<Carta> listaDeCartas){
 		manoDelJugador = new Mano(listaDeCartas);
@@ -94,16 +87,6 @@ public class Jugador {
 		
 		this.manoDelJugador.tirarCarta(unaCarta);
 		this.refMesa.recibirCarta(unaCarta);
-	}
-	
-	public void jugarPrimera(){
-		this.refMesa.recibirCarta(this.manoDelJugador.returnPrimera());
-	}
-	public void jugarSegunda(){
-		this.refMesa.recibirCarta(this.manoDelJugador.returnSegunda());
-	}
-	public void jugarTercera(){
-		this.refMesa.recibirCarta(this.manoDelJugador.returnTercera());
 	}
 	
 	public int jugarPuntosEnvido(){

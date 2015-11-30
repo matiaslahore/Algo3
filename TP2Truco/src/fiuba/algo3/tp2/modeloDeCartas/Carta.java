@@ -43,7 +43,6 @@ public interface Carta {
 
 	public default int sumarTantosConFlor(Carta cartaUno, Carta cartaDos){
 		
-		
 		return this.valorParaEnvido() + cartaUno.sumarTanto(cartaDos);
 	}
 	

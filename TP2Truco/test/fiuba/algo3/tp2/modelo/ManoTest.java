@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugador;
+import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
 import fiuba.algo3.tp2.modeloDeCartas.CuatroDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeCopa;
@@ -29,7 +29,7 @@ public class ManoTest {
 	}
 	
 	@Test
-	(expected = CartaInexistenteEnManoDeJugador.class)
+	(expected = CartaInexistenteEnManoDeJugadorExeption.class)
 	public void pruebaConCartaInexistenteEnMano(){
 		
 		Carta sieteDeCopa = new SieteDeCopa();
