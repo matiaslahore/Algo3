@@ -42,8 +42,8 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		int tantoGanador = this.juez.quienGanaElTanto(this.tantoEnJuego);
 		int indexTantoGanador = this.tantoEnJuego.indexOf(tantoGanador); //gana el q es mano tmb
 		
-		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexTantoGanador);
-		Equipo eqPerdedor = (this.jugadores.get(this.jugadorManoDeLaRondaActual + indexTantoGanador + 1)).obtenerEquipo();
+		Jugador ganador = this.jugadores.get(this.jugadorMano + indexTantoGanador);
+		Equipo eqPerdedor = (this.jugadores.get(this.jugadorMano + indexTantoGanador + 1)).obtenerEquipo();
 		
 		if(this.cantosEnvido.quiso() == -1){
 			this.juez.obtenerPuntosFaltaEnvido(eqPerdedor);
@@ -51,6 +51,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		else{
 			this.juez.puntosEnJuego(this.cantosEnvido.quiso());
 		}
+		
 		this.juez.anotarPuntos(ganador.obtenerEquipo());
 		
 		this.juez.puntosEnJuego(1);

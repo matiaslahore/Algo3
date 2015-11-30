@@ -452,7 +452,7 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.quiero(); //j1 quiere envido envido realenvido
 
-		Assert.assertEquals(7,mesa.puntosEquipo(eq2)); //gana eq2, j4 tiene 33
+		Assert.assertEquals(7,mesa.puntosEquipo(eq1)); //gana eq1, j1 tiene 33 de mano
 
 		actual = mesa.siguiente();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
