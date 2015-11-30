@@ -64,12 +64,14 @@ public class Visualizador extends Application  {
 		public Scene ventanaPrincipal(){
 	    	
 		    //PRUEBAS DE PARAMETROS
-			
-			
+		
 			Mesa mesa = new Mesa();
 			Equipo equipo1= new Equipo("equipoUno",mesa);
 			Equipo equipo2=new Equipo("equipoDos",mesa);
-			Equipo
+			equipo1.cargarJugadores("pablo");
+			equipo2.cargarJugadores("nico");
+			mesa.sentarJugadores(equipo1.obtenerJugadores(), equipo2.obtenerJugadores());
+			
 			
 			//imagen de fondo de la mesa
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -113,12 +115,14 @@ public class Visualizador extends Application  {
 	        //Variable de posicionemiento de las cartas
 	        double layoutY=0;
 	        
-	        //escenario de imagenes de la mesa ***AGREGAR CICLO "FOR" POR 1/2 CANTIDAD DE JUGADORES
+	        //escenario de imagenes de la mesa 
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
-	        root = agregarDosJugadores(root, layoutY);
-	        root = agregarDosJugadores(root, layoutY+200);
-	        root = agregarDosJugadores(root, layoutY+400);
+	        for (int i=0; i<mesa.cantidadDeJugadores()/2 ; i++)
+	        { 
+	            root = agregarDosJugadores(root, layoutY);
+	            layoutY+=200;
+		    }
             root.getChildren().add(contenedorPrincipal);
             
             //dimensiones de la pantalla
