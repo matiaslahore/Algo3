@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
 public interface Carta {
-
+	
 	public default boolean hayParda(Carta contra){
 		
 		return (this.vs(contra) != contra.vs(this));

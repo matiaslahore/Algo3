@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,9 +13,7 @@ public class PruebasManoTest {
 	
 	@Test
 	public void pruebaTantoEnMano(){
-		//mano = new Mano(new AnchoDeCopa(), new SieteDeEspada(), new SeisDeEspada());
-		//Assert.assertEquals(33,mano.calcularEnvido());
-		mano = new Mano(new TresDeCopa(), new SieteDeEspada(), new CuatroDeCopa());
+		mano = new Mano(Arrays.asList(new TresDeCopa(), new SieteDeEspada(), new CuatroDeCopa()));
 		Assert.assertEquals(27,mano.calcularEnvido());
 	}
 }

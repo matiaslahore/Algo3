@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-public class AnchoDeEspada implements Carta{
+public class AnchoDeEspada implements Carta {
 	
 	public AnchoDeEspada(){
 	}
@@ -286,6 +286,5 @@ public class AnchoDeEspada implements Carta{
 	@Override
 	public String cartaComoString() {
 		return "Ancho De Espada";
-	}
-	
+	}	
 }
