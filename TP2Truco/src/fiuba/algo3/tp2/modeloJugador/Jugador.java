@@ -92,7 +92,8 @@ public class Jugador {
 	
 	public void jugarCarta(Carta unaCarta) {
 		
-		this.refMesa.recibirCarta(this.manoDelJugador.obtenerCarta(unaCarta));
+		this.manoDelJugador.tirarCarta(unaCarta);
+		this.refMesa.recibirCarta(unaCarta);
 	}
 	
 	public void jugarPrimera(){

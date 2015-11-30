@@ -42,7 +42,7 @@ public class PartidaDeTrucoSinFlorTest {
 	@Test
 	public void partidaDeTrucoSinFlorDos(){
 		
-partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
+		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
 		
 		partidaDeTruco.cargarJugadoresEnEquipoUno("Nicolas");
 		partidaDeTruco.cargarJugadoresEnEquipoDos("Matias");

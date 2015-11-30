@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public class Mano {
 
-	List<Carta> cartas;
+	List<Carta> cartas = new ArrayList();
 	
 	//este lo deje para que no rompa los test pero habria que sacarlo
 	public Mano(Carta cartaUno,Carta cartaDos,Carta cartaTres){
@@ -20,18 +20,17 @@ public class Mano {
 	}
 	
 	public Mano(List<Carta> listaDeCartas){
-		this.cartas = new ArrayList<Carta>();
 		this.cartas = listaDeCartas;
 	}
 	
-	public Carta obtenerCarta(Carta unaCarta) {
-		try {
-			return this.cartas.get(this.cartas.lastIndexOf(unaCarta));
-		} catch (ArrayIndexOutOfBoundsException e){
+	public void tirarCarta(Carta unaCarta) {
+		try{
+			this.cartas.remove(this.cartas.lastIndexOf(unaCarta));			
+		}catch(ArrayIndexOutOfBoundsException e){
 			throw new CartaInexistenteEnManoDeJugador();
 		}
 	}
-	
+		
 	public int calcularEnvido(){
 		Carta cartaUno = cartas.get(0);
 		Carta cartaDos = cartas.get(1);

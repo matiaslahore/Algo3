@@ -38,7 +38,7 @@ public abstract class PartidaDeTruco {
 	}
 
 	public String ultimoGanador() {
-		return this.mesa.ultimoGanador().obtenerNombre();
+		return this.mesa.ganadorDeLaRonda().obtenerNombre();
 	}
 	
 	public void repartir(){

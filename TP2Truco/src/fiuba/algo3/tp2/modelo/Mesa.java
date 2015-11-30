@@ -97,7 +97,7 @@ public class Mesa {
 		}
 	}
 
-	public Equipo ultimoGanador() {
+	public Equipo ganadorDeLaRonda() {
 		return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
 	}
 
