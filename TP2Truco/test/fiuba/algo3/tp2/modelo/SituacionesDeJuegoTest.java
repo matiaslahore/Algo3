@@ -48,8 +48,7 @@ public class SituacionesDeJuegoTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
-
-
+		
 		eq1.cargarJugadores("j1");
 		eq2.cargarJugadores("j2");
 
@@ -748,7 +747,7 @@ public class SituacionesDeJuegoTest {
 
 		actual = mesa.siguiente(); //esto produce excepcion xq termino la partida y quiero seguir jugando
 	}
-	
+
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleTresPorTresCantaEnvioYValeCuatro(){
 		eq1.cargarJugadores("j1");
@@ -773,7 +772,7 @@ public class SituacionesDeJuegoTest {
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, anchoDeOro, sotaDeBasto)));
 		actual = mesa.siguiente();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeCopa, cincoDeBasto, reyDeOro)));
-		
+
 		//R1
 		actual = mesa.siguiente();
 		Assert.assertEquals("j1",actual.obtenerNombre());
@@ -797,7 +796,7 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(cuatroDeOro);
-		
+
 		actual = mesa.siguiente();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.cantarTruco(); //j4
@@ -872,7 +871,7 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals(7,mesa.puntosEquipo(eq1));
 		Assert.assertEquals(4,mesa.puntosEquipo(eq2));
 	}
-	
+
 	@Test
 	public void pruebaSimulacionDePartidaPicaPica(){
 		eq1.cargarJugadores("j1");
@@ -992,10 +991,10 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeOro);
-		
+
 		// jugador 2 gana un punto
 		// SEGUNDA RONDA DE PICA PICA
-		
+
 		actual = mesa.siguiente();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeCopa, cincoDeBasto, reyDeOro)));
 		Assert.assertEquals("j3",actual.obtenerNombre());
@@ -1016,9 +1015,9 @@ public class SituacionesDeJuegoTest {
 		actual = mesa.siguiente();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeBasto);
-	
+
 		// termino la mano gano jugador 6 un punto
-	
+
 		// TERCERA RONDA DE PICA PICA
 		actual = mesa.siguiente();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, anchoDeOro, sotaDeBasto)));
@@ -1049,7 +1048,7 @@ public class SituacionesDeJuegoTest {
 		actual.jugarCarta(tresDeBasto);
 
 		//jugador 1 gana un punto
-		
+
 		actual = mesa.siguiente();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual = mesa.siguiente();
@@ -1064,9 +1063,117 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		//demuestra que da la vuelta bien dsps del picapica
 		mesa.imprimirResultados();
-		
+
 		Assert.assertEquals(8,mesa.puntosEquipo(eq1));
 		Assert.assertEquals(6,mesa.puntosEquipo(eq2));
+	}
+	
+	@Test
+	public void pruebaPardasUnoPorUnoSeGanaEnSegunda(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		//R1
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, anchoDeBasto, seisDeEspada)));
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, sieteDeOro, cincoDeOro)));
+		actual.jugarCarta(dosDeOro);
+
+		//R2
+		actual = mesa.siguiente();
+		actual.jugarCarta(anchoDeBasto);
+
+		actual = mesa.siguiente();
+		actual.jugarCarta(sieteDeOro);
+
+		actual = mesa.siguiente();
+		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
+		
+		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
+		Assert.assertEquals(0,mesa.puntosEquipo(eq2));
+	}
+	
+	@Test
+	public void pruebaPardasUnoPorUnoSeGanaEnTercera(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		//R1
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, seisDeEspada)));
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cincoDeOro)));
+		actual.jugarCarta(dosDeOro);
+
+		//R2
+		actual = mesa.siguiente();
+		actual.jugarCarta(tresDeOro);
+
+		actual = mesa.siguiente();
+		actual.jugarCarta(tresDeCopa);
+		//R3
+		actual = mesa.siguiente();
+		actual.jugarCarta(seisDeEspada);
+
+		actual = mesa.siguiente();
+		actual.jugarCarta(cincoDeOro);
+		
+		actual = mesa.siguiente();
+		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
+		
+		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
+		Assert.assertEquals(0,mesa.puntosEquipo(eq2));
+	}
+	
+	@Test
+	public void pruebaPardasUnoPorUnoSeGanaEnTerceraPorSerMano(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		//R1
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
+		actual.jugarCarta(dosDeOro);
+
+		//R2
+		actual = mesa.siguiente();
+		actual.jugarCarta(tresDeOro);
+
+		actual = mesa.siguiente();
+		actual.jugarCarta(tresDeCopa);
+		//R3
+		actual = mesa.siguiente();
+		actual.jugarCarta(cuatroDeOro);
+
+		actual = mesa.siguiente();
+		actual.jugarCarta(cuatroDeCopa);
+		
+		actual = mesa.siguiente();
+		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
+		
+		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
+		Assert.assertEquals(0,mesa.puntosEquipo(eq2));
 	}
 
 }
