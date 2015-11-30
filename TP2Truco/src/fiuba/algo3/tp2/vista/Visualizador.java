@@ -26,7 +26,7 @@ public class Visualizador extends Application  {
 	
         private Administrador administrador;
         private Jugador jugador;
-       
+        private ImagenesCarta imagenesCarta;
         
         public static void main(String[] args)
     	{
@@ -105,10 +105,13 @@ public class Visualizador extends Application  {
 	        contenedorPrincipal.setSpacing(8);
 	        contenedorPrincipal.setPadding(new Insets(20));
 	        
+	        double layoutY=0;
 	        
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
-	        root = dosJugadores(root);
+	        root = agregarDosJugadores(root, layoutY);
+	        root = agregarDosJugadores(root, layoutY+200);
+	        root = agregarDosJugadores(root, layoutY+400);
             root.getChildren().add(contenedorPrincipal);
              
 	        
@@ -123,7 +126,9 @@ public class Visualizador extends Application  {
 	        return scene;
 	    }
 	    	
-		public Group dosJugadores (Group root){
+		public Group agregarDosJugadores (Group root, double layoutY){
+			
+			layoutY+= 80; 
 			
 			String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
 			 Image reverso = new Image(direccionReverso);
@@ -132,60 +137,64 @@ public class Visualizador extends Application  {
 	            j1carta1.setFitHeight(80);
 	            j1carta1.setFitWidth(50);
 	            j1carta1.setLayoutX(80);
-	            j1carta1.setLayoutY(80);
+	            j1carta1.setLayoutY(layoutY);
 	            j1carta1.setRotate(270);
 	            j1carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
-	            
+
+	            ImageView j2carta1 = new ImageView();
+	            j2carta1.setImage(reverso);
+	            j2carta1.setFitHeight(80);
+	            j2carta1.setFitWidth(50);
+	            j2carta1.setLayoutX(480);
+	            j2carta1.setLayoutY(layoutY);
+	            j2carta1.setRotate(90);
+	            j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	          
+	            layoutY+=60;
+	            
 	            ImageView j1carta2 = new ImageView();
 	            j1carta2.setImage(reverso);
 	            j1carta2.setFitHeight(80);
 	            j1carta2.setFitWidth(50);
 	            j1carta2.setLayoutX(80);
-	            j1carta2.setLayoutY(140);
+	            j1carta2.setLayoutY(layoutY);
 	            j1carta2.setRotate(270);
 	            j1carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	            ImageView j2carta2 = new ImageView();
+	            j2carta2.setImage(reverso);
+	            j2carta2.setFitHeight(80);
+	            j2carta2.setFitWidth(50);
+	            j2carta2.setLayoutX(480);
+	            j2carta2.setLayoutY(layoutY);
+	            j2carta2.setRotate(90);
+	            j2carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	            layoutY+=60;
 	            
 	            ImageView j1carta3 = new ImageView();
 	            j1carta3.setImage(reverso);
 	            j1carta3.setFitHeight(80);
 	            j1carta3.setFitWidth(50);
 	            j1carta3.setLayoutX(80);
-	            j1carta3.setLayoutY(200);
+	            j1carta3.setLayoutY(layoutY);
 	            j1carta3.setRotate(270);
 	            j1carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
-	            
-	            ImageView j2carta1 = new ImageView();
-	            j2carta1.setImage(reverso);
-	            j2carta1.setFitHeight(80);
-	            j2carta1.setFitWidth(50);
-	            j2carta1.setLayoutX(480);
-	            j2carta1.setLayoutY(80);
-	            j2carta1.setRotate(90);
-	            j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
-	            
-	          
-	            ImageView j2carta2 = new ImageView();
-	            j2carta2.setImage(reverso);
-	            j2carta2.setFitHeight(80);
-	            j2carta2.setFitWidth(50);
-	            j2carta2.setLayoutX(480);
-	            j2carta2.setLayoutY(140);
-	            j2carta2.setRotate(90);
-	            j2carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
-	            
+	           
 	            ImageView j2carta3 = new ImageView();
 	            j2carta3.setImage(reverso);
 	            j2carta3.setFitHeight(80);
 	            j2carta3.setFitWidth(50);
 	            j2carta3.setLayoutX(480);
-	            j2carta3.setLayoutY(200);
-	            j2carta3.setRotate(270);
+	            j2carta3.setLayoutY(layoutY);
+	            j2carta3.setRotate(90);
 	            j2carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 			    
 	            root.getChildren().addAll(j1carta1,j1carta2,j1carta3,j2carta1,j2carta2,j2carta3);
             return root;
 		}
+		
+	
 }
 
 
