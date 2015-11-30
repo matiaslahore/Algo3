@@ -34,7 +34,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	}
 	
 	public EstadoRondas quiero(Jugador jugador) {
-		for ( int i = jugadorManoDeLaRondaActual ; i <= (this.jugadores.size() - 1 + jugadorManoDeLaRondaActual) ; i=i+1 ){
+		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
 			tantoEnJuego.add(actual.obtenerPuntosEnvido());
 		}
