@@ -113,11 +113,7 @@ public class Mesa {
 	}
 	
 	public void cantarQuieroReTruco(Jugador jugador) {
-		try {
-			this.ronda = this.ronda.cantarQuieroReTruco(jugador);
-		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
-			//QueDevuelvo
-		}
+		this.ronda = this.ronda.cantarQuieroReTruco(jugador);
 	}
 	
 	public void cantarQuieroValeCuatro(Jugador jugador) {
