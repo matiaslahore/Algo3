@@ -67,7 +67,7 @@ public class Visualizador extends Application  {
 	    	
 	
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
-	    	String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
+	    	
 	        String direccionCarta1= "/fiuba/algo3/tp2/vista/imagenes/b1.jpg"; 
 	        String direccionCarta2= "/fiuba/algo3/tp2/vista/imagenes/e1.jpg";
 	    	String direccionCarta3= "/fiuba/algo3/tp2/vista/imagenes/e7.jpg";
@@ -78,35 +78,7 @@ public class Visualizador extends Application  {
 		    
 		    
 		    
-		    Image unoBasto = new Image(direccionCarta1);
-            ImageView carta1 = new ImageView();
-            carta1.setImage(unoBasto);
-            carta1.setFitHeight(90);
-            carta1.setFitWidth(60);
-            carta1.setLayoutX(80);
-            carta1.setLayoutY(100);
-            carta1.setRotate(270);
-            carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
-            
-            Image unoEspada = new Image(direccionCarta2);
-            ImageView carta2 = new ImageView();
-            carta2.setImage(unoEspada);
-            carta2.setFitHeight(90);
-            carta2.setFitWidth(60);
-            carta2.setLayoutX(80);
-            carta2.setLayoutY(170);
-            carta2.setRotate(270);
-            
-            Image sieteEspada = new Image(direccionCarta3);
-            ImageView carta3 = new ImageView();
-            carta3.setImage(sieteEspada);
-            carta3.setFitHeight(90);
-            carta3.setFitWidth(60);
-            carta3.setLayoutX(80);
-            carta3.setLayoutY(240);
-            carta3.setRotate(270);
-           
-            
+		   
             
 	        Button botonEnvido = new Button();
 	        botonEnvido.setText("Envido");
@@ -124,20 +96,19 @@ public class Visualizador extends Application  {
 	        botonIrseAlMazo.setText("Irse al Mazo");
 	        
 
-	        HBox contenedorCartas = new HBox(10, botonCarta1,botonCarta2,botonCarta3);
 	        HBox contenedorCantos = new HBox(50,botonEnvido,botonTruco);
 	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 	        
 	        Label etiqueta = new Label();
 	        
-	        VBox contenedorPrincipal = new VBox(contenedorCartas,contenedorCantos,contenedorOpcion, etiqueta);
+	        VBox contenedorPrincipal = new VBox(contenedorCantos,contenedorOpcion, etiqueta);
 	        contenedorPrincipal.setSpacing(8);
 	        contenedorPrincipal.setPadding(new Insets(20));
 	        
 	        
 	        Group root = new Group();
-	        root.getChildren().add(imagen);
-            root.getChildren().addAll(carta1,carta2,carta3);
+	        root.getChildren().add(imagen); //carga el fondo
+	        root = dosJugadores(root);
             root.getChildren().add(contenedorPrincipal);
              
 	        
@@ -152,6 +123,69 @@ public class Visualizador extends Application  {
 	        return scene;
 	    }
 	    	
+		public Group dosJugadores (Group root){
+			
+			String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
+			 Image reverso = new Image(direccionReverso);
+	            ImageView j1carta1 = new ImageView();
+	            j1carta1.setImage(reverso);
+	            j1carta1.setFitHeight(80);
+	            j1carta1.setFitWidth(50);
+	            j1carta1.setLayoutX(80);
+	            j1carta1.setLayoutY(80);
+	            j1carta1.setRotate(270);
+	            j1carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	          
+	            ImageView j1carta2 = new ImageView();
+	            j1carta2.setImage(reverso);
+	            j1carta2.setFitHeight(80);
+	            j1carta2.setFitWidth(50);
+	            j1carta2.setLayoutX(80);
+	            j1carta2.setLayoutY(140);
+	            j1carta2.setRotate(270);
+	            j1carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	            ImageView j1carta3 = new ImageView();
+	            j1carta3.setImage(reverso);
+	            j1carta3.setFitHeight(80);
+	            j1carta3.setFitWidth(50);
+	            j1carta3.setLayoutX(80);
+	            j1carta3.setLayoutY(200);
+	            j1carta3.setRotate(270);
+	            j1carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	            ImageView j2carta1 = new ImageView();
+	            j2carta1.setImage(reverso);
+	            j2carta1.setFitHeight(80);
+	            j2carta1.setFitWidth(50);
+	            j2carta1.setLayoutX(480);
+	            j2carta1.setLayoutY(80);
+	            j2carta1.setRotate(90);
+	            j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	          
+	            ImageView j2carta2 = new ImageView();
+	            j2carta2.setImage(reverso);
+	            j2carta2.setFitHeight(80);
+	            j2carta2.setFitWidth(50);
+	            j2carta2.setLayoutX(480);
+	            j2carta2.setLayoutY(140);
+	            j2carta2.setRotate(90);
+	            j2carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	            ImageView j2carta3 = new ImageView();
+	            j2carta3.setImage(reverso);
+	            j2carta3.setFitHeight(80);
+	            j2carta3.setFitWidth(50);
+	            j2carta3.setLayoutX(480);
+	            j2carta3.setLayoutY(200);
+	            j2carta3.setRotate(270);
+	            j2carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+			    
+	            root.getChildren().addAll(j1carta1,j1carta2,j1carta3,j2carta1,j2carta2,j2carta3);
+            return root;
+		}
 }
 
 
