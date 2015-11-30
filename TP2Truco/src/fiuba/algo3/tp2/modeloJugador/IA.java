@@ -6,17 +6,18 @@ import fiuba.algo3.tp2.modelo.Mesa;
 
 public class IA extends Jugador{
 
-	boolean yaCantoEnvido;
+	EstadoIA estadoIA;
 	
 	public IA(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
 		
-		yaCantoEnvido = false;
+		estadoIA = new EstadoIAEnvidoInteligente();
 	}
 	
 	public void juga(){
 		
-		System.out.println("Juga");
+		this.estadoIA.manejador(this);
+		/*System.out.println("Juga");
 		
 		if(this.envido >= 27 && !yaCantoEnvido){
 			this.cantarEnvido();
@@ -30,10 +31,26 @@ public class IA extends Jugador{
 			this.jugarCartaAleatoria();
 			return;
 		}
-		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(this.refMesa.obtenerUltimaCartaJugada()));
+		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(this.refMesa.obtenerUltimaCartaJugada()));*/
 	}
 
 	public void jugarCartaAleatoria() {
 		this.jugarCarta(this.manoDelJugador.obtenerCartaAleatoria());
+	}
+	
+	public void setearEstado(EstadoIA estadoIA){
+		this.estadoIA = estadoIA;
+	}
+	
+	public EstadoIA obtenerEstado(){
+		return this.estadoIA;
+	}
+
+	public boolean esMano() {
+		return this.refMesa.esMano();
+	}
+
+	public void jugarMejorCarta() {
+		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(this.refMesa.obtenerUltimaCartaJugada()));
 	}
 }

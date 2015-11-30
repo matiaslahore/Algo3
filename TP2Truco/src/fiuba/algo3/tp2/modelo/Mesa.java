@@ -238,7 +238,7 @@ public class Mesa {
 		return jugadores.size();
 	}
 
-	public boolean soyMano() {
+	public boolean esMano() {
 		return this.cantidadDeCartasEnJuegoDeRondaActual() == 0;
 	}
 
