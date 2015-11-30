@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
+import fiuba.algo3.tp2.modeloJugador.Humano;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class PruebaJugadorTest {
@@ -21,7 +22,7 @@ public class PruebaJugadorTest {
 	public void inicializado(){
 		
 		mesa = new Mesa();
-		unJugador = new Jugador("Nicolas", mesa, new Equipo("EquipoUno",mesa));
+		unJugador = new Humano("Nicolas", mesa, new Equipo("EquipoUno",mesa));
 	}
 	
 	@Test

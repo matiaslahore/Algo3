@@ -140,4 +140,6 @@ public abstract class Jugador {
 	public void noQuiero(){
 		this.refMesa.noQuiero(this);
 	}
+
+	public abstract void juga();
 }

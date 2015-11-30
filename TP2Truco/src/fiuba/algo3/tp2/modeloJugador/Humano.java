@@ -7,7 +7,10 @@ public class Humano extends Jugador{
 
 	public Humano(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
-		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void juga() {
+		
+	}
 }

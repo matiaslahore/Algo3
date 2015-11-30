@@ -2,6 +2,8 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.tp2.modeloJugador.Humano;
+import fiuba.algo3.tp2.modeloJugador.IA;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class Equipo {
@@ -27,9 +29,16 @@ public class Equipo {
 		}
 	}*/
 	public void cargarJugadores(String nombre) {
-		Jugador newJugador = new Jugador(nombre,refMesa,this);
+		Jugador newJugador = new Humano(nombre,refMesa,this);
 		jugadores.add(newJugador);
 	}
+	
+	public void cargarJugadorIA(String nombre) {
+		
+		Jugador nuevoJugador = new IA(nombre, refMesa, this);
+		jugadores.add(nuevoJugador);
+	}
+	
 
 	/*public void recibirCartas() {
 		for (Jugador unJugador : jugadores){
@@ -63,5 +72,4 @@ public class Equipo {
 		
 		return (this.nombreEquipo == nombreDelEquipo);
 	}
-	
 }
