@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 
-public class Jugador {
+public abstract class Jugador {
 
 	String nombre;
 	Equipo equipo;
@@ -79,6 +79,10 @@ public class Jugador {
 		return this.manoDelJugador.verCartasEnManoComoString();
 	}
 	
+	public Mano obtenerCartasDelJugador(){
+		return this.manoDelJugador;
+	}
+	
 	public int cantidadDeCartas() {
 	    return this.manoDelJugador.returnCantidadDeCartas();	
 	}
@@ -106,51 +110,27 @@ public class Jugador {
 	}
 	
 	public void cantarEnvido() throws CantoInvalidoException{
-		try {
-			this.refMesa.cantarEnvido(this);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.refMesa.cantarEnvido(this);
 	}
 	
 	public void cantarRealEnvido () throws CantoInvalidoException{
-		try {
-			this.refMesa.cantarRealEnvido(this);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.refMesa.cantarRealEnvido(this);
 	}
 	
 	public void cantarFaltaEnvido() throws CantoInvalidoException{
-		try {
-			this.refMesa.cantarFaltaEnvido(this);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.refMesa.cantarFaltaEnvido(this);
 	}
 	
 	public void cantarFlor() {
-		try {
-			this.refMesa.cantarFlor(this);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.refMesa.cantarFlor(this);
 	}
 	
 	public void cantarContraFlor() {
-		try {
-			this.refMesa.cantarContraFlor(this);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.refMesa.cantarContraFlor(this);
 	}
 	
 	public void cantarContraFlorAJuego() {
-		try {
-			this.refMesa.cantarContraFlorAJuego(this);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.refMesa.cantarContraFlorAJuego(this);
 	}
 	
 	public void quiero(){
