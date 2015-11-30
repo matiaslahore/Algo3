@@ -91,6 +91,14 @@ public class JugadorIATest {
 			
 		jugadorIA.juga();
 		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.noQuiero();
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
 		mesa.siguiente();
 		
 		Assert.assertEquals(equipoDos, mesa.ganadorDeLaRonda());
