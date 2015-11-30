@@ -6,6 +6,7 @@ import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.modeloJugador.Humano;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.application.Application;
 import javafx.event.EventType;
@@ -62,26 +63,30 @@ public class Visualizador extends Application  {
 	
 		public Scene ventanaPrincipal(){
 	    	
-	    	
-	    	
-	    	
-	
+		    //PRUEBAS DE PARAMETROS
+			
+			
+			Mesa mesa = new Mesa();
+			Equipo equipo1= new Equipo("equipoUno",mesa);
+			Equipo equipo2=new Equipo("equipoDos",mesa);
+			Equipo
+			
+			//imagen de fondo de la mesa
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
-	    	
-	        String direccionCarta1= "/fiuba/algo3/tp2/vista/imagenes/b1.jpg"; 
-	        String direccionCarta2= "/fiuba/algo3/tp2/vista/imagenes/e1.jpg";
-	    	String direccionCarta3= "/fiuba/algo3/tp2/vista/imagenes/e7.jpg";
-	        
 	    	Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
 	        ImageView imagen = new ImageView();
 		    imagen.setImage(fondo);
 		    
+		    //estiqueta para mensajes
+	        Label etiqueta = new Label();
+	        Label puntajeEquipo1 = new Label();
+	        Label puntajeEquipo2 = new Label();
 		    
-		    
-		   
-            
+            //botones de opciones para el jugador actual.
 	        Button botonEnvido = new Button();
 	        botonEnvido.setText("Envido");
+	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador, etiqueta);
+	        botonEnvido.setOnAction(botonEnvidoEventHandler);
 
 	        Button botonTruco = new Button();
 	        botonTruco.setText("Truco");
@@ -95,33 +100,29 @@ public class Visualizador extends Application  {
 	        Button botonIrseAlMazo = new Button();
 	        botonIrseAlMazo.setText("Irse al Mazo");
 	        
-
+            //contenedores de los botones
 	        HBox contenedorCantos = new HBox(50,botonEnvido,botonTruco);
 	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 	        
-	        Label etiqueta = new Label();
 	        
-	        VBox contenedorPrincipal = new VBox(contenedorCantos,contenedorOpcion, etiqueta);
+	        //contenedor principal
+	        VBox contenedorPrincipal = new VBox(contenedorCantos,contenedorOpcion, etiqueta, puntajeEquipo1, puntajeEquipo2);
 	        contenedorPrincipal.setSpacing(8);
 	        contenedorPrincipal.setPadding(new Insets(20));
 	        
+	        //Variable de posicionemiento de las cartas
 	        double layoutY=0;
 	        
+	        //escenario de imagenes de la mesa ***AGREGAR CICLO "FOR" POR 1/2 CANTIDAD DE JUGADORES
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
 	        root = agregarDosJugadores(root, layoutY);
 	        root = agregarDosJugadores(root, layoutY+200);
 	        root = agregarDosJugadores(root, layoutY+400);
             root.getChildren().add(contenedorPrincipal);
-             
-	        
-	        Scene scene = new Scene(root, 600, 800);
-	        
-
-	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador, etiqueta);
-	        botonEnvido.setOnAction(botonEnvidoEventHandler);
-	        
             
+            //dimensiones de la pantalla
+	        Scene scene = new Scene(root, 600, 800);
 	        
 	        return scene;
 	    }
