@@ -3,9 +3,12 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.controlador.Administrador;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.application.Application;
+import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -14,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -62,34 +66,45 @@ public class Visualizador extends Application  {
 	    	
 	    	
 	
-	    	String direccionImagen= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
-	        String direccionCarta1= "file:C:/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/b1.jpg"; 
-	        String direccionCarta2= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/e1.jpg";
-	    	String direccionCarta3= "file:/home/pablo/workspace/TP2Truco/src/fiuba/algo3/tp2/vista/imagenes/e7.jpg";
+	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
+	    	String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
+	        String direccionCarta1= "/fiuba/algo3/tp2/vista/imagenes/b1.jpg"; 
+	        String direccionCarta2= "/fiuba/algo3/tp2/vista/imagenes/e1.jpg";
+	    	String direccionCarta3= "/fiuba/algo3/tp2/vista/imagenes/e7.jpg";
 	        
 	    	Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
 	        ImageView imagen = new ImageView();
 		    imagen.setImage(fondo);
 		    
+		    
+		    
 		    Image unoBasto = new Image(direccionCarta1);
             ImageView carta1 = new ImageView();
             carta1.setImage(unoBasto);
-            carta1.setLayoutX(160);
-            carta1.setLayoutY(400);
-            carta1.setRotate(90);
+            carta1.setFitHeight(90);
+            carta1.setFitWidth(60);
+            carta1.setLayoutX(80);
+            carta1.setLayoutY(100);
+            carta1.setRotate(270);
+            carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
             
             Image unoEspada = new Image(direccionCarta2);
             ImageView carta2 = new ImageView();
             carta2.setImage(unoEspada);
-            carta2.setLayoutX(250);
-            carta2.setLayoutY(400);
+            carta2.setFitHeight(90);
+            carta2.setFitWidth(60);
+            carta2.setLayoutX(80);
+            carta2.setLayoutY(170);
+            carta2.setRotate(270);
             
             Image sieteEspada = new Image(direccionCarta3);
             ImageView carta3 = new ImageView();
             carta3.setImage(sieteEspada);
-            carta3.setLayoutX(340);
-            carta3.setLayoutY(400);
-            
+            carta3.setFitHeight(90);
+            carta3.setFitWidth(60);
+            carta3.setLayoutX(80);
+            carta3.setLayoutY(240);
+            carta3.setRotate(270);
            
             
             
@@ -107,13 +122,6 @@ public class Visualizador extends Application  {
 	        
 	        Button botonIrseAlMazo = new Button();
 	        botonIrseAlMazo.setText("Irse al Mazo");
-	        
-	        Button botonCarta1 = new Button();
-	        botonCarta1.setText("Carta 1");
-	        Button botonCarta2 = new Button();
-	        botonCarta2.setText("Carta 2");
-	        Button botonCarta3 = new Button();
-	        botonCarta3.setText("Carta 3");
 	        
 
 	        HBox contenedorCartas = new HBox(10, botonCarta1,botonCarta2,botonCarta3);
