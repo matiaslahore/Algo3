@@ -71,7 +71,7 @@ public class Visualizador extends Application  {
 			equipo1.cargarJugadores("pablo");
 			equipo2.cargarJugadores("nico");
 			mesa.sentarJugadores(equipo1.obtenerJugadores(), equipo2.obtenerJugadores());
-			
+			mesa.instanciarJuez(equipo1, equipo2);
 			
 			//imagen de fondo de la mesa
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -82,7 +82,15 @@ public class Visualizador extends Application  {
 		    //estiqueta para mensajes
 	        Label etiqueta = new Label();
 	        Label puntajeEquipo1 = new Label();
+	        String texto1=  equipo1.obtenerNombre()+": "+ mesa.puntosEquipo(equipo1)+ " PUNTOS";
+	        String texto2=  equipo2.obtenerNombre()+": "+ mesa.puntosEquipo(equipo2)+ " PUNTOS";
+	        puntajeEquipo1.setText(texto1);
+	        puntajeEquipo1.setTextFill(Color.web("#FF0000"));
+	        puntajeEquipo1.setPrefSize(120, 10);
 	        Label puntajeEquipo2 = new Label();
+	        puntajeEquipo2.setText(texto2);
+	        puntajeEquipo2.setTextFill(Color.web("#FFBB11"));
+	        puntajeEquipo2.setPrefSize(120, 10);
 		    
             //botones de opciones para el jugador actual.
 	        Button botonEnvido = new Button();
@@ -103,12 +111,12 @@ public class Visualizador extends Application  {
 	        botonIrseAlMazo.setText("Irse al Mazo");
 	        
             //contenedores de los botones
-	        HBox contenedorCantos = new HBox(50,botonEnvido,botonTruco);
+	        HBox contenedorCantos = new HBox(50,botonEnvido,botonTruco,puntajeEquipo1,puntajeEquipo2);
 	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 	        
 	        
 	        //contenedor principal
-	        VBox contenedorPrincipal = new VBox(contenedorCantos,contenedorOpcion, etiqueta, puntajeEquipo1, puntajeEquipo2);
+	        VBox contenedorPrincipal = new VBox(contenedorCantos,contenedorOpcion, etiqueta);
 	        contenedorPrincipal.setSpacing(8);
 	        contenedorPrincipal.setPadding(new Insets(20));
 	        
