@@ -1175,5 +1175,42 @@ public class SituacionesDeJuegoTest {
 		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
 		Assert.assertEquals(0,mesa.puntosEquipo(eq2));
 	}
+	
+	@Test
+	public void pruebaIrseAlMazoPartidaDosxDos(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		//R1
+		Jugador actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguiente();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
+		actual.jugarCarta(dosDeOro);
+
+		//R2
+		actual = mesa.siguiente();
+		actual.jugarCarta(tresDeOro);
+
+		actual = mesa.siguiente();
+		actual.jugarCarta(tresDeCopa);
+		//R3
+		actual = mesa.siguiente();
+		actual.jugarCarta(cuatroDeOro);
+
+		actual = mesa.siguiente();
+		actual.irseAlMazo();
+		
+		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
+		
+		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
+		Assert.assertEquals(0,mesa.puntosEquipo(eq2));
+	}
 
 }

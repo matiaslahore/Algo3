@@ -142,4 +142,9 @@ public abstract class Jugador {
 	}
 
 	public abstract void juga();
+
+	public void irseAlMazo(){
+		this.refMesa.irseAlMazo(this);
+	}
+	
 }
