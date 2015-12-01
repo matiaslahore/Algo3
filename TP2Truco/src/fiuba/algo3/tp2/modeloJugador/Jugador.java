@@ -48,7 +48,7 @@ public abstract class Jugador {
 	}
 	
 	public int obtenerPuntosFlor(){
-		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
+		return this.manoDelJugador.calcularPuntosFlor();
 	}
 
 	public String verCartasEnManoComoString() {

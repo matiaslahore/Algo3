@@ -36,7 +36,7 @@ public class Mano {
 		return carta;
 	}
 
-	public int calcularPuntosEnvidoConFlor() {
+	public int calcularPuntosFlor() {
 		if (tieneFlor()) {
 			Carta cartaUno = cartas.get(0);
 			Carta cartaDos = cartas.get(1);
@@ -112,9 +112,9 @@ public class Mano {
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
 		
-		if (cartaUno.sumarTanto(cartaDos) >= 20) {
-			if (cartaUno.sumarTanto(cartaTres) >= 20) {
-				if (cartaDos.sumarTanto(cartaTres) >= 20)
+		if (cartaUno.sumarTanto(cartaDos) > 7) {
+			if (cartaUno.sumarTanto(cartaTres) > 7) {
+				if (cartaDos.sumarTanto(cartaTres) > 7)
 					return true;
 			}
 		}

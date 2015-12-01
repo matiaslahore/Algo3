@@ -1323,11 +1323,12 @@ public class PruebasSituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		Jugador actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, anchoDeEspada)));
 		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
 		
 		actual = mesa.siguienteJugadorConTurno();
+		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
 	}
 
