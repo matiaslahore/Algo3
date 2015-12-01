@@ -160,9 +160,61 @@ public class JugadorIATest {
 		
 		jugadorIA.juga();
 		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.jugarCarta(cartasHumano.get(0));
+		
 		mesa.siguiente();
+		
+		//ACA ya termino la mano tendria que anotarle dos puntos a EquipoDos
 		
 		Assert.assertEquals(equipoDos, mesa.ganadorDeLaRonda());
 		Assert.assertEquals(2, mesa.puntosEquipo(equipoDos));
 	}
+	
+	@Test
+	public void pruebaJugadorIAGanaLaMano(){
+		
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new AnchoDeBasto(), new AnchoDeEspada()));
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.recibirCartas(cartasHumano);
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.recibirCartas(otrasCartasIA);
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.jugarCarta(cartasHumano.get(1));
+		
+		jugadorIA = mesa.siguiente();
+	
+		jugadorIA.juga();	
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.cantarTruco();
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.jugarCarta(cartasHumano.get(0));
+		
+		mesa.siguiente();
+		
+		//ACA ya termino la mano tendria que anotarle dos puntos a EquipoDos
+		
+		Assert.assertEquals(equipoDos, mesa.ganadorDeLaRonda());
+		Assert.assertEquals(1, mesa.puntosEquipo(equipoDos));
+	}
 }
+
