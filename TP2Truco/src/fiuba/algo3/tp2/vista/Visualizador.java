@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.vista;
 
 
-import fiuba.algo3.tp2.controlador.Administrador;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
@@ -25,7 +24,6 @@ import javafx.scene.paint.Color;
 
 public class Visualizador extends Application  {
 	
-        private Administrador administrador;
         private Jugador jugador;
         private ImagenesCarta imagenesCarta;
         
