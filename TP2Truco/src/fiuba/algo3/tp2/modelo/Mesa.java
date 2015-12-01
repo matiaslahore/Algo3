@@ -42,6 +42,7 @@ public class Mesa {
 	}
 
 	public void iniciarRonda(){
+		repartir();
 		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda, jugadores, indexMano, indexMano);
 	}
 
@@ -271,4 +272,12 @@ public class Mesa {
 		}
 		return false;
 	}
+	
+	private void repartir(){
+		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
+			Jugador actual = this.jugadores.get(i);
+			actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
+		}
+	}
+	
 }
