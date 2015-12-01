@@ -6,7 +6,6 @@ public class EstadoIATrucoInteligente extends EstadoIA {
 	public void manejador(IA jugadorIA) {
 		
 		if (jugadorIA.seCantoTruco()){
-			System.out.println("QUIERO");
 			jugadorIA.quiero();
 			return;
 		}
@@ -16,5 +15,4 @@ public class EstadoIATrucoInteligente extends EstadoIA {
 		}
 		jugadorIA.jugarMejorCarta();
 	}
-
 }

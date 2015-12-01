@@ -106,7 +106,7 @@ public class JugadorIATest {
 	}
 	
 	@Test
-	public void pruebaJugadorIALeCantanEnvidoYQuiere(){
+	public void pruebaJugadorIALeCantanEnvidoYGana(){
 		
 		jugadorHumano = mesa.siguiente();
 		
@@ -128,7 +128,7 @@ public class JugadorIATest {
 	}
 	
 	@Test
-	public void pruebaJugadorIALeCantanTrucoYQuiere(){
+	public void pruebaJugadorIALeCantanTrucoYGana(){
 		
 		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new AnchoDeBasto(), new AnchoDeEspada()));
 		
@@ -160,12 +160,9 @@ public class JugadorIATest {
 		
 		jugadorIA.juga();
 		
-		jugadorHumano = mesa.siguiente();
-		
-		jugadorHumano.jugarCarta(cartasHumano.get(0));
-		
 		mesa.siguiente();
 		
 		Assert.assertEquals(equipoDos, mesa.ganadorDeLaRonda());
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoDos));
 	}
 }
