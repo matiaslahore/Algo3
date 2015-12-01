@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 
+import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -25,6 +26,8 @@ public class Visualizador extends Application  {
 	
         private Jugador jugador;
         private ImagenesCarta imagenesCarta;
+        private Mesa mesa;
+        ListaCircular<Jugador> jugadores;
         private int cantidadDeJugadores;
         private boolean conFlor;
         
@@ -131,13 +134,17 @@ public class Visualizador extends Application  {
 	    	
 		    //PRUEBAS DE PARAMETROS
 		
-			Mesa mesa = new Mesa();
+			this.mesa = new Mesa();
 			Equipo equipo1= new Equipo("equipoUno",mesa);
 			Equipo equipo2=new Equipo("equipoDos",mesa);
 			equipo1.cargarJugadores("pablo");
 			equipo2.cargarJugadores("nico");
 			mesa.sentarJugadores(equipo1.obtenerJugadores(), equipo2.obtenerJugadores());
 			mesa.instanciarJuez(equipo1, equipo2);
+			mesa.repartirCartas();
+			
+			
+			
 			
 			//imagen de fondo de la mesa
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -208,6 +215,7 @@ public class Visualizador extends Application  {
 		public Group agregarDosJugadores (Group root, double layoutY){
 			
 			layoutY+= 80; 
+			double layoutXIzq= 80;
 			
 			String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
 			 Image reverso = new Image(direccionReverso);
@@ -215,10 +223,11 @@ public class Visualizador extends Application  {
 	            j1carta1.setImage(reverso);
 	            j1carta1.setFitHeight(80);
 	            j1carta1.setFitWidth(50);
-	            j1carta1.setLayoutX(80);
+	            j1carta1.setLayoutX(layoutXIzq);
 	            j1carta1.setLayoutY(layoutY);
 	            j1carta1.setRotate(270);
-	            j1carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            Carta carta = jugador.obtenerCartasDelJugador().obtenerCartas().get(0);
+	            j1carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(mesa,jugador,carta,layoutXIzq, j1carta1));
 
 	            ImageView j2carta1 = new ImageView();
 	            j2carta1.setImage(reverso);
@@ -275,5 +284,3 @@ public class Visualizador extends Application  {
 		
 	
 }
-
-
