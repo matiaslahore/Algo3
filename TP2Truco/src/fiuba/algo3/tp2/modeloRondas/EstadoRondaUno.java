@@ -29,7 +29,7 @@ public class EstadoRondaUno extends EstadoRondas{
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
-		this.cantosTruco = new EmpezarTruco(); //ronda uno empiezo desde cero
+		this.cantosTruco = new EmpezarTruco();
 
 		actualizarPicaPica();
 

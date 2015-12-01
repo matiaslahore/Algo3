@@ -44,7 +44,13 @@ public class EstadoRondaTruco extends EstadoRondas{
 		this.juez.puntosEnJuego(this.cantosTruco.noQuiso());
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo());
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
-		//Termina las Rondas, y se vuelve a tirar las cartas, para una nueva mano
+		
+		this.juez.mezclar(); //renuevo el mazo
+		repartir();
+		
+		if (esPicaPica()){
+			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
+		}
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 	}
 	

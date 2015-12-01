@@ -44,6 +44,9 @@ public class EstadoRondaDos extends EstadoRondas{
 			
 			this.jugadorMano = this.jugadorMano + 1;
 			
+			this.juez.mezclar(); //renuevo el mazo
+			repartir();
+			
 			if (esPicaPica()){
 				return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
 			}

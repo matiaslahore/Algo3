@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.CantosTruco;
@@ -13,6 +14,7 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.cantos.*;
 
@@ -33,7 +35,7 @@ public abstract class EstadoRondas{
 		this.ganadoresRonda = ganadoresRonda;
 		this.jugadores = jugadores;
 		this.jugadorManoDeLaRondaActual = new Integer(indexManoAux);
-		this.jugadorMano = indexMano; //esto no se toca nunca salvo en la ronda 3 para indicar la mano sig.
+		this.jugadorMano = indexMano; //esto se toca cuando se gana para indicar la mano sig.
 		this.refEstadoRonda = estadoRonda;
 		this.tantoEnJuego = new ArrayList<Integer>();
 	}
@@ -148,10 +150,21 @@ public abstract class EstadoRondas{
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+		
+		this.juez.mezclar(); //renuevo el mazo
+		repartir();
+		
 		if (esPicaPica()){
 			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
 		}
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+	}
+	
+	public void repartir(){
+		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
+			Jugador actual = this.jugadores.get(i);
+			actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
+		}
 	}
 
 	public boolean seCantoEnvido(){

@@ -39,6 +39,10 @@ public class EstadoRondaTresParda extends EstadoRondas{
 		if (esPicaPica()){
 			if (this.juez.cantidadDeJugadas() == 4){
 				this.juez.resetearcantidadDeJugadas();
+				
+				this.juez.mezclar(); //renuevo el mazo
+				repartir();
+				
 				return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano - 2, this.jugadorMano);
 			}
 			else {
