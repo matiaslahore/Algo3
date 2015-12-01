@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
@@ -9,7 +8,7 @@ import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public class Mano {
 
-	List<Carta> cartas = new ArrayList();
+	List<Carta> cartas = new ArrayList<Carta>();
 	
 	public Mano(List<Carta> listaDeCartas){
 		this.cartas = listaDeCartas;
@@ -37,13 +36,13 @@ public class Mano {
 	}
 
 	public int calcularPuntosFlor() {
-		if (tieneFlor()) {
+		if (this.tieneFlor()) {
 			Carta cartaUno = cartas.get(0);
 			Carta cartaDos = cartas.get(1);
 			Carta cartaTres = cartas.get(2);
-			return (cartaUno.sumarTantosConFlor(cartaDos, cartaTres));
+			return cartaUno.sumarTantosConFlor(cartaDos, cartaTres);
 		}
-		else return 0;
+		return 0;
 	}
 
 	public String verCartasEnManoComoString() {
@@ -111,14 +110,7 @@ public class Mano {
 		Carta cartaUno = cartas.get(0);
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
-		
-		if (cartaUno.sumarTanto(cartaDos) > 7) {
-			if (cartaUno.sumarTanto(cartaTres) > 7) {
-				if (cartaDos.sumarTanto(cartaTres) > 7)
-					return true;
-			}
-		}
-		return false;
+		return (cartaUno.sumarTanto(cartaDos)>= 20 && cartaDos.sumarTanto(cartaTres)>= 20);		
 	}
 	
 }
