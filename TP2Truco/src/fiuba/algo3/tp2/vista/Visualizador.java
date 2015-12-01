@@ -1,9 +1,12 @@
 package fiuba.algo3.tp2.vista;
 
 
+import java.util.List;
+
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -24,10 +27,11 @@ import javafx.stage.Stage;
 
 public class Visualizador extends Application  {
 	
-        private Jugador jugador;
+        private Jugador jugadorE1;
+        private Jugador jugadorE2;
         private ImagenesCarta imagenesCarta;
         private Mesa mesa;
-        ListaCircular<Jugador> jugadores;
+        ListaCircular<ImageView> jugadores;
         private int cantidadDeJugadores;
         private boolean conFlor;
         
@@ -39,16 +43,21 @@ public class Visualizador extends Application  {
 	
 	    @Override
 	    public void start(Stage stage) throws Exception {
-	        Scene opcionesDeJuego = this.obtenerOpcionesDeJuego();
+	        Scene opcionesDeJuego = this.obtenerOpcionesDeJuego(stage);
+	        stage.setTitle("Partida De Truco");
 	        stage.setScene(opcionesDeJuego);
-	        stage.show();
-	    	/*Scene scene= this.ventanaPrincipal();
-	        stage.setTitle("Partida de Truco");
-	        stage.setScene(scene);*/
 	        stage.show();
 	    }
 	    
-	    private Scene obtenerOpcionesDeJuego() {
+	    public void iniciarVentanaDelJuego(Stage stage){
+	        Scene scene= this.ventanaPrincipal();
+	        stage.setTitle("Partida de Truco");
+	        stage.setScene(scene);
+	        stage.show();
+	        
+	    }
+	    
+	    private Scene obtenerOpcionesDeJuego(Stage stage) {
 	    	//VLablesCantJugadores
 	        VBox labelCantJugadores = new VBox();
 	        labelCantJugadores.setSpacing(10);
@@ -106,7 +115,7 @@ public class Visualizador extends Application  {
 	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4));
 	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6));
 	    	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>());
-	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(scene));
+	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(this,stage));
 	        
 	    	scene.getStylesheets().add("fiuba/algo3/tp2/vista/myEstilo.css");
 	    	
@@ -141,6 +150,7 @@ public class Visualizador extends Application  {
 			equipo2.cargarJugadores("nico");
 			mesa.sentarJugadores(equipo1.obtenerJugadores(), equipo2.obtenerJugadores());
 			mesa.instanciarJuez(equipo1, equipo2);
+			mesa.iniciarRonda();
 			mesa.repartirCartas();
 			
 			
@@ -168,7 +178,7 @@ public class Visualizador extends Application  {
             //botones de opciones para el jugador actual.
 	        Button botonEnvido = new Button();
 	        botonEnvido.setText("Envido");
-	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador, etiqueta);
+	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugadorE1, etiqueta);
 	        botonEnvido.setOnAction(botonEnvidoEventHandler);
 
 	        Button botonTruco = new Button();
@@ -199,12 +209,15 @@ public class Visualizador extends Application  {
 	        //escenario de imagenes de la mesa 
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
-	        for (int i=0; i<mesa.cantidadDeJugadores()/2 ; i++)
+	        this.cantidadDeJugadores=6;
+	        for (int i=0; i<this.cantidadDeJugadores/2 ; i++)
 	        { 
 	            root = agregarDosJugadores(root, layoutY);
 	            layoutY+=200;
 		    }
+	        
             root.getChildren().add(contenedorPrincipal);
+            this.jugadorTurnoActual(root, mesa);
             
             //dimensiones de la pantalla
 	        Scene scene = new Scene(root, 600, 800);
@@ -216,6 +229,7 @@ public class Visualizador extends Application  {
 			
 			layoutY+= 80; 
 			double layoutXIzq= 80;
+			double layoutXDer= 480;
 			
 			String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
 			 Image reverso = new Image(direccionReverso);
@@ -226,17 +240,16 @@ public class Visualizador extends Application  {
 	            j1carta1.setLayoutX(layoutXIzq);
 	            j1carta1.setLayoutY(layoutY);
 	            j1carta1.setRotate(270);
-	            Carta carta = jugador.obtenerCartasDelJugador().obtenerCartas().get(0);
-	            j1carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(mesa,jugador,carta,layoutXIzq, j1carta1));
 
 	            ImageView j2carta1 = new ImageView();
 	            j2carta1.setImage(reverso);
 	            j2carta1.setFitHeight(80);
 	            j2carta1.setFitWidth(50);
-	            j2carta1.setLayoutX(480);
+	            j2carta1.setLayoutX(layoutXDer);
 	            j2carta1.setLayoutY(layoutY);
 	            j2carta1.setRotate(90);
-	            j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	           // carta = jugador.obtenerCartasDelJugador().obtenerCartas().get(0);
+	            //j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(mesa,jugador,carta,layoutXDer-100,j2carta1));
 	          
 	            layoutY+=60;
 	            
@@ -244,19 +257,19 @@ public class Visualizador extends Application  {
 	            j1carta2.setImage(reverso);
 	            j1carta2.setFitHeight(80);
 	            j1carta2.setFitWidth(50);
-	            j1carta2.setLayoutX(80);
+	            j1carta2.setLayoutX(layoutXIzq);
 	            j1carta2.setLayoutY(layoutY);
 	            j1carta2.setRotate(270);
-	            j1carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            //j1carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	            
 	            ImageView j2carta2 = new ImageView();
 	            j2carta2.setImage(reverso);
 	            j2carta2.setFitHeight(80);
 	            j2carta2.setFitWidth(50);
-	            j2carta2.setLayoutX(480);
+	            j2carta2.setLayoutX(layoutXDer);
 	            j2carta2.setLayoutY(layoutY);
 	            j2carta2.setRotate(90);
-	            j2carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            //j2carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	            
 	            layoutY+=60;
 	            
@@ -264,23 +277,54 @@ public class Visualizador extends Application  {
 	            j1carta3.setImage(reverso);
 	            j1carta3.setFitHeight(80);
 	            j1carta3.setFitWidth(50);
-	            j1carta3.setLayoutX(80);
+	            j1carta3.setLayoutX(layoutXIzq);
 	            j1carta3.setLayoutY(layoutY);
 	            j1carta3.setRotate(270);
-	            j1carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            //j1carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	           
 	            ImageView j2carta3 = new ImageView();
 	            j2carta3.setImage(reverso);
 	            j2carta3.setFitHeight(80);
 	            j2carta3.setFitWidth(50);
-	            j2carta3.setLayoutX(480);
+	            j2carta3.setLayoutX(layoutXDer);
 	            j2carta3.setLayoutY(layoutY);
 	            j2carta3.setRotate(90);
-	            j2carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	           // j2carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
+	            
+	            //lista de imagenes para darlas vuelta cuando sea el turno.
+	            this.jugadores = new ListaCircular<ImageView>();
+			    this.jugadores.add(j1carta1);
+			    this.jugadores.add(j1carta2);
+			    this.jugadores.add(j1carta3);
+			    this.jugadores.add(j2carta1);
+			    this.jugadores.add(j2carta2);
+			    this.jugadores.add(j2carta3);
 			    
 	            root.getChildren().addAll(j1carta1,j1carta2,j1carta3,j2carta1,j2carta2,j2carta3);
             return root;
 		}
+
+		public Group jugadorTurnoActual (Group root,Mesa mesa){
+		      
+			  Jugador jugadorActual = mesa.siguienteJugadorConTurno();
+			  List<Carta> cartas= jugadorActual.obtenerCartasDelJugador().obtenerCartas();
+			  for (int i=0; i<jugadorActual.cantidadDeCartas(); i++){
+				  String nombre= cartas.get(i).cartaComoString();
+				  String direccion = this.buscarImagen(nombre);
+				  Image imagen = new Image(direccion);
+				  ImageView view = this.jugadores.get(i);
+			      view.setImage(imagen);
+			  }
+			 
+			return root;
+		}
+		
+		public String buscarImagen (String nombre){
+			System.out.println(nombre);
+			return this.imagenesCarta.obtenerDireccionDeCarta(nombre);
+		}
+}
 		
 	
-}
+		
+	
