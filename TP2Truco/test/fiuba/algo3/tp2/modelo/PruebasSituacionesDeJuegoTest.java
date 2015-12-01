@@ -701,8 +701,10 @@ public class PruebasSituacionesDeJuegoTest {
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
+		System.out.println(mesa.ronda);
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
+		System.out.println(mesa.ronda);
 		actual.cantarContraFlor();
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
