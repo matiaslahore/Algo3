@@ -15,7 +15,6 @@ public class Equipo {
 	public Equipo(String nombreDelEquipo, Mesa mesa){
 		this.jugadores = new ArrayList<Jugador>();
 		this.refMesa = mesa;
-		//this.cantidadJugadores = cantidadJugadores;
 		this.nombreEquipo = nombreDelEquipo;
 	}
 	
