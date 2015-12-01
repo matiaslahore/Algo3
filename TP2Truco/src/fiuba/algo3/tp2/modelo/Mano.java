@@ -51,6 +51,10 @@ public class Mano {
 		return cartasComoString;
 	}
 	
+	public List<Carta> obtenerCartas (){
+		return this.cartas;
+	}
+	
 	public int returnCantidadDeCartas(){
 		return this.cartas.size();
 	}
