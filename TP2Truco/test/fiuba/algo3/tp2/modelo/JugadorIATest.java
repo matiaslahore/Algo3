@@ -164,11 +164,10 @@ public class JugadorIATest {
 		
 		jugadorHumano.jugarCarta(cartasHumano.get(0));
 		
-		mesa.siguiente();
-		
-		//ACA ya termino la mano tendria que anotarle dos puntos a EquipoDos
-		
 		Assert.assertEquals(equipoDos, mesa.ganadorDeLaRonda());
+	
+		mesa.siguiente();
+			
 		Assert.assertEquals(2, mesa.puntosEquipo(equipoDos));
 	}
 	
@@ -190,30 +189,21 @@ public class JugadorIATest {
 		jugadorHumano.jugarCarta(cartasHumano.get(1));
 		
 		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
+		jugadorHumano = mesa.siguiente();
 	
-		jugadorIA.juga();	
-		
-		jugadorIA = mesa.siguiente();
-		
-		jugadorIA.juga();
-		
-		jugadorHumano = mesa.siguiente();
-		
-		jugadorHumano.cantarTruco();
-		
-		jugadorIA = mesa.siguiente();
-		
-		jugadorIA.juga();
-		
-		jugadorHumano = mesa.siguiente();
-		
 		jugadorHumano.jugarCarta(cartasHumano.get(0));
 		
-		mesa.siguiente();
-		
-		//ACA ya termino la mano tendria que anotarle dos puntos a EquipoDos
-		
 		Assert.assertEquals(equipoDos, mesa.ganadorDeLaRonda());
+	
+		mesa.siguiente();
+			
 		Assert.assertEquals(1, mesa.puntosEquipo(equipoDos));
 	}
 }
