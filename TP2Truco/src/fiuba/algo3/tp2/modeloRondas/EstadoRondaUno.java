@@ -95,6 +95,8 @@ public class EstadoRondaUno extends EstadoRondas{
 	}
 
 	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {
+		if (!jugador.tieneFlor()) throw new CantoInvalidoException();
+
 		if (this.juez.hayOtroEquipoConFlor(jugador.obtenerEquipo())) {
 			Flor flor = new Flor(jugador.obtenerEquipo());
 			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano

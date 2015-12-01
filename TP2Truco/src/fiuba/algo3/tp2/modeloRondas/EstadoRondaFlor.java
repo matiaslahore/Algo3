@@ -36,15 +36,15 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 	
 	public EstadoRondas quiero(Jugador jugador) {
-		for ( int i = jugadorManoDeLaRondaActual ; i <= (this.jugadores.size() - 1 + jugadorManoDeLaRondaActual) ; i=i+1 ){
+		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
-			tantoEnJuego.add(actual.obtenerPuntosFlor()); ///////////////VER ESTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!
+			tantoEnJuego.add(actual.obtenerPuntosFlor());
 		}
 		
 		int tantoGanador = this.juez.quienGanaElTanto(this.tantoEnJuego);
 		int indexTantoGanador = this.tantoEnJuego.indexOf(tantoGanador); //gana el q es mano tmb
 		
-		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexTantoGanador);
+		Jugador ganador = this.jugadores.get(this.jugadorMano + indexTantoGanador);
 		
 		this.juez.puntosEnJuego(this.cantosFlor.quiso());
 		

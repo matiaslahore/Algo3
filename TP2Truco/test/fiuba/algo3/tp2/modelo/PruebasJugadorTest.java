@@ -72,7 +72,7 @@ public class PruebasJugadorTest {
 		
 		unJugador.recibirCartas(Arrays.asList(new SotaDeOro(), new CaballoDeOro(), new ReyDeOro()));
 		
-		assertEquals(20, unJugador.obtenerPuntosEnvidoConFlor());
+		assertEquals(20, unJugador.obtenerPuntosFlor());
 	}
 	
 	@Test
@@ -80,6 +80,6 @@ public class PruebasJugadorTest {
 		
 		unJugador.recibirCartas(Arrays.asList(new CincoDeOro(), new SeisDeOro(), new SieteDeOro()));
 		
-		assertEquals(38, unJugador.obtenerPuntosEnvidoConFlor());
+		assertEquals(38, unJugador.obtenerPuntosFlor());
 	}
 }

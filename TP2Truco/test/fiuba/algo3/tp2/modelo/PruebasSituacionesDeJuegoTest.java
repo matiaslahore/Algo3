@@ -655,7 +655,7 @@ public class PruebasSituacionesDeJuegoTest {
 	}
 
 	@Test
-	public void pruebaJ1CantaFlorJ2noQuiere(){
+	public void pruebaJ1CantaFlorGana3PtosNadieTieneFlor(){
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -663,9 +663,17 @@ public class PruebasSituacionesDeJuegoTest {
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
-
-		//doy la vuelta para repartir...
+		
 		Jugador actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeEspada, seisDeEspada)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeBasto, cincoDeOro, dosDeCopa)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, sieteDeOro, tresDeBasto)));
+
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
 		
@@ -678,7 +686,7 @@ public class PruebasSituacionesDeJuegoTest {
 	}
 
 	@Test
-	public void pruebaJ1CantaFlorJ2ContraFlorJ1Quiere(){
+	public void pruebaJ1CantaFlorJ4ContraFlorJ1Quiere(){
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
 		eq2.cargarJugadores("j2");
@@ -689,27 +697,27 @@ public class PruebasSituacionesDeJuegoTest {
 
 		//doy la vuelta para repartir...
 		Jugador actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeEspada, seisDeEspada)));
 		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeBasto, tresDeBasto, dosDeCopa)));
 		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, sieteDeOro, cincoDeOro)));
 
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
 		System.out.println(mesa.ronda);
 		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j2",actual.obtenerNombre());
+		Assert.assertEquals("j4",actual.obtenerNombre());
 		System.out.println(mesa.ronda);
 		actual.cantarContraFlor();
 		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j3",actual.obtenerNombre());
+		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.quiero();
 
-		Assert.assertEquals(6,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
+		Assert.assertEquals(6,mesa.puntosEquipo(eq2)); //gana eq2 la contraFlor
 
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
@@ -727,27 +735,28 @@ public class PruebasSituacionesDeJuegoTest {
 
 		//doy la vuelta para repartir...
 		Jugador actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeEspada, seisDeEspada)));
 		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeBasto, tresDeBasto, dosDeCopa)));
 		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, sieteDeOro, cincoDeOro)));
 
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
 		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j2",actual.obtenerNombre());
+		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.cantarContraFlorAJuego();
 		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j3",actual.obtenerNombre());
+		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.quiero();
 
-		Assert.assertEquals(30,mesa.puntosEquipo(eq1)); //gana eq1
+		Assert.assertEquals(30,mesa.puntosEquipo(eq2)); //gana eq2 xq j4 tiene 36
 
 		actual = mesa.siguienteJugadorConTurno(); //esto produce excepcion xq termino la partida y quiero seguir jugando
+		
 	}
 
 	@Test
@@ -1302,6 +1311,24 @@ public class PruebasSituacionesDeJuegoTest {
 
 		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarEnvido();
+	}
+	
+	@Test(expected = CantoInvalidoException.class)
+	public void pruebaFallaCantaFlorJugadorSinFlor(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		Jugador actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
+		
+		actual = mesa.siguienteJugadorConTurno();
+		actual.cantarFlor();
 	}
 
 }

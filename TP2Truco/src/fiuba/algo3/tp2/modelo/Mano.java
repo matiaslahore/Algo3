@@ -37,10 +37,13 @@ public class Mano {
 	}
 
 	public int calcularPuntosEnvidoConFlor() {
-		Carta cartaUno = cartas.get(0);
-		Carta cartaDos = cartas.get(1);
-		Carta cartaTres = cartas.get(2);
-		return (cartaUno.sumarTantosConFlor(cartaDos, cartaTres));
+		if (tieneFlor()) {
+			Carta cartaUno = cartas.get(0);
+			Carta cartaDos = cartas.get(1);
+			Carta cartaTres = cartas.get(2);
+			return (cartaUno.sumarTantosConFlor(cartaDos, cartaTres));
+		}
+		else return 0;
 	}
 
 	public String verCartasEnManoComoString() {
@@ -103,4 +106,19 @@ public class Mano {
 			throw new CartaInexistenteEnManoDeJugadorExeption();
 		}
 	}
+
+	public boolean tieneFlor() {
+		Carta cartaUno = cartas.get(0);
+		Carta cartaDos = cartas.get(1);
+		Carta cartaTres = cartas.get(2);
+		
+		if (cartaUno.sumarTanto(cartaDos) >= 20) {
+			if (cartaUno.sumarTanto(cartaTres) >= 20) {
+				if (cartaDos.sumarTanto(cartaTres) >= 20)
+					return true;
+			}
+		}
+		return false;
+	}
+	
 }

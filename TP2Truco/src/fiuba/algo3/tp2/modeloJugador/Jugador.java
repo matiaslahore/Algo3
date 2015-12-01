@@ -48,32 +48,8 @@ public abstract class Jugador {
 	}
 	
 	public int obtenerPuntosFlor(){
-		return this.envido;
-	}
-	
-	public int obtenerPuntosEnvidoConFlor() {
 		return this.manoDelJugador.calcularPuntosEnvidoConFlor();
 	}
-
-	/*public int obtenerPuntosEnvidoConFlor() {
-		int envidoConFlor = 0;
-		
-		for (Carta unaCarta : cartas){
-			if (unaCarta.obtenerValor()<= 7){
-				envidoConFlor += unaCarta.obtenerValor();
-			}
-		}
-		return envidoConFlor + 20;
-	}*/
-	
-
-	/*public void jugarCarta() { //////////////////////////////////////////////PRIVATE
-		Scanner leer = new Scanner(System.in);
-		System.out.println("Ingerese numero de carta a jugar: ");
-		verCartasEnManoComoString();
-		int n = leer.nextInt();
-		this.refMesa.recibirCarta(this.manoDelJugador.tirar(n));
-	}*/
 
 	public String verCartasEnManoComoString() {
 		return this.manoDelJugador.verCartasEnManoComoString();
@@ -148,8 +124,7 @@ public abstract class Jugador {
 	}
 
 	public boolean tieneFlor() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.manoDelJugador.tieneFlor();
 	}
 	
 }

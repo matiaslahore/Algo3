@@ -266,7 +266,10 @@ public class Mesa {
 		Iterator<Jugador> itr = this.jugadores.iterator();
 		while(itr.hasNext()) {
 			jugador = (Jugador) itr.next();
-			if (jugador.obtenerEquipo() != equipoQueCanta) return jugador;
+		
+			if (jugador.tieneFlor()){
+				if (jugador.obtenerEquipo() != equipoQueCanta) return jugador;
+			}
 		}
 		return jugador;
 	}
