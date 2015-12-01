@@ -250,4 +250,13 @@ public class Mesa {
 		this.ronda = this.ronda.irseAlMazo(jugador);
 	}
 
+
+	public boolean seCantoEnvido() {
+		return ronda.seCantoEnvido();
+	}
+
+
+	public boolean seCantoTruco() {
+		return this.ronda.seCantoTruco();
+	}
 }

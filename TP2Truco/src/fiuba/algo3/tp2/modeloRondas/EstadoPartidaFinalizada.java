@@ -96,5 +96,4 @@ public class EstadoPartidaFinalizada extends EstadoRondas{
 		System.out.println("PARTIDA FINALIZADA");
 		this.juez.imprimirResultados();
 	}
-
 }

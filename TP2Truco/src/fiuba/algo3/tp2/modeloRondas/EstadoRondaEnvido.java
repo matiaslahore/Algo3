@@ -102,4 +102,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeFaltaEnvido);
 	}
 	
+	public boolean seCantoEnvido() {
+		return true;
+	}
 }

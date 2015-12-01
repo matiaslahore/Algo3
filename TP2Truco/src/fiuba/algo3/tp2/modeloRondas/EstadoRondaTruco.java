@@ -68,4 +68,7 @@ public class EstadoRondaTruco extends EstadoRondas{
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
 	}
 	
+	public boolean seCantoTruco(){
+		return true;
+	}
 }

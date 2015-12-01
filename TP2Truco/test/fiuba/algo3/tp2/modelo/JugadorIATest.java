@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.tp2.modeloDeCartas.AnchoDeBasto;
+import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeOro;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloDeCartas.CincoDeCopa;
@@ -47,14 +49,13 @@ public class JugadorIATest {
 		cartasHumano = new ArrayList<Carta>();
 		cartasIA = new ArrayList<Carta>();
 
-		cartasHumano = new ArrayList(Arrays.asList(new TresDeCopa(), new TresDeBasto(), new ReyDeBasto()));
-		cartasIA = new ArrayList(Arrays.asList(new SieteDeOro(), new AnchoDeOro(), new CincoDeCopa()));
+		cartasHumano = new ArrayList<Carta>(Arrays.asList(new TresDeCopa(), new TresDeBasto(), new ReyDeBasto()));
+		cartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new AnchoDeOro(), new CincoDeCopa()));
 	}
 	
 	@Test
 	public void pruebasJugadorIAGanaElEnvidoCon28(){
-			
-		//se verifica por consola, habria que pensar como probarlo
+
 		jugadorHumano = mesa.siguiente();
 				
 		jugadorHumano.recibirCartas(cartasHumano);
@@ -98,6 +99,70 @@ public class JugadorIATest {
 		jugadorIA = mesa.siguiente();
 		
 		jugadorIA.juga();
+		
+		mesa.siguiente();
+		
+		Assert.assertEquals(equipoDos, mesa.ganadorDeLaRonda());
+	}
+	
+	@Test
+	public void pruebaJugadorIALeCantanEnvidoYQuiere(){
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.recibirCartas(cartasHumano);
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.recibirCartas(cartasIA);
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.cantarEnvido();
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoDos));
+	}
+	
+	@Test
+	public void pruebaJugadorIALeCantanTrucoYQuiere(){
+		
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new AnchoDeBasto(), new AnchoDeEspada()));
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.recibirCartas(cartasHumano);
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.recibirCartas(otrasCartasIA);
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.jugarCarta(cartasHumano.get(1));
+		
+		jugadorIA = mesa.siguiente();
+	
+		jugadorIA.juga();	
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.cantarTruco();
+		
+		jugadorIA = mesa.siguiente();
+		
+		jugadorIA.juga();
+		
+		jugadorHumano = mesa.siguiente();
+		
+		jugadorHumano.jugarCarta(cartasHumano.get(0));
 		
 		mesa.siguiente();
 		

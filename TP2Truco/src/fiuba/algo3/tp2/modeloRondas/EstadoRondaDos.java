@@ -54,5 +54,4 @@ public class EstadoRondaDos extends EstadoRondas{
 		refEstadoRonda.modificarCantoTruco(this.cantosTruco);
 		return this.refEstadoRonda;
 	}
-
 }

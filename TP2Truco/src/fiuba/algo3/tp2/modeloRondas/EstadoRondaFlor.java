@@ -82,5 +82,8 @@ public class EstadoRondaFlor extends EstadoRondas {
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeFlor);
 	}
-
+	
+	public boolean seCantoEnvido() {
+		return true;
+	}
 }

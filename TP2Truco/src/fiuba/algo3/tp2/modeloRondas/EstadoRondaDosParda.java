@@ -59,5 +59,4 @@ public class EstadoRondaDosParda extends EstadoRondas{
 
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);		
 	}
-
 }

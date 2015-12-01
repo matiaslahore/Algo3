@@ -161,4 +161,12 @@ public abstract class EstadoRondas{
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
 	}
 
+	public boolean seCantoEnvido(){
+		//devuelve falso en todos los estados menos en EstadoDeROndaEnvido Y FLor
+		return false;
+	}
+
+	public boolean seCantoTruco() {
+		return false;
+	}
 }
