@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -1211,6 +1212,95 @@ public class PruebasSituacionesDeJuegoTest {
 		
 		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
 		Assert.assertEquals(0,mesa.puntosEquipo(eq2));
+	}
+	
+	@Test(expected = CantoInvalidoException.class)
+	public void pruebaFallaCantaEnvidoSegundaMano(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		//R1
+		Jugador actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
+		actual.jugarCarta(dosDeOro);
+
+		//R2
+		actual = mesa.siguienteJugadorConTurno();
+		actual.jugarCarta(tresDeOro);
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.cantarEnvido();
+		
+		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
+		Assert.assertEquals(0,mesa.puntosEquipo(eq2));
+	}
+	
+	@Test(expected = CantoInvalidoException.class)
+	public void pruebaFallaCantaEnvidoTerceraMano(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		//R1
+		Jugador actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
+		actual.jugarCarta(dosDeOro);
+
+		//R2
+		actual = mesa.siguienteJugadorConTurno();
+		actual.jugarCarta(tresDeOro);
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.jugarCarta(tresDeCopa);
+		//R3
+		actual = mesa.siguienteJugadorConTurno();
+		actual.jugarCarta(cuatroDeOro);
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.cantarEnvido();
+	}
+	
+	@Test(expected = CantoInvalidoException.class)
+	public void pruebaFallaCantaEnvidoDosVecesEnUnaMano(){
+		
+		eq1.cargarJugadores("j1");
+		eq2.cargarJugadores("j2");
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		Jugador actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
+		
+		//R1
+		actual = mesa.siguienteJugadorConTurno();
+		actual.cantarEnvido();
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.quiero();
+		
+		actual = mesa.siguienteJugadorConTurno();
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.cantarEnvido();
 	}
 
 }

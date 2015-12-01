@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.EmpezarTruco;
+import fiuba.algo3.tp2.cantos.Envido;
+import fiuba.algo3.tp2.cantos.FaltaEnvido;
+import fiuba.algo3.tp2.cantos.Flor;
+import fiuba.algo3.tp2.cantos.RealEnvido;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
@@ -18,6 +23,8 @@ public class EstadoRondaUno extends EstadoRondas{
 	//SE EMPARDA
 	//IRSE AL MAZO
 	
+	private boolean envidoCantado;
+	
 	public EstadoRondaUno(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 
@@ -27,6 +34,8 @@ public class EstadoRondaUno extends EstadoRondas{
 		actualizarPicaPica();
 		
 		juez.puntosEnJuego(1);
+		
+		envidoCantado = false;
 	}
 	
 	public EstadoRondas siguienteRonda(){
@@ -55,6 +64,41 @@ public class EstadoRondaUno extends EstadoRondas{
 		return this.refEstadoRonda;
 	}
 	
-	
+	public EstadoRondas cantarEnvido(Jugador jugador) throws CantoInvalidoException {
+		if (this.envidoCantado) throw new CantoInvalidoException();
+		
+		Envido envido = new Envido(jugador.obtenerEquipo());
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.envidoCantado = true;
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
+	}
+
+	public EstadoRondas cantarRealEnvido(Jugador jugador)throws CantoInvalidoException {
+		if (!this.envidoCantado) throw new CantoInvalidoException();
+		
+		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipo());
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.envidoCantado = true;
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,realEnvido);
+	}
+
+	public EstadoRondas cantarFaltaEnvido(Jugador jugador)throws CantoInvalidoException {
+		if (!this.envidoCantado) throw new CantoInvalidoException();
+		
+		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipo());
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.envidoCantado = true;
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,faltaEnvido);
+	}
+
+	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {
+		Flor envido = new Flor(jugador.obtenerEquipo());
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
+	}
 
 }
