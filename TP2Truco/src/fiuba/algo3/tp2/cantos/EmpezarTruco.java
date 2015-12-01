@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.tiposDeCanto;
+package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.modelo.Equipo;
 

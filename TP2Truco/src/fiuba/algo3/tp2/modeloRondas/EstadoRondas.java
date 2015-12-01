@@ -3,6 +3,11 @@ package fiuba.algo3.tp2.modeloRondas;
 import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.cantos.CantosTruco;
+import fiuba.algo3.tp2.cantos.Envido;
+import fiuba.algo3.tp2.cantos.FaltaEnvido;
+import fiuba.algo3.tp2.cantos.Flor;
+import fiuba.algo3.tp2.cantos.RealEnvido;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;

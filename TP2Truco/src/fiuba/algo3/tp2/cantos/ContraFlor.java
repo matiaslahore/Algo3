@@ -1,13 +1,12 @@
-package fiuba.algo3.tp2.tiposDeCanto;
+package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public class ContraFlorAJuego extends CantosFlor{
+public class ContraFlor extends CantosFlor{
 
-	public ContraFlorAJuego(Equipo equipoQueCanta) {
+	public ContraFlor(Equipo equipoQueCanta) {
 		super(equipoQueCanta);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -21,8 +20,8 @@ public class ContraFlorAJuego extends CantosFlor{
 	}
 
 	@Override
-	public CantosFlor cantarContraFlorAJuego(Equipo equipoQueCanta) throws CantoInvalidoException {
-		throw new CantoInvalidoException();
+	public ContraFlorAJuego cantarContraFlorAJuego(Equipo equipoQueCanta) throws CantoInvalidoException {
+		return(new ContraFlorAJuego(equipoQueCanta));
 	}
 
 	@Override
@@ -32,7 +31,7 @@ public class ContraFlorAJuego extends CantosFlor{
 
 	@Override
 	public int quiso() {
-		return 30;
+		return 6;
 	}
 
 }
