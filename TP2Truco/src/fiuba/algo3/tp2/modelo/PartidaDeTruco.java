@@ -13,7 +13,6 @@ public abstract class PartidaDeTruco {
 		this.mesa = new Mesa();
 		this.equipoUno = new Equipo(nombreEq1, mesa);
 		this.equipoDos = new Equipo(nombreEq2, mesa);
-		this.mesa.instanciarJuez(equipoUno,equipoDos);
 	}
 	
 	public abstract void cargarJugadoresEnEquipoUno(String jugadorUno);
@@ -39,10 +38,6 @@ public abstract class PartidaDeTruco {
 
 	public String ultimoGanador() {
 		return this.mesa.ganadorDeLaRonda().obtenerNombre();
-	}
-	
-	public void repartir(){
-		this.mesa.repartirCartas();
 	}
 	
 	public int obtenerPuntajeDeEquipo(String equipo) {

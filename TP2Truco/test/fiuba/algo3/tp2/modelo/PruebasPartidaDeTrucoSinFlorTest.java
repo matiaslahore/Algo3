@@ -93,6 +93,5 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		Assert.assertEquals(2, partidaDeTruco.obtenerPuntajeDeEquipo("equipoUno"));
 		Assert.assertEquals(0, partidaDeTruco.obtenerPuntajeDeEquipo("equipoDos"));
 	}
-	
-	
+
 }

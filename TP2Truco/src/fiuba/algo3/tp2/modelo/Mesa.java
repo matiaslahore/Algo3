@@ -37,8 +37,8 @@ public class Mesa {
 
 
 	//por que no puede estar en el constructor esto ????? 
-	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos){
-		juez = new Juez(this, equipoUno, equipoDos);
+	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos, EstadoFlor estadoFlor){
+		juez = new Juez(this, equipoUno, equipoDos, estadoFlor);
 	}
 
 	public void iniciarRonda(){
@@ -112,26 +112,19 @@ public class Mesa {
 	}
 
 	public void cantarTruco(Jugador jugador){
-		try {
-			this.ronda = this.ronda.cantarTruco(jugador);
-		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
-			//QueDevuelvo
-		}
+		this.ronda = this.ronda.cantarTruco(jugador);
 	}
 
 	public void cantarQuieroReTruco(Jugador jugador) {
 		this.ronda = this.ronda.cantarQuieroReTruco(jugador);
 	}
 
-	public void cantarQuieroValeCuatro(Jugador jugador) {
-		try {
-			this.ronda = this.ronda.cantarQuieroValeCuatro(jugador);
-		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
-			//QueDevuelvo
-		}
+	public void cantarQuieroValeCuatro(Jugador jugador) {	
+		this.ronda = this.ronda.cantarQuieroValeCuatro(jugador);
 	}
 
 	public void cantarFlor(Jugador jugador) {
+		this.juez.seCantoFlor();
 		this.ronda = this.ronda.cantarFlor(jugador);
 	}
 

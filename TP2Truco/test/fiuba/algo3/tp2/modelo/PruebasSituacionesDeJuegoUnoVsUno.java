@@ -30,7 +30,7 @@ public class PruebasSituacionesDeJuegoUnoVsUno {
 		mesa = new Mesa();
 		eq1 = new Equipo("eq1", mesa);
 		eq2 = new Equipo("eq2", mesa);
-		mesa.instanciarJuez(eq1,eq2);
+		mesa.instanciarJuez(eq1,eq2,new SinFlor());
 	}	
 	
 	@Test

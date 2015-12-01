@@ -4,6 +4,8 @@ public class PartidaDeTrucoConFlor extends PartidaDeTruco{
 
 	public PartidaDeTrucoConFlor(String nombreEq1, String nombreEq2) {
 		super(nombreEq1, nombreEq2);
+		
+		this.mesa.instanciarJuez(equipoUno, equipoDos, new SinFlor());
 	}
 
 	@Override

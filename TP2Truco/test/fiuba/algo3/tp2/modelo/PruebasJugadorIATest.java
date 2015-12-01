@@ -36,7 +36,7 @@ public class PruebasJugadorIATest {
 		equipoUno = new Equipo("equipoUno", mesa);
 		equipoDos = new Equipo("equipoDos", mesa);
 		
-		mesa.instanciarJuez(equipoUno, equipoDos);
+		mesa.instanciarJuez(equipoUno, equipoDos, new SinFlor());
 		
 		equipoUno.cargarJugadores("Nicolas");
 		equipoDos.cargarJugadorIA("Martin");

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import fiuba.algo3.tp2.excepciones.SeEstaJugandoSinFlorException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
@@ -17,12 +18,14 @@ public class Juez {
 	int puntosEnJuego;
 	boolean activadorPicaPica = false;
 	int cantidadJugadas = 1;
+	EstadoFlor estadoFlor;
 	
-	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos){
+	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos, EstadoFlor estadoFlor){
 		this.maso = new Maso();
 		this.mesa = mesa;
 		this.puntosEnJuego = 1;
 		this.puntos = new Puntos(equipoUno, equipoDos);
+		this.estadoFlor = estadoFlor;
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuego(){
@@ -104,7 +107,7 @@ public class Juez {
 		if (this.mesa.cantidadDeJugadores()==6 && rangoPicaPica()){
 			return this.activadorPicaPica;
 		}
-		else return false;
+		return false;
 	}
 	
 	public void actualizarCantidadJugadas(){
@@ -130,5 +133,8 @@ public class Juez {
 	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
 		return this.mesa.hayOtroEquipoConFlor(equipoQueCanta);
 	}
-	
+
+	public void seCantoFlor() {
+		this.estadoFlor.seCantoFlor();
+	}
 }
