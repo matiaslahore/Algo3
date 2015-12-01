@@ -146,5 +146,10 @@ public abstract class Jugador {
 	public void irseAlMazo(){
 		this.refMesa.irseAlMazo(this);
 	}
+
+	public boolean tieneFlor() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

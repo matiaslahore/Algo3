@@ -29,7 +29,9 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 	
 	public Jugador turnoDe() {
-		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual + 2); //2 es manejo de indices //aclarar
+		/*Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual + 2); //2 es manejo de indices //aclarar
+		return jugador;*/
+		Jugador jugador = this.juez.otroJugadorConFlor(this.cantosFlor.equipoQueCanta());
 		return jugador;
 	}
 	

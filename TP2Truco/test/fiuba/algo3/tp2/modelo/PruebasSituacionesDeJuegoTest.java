@@ -668,14 +668,13 @@ public class PruebasSituacionesDeJuegoTest {
 		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j2",actual.obtenerNombre());
-		actual.noQuiero();
+		
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-
-		Assert.assertEquals(3,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
-
+		Assert.assertEquals(3,mesa.puntosEquipo(eq1)); //eq1 suma 3 x la flor
+		
+		actual = mesa.siguienteJugadorConTurno();
+		Assert.assertEquals("j2",actual.obtenerNombre());
 	}
 
 	@Test

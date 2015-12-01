@@ -22,51 +22,51 @@ public class EstadoRondaUno extends EstadoRondas{
 	//SE JUEGAN CARTAS
 	//SE EMPARDA
 	//IRSE AL MAZO
-	
+
 	private boolean tantoCantado;
-	
+
 	public EstadoRondaUno(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
 			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
 
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 		this.cantosTruco = new EmpezarTruco(); //ronda uno empiezo desde cero
-		
+
 		actualizarPicaPica();
-		
+
 		juez.puntosEnJuego(1);
-		
+
 		tantoCantado = false;
 	}
-	
+
 	public EstadoRondas siguienteRonda(){
 		this.ganadoresRonda.clear();
-		
+
 		Carta ganadora = this.juez.obtenerCartaGanadoraDeRonda();
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
-		
+
 		if (this.juez.hayParda()){ //es parda
 			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA UNO PARDA");
-			
+
 			refEstadoRonda = new EstadoRondaDosParda(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual, this.jugadorMano);
 			refEstadoRonda.modificarCantoTruco(this.cantosTruco);
 			return this.refEstadoRonda;
 		}
 		Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
 		ganadoresRonda.add(ganador.obtenerEquipo());
-		
+
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
-		
+
 		System.out.println("RONDA UNO la gana: " + this.ganadoresRonda.get(0).obtenerNombre() + "\n");
-		
+
 		refEstadoRonda = new EstadoRondaDos(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorManoDeLaRondaActual + indexCartaGanadora, this.jugadorMano);
 		refEstadoRonda.modificarCantoTruco(this.cantosTruco);
 		return this.refEstadoRonda;
 	}
-	
+
 	public EstadoRondas cantarEnvido(Jugador jugador) throws CantoInvalidoException {
 		if (this.tantoCantado) throw new CantoInvalidoException();
-		
+
 		Envido envido = new Envido(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.tantoCantado = true;
@@ -76,7 +76,7 @@ public class EstadoRondaUno extends EstadoRondas{
 
 	public EstadoRondas cantarRealEnvido(Jugador jugador)throws CantoInvalidoException {
 		if (this.tantoCantado) throw new CantoInvalidoException();
-		
+
 		RealEnvido realEnvido = new RealEnvido(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.tantoCantado = true;
@@ -86,7 +86,7 @@ public class EstadoRondaUno extends EstadoRondas{
 
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador)throws CantoInvalidoException {
 		if (this.tantoCantado) throw new CantoInvalidoException();
-		
+
 		FaltaEnvido faltaEnvido = new FaltaEnvido(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.tantoCantado = true;
@@ -95,13 +95,18 @@ public class EstadoRondaUno extends EstadoRondas{
 	}
 
 	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {
-		if (this.tantoCantado) throw new CantoInvalidoException();
-		
-		Flor envido = new Flor(jugador.obtenerEquipo());
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
-		this.tantoCantado = true;
-		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
+		if (this.juez.hayOtroEquipoConFlor(jugador.obtenerEquipo())) {
+			Flor flor = new Flor(jugador.obtenerEquipo());
+			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+			this.refEstadoRonda = this; //guardo estado de la ronda actual
+			return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,flor);
+		} else {
+			juez.puntosEnJuego(3);
+			juez.anotarPuntos(jugador.obtenerEquipo());
+			juez.puntosEnJuego(1);
+			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1;
+			return this;
+		}
 	}
 
 }

@@ -259,4 +259,29 @@ public class Mesa {
 	public boolean seCantoTruco() {
 		return this.ronda.seCantoTruco();
 	}
+
+	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
+		Jugador jugador = null;
+		
+		Iterator<Jugador> itr = this.jugadores.iterator();
+		while(itr.hasNext()) {
+			jugador = (Jugador) itr.next();
+			if (jugador.obtenerEquipo() != equipoQueCanta) return jugador;
+		}
+		return jugador;
+	}
+
+
+	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
+		Iterator<Jugador> itr = this.jugadores.iterator();
+		
+		while(itr.hasNext()) {
+			Jugador jugador = (Jugador) itr.next();
+			
+			if (jugador.tieneFlor()){
+				if (jugador.obtenerEquipo() != equipoQueCanta) return true;
+			}
+		}
+		return false;
+	}
 }

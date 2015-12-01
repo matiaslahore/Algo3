@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
+import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
 
 public class Juez {
@@ -121,4 +122,13 @@ public class Juez {
 	public boolean seJugaronTodasLasCartas() {
 		return (this.cantidadDeCartasEnJuego() == this.mesa.cantidadDeJugadores());
 	}
+
+	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
+		return this.mesa.otroJugadorConFlor(equipoQueCanta);
+	}
+
+	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
+		return this.mesa.hayOtroEquipoConFlor(equipoQueCanta);
+	}
+	
 }

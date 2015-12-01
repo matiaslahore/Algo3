@@ -19,4 +19,9 @@ public abstract class CantosFlor {
 	public abstract int noQuiso();
 	
 	public abstract int quiso();
+	
+	public Equipo equipoQueCanta(){
+		return this.equipoQueCanta;
+	}
+	
 }
