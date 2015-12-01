@@ -2,30 +2,31 @@ package fiuba.algo3.tp2.vista;
 
 
 import fiuba.algo3.tp2.modelo.Equipo;
-import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
-import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.modeloJugador.Humano;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.application.Application;
-import javafx.event.EventType;
 import javafx.geometry.Insets;
-import javafx.stage.*;
-import javafx.scene.*;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class Visualizador extends Application  {
 	
         private Jugador jugador;
         private ImagenesCarta imagenesCarta;
+        private int cantidadDeJugadores;
+        private boolean conFlor;
         
         public static void main(String[] args)
     	{
@@ -35,14 +36,83 @@ public class Visualizador extends Application  {
 	
 	    @Override
 	    public void start(Stage stage) throws Exception {
-	        
-	    	Scene scene= this.ventanaPrincipal();
+	        Scene opcionesDeJuego = this.obtenerOpcionesDeJuego();
+	        stage.setScene(opcionesDeJuego);
+	        stage.show();
+	    	/*Scene scene= this.ventanaPrincipal();
 	        stage.setTitle("Partida de Truco");
-	        stage.setScene(scene);
+	        stage.setScene(scene);*/
 	        stage.show();
 	    }
 	    
-	    public Label crearJugadores (){
+	    private Scene obtenerOpcionesDeJuego() {
+	    	//VLablesCantJugadores
+	        VBox labelCantJugadores = new VBox();
+	        labelCantJugadores.setSpacing(10);
+	        labelCantJugadores.setPadding(new Insets(10));
+	    	
+	    	//VBOXJugadores
+	    	VBox checkCantidadJugadores = new VBox();
+	        checkCantidadJugadores.setSpacing(10);
+	        checkCantidadJugadores.setPadding(new Insets(10));
+	    	
+	        //VBOXFlor
+	    	VBox checkFlor = new VBox();
+	    	checkFlor.setSpacing(10);
+	    	checkFlor.setPadding(new Insets(10));
+	    	
+	        //VLablesFlor
+	        VBox labelFlor = new VBox();
+	        labelFlor.setSpacing(10);
+	        labelFlor.setPadding(new Insets(10));
+	       
+		    //CHECHBOX
+	        CheckBox checkBox2jugadores = new CheckBox("2 Jugadores");
+	    	CheckBox checkBox4jugadores = new CheckBox("4 Jugadores");
+	    	CheckBox checkBox6jugadores = new CheckBox("6 Jugadores");
+	    	CheckBox checkBoxFlor = new CheckBox("Jugar con Flor");
+	    	
+	    	//LABELS
+	    	Label lbCantJugadores = new Label(" 1 - Seleccione la cantidad de jugadores");
+	    	Label lbFlor = new Label(" 2 - ¿Jugar con Flor?");
+	    	
+	    	//AGREGAR check y labels a VBoxs
+	        checkCantidadJugadores.getChildren().addAll(checkBox2jugadores, checkBox4jugadores, checkBox6jugadores);
+	        labelCantJugadores.getChildren().add(lbCantJugadores);
+	        checkFlor.getChildren().add(checkBoxFlor);
+	        labelFlor.getChildren().add(lbFlor);
+	        
+	        //BOTON Jugar
+	    	Button botonJugar = new Button();
+	    	botonJugar.setText("Jugar");
+	    	HBox contenedorBotonJugar = new HBox(50,botonJugar);
+	    	VBox boxJugar = new VBox(contenedorBotonJugar);
+	    	boxJugar.setSpacing(0);
+	    	boxJugar.setPadding(new Insets(50));
+	    	
+	    	//SCENE
+	    	FlowPane root = new FlowPane();
+	        root.setHgap(20);
+	        root.getChildren().addAll(labelCantJugadores, checkCantidadJugadores);
+	        root.getChildren().addAll(labelFlor, checkFlor);    
+	        root.getChildren().add(boxJugar);
+	        Scene scene = new Scene(root, 340, 350);
+	        
+	        //HANDLERS
+	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2));
+	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4));
+	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6));
+	    	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>());
+	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(scene));
+	        
+	    	scene.getStylesheets().add("fiuba/algo3/tp2/vista/myEstilo.css");
+	    	
+	        return scene;
+	        
+		}
+
+
+		public Label crearJugadores (){
 	    	TextField jugadorText = new TextField();
 	        jugadorText.setPromptText("Nombre del Jugador");
 	        Label etiquetaNombre = new Label();
@@ -55,8 +125,6 @@ public class Visualizador extends Application  {
             }
             etiquetaNombre.setText(jugadorText.getText());
             return etiquetaNombre;
-	    	
-	    	
 	    }
 	
 		public Scene ventanaPrincipal(){
