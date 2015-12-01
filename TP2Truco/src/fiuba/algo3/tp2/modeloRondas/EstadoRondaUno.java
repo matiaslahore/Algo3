@@ -102,13 +102,12 @@ public class EstadoRondaUno extends EstadoRondas{
 			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 			this.refEstadoRonda = this; //guardo estado de la ronda actual
 			return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,flor);
-		} else {
-			juez.puntosEnJuego(3);
-			juez.anotarPuntos(jugador.obtenerEquipo());
-			juez.puntosEnJuego(1);
-			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1;
-			return this;
-		}
+		} 
+		juez.puntosEnJuego(3);
+		juez.anotarPuntos(jugador.obtenerEquipo());
+		juez.puntosEnJuego(1);
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1;
+		return this;
 	}
 
 }

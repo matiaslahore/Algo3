@@ -9,6 +9,7 @@ import java.util.List;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
+import fiuba.algo3.tp2.excepciones.NoSeEncontroJugadorConFlorException;
 import fiuba.algo3.tp2.excepciones.TodabiaNoFinalizoLaRondaException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -134,19 +135,11 @@ public class Mesa {
 	}
 
 	public void cantarContraFlor(Jugador jugador) {
-		try {
-			this.ronda = this.ronda.cantarContraFlor(jugador);
-		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
-			//QueDevuelvo
-		}
+		this.ronda = this.ronda.cantarContraFlor(jugador);
 	}
 
 	public void cantarContraFlorAJuego(Jugador jugador) {
-		try {
-			this.ronda = this.ronda.cantarContraFlorAJuego(jugador);
-		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e) {
-			//QueDevuelvo
-		}
+		this.ronda = this.ronda.cantarContraFlorAJuego(jugador);
 	}
 
 	public void quiero(Jugador jugador){
@@ -246,39 +239,34 @@ public class Mesa {
 		this.ronda = this.ronda.irseAlMazo(jugador);
 	}
 
-
 	public boolean seCantoEnvido() {
 		return ronda.seCantoEnvido();
 	}
-
 
 	public boolean seCantoTruco() {
 		return this.ronda.seCantoTruco();
 	}
 
 	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
-		Jugador jugador = null;
 		
-		Iterator<Jugador> itr = this.jugadores.iterator();
-		while(itr.hasNext()) {
-			jugador = (Jugador) itr.next();
-		
-			if (jugador.tieneFlor()){
-				if (jugador.obtenerEquipo() != equipoQueCanta) return jugador;
+		for(Jugador unJugador : this.jugadores){
+			if (unJugador.tieneFlor()){
+				if(unJugador.obtenerEquipo() != equipoQueCanta){
+					return unJugador;
+				}
 			}
 		}
-		return jugador;
+		throw new NoSeEncontroJugadorConFlorException();
 	}
 
 
 	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
-		Iterator<Jugador> itr = this.jugadores.iterator();
 		
-		while(itr.hasNext()) {
-			Jugador jugador = (Jugador) itr.next();
-			
-			if (jugador.tieneFlor()){
-				if (jugador.obtenerEquipo() != equipoQueCanta) return true;
+		for(Jugador unJugador : this.jugadores){
+			if (unJugador.tieneFlor()){
+				if(unJugador.obtenerEquipo() != equipoQueCanta){
+					return true;
+				}
 			}
 		}
 		return false;
