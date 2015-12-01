@@ -167,7 +167,6 @@ public abstract class EstadoRondas{
 	}
 
 	public boolean seCantoEnvido(){
-		//devuelve falso en todos los estados menos en EstadoDeROndaEnvido Y FLor
 		return false;
 	}
 
