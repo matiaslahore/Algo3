@@ -14,7 +14,7 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.*;
+import fiuba.algo3.tp2.cantos.*;
 
 public abstract class EstadoRondas{
 
