@@ -11,7 +11,7 @@ import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class PruebasSituacionesDeJuegoTest {
+public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	private Mesa mesa;
 	private Equipo eq1;
@@ -653,111 +653,6 @@ public class PruebasSituacionesDeJuegoTest {
 	}
 
 	@Test
-	public void pruebaJ1CantaFlorGana3PtosNadieTieneFlor(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
-
-		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
-		mesa.iniciarRonda();
-		
-		Jugador actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeEspada, seisDeEspada)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeBasto, cincoDeOro, dosDeCopa)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, sieteDeOro, tresDeBasto)));
-
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual.cantarFlor();
-		
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-		Assert.assertEquals(3,mesa.puntosEquipo(eq1)); //eq1 suma 3 x la flor
-		
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j2",actual.obtenerNombre());
-	}
-
-	@Test
-	public void pruebaJ1CantaFlorJ4ContraFlorJ1Quiere(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
-
-		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
-		mesa.iniciarRonda();
-
-		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeEspada, seisDeEspada)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeBasto, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, sieteDeOro, cincoDeOro)));
-
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual.cantarFlor();
-		System.out.println(mesa.ronda);
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j4",actual.obtenerNombre());
-		System.out.println(mesa.ronda);
-		actual.cantarContraFlor();
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual.quiero();
-
-		Assert.assertEquals(6,mesa.puntosEquipo(eq2)); //gana eq2 la contraFlor
-
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-	}
-
-	@Test(expected = NoSePuedeSeguirJugandoExcepcion.class)
-	public void pruebaJ1CantaFlorJ2ContraFlorAlRestoJ1QuiereSeTerminaLaPartida(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
-
-		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
-		mesa.iniciarRonda();
-
-		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeEspada, seisDeEspada)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeBasto, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, sieteDeOro, cincoDeOro)));
-
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual.cantarFlor();
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j4",actual.obtenerNombre());
-		actual.cantarContraFlorAJuego();
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual.quiero();
-
-		Assert.assertEquals(30,mesa.puntosEquipo(eq2)); //gana eq2 xq j4 tiene 36
-
-		actual = mesa.siguienteJugadorConTurno(); //esto produce excepcion xq termino la partida y quiero seguir jugando
-		
-	}
-
-	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleTresPorTresCantaEnvioYValeCuatro(){
 		eq1.cargarJugadores("j1");
 		eq1.cargarJugadores("j3");
@@ -1310,24 +1205,4 @@ public class PruebasSituacionesDeJuegoTest {
 		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarEnvido();
 	}
-	
-	@Test(expected = CantoInvalidoException.class)
-	public void pruebaFallaCantaFlorJugadorSinFlor(){
-		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
-
-		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
-		mesa.iniciarRonda();
-
-		Jugador actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, anchoDeEspada)));
-		actual = mesa.siguienteJugadorConTurno();
-		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
-		
-		actual = mesa.siguienteJugadorConTurno();
-		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual.cantarFlor();
-	}
-
 }
