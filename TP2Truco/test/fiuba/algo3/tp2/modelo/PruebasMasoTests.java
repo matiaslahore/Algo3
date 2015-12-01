@@ -7,7 +7,7 @@ import org.junit.Test;
 import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 
-public class MasoTests {
+public class PruebasMasoTests {
 
 	@Test
 	public void prueboQueMasoNoRepitaCartas(){

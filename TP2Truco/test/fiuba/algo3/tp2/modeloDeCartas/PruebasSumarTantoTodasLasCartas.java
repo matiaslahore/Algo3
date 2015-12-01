@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modeloDeCartas;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PruebaSumarTantoTodasLasCartas {
+public class PruebasSumarTantoTodasLasCartas {
 
 	@Test 
 	public void pruebaTodosLosTantosEspada(){

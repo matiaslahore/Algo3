@@ -72,7 +72,7 @@ public class Mesa {
 		}
 	}
 
-	public Jugador siguiente(){
+	public Jugador siguienteJugadorConTurno(){
 		this.ronda = this.ronda.acualizarRonda();
 		return this.ronda.turnoDe();
 	}

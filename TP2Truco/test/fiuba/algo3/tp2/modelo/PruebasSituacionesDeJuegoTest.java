@@ -12,7 +12,7 @@ import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class SituacionesDeJuegoTest {
+public class PruebasSituacionesDeJuegoTest {
 
 	private Mesa mesa;
 	private Equipo eq1;
@@ -56,31 +56,31 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//R1
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
 		actual.jugarCarta(sieteDeEspada);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
 		actual.jugarCarta(anchoDeEspada);
 
 		//R2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq2,mesa.ganadorDeLaRonda());
 
 		actual.jugarCarta(sieteDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		actual.jugarCarta(anchoDeBasto);
 		//R3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cincoDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 	}
 
@@ -94,39 +94,39 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 		//R1
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
 		actual.jugarCarta(sieteDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
 		actual.jugarCarta(anchoDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
 		actual.jugarCarta(cuatroDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, anchoDeCopa, tresDeCopa)));
 		actual.jugarCarta(tresDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("eq2",mesa.ganadorDeLaRonda().obtenerNombre());
 		//R2
 		actual.jugarCarta(sieteDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("eq1",mesa.ganadorDeLaRonda().obtenerNombre());
 		//R3
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cincoDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(dosDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("eq2",mesa.ganadorDeLaRonda().obtenerNombre());
 	}
 
@@ -142,53 +142,53 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 		//R1
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
 		actual.jugarCarta(sieteDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
 		actual.jugarCarta(anchoDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
 		actual.jugarCarta(cuatroDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, anchoDeCopa, tresDeCopa)));
 		actual.jugarCarta(tresDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, anchoDeOro, sotaDeBasto)));
 		actual.jugarCarta(dosDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeCopa, cincoDeBasto, reyDeOro)));
 		actual.jugarCarta(cuatroDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq2,mesa.ganadorDeLaRonda());
 		//R2
 		actual.jugarCarta(sieteDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cincoDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 		//R3
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cincoDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(dosDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(sotaDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(reyDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq2,mesa.ganadorDeLaRonda());
 	}
 
@@ -202,19 +202,19 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 	}
 
@@ -228,12 +228,12 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.noQuiero();
 		Assert.assertEquals(1,mesa.puntosEquipo(eq2));
@@ -250,25 +250,25 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, anchoDeCopa, tresDeCopa)));
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
 		Assert.assertEquals(2,mesa.puntosEquipo(eq1)); //gano eq1, j1 tiene 33 de mano
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 	}
 
@@ -282,16 +282,16 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.noQuiero();
 		Assert.assertEquals(1,mesa.puntosEquipo(eq2));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 	}
 
@@ -305,15 +305,15 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarQuieroReTruco();
 	}
@@ -328,19 +328,19 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.cantarQuieroReTruco();
 	}
@@ -356,30 +356,30 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, tresDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, anchoDeCopa, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.cantarEnvido(); //aca canto Envido Envido el J3
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.quiero(); //j4 quiere envido envido
 		Assert.assertEquals(4,mesa.puntosEquipo(eq2)); //gana eq2 xq tiene 32 J2
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 		//turno al J2 xq el canto envido, j3 envido envido, j4 quiso, le toca tirar a J2
 	}
@@ -394,21 +394,21 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.cantarEnvido(); //aca canto Envido Envido el J3
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.noQuiero(); //j4 quiere envido envido
 		Assert.assertEquals(2,mesa.puntosEquipo(eq1)); //gana eq1, eq2 no quiere
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 	}
 
@@ -423,37 +423,37 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarEnvido(); //Canta Envido
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.cantarEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.cantarRealEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.quiero(); //j1 quiere envido envido realenvido
 
 		Assert.assertEquals(7,mesa.puntosEquipo(eq1)); //gana eq1, j1 tiene 33 de mano
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre()); //devuelve el turno al j2
 	}
 
@@ -467,26 +467,26 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarTruco(); //j2 canta truco
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.cantarQuieroReTruco(); //j3 canta quierretruco
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.cantarQuieroValeCuatro(); //j4 canta quiero vale cuatro
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.quiero(); //j1 quiere el vale cuatro
 
-		actual = mesa.siguiente(); //vuelve el turno al J2
+		actual = mesa.siguienteJugadorConTurno(); //vuelve el turno al J2
 		Assert.assertEquals("j2",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 	}
 
@@ -501,68 +501,68 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
 		//r1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(cuatroDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(tresDeOro);
 		//r2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(tresDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeBasto);
 		//r3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarQuieroReTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.cantarQuieroValeCuatro();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.quiero(); //j4 quiere vale cuatro
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(dosDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(seisDeCopa);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(4,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
 
 	}
@@ -578,78 +578,78 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
 
 		//r1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.quiero();
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(cuatroDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(tresDeOro);
 		//r2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarQuieroReTruco();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(tresDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeBasto);
 		//r3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarQuieroReTruco();
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.quiero();
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(dosDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(seisDeCopa);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(4,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
 	}
 
@@ -664,13 +664,13 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.noQuiero();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 
 		Assert.assertEquals(3,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
@@ -688,28 +688,28 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarContraFlor();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
 
 		Assert.assertEquals(6,mesa.puntosEquipo(eq1)); //gana eq1 vale 4
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 	}
 
@@ -724,28 +724,28 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//doy la vuelta para repartir...
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, sieteDeCopa, seisDeCopa)));
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarFlor();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarContraFlorAJuego();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
 
 		Assert.assertEquals(30,mesa.puntosEquipo(eq1)); //gana eq1
 
-		actual = mesa.siguiente(); //esto produce excepcion xq termino la partida y quiero seguir jugando
+		actual = mesa.siguienteJugadorConTurno(); //esto produce excepcion xq termino la partida y quiero seguir jugando
 	}
 
 	@Test
@@ -760,112 +760,112 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, anchoDeCopa, tresDeCopa)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, anchoDeOro, sotaDeBasto)));
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeCopa, cincoDeBasto, reyDeOro)));
 
 		//R1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarEnvido(); //j2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.cantarRealEnvido(); //j3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.quiero(); //j4
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(cuatroDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.cantarTruco(); //j4
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.quiero(); //j5
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(tresDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarCarta(dosDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		actual.jugarCarta(cuatroDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq2,mesa.ganadorDeLaRonda());
 		//R2
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeOro); //j2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(tresDeBasto); //j3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeCopa); //j4
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeOro); //j5
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeBasto); //j6
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.cantarQuieroReTruco(); //j1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.quiero(); //j2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeBasto); //j1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 		//R3
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.cantarQuieroValeCuatro();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.quiero();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(dosDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(tresDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarCarta(sotaDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		actual.jugarCarta(reyDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq2,mesa.ganadorDeLaRonda());
 
 		Assert.assertEquals(7,mesa.puntosEquipo(eq1));
@@ -884,80 +884,80 @@ public class SituacionesDeJuegoTest {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));//J1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));//J2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));//J3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, anchoDeCopa, tresDeCopa)));//J4
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, anchoDeOro, sotaDeBasto)));//J5
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeCopa, cincoDeBasto, reyDeOro)));//J6
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarEnvido();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarEnvido(); //j2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarRealEnvido(); //j3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.quiero(); //j4
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(sieteDeEspada); //j1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeEspada); //j2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cuatroDeOro); //j3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarTruco(); //j4
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.quiero(); //j5
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeOro); //j4
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(dosDeOro); //j5
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cuatroDeCopa); //j6
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		//R2
 		actual.jugarCarta(sieteDeOro); //j2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeBasto); //j3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeCopa); //j4
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeOro); //j5
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cincoDeBasto); //j6
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarQuieroReTruco(); //j1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.quiero(); //j2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeBasto); //j1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		//R3
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarQuieroValeCuatro();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.quiero();
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cincoDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(dosDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(sotaDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(reyDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 
 		Assert.assertEquals(7,mesa.puntosEquipo(eq1));
 		Assert.assertEquals(4,mesa.puntosEquipo(eq2));
@@ -967,99 +967,99 @@ public class SituacionesDeJuegoTest {
 
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada)));
 		Assert.assertEquals("j2",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(anchoDeEspada, sieteDeOro, cincoDeOro)));
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		//r1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeEspada);
 		//r2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarCarta(sieteDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeBasto);
 		//r3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		actual.jugarCarta(seisDeEspada);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeOro);
 
 		// jugador 2 gana un punto
 		// SEGUNDA RONDA DE PICA PICA
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeCopa, cincoDeBasto, reyDeOro)));
 		Assert.assertEquals("j3",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(tresDeOro, anchoDeCopa, tresDeCopa)));//J4
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		//r1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(cuatroDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeCopa);
 		//r2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j6",actual.obtenerNombre());
 		actual.jugarCarta(tresDeCopa);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
 		actual.jugarCarta(cincoDeBasto);
 
 		// termino la mano gano jugador 6 un punto
 
 		// TERCERA RONDA DE PICA PICA
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, anchoDeOro, sotaDeBasto)));
 		Assert.assertEquals("j4",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(cuatroDeOro, tresDeBasto, dosDeCopa)));
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		//r1
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(sotaDeBasto);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(dosDeCopa);
 		//r2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(cuatroDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(anchoDeOro);
 		//r3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
 		actual.jugarCarta(dosDeOro);
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
 		actual.jugarCarta(tresDeBasto);
 
 		//jugador 1 gana un punto
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j3",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j4",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j5",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j6",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
 		//demuestra que da la vuelta bien dsps del picapica
 		mesa.imprimirResultados();
@@ -1078,22 +1078,22 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//R1
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, anchoDeBasto, seisDeEspada)));
 		actual.jugarCarta(dosDeCopa);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, sieteDeOro, cincoDeOro)));
 		actual.jugarCarta(dosDeOro);
 
 		//R2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(anchoDeBasto);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(sieteDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 		
 		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
@@ -1110,28 +1110,28 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//R1
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, seisDeEspada)));
 		actual.jugarCarta(dosDeCopa);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cincoDeOro)));
 		actual.jugarCarta(dosDeOro);
 
 		//R2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeCopa);
 		//R3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(seisDeEspada);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cincoDeOro);
 		
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 		
 		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
@@ -1148,28 +1148,28 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//R1
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
 		actual.jugarCarta(dosDeCopa);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
 		actual.jugarCarta(dosDeOro);
 
 		//R2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeCopa);
 		//R3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cuatroDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cuatroDeCopa);
 		
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 		
 		Assert.assertEquals(1,mesa.puntosEquipo(eq1));
@@ -1186,25 +1186,25 @@ public class SituacionesDeJuegoTest {
 		mesa.iniciarRonda();
 
 		//R1
-		Jugador actual = mesa.siguiente();
+		Jugador actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
 		actual.jugarCarta(dosDeCopa);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
 		actual.jugarCarta(dosDeOro);
 
 		//R2
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(tresDeCopa);
 		//R3
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.jugarCarta(cuatroDeOro);
 
-		actual = mesa.siguiente();
+		actual = mesa.siguienteJugadorConTurno();
 		actual.irseAlMazo();
 		
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());

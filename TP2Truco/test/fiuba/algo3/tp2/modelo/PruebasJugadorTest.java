@@ -13,7 +13,7 @@ import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Humano;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class PruebaJugadorTest {
+public class PruebasJugadorTest {
 	
 	private Jugador unJugador;
 	public  Mesa mesa;

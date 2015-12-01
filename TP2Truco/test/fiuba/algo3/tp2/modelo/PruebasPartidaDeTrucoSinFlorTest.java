@@ -15,7 +15,7 @@ import fiuba.algo3.tp2.modeloDeCartas.SieteDeCopa;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeEspada;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class PartidaDeTrucoSinFlorTest {
+public class PruebasPartidaDeTrucoSinFlorTest {
 
 	public PartidaDeTrucoSinFlor partidaDeTruco;
 

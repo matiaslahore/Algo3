@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.tiposDeCanto;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public class ReTruco extends TiposDeCantoTruco{
+public class ReTruco extends CantosTruco{
 
 	public ReTruco(Equipo equipo) {
 		super(equipo);
@@ -20,7 +20,7 @@ public class ReTruco extends TiposDeCantoTruco{
 	}
 
 	@Override
-	public TiposDeCantoTruco cantar(Equipo equipo) throws EquipoQueCantaNoPuedeVolverACantarException {
+	public CantosTruco cantar(Equipo equipo) throws EquipoQueCantaNoPuedeVolverACantarException {
 		if(this.equipoQueCanta == equipo){
 			throw new EquipoQueCantaNoPuedeVolverACantarException();
 		}

@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.tiposDeCanto;
 
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public class EmpezarTruco extends TiposDeCantoTruco {
+public class EmpezarTruco extends CantosTruco {
 
 	public EmpezarTruco() {
 		super(null);

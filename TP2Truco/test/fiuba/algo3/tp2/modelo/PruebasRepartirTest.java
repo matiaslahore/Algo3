@@ -11,7 +11,7 @@ import org.junit.Test;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class RepartirTest {
+public class PruebasRepartirTest {
 	
 	Mesa mesa;
 	

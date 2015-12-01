@@ -34,7 +34,7 @@ public abstract class PartidaDeTruco {
 	}
 
 	public Jugador siguiente() {
-		return this.mesa.siguiente();
+		return this.mesa.siguienteJugadorConTurno();
 	}
 
 	public String ultimoGanador() {

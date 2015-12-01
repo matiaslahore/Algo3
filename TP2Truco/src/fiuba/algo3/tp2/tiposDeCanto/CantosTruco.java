@@ -4,14 +4,14 @@ import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public abstract class TiposDeCantoTruco {
+public abstract class CantosTruco {
 	Equipo equipoQueCanta;
 	
-	public TiposDeCantoTruco(Equipo equipo){
+	public CantosTruco(Equipo equipo){
 		equipoQueCanta = equipo;
 	}
 	
-	public abstract TiposDeCantoTruco cantar(Equipo equipo) throws EquipoQueCantaNoPuedeVolverACantarException, CantoInvalidoException;
+	public abstract CantosTruco cantar(Equipo equipo) throws EquipoQueCantaNoPuedeVolverACantarException, CantoInvalidoException;
 	
 	public abstract int quiso();
 	

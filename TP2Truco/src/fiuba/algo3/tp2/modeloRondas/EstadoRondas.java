@@ -21,7 +21,7 @@ public abstract class EstadoRondas{
 	int jugadorMano;
 	boolean sigue;
 	EstadoRondas refEstadoRonda;
-	TiposDeCantoTruco cantosTruco;
+	CantosTruco cantosTruco;
 
 	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
 		this.juez=juez;
@@ -116,7 +116,7 @@ public abstract class EstadoRondas{
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,faltaEnvido);
 	}
 
-	public void modificarCantoTruco(TiposDeCantoTruco estadoTruco) {
+	public void modificarCantoTruco(CantosTruco estadoTruco) {
 		this.cantosTruco = estadoTruco;
 	}
 

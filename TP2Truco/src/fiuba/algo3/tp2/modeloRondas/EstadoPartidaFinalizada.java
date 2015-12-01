@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
+import fiuba.algo3.tp2.tiposDeCanto.CantosTruco;
 
 public class EstadoPartidaFinalizada extends EstadoRondas{
 
@@ -73,7 +73,7 @@ public class EstadoPartidaFinalizada extends EstadoRondas{
 		throw new NoSePuedeSeguirJugandoExcepcion();
 	}
 
-	public void modificarCantoTruco(TiposDeCantoTruco estadoTruco) {
+	public void modificarCantoTruco(CantosTruco estadoTruco) {
 		finalizo();
 	}
 	

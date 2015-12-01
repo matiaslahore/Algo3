@@ -7,14 +7,14 @@ import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoFlor;
+import fiuba.algo3.tp2.tiposDeCanto.CantosFlor;
 
 public class EstadoRondaFlor extends EstadoRondas {
 	
-	private TiposDeCantoFlor cantosFlor;
+	private CantosFlor cantosFlor;
 
 	public EstadoRondaFlor(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, TiposDeCantoFlor tipoDeCanto) {
+			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, CantosFlor tipoDeCanto) {
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 		this.cantosFlor = tipoDeCanto;
 	}
@@ -62,7 +62,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 	
 	public EstadoRondas cantarContraFlor(Jugador jugador)throws CantoInvalidoException{
-		TiposDeCantoFlor unTipoDeFlor = null;
+		CantosFlor unTipoDeFlor = null;
 		try{
 			unTipoDeFlor = this.cantosFlor.cantarContraFlor(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
@@ -73,7 +73,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 	
 	public EstadoRondas cantarContraFlorAJuego(Jugador jugador) throws CantoInvalidoException {
-		TiposDeCantoFlor unTipoDeFlor = null;
+		CantosFlor unTipoDeFlor = null;
 		try{
 			unTipoDeFlor = this.cantosFlor.cantarContraFlorAJuego(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){

@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.tiposDeCanto;
 
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public class Envido extends TiposDeCantoEnvido{
+public class Envido extends CantosEnvido{
 	
 	public Envido(Equipo equipoQueCanta){
 		super(equipoQueCanta);

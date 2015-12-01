@@ -7,13 +7,13 @@ import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoEnvido;
+import fiuba.algo3.tp2.tiposDeCanto.CantosEnvido;
 
 public class EstadoRondaEnvido extends EstadoRondas{
 	
-	private TiposDeCantoEnvido cantosEnvido;
+	private CantosEnvido cantosEnvido;
 	
-	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, TiposDeCantoEnvido tipoDeCanto) {
+	public EstadoRondaEnvido(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano, CantosEnvido tipoDeCanto) {
 		
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 		this.cantosEnvido = tipoDeCanto;
@@ -70,7 +70,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	}
 	
 	public EstadoRondas cantarEnvido(Jugador jugador)throws CantoInvalidoException{
-		TiposDeCantoEnvido unTipoDeEnvido = null;
+		CantosEnvido unTipoDeEnvido = null;
 		try{
 			unTipoDeEnvido = this.cantosEnvido.cantarEnvido(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
@@ -81,7 +81,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	}
 	
 	public EstadoRondas cantarRealEnvido(Jugador jugador) throws CantoInvalidoException {
-		TiposDeCantoEnvido unTipoDeRealEnvido = null;
+		CantosEnvido unTipoDeRealEnvido = null;
 		try{
 			unTipoDeRealEnvido = this.cantosEnvido.cantarRealEnvido(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){
@@ -92,7 +92,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	}
 	
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador) throws CantoInvalidoException {
-		TiposDeCantoEnvido unTipoDeFaltaEnvido = null;
+		CantosEnvido unTipoDeFaltaEnvido = null;
 		try{
 			unTipoDeFaltaEnvido = this.cantosEnvido.cantarFaltaEnvido(jugador.obtenerEquipo());
 		}catch(CantoInvalidoException e){

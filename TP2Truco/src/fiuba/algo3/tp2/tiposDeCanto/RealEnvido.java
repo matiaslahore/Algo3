@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.tiposDeCanto;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public class RealEnvido extends TiposDeCantoEnvido{
+public class RealEnvido extends CantosEnvido{
 	
 	public RealEnvido(Equipo equipoQueCanta){
 		super(equipoQueCanta);

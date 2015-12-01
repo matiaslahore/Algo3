@@ -18,7 +18,7 @@ import fiuba.algo3.tp2.modeloDeCartas.SieteDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class PruebaSituacionesDeJuegoUnoVsUno {
+public class PruebasSituacionesDeJuegoUnoVsUno {
 
 	
 	private Mesa mesa;
@@ -42,7 +42,7 @@ public class PruebaSituacionesDeJuegoUnoVsUno {
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 		//R1
-		Jugador jugadorUno = mesa.siguiente();
+		Jugador jugadorUno = mesa.siguienteJugadorConTurno();
 		
 		System.out.println("Turno de: " + jugadorUno.obtenerNombre());
 		
@@ -58,7 +58,7 @@ public class PruebaSituacionesDeJuegoUnoVsUno {
 		jugadorUno.jugarCarta(seisDeEspada);
 		
 		// turno jugador dos
-		Jugador jugadorDos = mesa.siguiente();
+		Jugador jugadorDos = mesa.siguienteJugadorConTurno();
 		
 		System.out.println("Turno de: " + jugadorDos.obtenerNombre());
 		
@@ -75,26 +75,26 @@ public class PruebaSituacionesDeJuegoUnoVsUno {
 		jugadorDos.jugarCarta(sieteDeOro);
 		
 		// turno jugador uno
-		jugadorDos = mesa.siguiente();
+		jugadorDos = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq2,mesa.ganadorDeLaRonda());
 		//R2
 		System.out.println("Turno de: " + jugadorUno.obtenerNombre());
 		jugadorDos.jugarCarta(cincoDeOro);
 		
 		// turno jugador dos
-		jugadorUno = mesa.siguiente();
+		jugadorUno = mesa.siguienteJugadorConTurno();
 		System.out.println("Turno de: " + jugadorDos.obtenerNombre());
 		jugadorUno.jugarCarta(sieteDeEspada);
 		
 		// turno jugador uno
-		jugadorUno = mesa.siguiente();
+		jugadorUno = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(eq1,mesa.ganadorDeLaRonda());
 		//R3
 		System.out.println("Turno de: " + jugadorDos.obtenerNombre());
 		jugadorUno.jugarCarta(anchoDeBasto);
 		
 		// turno jugador dos
-		jugadorDos = mesa.siguiente();
+		jugadorDos = mesa.siguienteJugadorConTurno();
 		System.out.println("Turno de: " + jugadorDos.obtenerNombre());
 		jugadorDos.jugarCarta(anchoDeEspada);
 		

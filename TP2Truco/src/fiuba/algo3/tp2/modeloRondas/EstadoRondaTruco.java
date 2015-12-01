@@ -7,12 +7,12 @@ import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.tiposDeCanto.TiposDeCantoTruco;
+import fiuba.algo3.tp2.tiposDeCanto.CantosTruco;
 
 public class EstadoRondaTruco extends EstadoRondas{
 
 	public EstadoRondaTruco(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano,TiposDeCantoTruco estadoTruco) {
+			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano,CantosTruco estadoTruco) {
 		
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 		this.cantosTruco = estadoTruco;

@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.tiposDeCanto;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public class Truco extends TiposDeCantoTruco{
+public class Truco extends CantosTruco{
 	
 	public Truco(Equipo equipo) {
 		super(equipo);
