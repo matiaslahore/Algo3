@@ -189,6 +189,12 @@ public class Visualizador extends Application  {
 	        Button botonFaltaEnvido = new Button();
 	        botonFaltaEnvido.setText("Falta Envido");
 	        
+	        Button botonFlor = new Button();
+	        botonFlor.setText("Flor");
+	        
+	        Button botonFlorContraResto = new Button();
+	        botonFlorContraResto.setText("Flor X Resto");
+	        
 	        Button botonTruco = new Button();
 	        botonTruco.setText("Truco");
 	        
@@ -202,9 +208,11 @@ public class Visualizador extends Application  {
 	        botonIrseAlMazo.setText("Irse al Mazo");
 	        
             //contenedores de los botones
-	        HBox contenedorCantos = new HBox(50,botonEnvido,botonRealEnvido,botonFaltaEnvido,botonTruco);
+	           
+            HBox contenedorCantos = new HBox(40,botonEnvido,botonRealEnvido,botonFaltaEnvido,botonTruco);
 	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo,puntajeEquipo1,puntajeEquipo2);
-	        
+	        if (this.conFlor)
+	        	contenedorCantos.getChildren().addAll(botonFlor,botonFlorContraResto);
 	        
 	        //contenedor principal
 	        VBox contenedorPrincipal = new VBox(contenedorOpcion,contenedorCantos, etiqueta);
@@ -217,7 +225,6 @@ public class Visualizador extends Application  {
 	        //escenario de imagenes de la mesa 
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
-	        System.out.println(this.cantidadDeJugadores);
 	        for (int i=0; i<this.cantidadDeJugadores/2 ; i++)
 	        { 
 	            root = agregarDosJugadores(root, layoutY);
