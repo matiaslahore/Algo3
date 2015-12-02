@@ -8,7 +8,7 @@ public class CheckCantidadJugadores<MouseEvent> implements javafx.event.EventHan
 	CheckBox checkBoxjugadores2;
 	
 	public CheckCantidadJugadores (final int cantidadDadaDeJugadores, int cantidadDeJugadores, CheckBox checkBoxjugadores, CheckBox checkBoxjugadores2){
-		cantidadDeJugadores = cantidadDeJugadores;
+		cantidadDeJugadores = cantidadDadaDeJugadores;
 		this.checkBoxjugadores = checkBoxjugadores;
 		this.checkBoxjugadores2 = checkBoxjugadores2;
 	}
