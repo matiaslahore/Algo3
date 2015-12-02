@@ -4,7 +4,9 @@ package fiuba.algo3.tp2.vista;
 import java.util.List;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.modelo.ConFlor;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EstadoFlor;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -142,18 +144,18 @@ public class Visualizador extends Application  {
 		public Scene ventanaPrincipal(){
 	    	
 		    //PRUEBAS DE PARAMETROS
-		
+		    EstadoFlor estado = new ConFlor();
 			this.mesa = new Mesa();
 			Equipo equipo1= new Equipo("equipoUno",mesa);
 			Equipo equipo2=new Equipo("equipoDos",mesa);
 			equipo1.cargarJugadores("pablo");
 			equipo2.cargarJugadores("nico");
 			mesa.sentarJugadores(equipo1.obtenerJugadores(), equipo2.obtenerJugadores());
-			mesa.instanciarJuez(equipo1, equipo2);
+			mesa.instanciarJuez(equipo1, equipo2,estado);
 			mesa.iniciarRonda();
-			mesa.repartirCartas();
 			
-			
+			this.jugadores = new ListaCircular<ImageView>();
+			this.imagenesCarta=new ImagenesCarta();
 			
 			
 			//imagen de fondo de la mesa
@@ -162,7 +164,7 @@ public class Visualizador extends Application  {
 	        ImageView imagen = new ImageView();
 		    imagen.setImage(fondo);
 		    
-		    //estiqueta para mensajes
+		    //etiqueta para mensajes
 	        Label etiqueta = new Label();
 	        Label puntajeEquipo1 = new Label();
 	        String texto1=  equipo1.obtenerNombre()+": "+ mesa.puntosEquipo(equipo1)+ " PUNTOS";
@@ -180,7 +182,13 @@ public class Visualizador extends Application  {
 	        botonEnvido.setText("Envido");
 	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugadorE1, etiqueta);
 	        botonEnvido.setOnAction(botonEnvidoEventHandler);
-
+            
+	        Button botonRealEnvido = new Button();
+	        botonRealEnvido.setText("Real Envido");
+	        
+	        Button botonFaltaEnvido = new Button();
+	        botonFaltaEnvido.setText("Falta Envido");
+	        
 	        Button botonTruco = new Button();
 	        botonTruco.setText("Truco");
 	        
@@ -194,12 +202,12 @@ public class Visualizador extends Application  {
 	        botonIrseAlMazo.setText("Irse al Mazo");
 	        
             //contenedores de los botones
-	        HBox contenedorCantos = new HBox(50,botonEnvido,botonTruco,puntajeEquipo1,puntajeEquipo2);
-	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+	        HBox contenedorCantos = new HBox(50,botonEnvido,botonRealEnvido,botonFaltaEnvido,botonTruco);
+	        HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo,puntajeEquipo1,puntajeEquipo2);
 	        
 	        
 	        //contenedor principal
-	        VBox contenedorPrincipal = new VBox(contenedorCantos,contenedorOpcion, etiqueta);
+	        VBox contenedorPrincipal = new VBox(contenedorOpcion,contenedorCantos, etiqueta);
 	        contenedorPrincipal.setSpacing(8);
 	        contenedorPrincipal.setPadding(new Insets(20));
 	        
@@ -209,7 +217,7 @@ public class Visualizador extends Application  {
 	        //escenario de imagenes de la mesa 
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
-	        this.cantidadDeJugadores=6;
+	        this.cantidadDeJugadores=6; //quitar esto
 	        for (int i=0; i<this.cantidadDeJugadores/2 ; i++)
 	        { 
 	            root = agregarDosJugadores(root, layoutY);
@@ -217,7 +225,7 @@ public class Visualizador extends Application  {
 		    }
 	        
             root.getChildren().add(contenedorPrincipal);
-            this.jugadorTurnoActual(root, mesa);
+            this.jugadorTurnoActual(root, mesa); //quitar esto
             
             //dimensiones de la pantalla
 	        Scene scene = new Scene(root, 600, 800);
@@ -292,7 +300,6 @@ public class Visualizador extends Application  {
 	           // j2carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	            
 	            //lista de imagenes para darlas vuelta cuando sea el turno.
-	            this.jugadores = new ListaCircular<ImageView>();
 			    this.jugadores.add(j1carta1);
 			    this.jugadores.add(j1carta2);
 			    this.jugadores.add(j1carta3);
@@ -325,6 +332,5 @@ public class Visualizador extends Application  {
 		}
 }
 		
-	
 		
 	
