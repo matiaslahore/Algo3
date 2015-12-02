@@ -34,9 +34,10 @@ public class Visualizador extends Application  {
         private int index;
         private ImagenesCarta imagenesCarta;
         private Mesa mesa;
-        ArrayList<ImageView> jugadores;
         private int cantidadDeJugadores;
         private boolean conFlor;
+        private Group escena;
+        private ArrayList<ConjuntoCartas<ImageView>> listaJugadores; 
         
         public static void main(String[] args)
     	{
@@ -163,7 +164,8 @@ public class Visualizador extends Application  {
 			mesa.instanciarJuez(equipo1, equipo2,estado);
 			mesa.iniciarRonda();
 			
-			this.jugadores = new ArrayList<ImageView>();
+			this.index =-1;
+			this.listaJugadores= new ArrayList<ConjuntoCartas<ImageView>> ();
 			this.imagenesCarta=new ImagenesCarta();
 			
 			
@@ -232,25 +234,27 @@ public class Visualizador extends Application  {
 	        double layoutY=0;
 	        
 	        //escenario de imagenes de la mesa 
-	        Group root = new Group();
-	        root.getChildren().add(imagen); //carga el fondo
+	        this.escena = new Group();
+	        this.escena.getChildren().add(imagen); //carga el fondo
 	        //cantidad de jugadores que voy a poner en la mesa
+	        System.out.println(this.cantidadDeJugadores + " es la cantidad e jugadores");//PRUEBA
 	        for (int i=0; i<this.cantidadDeJugadores/2 ; i++)
 	        { 
-	            root = agregarDosJugadores(root, layoutY);
+	            this.escena = agregarDosJugadores(this.escena, layoutY);
 	            layoutY+=200;
 		    }
 	        
-            root.getChildren().add(contenedorPrincipal);
-            this.jugadorTurnoActual(root, mesa); //quitar esto
+            this.escena.getChildren().add(contenedorPrincipal); //agregue botones sin las cartas
+            this.jugadorTurnoActual(mesa); //quitar esto  // agrega las cartas
             
             //dimensiones de la pantalla
-	        Scene scene = new Scene(root, 600, 800);
+	        Scene scene = new Scene(this.escena, 600, 800);
 	        
 	        return scene;
 	    }
 	    	
 		public Group agregarDosJugadores (Group root, double layoutY){
+			
 			
 			layoutY+= 80; 
 			double layoutXIzq= 80;
@@ -317,30 +321,38 @@ public class Visualizador extends Application  {
 	           // j2carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	            
 	            //lista de imagenes para darlas vuelta cuando sea el turno.
-			    this.jugadores.add(j1carta1);
-			    this.jugadores.add(j1carta2);
-			    this.jugadores.add(j1carta3);
-			    this.jugadores.add(j2carta1);
-			    this.jugadores.add(j2carta2);
-			    this.jugadores.add(j2carta3);
+	            ConjuntoCartas<ImageView> listaJug1 = new ConjuntoCartas<ImageView>();
+	            listaJug1.add(j1carta1);
+	            listaJug1.add(j1carta2);
+	            listaJug1.add(j1carta3);
+	            
+	            ConjuntoCartas<ImageView> listaJug2 = new ConjuntoCartas<ImageView>();
+	            listaJug2.add(j2carta1);
+	            listaJug2.add(j2carta2);
+	            listaJug2.add(j2carta3);
+	            
+	            this.listaJugadores.add(listaJug1);
+	            this.listaJugadores.add(listaJug2);
+	            
 			    
 	            root.getChildren().addAll(j1carta1,j1carta2,j1carta3,j2carta1,j2carta2,j2carta3);
             return root;
 		}
 
-		public Group jugadorTurnoActual (Group root,Mesa mesa){
+		public void jugadorTurnoActual (Mesa mesa){
 		      
+		      this.index+=1;
 			  Jugador jugadorActual = mesa.siguienteJugadorConTurno();
 			  List<Carta> cartas= jugadorActual.obtenerCartasDelJugador().obtenerCartas();
+			  System.out.println(jugadorActual.cantidadDeCartas()+"es la cantidad de cartas");
 			  for (int i=0; i<jugadorActual.cantidadDeCartas(); i++){
 				  String nombre= cartas.get(i).cartaComoString();
 				  String direccion = this.buscarImagen(nombre);
 				  Image imagen = new Image(direccion);
-				  ImageView view = this.jugadores.get(i);
+				  ImageView view = this.listaJugadores.get(index).get(i);
 			      view.setImage(imagen);
 			  }
 			 
-			return root;
 		}
 		
 		public void tirarCarta (ImageView carta, double posicion){
