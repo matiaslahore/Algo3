@@ -85,6 +85,7 @@ public class Visualizador extends Application  {
 	    	
 	    	//LABELS
 	    	Label lbCantJugadores = new Label(" 1 - Seleccione la cantidad de jugadores");
+	    	Label lbjugarContraIA = new Label(" 1.1 - Jugar contra la computadora");
 	    	Label lbFlor = new Label(" 2 - ¿Jugar con Flor?");
 	    	
 	    	//BOTON Jugar
@@ -92,7 +93,7 @@ public class Visualizador extends Application  {
 	    	botonJugar.setText("Jugar");
 	    	
 	    	//AGREGAR check y labels a VBoxs
-	    	checkCantidadJugadores.getChildren().addAll(lbCantJugadores,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores,checkBoxJugarConIA);
+	    	checkCantidadJugadores.getChildren().addAll(lbCantJugadores,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores,lbjugarContraIA,checkBoxJugarConIA);
 	        checkFlor.getChildren().addAll(lbFlor,checkBoxFlor);
 	        boxJugar.getChildren().add(botonJugar);
 	       
