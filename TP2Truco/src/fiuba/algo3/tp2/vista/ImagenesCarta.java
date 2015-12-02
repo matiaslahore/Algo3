@@ -8,8 +8,8 @@ import java.util.Map;
 public class ImagenesCarta {
 	
 	private Map<String,String> cartas;
-	
-	public ImagenesCarta(){
+
+	public void ImagenesCarta(){
 		
 		this.cartas = new HashMap<String,String>();
 		//copas
