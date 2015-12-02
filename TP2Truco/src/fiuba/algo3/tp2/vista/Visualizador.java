@@ -217,7 +217,7 @@ public class Visualizador extends Application  {
 	        //escenario de imagenes de la mesa 
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
-	        this.cantidadDeJugadores=6; //quitar esto
+	        System.out.println(this.cantidadDeJugadores);
 	        for (int i=0; i<this.cantidadDeJugadores/2 ; i++)
 	        { 
 	            root = agregarDosJugadores(root, layoutY);
@@ -256,8 +256,8 @@ public class Visualizador extends Application  {
 	            j2carta1.setLayoutX(layoutXDer);
 	            j2carta1.setLayoutY(layoutY);
 	            j2carta1.setRotate(90);
-	           // carta = jugador.obtenerCartasDelJugador().obtenerCartas().get(0);
-	            //j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(mesa,jugador,carta,layoutXDer-100,j2carta1));
+	           // Carta carta = jugador.obtenerCartasDelJugador().obtenerCartas().get(0);
+	           // j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(mesa,jugador,carta,layoutXDer-100,j2carta1));
 	          
 	            layoutY+=60;
 	            
@@ -326,8 +326,11 @@ public class Visualizador extends Application  {
 			return root;
 		}
 		
+		public void tirarCarta (ImageView carta, double posicion){
+			
+		}
+		
 		public String buscarImagen (String nombre){
-			System.out.println(nombre);
 			return this.imagenesCarta.obtenerDireccionDeCarta(nombre);
 		}
 }
