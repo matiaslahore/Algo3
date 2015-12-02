@@ -4,7 +4,7 @@ package fiuba.algo3.tp2.vista;
 import java.util.List;
 
 import fiuba.algo3.colecciones.ListaCircular;
-import fiuba.algo3.tp2.modelo.ConFlor;
+import fiuba.algo3.tp2.modelo.EstadoConFlor;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.EstadoFlor;
 import fiuba.algo3.tp2.modelo.Mesa;
@@ -144,7 +144,7 @@ public class Visualizador extends Application  {
 		public Scene ventanaPrincipal(){
 	    	
 		    //PRUEBAS DE PARAMETROS
-		    EstadoFlor estado = new ConFlor();
+		    EstadoFlor estado = new EstadoConFlor();
 			this.mesa = new Mesa();
 			Equipo equipo1= new Equipo("equipoUno",mesa);
 			Equipo equipo2=new Equipo("equipoDos",mesa);

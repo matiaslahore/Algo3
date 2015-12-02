@@ -63,7 +63,7 @@ public class PruebasSituacionesDeJuegoConFlor {
 		mesa = new Mesa();
 		eq1 = new Equipo("eq1", mesa);
 		eq2 = new Equipo("eq2", mesa);
-		mesa.instanciarJuez(eq1, eq2, new ConFlor());
+		mesa.instanciarJuez(eq1, eq2, new EstadoConFlor());
 	}
 	
 	
