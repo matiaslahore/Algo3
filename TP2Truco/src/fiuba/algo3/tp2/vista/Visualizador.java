@@ -25,6 +25,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Visualizador extends Application  {
@@ -60,20 +61,30 @@ public class Visualizador extends Application  {
 	    }
 	    
 	    private Scene obtenerOpcionesDeJuego(Stage stage) {
-	    	//VBOXJugadores
-	    	VBox checkCantidadJugadores = new VBox();
-	        checkCantidadJugadores.setSpacing(5);
-	        checkCantidadJugadores.setPadding(new Insets(10));
+	    	//VBOXGeneral
+	    	VBox vBoxGeneral = new VBox();
+	    	vBoxGeneral.setSpacing(5);
+	    	vBoxGeneral.setPadding(new Insets(10));
 	    	
-	        //VBOXFlor
+	    	//HBOXBinvenida
+	    	HBox hBoxBienvenida = new HBox();
+	    	hBoxBienvenida.setSpacing(5);
+	    	hBoxBienvenida.setPadding(new Insets(10));
+	    	
+	    	//HBOXCantidadJugadores
+	    	VBox checkCantidadJugadores = new VBox();
+	    	checkCantidadJugadores.setSpacing(5);
+	    	checkCantidadJugadores.setPadding(new Insets(10));
+	    	
+	        //HBOXFlor
 	    	VBox checkFlor = new VBox();
 	    	checkFlor.setSpacing(5);
 	    	checkFlor.setPadding(new Insets(10));
 	    	
-	    	//VBoxJugar
-	    	VBox boxJugar = new VBox();
-	    	boxJugar.setSpacing(1);
-	    	boxJugar.setPadding(new Insets(50));
+	    	//HBoxJugar
+	    	HBox boxJugar = new HBox();
+	    	boxJugar.setSpacing(20);
+	    	boxJugar.setPadding(new Insets(20));
 	    	
 		    //CHECHBOX
 	        CheckBox checkBox2jugadores = new CheckBox("2 Jugadores");
@@ -84,8 +95,7 @@ public class Visualizador extends Application  {
 	    	
 	    	//LABELS
 	    	Label lbBienvenido = new Label(" Bienvenido a Fon Truco ");
-	    	lbBienvenido.setUnderline(true);
-	    	lbBienvenido.setPadding(new Insets(20));
+	    	lbBienvenido.setFont(new Font("Arial", 22));
 	    	Label lbCantJugadores = new Label(" 1 - Seleccione la cantidad de jugadores");
 	    	Label lbjugarContraIA = new Label(" 1.1 - Jugar contra la computadora");
 	    	Label lbFlor = new Label(" 2 - ¿Jugar con Flor?");
@@ -94,10 +104,14 @@ public class Visualizador extends Application  {
 	    	Button botonJugar = new Button();
 	    	botonJugar.setText("Jugar");
 	    	
-	    	//AGREGAR check y labels a VBoxs
-	    	checkCantidadJugadores.getChildren().addAll(lbBienvenido,lbCantJugadores,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores,lbjugarContraIA,checkBoxJugarConIA);
+	    	//AGREGAR check y labels a HBoxs
+	    	hBoxBienvenida.getChildren().add(lbBienvenido);
+	    	checkCantidadJugadores.getChildren().addAll(lbCantJugadores,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores,lbjugarContraIA,checkBoxJugarConIA);
 	        checkFlor.getChildren().addAll(lbFlor,checkBoxFlor);
 	        boxJugar.getChildren().add(botonJugar);
+	        
+	        //Agragar los HBox a los VBox
+	        vBoxGeneral.getChildren().addAll(hBoxBienvenida,checkCantidadJugadores,checkFlor,boxJugar);
 	       
 	        //HANDLERS
 	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2,this,checkBox4jugadores,checkBox6jugadores));
@@ -110,9 +124,8 @@ public class Visualizador extends Application  {
 	    	//SCENE
 	    	FlowPane root = new FlowPane();
 	        root.setHgap(20);
-	        root.getChildren().addAll(checkCantidadJugadores,checkFlor);
-	        root.getChildren().add(boxJugar);
-	        Scene scene = new Scene(root, 340, 350);
+	        root.getChildren().add(vBoxGeneral);
+	        Scene scene = new Scene(root, 400, 400);
 	        
 	    	scene.getStylesheets().add("fiuba/algo3/tp2/vista/myEstilo.css");
 	    	
