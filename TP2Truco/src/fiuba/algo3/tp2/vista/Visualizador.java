@@ -61,11 +61,6 @@ public class Visualizador extends Application  {
 	    }
 	    
 	    private Scene obtenerOpcionesDeJuego(Stage stage) {
-	    	//VLablesCantJugadores
-	        VBox labelCantJugadores = new VBox();
-	        labelCantJugadores.setSpacing(10);
-	        labelCantJugadores.setPadding(new Insets(10));
-	    	
 	    	//VBOXJugadores
 	    	VBox checkCantidadJugadores = new VBox();
 	        checkCantidadJugadores.setSpacing(10);
@@ -76,53 +71,49 @@ public class Visualizador extends Application  {
 	    	checkFlor.setSpacing(10);
 	    	checkFlor.setPadding(new Insets(10));
 	    	
-	        //VLablesFlor
-	        VBox labelFlor = new VBox();
-	        labelFlor.setSpacing(10);
-	        labelFlor.setPadding(new Insets(10));
-	       
+	    	//VBoxJugar
+	    	VBox boxJugar = new VBox();
+	    	boxJugar.setSpacing(30);
+	    	boxJugar.setPadding(new Insets(40));
+	    	
 		    //CHECHBOX
 	        CheckBox checkBox2jugadores = new CheckBox("2 Jugadores");
 	    	CheckBox checkBox4jugadores = new CheckBox("4 Jugadores");
 	    	CheckBox checkBox6jugadores = new CheckBox("6 Jugadores");
+	    	CheckBox checkBoxJugarConIA = new CheckBox("Jugar con IA");
 	    	CheckBox checkBoxFlor = new CheckBox("Jugar con Flor");
 	    	
 	    	//LABELS
 	    	Label lbCantJugadores = new Label(" 1 - Seleccione la cantidad de jugadores");
 	    	Label lbFlor = new Label(" 2 - ¿Jugar con Flor?");
 	    	
-	    	//AGREGAR check y labels a VBoxs
-	        checkCantidadJugadores.getChildren().addAll(checkBox2jugadores, checkBox4jugadores, checkBox6jugadores);
-	        labelCantJugadores.getChildren().add(lbCantJugadores);
-	        checkFlor.getChildren().add(checkBoxFlor);
-	        labelFlor.getChildren().add(lbFlor);
-	        
-	        //BOTON Jugar
+	    	//BOTON Jugar
 	    	Button botonJugar = new Button();
 	    	botonJugar.setText("Jugar");
-	    	HBox contenedorBotonJugar = new HBox(50,botonJugar);
-	    	VBox boxJugar = new VBox(contenedorBotonJugar);
-	    	boxJugar.setSpacing(0);
-	    	boxJugar.setPadding(new Insets(50));
 	    	
+	    	//AGREGAR check y labels a VBoxs
+	    	checkCantidadJugadores.getChildren().addAll(lbCantJugadores,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores,checkBoxJugarConIA);
+	        checkFlor.getChildren().addAll(lbFlor,checkBoxFlor);
+	        boxJugar.getChildren().add(botonJugar);
+	       
 	    	//SCENE
 	    	FlowPane root = new FlowPane();
 	        root.setHgap(20);
-	        root.getChildren().addAll(labelCantJugadores, checkCantidadJugadores);
-	        root.getChildren().addAll(labelFlor, checkFlor);    
-	        root.getChildren().add(boxJugar);
+	        root.getChildren().addAll(checkCantidadJugadores,checkFlor,boxJugar);
 	        Scene scene = new Scene(root, 340, 350);
 	        
 	        //HANDLERS
 	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2,this,checkBox4jugadores,checkBox6jugadores));
 	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4,this,checkBox2jugadores,checkBox6jugadores));
 	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6,this,checkBox2jugadores,checkBox4jugadores));
+	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConIA<MouseEvent>(this,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores));
 	     	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>(this));
 	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(this,stage));
 	        
 	    	scene.getStylesheets().add("fiuba/algo3/tp2/vista/myEstilo.css");
 	    	
 	        return scene;
+	        
 	        
 		}
 
