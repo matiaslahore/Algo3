@@ -111,9 +111,9 @@ public class Visualizador extends Application  {
 	        Scene scene = new Scene(root, 340, 350);
 	        
 	        //HANDLERS
-	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2));
-	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4));
-	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6));
+	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2,this.cantidadDeJugadores,checkBox4jugadores,checkBox6jugadores));
+	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4,this.cantidadDeJugadores,checkBox2jugadores,checkBox6jugadores));
+	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6,this.cantidadDeJugadores,checkBox2jugadores,checkBox4jugadores));
 	    	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>());
 	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(this,stage));
 	        

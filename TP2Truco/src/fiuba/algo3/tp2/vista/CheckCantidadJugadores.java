@@ -1,18 +1,21 @@
 package fiuba.algo3.tp2.vista;
 
 import javafx.event.Event;
-import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 
 public class CheckCantidadJugadores<MouseEvent> implements javafx.event.EventHandler {
-	private int cantidadDeJugadores;
+	CheckBox checkBoxjugadores;
+	CheckBox checkBoxjugadores2;
 	
-	public CheckCantidadJugadores (int cantidadDeJugadores){
-		this.cantidadDeJugadores = cantidadDeJugadores;
+	public CheckCantidadJugadores (final int cantidadDadaDeJugadores, int cantidadDeJugadores, CheckBox checkBoxjugadores, CheckBox checkBoxjugadores2){
+		cantidadDeJugadores = cantidadDeJugadores;
+		this.checkBoxjugadores = checkBoxjugadores;
+		this.checkBoxjugadores2 = checkBoxjugadores2;
 	}
 	
 	@Override
 	public void handle(Event evento) {
-         return;	
+	    this.checkBoxjugadores.setSelected(false);
+	    this.checkBoxjugadores2.setSelected(false);
 	}
-
 }
