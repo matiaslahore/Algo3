@@ -116,7 +116,7 @@ public class Visualizador extends Application  {
 	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2,this,checkBox4jugadores,checkBox6jugadores));
 	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4,this,checkBox2jugadores,checkBox6jugadores));
 	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6,this,checkBox2jugadores,checkBox4jugadores));
-	     	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>(this.conFlor));
+	     	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>(this));
 	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(this,stage));
 	        
 	    	scene.getStylesheets().add("fiuba/algo3/tp2/vista/myEstilo.css");
@@ -334,8 +334,12 @@ public class Visualizador extends Application  {
 			return this.imagenesCarta.obtenerDireccionDeCarta(nombre);
 		}
 		
-		public void cargarCantidadJugadores (final int cantidad){
+		public void cargarCantidadJugadores (int cantidad){
 			this.cantidadDeJugadores= cantidad;
+		}
+		
+		public void jugarConFlor (boolean jugarConFlor){
+			this.conFlor = jugarConFlor;
 		}
 }
 		
