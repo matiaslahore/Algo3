@@ -114,7 +114,7 @@ public class Visualizador extends Application  {
 	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2,this.cantidadDeJugadores,checkBox4jugadores,checkBox6jugadores));
 	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4,this.cantidadDeJugadores,checkBox2jugadores,checkBox6jugadores));
 	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6,this.cantidadDeJugadores,checkBox2jugadores,checkBox4jugadores));
-	    	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>());
+	     	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>(this.conFlor));
 	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(this,stage));
 	        
 	    	scene.getStylesheets().add("fiuba/algo3/tp2/vista/myEstilo.css");

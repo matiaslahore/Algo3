@@ -6,13 +6,13 @@ import javafx.scene.Scene;
 public class CheckJugarConFlor<MouseEvent> implements javafx.event.EventHandler {
 	private boolean jugarConFlor;
 	
-	public CheckJugarConFlor (){
-		this.jugarConFlor = true;
+	public CheckJugarConFlor (boolean flor){
+		this.jugarConFlor = flor;
 	}
 	
 	@Override
 	public void handle(Event evento) {
-         return;	
+         this.jugarConFlor = true;
 	}
 
 }
