@@ -333,6 +333,10 @@ public class Visualizador extends Application  {
 		public String buscarImagen (String nombre){
 			return this.imagenesCarta.obtenerDireccionDeCarta(nombre);
 		}
+		
+		public void cargarCantidadJugadores (int cantidad){
+			this.cantidadDeJugadores= cantidad;
+		}
 }
 		
 		
