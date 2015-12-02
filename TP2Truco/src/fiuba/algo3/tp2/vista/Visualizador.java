@@ -315,7 +315,7 @@ public class Visualizador extends Application  {
 		      
 			  Jugador jugadorActual = mesa.siguienteJugadorConTurno();
 			  List<Carta> cartas= jugadorActual.obtenerCartasDelJugador().obtenerCartas();
-			  for (int i=0; i<jugadorActual.cantidadDeCartas(); i++){
+			  for (int i=0; i<jugadorActual.cantidadDeCartas()-1; i++){
 				  String nombre= cartas.get(i).cartaComoString();
 				  String direccion = this.buscarImagen(nombre);
 				  Image imagen = new Image(direccion);
