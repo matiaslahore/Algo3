@@ -9,7 +9,7 @@ public class ImagenesCarta {
 	
 	private Map<String,String> cartas;
 	
-	public void ImaganesCarta(){
+	public ImagenesCarta(){
 		
 		this.cartas = new HashMap<String,String>();
 		//copas

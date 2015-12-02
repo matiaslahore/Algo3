@@ -7,7 +7,7 @@ import fiuba.algo3.tp2.vista.ImagenesCarta;
 
 public class ImagenesCartaTest {
       
-	ImagenesCarta imagenesCarta= new ImagenesCarta();
+	ImagenesCarta imagenesCarta = new ImagenesCarta();
 	
 	@Test
 	public void pruebaTodosLosNombresDeCartas(){
