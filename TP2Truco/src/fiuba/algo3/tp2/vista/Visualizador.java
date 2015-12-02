@@ -96,25 +96,23 @@ public class Visualizador extends Application  {
 	        checkFlor.getChildren().addAll(lbFlor,checkBoxFlor);
 	        boxJugar.getChildren().add(botonJugar);
 	       
+	        //HANDLERS
+	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2,this,checkBox4jugadores,checkBox6jugadores));
+	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4,this,checkBox2jugadores,checkBox6jugadores));
+	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6,this,checkBox2jugadores,checkBox4jugadores));
+	     	checkBoxJugarConIA.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConIA<MouseEvent>(this,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores));
+	     	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>(this));
+	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(this,stage));
+	        
 	    	//SCENE
 	    	FlowPane root = new FlowPane();
 	        root.setHgap(20);
 	        root.getChildren().addAll(checkCantidadJugadores,checkFlor,boxJugar);
 	        Scene scene = new Scene(root, 340, 350);
 	        
-	        //HANDLERS
-	    	checkBox2jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(2,this,checkBox4jugadores,checkBox6jugadores));
-	    	checkBox4jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(4,this,checkBox2jugadores,checkBox6jugadores));
-	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckCantidadJugadores<MouseEvent>(6,this,checkBox2jugadores,checkBox4jugadores));
-	     	checkBox6jugadores.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConIA<MouseEvent>(this,checkBox2jugadores,checkBox4jugadores,checkBox6jugadores));
-	     	checkBoxFlor.addEventHandler(MouseEvent.MOUSE_CLICKED, new CheckJugarConFlor<MouseEvent>(this));
-	    	botonJugar.addEventHandler(MouseEvent.MOUSE_CLICKED, new BotonEmpezarJuegoEventHandler<MouseEvent>(this,stage));
-	        
 	    	scene.getStylesheets().add("fiuba/algo3/tp2/vista/myEstilo.css");
 	    	
 	        return scene;
-	        
-	        
 		}
 
 

@@ -16,7 +16,7 @@ public class CheckJugarConIA<MouseEvent> implements javafx.event.EventHandler {
 		this.cantidadJugadores = 2;
 		this.checkBoxjugadores = checkBoxjugadores;
 		this.checkBoxjugadores2 = checkBoxjugadores2;
-		this.checkBoxjugadores2 = checkBoxjugadores3;
+		this.checkBoxjugadores3 = checkBoxjugadores3;
 	}
 	
 	@Override
