@@ -228,6 +228,7 @@ public class Visualizador extends Application  {
 	        //escenario de imagenes de la mesa 
 	        Group root = new Group();
 	        root.getChildren().add(imagen); //carga el fondo
+	        //cantidad de jugadores que voy a poner en la mesa
 	        for (int i=0; i<this.cantidadDeJugadores/2 ; i++)
 	        { 
 	            root = agregarDosJugadores(root, layoutY);
@@ -325,7 +326,7 @@ public class Visualizador extends Application  {
 		      
 			  Jugador jugadorActual = mesa.siguienteJugadorConTurno();
 			  List<Carta> cartas= jugadorActual.obtenerCartasDelJugador().obtenerCartas();
-			  for (int i=0; i<jugadorActual.cantidadDeCartas()-1; i++){
+			  for (int i=0; i<jugadorActual.cantidadDeCartas(); i++){
 				  String nombre= cartas.get(i).cartaComoString();
 				  String direccion = this.buscarImagen(nombre);
 				  Image imagen = new Image(direccion);
