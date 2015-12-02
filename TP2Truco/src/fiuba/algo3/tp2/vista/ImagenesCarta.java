@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.vista;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +8,7 @@ public class ImagenesCarta {
 	
 	private Map<String,String> cartas;
 
-	public void ImagenesCarta(){
+	public ImagenesCarta(){
 		
 		this.cartas = new HashMap<String,String>();
 		//copas
