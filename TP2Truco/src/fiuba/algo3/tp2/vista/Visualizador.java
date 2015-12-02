@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.colecciones.ListaCircular;
@@ -29,11 +30,11 @@ import javafx.stage.Stage;
 
 public class Visualizador extends Application  {
 	
-        private Jugador jugadorE1;
-        private Jugador jugadorE2;
+        private Jugador jugador;
+        private int index;
         private ImagenesCarta imagenesCarta;
         private Mesa mesa;
-        ListaCircular<ImageView> jugadores;
+        ArrayList<ImageView> jugadores;
         private int cantidadDeJugadores;
         private boolean conFlor;
         
@@ -148,13 +149,15 @@ public class Visualizador extends Application  {
 			this.mesa = new Mesa();
 			Equipo equipo1= new Equipo("equipoUno",mesa);
 			Equipo equipo2=new Equipo("equipoDos",mesa);
-			equipo1.cargarJugadores("pablo");
-			equipo2.cargarJugadores("nico");
+			for (int i=0; i<this.cantidadDeJugadores/2;i++){
+			   equipo1.cargarJugadores("pablo");
+			   equipo2.cargarJugadores("nico");
+			}
 			mesa.sentarJugadores(equipo1.obtenerJugadores(), equipo2.obtenerJugadores());
 			mesa.instanciarJuez(equipo1, equipo2,estado);
 			mesa.iniciarRonda();
 			
-			this.jugadores = new ListaCircular<ImageView>();
+			this.jugadores = new ArrayList<ImageView>();
 			this.imagenesCarta=new ImagenesCarta();
 			
 			
@@ -180,7 +183,7 @@ public class Visualizador extends Application  {
             //botones de opciones para el jugador actual.
 	        Button botonEnvido = new Button();
 	        botonEnvido.setText("Envido");
-	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugadorE1, etiqueta);
+	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador, etiqueta);
 	        botonEnvido.setOnAction(botonEnvidoEventHandler);
             
 	        Button botonRealEnvido = new Button();
