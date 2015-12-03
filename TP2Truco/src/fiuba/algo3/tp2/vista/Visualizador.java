@@ -62,7 +62,7 @@ public class Visualizador extends Application  {
 	    	lista1.add("Pablo");
 	    	this.partida.cargarJugadoresEnEquipoUno(lista1);
 	    	ArrayList<String> lista2 = new ArrayList<String> ();
-	    	lista2.add("Pablo");
+	    	lista2.add("Nico");
 	    	this.partida.cargarJugadoresEnEquipoDos(lista2);
 	    	this.partida.iniciar();
 	    	
@@ -340,15 +340,18 @@ public class Visualizador extends Application  {
 		}
 
 		public void jugadorTurnoActual (){
+			
+			  //calculos internos al visualizador
 		      this.siguienteJugador(); //avanza el index del jugador que toca
 		      System.out.println(this.index + " es el numero de la lista");
-		      double espacioAColocar = 200;
+		      double espacioAColocar = 200; // pone la carta sobre la izq
 		      if (index%2!=0)
-		    	 espacioAColocar = 300; 
+		    	 espacioAColocar = 300; // pone la carta sobre la derecha 
+		      
+		      // recopilo cartas del jugador en turno.
 		      ConjuntoCartas<ImageView> conjuntoCartas = new ConjuntoCartas<ImageView>();
 		      conjuntoCartas= this.listaJugadores.get(index);
 			  List<Carta> cartas= this.partida.cartasDelJugadorConTurno();
-			  System.out.println(cartas.size()+"es la cantidad de cartas");
 			  for (int i=0; i<cartas.size(); i++){
 				  Carta carta = cartas.get(i);
 				  String nombre= cartas.get(i).cartaComoString();
@@ -357,7 +360,7 @@ public class Visualizador extends Application  {
 				  Image imagen = new Image(direccion);
 				  ImageView view = this.listaJugadores.get(index).get(i);
 			      view.setImage(imagen);
-			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,this.cartasEnMesa,conjuntoCartas,carta,view,espacioAColocar));
+			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this,this.partida,this.cartasEnMesa,conjuntoCartas,carta,view,espacioAColocar));
 			  }
 			 
 		}
@@ -372,11 +375,12 @@ public class Visualizador extends Application  {
 				
 		}
 		
-		public void siguienteJugador (){
+		private void siguienteJugador (){
 			if(this.index < this.cantidadDeJugadores-1)
 				this.index++;
 			else
 				this.index=0;
+			System.out.println(this.index+ " numero de index");
 		}
 		
 		public void resetearEscena (){

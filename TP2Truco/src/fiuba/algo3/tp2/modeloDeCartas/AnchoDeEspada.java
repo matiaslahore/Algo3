@@ -285,6 +285,6 @@ public class AnchoDeEspada implements Carta {
 	
 	@Override
 	public String cartaComoString() {
-		return "Ancho De Espada";
+		return "Uno De Espada";
 	}	
 }

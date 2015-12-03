@@ -20,14 +20,16 @@ public class TirarCartaEventHandler<MouseEvent> implements javafx.event.EventHan
 	private PartidaDeTruco partida;
 	private ConjuntoCartas<ImageView> conjuntoCartas;
 	private ConjuntoCartas<ImageView> cartasEnMesa;
+	private Visualizador visual;
 	
-	public TirarCartaEventHandler (PartidaDeTruco partida,ConjuntoCartas<ImageView> cartasEnMesa,ConjuntoCartas<ImageView> conjuntoCartas, Carta carta, ImageView imagen, double layout){
+	public TirarCartaEventHandler (Visualizador visual, PartidaDeTruco partida,ConjuntoCartas<ImageView> cartasEnMesa,ConjuntoCartas<ImageView> conjuntoCartas, Carta carta, ImageView imagen, double layout){
 	    this.partida= partida;
 		this.imagen= imagen;
 		this.layoutX = layout;
 		this.carta = carta; 
 		this.conjuntoCartas = conjuntoCartas; 
 		this.cartasEnMesa= cartasEnMesa;
+		this.visual = visual;
 	}
 	
 	@Override
@@ -37,6 +39,7 @@ public class TirarCartaEventHandler<MouseEvent> implements javafx.event.EventHan
          this.partida.jugarCarta(this.carta);
          this.cartasEnMesa.add(imagen);
          this.borrarCarta();
+         this.visual.jugarProximo();
          evento.consume();
        
 	}
