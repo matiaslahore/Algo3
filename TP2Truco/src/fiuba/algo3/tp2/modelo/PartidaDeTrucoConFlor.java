@@ -8,4 +8,22 @@ public class PartidaDeTrucoConFlor extends PartidaDeTruco{
 		this.mesa.instanciarJuez(equipoUno, equipoDos, new EstadoSinFlor());
 	}
 
+	@Override
+	public void cantarFlor() {
+		this.jugadorTurnoActual.cantarFlor();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+
+	@Override
+	public void cantarContraFlor() {
+		this.jugadorTurnoActual.cantarContraFlor();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+
+	@Override
+	public void cantarContraFlorAJuego() {
+		this.jugadorTurnoActual.cantarContraFlorAJuego();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+
 }

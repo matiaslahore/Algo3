@@ -48,8 +48,12 @@ public abstract class PartidaDeTruco {
 		return this.mesa.ganadorDeLaRonda().obtenerNombre();
 	}
 	
-	public int obtenerPuntajeDeEquipo(String equipo) {
-		return this.mesa.puntosEquipo(equipo);
+	public int obtenerPuntajeDeEquipoUno() {
+		return this.mesa.puntosEquipo(equipoUno);
+	}
+	
+	public int obtenerPuntajeDeEquipoDos() {
+		return this.mesa.puntosEquipo(equipoDos);
 	}
 	
 	public void verCartasDelJugadorConTurno() {
@@ -64,5 +68,56 @@ public abstract class PartidaDeTruco {
 		this.jugadorTurnoActual.jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
+	
+	public void cantarTruco() {
+		this.jugadorTurnoActual.cantarTruco();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void cantarQuieroReTruco() {
+		this.jugadorTurnoActual.cantarQuieroReTruco();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void cantarQuieroValeCuatro() {
+		this.jugadorTurnoActual.cantarQuieroValeCuatro();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void cantarEnvido() {
+		this.jugadorTurnoActual.cantarEnvido();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void cantarRealEnvido() {
+		this.jugadorTurnoActual.cantarRealEnvido();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void cantarFaltaEnvido() {
+		this.jugadorTurnoActual.cantarFaltaEnvido();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void irseAlMazo(){
+		this.jugadorTurnoActual.irseAlMazo();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void quiero(){
+		this.jugadorTurnoActual.quiero();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+
+	public void noQuiero(){
+		this.jugadorTurnoActual.noQuiero();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public abstract void cantarFlor();
+	
+	public abstract void cantarContraFlor();
+	
+	public abstract void cantarContraFlorAJuego();
 	
 }
