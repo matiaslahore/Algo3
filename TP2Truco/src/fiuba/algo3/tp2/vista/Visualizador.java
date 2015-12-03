@@ -339,6 +339,8 @@ public class Visualizador extends Application  {
 		public void jugadorTurnoActual (Mesa mesa){
 		      double espacioAColocar = 200;
 		      this.index+=1;
+		      ConjuntoCartas<ImageView> conjuntoCartas = new ConjuntoCartas<ImageView>();
+		      conjuntoCartas= this.listaJugadores.get(index);
 			  List<Carta> cartas= this.partida.cartasDelJugadorConTurno();
 			  System.out.println(cartas.size()+"es la cantidad de cartas");
 			  for (int i=0; i<cartas.size(); i++){
@@ -349,7 +351,7 @@ public class Visualizador extends Application  {
 				  Image imagen = new Image(direccion);
 				  ImageView view = this.listaJugadores.get(index).get(i);
 			      view.setImage(imagen);
-			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,cartas,carta,view,espacioAColocar));
+			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,conjuntoCartas,carta,view,espacioAColocar));
 			  }
 			 
 		}
