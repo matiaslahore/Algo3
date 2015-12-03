@@ -22,7 +22,7 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent actionEvent){
 		try{
 		this.partida.cantarTruco();
-		} catch (CantoInvalidoException FaltaEnvidoError){
+		} catch (CantoInvalidoException TrucoError){
 			etiqueta.setText("NO PUEDE CANTAR TRUCO");
 	        etiqueta.setTextFill(Color.web("#FF0000"));
 		}
