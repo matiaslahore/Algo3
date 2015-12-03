@@ -8,6 +8,7 @@ import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.event.Event;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class TirarCartaEventHandler<MouseEvent> implements javafx.event.EventHandler {
@@ -16,24 +17,31 @@ public class TirarCartaEventHandler<MouseEvent> implements javafx.event.EventHan
 	private double layoutX;
 	private ImageView imagen;
 	private PartidaDeTruco partida;
-	private List<Carta> cartas;
+	private ConjuntoCartas<ImageView> conjuntoCartas;
 	
-	public TirarCartaEventHandler (PartidaDeTruco partida,List<Carta> cartas, Carta carta, ImageView imagen, double layout){
+	public TirarCartaEventHandler (PartidaDeTruco partida,ConjuntoCartas<ImageView> conjuntoCartas, Carta carta, ImageView imagen, double layout){
 	    this.partida= partida;
 		this.imagen= imagen;
 		this.layoutX = layout;
 		this.carta = carta; 
-		this.cartas = cartas;
+		this.conjuntoCartas = conjuntoCartas; 
 	}
 	
 	@Override
 	public void handle(Event evento) {	
          this.imagen.setLayoutX(this.layoutX);
+         this.esconderCartas();
        
 	}
 	
 	public void esconderCartas (){
-		
+		String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
+		Image reverso = new Image(direccionReverso);
+		for (int i=0; i<this.conjuntoCartas.size(); i++){
+			if (this.conjuntoCartas.get(i)!= this.imagen)
+				this.conjuntoCartas.get(i).setImage(reverso);
+		}
+			
 	}
 
 }
