@@ -17,11 +17,12 @@ public class BotonValeCuatroEventHandler implements EventHandler<ActionEvent>{
 	private Stage stageMesa;
 
 	//constructor
-	public BotonValeCuatroEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa){
+	public BotonValeCuatroEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa, Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.stageJugador = stageJugador;
 		this.stageMesa = stageMesa;
+		this.etiqueta= etiqueta;
 	}
 	
 	@Override

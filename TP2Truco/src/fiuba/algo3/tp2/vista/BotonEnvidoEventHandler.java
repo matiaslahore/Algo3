@@ -18,11 +18,12 @@ public class BotonEnvidoEventHandler implements EventHandler<ActionEvent>{
 	private Stage stageMesa;
 	
 	//constructor
-	public BotonEnvidoEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa){
+	public BotonEnvidoEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa, Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.stageJugador = stageJugador;
 		this.stageMesa = stageMesa;
+		this.etiqueta= etiqueta;
 	}
 	
 	@Override

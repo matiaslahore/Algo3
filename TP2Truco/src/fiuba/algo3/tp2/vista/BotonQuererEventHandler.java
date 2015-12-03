@@ -21,11 +21,12 @@ public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 	private Stage stageMesa;
 
 	//constructor
-	public BotonQuererEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa){
+	public BotonQuererEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa, Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.stageJugador = stageJugador;
 		this.stageMesa = stageMesa;
+		this.etiqueta= etiqueta;
 	}
 
 	@Override

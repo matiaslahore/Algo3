@@ -170,7 +170,7 @@ public class Visualizador extends Application  {
 		//botones de opciones para el jugador actual.
 		Button botonEnvido = new Button();
 		botonEnvido.setText("Envido");
-		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa,etiqueta);
 		botonEnvido.setOnAction(botonEnvidoEventHandler);
 
 		Button botonRealEnvido = new Button();
@@ -195,22 +195,22 @@ public class Visualizador extends Application  {
 
 		Button botonTruco = new Button();
 		botonTruco.setText("Truco");
-		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa,etiqueta);
         botonTruco.setOnAction(botonTrucoEventHandler);
         
         Button botonReTruco = new Button();
 		botonReTruco.setText("ReTruco");
-		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa,etiqueta);
         botonReTruco.setOnAction(botonReTrucoEventHandler);
         
         Button botonValeCuatro = new Button();
 		botonValeCuatro.setText("Vale Cuatro");
-		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa,etiqueta);
         botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
 		
 		Button botonQuerer = new Button();
 		botonQuerer.setText("Querer");
-		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa,etiqueta);
 		botonQuerer.setOnAction(botonQuererEventHandler);
 
 		Button botonNoQuerer = new Button();
@@ -220,7 +220,7 @@ public class Visualizador extends Application  {
 
 		Button botonIrseAlMazo = new Button();
 		botonIrseAlMazo.setText("Irse al Mazo");
-		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa, etiqueta);
 		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
 		
 		
@@ -383,62 +383,7 @@ public class Visualizador extends Application  {
 		puntajeEquipo2.setTextFill(Color.web("#FFBB11"));
 		puntajeEquipo2.setPrefSize(120, 10);
 
-		//botones de opciones para el jugador actual.
-		Button botonEnvido = new Button();
-		botonEnvido.setText("Envido");
-		//BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, etiqueta);
-		//botonEnvido.setOnAction(botonEnvidoEventHandler);
-
-		Button botonRealEnvido = new Button();
-		botonRealEnvido.setText("Real Envido");
-		BotonRealEnvidoEventHandler botonRealEnvidoEventHandler = new BotonRealEnvidoEventHandler(this.partida, etiqueta);
-		botonRealEnvido.setOnAction(botonRealEnvidoEventHandler);
-
-		Button botonFaltaEnvido = new Button();
-		botonFaltaEnvido.setText("Falta Envido");
-		BotonFaltaEnvidoEventHandler botonFaltaEnvidoEventHandler = new BotonFaltaEnvidoEventHandler(this.partida, etiqueta);
-		botonFaltaEnvido.setOnAction(botonFaltaEnvidoEventHandler);
-
-		Button botonFlor = new Button();
-		botonFlor.setText("Flor");
-		BotonFlorEventHandler botonFlorEventHandler = new BotonFlorEventHandler(this.partida, etiqueta);
-		botonFlor.setOnAction(botonFlorEventHandler);
-
-		Button botonFlorContraResto = new Button();
-		botonFlorContraResto.setText("Flor X Resto");
-		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, etiqueta);
-		botonFlorContraResto.setOnAction(botonFlorContraRestoEventHandler);
-
-		Button botonTruco = new Button();
-		botonTruco.setText("Truco");
-
-		Button botonQuerer = new Button();
-		botonQuerer.setText("Querer");
-		//BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, etiqueta);
-		//botonQuerer.setOnAction(botonQuererEventHandler);
-
-		Button botonNoQuerer = new Button();
-		botonNoQuerer.setText("No Querer");
-		BotonNoQuererEventHandler botonNoQuererEventHandler = new BotonNoQuererEventHandler(this.partida, etiqueta);
-		botonNoQuerer.setOnAction(botonNoQuererEventHandler);
-
-		Button botonIrseAlMazo = new Button();
-		botonIrseAlMazo.setText("Irse al Mazo");
-		//BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this, stage,this.partida, etiqueta);
-		//botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
-
-		//contenedores de los botones
-
-		HBox contenedorCantos = new HBox(40,botonEnvido,botonRealEnvido,botonFaltaEnvido,botonTruco);
-		HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo,puntajeEquipo1,puntajeEquipo2);
-		if (this.conFlor)
-			contenedorCantos.getChildren().addAll(botonFlor,botonFlorContraResto);
-
-		//contenedor principal
-		VBox contenedorPrincipal = new VBox(contenedorOpcion,contenedorCantos, etiqueta);
-		contenedorPrincipal.setSpacing(8);
-		contenedorPrincipal.setPadding(new Insets(20));
-
+		
 		//Variable de posicionemiento de las cartas
 		double layoutY=0;
 
@@ -451,8 +396,6 @@ public class Visualizador extends Application  {
 			this.escena = agregarDosJugadores(this.escena, layoutY);
 			layoutY+=200;
 		}
-
-		this.escena.getChildren().add(contenedorPrincipal); //agregue botones sin las cartas
 
 		//dimensiones de la pantalla
 		Scene scene = new Scene(this.escena, 600, 800);

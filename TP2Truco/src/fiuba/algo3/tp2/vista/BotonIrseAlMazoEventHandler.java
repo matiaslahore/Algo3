@@ -17,13 +17,15 @@ public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
 	private Visualizador visual;
 	private Stage stageJugador;
 	private Stage stageMesa;
+	private Label etiqueta;
 	
 	//constructor
-	public BotonIrseAlMazoEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa){
+	public BotonIrseAlMazoEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa,Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.stageJugador = stageJugador;
 		this.stageMesa = stageMesa;
+		this.etiqueta= etiqueta;
 	}
 	
 	@Override
@@ -31,8 +33,9 @@ public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
         try{
     	  this.partida.irseAlMazo();
     		} catch (CantoInvalidoException IrseAlMazoError){
-    			
+    			etiqueta.setText("NO DEBERIA APARECER NUNCA");
     		}
+            etiqueta.setText("ME VOY AL MAZO!");
     		Scene scene = this.visual.cargarSceneDelJugador();
             this.stageJugador.setScene(scene);
             
