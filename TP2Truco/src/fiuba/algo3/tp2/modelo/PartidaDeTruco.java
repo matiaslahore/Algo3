@@ -56,6 +56,14 @@ public abstract class PartidaDeTruco {
 		return this.mesa.puntosEquipo(equipoDos);
 	}
 	
+	public String obtenerNombreDeEquipoUno() {
+		return this.equipoUno.obtenerNombre();
+	}
+	
+	public String obtenerNombreDeEquipoDos() {
+		return this.equipoDos.obtenerNombre();
+	}
+	
 	public void verCartasDelJugadorConTurno() {
 		this.jugadorTurnoActual.mostrarCartas();
 	}
