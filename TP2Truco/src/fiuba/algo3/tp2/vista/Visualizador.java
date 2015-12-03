@@ -199,12 +199,12 @@ public class Visualizador extends Application  {
         botonTruco.setOnAction(botonTrucoEventHandler);
         
         Button botonReTruco = new Button();
-		botonReTruco.setText("Truco");
+		botonReTruco.setText("ReTruco");
 		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
         botonReTruco.setOnAction(botonReTrucoEventHandler);
         
         Button botonValeCuatro = new Button();
-		botonValeCuatro.setText("Truco");
+		botonValeCuatro.setText("Vale Cuatro");
 		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
         botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
 		
