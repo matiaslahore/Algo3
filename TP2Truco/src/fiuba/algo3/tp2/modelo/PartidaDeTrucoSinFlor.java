@@ -7,7 +7,7 @@ public class PartidaDeTrucoSinFlor extends PartidaDeTruco{
 	public PartidaDeTrucoSinFlor(String nombreEq1, String nombreEq2) {
 		super(nombreEq1, nombreEq2);
 		
-		this.mesa.instanciarJuez(equipoUno,equipoDos, new EstadoSinFlor());
+		this.mesa.instanciarJuez(equipoUno,equipoDos);
 	}
 
 	@Override

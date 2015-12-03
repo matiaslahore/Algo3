@@ -31,8 +31,8 @@ public class Mesa {
 		indexMano = 0;
 	}
 
-	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos, EstadoFlor estadoFlor){
-		juez = new Juez(this, equipoUno, equipoDos, estadoFlor);
+	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos){
+		juez = new Juez(this, equipoUno, equipoDos);
 	}
 
 	public void iniciarRonda(){
@@ -118,7 +118,6 @@ public class Mesa {
 	}
 
 	public void cantarFlor(Jugador jugador) {
-		this.juez.seCantoFlor();
 		this.ronda = this.ronda.cantarFlor(jugador);
 	}
 

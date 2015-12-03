@@ -18,14 +18,12 @@ public class Juez {
 	int puntosEnJuego;
 	boolean activadorPicaPica = false;
 	int cantidadJugadas = 1;
-	EstadoFlor estadoFlor;
 	
-	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos, EstadoFlor estadoFlor){
+	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos){
 		this.maso = new Maso();
 		this.mesa = mesa;
 		this.puntosEnJuego = 1;
 		this.puntos = new Puntos(equipoUno, equipoDos);
-		this.estadoFlor = estadoFlor;
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuego(){
@@ -132,9 +130,5 @@ public class Juez {
 
 	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
 		return this.mesa.hayOtroEquipoConFlor(equipoQueCanta);
-	}
-
-	public void seCantoFlor() {
-		this.estadoFlor.seCantoFlor();
 	}
 }
