@@ -170,7 +170,7 @@ public class Visualizador extends Application  {
 		//botones de opciones para el jugador actual.
 		Button botonEnvido = new Button();
 		botonEnvido.setText("Envido");
-		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, etiqueta);
+		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
 		botonEnvido.setOnAction(botonEnvidoEventHandler);
 
 		Button botonRealEnvido = new Button();
@@ -198,7 +198,7 @@ public class Visualizador extends Application  {
 
 		Button botonQuerer = new Button();
 		botonQuerer.setText("Querer");
-		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, etiqueta);
+		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
 		botonQuerer.setOnAction(botonQuererEventHandler);
 
 		Button botonNoQuerer = new Button();
@@ -208,7 +208,7 @@ public class Visualizador extends Application  {
 
 		Button botonIrseAlMazo = new Button();
 		botonIrseAlMazo.setText("Irse al Mazo");
-		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this, stage,this.partida, etiqueta);
+		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
 		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
 
 		//contenedores de los botones
@@ -372,8 +372,8 @@ public class Visualizador extends Application  {
 		//botones de opciones para el jugador actual.
 		Button botonEnvido = new Button();
 		botonEnvido.setText("Envido");
-		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, etiqueta);
-		botonEnvido.setOnAction(botonEnvidoEventHandler);
+		//BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, etiqueta);
+		//botonEnvido.setOnAction(botonEnvidoEventHandler);
 
 		Button botonRealEnvido = new Button();
 		botonRealEnvido.setText("Real Envido");
@@ -400,8 +400,8 @@ public class Visualizador extends Application  {
 
 		Button botonQuerer = new Button();
 		botonQuerer.setText("Querer");
-		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, etiqueta);
-		botonQuerer.setOnAction(botonQuererEventHandler);
+		//BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, etiqueta);
+		//botonQuerer.setOnAction(botonQuererEventHandler);
 
 		Button botonNoQuerer = new Button();
 		botonNoQuerer.setText("No Querer");
@@ -410,8 +410,8 @@ public class Visualizador extends Application  {
 
 		Button botonIrseAlMazo = new Button();
 		botonIrseAlMazo.setText("Irse al Mazo");
-		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this, stage,this.partida, etiqueta);
-		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
+		//BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this, stage,this.partida, etiqueta);
+		//botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
 
 		//contenedores de los botones
 

@@ -14,16 +14,16 @@ import javafx.stage.Stage;
 public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
 	
 	private PartidaDeTruco partida;
-	private Label etiqueta;
 	private Visualizador visual;
-	private Stage stage;
+	private Stage stageJugador;
+	private Stage stageMesa;
 	
 	//constructor
-	public BotonIrseAlMazoEventHandler (Visualizador visual, Stage stage, PartidaDeTruco partida, Label etiqueta){
+	public BotonIrseAlMazoEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa){
 		this.partida= partida;
-		this.etiqueta= etiqueta;
 		this.visual = visual;
-		this.stage = stage;
+		this.stageJugador = stageJugador;
+		this.stageMesa = stageMesa;
 	}
 	
 	@Override
@@ -31,15 +31,13 @@ public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
         try{
     	  this.partida.irseAlMazo();
     		} catch (CantoInvalidoException IrseAlMazoError){
-    			etiqueta.setText("NO DEBERIA TIRAR EXCEPCION");
-    	        etiqueta.setTextFill(Color.web("#FF0000"));
+    			
     		}
-    		etiqueta.setText("ME VOY AL MAZO!");
-            etiqueta.setTextFill(Color.web("#008000"));
+    		Scene scene = this.visual.cargarSceneDelJugador();
+            this.stageJugador.setScene(scene);
             
-            //esto no va aca pero para probar
-            Scene scene= this.visual.ventanaPrincipal(stage);
-            this.stage.setScene(scene);
+            Scene sceneMesa = this.visual.cargarSceneDeLaMesa();
+            this.stageMesa.setScene(sceneMesa);
 	}
 
 }
