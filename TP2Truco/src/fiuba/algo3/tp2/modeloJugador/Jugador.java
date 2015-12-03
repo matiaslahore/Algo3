@@ -55,8 +55,8 @@ public abstract class Jugador {
 		return this.manoDelJugador.verCartasEnManoComoString();
 	}
 	
-	public Mano obtenerCartasDelJugador(){
-		return this.manoDelJugador;
+	public List<Carta> obtenerCartasDelJugador(){
+		return this.manoDelJugador.obtenerCartas();
 	}
 	
 	public int cantidadDeCartas() {
@@ -125,6 +125,10 @@ public abstract class Jugador {
 
 	public boolean tieneFlor() {
 		return this.manoDelJugador.tieneFlor();
+	}
+
+	public void mostrarCartas() {
+		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
 	}
 	
 }

@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.List;
+
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class PartidaDeTruco {
@@ -8,6 +11,7 @@ public abstract class PartidaDeTruco {
 	Equipo equipoUno;
 	Equipo equipoDos;
 	Mesa mesa;
+	Jugador jugadorTurnoActual;
 	
 	public PartidaDeTruco(String nombreEq1, String nombreEq2){
 		this.mesa = new Mesa();
@@ -15,9 +19,16 @@ public abstract class PartidaDeTruco {
 		this.equipoDos = new Equipo(nombreEq2, mesa);
 	}
 	
-	public abstract void cargarJugadoresEnEquipoUno(String jugadorUno);
+	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
+		this.equipoUno.cargarJugadores(nombreJugadores);
+	}
+	public void cargarJugadoresEnEquipoDos(List<String> nombreJugadores) {
+		this.equipoDos.cargarJugadores(nombreJugadores);
+	}
 	
-	public abstract void cargarJugadoresEnEquipoDos(String jugadorUno);
+	public void sentarJugadores() {
+		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoDos.obtenerJugadores());
+	}
 	
 	public Equipo obtenerEquipo(String nombreDelEquipo){
 		
@@ -27,13 +38,10 @@ public abstract class PartidaDeTruco {
 		return equipoDos;
 	}
 
-	public void iniciarRonda() {
+	public void iniciar() {
 		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(), equipoDos.obtenerJugadores());
 		this.mesa.iniciarRonda();
-	}
-
-	public Jugador siguiente() {
-		return this.mesa.siguienteJugadorConTurno();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 
 	public String ultimoGanador() {
@@ -43,4 +51,18 @@ public abstract class PartidaDeTruco {
 	public int obtenerPuntajeDeEquipo(String equipo) {
 		return this.mesa.puntosEquipo(equipo);
 	}
+	
+	public void verCartasDelJugadorConTurno() {
+		this.jugadorTurnoActual.mostrarCartas();
+	}
+	
+	public List<Carta> cartasDelJugadorConTurno() {
+		return this.jugadorTurnoActual.obtenerCartasDelJugador();
+	}
+	
+	public void jugarCarta(Carta carta) {
+		this.jugadorTurnoActual.jugarCarta(carta);
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
 }

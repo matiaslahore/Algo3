@@ -1,7 +1,12 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
+import fiuba.algo3.tp2.excepciones.ErrorCargaDeJugadoresException;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Humano;
 import fiuba.algo3.tp2.modeloJugador.IA;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -21,6 +26,17 @@ public class Equipo {
 	public void cargarJugadores(String nombre) {
 		Jugador newJugador = new Humano(nombre,refMesa,this);
 		jugadores.add(newJugador);
+	}
+	
+	public void cargarJugadores(List<String> nombreJugadores) {
+		if (!this.jugadores.isEmpty()) throw new ErrorCargaDeJugadoresException();
+		//excepcion xq quiere cargar mas de una vez en un mismo equipo
+		Iterator<String> itr = nombreJugadores.iterator();
+
+		while(itr.hasNext()) {
+			Jugador newJugador = new Humano((String) itr.next(),refMesa,this);
+			jugadores.add(newJugador);
+		}
 	}
 	
 	public void cargarJugadorIA(String nombre) {

@@ -8,16 +8,4 @@ public class PartidaDeTrucoConFlor extends PartidaDeTruco{
 		this.mesa.instanciarJuez(equipoUno, equipoDos, new EstadoSinFlor());
 	}
 
-	@Override
-	public void cargarJugadoresEnEquipoUno(String nombre) {
-		this.equipoUno.cargarJugadores(nombre);
-	}
-	public void cargarJugadoresEnEquipoDos(String nombre) {
-		this.equipoDos.cargarJugadores(nombre);
-	}
-
-	public void sentarJugadores() {
-		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoDos.obtenerJugadores());
-	}
-
 }

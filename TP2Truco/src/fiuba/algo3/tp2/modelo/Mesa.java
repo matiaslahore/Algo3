@@ -8,7 +8,6 @@ import java.util.List;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.excepciones.NoSeEncontroJugadorConFlorException;
 import fiuba.algo3.tp2.excepciones.TodabiaNoFinalizoLaRondaException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
@@ -24,9 +23,6 @@ public class Mesa {
 	Puntos puntos;
 	EstadoRondas ronda;
 	int indexMano;
-	//Truco truco;
-	//Envido envido;
-
 
 	public Mesa(){
 		jugadores = new ListaCircular<Jugador>();
@@ -35,8 +31,6 @@ public class Mesa {
 		indexMano = 0;
 	}
 
-
-	//por que no puede estar en el constructor esto ????? 
 	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos, EstadoFlor estadoFlor){
 		juez = new Juez(this, equipoUno, equipoDos, estadoFlor);
 	}
