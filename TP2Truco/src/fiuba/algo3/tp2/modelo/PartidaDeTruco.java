@@ -22,6 +22,7 @@ public abstract class PartidaDeTruco {
 	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
 		this.equipoUno.cargarJugadores(nombreJugadores);
 	}
+	
 	public void cargarJugadoresEnEquipoDos(List<String> nombreJugadores) {
 		this.equipoDos.cargarJugadores(nombreJugadores);
 	}
