@@ -2,10 +2,8 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
-import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
@@ -25,12 +23,11 @@ public class BotonEnvidoEventHandler implements EventHandler<ActionEvent>{
 		try{
 		this.partida.cantarEnvido();
 		} catch (CantoInvalidoException envidoError){
-			
+			etiqueta.setText("NO PUEDE CANTAR ENVIDO");
+	        etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		finally{
-			 etiqueta.setText("NO PUEDE CANTAR ENVIDO");
-	         etiqueta.setTextFill(Color.web("#FF0000"));
-		}
+		etiqueta.setText("RONDA EN ESTADO: ENVIDO");
+        etiqueta.setTextFill(Color.web("#FF0000"));
 	}
 
 }

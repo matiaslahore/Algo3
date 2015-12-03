@@ -3,14 +3,11 @@ package fiuba.algo3.tp2.vista;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoSinFlor;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -347,6 +344,7 @@ public class Visualizador extends Application  {
 			  for (int i=0; i<cartas.size(); i++){
 				  Carta carta = cartas.get(i);
 				  String nombre= cartas.get(i).cartaComoString();
+				  System.out.println(nombre); // quitar
 				  String direccion = this.buscarImagen(nombre);
 				  Image imagen = new Image(direccion);
 				  ImageView view = this.listaJugadores.get(index).get(i);
