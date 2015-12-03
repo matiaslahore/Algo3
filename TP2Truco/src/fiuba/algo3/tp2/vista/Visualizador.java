@@ -195,7 +195,19 @@ public class Visualizador extends Application  {
 
 		Button botonTruco = new Button();
 		botonTruco.setText("Truco");
-
+		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+        botonTruco.setOnAction(botonTrucoEventHandler);
+        
+        Button botonReTruco = new Button();
+		botonReTruco.setText("Truco");
+		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+        botonReTruco.setOnAction(botonReTrucoEventHandler);
+        
+        Button botonValeCuatro = new Button();
+		botonValeCuatro.setText("Truco");
+		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
+        botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
+		
 		Button botonQuerer = new Button();
 		botonQuerer.setText("Querer");
 		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
@@ -210,12 +222,14 @@ public class Visualizador extends Application  {
 		botonIrseAlMazo.setText("Irse al Mazo");
 		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa);
 		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
+		
+		
 
 		//contenedores de los botones
-		HBox contenedorCantos = new HBox(40,botonEnvido,botonRealEnvido,botonFaltaEnvido,botonTruco);
+		HBox contenedorCantos = new HBox(35,botonEnvido,botonRealEnvido,botonFaltaEnvido,botonTruco,botonReTruco,botonValeCuatro);
 		HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		if (this.conFlor)
-			contenedorCantos.getChildren().addAll(botonFlor,botonFlorContraResto);
+			contenedorOpcion.getChildren().addAll(botonFlor,botonFlorContraResto);
 
 		VBox contenedorBotones = new VBox(contenedorOpcion,contenedorCantos, etiqueta);
 		contenedorBotones.setSpacing(8);

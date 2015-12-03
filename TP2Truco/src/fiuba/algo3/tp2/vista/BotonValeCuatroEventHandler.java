@@ -6,16 +6,22 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class BotonValeCuatroEventHandler implements EventHandler<ActionEvent>{
 	
 	private PartidaDeTruco partida;
 	private Label etiqueta;
-	
+	private Visualizador visual;
+	private Stage stageJugador;
+	private Stage stageMesa;
+
 	//constructor
-	public BotonValeCuatroEventHandler (PartidaDeTruco partida, Label etiqueta){
-		this.partida=partida;
-		this.etiqueta = etiqueta;
+	public BotonValeCuatroEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa){
+		this.partida= partida;
+		this.visual = visual;
+		this.stageJugador = stageJugador;
+		this.stageMesa = stageMesa;
 	}
 	
 	@Override
