@@ -443,8 +443,6 @@ public class Visualizador extends Application  {
 		//dimensiones de la pantalla
 		Scene scene = new Scene(this.escena, 600, 800);
 
-		//HAY QUE BUSCARLE OTRO LUGAR 
-		this.jugarProximo();
 
 		return scene;
 	}
