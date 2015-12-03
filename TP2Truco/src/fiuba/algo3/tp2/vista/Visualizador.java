@@ -53,6 +53,7 @@ public class Visualizador extends Application  {
 		stage.show();
 	}
 
+	@SuppressWarnings("unchecked")
 	private Scene obtenerOpcionesDeJuego(Stage stage) {
 		//VBOXGeneral
 		VBox vBoxGeneral = new VBox();
@@ -284,26 +285,26 @@ public class Visualizador extends Application  {
 		return scene;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Group agregarCartasEnJuego(){
 		Group root = new Group();
 		double layoutX = 80;
+		double layoutY = 120;
 		
 		List<Carta> listaCartasJugador = this.partida.cartasEnJuego();
 		
 		Iterator<Carta> itr = listaCartasJugador.iterator();
 		while(itr.hasNext()) {
-			Carta carta = (Carta) itr.next();
 			
+			Carta carta = (Carta) itr.next();
 			Image imgCarta = new Image(this.imagenesCarta.obtenerDireccionDeCarta(carta.cartaComoString()));
 			ImageView cartaComoImagen = new ImageView();
 			cartaComoImagen.setImage(imgCarta);
 			cartaComoImagen.setFitHeight(150);
 			cartaComoImagen.setFitWidth(110);
 			cartaComoImagen.setLayoutX(layoutX);
-			cartaComoImagen.setLayoutY(120);
+			cartaComoImagen.setLayoutY(layoutY);
 			
-			layoutX += 150;
+			layoutX += 50;
 			
 			root.getChildren().add(cartaComoImagen);
 		}
@@ -506,6 +507,7 @@ public class Visualizador extends Application  {
 	}
 
 	//METODO IMPORTANTE  SE LLAMA CADA VEZ Q COMIENZA EL TURNO DE UN JUGADOR
+	@SuppressWarnings("unchecked")
 	public void jugadorTurnoActual (){
 
 		//calculos internos al visualizador

@@ -153,6 +153,10 @@ public class Mesa {
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuegoDeRondaActual() {
+		return this.cartasEnJuegoRondaActual;
+	}
+	
+	public List<Carta> obtenerListaDeCartasJugadas() {
 		return this.cartasJugadas;
 	}
 
