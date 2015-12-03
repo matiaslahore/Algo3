@@ -9,7 +9,6 @@ import java.util.List;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.NoSeEncontroJugadorConFlorException;
-import fiuba.algo3.tp2.excepciones.TodabiaNoFinalizoLaRondaException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.*;
