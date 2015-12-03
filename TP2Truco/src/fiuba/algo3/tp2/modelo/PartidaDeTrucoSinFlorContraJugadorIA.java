@@ -10,6 +10,8 @@ public class PartidaDeTrucoSinFlorContraJugadorIA extends PartidaDeTruco {
 
 	public PartidaDeTrucoSinFlorContraJugadorIA(String nombreEq1, String nombreEq2) {
 		super(nombreEq1, nombreEq2);
+		
+		this.mesa.instanciarJuez(equipoUno,equipoDos);
 		this.equipoUno.cargarJugadorIA("JugadorIA");
 	}
 	
