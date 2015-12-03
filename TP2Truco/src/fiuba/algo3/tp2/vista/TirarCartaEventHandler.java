@@ -34,13 +34,12 @@ public class TirarCartaEventHandler<MouseEvent> implements javafx.event.EventHan
 	
 	@Override
 	public void handle(Event evento) {	
-         this.imagen.setLayoutX(this.layoutX);
-         this.esconderCartas();
-         this.partida.jugarCarta(this.carta);
+         this.imagen.setLayoutX(this.layoutX); //posiciona la carta
+         this.esconderCartas();               // las pone de reverso
+         this.partida.jugarCarta(this.carta); 
          this.cartasEnMesa.add(imagen);
          this.borrarCarta();
          this.visual.jugarProximo();
-         evento.consume();
        
 	}
 	

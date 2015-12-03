@@ -204,15 +204,23 @@ public class Visualizador extends Application  {
             
 	        Button botonRealEnvido = new Button();
 	        botonRealEnvido.setText("Real Envido");
+	        BotonRealEnvidoEventHandler botonRealEnvidoEventHandler = new BotonRealEnvidoEventHandler(this.partida, etiqueta);
+	        botonRealEnvido.setOnAction(botonRealEnvidoEventHandler);
 	        
 	        Button botonFaltaEnvido = new Button();
 	        botonFaltaEnvido.setText("Falta Envido");
+	        BotonFaltaEnvidoEventHandler botonFaltaEnvidoEventHandler = new BotonFaltaEnvidoEventHandler(this.partida, etiqueta);
+	        botonFaltaEnvido.setOnAction(botonFaltaEnvidoEventHandler);
 	        
 	        Button botonFlor = new Button();
 	        botonFlor.setText("Flor");
+	        BotonFlorEventHandler botonFlorEventHandler = new BotonFlorEventHandler(this.partida, etiqueta);
+	        botonFlor.setOnAction(botonFlorEventHandler);
 	        
 	        Button botonFlorContraResto = new Button();
 	        botonFlorContraResto.setText("Flor X Resto");
+	        BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, etiqueta);
+	        botonFlorContraResto.setOnAction(botonFlorContraRestoEventHandler);
 	        
 	        Button botonTruco = new Button();
 	        botonTruco.setText("Truco");
@@ -220,12 +228,17 @@ public class Visualizador extends Application  {
 	        Button botonQuerer = new Button();
 	        botonQuerer.setText("Querer");
 	        BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, etiqueta);
+	        botonQuerer.setOnAction(botonQuererEventHandler);
 	        
 	        Button botonNoQuerer = new Button();
 	        botonNoQuerer.setText("No Querer");
+	        BotonNoQuererEventHandler botonNoQuererEventHandler = new BotonNoQuererEventHandler(this.partida, etiqueta);
+	        botonNoQuerer.setOnAction(botonNoQuererEventHandler);
 	        
 	        Button botonIrseAlMazo = new Button();
 	        botonIrseAlMazo.setText("Irse al Mazo");
+	        BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, etiqueta);
+	        botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
 	        
             //contenedores de los botones
 	           
@@ -349,15 +362,14 @@ public class Visualizador extends Application  {
 		    	 espacioAColocar = 300; // pone la carta sobre la derecha 
 		      
 		      // recopilo cartas del jugador en turno.
-		      ConjuntoCartas<ImageView> conjuntoCartas = new ConjuntoCartas<ImageView>();
-		      conjuntoCartas= this.listaJugadores.get(index);
+		      ConjuntoCartas<ImageView> conjuntoCartas= this.listaJugadores.get(index); // agarro el conjunto de cartas de ese jugador
 			  List<Carta> cartas= this.partida.cartasDelJugadorConTurno();
 			  for (int i=0; i<cartas.size(); i++){
-				  Carta carta = cartas.get(i);
-				  String nombre= cartas.get(i).cartaComoString();
+				  Carta carta = cartas.get(i);  //agarro una carta
+				  String nombre= cartas.get(i).cartaComoString(); //pido su nombre
 				  System.out.println(nombre); // quitar
-				  String direccion = this.buscarImagen(nombre);
-				  Image imagen = new Image(direccion);
+				  String direccion = this.buscarImagen(nombre); // busco la imagen
+				  Image imagen = new Image(direccion); // creo la imagen
 				  ImageView view = this.listaJugadores.get(index).get(i);
 			      view.setImage(imagen);
 			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this,this.partida,this.cartasEnMesa,conjuntoCartas,carta,view,espacioAColocar));

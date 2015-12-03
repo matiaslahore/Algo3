@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.vista;
 
 
 
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.event.ActionEvent;
@@ -22,9 +23,14 @@ public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 	
 	@Override
 	public void handle(ActionEvent actionEvent){
-		this.partida.quiero();
-		this.etiqueta.setText("QUIERO!");
-        this.etiqueta.setTextFill(Color.web("#008000"));
+        try{
+    	  this.partida.quiero();
+    		} catch (CantoInvalidoException quererError){
+    			etiqueta.setText("NO SE CANTO NADA");
+    	        etiqueta.setTextFill(Color.web("#FF0000"));
+    		}
+    		etiqueta.setText("QUIERO!");
+            etiqueta.setTextFill(Color.web("#008000"));
 	}
 
 }
