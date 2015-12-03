@@ -23,12 +23,12 @@ public class TirarCartaEventHandler<MouseEvent> implements javafx.event.EventHan
 	private Visualizador visual;
 	
 	public TirarCartaEventHandler (Visualizador visual, PartidaDeTruco partida,ConjuntoCartas<ImageView> cartasEnMesa,ConjuntoCartas<ImageView> conjuntoCartas, Carta carta, ImageView imagen, double layout){
-	    this.partida= partida;
-		this.imagen= imagen;
+	    this.partida = partida;
+		this.imagen = imagen;
 		this.layoutX = layout;
 		this.carta = carta; 
 		this.conjuntoCartas = conjuntoCartas; 
-		this.cartasEnMesa= cartasEnMesa;
+		this.cartasEnMesa = cartasEnMesa;
 		this.visual = visual;
 	}
 	
