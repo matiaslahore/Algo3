@@ -15,6 +15,7 @@ import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloDeCartas.CincoDeCopa;
 import fiuba.algo3.tp2.modeloDeCartas.DosDeOro;
 import fiuba.algo3.tp2.modeloDeCartas.ReyDeBasto;
+import fiuba.algo3.tp2.modeloDeCartas.SeisDeOro;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 import fiuba.algo3.tp2.modeloDeCartas.TresDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.TresDeCopa;
@@ -123,12 +124,8 @@ public class PruebasJugadorIATest {
 		jugadorIA = mesa.siguienteJugadorConTurno();
 		
 		jugadorIA.juga();
-		
-		jugadorHumano = mesa.siguienteJugadorConTurno();
-		
-		jugadorHumano.quiero();
-		
-		Assert.assertEquals(4, mesa.puntosEquipo(equipoIA));
+				
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoIA));
 	}
 	
 	@Test
@@ -242,7 +239,7 @@ public class PruebasJugadorIATest {
 	@Test
 	public void pruebaJugadorIACantaLaFaltaCon33(){
 		
-		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new DosDeOro(), new AnchoDeEspada()));
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new SeisDeOro(), new AnchoDeEspada()));
 		
 		jugadorHumano = mesa.siguienteJugadorConTurno();
 		
@@ -261,19 +258,17 @@ public class PruebasJugadorIATest {
 		//canta envido envido por que tiene 32 o mas de envido 
 		jugadorIA.juga();
 		
-		jugadorHumano  = mesa.siguienteJugadorConTurno();
-		
-		jugadorHumano.cantarRealEnvido();
-		
-		jugadorIA = mesa.siguienteJugadorConTurno();
-		
-		//canta la falta envido
-		jugadorIA.juga();
-		
+
 		jugadorHumano = mesa.siguienteJugadorConTurno();
 		
-		jugadorHumano.quiero();
+		jugadorHumano.cantarFaltaEnvido();
 		
+		
+		jugadorIA = mesa.siguienteJugadorConTurno();
+
+		jugadorIA.juga();
+
+		mesa.siguienteJugadorConTurno();
 		Assert.assertEquals(30, mesa.puntosEquipo(equipoIA));
 	}
 }

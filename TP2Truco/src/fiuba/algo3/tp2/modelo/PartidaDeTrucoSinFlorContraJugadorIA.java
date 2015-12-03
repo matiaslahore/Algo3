@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.Arrays;
 import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.SeEstaJugandoSinFlorException;

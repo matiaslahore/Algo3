@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import fiuba.algo3.tp2.excepciones.SeEstaJugandoSinFlorException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
@@ -33,7 +32,7 @@ public class Juez {
 	public Carta repartir(){
 		return this.maso.dameCarta();
 	}
-	// solo el juez puede anotar puntos
+
 	public void anotarPuntos(Equipo equipo){
 		this.puntos.anotarPuntos(equipo, puntosEnJuego);
 	}

@@ -27,7 +27,7 @@ public class EstadoRondaDosParda extends EstadoRondas{
 
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 
-		if (this.juez.hayParda()){ //es parda
+		if (this.juez.hayParda()){
 			this.juez.limpiarCartasEnJuegoDeRondaActual();
 			System.out.println("RONDA DOS PARDA");
 

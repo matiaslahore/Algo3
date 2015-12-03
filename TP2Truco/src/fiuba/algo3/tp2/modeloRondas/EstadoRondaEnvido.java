@@ -63,7 +63,6 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	
 	public EstadoRondas noQuiero(Jugador jugador) {
 		this.juez.puntosEnJuego(this.cantosEnvido.noQuiso());
-		//ESTO ES FEO PERO NO SE ME OCURRE JUSTO AHORA OTRA MANERA
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo());
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 		return this.refEstadoRonda;
@@ -71,33 +70,21 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	
 	public EstadoRondas cantarEnvido(Jugador jugador)throws CantoInvalidoException{
 		CantosEnvido unTipoDeEnvido = null;
-		try{
-			unTipoDeEnvido = this.cantosEnvido.cantarEnvido(jugador.obtenerEquipo());
-		}catch(CantoInvalidoException e){
-			throw e;
-		}
+		unTipoDeEnvido = this.cantosEnvido.cantarEnvido(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeEnvido);
 	}
 	
 	public EstadoRondas cantarRealEnvido(Jugador jugador) throws CantoInvalidoException {
 		CantosEnvido unTipoDeRealEnvido = null;
-		try{
-			unTipoDeRealEnvido = this.cantosEnvido.cantarRealEnvido(jugador.obtenerEquipo());
-		}catch(CantoInvalidoException e){
-			throw e;
-		}
+		unTipoDeRealEnvido = this.cantosEnvido.cantarRealEnvido(jugador.obtenerEquipo());		
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeRealEnvido);
 	}
 	
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador) throws CantoInvalidoException {
 		CantosEnvido unTipoDeFaltaEnvido = null;
-		try{
-			unTipoDeFaltaEnvido = this.cantosEnvido.cantarFaltaEnvido(jugador.obtenerEquipo());
-		}catch(CantoInvalidoException e){
-			throw e;
-		}
+		unTipoDeFaltaEnvido = this.cantosEnvido.cantarFaltaEnvido(jugador.obtenerEquipo());		
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeFaltaEnvido);
 	}

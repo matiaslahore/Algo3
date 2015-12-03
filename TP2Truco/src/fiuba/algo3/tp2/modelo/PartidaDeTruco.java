@@ -7,7 +7,6 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class PartidaDeTruco {
 	
-	//faltaria una objeto Turno que maneje el turno de la ronda.
 	Equipo equipoUno;
 	Equipo equipoDos;
 	Mesa mesa;

@@ -7,6 +7,7 @@ public class EstadoIAEnvidoInteligente extends EstadoIA {
 		if(jugadorIA.seCantoEnvido()){
 			if(jugadorIA.obtenerPuntosEnvido() >= 30){
 				jugadorIA.cantarRealEnvido();
+				jugadorIA.setearEstado(new EstadoIAFaltaEnvidoInteligente());
 				return;				
 			}
 			if(jugadorIA.obtenerPuntosEnvido() >= 27){

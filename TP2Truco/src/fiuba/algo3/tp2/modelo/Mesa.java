@@ -17,7 +17,7 @@ import fiuba.algo3.tp2.modeloRondas.*;
 public class Mesa {
 
 	Juez juez;
-	ArrayList<Equipo> ganadoresRonda; //guarda el nombre del equipo q gano las rondas
+	ArrayList<Equipo> ganadoresRonda; 
 	ArrayList<Carta> cartasEnJuegoRondaActual;
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;
@@ -74,35 +74,20 @@ public class Mesa {
 	}
 
 	public void cantarEnvido( Jugador jugador) throws CantoInvalidoException{
-		try {
-			this.ronda = this.ronda.cantarEnvido(jugador);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.ronda = this.ronda.cantarEnvido(jugador);
 	}
 
 	public void cantarRealEnvido(Jugador jugador) throws CantoInvalidoException {
-		try {
-			this.ronda = this.ronda.cantarRealEnvido(jugador);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		
+		this.ronda = this.ronda.cantarRealEnvido(jugador);
 	}
 
 	public void cantarFaltaEnvido( Jugador jugador) throws CantoInvalidoException{
-		try {
-			this.ronda = this.ronda.cantarFaltaEnvido(jugador);
-		} catch (CantoInvalidoException e) {
-			throw e;
-		}
+		this.ronda = this.ronda.cantarFaltaEnvido(jugador);
 	}
 
 	public Equipo ganadorDeLaRonda() {
-		try{
-			return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
-		}catch(Exception e ){
-			throw new TodabiaNoFinalizoLaRondaException();
-		}
+		return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
 	}
 
 	public void cantarTruco(Jugador jugador){
@@ -265,5 +250,4 @@ public class Mesa {
 			actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
 		}
 	}
-	
 }

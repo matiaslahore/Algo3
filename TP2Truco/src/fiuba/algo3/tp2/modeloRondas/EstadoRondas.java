@@ -5,18 +5,12 @@ import java.util.Arrays;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.CantosTruco;
-import fiuba.algo3.tp2.cantos.Envido;
-import fiuba.algo3.tp2.cantos.FaltaEnvido;
-import fiuba.algo3.tp2.cantos.Flor;
-import fiuba.algo3.tp2.cantos.RealEnvido;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import fiuba.algo3.tp2.cantos.*;
 
 public abstract class EstadoRondas{
 
@@ -38,10 +32,6 @@ public abstract class EstadoRondas{
 		this.jugadorMano = indexMano; //esto se toca cuando se gana para indicar la mano sig.
 		this.refEstadoRonda = estadoRonda;
 		this.tantoEnJuego = new ArrayList<Integer>();
-	}
-
-	private int cantidadDeJugadores() {
-		return this.jugadores.size();
 	}
 
 	public EstadoRondas acualizarRonda() {
@@ -97,9 +87,6 @@ public abstract class EstadoRondas{
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
-
-		//this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
-		//return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
 	}
 	
 	public void modificarCantoTruco(CantosTruco estadoTruco) {
@@ -149,9 +136,12 @@ public abstract class EstadoRondas{
 
 		this.juez.limpiarCartasEnJuegoDeRondaActual();
 
-		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+		//aumento quien empieza la prox mano
+		
+		this.jugadorMano = this.jugadorMano + 1; 
 		
 		this.juez.mezclar(); //renuevo el mazo
+		
 		repartir();
 		
 		if (esPicaPica()){

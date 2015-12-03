@@ -22,7 +22,7 @@ public class EstadoRondaTresParda extends EstadoRondas{
 
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 
-		if (this.juez.hayParda()){ //es parda
+		if (this.juez.hayParda()){ 
 			ganadoresRonda.add(jugadores.get(jugadorMano).obtenerEquipo()); //gana el eq q es mano
 			this.juez.anotarPuntos(jugadores.get(jugadorMano).obtenerEquipo());
 		}else{

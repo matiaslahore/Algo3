@@ -29,12 +29,6 @@ public class Mano {
 		return Math.max(Math.max(cartaUno.sumarTanto(cartaDos), cartaUno.sumarTanto(cartaTres)), cartaTres.sumarTanto(cartaDos));
 	}
 
-	public Carta tirarCarta (int numero){//este seria el que hay q implementar
-		Carta carta =cartas.get(numero);
-		cartas.remove(numero);
-		return carta;
-	}
-
 	public int calcularPuntosFlor() {
 		if (this.tieneFlor()) {
 			Carta cartaUno = cartas.get(0);
@@ -111,6 +105,5 @@ public class Mano {
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
 		return (cartaUno.sumarTanto(cartaDos)>= 20 && cartaDos.sumarTanto(cartaTres)>= 20);		
-	}
-	
+	}	
 }

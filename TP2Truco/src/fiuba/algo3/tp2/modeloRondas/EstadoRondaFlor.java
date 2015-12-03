@@ -29,8 +29,6 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 	
 	public Jugador turnoDe() {
-		/*Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual + 2); //2 es manejo de indices //aclarar
-		return jugador;*/
 		Jugador jugador = this.juez.otroJugadorConFlor(this.cantosFlor.equipoQueCanta());
 		return jugador;
 	}
@@ -65,22 +63,14 @@ public class EstadoRondaFlor extends EstadoRondas {
 	
 	public EstadoRondas cantarContraFlor(Jugador jugador)throws CantoInvalidoException{
 		CantosFlor unTipoDeFlor = null;
-		try{
-			unTipoDeFlor = this.cantosFlor.cantarContraFlor(jugador.obtenerEquipo());
-		}catch(CantoInvalidoException e){
-			throw e;
-		}
+		unTipoDeFlor = this.cantosFlor.cantarContraFlor(jugador.obtenerEquipo());	
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeFlor);
 	}
 	
 	public EstadoRondas cantarContraFlorAJuego(Jugador jugador) throws CantoInvalidoException {
 		CantosFlor unTipoDeFlor = null;
-		try{
-			unTipoDeFlor = this.cantosFlor.cantarContraFlorAJuego(jugador.obtenerEquipo());
-		}catch(CantoInvalidoException e){
-			throw e;
-		}
+		unTipoDeFlor = this.cantosFlor.cantarContraFlorAJuego(jugador.obtenerEquipo());
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
 		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeFlor);
 	}

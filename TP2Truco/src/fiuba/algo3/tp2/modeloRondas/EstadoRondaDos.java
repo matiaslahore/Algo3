@@ -27,7 +27,7 @@ public class EstadoRondaDos extends EstadoRondas{
 		
 		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
 		
-		if (this.juez.hayParda()){ //es parda
+		if (this.juez.hayParda()){
 			ganadoresRonda.add(ganadoresRonda.get(0)); //gana el q gano primera
 		}else{
 			Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);

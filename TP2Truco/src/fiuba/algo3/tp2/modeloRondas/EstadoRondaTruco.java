@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.CantosTruco;
-import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeQuererElCantoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -55,22 +54,17 @@ public class EstadoRondaTruco extends EstadoRondas{
 	}
 	
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
-		try{
-			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());
-		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
-			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
-		}
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; //asi dsps vuelve al q canto la mano
+		
+		this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());	
+		//asi dsps vuelve al q canto la mano
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; 
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
 	}
 	
 	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
-		try{
-			this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());
-		}catch(EquipoQueCantaNoPuedeQuererElCantoException e){
-			throw new RuntimeException(); //lo mismo q arriba.. nose si conviene
-		}
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; //asi dsps vuelve al q canto la mano
+		this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());	
+		//asi dsps vuelve al q canto la mano
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; 
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
 	}
 	

@@ -12,8 +12,6 @@ public class Humano extends Jugador{
 
 	@Override
 	public void juga() {
-		// Consultar con ayudante solo lo hago para no tener que castear 
-		// cuando le pido a la mesa el turno siguiente
 		throw new JugadorHumanoNoPuedeUsarIA();
 	}
 }
