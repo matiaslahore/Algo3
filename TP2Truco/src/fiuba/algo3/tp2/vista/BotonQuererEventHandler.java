@@ -1,21 +1,30 @@
 package fiuba.algo3.tp2.vista;
 
+
+
+import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 	
-	private Jugador jugador;
+	private PartidaDeTruco partida;
+	private Label etiqueta;
 	
 	//constructor
-	public BotonQuererEventHandler (Jugador jugador){
-		this.jugador = jugador;
+	public BotonQuererEventHandler (PartidaDeTruco partida, Label etiqueta){
+		this.partida= partida;
+		this.etiqueta= etiqueta;
 	}
 	
 	@Override
 	public void handle(ActionEvent actionEvent){
-		this.jugador.quiero();
+		this.partida.quiero();
+		this.etiqueta.setText("QUIERO!");
+        this.etiqueta.setTextFill(Color.web("#008000"));
 	}
 
 }

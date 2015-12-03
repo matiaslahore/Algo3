@@ -28,16 +28,14 @@ import javafx.stage.Stage;
 
 public class Visualizador extends Application  {
 	
-        private double layoutXDer;
-        private double layoutXIzq;
         private int index;
         private ImagenesCarta imagenesCarta;
-        private Mesa mesa;
         private int cantidadDeJugadores;
         private boolean conFlor;
         private Group escena;
         private ArrayList<ConjuntoCartas<ImageView>> listaJugadores; 
         private PartidaDeTruco partida;
+        private ConjuntoCartas<ImageView> cartasEnMesa;
         
         public static void main(String[] args)
     	{
@@ -74,6 +72,13 @@ public class Visualizador extends Application  {
 	        stage.setScene(scene);
 	        stage.show();
 	        
+	        this.jugarProximo();
+	        
+	    }
+	    
+	    public void jugarProximo (){
+	    	if (this.cartasEnMano())	
+	    	 this.jugadorTurnoActual();
 	    }
 	    
 	    private Scene obtenerOpcionesDeJuego(Stage stage) {
@@ -170,8 +175,7 @@ public class Visualizador extends Application  {
 			this.index =-1;
 			this.listaJugadores= new ArrayList<ConjuntoCartas<ImageView>> ();
 			this.imagenesCarta=new ImagenesCarta();
-			this.layoutXIzq= 80;
-			this.layoutXDer= 480;
+			this.cartasEnMesa= new ConjuntoCartas<ImageView>();
 			
 			//imagen de fondo de la mesa
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -215,6 +219,7 @@ public class Visualizador extends Application  {
 	        
 	        Button botonQuerer = new Button();
 	        botonQuerer.setText("Querer");
+	        BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, etiqueta);
 	        
 	        Button botonNoQuerer = new Button();
 	        botonNoQuerer.setText("No Querer");
@@ -241,7 +246,6 @@ public class Visualizador extends Application  {
 	        this.escena = new Group();
 	        this.escena.getChildren().add(imagen); //carga el fondo
 	        //cantidad de jugadores que voy a poner en la mesa
-	        System.out.println(this.cantidadDeJugadores + " es la cantidad e jugadores");//PRUEBA
 	        for (int i=0; i<this.cantidadDeJugadores/2 ; i++)
 	        { 
 	            this.escena = agregarDosJugadores(this.escena, layoutY);
@@ -249,7 +253,6 @@ public class Visualizador extends Application  {
 		    }
 	        
             this.escena.getChildren().add(contenedorPrincipal); //agregue botones sin las cartas
-            this.jugadorTurnoActual(mesa); //quitar esto  // agrega las cartas
             
             //dimensiones de la pantalla
 	        Scene scene = new Scene(this.escena, 600, 800);
@@ -269,7 +272,7 @@ public class Visualizador extends Application  {
 	            j1carta1.setImage(reverso);
 	            j1carta1.setFitHeight(80);
 	            j1carta1.setFitWidth(50);
-	            j1carta1.setLayoutX(layoutXIzq);
+	            j1carta1.setLayoutX(80);
 	            j1carta1.setLayoutY(layoutY);
 	            j1carta1.setRotate(90);
 
@@ -277,7 +280,7 @@ public class Visualizador extends Application  {
 	            j2carta1.setImage(reverso);
 	            j2carta1.setFitHeight(80);
 	            j2carta1.setFitWidth(50);
-	            j2carta1.setLayoutX(layoutXDer);
+	            j2carta1.setLayoutX(480);
 	            j2carta1.setLayoutY(layoutY);
 	            j2carta1.setRotate(270);
 	          
@@ -287,7 +290,7 @@ public class Visualizador extends Application  {
 	            j1carta2.setImage(reverso);
 	            j1carta2.setFitHeight(80);
 	            j1carta2.setFitWidth(50);
-	            j1carta2.setLayoutX(layoutXIzq);
+	            j1carta2.setLayoutX(80);
 	            j1carta2.setLayoutY(layoutY);
 	            j1carta2.setRotate(90);
 	            
@@ -295,7 +298,7 @@ public class Visualizador extends Application  {
 	            j2carta2.setImage(reverso);
 	            j2carta2.setFitHeight(80);
 	            j2carta2.setFitWidth(50);
-	            j2carta2.setLayoutX(layoutXDer);
+	            j2carta2.setLayoutX(480);
 	            j2carta2.setLayoutY(layoutY);
 	            j2carta2.setRotate(270);
 	            
@@ -305,7 +308,7 @@ public class Visualizador extends Application  {
 	            j1carta3.setImage(reverso);
 	            j1carta3.setFitHeight(80);
 	            j1carta3.setFitWidth(50);
-	            j1carta3.setLayoutX(layoutXIzq);
+	            j1carta3.setLayoutX(80);
 	            j1carta3.setLayoutY(layoutY);
 	            j1carta3.setRotate(90);
 	           
@@ -313,7 +316,7 @@ public class Visualizador extends Application  {
 	            j2carta3.setImage(reverso);
 	            j2carta3.setFitHeight(80);
 	            j2carta3.setFitWidth(50);
-	            j2carta3.setLayoutX(layoutXDer);
+	            j2carta3.setLayoutX(480);
 	            j2carta3.setLayoutY(layoutY);
 	            j2carta3.setRotate(270);
 	            
@@ -336,9 +339,12 @@ public class Visualizador extends Application  {
             return root;
 		}
 
-		public void jugadorTurnoActual (Mesa mesa){
+		public void jugadorTurnoActual (){
+		      this.siguienteJugador(); //avanza el index del jugador que toca
+		      System.out.println(this.index + " es el numero de la lista");
 		      double espacioAColocar = 200;
-		      this.index+=1;
+		      if (index%2!=0)
+		    	 espacioAColocar = 300; 
 		      ConjuntoCartas<ImageView> conjuntoCartas = new ConjuntoCartas<ImageView>();
 		      conjuntoCartas= this.listaJugadores.get(index);
 			  List<Carta> cartas= this.partida.cartasDelJugadorConTurno();
@@ -351,18 +357,32 @@ public class Visualizador extends Application  {
 				  Image imagen = new Image(direccion);
 				  ImageView view = this.listaJugadores.get(index).get(i);
 			      view.setImage(imagen);
-			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,conjuntoCartas,carta,view,espacioAColocar));
+			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,this.cartasEnMesa,conjuntoCartas,carta,view,espacioAColocar));
 			  }
 			 
+		}
+		
+		public boolean cartasEnMano (){
+			boolean noTermina = false;
+			for (int i=0; i<this.cantidadDeJugadores;i++){
+				if (this.listaJugadores.get(i).size()!=0)// si algun jugador tiene una carta.
+					noTermina=true;
+			}
+			return noTermina;
+				
+		}
+		
+		public void siguienteJugador (){
+			if(this.index < this.cantidadDeJugadores-1)
+				this.index++;
+			else
+				this.index=0;
 		}
 		
 		public void resetearEscena (){
 			
 		}
 		
-		public void tirarCarta (ImageView carta, double posicion){
-			
-		}
 		
 		public String buscarImagen (String nombre){
 			return this.imagenesCarta.obtenerDireccionDeCarta(nombre);
