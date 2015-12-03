@@ -33,7 +33,6 @@ import javafx.stage.Stage;
 
 public class Visualizador extends Application  {
 	
-        private Jugador jugador;
         private double layoutXDer;
         private double layoutXIzq;
         private int index;
@@ -64,9 +63,17 @@ public class Visualizador extends Application  {
 	    	if (this.conFlor)
 	    	   this.partida= new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
 	    	this.partida= new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
-	    	this.partida.cargarJugadoresEnEquipoUno("Pablo");
-	    	this.partida.cargarJugadoresEnEquipoDos("Nico");
 	    	
+	    	//cargar nombres de jugadores
+	    	ArrayList<String> lista1 = new ArrayList<String> ();
+	    	lista1.add("Pablo");
+	    	this.partida.cargarJugadoresEnEquipoUno(lista1);
+	    	ArrayList<String> lista2 = new ArrayList<String> ();
+	    	lista2.add("Pablo");
+	    	this.partida.cargarJugadoresEnEquipoDos(lista2);
+	    	this.partida.iniciar();
+	    	
+	    	//escenario
 	        Scene scene= this.ventanaPrincipal();
 	        stage.setTitle("Partida de Truco");
 	        stage.setScene(scene);
@@ -165,18 +172,6 @@ public class Visualizador extends Application  {
 		public Scene ventanaPrincipal(){
 	    	
 		    //PRUEBAS DE PARAMETROS
-		    EstadoFlor estado = new EstadoConFlor();
-			this.mesa = new Mesa();
-			Equipo equipo1= new Equipo("equipoUno",mesa);
-			Equipo equipo2=new Equipo("equipoDos",mesa);
-			for (int i=0; i<this.cantidadDeJugadores/2;i++){
-			   equipo1.cargarJugadores("pablo");
-			   equipo2.cargarJugadores("nico");
-			}
-			mesa.sentarJugadores(equipo1.obtenerJugadores(), equipo2.obtenerJugadores());
-			mesa.instanciarJuez(equipo1, equipo2,estado);
-			mesa.iniciarRonda();
-			
 			this.index =-1;
 			this.listaJugadores= new ArrayList<ConjuntoCartas<ImageView>> ();
 			this.imagenesCarta=new ImagenesCarta();
@@ -192,8 +187,8 @@ public class Visualizador extends Application  {
 		    //etiqueta para mensajes
 	        Label etiqueta = new Label();
 	        Label puntajeEquipo1 = new Label();
-	        String texto1=  equipo1.obtenerNombre()+": "+ mesa.puntosEquipo(equipo1)+ " PUNTOS";
-	        String texto2=  equipo2.obtenerNombre()+": "+ mesa.puntosEquipo(equipo2)+ " PUNTOS";
+	        String texto1= this.partida.obtenerNombreDeEquipoUno()+": "+ this.partida.obtenerPuntajeDeEquipoUno()+ " PUNTOS";
+	        String texto2= this.partida.obtenerNombreDeEquipoDos() +": "+ this.partida.obtenerPuntajeDeEquipoDos()+ " PUNTOS";
 	        puntajeEquipo1.setText(texto1);
 	        puntajeEquipo1.setTextFill(Color.web("#FF0000"));
 	        puntajeEquipo1.setPrefSize(120, 10);
@@ -205,7 +200,7 @@ public class Visualizador extends Application  {
             //botones de opciones para el jugador actual.
 	        Button botonEnvido = new Button();
 	        botonEnvido.setText("Envido");
-	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.jugador, etiqueta);
+	        BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, etiqueta);
 	        botonEnvido.setOnAction(botonEnvidoEventHandler);
             
 	        Button botonRealEnvido = new Button();
@@ -349,17 +344,16 @@ public class Visualizador extends Application  {
 		public void jugadorTurnoActual (Mesa mesa){
 		      double espacioAColocar = 200;
 		      this.index+=1;
-			  Jugador jugadorActual = mesa.siguienteJugadorConTurno();
-			  List<Carta> cartas= jugadorActual.obtenerCartasDelJugador().obtenerCartas();
-			  System.out.println(jugadorActual.cantidadDeCartas()+"es la cantidad de cartas");
-			  for (int i=0; i<jugadorActual.cantidadDeCartas(); i++){
+			  List<Carta> cartas= this.partida.cartasDelJugadorConTurno();
+			  System.out.println(cartas.size()+"es la cantidad de cartas");
+			  for (int i=0; i<cartas.size(); i++){
 				  Carta carta = cartas.get(i);
 				  String nombre= cartas.get(i).cartaComoString();
 				  String direccion = this.buscarImagen(nombre);
 				  Image imagen = new Image(direccion);
 				  ImageView view = this.listaJugadores.get(index).get(i);
 			      view.setImage(imagen);
-			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,jugador,carta,view,espacioAColocar));
+			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,cartas,carta,view,espacioAColocar));
 			  }
 			 
 		}
