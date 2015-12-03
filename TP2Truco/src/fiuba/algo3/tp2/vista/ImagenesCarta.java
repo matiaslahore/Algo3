@@ -12,7 +12,7 @@ public class ImagenesCarta {
 		
 		this.cartas = new HashMap<String,String>();
 		//copas
-        this.cartas.put("Uno De Copa","/fiuba/algo3/tp2/vista/c1.jpg");
+        this.cartas.put("Uno De Copa", "/fiuba/algo3/tp2/vista/imagenes/c1.jpg");
         this.cartas.put("Dos De Copa", "/fiuba/algo3/tp2/vista/imagenes/c2.jpg");
         this.cartas.put("Tres De Copa", "/fiuba/algo3/tp2/vista/imagenes/c3.jpg");
         this.cartas.put("Cuatro De Copa", "/fiuba/algo3/tp2/vista/imagenes/c4.jpg");
