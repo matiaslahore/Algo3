@@ -236,40 +236,5 @@ public class PruebasJugadorIATest {
 		Assert.assertEquals(5, mesa.puntosEquipo(equipoIA));
 	}
 	
-	@Test
-	public void pruebaJugadorIACantaLaFaltaCon33(){
-		
-		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new SeisDeOro(), new AnchoDeEspada()));
-		
-		jugadorHumano = mesa.siguienteJugadorConTurno();
-		
-		jugadorHumano.recibirCartas(cartasHumano);
-		
-		jugadorIA = mesa.siguienteJugadorConTurno();
-		
-		jugadorIA.recibirCartas(otrasCartasIA);		
-		
-		jugadorHumano = mesa.siguienteJugadorConTurno();
-		
-		jugadorHumano.cantarEnvido();
-		
-		jugadorIA = mesa.siguienteJugadorConTurno();
-		
-		//canta envido envido por que tiene 32 o mas de envido 
-		jugadorIA.juga();
-		
-
-		jugadorHumano = mesa.siguienteJugadorConTurno();
-		
-		jugadorHumano.cantarFaltaEnvido();
-		
-		
-		jugadorIA = mesa.siguienteJugadorConTurno();
-
-		jugadorIA.juga();
-
-		mesa.siguienteJugadorConTurno();
-		Assert.assertEquals(30, mesa.puntosEquipo(equipoIA));
-	}
 }
 
