@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.tp2.modelo.Equipo;
-import fiuba.algo3.tp2.modelo.EstadoConFlor;
-import fiuba.algo3.tp2.modelo.EstadoFlor;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
