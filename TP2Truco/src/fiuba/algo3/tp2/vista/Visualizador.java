@@ -67,12 +67,10 @@ public class Visualizador extends Application  {
 	    	this.partida.iniciar();
 	    	
 	    	//escenario
-	        Scene scene= this.ventanaPrincipal();
+	        Scene scene= this.ventanaPrincipal(stage);
 	        stage.setTitle("Partida de Truco");
 	        stage.setScene(scene);
 	        stage.show();
-	        
-	        this.jugarProximo();
 	        
 	    }
 	    
@@ -152,31 +150,16 @@ public class Visualizador extends Application  {
 	    	
 	        return scene;
 		}
-
-
-		public Label crearJugadores (){
-	    	TextField jugadorText = new TextField();
-	        jugadorText.setPromptText("Nombre del Jugador");
-	        Label etiquetaNombre = new Label();
-	        
-	        etiquetaNombre.setText("");
-            if (jugadorText.getText().equals("")) {
-	            etiquetaNombre.setText("Debe ingresar un usuario");
-	            etiquetaNombre.setTextFill(Color.web("#FF0000"));
-	            jugadorText.requestFocus();
-            }
-            etiquetaNombre.setText(jugadorText.getText());
-            return etiquetaNombre;
-	    }
-	
-		public Scene ventanaPrincipal(){
+	  //crea la ventana del juego llamando al metodo agregarDosJugadores
+		public Scene ventanaPrincipal(Stage stage){
 	    	
-		    //PRUEBAS DE PARAMETROS
+			 //parametros iniciales
 			this.index =-1;
 			this.listaJugadores= new ArrayList<ConjuntoCartas<ImageView>> ();
 			this.imagenesCarta=new ImagenesCarta();
 			this.cartasEnMesa= new ConjuntoCartas<ImageView>();
-			
+		
+	
 			//imagen de fondo de la mesa
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
 	    	Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
@@ -237,7 +220,7 @@ public class Visualizador extends Application  {
 	        
 	        Button botonIrseAlMazo = new Button();
 	        botonIrseAlMazo.setText("Irse al Mazo");
-	        BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, etiqueta);
+	        BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this, stage,this.partida, etiqueta);
 	        botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
 	        
             //contenedores de los botones
@@ -270,9 +253,13 @@ public class Visualizador extends Application  {
             //dimensiones de la pantalla
 	        Scene scene = new Scene(this.escena, 600, 800);
 	        
+	        //HAY QUE BUSCARLE OTRO LUGAR 
+	        this.jugarProximo();
+	        
 	        return scene;
 	    }
-	    	
+	    
+		// crea de a dos jugadores y en la scene ya existente
 		public Group agregarDosJugadores (Group root, double layoutY){
 			
 			
@@ -351,7 +338,8 @@ public class Visualizador extends Application  {
 	            root.getChildren().addAll(j1carta1,j1carta2,j1carta3,j2carta1,j2carta2,j2carta3);
             return root;
 		}
-
+        
+		//METODO IMPORTANTE  SE LLAMA CADA VEZ Q COMIENZA EL TURNO DE UN JUGADOR
 		public void jugadorTurnoActual (){
 			
 			  //calculos internos al visualizador
@@ -417,6 +405,21 @@ public class Visualizador extends Application  {
 			String nombre = "";
             return nombre;
 		}
+		
+		public Label crearJugadores (){
+	    	TextField jugadorText = new TextField();
+	        jugadorText.setPromptText("Nombre del Jugador");
+	        Label etiquetaNombre = new Label();
+	        
+	        etiquetaNombre.setText("");
+            if (jugadorText.getText().equals("")) {
+	            etiquetaNombre.setText("Debe ingresar un usuario");
+	            etiquetaNombre.setTextFill(Color.web("#FF0000"));
+	            jugadorText.requestFocus();
+            }
+            etiquetaNombre.setText(jugadorText.getText());
+            return etiquetaNombre;
+	    }
 }
 		
 		
