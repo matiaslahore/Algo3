@@ -131,5 +131,9 @@ public abstract class PartidaDeTruco {
 	public List<Carta> cartasEnJuego() {
 		return this.mesa.obtenerListaDeCartasJugadas();
 	}
+
+	public String obtenerNombreDelJugadorConTurno() {
+		return this.jugadorTurnoActual.obtenerNombre();
+	}
 	
 }

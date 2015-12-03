@@ -10,6 +10,7 @@ import fiuba.algo3.tp2.modelo.PartidaDeTrucoSinFlor;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -92,7 +93,7 @@ public class Visualizador extends Application  {
 		lbBienvenido.setFont(new Font("Arial", 22));
 		Label lbCantJugadores = new Label(" 1 - Seleccione la cantidad de jugadores");
 		Label lbjugarContraIA = new Label(" 1.1 - Jugar contra la computadora");
-		Label lbFlor = new Label(" 2 - �Jugar con Flor?");
+		Label lbFlor = new Label(" 2 - ¿Jugar con Flor?");
 
 		//BOTON Jugar
 		Button botonJugar = new Button();
@@ -134,10 +135,10 @@ public class Visualizador extends Application  {
 
 		//cargar nombres de jugadores
 		ArrayList<String> lista1 = new ArrayList<String> ();
-		lista1.add("Pablo");
+		lista1.add("PEPITO");
 		this.partida.cargarJugadoresEnEquipoUno(lista1);
 		ArrayList<String> lista2 = new ArrayList<String> ();
-		lista2.add("Nico");
+		lista2.add("JUANITO MARAVILLA");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
 		this.partida.iniciar();
 		
@@ -230,11 +231,20 @@ public class Visualizador extends Application  {
 		ImageView imagen = new ImageView();
 		imagen.setImage(fondo);
 		
+		//puntos de los equipos
+		Label nombreJugador = new Label();
+		String texto1 = "TRUNO DE: " + this.partida.obtenerNombreDelJugadorConTurno();
+		nombreJugador.setText(texto1);
+		nombreJugador.setTextFill(Color.web("#FF0000"));
+		HBox nombre = new HBox(nombreJugador);
+		nombre.setAlignment(Pos.CENTER);
+		
 		//escenario de imagenes de la mesa 
 		this.escena = new Group();
 		
 		this.escena.getChildren().add(imagen); //carga el fondo
 		this.escena.getChildren().add(this.botonesDelJugador); //agregue botones sin las cartas
+		this.escena.getChildren().add(nombre);
 		this.escena.getChildren().add(agregarCartasDelJugador());
 		
 		Scene scene = new Scene(this.escena, 600, 320);
@@ -269,6 +279,18 @@ public class Visualizador extends Application  {
 	}
 
 	public Scene cargarSceneDeLaMesa() {
+		//puntos de los equipos
+		Label puntajeEquipo1 = new Label();
+		String texto1 = this.partida.obtenerNombreDeEquipoUno()+": "+ this.partida.obtenerPuntajeDeEquipoUno()+ " PUNTOS";
+		String texto2 = this.partida.obtenerNombreDeEquipoDos() +": "+ this.partida.obtenerPuntajeDeEquipoDos()+ " PUNTOS";
+		puntajeEquipo1.setText(texto1);
+		puntajeEquipo1.setTextFill(Color.web("#FF0000"));
+		Label puntajeEquipo2 = new Label();
+		puntajeEquipo2.setText(texto2);
+		puntajeEquipo2.setTextFill(Color.web("#FFBB11"));
+		
+		VBox puntaje = new VBox(puntajeEquipo1,puntajeEquipo2);
+		
 		//imagen de fondo de la mesa
 		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
 		Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
@@ -279,6 +301,7 @@ public class Visualizador extends Application  {
 		this.escena = new Group();
 		
 		this.escena.getChildren().add(imagen); //carga el fondo
+		this.escena.getChildren().add(puntaje);
 		this.escena.getChildren().add(agregarCartasEnJuego());
 		
 		Scene scene = new Scene(this.escena, 600, 320);
