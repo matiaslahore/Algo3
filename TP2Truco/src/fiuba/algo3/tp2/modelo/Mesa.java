@@ -22,11 +22,14 @@ public class Mesa {
 	Puntos puntos;
 	EstadoRondas ronda;
 	int indexMano;
-
+	ArrayList<Carta> cartasJugadas;
+	
+	
 	public Mesa(){
 		jugadores = new ListaCircular<Jugador>();
 		ganadoresRonda = new ArrayList<Equipo>();
 		cartasEnJuegoRondaActual = new ArrayList<Carta>();
+		cartasJugadas = new ArrayList<Carta>();
 		indexMano = 0;
 	}
 
@@ -42,6 +45,7 @@ public class Mesa {
 	public void recibirCarta(Carta carta){
 		System.out.println("Mesa recibe: " + carta.cartaComoString());
 		this.cartasEnJuegoRondaActual.add(carta);
+		this.cartasJugadas.add(carta);
 	}
 
 	public void repartirCartas() {
@@ -149,11 +153,15 @@ public class Mesa {
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuegoDeRondaActual() {
-		return this.cartasEnJuegoRondaActual;
+		return this.cartasJugadas;
 	}
 
 	public void limpiarCartasEnJuegoDeRondaActual() {
 		this.cartasEnJuegoRondaActual.clear();
+	}
+	
+	public void limpiarCartasJugadas() {
+		this.cartasJugadas.clear();
 	}
 
 	public boolean hayParda() {

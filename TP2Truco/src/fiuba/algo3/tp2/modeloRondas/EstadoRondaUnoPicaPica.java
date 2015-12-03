@@ -33,6 +33,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		
 		actualizarCantidadJugadas();
 		
+		juez.limpiarCartasJugadas();
 		juez.puntosEnJuego(1);
 	}
 

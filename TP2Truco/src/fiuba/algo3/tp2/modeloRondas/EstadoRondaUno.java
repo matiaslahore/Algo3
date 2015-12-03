@@ -32,7 +32,8 @@ public class EstadoRondaUno extends EstadoRondas{
 		this.cantosTruco = new EmpezarTruco();
 
 		actualizarPicaPica();
-
+		
+		juez.limpiarCartasJugadas();
 		juez.puntosEnJuego(1);
 
 		tantoCantado = false;

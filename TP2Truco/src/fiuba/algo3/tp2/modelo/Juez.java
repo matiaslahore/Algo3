@@ -83,6 +83,10 @@ public class Juez {
 	public void limpiarCartasEnJuegoDeRondaActual() {
 		this.mesa.limpiarCartasEnJuegoDeRondaActual();
 	}
+	
+	public void limpiarCartasJugadas() {
+		this.mesa.limpiarCartasJugadas();
+	}
 
 	public int cantidadDeCartasEnJuego() {
 		return this.mesa.cantidadDeCartasEnJuegoDeRondaActual();
