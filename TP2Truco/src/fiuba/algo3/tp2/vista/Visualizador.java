@@ -8,6 +8,9 @@ import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.EstadoConFlor;
 import fiuba.algo3.tp2.modelo.EstadoFlor;
 import fiuba.algo3.tp2.modelo.Mesa;
+import fiuba.algo3.tp2.modelo.PartidaDeTruco;
+import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
+import fiuba.algo3.tp2.modelo.PartidaDeTrucoSinFlor;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import javafx.application.Application;
@@ -31,6 +34,8 @@ import javafx.stage.Stage;
 public class Visualizador extends Application  {
 	
         private Jugador jugador;
+        private double layoutXDer;
+        private double layoutXIzq;
         private int index;
         private ImagenesCarta imagenesCarta;
         private Mesa mesa;
@@ -38,6 +43,7 @@ public class Visualizador extends Application  {
         private boolean conFlor;
         private Group escena;
         private ArrayList<ConjuntoCartas<ImageView>> listaJugadores; 
+        private PartidaDeTruco partida;
         
         public static void main(String[] args)
     	{
@@ -54,6 +60,13 @@ public class Visualizador extends Application  {
 	    }
 	    
 	    public void iniciarVentanaDelJuego(Stage stage){
+	    	//creacion de la partida
+	    	if (this.conFlor)
+	    	   this.partida= new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
+	    	this.partida= new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
+	    	this.partida.cargarJugadoresEnEquipoUno("Pablo");
+	    	this.partida.cargarJugadoresEnEquipoDos("Nico");
+	    	
 	        Scene scene= this.ventanaPrincipal();
 	        stage.setTitle("Partida de Truco");
 	        stage.setScene(scene);
@@ -167,7 +180,8 @@ public class Visualizador extends Application  {
 			this.index =-1;
 			this.listaJugadores= new ArrayList<ConjuntoCartas<ImageView>> ();
 			this.imagenesCarta=new ImagenesCarta();
-			
+			this.layoutXIzq= 80;
+			this.layoutXDer= 480;
 			
 			//imagen de fondo de la mesa
 	    	String direccionImagen= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -257,8 +271,7 @@ public class Visualizador extends Application  {
 			
 			
 			layoutY+= 80; 
-			double layoutXIzq= 80;
-			double layoutXDer= 480;
+			
 			
 			String direccionReverso= "/fiuba/algo3/tp2/vista/imagenes/reverso.jpg";
 			 Image reverso = new Image(direccionReverso);
@@ -277,8 +290,6 @@ public class Visualizador extends Application  {
 	            j2carta1.setLayoutX(layoutXDer);
 	            j2carta1.setLayoutY(layoutY);
 	            j2carta1.setRotate(90);
-	           // Carta carta = jugador.obtenerCartasDelJugador().obtenerCartas().get(0);
-	           // j2carta1.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(mesa,jugador,carta,layoutXDer-100,j2carta1));
 	          
 	            layoutY+=60;
 	            
@@ -289,7 +300,6 @@ public class Visualizador extends Application  {
 	            j1carta2.setLayoutX(layoutXIzq);
 	            j1carta2.setLayoutY(layoutY);
 	            j1carta2.setRotate(270);
-	            //j1carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	            
 	            ImageView j2carta2 = new ImageView();
 	            j2carta2.setImage(reverso);
@@ -298,7 +308,6 @@ public class Visualizador extends Application  {
 	            j2carta2.setLayoutX(layoutXDer);
 	            j2carta2.setLayoutY(layoutY);
 	            j2carta2.setRotate(90);
-	            //j2carta2.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	            
 	            layoutY+=60;
 	            
@@ -309,7 +318,6 @@ public class Visualizador extends Application  {
 	            j1carta3.setLayoutX(layoutXIzq);
 	            j1carta3.setLayoutY(layoutY);
 	            j1carta3.setRotate(270);
-	            //j1carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	           
 	            ImageView j2carta3 = new ImageView();
 	            j2carta3.setImage(reverso);
@@ -318,7 +326,6 @@ public class Visualizador extends Application  {
 	            j2carta3.setLayoutX(layoutXDer);
 	            j2carta3.setLayoutY(layoutY);
 	            j2carta3.setRotate(90);
-	           // j2carta3.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>());
 	            
 	            //lista de imagenes para darlas vuelta cuando sea el turno.
 	            ConjuntoCartas<ImageView> listaJug1 = new ConjuntoCartas<ImageView>();
@@ -340,17 +347,19 @@ public class Visualizador extends Application  {
 		}
 
 		public void jugadorTurnoActual (Mesa mesa){
-		      
+		      double espacioAColocar = 200;
 		      this.index+=1;
 			  Jugador jugadorActual = mesa.siguienteJugadorConTurno();
 			  List<Carta> cartas= jugadorActual.obtenerCartasDelJugador().obtenerCartas();
 			  System.out.println(jugadorActual.cantidadDeCartas()+"es la cantidad de cartas");
 			  for (int i=0; i<jugadorActual.cantidadDeCartas(); i++){
+				  Carta carta = cartas.get(i);
 				  String nombre= cartas.get(i).cartaComoString();
 				  String direccion = this.buscarImagen(nombre);
 				  Image imagen = new Image(direccion);
 				  ImageView view = this.listaJugadores.get(index).get(i);
 			      view.setImage(imagen);
+			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,jugador,carta,view,espacioAColocar));
 			  }
 			 
 		}
@@ -369,6 +378,12 @@ public class Visualizador extends Application  {
 		
 		public void jugarConFlor (boolean jugarConFlor){
 			this.conFlor = jugarConFlor;
+		}
+		
+		public String pedirNombre (){
+			//hacer pantalla Textlabel
+			String nombre = "";
+            return nombre;
 		}
 }
 		
