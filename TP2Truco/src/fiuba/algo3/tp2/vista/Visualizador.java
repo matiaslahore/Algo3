@@ -281,7 +281,7 @@ public class Visualizador extends Application  {
 	            j1carta1.setFitWidth(50);
 	            j1carta1.setLayoutX(layoutXIzq);
 	            j1carta1.setLayoutY(layoutY);
-	            j1carta1.setRotate(270);
+	            j1carta1.setRotate(90);
 
 	            ImageView j2carta1 = new ImageView();
 	            j2carta1.setImage(reverso);
@@ -289,7 +289,7 @@ public class Visualizador extends Application  {
 	            j2carta1.setFitWidth(50);
 	            j2carta1.setLayoutX(layoutXDer);
 	            j2carta1.setLayoutY(layoutY);
-	            j2carta1.setRotate(90);
+	            j2carta1.setRotate(270);
 	          
 	            layoutY+=60;
 	            
@@ -299,7 +299,7 @@ public class Visualizador extends Application  {
 	            j1carta2.setFitWidth(50);
 	            j1carta2.setLayoutX(layoutXIzq);
 	            j1carta2.setLayoutY(layoutY);
-	            j1carta2.setRotate(270);
+	            j1carta2.setRotate(90);
 	            
 	            ImageView j2carta2 = new ImageView();
 	            j2carta2.setImage(reverso);
@@ -307,7 +307,7 @@ public class Visualizador extends Application  {
 	            j2carta2.setFitWidth(50);
 	            j2carta2.setLayoutX(layoutXDer);
 	            j2carta2.setLayoutY(layoutY);
-	            j2carta2.setRotate(90);
+	            j2carta2.setRotate(270);
 	            
 	            layoutY+=60;
 	            
@@ -317,7 +317,7 @@ public class Visualizador extends Application  {
 	            j1carta3.setFitWidth(50);
 	            j1carta3.setLayoutX(layoutXIzq);
 	            j1carta3.setLayoutY(layoutY);
-	            j1carta3.setRotate(270);
+	            j1carta3.setRotate(90);
 	           
 	            ImageView j2carta3 = new ImageView();
 	            j2carta3.setImage(reverso);
@@ -325,7 +325,7 @@ public class Visualizador extends Application  {
 	            j2carta3.setFitWidth(50);
 	            j2carta3.setLayoutX(layoutXDer);
 	            j2carta3.setLayoutY(layoutY);
-	            j2carta3.setRotate(90);
+	            j2carta3.setRotate(270);
 	            
 	            //lista de imagenes para darlas vuelta cuando sea el turno.
 	            ConjuntoCartas<ImageView> listaJug1 = new ConjuntoCartas<ImageView>();
@@ -362,6 +362,10 @@ public class Visualizador extends Application  {
 			      view.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEventHandler<MouseEvent>(this.partida,jugador,carta,view,espacioAColocar));
 			  }
 			 
+		}
+		
+		public void resetearEscena (){
+			
 		}
 		
 		public void tirarCarta (ImageView carta, double posicion){

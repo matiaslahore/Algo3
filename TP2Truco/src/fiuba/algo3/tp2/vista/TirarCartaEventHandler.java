@@ -27,8 +27,7 @@ public class TirarCartaEventHandler<MouseEvent> implements javafx.event.EventHan
 	@Override
 	public void handle(Event evento) {	
          this.imagen.setLayoutX(this.layoutX);
-         this.jugador.jugarCarta(this.carta);
-        
+       
 	}
 
 }
