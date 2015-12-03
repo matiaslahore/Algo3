@@ -36,6 +36,9 @@ public class EstadoRondaTresParda extends EstadoRondas{
 
 		System.out.println("RONDA TRES gana: " + ganadoresRonda.get(0).obtenerNombre() + "\n");
 		
+		this.juez.mezclar(); //renuevo el mazo
+		repartir();
+		
 		if (esPicaPica()){
 			if (this.juez.cantidadDeJugadas() == 4){
 				this.juez.resetearcantidadDeJugadas();

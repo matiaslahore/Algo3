@@ -47,6 +47,9 @@ public class EstadoRondaDosParda extends EstadoRondas{
 
 		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
 
+		this.juez.mezclar(); //renuevo el mazo
+		repartir();
+		
 		if (esPicaPica()){
 			if (this.juez.cantidadDeJugadas() == 4){
 				this.juez.resetearcantidadDeJugadas();
