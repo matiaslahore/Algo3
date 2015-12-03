@@ -127,5 +127,9 @@ public abstract class PartidaDeTruco {
 	public abstract void cantarContraFlor();
 	
 	public abstract void cantarContraFlorAJuego();
+
+	public List<Carta> cartasEnJuego() {
+		return this.mesa.obtenerListaDeCartasEnJuegoDeRondaActual();
+	}
 	
 }

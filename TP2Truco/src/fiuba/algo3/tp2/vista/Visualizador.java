@@ -156,7 +156,9 @@ public class Visualizador extends Application  {
 
 		this.stageCartasEnMesa = new Stage();
 		this.stageCartasEnMesa.setTitle("Cartas En Juego");
-		//stageCartasEnMesa.show();
+		Scene sceneCartasEnMesa = this.cargarSceneDeLaMesa();
+		this.stageCartasEnMesa.setScene(sceneCartasEnMesa);
+		this.stageCartasEnMesa.show();
 	}
 
 	private VBox botonesDelJugador(Stage stage) {
@@ -256,7 +258,7 @@ public class Visualizador extends Application  {
 			cartaComoImagen.setFitWidth(110);
 			cartaComoImagen.setLayoutX(layoutX);
 			cartaComoImagen.setLayoutY(120);
-			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this, this.stageJugadorConTurno));
+			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this, this.stageJugadorConTurno, this.stageCartasEnMesa));
 			
 			layoutX += 150;
 			
@@ -265,6 +267,49 @@ public class Visualizador extends Application  {
 		return root;
 	}
 
+	public Scene cargarSceneDeLaMesa() {
+		//imagen de fondo de la mesa
+		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
+		Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
+		ImageView imagen = new ImageView();
+		imagen.setImage(fondo);
+		
+		//escenario de imagenes de la mesa 
+		this.escena = new Group();
+		
+		this.escena.getChildren().add(imagen); //carga el fondo
+		this.escena.getChildren().add(agregarCartasEnJuego());
+		
+		Scene scene = new Scene(this.escena, 600, 320);
+		return scene;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Group agregarCartasEnJuego(){
+		Group root = new Group();
+		double layoutX = 80;
+		
+		List<Carta> listaCartasJugador = this.partida.cartasEnJuego();
+		
+		Iterator<Carta> itr = listaCartasJugador.iterator();
+		while(itr.hasNext()) {
+			Carta carta = (Carta) itr.next();
+			
+			Image imgCarta = new Image(this.imagenesCarta.obtenerDireccionDeCarta(carta.cartaComoString()));
+			ImageView cartaComoImagen = new ImageView();
+			cartaComoImagen.setImage(imgCarta);
+			cartaComoImagen.setFitHeight(150);
+			cartaComoImagen.setFitWidth(110);
+			cartaComoImagen.setLayoutX(layoutX);
+			cartaComoImagen.setLayoutY(120);
+			
+			layoutX += 150;
+			
+			root.getChildren().add(cartaComoImagen);
+		}
+		return root;
+	}
+	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void jugarProximo (){

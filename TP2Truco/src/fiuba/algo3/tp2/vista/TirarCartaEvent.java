@@ -14,12 +14,14 @@ public class TirarCartaEvent<MouseEvent> implements javafx.event.EventHandler {
 	private PartidaDeTruco partida;
 	private Visualizador visual;
 	private Stage stageJugador;
-
-	public TirarCartaEvent(PartidaDeTruco partida, Carta carta, Visualizador visual, Stage stageJugador){
+	private Stage stageMesa;
+	
+	public TirarCartaEvent(PartidaDeTruco partida, Carta carta, Visualizador visual, Stage stageJugador, Stage stageMesa){
 		this.partida = partida;
 		this.carta = carta;
 		this.visual = visual;
 		this.stageJugador = stageJugador;
+		this.stageMesa = stageMesa;
 	}
 
 	@Override
@@ -29,6 +31,10 @@ public class TirarCartaEvent<MouseEvent> implements javafx.event.EventHandler {
 		
 		Scene scene = this.visual.cargarSceneDelJugador();
         this.stageJugador.setScene(scene);
+        
+        Scene sceneMesa = this.visual.cargarSceneDeLaMesa();
+        this.stageMesa.setScene(sceneMesa);
+		
 	}
 
 }
