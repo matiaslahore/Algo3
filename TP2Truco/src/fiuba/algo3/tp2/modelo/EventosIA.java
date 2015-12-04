@@ -15,44 +15,37 @@ class EventosIA {
         for (Oyente hl : listeners)
             hl.seCantoTruco();
     }
-
+/*
 	public void seCantoReTruco(){
 		for (Oyente hl : listeners)
-            hl.seCantoReTruco();
+            hl.seCantoTruco();
 	}
 	
 	public void seCantoValeCuatro(){
 		for (Oyente hl : listeners)
-            hl.seCantoValeCuatro();
+            hl.seCantoTruco();
 	}
 	
 	public void seCantoEnvido(){
 		for (Oyente hl : listeners)
-            hl.seCantoEnvido();
+            hl.seCantoTruco();
 	}
 	
 	public void seCantoRealEnvido(){
 		for (Oyente hl : listeners)
-            hl.seCantoRealEnvido();
+            hl.seCantoTruco();
 	}
 	
 	public void seCantoFaltaEnvido(){
 		for (Oyente hl : listeners)
-            hl.seCantoFaltaEnvido();
+            hl.seCantoTruco();
 	}
 	
-	public void seCantoFlor(){
-		for (Oyente hl : listeners)
-            hl.seCantoFlor();
-	}
+	public void seCantoFlor()
 	
-	public void seCantoContraFlor(){
-		for (Oyente hl : listeners)
-            hl.seCantoContraFlor();
-	}
+	public void seCantoContraFlor();
 	
-	public void seCantoContraFlorAJuego(){
-		for (Oyente hl : listeners)
-            hl.seCantoContraFlorAJuego();
-	}    
+	public void seCantoContraFlorAJuego();
+    */
+    
 }
