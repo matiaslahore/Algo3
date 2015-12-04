@@ -41,7 +41,7 @@ public class PruebasJugadorIATest {
 		
 		mesa.instanciarJuez(equipoUno, equipoIA);
 		
-		equipoUno.cargarJugadores("Nicolas");
+		equipoUno.cargarJugadores("JugadorIA");
 		equipoIA.cargarJugadorIA("Martin");
 		
 		mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoIA.obtenerJugadores());

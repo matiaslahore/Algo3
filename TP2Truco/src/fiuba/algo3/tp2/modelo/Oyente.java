@@ -19,4 +19,6 @@ public interface Oyente {
 	public void seCantoContraFlor();
 	
 	public void seCantoContraFlorAJuego();
+
+	public void juga();
 }

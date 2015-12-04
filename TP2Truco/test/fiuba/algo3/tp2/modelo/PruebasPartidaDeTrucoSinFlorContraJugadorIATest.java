@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.Arrays;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class PruebasPartidaDeTrucoSinFlorContraJugadorIATest {
@@ -16,6 +17,8 @@ public class PruebasPartidaDeTrucoSinFlorContraJugadorIATest {
 		partidaDeTruco.cargarJugadoresEnEquipoDos(Arrays.asList("Nicolas"));
 		
 		partidaDeTruco.iniciar();
+		
+		partidaDeTruco.cantarEnvido();
 		
 		
 	}
