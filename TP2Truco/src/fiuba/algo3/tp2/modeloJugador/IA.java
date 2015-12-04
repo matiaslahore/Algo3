@@ -2,8 +2,9 @@ package fiuba.algo3.tp2.modeloJugador;
 
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
+import fiuba.algo3.tp2.modelo.Oyente;
 
-public class IA extends Jugador{
+public class IA extends Jugador implements Oyente{
 
 	EstadoIA estadoIA;
 	
@@ -38,11 +39,57 @@ public class IA extends Jugador{
 		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(this.refMesa.obtenerUltimaCartaJugada()));
 	}
 
-	public boolean seCantoEnvido() {
-		return refMesa.seCantoEnvido();
+	@Override
+	public void seCantoTruco() {
+		this.setearEstado(new EstadoIACantaronTruco());
+		this.juga();
 	}
 
-	public boolean seCantoTruco() {
-		return refMesa.seCantoTruco();
+	@Override
+	public void seCantoReTruco() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCantoValeCuatro() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCantoEnvido() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCantoRealEnvido() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCantoFaltaEnvido() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCantoFlor() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCantoContraFlor() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seCantoContraFlorAJuego() {
+		// TODO Auto-generated method stub
+		
 	}
 }
