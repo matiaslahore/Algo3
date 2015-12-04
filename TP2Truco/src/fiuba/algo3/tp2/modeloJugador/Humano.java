@@ -10,8 +10,5 @@ public class Humano extends Jugador{
 		super(name, mesa, team);
 	}
 
-	@Override
-	public void juga() {
-		throw new JugadorHumanoNoPuedeUsarIA();
-	}
+
 }

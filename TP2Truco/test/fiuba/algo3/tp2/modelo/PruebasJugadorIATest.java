@@ -209,7 +209,7 @@ public class PruebasJugadorIATest {
 	}
 	
 	@Test
-	public void pruebaJugadorHumanoCantaEnvidoIARespondeEnvido(){
+	public void pruebaJugadorHumanoCantaEnvidoIARespondeRealEnvido(){
 		
 		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new TresDeOro(), new AnchoDeEspada()));
 		

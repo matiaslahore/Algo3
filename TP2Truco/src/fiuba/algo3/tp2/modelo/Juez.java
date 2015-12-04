@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.tp2.modeloDeCartas.*;
@@ -26,7 +27,7 @@ public class Juez {
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuego(){
-		return this.mesa.obtenerListaDeCartasEnJuegoDeRondaActual();
+		return this.mesa.obtenerCartasEnJuegoDeRondaActual();
 	}
 	
 	public Carta repartir(){
@@ -42,8 +43,22 @@ public class Juez {
 	}
 
 	public Carta obtenerCartaGanadoraDeRonda() {
-		
-		return this.mesa.obtenerCartaGanadoraDeRonda();
+		Iterator<Carta> itr = this.mesa.obtenerCartasEnJuegoDeRondaActual().iterator();
+
+		Carta cartaUno = (Carta) itr.next();
+		Carta cartaDos = (Carta) itr.next();
+		Carta ganadora = ganador(cartaUno,cartaDos);
+
+		while(itr.hasNext()) {
+			Carta otraCarta = (Carta) itr.next();
+			ganadora = ganador(ganadora,otraCarta);
+		}
+
+		return ganadora;		
+	}	
+
+	private Carta ganador(Carta a, Carta b){
+		return a.vs(b);
 	}
 	
 	public boolean hayParda(){

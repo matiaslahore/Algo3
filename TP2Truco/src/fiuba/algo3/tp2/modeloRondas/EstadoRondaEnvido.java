@@ -46,7 +46,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		Equipo eqPerdedor = (this.jugadores.get(this.jugadorMano + indexTantoGanador + 1)).obtenerEquipo();
 		
 		if(this.cantosEnvido.quiso() == -1){
-			this.juez.obtenerPuntosFaltaEnvido(eqPerdedor);
+			this.juez.puntosEnJuego(this.juez.obtenerPuntosFaltaEnvido(eqPerdedor));
 		}
 		else{
 			this.juez.puntosEnJuego(this.cantosEnvido.quiso());

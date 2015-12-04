@@ -117,8 +117,6 @@ public abstract class Jugador {
 		this.refMesa.noQuiero(this);
 	}
 
-	public abstract void juga();
-
 	public void irseAlMazo(){
 		this.refMesa.irseAlMazo(this);
 	}

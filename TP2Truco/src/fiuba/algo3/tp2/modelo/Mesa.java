@@ -95,6 +95,7 @@ public class Mesa {
 
 	public void cantarTruco(Jugador jugador){
 		this.ronda = this.ronda.cantarTruco(jugador);
+		//throw new seCantoTrucoEvent();
 	}
 
 	public void cantarQuieroReTruco(Jugador jugador) {
@@ -133,26 +134,7 @@ public class Mesa {
 		return this.juez.puntosEquipo(equipo);
 	}
 
-	public Carta obtenerCartaGanadoraDeRonda() {
-		Iterator<Carta> itr = cartasEnJuegoRondaActual.iterator();
-
-		Carta cartaUno = (Carta) itr.next();
-		Carta cartaDos = (Carta) itr.next();
-		Carta ganadora = ganador(cartaUno,cartaDos);
-
-		while(itr.hasNext()) {
-			Carta otraCarta = (Carta) itr.next();
-			ganadora = ganador(ganadora,otraCarta);
-		}
-
-		return ganadora;		
-	}	
-
-	private Carta ganador(Carta a, Carta b){
-		return a.vs(b);
-	}
-
-	public List<Carta> obtenerListaDeCartasEnJuegoDeRondaActual() {
+	public List<Carta> obtenerCartasEnJuegoDeRondaActual() {
 		return this.cartasEnJuegoRondaActual;
 	}
 	

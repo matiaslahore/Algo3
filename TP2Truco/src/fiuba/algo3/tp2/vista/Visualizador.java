@@ -136,9 +136,11 @@ public class Visualizador extends Application  {
 		//cargar nombres de jugadores
 		ArrayList<String> lista1 = new ArrayList<String> ();
 		lista1.add("PEPITO");
+		lista1.add("pablito");
 		this.partida.cargarJugadoresEnEquipoUno(lista1);
 		ArrayList<String> lista2 = new ArrayList<String> ();
 		lista2.add("JUANITO MARAVILLA");
+		lista2.add("mati");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
 		this.partida.iniciar();
 		
