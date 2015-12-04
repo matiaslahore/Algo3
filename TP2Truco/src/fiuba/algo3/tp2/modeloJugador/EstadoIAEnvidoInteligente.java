@@ -4,7 +4,7 @@ public class EstadoIAEnvidoInteligente extends EstadoIA {
 	
 	public void manejador(IA jugadorIA){
 		
-		if(jugadorIA.seCantoEnvido()){
+		/*if(jugadorIA.seCantoEnvido()){
 			if(jugadorIA.obtenerPuntosEnvido() >= 30){
 				jugadorIA.cantarRealEnvido();
 				jugadorIA.setearEstado(new EstadoIAFaltaEnvidoInteligente());
@@ -26,6 +26,6 @@ public class EstadoIAEnvidoInteligente extends EstadoIA {
 			return;
 		}
 		jugadorIA.setearEstado(new EstadoIATrucoInteligente());
-		jugadorIA.juga();
+		jugadorIA.juga();*/
 	}
 }

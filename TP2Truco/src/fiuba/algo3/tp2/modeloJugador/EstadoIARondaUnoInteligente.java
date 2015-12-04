@@ -4,8 +4,8 @@ public class EstadoIARondaUnoInteligente extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		// TODO Auto-generated method stub
-
+		
+		jugadorIA.jugarCartaAleatoria();
 	}
 
 }
