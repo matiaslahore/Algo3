@@ -25,14 +25,6 @@ public class PartidaDeTrucoSinFlorContraJugadorIA extends PartidaDeTruco{
 		this.equipoDos.cargarJugadores(nombreJugadores);
 	}
 	
-	public void iniciar() {
-		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(), equipoDos.obtenerJugadores());
-		this.mesa.iniciarRonda();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		this.eventosIA.sosMano();
-		mesa.siguienteJugadorConTurno();
-	}
-	
 	@Override
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
