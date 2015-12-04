@@ -3,71 +3,17 @@ package fiuba.algo3.tp2.modelo;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.tp2.modeloJugador.IA;
+
 public class PruebaUnitariaEventosIATest {
 	EventosIA eventosIA;
-	IAProbandoEventos IA;
-	public class IAProbandoEventos implements Oyente {
-
-		//Seria una simulacion de la IA
-		
-		@Override
-		public void seCantoTruco() {
-			 System.out.println("TRUCO");		
-		}
-
-		@Override
-		public void seCantoReTruco() {
-			 System.out.println("RETRUCO");	
-			
-		}
-
-		@Override
-		public void seCantoValeCuatro() {
-			 System.out.println("VALECUATRO");	
-			
-		}
-
-		@Override
-		public void seCantoEnvido() {
-			 System.out.println("ENVIDO");	
-			
-		}
-
-		@Override
-		public void seCantoRealEnvido() {
-			System.out.println("REALENVIDO");	
-			
-		}
-
-		@Override
-		public void seCantoFaltaEnvido() {
-			System.out.println("FALTAENVIDO");
-			
-		}
-
-		@Override
-		public void seCantoFlor() {
-			System.out.println("FLOR");
-			
-		}
-
-		@Override
-		public void seCantoContraFlor() {
-			System.out.println("CONTRAFLOR");
-			
-		}
-
-		@Override
-		public void seCantoContraFlorAJuego() {
-			System.out.println("CONTRAFLORAJUEGO");
-			
-		}
-	}
-
+	IA IA;
+	
 	@Before
 	public void inicializar(){
 		this.eventosIA = new EventosIA();
-		this.IA = new IAProbandoEventos();
+		Mesa mesa = new Mesa();
+		this.IA = new IA("soy inteligente", mesa, new Equipo("equipo inteligente",mesa));
 		this.eventosIA.addListener(this.IA);
 	}
 	

@@ -10,8 +10,7 @@ public class IA extends Jugador implements Oyente{
 	
 	public IA(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
-		
-		estadoIA = new EstadoIAEnvidoInteligente();
+		estadoIA = new EstadoIARondaUnoInteligente();
 	}
 	
 	public void juga(){
