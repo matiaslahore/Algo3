@@ -32,37 +32,46 @@ public class PartidaDeTrucoSinFlorContraJugadorIA extends PartidaDeTruco{
 		this.eventosIA.seCantoTruco();
 		this.mesa.siguienteJugadorConTurno();
 	}
-/*
+
 	@Override
 	public void cantarQuieroReTruco() {
 		this.jugadorTurnoActual.cantarQuieroReTruco();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.eventosIA.seCantoReTruco();
+		this.mesa.siguienteJugadorConTurno();
 	}
 
 	@Override
 	public void cantarQuieroValeCuatro() {
 		this.jugadorTurnoActual.cantarQuieroValeCuatro();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.eventosIA.seCantoValeCuatro();
+		this.mesa.siguienteJugadorConTurno();
 	}
 
 	@Override
 	public void cantarEnvido() {
 		this.jugadorTurnoActual.cantarEnvido();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.eventosIA.seCantoEnvido();
+		this.mesa.siguienteJugadorConTurno();
 	}
 
 	@Override
 	public void cantarRealEnvido() {
 		this.jugadorTurnoActual.cantarRealEnvido();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.eventosIA.seCantoRealEnvido();
+		this.mesa.siguienteJugadorConTurno();
 	}
 
 	@Override
 	public void cantarFaltaEnvido() {
 		this.jugadorTurnoActual.cantarFaltaEnvido();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.eventosIA.seCantoFaltaEnvido();
+		this.mesa.siguienteJugadorConTurno();
 	}
-	*/
 	
 	@Override
 	public void cantarFlor() {
