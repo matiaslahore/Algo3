@@ -6,7 +6,6 @@ import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
 
 public class IA extends Jugador implements Oyente{
-
 	EstadoIA estadoIA;
 	
 	public IA(String name, Mesa mesa, Equipo team) {
@@ -15,7 +14,6 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public void juga(){
-		
 		this.estadoIA.manejador(this);
 	}	
 
