@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.modeloJugador;
 
+import fiuba.algo3.tp2.excepciones.SeEstaJugandoSinFlorException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
@@ -46,49 +47,46 @@ public class IA extends Jugador implements Oyente{
 
 	@Override
 	public void seCantoReTruco() {
-		// TODO Auto-generated method stub
-		
+		this.setearEstado(new EstadoIACantaronReTruco());
+		this.juga();		
 	}
 
 	@Override
 	public void seCantoValeCuatro() {
-		// TODO Auto-generated method stub
-		
+		this.setearEstado(new EstadoIACantaronValeCuatro());
+		this.juga();
 	}
 
 	@Override
 	public void seCantoEnvido() {
-		// TODO Auto-generated method stub
-		
+		this.setearEstado(new EstadoIACantaronEnvido());
+		this.juga();
 	}
 
 	@Override
 	public void seCantoRealEnvido() {
-		// TODO Auto-generated method stub
-		
+		this.setearEstado(new EstadoIACantaronRealEnvido());
+		this.juga();
 	}
 
 	@Override
 	public void seCantoFaltaEnvido() {
-		// TODO Auto-generated method stub
-		
+		this.setearEstado(new EstadoIACantaronFaltaEnvido());
+		this.juga();
 	}
 
 	@Override
 	public void seCantoFlor() {
-		// TODO Auto-generated method stub
-		
+		throw new SeEstaJugandoSinFlorException();
 	}
 
 	@Override
 	public void seCantoContraFlor() {
-		// TODO Auto-generated method stub
-		
+		throw new SeEstaJugandoSinFlorException();
 	}
 
 	@Override
 	public void seCantoContraFlorAJuego() {
-		// TODO Auto-generated method stub
-		
+		throw new SeEstaJugandoSinFlorException();
 	}
 }
