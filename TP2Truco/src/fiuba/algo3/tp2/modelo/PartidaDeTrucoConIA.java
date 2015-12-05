@@ -54,8 +54,39 @@ public class PartidaDeTrucoConIA {
 	
 	public void jugarCarta(Carta carta) {
 		this.equipoDos.obtenerJugadores().get(0).jugarCarta(carta);
-		this.eventosIA.jugarCarta();
+		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();
 	}
 	
+	//Los cantos no cambian de turno, sino que le avisan a la IA para que actue,
+	//Y despues continua el juego, tirando cartas..
+	public void cantarTruco() {
+		this.jugadorTurnoActual.cantarTruco();
+		this.eventosIA.seCantoTruco();
+	}
+	
+	public void cantarQuieroReTruco() {
+		this.jugadorTurnoActual.cantarQuieroReTruco();
+		this.eventosIA.seCantoReTruco();
+	}
+	
+	public void cantarQuieroValeCuatro() {
+		this.jugadorTurnoActual.cantarQuieroValeCuatro();
+		this.eventosIA.seCantoValeCuatro();
+	}
+	
+	public void cantarEnvido() {
+		this.jugadorTurnoActual.cantarEnvido();
+		this.eventosIA.seCantoEnvido();
+	}
+	
+	public void cantarRealEnvido() {
+		this.jugadorTurnoActual.cantarRealEnvido();
+		this.eventosIA.seCantoRealEnvido();
+	}
+	
+	public void cantarFaltaEnvido() {
+		this.jugadorTurnoActual.cantarFaltaEnvido();
+		this.eventosIA.seCantoFaltaEnvido();
+	}
 	
 }
