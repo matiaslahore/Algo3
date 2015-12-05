@@ -48,8 +48,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
 		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -85,10 +85,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleDosPorDos(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -131,12 +129,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleTresPorTres(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq1.cargarJugadores("j5");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
-		eq2.cargarJugadores("j6");
+		eq1.cargarJugadores(Arrays.asList("j1","j3","j5"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4","j6"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -193,10 +187,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaJ3QuiereTrucoCantadoPorJ2(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -219,10 +211,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaJ3NOQuiereTrucoCantadoPorJ2(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -240,10 +230,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaJ3QuiereEnvidoCantadoPorJ2(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -273,10 +261,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaJ3NOQuiereEnvidoCantadoPorJ2(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -296,10 +282,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test(expected = RuntimeException.class)
 	public void testFallaCantoTrucoyQuieroReTrucoElMismoJugador() {
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -319,10 +303,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test(expected = RuntimeException.class)
 	public void testFallaCantoTrucoyQuieroReTrucoElMismoEquipo() {
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -346,10 +328,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaJ3CantaEnvidoEnvidoJ4Acepta(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -385,10 +365,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaJ3CantaEnvidoEnvidoJ4NoAcepta(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -413,10 +391,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaJ4CantaEnvidoEnvidoRealEnvidoJ1Acepta(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -458,10 +434,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaJ1QuiereValeCuatroCantadoPorJ4(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -491,10 +465,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaEq1GanaValeCuatro(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -568,10 +540,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaEq1GanaValeCuatroSeCantaPorRondas(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -654,12 +624,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleTresPorTresCantaEnvioYValeCuatro(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq1.cargarJugadores("j5");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
-		eq2.cargarJugadores("j6");
+		eq1.cargarJugadores(Arrays.asList("j1","j3","j5"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4","j6"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -778,12 +744,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 
 	@Test
 	public void pruebaSimulacionDePartidaPicaPica(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq1.cargarJugadores("j5");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
-		eq2.cargarJugadores("j6");
+		eq1.cargarJugadores(Arrays.asList("j1","j3","j5"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4","j6"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -974,10 +936,9 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	
 	@Test
 	public void pruebaPardasUnoPorUnoSeGanaEnSegunda(){
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
-
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
@@ -1006,9 +967,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	
 	@Test
 	public void pruebaPardasUnoPorUnoSeGanaEnTercera(){
-		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -1044,9 +1004,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	
 	@Test
 	public void pruebaPardasUnoPorUnoSeGanaEnTerceraPorSerMano(){
-		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -1082,10 +1041,9 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	
 	@Test
 	public void pruebaIrseAlMazoPartidaDosxDos(){
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
-
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
 
@@ -1119,9 +1077,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	
 	@Test(expected = CantoInvalidoException.class)
 	public void pruebaFallaCantaEnvidoSegundaMano(){
-		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -1148,9 +1105,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	
 	@Test(expected = CantoInvalidoException.class)
 	public void pruebaFallaCantaEnvidoTerceraMano(){
-		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -1180,9 +1136,8 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	
 	@Test(expected = CantoInvalidoException.class)
 	public void pruebaFallaCantaEnvidoDosVecesEnUnaMano(){
-		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();

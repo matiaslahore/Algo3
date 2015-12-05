@@ -38,7 +38,7 @@ public class Equipo {
 	}
 	
 	public void cargarJugadorIA() {
-		Jugador nuevoJugador = new IA(this.nombreEquipo, refMesa, this);
+		Jugador nuevoJugador = new IA("Jarvis", refMesa, this);
 		jugadores.add(nuevoJugador);
 	}
 

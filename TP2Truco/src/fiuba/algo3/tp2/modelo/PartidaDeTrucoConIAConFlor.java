@@ -13,6 +13,8 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
 			this.eventosIA.seCantoFlor();
 		}
+		this.jugadorTurnoActual.hacerJugarIA();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 
 	@Override
@@ -22,6 +24,8 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
 			this.eventosIA.seCantoContraFlor();
 		}
+		this.jugadorTurnoActual.hacerJugarIA();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 
 	@Override
@@ -31,5 +35,7 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
 			this.eventosIA.seCantoContraFlorAJuego();
 		}
+		this.jugadorTurnoActual.hacerJugarIA();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 }

@@ -16,6 +16,8 @@ public abstract class PartidaDeTruco {
 		this.mesa = new Mesa();
 		this.equipoUno = new Equipo(nombreEq1, mesa);
 		this.equipoDos = new Equipo(nombreEq2, mesa);
+		
+		this.mesa.instanciarJuez(equipoUno, equipoDos);
 	}
 	
 	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {

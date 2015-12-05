@@ -25,7 +25,6 @@ public class Mesa {
 	int indexMano;
 	ArrayList<Carta> cartasJugadas;
 	
-	
 	public Mesa(){
 		jugadores = new ListaCircular<Jugador>();
 		ganadoresRonda = new ArrayList<Equipo>();

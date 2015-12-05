@@ -70,8 +70,8 @@ public class PruebasSituacionesDeJuegoConFlor {
 	@Test(expected = CantoInvalidoException.class)
 	public void pruebaFallaCantaFlorJugadorSinFlor(){
 		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -89,10 +89,8 @@ public class PruebasSituacionesDeJuegoConFlor {
 
 	@Test
 	public void pruebaJ1CantaFlorJ4ContraFlorJ1Quiere(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -128,10 +126,8 @@ public class PruebasSituacionesDeJuegoConFlor {
 
 	@Test
 	public void pruebaJ1CantaFlorGana3PtosNadieTieneFlor(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
@@ -160,10 +156,8 @@ public class PruebasSituacionesDeJuegoConFlor {
 
 	@Test(expected = NoSePuedeSeguirJugandoExcepcion.class)
 	public void pruebaJ1CantaFlorJ2ContraFlorAlRestoJ1QuiereSeTerminaLaPartida(){
-		eq1.cargarJugadores("j1");
-		eq1.cargarJugadores("j3");
-		eq2.cargarJugadores("j2");
-		eq2.cargarJugadores("j4");
+		eq1.cargarJugadores(Arrays.asList("j1","j3"));
+		eq2.cargarJugadores(Arrays.asList("j2","j4"));
 
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();

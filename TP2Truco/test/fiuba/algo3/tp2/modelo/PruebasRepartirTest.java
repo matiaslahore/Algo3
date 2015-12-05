@@ -22,12 +22,10 @@ public class PruebasRepartirTest {
 	
 	@Test
 	public void repartoAlEquipo(){
-		Equipo eq = new Equipo("Futbol",mesa);
-		eq.cargarJugadores("pipi");
-		eq.cargarJugadores("Milito");
-		eq.cargarJugadores("Tevez");
+		Equipo equipo = new Equipo("Futbol",mesa);
+		equipo.cargarJugadores(Arrays.asList("Pepito","pipi","julio"));
 		
-		ArrayList<Jugador> jugadores = eq.obtenerJugadores();
+		ArrayList<Jugador> jugadores = equipo.obtenerJugadores();
 
 		//podria ser un metodo equipo.recibirCartas()
 		jugadores.get(0).recibirCartas(Arrays.asList(new SieteDeOro(), new SeisDeOro(), new SieteDeCopa()));

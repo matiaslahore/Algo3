@@ -35,9 +35,8 @@ public class PruebasSituacionesDeJuegoUnoVsUno {
 	
 	@Test
 	public void pruebaSimulacionDePartidaDeTrucoSimpleUnoPorUno(){
-		
-		eq1.cargarJugadores("j1");
-		eq2.cargarJugadores("j2");
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
 		
 		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
 		mesa.iniciarRonda();
