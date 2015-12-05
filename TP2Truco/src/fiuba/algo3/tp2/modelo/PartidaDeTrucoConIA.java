@@ -10,7 +10,6 @@ public class PartidaDeTrucoConIA {
 	private Equipo equipoIA;
 	private Equipo equipoDos;
 	private Mesa mesa;
-	private Jugador jugadorTurnoActual;
 	
 	public PartidaDeTrucoConIA(String nombreEq1, String nombreEq2){
 		this.mesa = new Mesa();
@@ -29,7 +28,8 @@ public class PartidaDeTrucoConIA {
 	public void iniciar() {
 		this.mesa.sentarJugadores(equipoIA.obtenerJugadores(), equipoDos.obtenerJugadores());
 		this.mesa.iniciarRonda();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();  //Definimos manualmente que la IA siempre empiece el juego
+		//this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 	
 	public int obtenerPuntajeDeEquipoIA() {
@@ -58,34 +58,34 @@ public class PartidaDeTrucoConIA {
 	}
 	
 	//Los cantos no cambian de turno, sino que le avisan a la IA para que actue,
-	//Y despues continua el juego, tirando cartas..
+	//Y despues continua el juego, tirando cartas por ejemplo
 	public void cantarTruco() {
-		this.jugadorTurnoActual.cantarTruco();
+		this.equipoDos.obtenerJugadores().get(0).cantarTruco();
 		this.eventosIA.seCantoTruco();
 	}
 	
 	public void cantarQuieroReTruco() {
-		this.jugadorTurnoActual.cantarQuieroReTruco();
+		this.equipoDos.obtenerJugadores().get(0).cantarQuieroReTruco();
 		this.eventosIA.seCantoReTruco();
 	}
 	
 	public void cantarQuieroValeCuatro() {
-		this.jugadorTurnoActual.cantarQuieroValeCuatro();
+		this.equipoDos.obtenerJugadores().get(0).cantarQuieroValeCuatro();
 		this.eventosIA.seCantoValeCuatro();
 	}
 	
 	public void cantarEnvido() {
-		this.jugadorTurnoActual.cantarEnvido();
+		this.equipoDos.obtenerJugadores().get(0).cantarEnvido();
 		this.eventosIA.seCantoEnvido();
 	}
 	
 	public void cantarRealEnvido() {
-		this.jugadorTurnoActual.cantarRealEnvido();
+		this.equipoDos.obtenerJugadores().get(0).cantarRealEnvido();
 		this.eventosIA.seCantoRealEnvido();
 	}
 	
 	public void cantarFaltaEnvido() {
-		this.jugadorTurnoActual.cantarFaltaEnvido();
+		this.equipoDos.obtenerJugadores().get(0).cantarFaltaEnvido();
 		this.eventosIA.seCantoFaltaEnvido();
 	}
 	
