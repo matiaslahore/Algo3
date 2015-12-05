@@ -64,7 +64,6 @@ public abstract class Jugador {
 	}
 	
 	public void jugarCarta(Carta unaCarta) {
-		
 		this.manoDelJugador.tirarCarta(unaCarta);
 		this.refMesa.recibirCarta(unaCarta);
 	}
