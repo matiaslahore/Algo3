@@ -21,7 +21,7 @@ public class Equipo {
 		this.nombreEquipo = nombreDelEquipo;
 	}
 	
-	public void cargarJugadores(String nombre) {
+	public void cargarJugador(String nombre) {
 		Jugador newJugador = new Humano(nombre,refMesa,this);
 		jugadores.add(newJugador);
 	}
