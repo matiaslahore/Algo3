@@ -8,19 +8,28 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 
 	@Override
 	public void cantarFlor() {
-		this.equipoDos.obtenerJugadores().get(0).cantarEnvido();
-		this.eventosIA.seCantoFlor();
+		this.jugadorTurnoActual.cantarFlor();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoFlor();
+		}
 	}
 
 	@Override
 	public void cantarContraFlor() {
-		this.equipoDos.obtenerJugadores().get(0).cantarEnvido();
-		this.eventosIA.seCantoContraFlor();
+		this.jugadorTurnoActual.cantarContraFlor();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoContraFlor();
+		}
 	}
 
 	@Override
 	public void cantarContraFlorAJuego() {
-		this.equipoDos.obtenerJugadores().get(0).cantarEnvido();
-		this.eventosIA.seCantoContraFlorAJuego();
+		this.jugadorTurnoActual.cantarContraFlorAJuego();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoContraFlorAJuego();
+		}
 	}
 }
