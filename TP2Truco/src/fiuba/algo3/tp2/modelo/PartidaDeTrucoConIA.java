@@ -29,7 +29,6 @@ public class PartidaDeTrucoConIA {
 		this.mesa.sentarJugadores(equipoIA.obtenerJugadores(), equipoDos.obtenerJugadores());
 		this.mesa.iniciarRonda();
 		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();  //Definimos manualmente que la IA siempre empiece el juego
-		//this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 	
 	public int obtenerPuntajeDeEquipoIA() {
