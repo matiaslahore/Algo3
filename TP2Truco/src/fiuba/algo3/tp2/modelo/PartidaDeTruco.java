@@ -71,7 +71,7 @@ public abstract class PartidaDeTruco {
 		this.jugadorTurnoActual.jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
-	
+	//
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();

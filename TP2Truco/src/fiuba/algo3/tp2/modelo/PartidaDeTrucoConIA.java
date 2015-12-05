@@ -6,10 +6,10 @@ import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.IA;
 
 public class PartidaDeTrucoConIA {
-
-	Equipo equipoIA;
-	Equipo equipoDos;
-	Mesa mesa;
+	private EventosIA eventosIA;
+	private Equipo equipoIA;
+	private Equipo equipoDos;
+	private Mesa mesa;
 	
 	public PartidaDeTrucoConIA(String nombreEq1, String nombreEq2){
 		this.mesa = new Mesa();
@@ -17,6 +17,8 @@ public class PartidaDeTrucoConIA {
 		this.equipoDos = new Equipo(nombreEq2, mesa);
 		this.equipoIA.cargarJugador(nombreEq1);
 		this.equipoIA.cargarJugadorIA();
+		this.eventosIA = new EventosIA();
+		this.eventosIA.addListener((Oyente) equipoIA.obtenerJugadores().get(0));
 	}
 	
 	public void cargarJugador(String jugador){
@@ -52,5 +54,11 @@ public class PartidaDeTrucoConIA {
 	public void jugarCarta(Carta carta) {
 		this.equipoDos.obtenerJugadores().get(0).jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+	}
+	
+	public void jugarCarta(Carta carta) {
+		this.jugadorTurnoActual.jugarCarta(carta);
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		
 	}
 }

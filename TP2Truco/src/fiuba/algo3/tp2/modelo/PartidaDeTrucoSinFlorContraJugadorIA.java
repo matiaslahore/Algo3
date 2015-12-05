@@ -12,7 +12,7 @@ public class PartidaDeTrucoSinFlorContraJugadorIA extends PartidaDeTruco{
 		super(nombreEq1, nombreEq2);
 		
 		this.mesa.instanciarJuez(equipoUno,equipoDos);
-		this.equipoUno.cargarJugadorIA("JugadorIA");
+		this.equipoUno.cargarJugadorIA();
 		this.eventosIA = new EventosIA();
 		this.eventosIA.addListener((Oyente) equipoUno.obtenerJugadores().get(0));
 	}
