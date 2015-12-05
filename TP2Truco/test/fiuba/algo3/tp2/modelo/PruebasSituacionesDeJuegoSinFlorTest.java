@@ -599,7 +599,7 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 		//r3
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j1",actual.obtenerNombre());
-		actual.cantarQuieroReTruco();
+		actual.cantarQuieroValeCuatro();
 
 		actual = mesa.siguienteJugadorConTurno();
 		Assert.assertEquals("j2",actual.obtenerNombre());
@@ -1160,4 +1160,32 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 		actual = mesa.siguienteJugadorConTurno();
 		actual.cantarEnvido();
 	}
+	
+	@Test(expected = CantoInvalidoException.class)
+	public void pruebaFallaCantaTrucoMuchasVeces(){
+		eq1.cargarJugadores(Arrays.asList("j1"));
+		eq2.cargarJugadores(Arrays.asList("j2"));
+
+		mesa.sentarJugadores(eq1.obtenerJugadores(),eq2.obtenerJugadores());
+		mesa.iniciarRonda();
+
+		Jugador actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeCopa, tresDeOro, cuatroDeOro)));
+		actual = mesa.siguienteJugadorConTurno();
+		actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(dosDeOro, tresDeCopa, cuatroDeCopa)));
+		
+		//R1
+		actual = mesa.siguienteJugadorConTurno();
+		actual.cantarTruco();
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.quiero();
+		
+		actual = mesa.siguienteJugadorConTurno();
+		actual.jugarCarta(dosDeCopa);
+
+		actual = mesa.siguienteJugadorConTurno();
+		actual.cantarTruco();
+	}
+	
 }

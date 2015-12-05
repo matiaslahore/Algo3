@@ -131,7 +131,7 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		partidaDeTruco.cantarTruco();
 	}
 
-	@Test(expected = EquipoQueCantaNoPuedeVolverACantarException.class)
+	@Test(expected = CantoInvalidoException.class)
 	public void seCantaTrucoSeQuiereSeCantaTrucoNuevamenteProduceException(){
 		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
 		partidaDeTruco.cargarJugadoresEnEquipoUno(Arrays.asList("Nicolas"));

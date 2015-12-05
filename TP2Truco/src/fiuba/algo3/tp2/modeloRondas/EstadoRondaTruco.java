@@ -60,14 +60,14 @@ public class EstadoRondaTruco extends EstadoRondas{
 	
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
 		
-		this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());	
+		this.cantosTruco = this.cantosTruco.cantarQuieroReTruco(jugador.obtenerEquipo());	
 		//asi dsps vuelve al q canto la mano
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; 
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
 	}
 	
 	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
-		this.cantosTruco = this.cantosTruco.cantar(jugador.obtenerEquipo());	
+		this.cantosTruco = this.cantosTruco.cantarQuieroValeCuatro(jugador.obtenerEquipo());	
 		//asi dsps vuelve al q canto la mano
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; 
 		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);

@@ -18,9 +18,19 @@ public class ValeCuatro extends CantosTruco{
 	public int noQuiso() {
 		return 3;
 	}
+	
+	@Override
+	public CantosTruco cantarTruco(Equipo equipo) {
+		throw new CantoInvalidoException();
+	}
 
 	@Override
-	public CantosTruco cantar(Equipo equipo) throws CantoInvalidoException {
+	public CantosTruco cantarQuieroReTruco(Equipo equipo) {
+		throw new CantoInvalidoException();
+	}
+
+	@Override
+	public CantosTruco cantarQuieroValeCuatro(Equipo equipo) {
 		throw new CantoInvalidoException();
 	}
 

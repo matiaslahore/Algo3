@@ -11,10 +11,16 @@ public abstract class CantosTruco {
 		equipoQueCanta = equipo;
 	}
 	
-	public abstract CantosTruco cantar(Equipo equipo) throws EquipoQueCantaNoPuedeVolverACantarException, CantoInvalidoException;
+	//public abstract CantosTruco cantar(Equipo equipo) throws EquipoQueCantaNoPuedeVolverACantarException, CantoInvalidoException;
 	
 	public abstract int quiso();
 	
 	public abstract int noQuiso();
+
+	public abstract CantosTruco cantarTruco(Equipo equipo);
+	
+	public abstract CantosTruco cantarQuieroReTruco(Equipo equipo);
+	
+	public abstract CantosTruco cantarQuieroValeCuatro(Equipo equipo);
 	
 }
