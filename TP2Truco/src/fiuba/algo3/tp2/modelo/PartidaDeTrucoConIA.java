@@ -5,7 +5,7 @@ import java.util.List;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class PartidaDeTrucoConIA {
+public abstract class PartidaDeTrucoConIA {
 	private EventosIA eventosIA;
 	private Equipo equipoIA;
 	private Equipo equipoDos;
@@ -90,4 +90,26 @@ public class PartidaDeTrucoConIA {
 	public List<Carta> obtenerCartasDelJugador() {
 		return this.equipoDos.obtenerJugadores().get(0).obtenerCartasDelJugador();
 	}
+	
+	//Otros metodos
+	public void irseAlMazo(){
+		this.equipoDos.obtenerJugadores().get(0).irseAlMazo();
+	}
+	
+	public void quiero(){
+		this.equipoDos.obtenerJugadores().get(0).quiero();
+	}
+
+	public void noQuiero(){
+		this.equipoDos.obtenerJugadores().get(0).noQuiero();
+	}
+	
+	//Cantos de la flor ; Van a ser reimplementados en las clases hijas
+	//PartidaDeTrucoConIAConFlor y PartidaDeTrucoConIASinFlor
+	public abstract void cantarFlor();
+	
+	public abstract void cantarContraFlor();
+	
+	public abstract void cantarContraFlorAJuego();
+
 }
