@@ -27,7 +27,6 @@ public abstract class PartidaDeTruco {
 	}
 	
 	public Equipo obtenerEquipo(String nombreDelEquipo){
-		
 		if (equipoUno.tieneEsteNombre(nombreDelEquipo)){
 			return equipoUno;
 		}
