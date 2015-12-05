@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.CantosTruco;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -51,6 +52,10 @@ public class EstadoRondaTruco extends EstadoRondas{
 			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
 		}
 		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+	}
+	
+	public EstadoRondas cantarTruco(Jugador jugador) {
+		throw new CantoInvalidoException(); //se canta truco, truco
 	}
 	
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {

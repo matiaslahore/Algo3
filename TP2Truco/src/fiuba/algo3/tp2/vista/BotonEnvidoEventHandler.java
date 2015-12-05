@@ -10,39 +10,33 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class BotonEnvidoEventHandler implements EventHandler<ActionEvent>{
-	
+
 	private PartidaDeTruco partida;
 	private Label etiqueta;
-	private Visualizador visual;
+	private VistaHardCodeada visual;
 	private Stage stageJugador;
-	private Stage stageMesa;
-	
+
 	//constructor
-	public BotonEnvidoEventHandler (PartidaDeTruco partida, Visualizador visual, Stage stageJugador, Stage stageMesa, Label etiqueta){
-		this.partida= partida;
+	public BotonEnvidoEventHandler(PartidaDeTruco partida, VistaHardCodeada visual, Stage stageJugador, Label etiqueta){
+		this.partida = partida;
 		this.visual = visual;
 		this.stageJugador = stageJugador;
-		this.stageMesa = stageMesa;
-		this.etiqueta= etiqueta;
+		this.etiqueta = etiqueta;
 	}
-	
+
 	@Override
 	public void handle(ActionEvent actionEvent){
-		System.out.println("ENVIDO");
 		try{
 			this.partida.cantarEnvido();
+			etiqueta.setText("ENVIDO!");
+			etiqueta.setTextFill(Color.web("#FF0000"));
 		} catch (CantoInvalidoException envidoError){
 			etiqueta.setText("NO PUEDE CANTAR ENVIDO");
-	        etiqueta.setTextFill(Color.web("#FF0000"));
+			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		etiqueta.setText("RONDA EN ESTADO: ENVIDO");
-        etiqueta.setTextFill(Color.web("#FF0000"));
-        
-        Scene scene = this.visual.cargarSceneDelJugador();
-        this.stageJugador.setScene(scene);
-        
-        Scene sceneMesa = this.visual.cargarSceneDeLaMesa();
-        this.stageMesa.setScene(sceneMesa);
+
+		Scene scene = this.visual.cargarSceneDelJugador();
+		this.stageJugador.setScene(scene);
 	}
 
 }

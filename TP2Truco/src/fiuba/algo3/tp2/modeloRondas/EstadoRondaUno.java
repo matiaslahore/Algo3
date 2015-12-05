@@ -92,7 +92,7 @@ public class EstadoRondaUno extends EstadoRondas{
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.tantoCantado = true;
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,faltaEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,faltaEnvido);
 	}
 
 	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {

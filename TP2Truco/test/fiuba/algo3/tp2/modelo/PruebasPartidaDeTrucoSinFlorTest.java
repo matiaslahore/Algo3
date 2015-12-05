@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.excepciones.SeEstaJugandoSinFlorException;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
@@ -116,5 +118,43 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		
 		partidaDeTruco.cantarFlor();
 	}
+	
+	@Test(expected = CantoInvalidoException.class)
+	public void seCantaTrucoTrucoProduceException(){
+		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
+		partidaDeTruco.cargarJugadoresEnEquipoUno(Arrays.asList("Nicolas"));
+		partidaDeTruco.cargarJugadoresEnEquipoDos(Arrays.asList("Matias"));
+		
+		partidaDeTruco.iniciar();
+		
+		partidaDeTruco.cantarTruco();
+		partidaDeTruco.cantarTruco();
+	}
 
+	@Test(expected = EquipoQueCantaNoPuedeVolverACantarException.class)
+	public void seCantaTrucoSeQuiereSeCantaTrucoNuevamenteProduceException(){
+		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
+		partidaDeTruco.cargarJugadoresEnEquipoUno(Arrays.asList("Nicolas"));
+		partidaDeTruco.cargarJugadoresEnEquipoDos(Arrays.asList("Matias"));
+		
+		partidaDeTruco.iniciar();
+		
+		partidaDeTruco.cantarTruco();
+		partidaDeTruco.quiero();
+		partidaDeTruco.cantarTruco();
+	}
+	
+	@Test(expected = EquipoQueCantaNoPuedeVolverACantarException.class)
+	public void seCantaTrucoSeQuiereSeCantaQRTelMismoQueCantoTrucoProduceException(){
+		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
+		partidaDeTruco.cargarJugadoresEnEquipoUno(Arrays.asList("Nicolas"));
+		partidaDeTruco.cargarJugadoresEnEquipoDos(Arrays.asList("Matias"));
+		
+		partidaDeTruco.iniciar();
+		
+		partidaDeTruco.cantarTruco();
+		partidaDeTruco.quiero();
+		partidaDeTruco.cantarQuieroReTruco();
+	}
+	
 }
