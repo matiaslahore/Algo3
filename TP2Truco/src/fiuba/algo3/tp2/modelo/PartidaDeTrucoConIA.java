@@ -3,12 +3,14 @@ package fiuba.algo3.tp2.modelo;
 import java.util.List;
 
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class PartidaDeTrucoConIA {
 	private EventosIA eventosIA;
 	private Equipo equipoIA;
 	private Equipo equipoDos;
 	private Mesa mesa;
+	private Jugador jugadorTurnoActual;
 	
 	public PartidaDeTrucoConIA(String nombreEq1, String nombreEq2){
 		this.mesa = new Mesa();
@@ -52,7 +54,7 @@ public class PartidaDeTrucoConIA {
 	
 	public void jugarCarta(Carta carta) {
 		this.equipoDos.obtenerJugadores().get(0).jugarCarta(carta);
-		this.eventosIA
+		this.eventosIA.jugarCarta();
 	}
 	
 	
