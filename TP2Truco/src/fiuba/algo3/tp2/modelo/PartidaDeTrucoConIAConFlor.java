@@ -23,5 +23,4 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 		this.equipoDos.obtenerJugadores().get(0).cantarEnvido();
 		this.eventosIA.seCantoContraFlorAJuego();
 	}
-
 }

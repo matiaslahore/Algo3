@@ -22,5 +22,4 @@ public class PartidaDeTrucoConIASinFlor extends PartidaDeTrucoConIA {
 	public void cantarContraFlorAJuego() {
 		throw new SeEstaJugandoSinFlorException();
 	}
-
 }
