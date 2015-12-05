@@ -48,7 +48,7 @@ public abstract class PartidaDeTruco {
 		return this.equipoDos.obtenerNombre();
 	}
 	
-	public List<Carta> cartasDelJugadorConTurno() {
+	public List<Carta> obtenerCartasDelJugadorConTurno() {
 		return this.jugadorTurnoActual.obtenerCartasDelJugador();
 	}
 	
@@ -56,7 +56,7 @@ public abstract class PartidaDeTruco {
 		this.jugadorTurnoActual.jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
-	//
+	
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();

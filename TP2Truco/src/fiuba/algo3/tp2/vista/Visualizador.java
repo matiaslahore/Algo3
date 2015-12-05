@@ -272,7 +272,7 @@ public class Visualizador extends Application  {
 		Group root = new Group();
 		double layoutX = 80;
 		
-		List<Carta> listaCartasJugador = this.partida.cartasDelJugadorConTurno();
+		List<Carta> listaCartasJugador = this.partida.obtenerCartasDelJugadorConTurno();
 		
 		Iterator<Carta> itr = listaCartasJugador.iterator();
 		while(itr.hasNext()) {
@@ -499,7 +499,7 @@ public class Visualizador extends Application  {
 
 		// recopilo cartas del jugador en turno.
 		ConjuntoCartas<ImageView> conjuntoCartas= this.listaJugadores.get(index); // agarro el conjunto de cartas de ese jugador
-		List<Carta> cartas= this.partida.cartasDelJugadorConTurno();
+		List<Carta> cartas= this.partida.obtenerCartasDelJugadorConTurno();
 		for (int i=0; i<cartas.size(); i++){
 			Carta carta = cartas.get(i);  //agarro una carta
 			String nombre= cartas.get(i).cartaComoString(); //pido su nombre

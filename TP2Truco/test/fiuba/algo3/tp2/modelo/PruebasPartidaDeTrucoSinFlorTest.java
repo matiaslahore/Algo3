@@ -24,20 +24,20 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		partidaDeTruco.iniciar();
 		
 		//RONDA 1
-		List<Carta> listaCartas = partidaDeTruco.cartasDelJugadorConTurno();
+		List<Carta> listaCartas = partidaDeTruco.obtenerCartasDelJugadorConTurno();
 		Assert.assertEquals(3, listaCartas.size());
 		partidaDeTruco.jugarCarta(listaCartas.get(0));
 		
-		listaCartas = partidaDeTruco.cartasDelJugadorConTurno();
+		listaCartas = partidaDeTruco.obtenerCartasDelJugadorConTurno();
 		Assert.assertEquals(3, listaCartas.size());
 		partidaDeTruco.jugarCarta(listaCartas.get(0));
 		
 		//RONDA 2
-		listaCartas = partidaDeTruco.cartasDelJugadorConTurno();
+		listaCartas = partidaDeTruco.obtenerCartasDelJugadorConTurno();
 		Assert.assertEquals(2, listaCartas.size());
 		partidaDeTruco.jugarCarta(listaCartas.get(0));
 		
-		listaCartas = partidaDeTruco.cartasDelJugadorConTurno();
+		listaCartas = partidaDeTruco.obtenerCartasDelJugadorConTurno();
 		Assert.assertEquals(2, listaCartas.size());
 		partidaDeTruco.jugarCarta(listaCartas.get(0));
 	}
@@ -72,7 +72,7 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		partidaDeTruco.iniciar();
 		
 		//RONDA 1
-		List<Carta> listaCartas = partidaDeTruco.cartasDelJugadorConTurno();
+		List<Carta> listaCartas = partidaDeTruco.obtenerCartasDelJugadorConTurno();
 		Assert.assertEquals(3, listaCartas.size());
 		partidaDeTruco.jugarCarta(listaCartas.get(0));
 		
@@ -82,7 +82,7 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		partidaDeTruco.noQuiero();//1
 		Assert.assertEquals(3, partidaDeTruco.obtenerPuntajeDeEquipoDos());
 		
-		listaCartas = partidaDeTruco.cartasDelJugadorConTurno();
+		listaCartas = partidaDeTruco.obtenerCartasDelJugadorConTurno();
 		Assert.assertEquals(3, listaCartas.size());
 		//tiene 3 cartas xq se repartio de nuevo
 	}

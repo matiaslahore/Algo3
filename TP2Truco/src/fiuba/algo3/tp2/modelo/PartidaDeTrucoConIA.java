@@ -21,84 +21,71 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		throw new EquipoIANoPuedeCargarJugadores();
 	}
 	
-	//jugar carta siempre lo va a hacer el jugador, la IA lo va a hacer a traves de la mesa
-	public void jugarCarta(Carta carta) {
-		this.equipoDos.obtenerJugadores().get(0).jugarCarta(carta);
-		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();
-	}
-	
-	//Los cantos no cambian de turno, sino que le avisan a la IA para que actue,
-	//Y despues continua el juego, tirando cartas por ejemplo
-	public void cantarTruco() {
-		this.equipoDos.obtenerJugadores().get(0).cantarTruco();
-		this.eventosIA.seCantoTruco();
-	}
-	
-	public void cantarQuieroReTruco() {
-		this.equipoDos.obtenerJugadores().get(0).cantarQuieroReTruco();
-		this.eventosIA.seCantoReTruco();
-	}
-	
-	public void cantarQuieroValeCuatro() {
-		this.equipoDos.obtenerJugadores().get(0).cantarQuieroValeCuatro();
-		this.eventosIA.seCantoValeCuatro();
-	}
-	
-	public void cantarEnvido() {
-		this.equipoDos.obtenerJugadores().get(0).cantarEnvido();
-		this.eventosIA.seCantoEnvido();
-	}
-	
-	public void cantarRealEnvido() {
-		this.equipoDos.obtenerJugadores().get(0).cantarRealEnvido();
-		this.eventosIA.seCantoRealEnvido();
-	}
-	
-	public void cantarFaltaEnvido() {
-		this.equipoDos.obtenerJugadores().get(0).cantarFaltaEnvido();
-		this.eventosIA.seCantoFaltaEnvido();
-	}
-
-	//Metodos Obtener
-	public int obtenerPuntajeDeEquipoIA() {
-		return this.mesa.puntosEquipo(equipoIA);
-	}
-	
-	public int obtenerPuntajeDeEquipoDos() {
-		return this.mesa.puntosEquipo(equipoDos);
-	}
-	
-	public String obtenerNombreDeEquipoUno() {
-		return this.equipoIA.obtenerNombre();
-	}
-	
-	public String obtenerNombreDeEquipoDos() {
-		return this.equipoDos.obtenerNombre();
-	}
-	
-	public List<Carta> obtenerCartasDelJugador() {
+	@Override
+	public List<Carta> obtenerCartasDelJugadorConTurno() {
 		return this.equipoDos.obtenerJugadores().get(0).obtenerCartasDelJugador();
 	}
 	
-	//Otros metodos
-	public void irseAlMazo(){
-		this.equipoDos.obtenerJugadores().get(0).irseAlMazo();
+	@Override
+	public void cantarTruco() {
+		this.jugadorTurnoActual.cantarTruco();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoTruco();
+		}
 	}
 	
-	public void quiero(){
-		this.equipoDos.obtenerJugadores().get(0).quiero();
+	@Override
+	public void cantarQuieroReTruco() {
+		this.jugadorTurnoActual.cantarQuieroReTruco();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoReTruco();
+		}
 	}
-
-	public void noQuiero(){
-		this.equipoDos.obtenerJugadores().get(0).noQuiero();
+	
+	@Override
+	public void cantarQuieroValeCuatro() {
+		this.jugadorTurnoActual.cantarQuieroValeCuatro();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoValeCuatro();
+		}
+	}
+	
+	public void cantarEnvido() {
+		this.jugadorTurnoActual.cantarEnvido();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoEnvido();
+		}
+	}
+	
+	public void cantarRealEnvido() {
+		this.jugadorTurnoActual.cantarRealEnvido();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoRealEnvido();
+		}
+	}
+	
+	public void cantarFaltaEnvido() {
+		this.jugadorTurnoActual.cantarFaltaEnvido();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
+			this.eventosIA.seCantoFaltaEnvido();
+		}
 	}
 	
 	//Cantos de la flor ; Van a ser reimplementados en las clases hijas
 	//PartidaDeTrucoConIAConFlor y PartidaDeTrucoConIASinFlor
+	@Override
 	public abstract void cantarFlor();
 	
+	@Override
 	public abstract void cantarContraFlor();
 	
+	@Override
 	public abstract void cantarContraFlorAJuego();
 
 }
