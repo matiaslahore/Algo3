@@ -75,17 +75,20 @@ public class IA extends Jugador implements Oyente{
 
 	@Override
 	public void seCantoFlor() {
-		throw new SeEstaJugandoSinFlorException();
+		this.setearEstado(new EstadoIACantaronFlor());
+		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoContraFlor() {
-		throw new SeEstaJugandoSinFlorException();
+		this.setearEstado(new EstadoIACantaronContraFlor());
+		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoContraFlorAJuego() {
-		throw new SeEstaJugandoSinFlorException();
+		this.setearEstado(new EstadoIACantaronContraFlorAJuego());
+		this.hacerJugarIA();
 	}
 
 	@Override
