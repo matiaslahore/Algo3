@@ -1,9 +1,13 @@
 package fiuba.algo3.tp2.modeloJugador;
 
-import fiuba.algo3.tp2.excepciones.SeEstaJugandoSinFlorException;
+import java.util.List;
+
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 
 public class IA extends Jugador implements Oyente{
 	EstadoIA estadoIA;
@@ -94,5 +98,16 @@ public class IA extends Jugador implements Oyente{
 	@Override
 	public void jugarCarta() {
 		this.hacerJugarIA();
+	}
+
+	public int obtenerPuntosTruco() {
+		//Escala max = 13+12+11= 36
+		int escala = 0;
+		Maso maso = new Maso();
+		List<Carta> cartasJugador = this.obtenerCartasDelJugador();
+		for(int i=1; i <= 3; i++){
+			escala += maso.obtenerRankingDeLaCarta(cartasJugador.get(i).cartaComoString());
+		}	
+		return escala;
 	}
 }
