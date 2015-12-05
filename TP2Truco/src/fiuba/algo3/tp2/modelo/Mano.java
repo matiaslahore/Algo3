@@ -14,13 +14,17 @@ public class Mano {
 		this.cartas = listaDeCartas;
 	}
 	
-	public void tirarCarta(Carta unaCarta) {
+	public boolean contieneCarta(Carta unaCarta) {
 		try{
-			this.cartas.remove(this.cartas.lastIndexOf(unaCarta));			
+			return this.cartas.contains(unaCarta);
 		}catch(ArrayIndexOutOfBoundsException e){
 			throw new CartaInexistenteEnManoDeJugadorExeption();
 		}
 	}
+	
+	public void borrarCarta(Carta unaCarta) {
+		this.cartas.remove(this.cartas.lastIndexOf(unaCarta));
+	}	
 		
 	public int calcularEnvido(){
 		Carta cartaUno = cartas.get(0);
@@ -105,5 +109,6 @@ public class Mano {
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
 		return (cartaUno.sumarTanto(cartaDos)>= 20 && cartaDos.sumarTanto(cartaTres)>= 20);		
-	}	
+	}
+	
 }

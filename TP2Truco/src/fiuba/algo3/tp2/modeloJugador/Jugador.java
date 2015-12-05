@@ -3,6 +3,8 @@ package fiuba.algo3.tp2.modeloJugador;
 import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
+import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
@@ -64,8 +66,10 @@ public abstract class Jugador {
 	}
 	
 	public void jugarCarta(Carta unaCarta) {
-		this.manoDelJugador.tirarCarta(unaCarta);
-		this.refMesa.recibirCarta(unaCarta);
+		if (this.manoDelJugador.contieneCarta(unaCarta)){
+			this.refMesa.recibirCarta(unaCarta);
+			this.manoDelJugador.borrarCarta(unaCarta);
+		} else throw new CartaInexistenteEnManoDeJugadorExeption();
 	}
 	
 	public int jugarPuntosEnvido(){

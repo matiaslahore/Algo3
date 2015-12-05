@@ -160,4 +160,8 @@ public abstract class EstadoRondas{
 	public boolean seCantoTruco() {
 		return false;
 	}
+
+	public void jugarCarta(){
+	}
+	
 }

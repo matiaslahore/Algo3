@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.CantosFlor;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -31,6 +32,10 @@ public class EstadoRondaFlor extends EstadoRondas {
 	public Jugador turnoDe() {
 		Jugador jugador = this.juez.otroJugadorConFlor(this.cantosFlor.equipoQueCanta());
 		return jugador;
+	}
+	
+	public void jugarCarta() {
+		throw new NoSePuedeJugarUnaCartaException();
 	}
 	
 	public EstadoRondas quiero(Jugador jugador) {

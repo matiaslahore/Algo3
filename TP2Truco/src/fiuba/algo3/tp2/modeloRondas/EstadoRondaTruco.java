@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.CantosTruco;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -30,6 +31,10 @@ public class EstadoRondaTruco extends EstadoRondas{
 	public Jugador turnoDe() {
 		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual + 2); //2 es manejo de indices //aclarar
 		return jugador;
+	}
+	
+	public void jugarCarta() {
+		throw new NoSePuedeJugarUnaCartaException();
 	}
 	
 	@Override

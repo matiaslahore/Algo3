@@ -43,9 +43,10 @@ public class Mesa {
 	}
 
 	public void recibirCarta(Carta carta){
-		System.out.println("Mesa recibe: " + carta.cartaComoString());
+		this.ronda.jugarCarta();
 		this.cartasEnJuegoRondaActual.add(carta);
 		this.cartasJugadas.add(carta);
+		System.out.println("Mesa recibe: " + carta.cartaComoString());
 	}
 
 	public void repartirCartas() {
