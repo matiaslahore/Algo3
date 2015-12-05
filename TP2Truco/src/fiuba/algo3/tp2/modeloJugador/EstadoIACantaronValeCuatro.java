@@ -4,8 +4,15 @@ public class EstadoIACantaronValeCuatro extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		// TODO Auto-generated method stub
-
+		if(jugadorIA.obtenerPuntosTruco() >= 9){
+			jugadorIA.cantarQuieroValeCuatro();
+			return;
+		}
+		if(jugadorIA.obtenerPuntosTruco() >= 8){
+			jugadorIA.quiero();
+			return;
+		}
+		jugadorIA.noQuiero();
 	}
 
 }

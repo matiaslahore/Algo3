@@ -4,8 +4,15 @@ public class EstadoIACantaronContraFlor extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		// TODO Auto-generated method stub
-
+		if(jugadorIA.obtenerPuntosFlor() >= 33){
+			jugadorIA.cantarContraFlor();
+			return;
+		}
+		if(jugadorIA.obtenerPuntosFlor() >= 30){
+			jugadorIA.quiero();
+			return;
+		}
+		jugadorIA.noQuiero();
 	}
 
 }
