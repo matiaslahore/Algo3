@@ -4,11 +4,11 @@ public class EstadoIACantaronTruco extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		if(jugadorIA.obtenerPuntosTruco() >= 2){
+		if(jugadorIA.obtenerPuntosTruco() >= 7){
 			jugadorIA.cantarTruco();
 			return;
 		}
-		if(jugadorIA.obtenerPuntosTruco() >= 2){
+		if(jugadorIA.obtenerPuntosTruco() >= 5){
 			jugadorIA.quiero();
 			return;
 		}
