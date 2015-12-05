@@ -26,10 +26,6 @@ public abstract class PartidaDeTruco {
 		this.equipoDos.cargarJugadores(nombreJugadores);
 	}
 	
-	public void sentarJugadores() {
-		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(),equipoDos.obtenerJugadores());
-	}
-	
 	public Equipo obtenerEquipo(String nombreDelEquipo){
 		
 		if (equipoUno.tieneEsteNombre(nombreDelEquipo)){
@@ -134,6 +130,10 @@ public abstract class PartidaDeTruco {
 
 	public String obtenerNombreDelJugadorConTurno() {
 		return this.jugadorTurnoActual.obtenerNombre();
+	}
+	
+	public void cartearseParaHacerLosTest(Jugador unJugador, List<Carta> cartasParaJugador){
+		unJugador.recibirCartas(cartasParaJugador);
 	}
 	
 }

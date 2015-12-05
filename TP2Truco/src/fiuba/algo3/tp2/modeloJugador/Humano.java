@@ -10,5 +10,7 @@ public class Humano extends Jugador{
 		super(name, mesa, team);
 	}
 
-
+	public void hacerJugarIA() {
+		
+	}
 }

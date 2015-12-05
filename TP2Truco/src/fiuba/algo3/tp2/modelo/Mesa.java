@@ -9,6 +9,7 @@ import java.util.List;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.NoSeEncontroJugadorConFlorException;
+import fiuba.algo3.tp2.excepciones.TodabiaNoFinalizoLaRondaException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.*;
@@ -90,7 +91,11 @@ public class Mesa {
 	}
 
 	public Equipo ganadorDeLaRonda() {
-		return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
+		try{
+			return this.ganadoresRonda.get(this.ganadoresRonda.size()-1);
+		}catch(ArrayIndexOutOfBoundsException e){
+			throw new TodabiaNoFinalizoLaRondaException();
+		}
 	}
 
 	public void cantarTruco(Jugador jugador){

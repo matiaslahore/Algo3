@@ -128,5 +128,5 @@ public abstract class Jugador {
 	public void mostrarCartas() {
 		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
 	}
-	
+	public abstract void hacerJugarIA();
 }

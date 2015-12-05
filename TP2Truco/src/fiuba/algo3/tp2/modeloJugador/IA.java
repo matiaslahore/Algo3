@@ -13,7 +13,7 @@ public class IA extends Jugador implements Oyente{
 		estadoIA = new EstadoIARondaUnoInteligente();
 	}
 	
-	public void juga(){
+	public void hacerJugarIA(){
 		this.estadoIA.manejador(this);
 	}	
 
@@ -40,37 +40,37 @@ public class IA extends Jugador implements Oyente{
 	@Override
 	public void seCantoTruco() {
 		this.setearEstado(new EstadoIACantaronTruco());
-		this.juga();
+		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoReTruco() {
 		this.setearEstado(new EstadoIACantaronReTruco());
-		this.juga();		
+		this.hacerJugarIA();		
 	}
 
 	@Override
 	public void seCantoValeCuatro() {
 		this.setearEstado(new EstadoIACantaronValeCuatro());
-		this.juga();
+		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoEnvido() {
 		this.setearEstado(new EstadoIACantaronEnvido());
-		this.juga();
+		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoRealEnvido() {
 		this.setearEstado(new EstadoIACantaronRealEnvido());
-		this.juga();
+		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoFaltaEnvido() {
 		this.setearEstado(new EstadoIACantaronFaltaEnvido());
-		this.juga();
+		this.hacerJugarIA();
 	}
 
 	@Override

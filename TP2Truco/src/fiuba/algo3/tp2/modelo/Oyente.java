@@ -20,5 +20,5 @@ public interface Oyente {
 	
 	public void seCantoContraFlorAJuego();
 
-	public void juga();
+	public void hacerJugarIA();
 }
