@@ -107,7 +107,13 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		if (this.jugadorTurnoActual.getClass() == IA.class){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		}	
+		}
+		if (this.jugadorTurnoActual.getClass() == IA.class){
+			this.jugadorTurnoActual.hacerJugarIA();
+			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		} //dos veces a proposito..
+		//explicacion: humano juega carta.. dsps va la maquina si llega a ganar la
+		//maquina esa mano, tiraria de nuevo la maquina.. x esos esos dos ifs
 	}
 	
 	public void irseAlMazo(){
@@ -120,12 +126,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}
-		if (this.jugadorTurnoActual.getClass() == IA.class){
-			this.jugadorTurnoActual.hacerJugarIA();
-			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		} //dos veces a proposito..
-		//explicacion: humano juega carta.. dsps va la maquina si llega a ganar la
-		//maquina esa mano, tiraria de nuevo la maquina.. x esos esos dos ifs
 	}
 	
 	public void quiero(){
