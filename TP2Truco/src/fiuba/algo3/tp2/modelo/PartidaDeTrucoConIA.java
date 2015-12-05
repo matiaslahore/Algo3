@@ -6,10 +6,10 @@ import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class PartidaDeTrucoConIA {
-	private EventosIA eventosIA;
-	private Equipo equipoIA;
-	private Equipo equipoDos;
-	private Mesa mesa;
+	EventosIA eventosIA;
+	Equipo equipoIA;
+	Equipo equipoDos;
+	Mesa mesa;
 	
 	public PartidaDeTrucoConIA(String nombreEq1, String nombreEq2){
 		this.mesa = new Mesa();
