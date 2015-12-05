@@ -25,22 +25,11 @@ public abstract class PartidaDeTruco {
 	public void cargarJugadoresEnEquipoDos(List<String> nombreJugadores) {
 		this.equipoDos.cargarJugadores(nombreJugadores);
 	}
-	
-	public Equipo obtenerEquipo(String nombreDelEquipo){
-		if (equipoUno.tieneEsteNombre(nombreDelEquipo)){
-			return equipoUno;
-		}
-		return equipoDos;
-	}
 
 	public void iniciar() {
 		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(), equipoDos.obtenerJugadores());
 		this.mesa.iniciarRonda();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-
-	public String ultimoGanador() {
-		return this.mesa.ganadorDeLaRonda().obtenerNombre();
 	}
 	
 	public int obtenerPuntajeDeEquipoUno() {
@@ -57,10 +46,6 @@ public abstract class PartidaDeTruco {
 	
 	public String obtenerNombreDeEquipoDos() {
 		return this.equipoDos.obtenerNombre();
-	}
-	
-	public void verCartasDelJugadorConTurno() {
-		this.jugadorTurnoActual.mostrarCartas();
 	}
 	
 	public List<Carta> cartasDelJugadorConTurno() {

@@ -2,34 +2,23 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.List;
 
+import fiuba.algo3.tp2.excepciones.EquipoIANoPuedeCargarJugadores;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public abstract class PartidaDeTrucoConIA {
+public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	EventosIA eventosIA;
-	Equipo equipoIA;
-	Equipo equipoDos;
-	Mesa mesa;
 	
-	public PartidaDeTrucoConIA(String nombreEq1, String nombreEq2){
-		this.mesa = new Mesa();
-		this.equipoIA = new Equipo(nombreEq1, mesa);
-		this.equipoDos = new Equipo(nombreEq2, mesa);
-		this.equipoIA.cargarJugador(nombreEq1);
-		this.equipoIA.cargarJugadorIA();
+	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
+		super(nombreEquipoIA,nombreEquipo2);
+		this.equipoUno.cargarJugadorIA();
 		this.eventosIA = new EventosIA();
-		this.eventosIA.addListener((Oyente) equipoIA.obtenerJugadores().get(0));
+		this.eventosIA.addListener((Oyente) equipoUno.obtenerJugadores().get(0));
 	}
 	
-	public void cargarJugador(String jugador){
-		this.equipoDos.cargarJugador(jugador);
-	}
-	
-	//Definimos manualmente que la IA siempre empiece el juego
-	public void iniciar() {
-		this.mesa.sentarJugadores(equipoIA.obtenerJugadores(), equipoDos.obtenerJugadores());
-		this.mesa.iniciarRonda();
-		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();
+	@Override
+	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
+		throw new EquipoIANoPuedeCargarJugadores();
 	}
 	
 	//jugar carta siempre lo va a hacer el jugador, la IA lo va a hacer a traves de la mesa
