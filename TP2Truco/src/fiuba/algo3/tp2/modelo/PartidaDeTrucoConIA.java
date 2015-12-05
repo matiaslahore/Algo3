@@ -25,32 +25,14 @@ public class PartidaDeTrucoConIA {
 		this.equipoDos.cargarJugador(jugador);
 	}
 	
+	//Definimos manualmente que la IA siempre empiece el juego
 	public void iniciar() {
 		this.mesa.sentarJugadores(equipoIA.obtenerJugadores(), equipoDos.obtenerJugadores());
 		this.mesa.iniciarRonda();
-		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();  //Definimos manualmente que la IA siempre empiece el juego
+		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();
 	}
 	
-	public int obtenerPuntajeDeEquipoIA() {
-		return this.mesa.puntosEquipo(equipoIA);
-	}
-	
-	public int obtenerPuntajeDeEquipoDos() {
-		return this.mesa.puntosEquipo(equipoDos);
-	}
-	
-	public String obtenerNombreDeEquipoUno() {
-		return this.equipoIA.obtenerNombre();
-	}
-	
-	public String obtenerNombreDeEquipoDos() {
-		return this.equipoDos.obtenerNombre();
-	}
-	
-	public List<Carta> cartasDelJugador() {
-		return this.equipoDos.obtenerJugadores().get(0).obtenerCartasDelJugador();
-	}
-	
+	//jugar carta siempre lo va a hacer el jugador, la IA lo va a hacer a traves de la mesa
 	public void jugarCarta(Carta carta) {
 		this.equipoDos.obtenerJugadores().get(0).jugarCarta(carta);
 		this.equipoIA.obtenerJugadores().get(0).hacerJugarIA();
@@ -87,5 +69,25 @@ public class PartidaDeTrucoConIA {
 		this.equipoDos.obtenerJugadores().get(0).cantarFaltaEnvido();
 		this.eventosIA.seCantoFaltaEnvido();
 	}
+
+	//Metodos Obtener
+	public int obtenerPuntajeDeEquipoIA() {
+		return this.mesa.puntosEquipo(equipoIA);
+	}
 	
+	public int obtenerPuntajeDeEquipoDos() {
+		return this.mesa.puntosEquipo(equipoDos);
+	}
+	
+	public String obtenerNombreDeEquipoUno() {
+		return this.equipoIA.obtenerNombre();
+	}
+	
+	public String obtenerNombreDeEquipoDos() {
+		return this.equipoDos.obtenerNombre();
+	}
+	
+	public List<Carta> obtenerCartasDelJugador() {
+		return this.equipoDos.obtenerJugadores().get(0).obtenerCartasDelJugador();
+	}
 }
