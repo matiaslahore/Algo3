@@ -9,6 +9,11 @@ class EventosIA {
     public void addListener(Oyente toAdd) {
         listeners.add(toAdd);
     }
+    
+    public void jugarCarta(){
+    	for (Oyente hl : listeners)
+            hl.jugarCarta();
+    }
 
     public void seCantoTruco() {
         // Notify everybody that may be interested.

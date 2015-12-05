@@ -87,4 +87,9 @@ public class IA extends Jugador implements Oyente{
 	public void seCantoContraFlorAJuego() {
 		throw new SeEstaJugandoSinFlorException();
 	}
+
+	@Override
+	public void jugarCarta() {
+		this.hacerJugarIA();
+	}
 }
