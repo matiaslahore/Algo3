@@ -4,8 +4,15 @@ public class EstadoIACantaronFaltaEnvido extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		// TODO Auto-generated method stub
-
+		if(jugadorIA.obtenerPuntosEnvido() >= 32){
+			jugadorIA.cantarFaltaEnvido();
+			return;
+		}
+		if(jugadorIA.obtenerPuntosEnvido() >= 31){
+			jugadorIA.quiero();
+			return;
+		}
+		jugadorIA.noQuiero();
 	}
 
 }

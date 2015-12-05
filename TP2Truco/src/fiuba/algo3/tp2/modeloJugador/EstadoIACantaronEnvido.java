@@ -4,12 +4,11 @@ public class EstadoIACantaronEnvido extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		
-		if(jugadorIA.obtenerPuntosEnvido() >= 29){
+		if(jugadorIA.obtenerPuntosEnvido() >= 27){
 			jugadorIA.cantarEnvido();
 			return;
 		}
-		if(jugadorIA.obtenerPuntosEnvido() >= 27){
+		if(jugadorIA.obtenerPuntosEnvido() >= 25){
 			jugadorIA.quiero();
 			return;
 		}
