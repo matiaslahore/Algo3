@@ -25,7 +25,7 @@ import fiuba.algo3.tp2.modeloJugador.EstadoIACantaronTruco;
 import fiuba.algo3.tp2.modeloJugador.IA;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class PruebasJugadorIATest {
+public class PruebasJugadorIAConEnvidoTest {
 
 	public Jugador jugadorConTurno;	
 	public Mesa mesa;
