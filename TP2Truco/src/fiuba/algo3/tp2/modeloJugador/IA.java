@@ -114,7 +114,7 @@ public class IA extends Jugador implements Oyente{
 		int escala = 0;
 		Maso maso = new Maso();
 		List<Carta> cartasJugador = this.obtenerCartasDelJugador();
-		for(int i=1; i <= 3; i++){
+		for(int i=0; i <= 2; i++){
 			escala += maso.obtenerRankingDeLaCarta(cartasJugador.get(i).cartaComoString());
 		}	
 		return escala;
