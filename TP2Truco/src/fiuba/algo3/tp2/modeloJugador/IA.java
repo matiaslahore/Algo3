@@ -119,12 +119,53 @@ public class IA extends Jugador implements Oyente{
 		}	
 		return escala;
 	}
-	
+	//Inteligencia cantos Truco
 	public boolean cantarTrucoIA(){
 		return(this.truco >= 7);
 	}
 	
 	public boolean quererTrucoIA(){
 		return(this.truco >= 5);
+	}
+	
+	public boolean cantarReTrucoIA(){
+		return(this.truco >= 18);
+	}
+	
+	public boolean quererReTrucoIA(){
+		return(this.truco >= 15);
+	}
+	
+	public boolean cantarValeCuatroIA(){
+		return(this.truco >= 31);
+	}
+	
+	public boolean quererValeCuatroIA(){
+		return(this.truco >= 28);
+	}
+	
+	//Inteligencia cantos Envido
+	public boolean cantarEnvidoIA(){
+		return(this.envido >= 27);
+	}
+	
+	public boolean quererEnvidoIA(){
+		return(this.envido >= 25);
+	}
+
+	public boolean cantarRealEnvidoIA(){
+		return(this.envido >= 31);
+	}
+	
+	public boolean quererRealEnvidoIA(){
+		return(this.envido >= 29);
+	}
+
+	public boolean cantarFaltaEnvidoIA(){
+		return(this.envido  >= 32);
+	}
+	
+	public boolean quererFaltaEnvidoIA(){
+		return(this.envido >= 31);
 	}
 }
