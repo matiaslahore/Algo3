@@ -16,7 +16,7 @@ public class Juez {
 	EstadoRondas mano;
 	Puntos puntos;
 	int puntosEnJuego;
-	boolean activadorPicaPica = false;
+	boolean activadorPicaPica;
 	int cantidadJugadas = 1;
 	
 	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos){
@@ -24,6 +24,7 @@ public class Juez {
 		this.mesa = mesa;
 		this.puntosEnJuego = 1;
 		this.puntos = new Puntos(equipoUno, equipoDos);
+		this.activadorPicaPica = false;
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuego(){
@@ -36,6 +37,7 @@ public class Juez {
 
 	public void anotarPuntos(Equipo equipo){
 		this.puntos.anotarPuntos(equipo, puntosEnJuego);
+		System.out.println("anote");
 	}
 	
 	public void mezclar(){
@@ -115,13 +117,9 @@ public class Juez {
 		this.puntos.imprimirResultados();
 	}
 	
-	public void actualizarPicaPica(){
-		this.activadorPicaPica = !this.activadorPicaPica;
-	}
-	
 	public boolean esPicaPica(){
-		if (this.mesa.cantidadDeJugadores()==6 && rangoPicaPica()){
-			return this.activadorPicaPica;
+		if (this.mesa.cantidadDeJugadores() == 6 && rangoPicaPica()){
+			return true;
 		}
 		return false;
 	}

@@ -30,8 +30,6 @@ public class EstadoRondaUno extends EstadoRondas{
 
 		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
 		this.cantosTruco = new EmpezarTruco();
-
-		actualizarPicaPica();
 		
 		juez.limpiarCartasJugadas();
 		juez.puntosEnJuego(1);

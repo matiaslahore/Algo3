@@ -47,10 +47,14 @@ public class VistaHardCodeada extends Application{
 
 		//cargar nombres de jugadores
 		ArrayList<String> lista1 = new ArrayList<String> ();
-		lista1.add("PEPITO");
+		lista1.add("jugador1");
+		lista1.add("jugador3");
+		lista1.add("jugador5");
 		this.partida.cargarJugadoresEnEquipoUno(lista1);
 		ArrayList<String> lista2 = new ArrayList<String> ();
-		lista2.add("JUANITO MARAVILLA");
+		lista2.add("jugador2");
+		lista2.add("jugador4");
+		lista2.add("jugador6");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
 		this.partida.iniciar();
 
@@ -112,7 +116,7 @@ public class VistaHardCodeada extends Application{
 		botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
 
 		Button botonQuerer = new Button("Querer");
-		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta, this.stageCartasEnMesa);
 		botonQuerer.setOnAction(botonQuererEventHandler);
 
 		Button botonNoQuerer = new Button("No Querer");
@@ -218,7 +222,7 @@ public class VistaHardCodeada extends Application{
 		escena.getChildren().add(puntaje);
 		escena.getChildren().add(agregarCartasEnJuego());
 
-		Scene scene = new Scene(escena, 600, 600);
+		Scene scene = new Scene(escena, 600, 480);
 		return scene;
 	}
 
@@ -240,12 +244,12 @@ public class VistaHardCodeada extends Application{
 
 			layoutY += 50;
 			
-			if (i == 2) {
-				System.out.println("entra");
+			if (i == 6) {
 				layoutY = 40;
 				layoutX += 150;
 				i = 0;
 			}
+			
 			i = i+1;
 			
 			root.getChildren().add(cartaComoImagen);

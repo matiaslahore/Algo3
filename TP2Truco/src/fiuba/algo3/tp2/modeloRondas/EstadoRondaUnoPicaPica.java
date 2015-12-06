@@ -71,7 +71,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.tantoCantado = true;
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,envido);
 	}
 
 	public EstadoRondas cantarRealEnvido(Jugador jugador)throws CantoInvalidoException {
@@ -81,7 +81,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.tantoCantado = true;
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,realEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,realEnvido);
 	}
 
 	public EstadoRondas cantarFaltaEnvido(Jugador jugador)throws CantoInvalidoException {
@@ -91,7 +91,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.tantoCantado = true;
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorMano, jugadorMano,faltaEnvido);
+		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, jugadorMano, jugadorMano,faltaEnvido);
 	}
 
 	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {
@@ -101,7 +101,7 @@ public class EstadoRondaUnoPicaPica extends EstadoRondaPicaPica{
 			Flor flor = new Flor(jugador.obtenerEquipo());
 			this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 			this.refEstadoRonda = this; //guardo estado de la ronda actual
-			return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,flor);
+			return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, jugadorManoDeLaRondaActual - 1, jugadorMano,flor);
 		} 
 		juez.puntosEnJuego(3);
 		juez.anotarPuntos(jugador.obtenerEquipo());

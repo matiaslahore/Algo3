@@ -113,10 +113,6 @@ public abstract class EstadoRondas{
 		throw new CantoInvalidoException();
 	}
 
-	public void actualizarPicaPica(){
-		this.juez.actualizarPicaPica();
-	}
-
 	public boolean esPicaPica(){
 		return this.juez.esPicaPica();
 	}

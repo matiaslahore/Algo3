@@ -3,6 +3,8 @@ package fiuba.algo3.tp2.modeloRondas;
 import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -45,6 +47,30 @@ public class EstadoRondaPicaPica extends EstadoRondas{
 	@Override
 	public EstadoRondas siguienteRonda(){
 		return null;
+	}
+	
+	public EstadoRondas cantarTruco(Jugador jugador)throws CantoInvalidoException, EquipoQueCantaNoPuedeVolverACantarException {
+		this.cantosTruco = this.cantosTruco.cantarTruco(jugador.obtenerEquipo());
+		
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
+	}
+
+	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
+		this.cantosTruco = this.cantosTruco.cantarQuieroReTruco(jugador.obtenerEquipo());
+		
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
+	}
+
+	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
+		this.cantosTruco = this.cantosTruco.cantarQuieroValeCuatro(jugador.obtenerEquipo());
+		
+		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.refEstadoRonda = this; //guardo estado de la ronda actual
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, nuevosJugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
 	}
 
 }
