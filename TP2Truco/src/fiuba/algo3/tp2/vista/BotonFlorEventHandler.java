@@ -31,7 +31,7 @@ public class BotonFlorEventHandler implements EventHandler<ActionEvent>{
 			etiqueta.setText(" FLOR !");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		} catch (CantoInvalidoException FlorError){
-			etiqueta.setText("CANTO INVALIDO");
+			etiqueta.setText("NO PUEDE CANTAR FLOR");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
 		Scene scene = this.visual.cargarSceneDelJugador();

@@ -30,7 +30,7 @@ public class VistaHardCodeada extends Application{
 	private Stage stageJugadorConTurno;
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
-	
+
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -39,7 +39,7 @@ public class VistaHardCodeada extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		imagenesCarta = new ImagenesCarta();
-		
+
 		//creacion de la partida
 		if (this.conFlor)
 			this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
@@ -53,7 +53,7 @@ public class VistaHardCodeada extends Application{
 		lista2.add("JUANITO MARAVILLA");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
 		this.partida.iniciar();
-		
+
 		//VENTANAS DEL JUEGO
 		this.stageJugadorConTurno = new Stage();
 		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
@@ -94,23 +94,23 @@ public class VistaHardCodeada extends Application{
 		Button botonContraFlor = new Button("Contra Flor");
 		BotonContraFlorEventHandler botonContraFlorEventHandler = new BotonContraFlorEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
 		botonFlor.setOnAction(botonContraFlorEventHandler);
-		
+
 		Button botonFlorContraResto = new Button("Flor X Resto");
 		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
 		botonFlorContraResto.setOnAction(botonFlorContraRestoEventHandler);
 
 		Button botonTruco = new Button("Truco");
 		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
-        botonTruco.setOnAction(botonTrucoEventHandler);
-        
-        Button botonReTruco = new Button("ReTruco");
+		botonTruco.setOnAction(botonTrucoEventHandler);
+
+		Button botonReTruco = new Button("ReTruco");
 		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
-        botonReTruco.setOnAction(botonReTrucoEventHandler);
-        
-        Button botonValeCuatro = new Button("ValeCuatro");
+		botonReTruco.setOnAction(botonReTrucoEventHandler);
+
+		Button botonValeCuatro = new Button("ValeCuatro");
 		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
-        botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
-		
+		botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
+
 		Button botonQuerer = new Button("Querer");
 		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
 		botonQuerer.setOnAction(botonQuererEventHandler);
@@ -133,17 +133,17 @@ public class VistaHardCodeada extends Application{
 		VBox contenedorBotones = new VBox(contenedorOpcion,contenedorEnvido, contenedorTruco, etiqueta);
 		contenedorBotones.setSpacing(8);
 		contenedorBotones.setPadding(new Insets(20));
-	
+
 		return contenedorBotones;
 	}
-	
+
 	public Scene cargarSceneDelJugador() {
 		//imagen de fondo de la mesa
 		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
 		Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
 		ImageView imagen = new ImageView();
 		imagen.setImage(fondo);
-		
+
 		//puntos de los equipos
 		Label nombreJugador = new Label();
 		String texto1 = "TRUNO DE: " + this.partida.obtenerNombreDelJugadorConTurno();
@@ -151,30 +151,30 @@ public class VistaHardCodeada extends Application{
 		nombreJugador.setTextFill(Color.web("#FF0000"));
 		HBox nombre = new HBox(nombreJugador);
 		nombre.setAlignment(Pos.CENTER);
-		
+
 		//escenario de imagenes de la mesa 
 		Group escena = new Group();
-		
+
 		escena.getChildren().add(imagen); //carga el fondo
 		escena.getChildren().add(this.botonesDelJugador); //agregue botones sin las cartas
 		escena.getChildren().add(nombre);
 		escena.getChildren().add(agregarCartasDelJugador());
-		
+
 		Scene scene = new Scene(escena, 670, 350);
 		return scene;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public Group agregarCartasDelJugador(){
 		Group root = new Group();
 		double layoutX = 90;
-		
+
 		List<Carta> listaCartasJugador = this.partida.obtenerCartasDelJugadorConTurno();
-		
+
 		Iterator<Carta> itr = listaCartasJugador.iterator();
 		while(itr.hasNext()) {
 			Carta carta = (Carta) itr.next();
-			
+
 			Image imgCarta = new Image(this.imagenesCarta.obtenerDireccionDeCarta(carta.cartaComoString()));
 			ImageView cartaComoImagen = new ImageView();
 			cartaComoImagen.setImage(imgCarta);
@@ -183,9 +183,9 @@ public class VistaHardCodeada extends Application{
 			cartaComoImagen.setLayoutX(layoutX);
 			cartaComoImagen.setLayoutY(150);
 			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this, this.stageJugadorConTurno, this.stageCartasEnMesa));
-			
+
 			layoutX += 150;
-			
+
 			root.getChildren().add(cartaComoImagen);
 		}
 		return root;
@@ -194,44 +194,42 @@ public class VistaHardCodeada extends Application{
 	public Scene cargarSceneDeLaMesa() {
 		//puntos de los equipos
 		Label puntajeEquipo1 = new Label();
-		String texto1 = this.partida.obtenerNombreDeEquipoUno()+": "+ this.partida.obtenerPuntajeDeEquipoUno()+ " PUNTOS";
-		String texto2 = this.partida.obtenerNombreDeEquipoDos() +": "+ this.partida.obtenerPuntajeDeEquipoDos()+ " PUNTOS";
-		puntajeEquipo1.setText(texto1);
+		String textoPuntaje = this.partida.obtenerNombreDeEquipoUno()+": "+ this.partida.obtenerPuntajeDeEquipoUno()+ " PUNTOS";
+		puntajeEquipo1.setText(textoPuntaje);
 		puntajeEquipo1.setTextFill(Color.web("#FF0000"));
 		Label puntajeEquipo2 = new Label();
-		puntajeEquipo2.setText(texto2);
+		textoPuntaje = this.partida.obtenerNombreDeEquipoDos() +": "+ this.partida.obtenerPuntajeDeEquipoDos()+ " PUNTOS";
+		puntajeEquipo2.setText(textoPuntaje);
 		puntajeEquipo2.setTextFill(Color.web("#FFBB11"));
-		
-		VBox puntaje = new VBox(puntajeEquipo1,puntajeEquipo2);
-		
+
+		HBox puntaje = new HBox(puntajeEquipo1,puntajeEquipo2);
+		puntaje.setSpacing(30);
+
 		//imagen de fondo de la mesa
 		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
 		Image fondo = new Image(direccionImagen, 700, 800, false, true, true);
 		ImageView imagen = new ImageView();
 		imagen.setImage(fondo);
-		
+
 		//escenario de imagenes de la mesa 
 		Group escena = new Group();
-		
+
 		escena.getChildren().add(imagen); //carga el fondo
 		escena.getChildren().add(puntaje);
 		escena.getChildren().add(agregarCartasEnJuego());
-		
-		Scene scene = new Scene(escena, 600, 320);
+
+		Scene scene = new Scene(escena, 600, 600);
 		return scene;
 	}
-	
+
 	public Group agregarCartasEnJuego(){
 		Group root = new Group();
 		double layoutX = 80;
-		double layoutY = 120;
-		
+		double layoutY = 40;
+
 		List<Carta> listaCartasJugador = this.partida.cartasEnJuego();
-		
-		Iterator<Carta> itr = listaCartasJugador.iterator();
-		while(itr.hasNext()) {
-			
-			Carta carta = (Carta) itr.next();
+		int i = 1;
+		for (Carta carta : listaCartasJugador) {
 			Image imgCarta = new Image(this.imagenesCarta.obtenerDireccionDeCarta(carta.cartaComoString()));
 			ImageView cartaComoImagen = new ImageView();
 			cartaComoImagen.setImage(imgCarta);
@@ -239,11 +237,20 @@ public class VistaHardCodeada extends Application{
 			cartaComoImagen.setFitWidth(110);
 			cartaComoImagen.setLayoutX(layoutX);
 			cartaComoImagen.setLayoutY(layoutY);
+
+			layoutY += 50;
 			
-			layoutX += 50;
+			if (i == 2) {
+				System.out.println("entra");
+				layoutY = 40;
+				layoutX += 150;
+				i = 0;
+			}
+			i = i+1;
 			
 			root.getChildren().add(cartaComoImagen);
 		}
+
 		return root;
 	}
 

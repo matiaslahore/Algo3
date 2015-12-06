@@ -36,9 +36,6 @@ public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
 
 		Scene scene = this.visual.cargarSceneDelJugador();
 		this.stageJugador.setScene(scene);
-
-		Scene sceneMesa = this.visual.cargarSceneDeLaMesa();
-		this.stageMesa.setScene(sceneMesa);
 	}
 
 }

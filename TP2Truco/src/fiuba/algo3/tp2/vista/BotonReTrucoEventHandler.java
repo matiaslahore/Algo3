@@ -35,7 +35,7 @@ public class BotonReTrucoEventHandler implements EventHandler<ActionEvent>{
 			etiqueta.setText("QUIERO RE TRUCO!");
 			etiqueta.setTextFill(Color.web("#008000"));
 		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e){
-			etiqueta.setText("CANTO INVALIDO");
+			etiqueta.setText("NO PUEDE CANTAR QUIERO RE TRUCO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
 		Scene scene = this.visual.cargarSceneDelJugador();

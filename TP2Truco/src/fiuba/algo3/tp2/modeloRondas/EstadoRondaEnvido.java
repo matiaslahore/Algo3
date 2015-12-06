@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.CantosEnvido;
+import fiuba.algo3.tp2.cantos.CantosTruco;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
@@ -94,6 +96,18 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		return new EstadoRondaEnvido(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano,unTipoDeFaltaEnvido);
 	}
 	
+	public EstadoRondas cantarTruco(Jugador jugador)throws CantoInvalidoException, EquipoQueCantaNoPuedeVolverACantarException {
+		throw new CantoInvalidoException();
+	}
+
+	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
+		throw new CantoInvalidoException();
+	}
+
+	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
+		throw new CantoInvalidoException();
+	}
+
 	public boolean seCantoEnvido() {
 		return true;
 	}

@@ -31,7 +31,7 @@ public class BotonFlorContraRestoEventHandler implements EventHandler<ActionEven
 			etiqueta.setText("FLOR CONTRA EL RESTO!!");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		} catch (CantoInvalidoException FlorContraRestoError){
-			etiqueta.setText("CANTO INVALIDO");
+			etiqueta.setText("NO PUEDE CANTAR FLOR AL RESTO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
 		Scene scene = this.visual.cargarSceneDelJugador();

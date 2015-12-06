@@ -34,7 +34,7 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 			etiqueta.setText("TURCO A ESA MIERDA");
 			etiqueta.setTextFill(Color.web("#008000"));
 		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e){
-			etiqueta.setText("CANTO INVALIDO");
+			etiqueta.setText("NO PUEDE CANTAR TRUCO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
 		Scene scene = this.visual.cargarSceneDelJugador();
