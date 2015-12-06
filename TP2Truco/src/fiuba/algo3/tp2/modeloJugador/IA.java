@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modeloJugador;
 import java.util.List;
 
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
@@ -11,6 +12,7 @@ import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 
 public class IA extends Jugador implements Oyente{
 	EstadoIA estadoIA;
+	int truco;	
 	
 	public IA(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
@@ -23,6 +25,13 @@ public class IA extends Jugador implements Oyente{
 
 	public void jugarCartaAleatoria() {
 		this.jugarCarta(this.manoDelJugador.obtenerCartaAleatoria());
+	}
+	
+	@Override
+	public void recibirCartas(List<Carta> listaDeCartas){
+		manoDelJugador = new Mano(listaDeCartas);
+		this.envido = this.manoDelJugador.calcularEnvido();
+		this.truco = this.obtenerPuntosTruco();
 	}
 	
 	public void setearEstado(EstadoIA estadoIA){
@@ -109,5 +118,13 @@ public class IA extends Jugador implements Oyente{
 			escala += maso.obtenerRankingDeLaCarta(cartasJugador.get(i).cartaComoString());
 		}	
 		return escala;
+	}
+	
+	public boolean cantarTrucoIA(){
+		return(this.truco >= 7);
+	}
+	
+	public boolean quererTrucoIA(){
+		return(this.truco >= 5);
 	}
 }
