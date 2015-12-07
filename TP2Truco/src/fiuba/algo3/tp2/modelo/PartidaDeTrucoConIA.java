@@ -38,10 +38,10 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
 			this.eventosIA.seCantoTruco();
 		}
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
@@ -102,13 +102,11 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		this.jugadorTurnoActual.jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		
-		//manera fea para zafarla!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//habria que hacer un evento para esto tmb pero nose como andan los eventos
-		if (this.jugadorTurnoActual.getClass() == IA.class){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}
-		if (this.jugadorTurnoActual.getClass() == IA.class){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		} //dos veces a proposito..
@@ -120,9 +118,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		this.jugadorTurnoActual.irseAlMazo();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		
-		//manera fea para zafarla!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//habria que hacer un evento para esto tmb pero nose como andan los eventos
-		if (this.jugadorTurnoActual.getClass() == IA.class){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}
@@ -132,9 +128,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		this.jugadorTurnoActual.quiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	
-		//manera fea para zafarla!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//habria que hacer un evento para esto tmb pero nose como andan los eventos
-		if (this.jugadorTurnoActual.getClass() == IA.class){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}
@@ -145,9 +139,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		this.jugadorTurnoActual.noQuiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	
-		//manera fea para zafarla!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//habria que hacer un evento para esto tmb pero nose como andan los eventos
-		if (this.jugadorTurnoActual.getClass() == IA.class){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}
