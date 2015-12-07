@@ -182,7 +182,7 @@ public class PruebasJugadorIAConEnvidoTest {
 		jugadorConTurno.quiero();
 
 		Assert.assertEquals(4, mesa.puntosEquipo(equipoIA));
-	}
+	} 
 
 }
 
