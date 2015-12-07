@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,6 @@ import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 import fiuba.algo3.tp2.modeloDeCartas.TresDeBasto;
 import fiuba.algo3.tp2.modeloDeCartas.TresDeCopa;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
-import junit.framework.Assert;
 
 public class PruebasPartidoIAContraJugador {
 
