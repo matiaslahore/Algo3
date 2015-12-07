@@ -57,10 +57,9 @@ public class PruebasPartidoIAContraJugador {
 
 		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
 		jugadorConTurno.recibirCartas(cartasHumano); //HUMANO
-		jugadorConTurno.quiero(); //HUMANO
 		jugadorConTurno.jugarCarta(cartasHumano.get(2));
 		
-		//System.out.println(mesa.ronda);		
+		System.out.println(mesa.ronda);		
 		
 		//2
 		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA

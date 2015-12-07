@@ -11,6 +11,7 @@ public class EstadoIARondaUnoInteligente extends EstadoIA {
 			return;
 		}
 		jugadorIA.jugarCartaAleatoria();
+		
 	}
 
 }
