@@ -5,6 +5,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import fiuba.algo3.colecciones.ListaCircular;
+import fiuba.algo3.tp2.cantos.EstadoCantoEnvido;
+import fiuba.algo3.tp2.cantos.EstadoCantoTruco;
+import fiuba.algo3.tp2.cantos.EstadoInicialEnvido;
+import fiuba.algo3.tp2.cantos.EstadoInicialTruco;
+import fiuba.algo3.tp2.cantos.EstadoEnvidoFinalizado;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
@@ -16,32 +22,35 @@ public class Juez {
 	EstadoRondas mano;
 	Puntos puntos;
 	int puntosEnJuego;
-	boolean activadorPicaPica;
-	int cantidadJugadas = 1;
-	
+	int cantidadJugadasPicaPica = 0;
+	int indiceJugadorMano;
+	int indiceJugadorQueComienza;
+
+	private EstadoCantoTruco cantosTruco;
+	private EstadoCantoEnvido cantosEnvido;
+
 	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos){
 		this.maso = new Maso();
 		this.mesa = mesa;
 		this.puntosEnJuego = 1;
 		this.puntos = new Puntos(equipoUno, equipoDos);
-		this.activadorPicaPica = false;
+		this.indiceJugadorMano = 0;
+
+		this.cantosTruco = new EstadoInicialTruco();
+		this.cantosEnvido = new EstadoInicialEnvido();
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuego(){
 		return this.mesa.obtenerCartasEnJuegoDeRondaActual();
 	}
-	
+
 	public Carta repartir(){
 		return this.maso.dameCarta();
 	}
 
 	public void anotarPuntos(Equipo equipo){
 		this.puntos.anotarPuntos(equipo, puntosEnJuego);
-		System.out.println("anote");
-	}
-	
-	public void mezclar(){
-		this.maso = new Maso();
+		this.puntosEnJuego = 1;
 	}
 
 	public Carta obtenerCartaGanadoraDeRonda() {
@@ -62,12 +71,11 @@ public class Juez {
 	private Carta ganador(Carta a, Carta b){
 		return a.vs(b);
 	}
-	
+
 	public boolean hayParda(){
-		
 		return this.mesa.hayParda();
 	}
-	
+
 	public void puntosEnJuego(int puntos) {
 		this.puntosEnJuego = puntos;
 	}
@@ -79,7 +87,7 @@ public class Juez {
 	public int puntosEquipo(Equipo equipo) {
 		return this.puntos.getPuntaje(equipo);
 	}
-	
+
 	public int puntosEquipo(String equipo) {
 		return this.puntos.getPuntaje(equipo);
 	}
@@ -93,14 +101,6 @@ public class Juez {
 		this.puntosEnJuego = this.puntosEnJuego + puntos;
 	}
 
-	public int obtenerPuntosFaltaEnvido(Equipo equipo) {
-		return this.puntos.puntosDeLaFalta(equipo);
-	}
-
-	public void limpiarCartasEnJuegoDeRondaActual() {
-		this.mesa.limpiarCartasEnJuegoDeRondaActual();
-	}
-	
 	public void limpiarCartasJugadas() {
 		this.mesa.limpiarCartasJugadas();
 	}
@@ -109,31 +109,8 @@ public class Juez {
 		return this.mesa.cantidadDeCartasEnJuegoDeRondaActual();
 	}
 
-	public boolean rangoPicaPica() {
-		return this.puntos.rangoPicaPica();
-	}
-
 	public void imprimirResultados() {
 		this.puntos.imprimirResultados();
-	}
-	
-	public boolean esPicaPica(){
-		if (this.mesa.cantidadDeJugadores() == 6 && rangoPicaPica()){
-			return true;
-		}
-		return false;
-	}
-	
-	public void actualizarCantidadJugadas(){
-		this.cantidadJugadas = this.cantidadJugadas + 1;
-	}
-	
-	public int cantidadDeJugadas(){
-		return this.cantidadJugadas;
-	}
-
-	public void resetearcantidadDeJugadas() {
-		this.cantidadJugadas = 1;
 	}
 
 	public boolean seJugaronTodasLasCartas() {
@@ -147,4 +124,119 @@ public class Juez {
 	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
 		return this.mesa.hayOtroEquipoConFlor(equipoQueCanta);
 	}
+
+	public ListaCircular<Jugador> listaDeJugadores() {
+		this.mesa.repartir();
+		if (esPicaPica()) return listaDeJugadoresPicaPica();
+		else return this.mesa.listaDeJugadores();
+	}
+
+	public ListaCircular<Jugador> listaDeJugadoresPicaPica() {
+		ListaCircular<Jugador> nuevosJugadores = new ListaCircular<Jugador>();
+		nuevosJugadores.add(this.mesa.listaDeJugadores().get(this.indiceJugadorMano));
+		nuevosJugadores.add(this.mesa.listaDeJugadores().get(this.indiceJugadorMano + 3));
+		return nuevosJugadores;
+	}
+
+	private boolean rangoEstaEnPicaPica() {
+		return this.puntos.rangoEstaEnPicaPica();
+	}
+
+	private boolean esPicaPica() {
+		if (this.mesa.cantidadDeJugadores() == 6 && rangoEstaEnPicaPica()){
+			if (cantidadJugadasPicaPica <= 3){
+				this.indiceJugadorQueComienza = 0;
+				return true;
+			}
+			else {
+				cantidadJugadasPicaPica = 0;
+				this.indiceJugadorMano = this.indiceJugadorMano - 2;
+				this.indiceJugadorQueComienza = this.indiceJugadorMano;
+				return false;
+			}
+		}
+		return false;
+	}
+	
+	public int indiceJugadorQueComienza() {
+		return this.indiceJugadorQueComienza;
+	}
+
+	public void finalizoLaMano(Equipo equipo) {
+		anotarPuntos(equipo);
+		limpiarCartasEnJuegoDeRondaActual();
+		this.indiceJugadorMano = this.indiceJugadorMano + 1;
+		this.indiceJugadorQueComienza = this.indiceJugadorMano;
+		this.cantosTruco = new EstadoInicialTruco();
+		this.cantosEnvido = new EstadoInicialEnvido();
+		mezclar();
+		if (esPicaPica()){
+			actualizarCantidadJugadasPicaPica();
+		}
+	}
+
+	private void actualizarCantidadJugadasPicaPica(){
+		this.cantidadJugadasPicaPica = this.cantidadJugadasPicaPica + 1;
+	}
+
+	private void mezclar(){
+		this.maso = new Maso();
+	}
+
+	public void limpiarCartasEnJuegoDeRondaActual() {
+		this.mesa.limpiarCartasEnJuegoDeRondaActual();
+	}
+
+	public int indiceJugadorMano() {
+		return this.indiceJugadorMano;
+	}
+
+	//EN EL CANTO TRUCO, EL JUEZ CHEQUEA QUE SE PUEDA CANTAR
+	public void seCantoTruco(Equipo equipoQueCanta) {
+		this.cantosTruco = this.cantosTruco.cantarTruco(equipoQueCanta);
+	}
+
+	public void seCantoQuieroReTruco(Equipo equipoQueCanta) {
+		this.cantosTruco = this.cantosTruco.cantarQuieroReTruco(equipoQueCanta);
+	}
+
+	public void seCantoQuieroValeCuatro(Equipo equipoQueCanta) {
+		this.cantosTruco = this.cantosTruco.cantarQuieroValeCuatro(equipoQueCanta);
+	}
+
+	public void noQuisoTruco() {
+		this.puntosEnJuego = this.cantosTruco.noQuiso();
+	}
+
+	public void quisoTruco() {
+		this.puntosEnJuego = this.cantosTruco.quiso();
+	}
+
+	//EN EL CANTO ENVIDO, EL JUEZ CHEQUEA QUE SE PUEDA CANTAR
+	public void seCantoEnvido(Equipo equipoQueCanta) {
+		this.cantosEnvido = this.cantosEnvido.cantarEnvido(equipoQueCanta);
+	}
+
+	public void seCantoRealEnvido(Equipo equipoQueCanta) {
+		this.cantosEnvido = this.cantosEnvido.cantarRealEnvido(equipoQueCanta);
+	}
+
+	public void seCantoFaltaEnvido(Equipo equipoQueCanta) {
+		this.cantosEnvido = this.cantosEnvido.cantarFaltaEnvido(equipoQueCanta);
+	}
+
+	public void noQuisoEnvido() {
+		this.puntosEnJuego = this.cantosEnvido.noQuiso();
+		this.cantosEnvido = new EstadoEnvidoFinalizado();
+	}
+
+	public void quisoEnvido() {
+		this.puntosEnJuego = this.cantosEnvido.quiso();
+		this.cantosEnvido = new EstadoEnvidoFinalizado();
+	}
+
+	public int obtenerPuntosFaltaEnvido(Equipo equipo) {
+		return this.puntos.puntosDeLaFalta(equipo);
+	}
+
 }

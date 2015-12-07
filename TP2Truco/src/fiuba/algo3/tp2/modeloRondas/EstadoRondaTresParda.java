@@ -5,54 +5,36 @@ import java.util.ArrayList;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaTresParda extends EstadoRondas{
 
 	public EstadoRondaTresParda(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+			ListaCircular<Jugador> listaDeJugadoresActual, int indiceJugadorManoDeLaRondaActual) {
 
-		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+		super(estadoRonda, juez, ganadoresRonda, listaDeJugadoresActual, indiceJugadorManoDeLaRondaActual);
 	}
 
 	public EstadoRondas siguienteRonda(){
 
-		Carta ganadora = this.juez.obtenerCartaGanadoraDeRonda();
+		int indiceCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(this.juez.obtenerCartaGanadoraDeRonda());
 
-		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
-
-		if (this.juez.hayParda()){ 
-			ganadoresRonda.add(jugadores.get(jugadorMano).obtenerEquipo()); //gana el eq q es mano
-			this.juez.anotarPuntos(jugadores.get(jugadorMano).obtenerEquipo());
+		Equipo equipoGanador;
+		
+		if (this.juez.hayParda()){
+			equipoGanador = jugadores.get(indiceJugadorMano).obtenerEquipo();
+			ganadoresRonda.add(equipoGanador); //gana el equipo que es mano
 		}else{
-			Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
-			ganadoresRonda.add(ganador.obtenerEquipo());
-			this.juez.anotarPuntos(ganador.obtenerEquipo());
+			Jugador jugadorGanador = this.jugadores.get(this.indiceJugadorManoDeLaRondaActual + indiceCartaGanadora);
+			equipoGanador = jugadorGanador.obtenerEquipo();
+			ganadoresRonda.add(equipoGanador);
 		}
-		this.juez.limpiarCartasEnJuegoDeRondaActual();
-
-		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
-
-		System.out.println("RONDA TRES gana: " + ganadoresRonda.get(0).obtenerNombre() + "\n");
 		
-		this.juez.mezclar(); //renuevo el mazo
-		repartir();
+		this.juez.finalizoLaMano(equipoGanador);
+
+		System.out.println("RONDA TRES gana: " + equipoGanador.obtenerNombre() + "\n");
 		
-		if (esPicaPica()){
-			if (this.juez.cantidadDeJugadas() == 4){
-				this.juez.resetearcantidadDeJugadas();
-				
-				this.juez.mezclar(); //renuevo el mazo
-				repartir();
-				
-				return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano - 2, this.jugadorMano);
-			}
-			else {
-				return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
-			}
-		}
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
 
 }

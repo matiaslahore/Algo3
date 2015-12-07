@@ -51,7 +51,7 @@ public class Puntos {
 		return Collections.max(coleccion);
 	}
 
-	public boolean rangoPicaPica() {
+	public boolean rangoEstaEnPicaPica() {
 		Collection<Integer> coleccion = mapa.values();
 		int max = Collections.max(coleccion);
 		if (max>5 && max<25){

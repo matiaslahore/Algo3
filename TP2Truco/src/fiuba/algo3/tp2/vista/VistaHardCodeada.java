@@ -31,8 +31,7 @@ public class VistaHardCodeada extends Application{
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args){
 		launch(args);
 	}
 
@@ -41,9 +40,9 @@ public class VistaHardCodeada extends Application{
 		imagenesCarta = new ImagenesCarta();
 
 		//creacion de la partida
-		if (this.conFlor)
+		//if (this.conFlor)
 			this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
-		this.partida = new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
+		//this.partida = new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
 
 		//cargar nombres de jugadores
 		ArrayList<String> lista1 = new ArrayList<String> ();
@@ -64,14 +63,15 @@ public class VistaHardCodeada extends Application{
 		this.botonesDelJugador = botonesDelJugador(this.stageJugadorConTurno);
 		Scene sceneCartasJugador = this.cargarSceneDelJugador();
 		this.stageJugadorConTurno.setScene(sceneCartasJugador);
+		this.stageJugadorConTurno.setX(0);
 		this.stageJugadorConTurno.show();
 
 		this.stageCartasEnMesa = new Stage();
 		this.stageCartasEnMesa.setTitle("Cartas En Juego");
 		Scene sceneCartasEnMesa = this.cargarSceneDeLaMesa();
 		this.stageCartasEnMesa.setScene(sceneCartasEnMesa);
+		this.stageCartasEnMesa.setX(730);
 		this.stageCartasEnMesa.show();
-
 	}
 
 	private VBox botonesDelJugador(Stage stage) {
@@ -97,7 +97,7 @@ public class VistaHardCodeada extends Application{
 
 		Button botonContraFlor = new Button("Contra Flor");
 		BotonContraFlorEventHandler botonContraFlorEventHandler = new BotonContraFlorEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
-		botonFlor.setOnAction(botonContraFlorEventHandler);
+		botonContraFlor.setOnAction(botonContraFlorEventHandler);
 
 		Button botonFlorContraResto = new Button("Flor X Resto");
 		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
@@ -132,7 +132,7 @@ public class VistaHardCodeada extends Application{
 		HBox contenedorTruco = new HBox(30,botonTruco,botonReTruco,botonValeCuatro);
 		HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		if (this.conFlor)
-			contenedorOpcion.getChildren().addAll(botonFlor,botonContraFlor,botonFlorContraResto);
+			contenedorEnvido.getChildren().addAll(botonFlor,botonContraFlor,botonFlorContraResto);
 
 		VBox contenedorBotones = new VBox(contenedorOpcion,contenedorEnvido, contenedorTruco, etiqueta);
 		contenedorBotones.setSpacing(8);
@@ -257,5 +257,5 @@ public class VistaHardCodeada extends Application{
 
 		return root;
 	}
-
+	
 }

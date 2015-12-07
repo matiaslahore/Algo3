@@ -5,50 +5,36 @@ import java.util.ArrayList;
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaTres extends EstadoRondas{
-	//SE CANTA EL TRUCO
-	//SE JUEGAN CARTAS
-	//SE EMPARDA
-	//IRSE AL MAZO
-	//SE GANA (SI O SI)
 
 	public EstadoRondaTres(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+			ListaCircular<Jugador> listaDeJugadoresActual, int indiceJugadorManoDeLaRondaActual) {
 
-		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+		super(estadoRonda, juez, ganadoresRonda, listaDeJugadoresActual, indiceJugadorManoDeLaRondaActual);
 	}
 
 	public EstadoRondas siguienteRonda(){
-		Carta ganadora = this.juez.obtenerCartaGanadoraDeRonda();
-		
-		int indexCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(ganadora);
+
+		int indiceCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(this.juez.obtenerCartaGanadoraDeRonda());
+
+		Equipo equipoGanador;
 		
 		if (this.juez.hayParda()){
-			ganadoresRonda.add(ganadoresRonda.get(1)); //gana el q gano segunda
+			equipoGanador = ganadoresRonda.get(1);
+			ganadoresRonda.add(equipoGanador); //gana el q gano segunda
 		}else{
-			Jugador ganador = this.jugadores.get(this.jugadorManoDeLaRondaActual + indexCartaGanadora);
-			ganadoresRonda.add(ganador.obtenerEquipo());
+			Jugador jugadorGanador = this.jugadores.get(this.indiceJugadorManoDeLaRondaActual + indiceCartaGanadora);
+			equipoGanador = jugadorGanador.obtenerEquipo();
+			ganadoresRonda.add(equipoGanador);
 		}
 		
-		this.juez.anotarPuntos(ganadoresRonda.get(2));
-		
-		System.out.println("RONDA TRES gana: " + this.ganadoresRonda.get(2).obtenerNombre() + "\n");
+		System.out.println("RONDA TRES gana: " + equipoGanador + "\n");
 				
-		this.juez.limpiarCartasEnJuegoDeRondaActual();
+		this.juez.finalizoLaMano(equipoGanador);
 		
-		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
-		
-		this.juez.mezclar(); //renuevo el mazo
-		repartir();
-		
-		if (esPicaPica()){
-			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
-		}
-		
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
 
 }

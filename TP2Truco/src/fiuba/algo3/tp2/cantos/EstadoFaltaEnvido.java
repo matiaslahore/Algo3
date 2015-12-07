@@ -3,23 +3,23 @@ package fiuba.algo3.tp2.cantos;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
 
-public class FaltaEnvido extends CantosEnvido{
+public class EstadoFaltaEnvido extends EstadoCantoEnvido{
 	
-	public FaltaEnvido(Equipo equipoQueCanta){
+	public EstadoFaltaEnvido(Equipo equipoQueCanta){
 		super(equipoQueCanta);
 	}
 	
 	@Override
-	public EnvidoEnvido cantarEnvido(Equipo equipoQueCanta) throws CantoInvalidoException {
+	public EstadoEnvidoEnvido cantarEnvido(Equipo equipoQueCanta) throws CantoInvalidoException {
 		throw new CantoInvalidoException();
 	}
 	
-	public EnvidoRealEnvido cantarRealEnvido(Equipo equipoQueCanta) throws CantoInvalidoException {
+	public EstadoEnvidoRealEnvido cantarRealEnvido(Equipo equipoQueCanta) throws CantoInvalidoException {
 		throw new CantoInvalidoException();
 	}
 
 	@Override
-	public CantosEnvido cantarFaltaEnvido(Equipo equipoQueCanta) throws CantoInvalidoException {
+	public EstadoCantoEnvido cantarFaltaEnvido(Equipo equipoQueCanta) throws CantoInvalidoException {
 		throw new CantoInvalidoException();
 	}
 

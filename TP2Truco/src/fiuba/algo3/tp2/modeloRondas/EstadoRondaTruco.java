@@ -3,7 +3,6 @@ package fiuba.algo3.tp2.modeloRondas;
 import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
-import fiuba.algo3.tp2.cantos.CantosTruco;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
 import fiuba.algo3.tp2.modelo.Equipo;
@@ -13,69 +12,65 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 public class EstadoRondaTruco extends EstadoRondas{
 
 	public EstadoRondaTruco(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano,CantosTruco estadoTruco) {
-		
-		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
-		this.cantosTruco = estadoTruco;
+			ListaCircular<Jugador> listaDeJugadoresActual, int indiceJugadorManoDeLaRondaActual) {
+
+		super(estadoRonda, juez, ganadoresRonda, listaDeJugadoresActual, indiceJugadorManoDeLaRondaActual);
 	}
 
 	@Override
 	public EstadoRondas siguienteRonda() {
 		return this.refEstadoRonda;
 	}
-	
+
 	public EstadoRondas acualizarRonda() {
 		return this;
 	}
 
 	public Jugador turnoDe() {
-		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual + 2); //2 es manejo de indices //aclarar
+		Jugador jugador = this.jugadores.get(this.indiceJugadorManoDeLaRondaActual + 2); //2 es manejo de indices //aclarar
 		return jugador;
 	}
-	
+
 	public void jugarCarta() {
 		throw new NoSePuedeJugarUnaCartaException();
 	}
-	
+
 	@Override
 	public EstadoRondas quiero(Jugador jugador) {
-		refEstadoRonda.juez.puntosEnJuego(this.cantosTruco.quiso());
-		refEstadoRonda.modificarCantoTruco(this.cantosTruco); //actualizo el canto de la ronda que se este jugando
+		this.juez.quisoTruco();
+		
 		return this.refEstadoRonda;
 	}
-	
+
 	@Override
 	public EstadoRondas noQuiero(Jugador jugador) {
-		this.juez.puntosEnJuego(this.cantosTruco.noQuiso());
-		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo());
-		this.jugadorMano = this.jugadorMano + 1; //aumento quien empieza la prox mano
+		this.juez.noQuisoTruco();
 		
-		this.juez.mezclar(); //renuevo el mazo
-		repartir();
+		Equipo equipoGanador = (this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo();
 		
-		if (esPicaPica()){
-			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
-		}
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+		this.juez.finalizoLaMano(equipoGanador);
+
+		this.indiceJugadorMano = this.indiceJugadorMano + 1; //aumento quien empieza la prox mano
+
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
-	
+
 	public EstadoRondas cantarTruco(Jugador jugador) {
-		throw new CantoInvalidoException(); //se canta truco, truco
+		throw new CantoInvalidoException(); //si accedio a este estado ya se canto truco
 	}
-	
+
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
-		
-		this.cantosTruco = this.cantosTruco.cantarQuieroReTruco(jugador.obtenerEquipo());	
-		//asi dsps vuelve al q canto la mano
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; 
-		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
+		this.juez.seCantoQuieroReTruco(jugador.obtenerEquipo());
+
+		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual + 1; 
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
-	
+
 	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
-		this.cantosTruco = this.cantosTruco.cantarQuieroValeCuatro(jugador.obtenerEquipo());	
-		//asi dsps vuelve al q canto la mano
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1; 
-		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual, jugadorMano, this.cantosTruco);
+		this.juez.seCantoQuieroValeCuatro(jugador.obtenerEquipo());
+
+		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual + 1; 
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
 
 }

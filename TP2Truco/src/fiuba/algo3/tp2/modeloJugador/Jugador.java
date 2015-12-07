@@ -17,17 +17,20 @@ public abstract class Jugador {
 	Mano manoDelJugador;
 	Mesa refMesa;
 	int envido;
+	boolean tieneFlor;
 
 	public Jugador(String name, Mesa mesa, Equipo team){
 		nombre = name;
 		refMesa = mesa;
 		equipo = team;
 		envido = 0;
+		tieneFlor = false;
 	}
 	
 	public void recibirCartas(List<Carta> listaDeCartas){
 		manoDelJugador = new Mano(listaDeCartas);
 		this.envido = this.manoDelJugador.calcularEnvido();
+		this.tieneFlor = this.manoDelJugador.tieneFlor();
 	}
 	
 	/* ESTA ES LA QUE VA A IR A LO ULTIMO
@@ -125,7 +128,7 @@ public abstract class Jugador {
 	}
 
 	public boolean tieneFlor() {
-		return this.manoDelJugador.tieneFlor();
+		return this.tieneFlor;
 	}
 
 	public void mostrarCartas() {

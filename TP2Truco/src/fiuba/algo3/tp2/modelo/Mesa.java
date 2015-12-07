@@ -22,7 +22,6 @@ public class Mesa {
 	ListaCircular<Jugador> jugadores;
 	Puntos puntos;
 	EstadoRondas ronda;
-	int indexMano;
 	ArrayList<Carta> cartasJugadas;
 	
 	public Mesa(){
@@ -30,7 +29,6 @@ public class Mesa {
 		ganadoresRonda = new ArrayList<Equipo>();
 		cartasEnJuegoRondaActual = new ArrayList<Carta>();
 		cartasJugadas = new ArrayList<Carta>();
-		indexMano = 0;
 	}
 
 	public void instanciarJuez(Equipo equipoUno, Equipo equipoDos){
@@ -39,7 +37,8 @@ public class Mesa {
 
 	public void iniciarRonda(){
 		repartir();
-		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda, jugadores, indexMano, indexMano);
+		int indiceMano = 0;
+		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda,this.jugadores, indiceMano);
 	}
 
 	public void recibirCarta(Carta carta){
@@ -82,7 +81,6 @@ public class Mesa {
 	}
 
 	public void cantarRealEnvido(Jugador jugador) throws CantoInvalidoException {
-		
 		this.ronda = this.ronda.cantarRealEnvido(jugador);
 	}
 
@@ -242,10 +240,14 @@ public class Mesa {
 		return false;
 	}
 	
-	private void repartir(){
+	public void repartir(){
 		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
-			Jugador actual = this.jugadores.get(i);
-			actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
+			Jugador unJugador = this.jugadores.get(i);
+			unJugador.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
 		}
+	}
+
+	public ListaCircular<Jugador> listaDeJugadores() {
+		return this.jugadores;
 	}
 }

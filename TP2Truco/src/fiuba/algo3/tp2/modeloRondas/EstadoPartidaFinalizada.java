@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modeloRondas;
 import java.util.ArrayList;
 
 import fiuba.algo3.colecciones.ListaCircular;
-import fiuba.algo3.tp2.cantos.CantosTruco;
+import fiuba.algo3.tp2.cantos.EstadoCantoTruco;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
@@ -14,9 +14,9 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 public class EstadoPartidaFinalizada extends EstadoRondas{
 
 	public EstadoPartidaFinalizada(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
-			ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano) {
+			ListaCircular<Jugador> listaDeJugadoresActual, int indiceJugadorManoDeLaRondaActual) {
 	
-		super(estadoRonda, juez, ganadoresRonda, jugadores, indexManoAux, indexMano);
+		super(estadoRonda, juez, ganadoresRonda, listaDeJugadoresActual, indiceJugadorManoDeLaRondaActual);
 	}
 
 	public EstadoRondas siguienteRonda() {
@@ -73,7 +73,7 @@ public class EstadoPartidaFinalizada extends EstadoRondas{
 		throw new NoSePuedeSeguirJugandoExcepcion();
 	}
 
-	public void modificarCantoTruco(CantosTruco estadoTruco) {
+	public void modificarCantoTruco(EstadoCantoTruco estadoTruco) {
 		finalizo();
 	}
 	

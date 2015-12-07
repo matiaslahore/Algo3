@@ -1,15 +1,12 @@
 package fiuba.algo3.tp2.modeloRondas;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import fiuba.algo3.colecciones.ListaCircular;
-import fiuba.algo3.tp2.cantos.CantosTruco;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Juez;
-import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class EstadoRondas{
@@ -18,36 +15,34 @@ public abstract class EstadoRondas{
 	ArrayList<Equipo> ganadoresRonda;
 	ListaCircular<Jugador> jugadores;
 	ArrayList<Integer> tantoEnJuego;
-	int jugadorManoDeLaRondaActual;
-	int jugadorMano;
+	int indiceJugadorManoDeLaRondaActual;
+	int indiceJugadorMano;
 	boolean sigue;
 	EstadoRondas refEstadoRonda;
-	CantosTruco cantosTruco;
 
-	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda, ListaCircular<Jugador> jugadores, int indexManoAux, int indexMano){
-		this.juez=juez;
+	public EstadoRondas(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda, ListaCircular<Jugador> listaDeJugadoresActual,int indiceJugadorManoDeLaRondaActual){
+		this.juez = juez;
 		this.ganadoresRonda = ganadoresRonda;
-		this.jugadores = jugadores;
-		this.jugadorManoDeLaRondaActual = new Integer(indexManoAux);
-		this.jugadorMano = indexMano; //esto se toca cuando se gana para indicar la mano sig.
+		this.indiceJugadorMano = this.juez.indiceJugadorMano();
+		this.indiceJugadorManoDeLaRondaActual = indiceJugadorManoDeLaRondaActual;
+		this.jugadores = listaDeJugadoresActual;
 		this.refEstadoRonda = estadoRonda;
 		this.tantoEnJuego = new ArrayList<Integer>();
 	}
 
 	public EstadoRondas acualizarRonda() {
-
 		if (this.juez.termino()){
-			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
+			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda,this.jugadores ,this.indiceJugadorManoDeLaRondaActual);
 		}
-		if (this.juez.seJugaronTodasLasCartas()){
+		if (this.juez.cantidadDeCartasEnJuego() == jugadores.size()){
 			return siguienteRonda();
 		}
 		return this;
 	}
 
 	public Jugador turnoDe() {
-		Jugador jugador = this.jugadores.get(this.jugadorManoDeLaRondaActual);
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual + 1;
+		Jugador jugador = this.jugadores.get(this.indiceJugadorManoDeLaRondaActual);
+		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual + 1;
 		return jugador;
 	}
 
@@ -62,31 +57,27 @@ public abstract class EstadoRondas{
 	}
 
 	public EstadoRondas cantarTruco(Jugador jugador)throws CantoInvalidoException, EquipoQueCantaNoPuedeVolverACantarException {
-		this.cantosTruco = this.cantosTruco.cantarTruco(jugador.obtenerEquipo());
+		this.juez.seCantoTruco(jugador.obtenerEquipo());
 		
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual - 1);
 	}
 
 	public EstadoRondas cantarQuieroReTruco(Jugador jugador) {
-		this.cantosTruco = this.cantosTruco.cantarQuieroReTruco(jugador.obtenerEquipo());
+		this.juez.seCantoQuieroReTruco(jugador.obtenerEquipo());
 		
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual - 1);
 	}
 
 	public EstadoRondas cantarQuieroValeCuatro(Jugador jugador) {
-		this.cantosTruco = this.cantosTruco.cantarQuieroValeCuatro(jugador.obtenerEquipo());
-		
-		this.jugadorManoDeLaRondaActual = this.jugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
+		this.juez.seCantoQuieroValeCuatro(jugador.obtenerEquipo());
+
+		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 		this.refEstadoRonda = this; //guardo estado de la ronda actual
-		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, jugadores, jugadorManoDeLaRondaActual - 1, jugadorMano, this.cantosTruco);
-	}
-	
-	public void modificarCantoTruco(CantosTruco estadoTruco) {
-		this.cantosTruco = estadoTruco;
+		return new EstadoRondaTruco(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual - 1);
 	}
 
 	public EstadoRondas cantarEnvido(Jugador jugador) throws CantoInvalidoException {
@@ -113,40 +104,16 @@ public abstract class EstadoRondas{
 		throw new CantoInvalidoException();
 	}
 
-	public boolean esPicaPica(){
-		return this.juez.esPicaPica();
-	}
-
 	public EstadoRondas irseAlMazo(Jugador jugador) {
-		Equipo ganador = this.jugadores.get(this.jugadores.indexOf(jugador) + 1).obtenerEquipo();
+		Equipo equipoGanador = this.jugadores.get(this.jugadores.indexOf(jugador) + 1).obtenerEquipo();
+		ganadoresRonda.add(equipoGanador);
+		this.juez.finalizoLaMano(equipoGanador);
 
-		ganadoresRonda.add(ganador);
-		
-		this.juez.anotarPuntos(ganador);
+		System.out.println("Gano: " + equipoGanador.obtenerNombre() + "\n");
 
-		System.out.println("Gano: " + ganador.obtenerNombre() + "\n");
+		this.indiceJugadorMano = this.indiceJugadorMano + 1;
 
-		this.juez.limpiarCartasEnJuegoDeRondaActual();
-
-		//aumento quien empieza la prox mano
-		
-		this.jugadorMano = this.jugadorMano + 1; 
-		
-		this.juez.mezclar(); //renuevo el mazo
-		
-		repartir();
-		
-		if (esPicaPica()){
-			return new EstadoRondaUnoPicaPica(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano, jugadores);
-		}
-		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, jugadores, this.jugadorMano, this.jugadorMano);
-	}
-	
-	public void repartir(){
-		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
-			Jugador actual = this.jugadores.get(i);
-			actual.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
-		}
+		return new EstadoRondaUno(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
 
 	public boolean seCantoEnvido(){
@@ -159,5 +126,5 @@ public abstract class EstadoRondas{
 
 	public void jugarCarta(){
 	}
-	
+
 }
