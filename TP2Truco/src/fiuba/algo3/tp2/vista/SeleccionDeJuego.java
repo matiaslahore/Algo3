@@ -41,33 +41,44 @@ public class SeleccionDeJuego extends Application{
 		contenedorImagen.setImage(image);
 		
 		CheckBox check = new CheckBox("Jugar Con Flor");
+		check.setStyle("-fx-background-color: orange; -fx-font-size: 12pt;");
 		check.setSelected(false);
+		
 		
 		
 		Button boton2Jugadores = new Button();
 		boton2Jugadores.setText("2 Jugadores");
 		Boton2JugadoresEventHandler boton2JugadoresEventHandler = new Boton2JugadoresEventHandler(this, check);
 		boton2Jugadores.setOnAction(boton2JugadoresEventHandler);
+		boton2Jugadores.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 		
 		Button boton4Jugadores = new Button();
 		boton4Jugadores.setText("4 Jugadores");
 		Boton4JugadoresEventHandler boton4JugadoresEventHandler = new Boton4JugadoresEventHandler(this, check);
 		boton4Jugadores.setOnAction(boton4JugadoresEventHandler);
+		boton4Jugadores.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 		
 		Button boton6Jugadores = new Button();
 		boton6Jugadores.setText("6 Jugadores");
 		Boton6JugadoresEventHandler boton6JugadoresEventHandler = new Boton6JugadoresEventHandler(this, check);
 		boton6Jugadores.setOnAction(boton6JugadoresEventHandler);
+		boton6Jugadores.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
+		
+		Button botonJugarContraPc = new Button();
+		botonJugarContraPc.setText("Jugar Contra Pc");
+		BotonJugarContraPcEventHandler botonJugarContraPcEventHandler = new BotonJugarContraPcEventHandler(this, check);
+		botonJugarContraPc.setOnAction(botonJugarContraPcEventHandler);
+		botonJugarContraPc.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
 		
 		HBox box = new HBox();
-		box.setLayoutX(100);
+		box.setLayoutX(80);
 		box.setLayoutY(240);
 		box.getChildren().add(check);
 		HBox box2 = new HBox();
 		box2.setSpacing(5);
-		box2.setLayoutX(100);
+		box2.setLayoutX(80);
 		box2.setLayoutY(270);
-		box2.getChildren().addAll(boton2Jugadores,boton4Jugadores,boton6Jugadores);
+		box2.getChildren().addAll(boton2Jugadores,boton4Jugadores,boton6Jugadores,botonJugarContraPc);
 		
 		
 		
