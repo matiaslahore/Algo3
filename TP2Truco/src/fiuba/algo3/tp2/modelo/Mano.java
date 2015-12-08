@@ -30,7 +30,7 @@ public class Mano {
 		Carta cartaUno = cartas.get(0);
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
-		return Math.max(Math.max(cartaUno.sumarTanto(cartaDos), cartaUno.sumarTanto(cartaTres)), cartaTres.sumarTanto(cartaDos));
+		return Math.max(Math.max(cartaUno.sumarEnvido(cartaDos), cartaUno.sumarEnvido(cartaTres)), cartaTres.sumarEnvido(cartaDos));
 	}
 
 	public int calcularPuntosFlor() {
@@ -38,7 +38,7 @@ public class Mano {
 			Carta cartaUno = cartas.get(0);
 			Carta cartaDos = cartas.get(1);
 			Carta cartaTres = cartas.get(2);
-			return cartaUno.sumarTantosConFlor(cartaDos, cartaTres);
+			return cartaUno.sumarFlor(cartaDos, cartaTres);
 		}
 		return 0;
 	}
@@ -108,7 +108,7 @@ public class Mano {
 		Carta cartaUno = cartas.get(0);
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
-		return (cartaUno.sumarTanto(cartaDos)>= 20 && cartaDos.sumarTanto(cartaTres)>= 20);		
+		return (cartaUno.sumarEnvido(cartaDos)>= 20 && cartaDos.sumarEnvido(cartaTres)>= 20);		
 	}
 	
 }
