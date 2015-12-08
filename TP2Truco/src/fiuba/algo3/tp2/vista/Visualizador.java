@@ -567,7 +567,7 @@ public class Visualizador extends Application  {
 		}
 		etiquetaNombre.setText(jugadorText.getText());
 		return etiquetaNombre;
-	}
+	} 
 }
 
 
