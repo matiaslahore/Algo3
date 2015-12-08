@@ -168,4 +168,29 @@ public class IA extends Jugador implements Oyente{
 	public boolean quererFaltaEnvidoIA(){
 		return(this.envido >= 31);
 	}
+	
+	//Inteligencia cantos Flor
+	public boolean cantarFlorIA(){
+		return(this.obtenerPuntosFlor() >= 30);
+	}
+	
+	public boolean quererFlorIA(){
+		return(this.obtenerPuntosFlor() >= 27);
+	}
+	
+	public boolean cantarContraFlorIA(){
+		return(this.obtenerPuntosFlor() >= 33);
+	}
+	
+	public boolean quererContraFlorIA(){
+		return(this.obtenerPuntosFlor() >= 30);
+	}
+	
+	public boolean cantarContraFlorAJuegoIA(){
+		return(this.obtenerPuntosFlor() >= 37);
+	}
+	
+	public boolean quererContraFlorAJuegoIA(){
+		return(this.obtenerPuntosFlor() >= 35);
+	}
 }
