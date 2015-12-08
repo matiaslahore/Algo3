@@ -15,9 +15,9 @@ public class PruebasManoTest {
 	@Test
 	public void pruebaObtenerCarta(){
 		
-		Carta sieteDeCopa = new SieteDeCopa();
-		Carta sieteDeBasto = new SieteDeBasto();
-		Carta cuatroDeBasto = new CuatroDeBasto();
+		Carta sieteDeCopa = new SieteFalso(new Copa());
+		Carta sieteDeBasto = new SieteFalso(new Basto());
+		Carta cuatroDeBasto = new Cuatro(new Basto());
 		
 		Mano mano = new Mano(Arrays.asList(sieteDeCopa, sieteDeBasto, cuatroDeBasto));
 		
@@ -30,9 +30,9 @@ public class PruebasManoTest {
 	(expected = CartaInexistenteEnManoDeJugadorExeption.class)
 	public void pruebaConCartaInexistenteEnMano(){
 		
-		Carta sieteDeCopa = new SieteDeCopa();
-		Carta sieteDeBasto = new SieteDeBasto();
-		Carta cuatroDeBasto = new CuatroDeBasto();
+		Carta sieteDeCopa = new SieteFalso(new Copa());
+		Carta sieteDeBasto = new SieteFalso(new Basto());
+		Carta cuatroDeBasto = new Cuatro(new Basto());
 		
 		Mano mano = new Mano(Arrays.asList(sieteDeCopa, sieteDeBasto, cuatroDeBasto));
 		
@@ -42,7 +42,7 @@ public class PruebasManoTest {
 	
 	@Test
 	public void pruebaTantoEnMano(){
-		mano = new Mano(Arrays.asList(new TresDeCopa(), new SieteDeEspada(), new CuatroDeCopa()));
+		mano = new Mano(Arrays.asList(new Tres(new Copa()), new SieteDeEspada(), new Cuatro(new Copa())));
 		Assert.assertEquals(27,mano.calcularEnvido());
 	}
 }

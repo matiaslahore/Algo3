@@ -8,9 +8,10 @@ import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public class Mano {
 
-	List<Carta> cartas = new ArrayList<Carta>();
+	List<Carta> cartas;
 	
 	public Mano(List<Carta> listaDeCartas){
+		this.cartas = new ArrayList<Carta>();
 		this.cartas = listaDeCartas;
 	}
 	
@@ -23,6 +24,7 @@ public class Mano {
 	}
 	
 	public void borrarCarta(Carta unaCarta) {
+
 		this.cartas.remove(this.cartas.lastIndexOf(unaCarta));
 	}	
 		

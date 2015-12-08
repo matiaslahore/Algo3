@@ -9,11 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeBasto;
-import fiuba.algo3.tp2.modeloDeCartas.AnchoDeCopa;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.modeloDeCartas.CincoDeOro;
-import fiuba.algo3.tp2.modeloDeCartas.SeisDeEspada;
+import fiuba.algo3.tp2.modeloDeCartas.Cinco;
+import fiuba.algo3.tp2.modeloDeCartas.Espada;
+import fiuba.algo3.tp2.modeloDeCartas.Oro;
+import fiuba.algo3.tp2.modeloDeCartas.Seis;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
@@ -49,7 +50,7 @@ public class PruebasSituacionesDeJuegoUnoVsUno {
 		
 		Carta sieteDeEspada = new SieteDeEspada();
 		Carta anchoDeBasto = new AnchoDeBasto();
-		Carta seisDeEspada = new SeisDeEspada();
+		Carta seisDeEspada = new Seis(new Espada());
 		
 		cartasJugadorUno.addAll(Arrays.asList(sieteDeEspada, anchoDeBasto, seisDeEspada));
 		
@@ -63,7 +64,7 @@ public class PruebasSituacionesDeJuegoUnoVsUno {
 		
 		Carta anchoDeEspada = new AnchoDeEspada();
 		Carta sieteDeOro = new SieteDeOro();
-		Carta cincoDeOro = new CincoDeOro();
+		Carta cincoDeOro = new Cinco(new Oro());
 		
 		List<Carta> cartasJugadorDos = new ArrayList<Carta>();
 		

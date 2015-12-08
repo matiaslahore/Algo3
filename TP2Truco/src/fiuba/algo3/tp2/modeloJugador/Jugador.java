@@ -4,7 +4,6 @@ import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
-import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
