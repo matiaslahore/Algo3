@@ -58,17 +58,17 @@ public class Juez {
 
 		Carta cartaUno = (Carta) itr.next();
 		Carta cartaDos = (Carta) itr.next();
-		Carta ganadora = ganador(cartaUno,cartaDos);
+		Carta ganadora = cartaGanadora(cartaUno,cartaDos);
 
 		while(itr.hasNext()) {
 			Carta otraCarta = (Carta) itr.next();
-			ganadora = ganador(ganadora,otraCarta);
+			ganadora = cartaGanadora(ganadora,otraCarta);
 		}
 
 		return ganadora;		
 	}	
 
-	private Carta ganador(Carta a, Carta b){
+	private Carta cartaGanadora(Carta a, Carta b){
 		return a.vs(b);
 	}
 
