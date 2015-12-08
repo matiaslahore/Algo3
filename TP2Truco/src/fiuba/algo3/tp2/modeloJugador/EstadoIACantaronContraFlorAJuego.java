@@ -4,15 +4,18 @@ public class EstadoIACantaronContraFlorAJuego extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		if(jugadorIA.obtenerPuntosFlor() >= 37){
-			jugadorIA.cantarContraFlorAJuego();
-			return;
+		try{
+			if(jugadorIA.obtenerPuntosFlor() >= 37){
+				jugadorIA.cantarContraFlorAJuego();
+				return;
+			}
+			if(jugadorIA.obtenerPuntosFlor() >= 35){
+				jugadorIA.quiero();
+				return;
+			}
+			jugadorIA.noQuiero();
 		}
-		if(jugadorIA.obtenerPuntosFlor() >= 35){
-			jugadorIA.quiero();
-			return;
-		}
-		jugadorIA.noQuiero();
+		catch(RuntimeException e){}
 	}
 
 }

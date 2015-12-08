@@ -4,15 +4,17 @@ public class EstadoIARondaUnoInteligente extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		
-		if(jugadorIA.obtenerPuntosEnvido() >= 27){
-			jugadorIA.cantarEnvido();
-			jugadorIA.setearEstado(new EstadoIAYaCantoEnvido());
-			return;
+		try{
+			if(jugadorIA.obtenerPuntosEnvido() >= 27){
+				jugadorIA.cantarEnvido();
+				jugadorIA.setearEstado(new EstadoIAYaCantoEnvido());
+				return;
+			}
+			jugadorIA.jugarCartaAleatoria();
+			jugadorIA.setearEstado(new EstadoIACantaronTruco());
+			jugadorIA.hacerJugarIA();
 		}
-		jugadorIA.jugarCartaAleatoria();
-		jugadorIA.setearEstado(new EstadoIACantaronTruco());
-		jugadorIA.hacerJugarIA();
+		catch(RuntimeException e){}
 	}
 
 }
