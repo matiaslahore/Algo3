@@ -27,23 +27,33 @@ public class PruebasPartidoIAContraJugador {
 	public void inicializarPruebas(){
 		this.partida = new PartidaDeTrucoConIASinFlor("equipoIA","equipo2");
 		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("Pepito"));
-		
+		/*
 		cartasHumano = new ArrayList<Carta>();
 		cartasIA = new ArrayList<Carta>();
 		cartasHumano = new ArrayList<Carta>(Arrays.asList(new TresDeCopa(), new TresDeBasto(), new ReyDeBasto()));
 		cartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new CincoDeEspada(), new AnchoDeCopa()));
+		*/
 	}
 
 	@Test
-	public void jugadorIAJuegaSoloCantandoReTrucoYGanandoLaMano(){
-		this.partida.iniciar();
-		this.partida.quiero();
+	public void jugadorIAJuegaSolaConCartasAleatoriasParaAmbos(){
+			this.partida.iniciar();
+			try{
+				this.partida.quiero();
+			}
+			catch(RuntimeException e){}
+			this.partida.jugarCarta(this.partida.obtenerCartasDelJugadorConTurno().get(2));
+			try{
+				this.partida.cantarQuieroReTruco();
+			}
+			catch(RuntimeException e){}
+			this.partida.jugarCarta(this.partida.obtenerCartasDelJugadorConTurno().get(1));
+			this.partida.jugarCarta(this.partida.obtenerCartasDelJugadorConTurno().get(0));
 		
+		//El atrapar la excecpion es porque jugador no sabe cuando va a cantar truco o re truco la IA
+		//Es casi imposible de comprobar el comportamiento al no poder comporbar las cartas que le llegan
 	}
 
-	
-	
-	
 	
 	
 	
