@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class SeleccionDeJuego extends Application{
@@ -42,16 +43,36 @@ public class SeleccionDeJuego extends Application{
 		CheckBox check = new CheckBox("Jugar Con Flor");
 		check.setSelected(false);
 		
+		
 		Button boton2Jugadores = new Button();
 		boton2Jugadores.setText("2 Jugadores");
 		Boton2JugadoresEventHandler boton2JugadoresEventHandler = new Boton2JugadoresEventHandler(this, check);
 		boton2Jugadores.setOnAction(boton2JugadoresEventHandler);
 		
+		Button boton4Jugadores = new Button();
+		boton4Jugadores.setText("4 Jugadores");
+		Boton4JugadoresEventHandler boton4JugadoresEventHandler = new Boton4JugadoresEventHandler(this, check);
+		boton4Jugadores.setOnAction(boton4JugadoresEventHandler);
+		
+		Button boton6Jugadores = new Button();
+		boton6Jugadores.setText("6 Jugadores");
+		Boton6JugadoresEventHandler boton6JugadoresEventHandler = new Boton6JugadoresEventHandler(this, check);
+		boton6Jugadores.setOnAction(boton6JugadoresEventHandler);
+		
+		HBox box = new HBox();
+		box.setLayoutX(100);
+		box.setLayoutY(240);
+		box.getChildren().add(check);
+		HBox box2 = new HBox();
+		box2.setSpacing(5);
+		box2.setLayoutX(100);
+		box2.setLayoutY(270);
+		box2.getChildren().addAll(boton2Jugadores,boton4Jugadores,boton6Jugadores);
 		
 		
 		
 		Group root = new Group();
-		root.getChildren().add(contenedorImagen);
+		root.getChildren().addAll(contenedorImagen,box,box2);
 		
 		
 		
