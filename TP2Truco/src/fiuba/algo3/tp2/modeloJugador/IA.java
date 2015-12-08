@@ -8,7 +8,6 @@ import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 
 public class IA extends Jugador implements Oyente{
 	EstadoIA estadoIA;
