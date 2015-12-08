@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,68 +19,26 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 public class PruebasPartidoIAContraJugador {
 
 	public Jugador jugadorConTurno;	
-	public Mesa mesa;
 	public List<Carta> cartasHumano;
 	public List<Carta> cartasIA;	
-	public Equipo equipoUno;
-	public Equipo equipoIA;
+	PartidaDeTrucoConIASinFlor partida;
 
 	@Before
 	public void inicializarPruebas(){
-		mesa = new Mesa();
-
-		equipoUno = new Equipo("equipoUno", mesa);
-		equipoIA = new Equipo("equipoIA", mesa);
-		mesa.instanciarJuez(equipoUno, equipoIA);
-
-		equipoIA.cargarJugadorIA();
-		equipoUno.cargarJugadores(Arrays.asList("Pepito"));
-
-		mesa.sentarJugadores(equipoIA.obtenerJugadores(), equipoUno.obtenerJugadores());
-		mesa.iniciarRonda();
-
+		this.partida = new PartidaDeTrucoConIASinFlor("equipoIA","equipo2");
+		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("Pepito"));
+		
 		cartasHumano = new ArrayList<Carta>();
 		cartasIA = new ArrayList<Carta>();
-
 		cartasHumano = new ArrayList<Carta>(Arrays.asList(new TresDeCopa(), new TresDeBasto(), new ReyDeBasto()));
 		cartasIA = new ArrayList<Carta>(Arrays.asList(new SieteDeOro(), new CincoDeEspada(), new AnchoDeCopa()));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void jugadorIAJuegaSoloCantandoReTrucoYGanandoLaMano(){
-		//1
-		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
-		jugadorConTurno.recibirCartas(cartasIA); //IA
-		jugadorConTurno.hacerJugarIA(); //IA
-
-		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
-		jugadorConTurno.recibirCartas(cartasHumano); //HUMANO
-		jugadorConTurno.quiero(); //HUMANO
-		jugadorConTurno.cantarQuieroReTruco();
-		jugadorConTurno.jugarCarta(cartasHumano.get(2));
+		this.partida.iniciar();
+		this.partida.quiero();
 		
-		System.out.println(mesa.ronda);		
-		
-		//2
-		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
-		jugadorConTurno.hacerJugarIA(); //IA
-
-		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
-		jugadorConTurno.quiero(); //HUMANO
-		jugadorConTurno.jugarCarta(cartasHumano.get(1));
-		
-		//3
-		
-		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
-		jugadorConTurno.jugarCarta(cartasHumano.get(0));
-		
-		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
-		jugadorConTurno.hacerJugarIA(); //IA
-		
-		Equipo ganador = this.mesa.ganadorDeLaRonda();
-		System.out.println(ganador.obtenerNombre());	
-		Assert.assertTrue(ganador.obtenerNombre() == this.equipoIA.obtenerNombre());
 	}
 
 	

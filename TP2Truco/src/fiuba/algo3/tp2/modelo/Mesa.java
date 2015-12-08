@@ -98,7 +98,6 @@ public class Mesa {
 
 	public void cantarTruco(Jugador jugador){
 		this.ronda = this.ronda.cantarTruco(jugador);
-		//throw new seCantoTrucoEvent();
 	}
 
 	public void cantarQuieroReTruco(Jugador jugador) {
