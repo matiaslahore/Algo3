@@ -156,13 +156,11 @@ public class SeleccionDeJuego extends Application{
 		List<String> lista2 = new ArrayList<String> ();
 		
 		for ( i=0; i<(this.cantidadJugadores/2) ; i++){
-			System.out.println(i +" eq1");
 			lista1.add(this.nombresJugadores.get(i).getText());
 		}
 		partida.cargarJugadoresEnEquipoUno(lista1);
 		
 		for (i=i ; i<this.cantidadJugadores ; i++){
-			System.out.println(i +" eq2");
 			lista2.add(this.nombresJugadores.get(i).getText());
 		}
 		partida.cargarJugadoresEnEquipoDos(lista2);
@@ -172,13 +170,18 @@ public class SeleccionDeJuego extends Application{
 	
 	public void creacionDePartidaIa (boolean jugarConFlor){
 		
+	
 		PartidaDeTruco partida;
-		String nombreEq1 ="";
+		
+		List<String> lista2 = new ArrayList<String> ();
+		lista2.add("USTED");
 		
 		if(jugarConFlor)
-			partida = new PartidaDeTrucoConIAConFlor(nombreEq1, "Pc");
+			partida = new PartidaDeTrucoConIAConFlor("IA", "USTED");
 		else 
-			partida = new PartidaDeTrucoConIASinFlor(nombreEq1, "Pc");
+			partida = new PartidaDeTrucoConIASinFlor("IA", "USTED");
+		
+		partida.cargarJugadoresEnEquipoDos(lista2);
 		
         this.ventanasDelJuego= new VentanasDelJuego(partida);
 		

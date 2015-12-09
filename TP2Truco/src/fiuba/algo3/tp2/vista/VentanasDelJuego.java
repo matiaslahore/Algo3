@@ -74,6 +74,7 @@ public class VentanasDelJuego {
 		modificarStajeCartasEnMesa();
 		this.stageCartasEnMesa.setX(730);
 		this.stageCartasEnMesa.show();
+		this.imagenesCarta = new ImagenesCarta();
 	}
 
 
@@ -183,7 +184,7 @@ public class VentanasDelJuego {
 		Iterator<Carta> itr = listaCartasJugador.iterator();
 		while(itr.hasNext()) {
 			Carta carta = (Carta) itr.next();
-
+            System.out.println(carta.cartaComoString());
 			Image imgCarta = new Image(this.imagenesCarta.obtenerDireccionDeCarta(carta.cartaComoString()));
 			ImageView cartaComoImagen = new ImageView();
 			cartaComoImagen.setImage(imgCarta);
