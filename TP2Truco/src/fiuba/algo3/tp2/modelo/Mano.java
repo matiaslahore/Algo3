@@ -94,8 +94,15 @@ public class Mano {
 	private Carta obtenerCartaMasBaja() {
 		List<Carta> copiaCartas = new ArrayList<Carta>();
 		copiaCartas = this.cartas;
-		copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
-		copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
+		switch (copiaCartas.size()){
+			case 1:
+				return copiaCartas.get(0);
+			case 2:
+				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
+			case 3:
+				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
+				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
+		}	
 		return copiaCartas.get(0);
 	}
 
