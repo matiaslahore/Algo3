@@ -32,7 +32,7 @@ public class VentanasDelJuego {
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
 
-	public void VentanasDelJuego (){
+	public VentanasDelJuego (PartidaDeTruco partida){
 		
 		//creacion de la partida
 		//if (this.conFlor)
@@ -58,6 +58,8 @@ public class VentanasDelJuego {
 		lista2.add("jugador2");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
 		this.partida.iniciar();*/
+		
+		this.partida=partida;
 		
 		//VENTANAS DEL JUEGO
 		this.stageJugadorConTurno = new Stage();

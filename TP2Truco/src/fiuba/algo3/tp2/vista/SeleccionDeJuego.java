@@ -29,6 +29,7 @@ public class SeleccionDeJuego extends Application{
 	private int cantidadJugadores;
 	private List<TextField> nombresEquipos;
 	private List<TextField> nombresJugadores;
+	private VentanasDelJuego ventanasDelJuego;
 	
 	public static void main(String[] args)
 	{
@@ -150,10 +151,10 @@ public class SeleccionDeJuego extends Application{
 		else
 			partida = new PartidaDeTrucoSinFlor(nombreEq1, nombreEq2);
 		
-		
+		this.ventanasDelJuego= new VentanasDelJuego(partida);
 	}
 	
-	public PartidaDeTruco creacionDePartidaIa (boolean jugarConFlor){
+	public void creacionDePartidaIa (boolean jugarConFlor){
 		
 		PartidaDeTruco partida;
 		String nombreEq1 ="";
@@ -163,7 +164,7 @@ public class SeleccionDeJuego extends Application{
 		else 
 			partida = new PartidaDeTrucoConIASinFlor(nombreEq1, "Pc");
 		
-		return partida;
+        this.ventanasDelJuego= new VentanasDelJuego(partida);
 		
 	}
 	
