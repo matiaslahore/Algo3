@@ -40,11 +40,11 @@ public class SeleccionDeJuego extends Application{
 	public void start(Stage stage) throws Exception {
 		
 		stage.setTitle("FON-TRUCO Seleccion de juego");
-		stage.setScene(this.opcionesDeJuego());
+		stage.setScene(this.opcionesDeJuego(stage));
 		stage.show();
 	}
 	
-	public Scene opcionesDeJuego(){
+	public Scene opcionesDeJuego(Stage stage){
 		String direccion= "/fiuba/algo3/tp2/vista/imagenes/fondoPrincipal.jpg";
 		Image image = new Image(direccion);
 		ImageView contenedorImagen = new ImageView();
@@ -58,25 +58,25 @@ public class SeleccionDeJuego extends Application{
 		
 		Button boton2Jugadores = new Button();
 		boton2Jugadores.setText("2 Jugadores");
-		Boton2JugadoresEventHandler boton2JugadoresEventHandler = new Boton2JugadoresEventHandler(this, check);
+		Boton2JugadoresEventHandler boton2JugadoresEventHandler = new Boton2JugadoresEventHandler(this, check,stage);
 		boton2Jugadores.setOnAction(boton2JugadoresEventHandler);
 		boton2Jugadores.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 		
 		Button boton4Jugadores = new Button();
 		boton4Jugadores.setText("4 Jugadores");
-		Boton4JugadoresEventHandler boton4JugadoresEventHandler = new Boton4JugadoresEventHandler(this, check);
+		Boton4JugadoresEventHandler boton4JugadoresEventHandler = new Boton4JugadoresEventHandler(this, check,stage);
 		boton4Jugadores.setOnAction(boton4JugadoresEventHandler);
 		boton4Jugadores.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 		
 		Button boton6Jugadores = new Button();
 		boton6Jugadores.setText("6 Jugadores");
-		Boton6JugadoresEventHandler boton6JugadoresEventHandler = new Boton6JugadoresEventHandler(this, check);
+		Boton6JugadoresEventHandler boton6JugadoresEventHandler = new Boton6JugadoresEventHandler(this, check,stage);
 		boton6Jugadores.setOnAction(boton6JugadoresEventHandler);
 		boton6Jugadores.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 		
 		Button botonJugarContraPc = new Button();
 		botonJugarContraPc.setText("Jugar Contra Pc");
-		BotonJugarContraPcEventHandler botonJugarContraPcEventHandler = new BotonJugarContraPcEventHandler(this, check);
+		BotonJugarContraPcEventHandler botonJugarContraPcEventHandler = new BotonJugarContraPcEventHandler(this, check,stage);
 		botonJugarContraPc.setOnAction(botonJugarContraPcEventHandler);
 		botonJugarContraPc.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
 		
