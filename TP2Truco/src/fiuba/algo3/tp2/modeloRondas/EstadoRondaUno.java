@@ -17,9 +17,9 @@ public class EstadoRondaUno extends EstadoRondas{
 		super(estadoRonda, juez, ganadoresRonda, listaDeJugadoresActual, indiceJugadorManoDeLaRondaActual);
 
 		this.jugadores = this.juez.listaDeJugadores();
-		
+
 		this.indiceJugadorManoDeLaRondaActual = this.juez.indiceJugadorQueComienza();
-		
+
 		this.juez.limpiarCartasJugadas();
 		this.juez.puntosEnJuego(1);
 	}
@@ -78,7 +78,7 @@ public class EstadoRondaUno extends EstadoRondas{
 			this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 			this.refEstadoRonda = this; //guardo estado de la ronda actual
 			return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual - 1, flor);
-		} 
+		}
 		juez.puntosEnJuego(3);
 		juez.anotarPuntos(jugador.obtenerEquipo());
 		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual - 1;

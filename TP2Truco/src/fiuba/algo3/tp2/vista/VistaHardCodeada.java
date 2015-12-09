@@ -41,7 +41,7 @@ public class VistaHardCodeada extends Application{
 
 		//creacion de la partida
 		//if (this.conFlor)
-			this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
+		this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
 		//this.partida = new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
 
 		//cargar nombres de jugadores
@@ -61,18 +61,17 @@ public class VistaHardCodeada extends Application{
 		this.stageJugadorConTurno = new Stage();
 		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
 		this.botonesDelJugador = botonesDelJugador(this.stageJugadorConTurno);
-		Scene sceneCartasJugador = this.cargarSceneDelJugador();
-		this.stageJugadorConTurno.setScene(sceneCartasJugador);
+		modificarStageJugador();
 		this.stageJugadorConTurno.setX(0);
 		this.stageJugadorConTurno.show();
 
 		this.stageCartasEnMesa = new Stage();
 		this.stageCartasEnMesa.setTitle("Cartas En Juego");
-		Scene sceneCartasEnMesa = this.cargarSceneDeLaMesa();
-		this.stageCartasEnMesa.setScene(sceneCartasEnMesa);
+		modificarStajeCartasEnMesa();
 		this.stageCartasEnMesa.setX(730);
 		this.stageCartasEnMesa.show();
 	}
+
 
 	private VBox botonesDelJugador(Stage stage) {
 		//etiqueta para mensajes
@@ -80,51 +79,51 @@ public class VistaHardCodeada extends Application{
 
 		//botones de opciones para el jugador actual.
 		Button botonEnvido = new Button("Envido");
-		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, this, etiqueta);
 		botonEnvido.setOnAction(botonEnvidoEventHandler);
 
 		Button botonRealEnvido = new Button("Real Envido");
-		BotonRealEnvidoEventHandler botonRealEnvidoEventHandler = new BotonRealEnvidoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonRealEnvidoEventHandler botonRealEnvidoEventHandler = new BotonRealEnvidoEventHandler(this.partida, this, etiqueta);
 		botonRealEnvido.setOnAction(botonRealEnvidoEventHandler);
 
 		Button botonFaltaEnvido = new Button("Falta Envido");
-		BotonFaltaEnvidoEventHandler botonFaltaEnvidoEventHandler = new BotonFaltaEnvidoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonFaltaEnvidoEventHandler botonFaltaEnvidoEventHandler = new BotonFaltaEnvidoEventHandler(this.partida, this, etiqueta);
 		botonFaltaEnvido.setOnAction(botonFaltaEnvidoEventHandler);
 
 		Button botonFlor = new Button("Flor");
-		BotonFlorEventHandler botonFlorEventHandler = new BotonFlorEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonFlorEventHandler botonFlorEventHandler = new BotonFlorEventHandler(this.partida, this, etiqueta);
 		botonFlor.setOnAction(botonFlorEventHandler);
 
 		Button botonContraFlor = new Button("Contra Flor");
-		BotonContraFlorEventHandler botonContraFlorEventHandler = new BotonContraFlorEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonContraFlorEventHandler botonContraFlorEventHandler = new BotonContraFlorEventHandler(this.partida, this, etiqueta);
 		botonContraFlor.setOnAction(botonContraFlorEventHandler);
 
 		Button botonFlorContraResto = new Button("Flor X Resto");
-		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, this, etiqueta);
 		botonFlorContraResto.setOnAction(botonFlorContraRestoEventHandler);
 
 		Button botonTruco = new Button("Truco");
-		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, this, etiqueta);
 		botonTruco.setOnAction(botonTrucoEventHandler);
 
 		Button botonReTruco = new Button("ReTruco");
-		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, etiqueta);
 		botonReTruco.setOnAction(botonReTrucoEventHandler);
 
 		Button botonValeCuatro = new Button("ValeCuatro");
-		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, etiqueta);
 		botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
 
 		Button botonQuerer = new Button("Querer");
-		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta, this.stageCartasEnMesa);
+		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, etiqueta);
 		botonQuerer.setOnAction(botonQuererEventHandler);
 
 		Button botonNoQuerer = new Button("No Querer");
-		BotonNoQuererEventHandler botonNoQuererEventHandler = new BotonNoQuererEventHandler(this.partida, this, this.stageJugadorConTurno, etiqueta);
+		BotonNoQuererEventHandler botonNoQuererEventHandler = new BotonNoQuererEventHandler(this.partida, this, etiqueta);
 		botonNoQuerer.setOnAction(botonNoQuererEventHandler);
 
 		Button botonIrseAlMazo = new Button("Irse al Mazo");
-		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, this, this.stageJugadorConTurno, this.stageCartasEnMesa, etiqueta);
+		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, this, etiqueta);
 		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
 
 		//contenedores de los botones
@@ -140,6 +139,7 @@ public class VistaHardCodeada extends Application{
 
 		return contenedorBotones;
 	}
+
 
 	public Scene cargarSceneDelJugador() {
 		//imagen de fondo de la mesa
@@ -168,6 +168,7 @@ public class VistaHardCodeada extends Application{
 		return scene;
 	}
 
+
 	@SuppressWarnings("unchecked")
 	public Group agregarCartasDelJugador(){
 		Group root = new Group();
@@ -186,7 +187,7 @@ public class VistaHardCodeada extends Application{
 			cartaComoImagen.setFitWidth(110);
 			cartaComoImagen.setLayoutX(layoutX);
 			cartaComoImagen.setLayoutY(150);
-			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this, this.stageJugadorConTurno, this.stageCartasEnMesa));
+			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this));
 
 			layoutX += 150;
 
@@ -194,6 +195,7 @@ public class VistaHardCodeada extends Application{
 		}
 		return root;
 	}
+
 
 	public Scene cargarSceneDeLaMesa() {
 		//puntos de los equipos
@@ -226,6 +228,7 @@ public class VistaHardCodeada extends Application{
 		return scene;
 	}
 
+
 	public Group agregarCartasEnJuego(){
 		Group root = new Group();
 		double layoutX = 80;
@@ -243,19 +246,29 @@ public class VistaHardCodeada extends Application{
 			cartaComoImagen.setLayoutY(layoutY);
 
 			layoutY += 50;
-			
+
 			if (i == 6) {
 				layoutY = 40;
 				layoutX += 150;
 				i = 0;
 			}
-			
+
 			i = i+1;
-			
+
 			root.getChildren().add(cartaComoImagen);
 		}
 
 		return root;
 	}
-	
+
+	public void modificarStageJugador(){
+		Scene sceneCartasJugador = this.cargarSceneDelJugador();
+		this.stageJugadorConTurno.setScene(sceneCartasJugador);
+	}
+
+	public void modificarStajeCartasEnMesa(){
+		Scene sceneCartasEnMesa = this.cargarSceneDeLaMesa();
+		this.stageCartasEnMesa.setScene(sceneCartasEnMesa);
+	}
+
 }

@@ -4,23 +4,19 @@ import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class BotonFaltaEnvidoEventHandler implements EventHandler<ActionEvent>{
 
 	private PartidaDeTruco partida;
 	private Label etiqueta;
 	private VistaHardCodeada visual;
-	private Stage stageJugador;
 
 	//constructor
-	public BotonFaltaEnvidoEventHandler(PartidaDeTruco partida, VistaHardCodeada visual, Stage stageJugador, Label etiqueta){
+	public BotonFaltaEnvidoEventHandler(PartidaDeTruco partida, VistaHardCodeada visual, Label etiqueta){
 		this.partida = partida;
 		this.visual = visual;
-		this.stageJugador = stageJugador;
 		this.etiqueta = etiqueta;
 	}
 
@@ -34,9 +30,7 @@ public class BotonFaltaEnvidoEventHandler implements EventHandler<ActionEvent>{
 			etiqueta.setText("NO PUEDE CANTAR FALTA ENVIDO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-
-		Scene scene = this.visual.cargarSceneDelJugador();
-		this.stageJugador.setScene(scene);
+		this.visual.modificarStageJugador();
 	}
 
 }
