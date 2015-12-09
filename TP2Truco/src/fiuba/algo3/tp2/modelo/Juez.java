@@ -48,11 +48,6 @@ public class Juez {
 		return this.maso.dameCarta();
 	}
 
-	public void anotarPuntos(Equipo equipo){
-		this.puntos.anotarPuntos(equipo, puntosEnJuego);
-		this.puntosEnJuego = 1;
-	}
-
 	public Carta obtenerCartaGanadoraDeRonda() {
 		Iterator<Carta> itr = this.mesa.obtenerCartasEnJuegoDeRondaActual().iterator();
 
@@ -157,7 +152,7 @@ public class Juez {
 		}
 		return false;
 	}
-	
+
 	public int indiceJugadorQueComienza() {
 		return this.indiceJugadorQueComienza;
 	}
@@ -230,13 +225,19 @@ public class Juez {
 		this.cantosEnvido = new EstadoEnvidoFinalizado();
 	}
 
-	public void quisoEnvido() {
-		this.puntosEnJuego = this.cantosEnvido.quiso();
-		this.cantosEnvido = new EstadoEnvidoFinalizado();
-	}
-
 	public int obtenerPuntosFaltaEnvido(Equipo equipo) {
 		return this.puntos.puntosDeLaFalta(equipo);
+	}
+
+	public void anotarPuntos(Equipo equipo){
+		this.puntos.anotarPuntos(equipo, puntosEnJuego);
+		this.puntosEnJuego = 1;
+	}
+
+	public void anotarPuntosEnvido(Equipo equipoGanador, Equipo equipoPerdedor) {
+		this.puntosEnJuego = this.cantosEnvido.quiso(this.puntos.getPuntaje(equipoGanador), this.puntos.getPuntaje(equipoPerdedor));
+		this.puntos.anotarPuntos(equipoGanador, puntosEnJuego);
+		this.puntosEnJuego = 1;
 	}
 
 }

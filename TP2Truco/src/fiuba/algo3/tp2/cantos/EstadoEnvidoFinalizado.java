@@ -30,7 +30,7 @@ public class EstadoEnvidoFinalizado extends EstadoCantoEnvido{
 	}
 
 	@Override
-	public int quiso() {
+	public int quiso(int puntajeEquipoGanador, int puntajeEquipoPerdedor) {
 		throw new CantoInvalidoException();
 	}
 

@@ -17,5 +17,6 @@ public abstract class EstadoCantoEnvido {
 	
 	public abstract int noQuiso();
 	
-	public abstract int quiso();
+	public abstract int quiso(int puntajeEquipoGanador, int puntajeEquipoPerdedor);
+
 }

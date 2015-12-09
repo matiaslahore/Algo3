@@ -36,8 +36,6 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	}
 	
 	public EstadoRondas quiero(Jugador jugador) {
-		this.juez.quisoEnvido();
-		
 		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador actual = this.jugadores.get(i);
 			tantoEnJuego.add(actual.obtenerPuntosEnvido());
@@ -47,8 +45,11 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		int indexTantoGanador = this.tantoEnJuego.indexOf(tantoGanador); //gana el q es mano tmb
 		
 		Jugador jugadorGanador = this.jugadores.get(this.indiceJugadorMano + indexTantoGanador);
+		Equipo equipoPerdedor = (this.jugadores.get(this.indiceJugadorMano + indexTantoGanador + 1)).obtenerEquipo();
 		
-		this.juez.anotarPuntos(jugadorGanador.obtenerEquipo());
+		this.juez.anotarPuntosEnvido(jugadorGanador.obtenerEquipo(), equipoPerdedor);
+		
+		System.out.println("EL TANTO LO GANA: " + jugadorGanador.obtenerEquipo().obtenerNombre());
 		
 		this.tantoEnJuego.clear();
 		

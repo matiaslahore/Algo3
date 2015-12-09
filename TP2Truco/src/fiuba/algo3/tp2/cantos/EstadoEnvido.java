@@ -28,7 +28,7 @@ public class EstadoEnvido extends EstadoCantoEnvido{
 	}
 
 	@Override
-	public int quiso() {
+	public int quiso(int puntajeEquipoGanador, int puntajeEquipoPerdedor) {
 		return 2;
 	}
 }
