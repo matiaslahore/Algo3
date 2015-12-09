@@ -16,7 +16,7 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 	public PartidaDeTrucoSinFlor partidaDeTruco;
 
 	@Test
-	public void partidaDeTrucoSinFlor2x2SeRepartioBienYJuegaBien(){
+	public void partidaDeTrucoSinFlor2x2SeRepartoYLaCantidadDeCartasDeCadaJugadorSonCorrectas(){
 		
 		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
 		
@@ -90,7 +90,7 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 	}
 	
 	@Test
-	public void partidaDeTrucoSinFlorSeVaAlMazoj1(){
+	public void partidaDeTrucoSinFlorSeVaAlMazoJugadorUno(){
 		
 		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
 		

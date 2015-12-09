@@ -1,12 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import java.util.Arrays;
-
-import org.junit.Assert;
 import org.junit.Test;
-
-import fiuba.algo3.tp2.modeloDeCartas.AnchoDeEspada;
-import fiuba.algo3.tp2.modeloJugador.IA;
 
 public class PruebasPartidaDeTrucoSinFlorContraJugadorIATest {
 	

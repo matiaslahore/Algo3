@@ -4,15 +4,18 @@ public class EstadoIACantaronFaltaEnvido extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		if(jugadorIA.cantarFaltaEnvidoIA()){
-			jugadorIA.cantarFaltaEnvido();
-			return;
+		try{
+			if(jugadorIA.cantarFaltaEnvidoIA()){
+				jugadorIA.cantarFaltaEnvido();
+				return;
+			}
+			if(jugadorIA.quererFaltaEnvidoIA()){
+				jugadorIA.quiero();
+				return;
+			}
+			jugadorIA.noQuiero();
 		}
-		if(jugadorIA.quererFaltaEnvidoIA()){
-			jugadorIA.quiero();
-			return;
-		}
-		jugadorIA.noQuiero();
+		catch(RuntimeException e){}
 	}
 
 }

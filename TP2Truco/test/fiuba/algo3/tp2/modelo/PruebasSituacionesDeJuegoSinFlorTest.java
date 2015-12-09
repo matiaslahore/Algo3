@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
-import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
@@ -18,24 +17,24 @@ public class PruebasSituacionesDeJuegoSinFlorTest {
 	private Equipo eq2;
 	Carta sieteDeEspada = new SieteDeEspada();
 	Carta anchoDeBasto = new AnchoDeBasto();
-	Carta seisDeEspada = new SeisDeEspada();
+	Carta seisDeEspada = new Seis(new Espada());
 	Carta anchoDeEspada = new AnchoDeEspada();
 	Carta sieteDeOro = new SieteDeOro();
-	Carta cincoDeOro = new CincoDeOro();
-	Carta cuatroDeOro = new CuatroDeOro();
-	Carta tresDeBasto = new TresDeBasto();
-	Carta dosDeCopa = new DosDeCopa();
-	Carta tresDeOro = new TresDeOro();
-	Carta anchoDeCopa = new AnchoDeCopa();
-	Carta tresDeCopa = new TresDeCopa();
-	Carta dosDeOro = new DosDeOro();
-	Carta anchoDeOro = new AnchoDeOro();
-	Carta sotaDeBasto = new SotaDeBasto();
-	Carta cuatroDeCopa = new CuatroDeCopa();
-	Carta cincoDeBasto = new CincoDeBasto();
-	Carta reyDeOro = new ReyDeOro();
-	Carta sieteDeCopa = new SieteDeCopa();
-	Carta seisDeCopa = new SeisDeCopa();
+	Carta cincoDeOro = new Cinco(new Oro());
+	Carta cuatroDeOro = new Cuatro(new Oro());
+	Carta tresDeBasto = new Tres(new Basto());
+	Carta dosDeCopa = new Dos(new Copa());
+	Carta tresDeOro = new Tres(new Oro());
+	Carta anchoDeCopa = new AnchoFalso(new Copa());
+	Carta tresDeCopa = new Tres(new Copa());
+	Carta dosDeOro = new Dos(new Oro());
+	Carta anchoDeOro = new AnchoFalso(new Oro());
+	Carta sotaDeBasto = new Sota(new Basto());
+	Carta cuatroDeCopa = new Cuatro(new Copa());
+	Carta cincoDeBasto = new Cinco(new Basto());
+	Carta reyDeOro = new Rey(new Oro());
+	Carta sieteDeCopa = new SieteFalso(new Copa());
+	Carta seisDeCopa = new Seis(new Copa());
 
 	@Before
 	public void setup() {

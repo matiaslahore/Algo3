@@ -8,7 +8,8 @@ import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
+import fiuba.algo3.tp2.modeloDeCartas.Copa;
+import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 public class IA extends Jugador implements Oyente{
 	EstadoIA estadoIA;
@@ -125,9 +126,17 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public boolean quererTrucoIA(){
-		return(this.truco >= 5);
+		
+		//Acepta si tiene mas que un Tres
+		return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
+		//return(this.truco >= 5);
 	}
 	
+	private Carta obtenerCartaMasAltaParaTruco() {
+		
+		return this.manoDelJugador.obtenerCartaMasAltaParaTruco();
+	}
+
 	public boolean cantarReTrucoIA(){
 		return(this.truco >= 18);
 	}
@@ -167,5 +176,30 @@ public class IA extends Jugador implements Oyente{
 	
 	public boolean quererFaltaEnvidoIA(){
 		return(this.envido >= 31);
+	}
+	
+	//Inteligencia cantos Flor
+	public boolean cantarFlorIA(){
+		return(this.obtenerPuntosFlor() >= 30);
+	}
+	
+	public boolean quererFlorIA(){
+		return(this.obtenerPuntosFlor() >= 27);
+	}
+	
+	public boolean cantarContraFlorIA(){
+		return(this.obtenerPuntosFlor() >= 33);
+	}
+	
+	public boolean quererContraFlorIA(){
+		return(this.obtenerPuntosFlor() >= 30);
+	}
+	
+	public boolean cantarContraFlorAJuegoIA(){
+		return(this.obtenerPuntosFlor() >= 37);
+	}
+	
+	public boolean quererContraFlorAJuegoIA(){
+		return(this.obtenerPuntosFlor() >= 35);
 	}
 }

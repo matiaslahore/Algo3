@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
+import fiuba.algo3.tp2.excepciones.JugadorYaNoTieneMasCartasException;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public class Mano {
 
-	List<Carta> cartas = new ArrayList<Carta>();
+	List<Carta> cartas;
 	
 	public Mano(List<Carta> listaDeCartas){
+		this.cartas = new ArrayList<Carta>();
 		this.cartas = listaDeCartas;
 	}
 	
@@ -23,6 +25,7 @@ public class Mano {
 	}
 	
 	public void borrarCarta(Carta unaCarta) {
+
 		this.cartas.remove(this.cartas.lastIndexOf(unaCarta));
 	}	
 		
@@ -30,7 +33,7 @@ public class Mano {
 		Carta cartaUno = cartas.get(0);
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
-		return Math.max(Math.max(cartaUno.sumarTanto(cartaDos), cartaUno.sumarTanto(cartaTres)), cartaTres.sumarTanto(cartaDos));
+		return Math.max(Math.max(cartaUno.sumarEnvido(cartaDos), cartaUno.sumarEnvido(cartaTres)), cartaTres.sumarEnvido(cartaDos));
 	}
 
 	public int calcularPuntosFlor() {
@@ -38,7 +41,7 @@ public class Mano {
 			Carta cartaUno = cartas.get(0);
 			Carta cartaDos = cartas.get(1);
 			Carta cartaTres = cartas.get(2);
-			return cartaUno.sumarTantosConFlor(cartaDos, cartaTres);
+			return cartaUno.sumarFlor(cartaDos, cartaTres);
 		}
 		return 0;
 	}
@@ -108,7 +111,20 @@ public class Mano {
 		Carta cartaUno = cartas.get(0);
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
-		return (cartaUno.sumarTanto(cartaDos)>= 20 && cartaDos.sumarTanto(cartaTres)>= 20);		
+		return (cartaUno.sumarEnvido(cartaDos)>= 20 && cartaDos.sumarEnvido(cartaTres)>= 20);		
+	}
+
+	public Carta obtenerCartaMasAltaParaTruco() {
+		
+		try{
+			Carta mejorCarta = this.cartas.get(0);
+			for(Carta unaCarta : this.cartas){
+				mejorCarta = unaCarta.vs(mejorCarta);
+			}
+			return mejorCarta;
+		}catch(IndexOutOfBoundsException e){
+			throw new JugadorYaNoTieneMasCartasException();
+		}
 	}
 	
 }

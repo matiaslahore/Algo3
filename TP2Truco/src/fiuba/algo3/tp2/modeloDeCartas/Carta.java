@@ -1,9 +1,15 @@
 package fiuba.algo3.tp2.modeloDeCartas;
 
-public interface Carta {
+import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
+import fiuba.algo3.tp2.modeloDeCartas.SieteFalso;
+import fiuba.algo3.tp2.modeloDeCartas.Sota;
+import fiuba.algo3.tp2.modeloDeCartas.Tres;
+
+public abstract class Carta {
 	
-	public default boolean hayParda(Carta contra){
-		
+	public Palo palo;
+	
+	public boolean hayParda(Carta contra){
 		return (this.vs(contra) != contra.vs(this));
 	}
 	
@@ -37,57 +43,28 @@ public interface Carta {
 
 	public abstract Carta vs(Cuatro contra);
 	
-	//SUMAR TANTOS
+	public abstract String cartaComoString();
 	
-	public abstract int valorParaEnvido();
-
-	public default int sumarTantosConFlor(Carta cartaUno, Carta cartaDos){
-		
-		return this.valorParaEnvido() + cartaUno.sumarTanto(cartaDos);
+	public int sumarEnvido(Carta unaCarta){
+		if(this.sonDelMismoPalo(unaCarta)){
+			return 20 + this.obtenerValorParaEnvido() + unaCarta.obtenerValorParaEnvido();
+		}
+		return Math.max(this.obtenerValorParaEnvido(), unaCarta.obtenerValorParaEnvido());
 	}
 	
-	public abstract int sumarTanto(Carta sumar);
-	public abstract int sumarTanto(AnchoDeEspada sumar);
-	public abstract int sumarTanto(AnchoDeBasto sumar);
-	public abstract int sumarTanto(SieteDeEspada sumar);
-	public abstract int sumarTanto(SieteDeOro sumar);
-	public abstract int sumarTanto(TresDeOro sumar);
-	public abstract int sumarTanto(TresDeCopa sumar);
-	public abstract int sumarTanto(TresDeEspada sumar);
-	public abstract int sumarTanto(TresDeBasto sumar);
-	public abstract int sumarTanto(DosDeOro sumar);
-	public abstract int sumarTanto(DosDeCopa sumar);
-	public abstract int sumarTanto(DosDeEspada sumar);
-	public abstract int sumarTanto(DosDeBasto sumar);
-	public abstract int sumarTanto(AnchoDeCopa sumar);	
-	public abstract int sumarTanto(AnchoDeOro sumar);
-	public abstract int sumarTanto(ReyDeOro sumar);
-	public abstract int sumarTanto(ReyDeCopa sumar);
-	public abstract int sumarTanto(ReyDeEspada sumar);
-	public abstract int sumarTanto(ReyDeBasto sumar);
-	public abstract int sumarTanto(CaballoDeOro sumar);
-	public abstract int sumarTanto(CaballoDeCopa sumar);
-	public abstract int sumarTanto(CaballoDeEspada sumar);
-	public abstract int sumarTanto(CaballoDeBasto sumar);	
-	public abstract int sumarTanto(SotaDeOro sumar);
-	public abstract int sumarTanto(SotaDeCopa sumar);
-	public abstract int sumarTanto(SotaDeEspada sumar);
-	public abstract int sumarTanto(SotaDeBasto sumar);
-	public abstract int sumarTanto(SieteDeCopa sumar);
-	public abstract int sumarTanto(SieteDeBasto sumar);
-	public abstract int sumarTanto(SeisDeOro sumar);
-	public abstract int sumarTanto(SeisDeCopa sumar);
-	public abstract int sumarTanto(SeisDeEspada sumar);
-	public abstract int sumarTanto(SeisDeBasto sumar);
-	public abstract int sumarTanto(CincoDeOro sumar);
-	public abstract int sumarTanto(CincoDeCopa sumar);
-	public abstract int sumarTanto(CincoDeEspada sumar);
-	public abstract int sumarTanto(CincoDeBasto sumar);
-	public abstract int sumarTanto(CuatroDeEspada sumar);
-	public abstract int sumarTanto(CuatroDeOro sumar);
-	public abstract int sumarTanto(CuatroDeBasto sumar);
-	public abstract int sumarTanto(CuatroDeCopa sumar);
+	private boolean sonDelMismoPalo(Carta unaCarta) {
+		return this.obtenerPalo().esElMismoPalo(unaCarta.obtenerPalo());
+	}
 	
-	public abstract String cartaComoString();
+	public int sumarFlor(Carta cartaDos, Carta cartaTres){
+		
+		return this.obtenerValorParaEnvido() + cartaDos.obtenerValorParaEnvido()
+				+ cartaTres.obtenerValorParaEnvido() + 20;
+	}	
+	
+	public abstract int obtenerValorParaEnvido();
+	
+	public Palo obtenerPalo(){
+		return this.palo;
+	}
 }
-

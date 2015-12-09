@@ -4,15 +4,18 @@ public class EstadoIACantaronReTruco extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		if(jugadorIA.cantarReTrucoIA()){
-			jugadorIA.cantarQuieroReTruco();
-			return;
+		try{
+			if(jugadorIA.cantarReTrucoIA()){
+				jugadorIA.cantarQuieroReTruco();
+				return;
+			}
+			if(jugadorIA.quererReTrucoIA()){
+				jugadorIA.quiero();
+				return;
+			}
+			jugadorIA.noQuiero();
 		}
-		if(jugadorIA.quererReTrucoIA()){
-			jugadorIA.quiero();
-			return;
-		}
-		jugadorIA.noQuiero();
+		catch(RuntimeException e){}
 	}
 
 }

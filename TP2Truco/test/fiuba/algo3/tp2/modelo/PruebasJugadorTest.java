@@ -2,9 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +26,7 @@ public class PruebasJugadorTest {
 	@Test
 	public void pruebaCalcularEnvidoDeCartasSinFlor(){
 		
-		unJugador.recibirCartas(Arrays.asList(new TresDeOro(), new SieteDeOro(), new SotaDeBasto()));
+		unJugador.recibirCartas(Arrays.asList(new Tres(new Oro()), new SieteDeOro(), new Sota(new Basto())));
 		
 		assertEquals(30,unJugador.obtenerPuntosEnvido());
 	}
@@ -36,7 +34,7 @@ public class PruebasJugadorTest {
 	@Test
 	public void pruebaCalcularEnvidoConCartasDeDistintoPalo(){		
 	
-		unJugador.recibirCartas(Arrays.asList(new TresDeOro(), new SieteDeCopa(), new SotaDeBasto()));
+		unJugador.recibirCartas(Arrays.asList(new Tres(new Oro()), new SieteFalso(new Copa()), new Sota(new Basto())));
 		
 		assertEquals(7, unJugador.obtenerPuntosEnvido());
 	}
@@ -44,7 +42,7 @@ public class PruebasJugadorTest {
 	@Test
 	public void pruebaCalcularEnvidoConTresCartasDelMismoPalo(){		
 	
-		unJugador.recibirCartas(Arrays.asList(new TresDeOro(), new SieteDeOro(), new DosDeOro()));
+		unJugador.recibirCartas(Arrays.asList(new Tres(new Oro()), new SieteDeOro(), new Dos(new Oro())));
 		
 		assertEquals(30, unJugador.obtenerPuntosEnvido());
 	}
@@ -53,7 +51,7 @@ public class PruebasJugadorTest {
 	public void pruebaCalcularEnvidoConTresCartasNegrasDelMismoPalo(){
 		
 
-		unJugador.recibirCartas(Arrays.asList(new SotaDeOro(), new CaballoDeOro(), new ReyDeOro()));
+		unJugador.recibirCartas(Arrays.asList(new Sota(new Oro()), new Caballo(new Oro()), new Rey(new Oro())));
 		
 		assertEquals(20, unJugador.obtenerPuntosEnvido());
 		
@@ -62,7 +60,7 @@ public class PruebasJugadorTest {
 	@Test
 	public void pruebaCalcularEnvidoConTresCartasNegrasDeDistintoPalo(){
 		
-		unJugador.recibirCartas(Arrays.asList(new SotaDeOro(), new CaballoDeEspada(), new ReyDeBasto()));
+		unJugador.recibirCartas(Arrays.asList(new Sota(new Oro()), new Caballo(new Espada()), new Rey(new Basto())));
 		
 		assertEquals(0, unJugador.obtenerPuntosEnvido());	
 	}
@@ -70,7 +68,7 @@ public class PruebasJugadorTest {
 	@Test
 	public void pruebaCalcularEnvidoConFlorConTresCartasNegras(){
 		
-		unJugador.recibirCartas(Arrays.asList(new SotaDeOro(), new CaballoDeOro(), new ReyDeOro()));
+		unJugador.recibirCartas(Arrays.asList(new Sota(new Oro()), new Caballo(new Oro()), new Rey(new Oro())));
 		
 		assertEquals(20, unJugador.obtenerPuntosFlor());
 	}
@@ -78,7 +76,7 @@ public class PruebasJugadorTest {
 	@Test
 	public void pruebaCalcularEnvidoConFlorConTresCartasComunes(){
 		
-		unJugador.recibirCartas(Arrays.asList(new CincoDeOro(), new SeisDeOro(), new SieteDeOro()));
+		unJugador.recibirCartas(Arrays.asList(new Cinco(new Oro()), new Seis(new Oro()), new SieteDeOro()));
 		
 		assertEquals(38, unJugador.obtenerPuntosFlor());
 	}

@@ -11,6 +11,5 @@ public class Humano extends Jugador{
 	}
 
 	public void hacerJugarIA() {
-		
 	}
 }
