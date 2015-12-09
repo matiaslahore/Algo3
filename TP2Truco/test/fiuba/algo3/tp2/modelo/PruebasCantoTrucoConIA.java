@@ -66,13 +66,13 @@ public class PruebasCantoTrucoConIA {
 	}
 	
 	@Test
-	public void jugadorIAConCartasMayoresOIgualesA2SesisYUnCincoAceptaElTruco(){
+	public void jugadorIAConCartasMayoresOIgualesA2SesisYUnCincoNoAceptaElTruco(){
 		List<Carta> cartas = new ArrayList<Carta>();
 		cartas.add(new Cinco(new Basto()));
 		cartas.add(new Seis(new Oro()));
 		cartas.add(new Seis(new Copa()));
 		this.IA.recibirCartas(cartas);
-		Assert.assertTrue(this.IA.quererTrucoIA());
+		Assert.assertFalse(this.IA.quererTrucoIA());
 	}
 	
 	@Test

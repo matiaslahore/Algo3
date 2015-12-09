@@ -8,6 +8,8 @@ import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.modeloDeCartas.Copa;
+import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 public class IA extends Jugador implements Oyente{
 	EstadoIA estadoIA;
@@ -124,9 +126,17 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public boolean quererTrucoIA(){
-		return(this.truco >= 5);
+		
+		//Acepta si tiene mas que un Tres
+		return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
+		//return(this.truco >= 5);
 	}
 	
+	private Carta obtenerCartaMasAltaParaTruco() {
+		
+		return this.manoDelJugador.obtenerCartaMasAltaParaTruco();
+	}
+
 	public boolean cantarReTrucoIA(){
 		return(this.truco >= 18);
 	}

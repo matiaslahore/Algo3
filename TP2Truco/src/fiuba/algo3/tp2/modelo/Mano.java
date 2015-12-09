@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
+import fiuba.algo3.tp2.excepciones.JugadorYaNoTieneMasCartasException;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public class Mano {
@@ -111,6 +112,19 @@ public class Mano {
 		Carta cartaDos = cartas.get(1);
 		Carta cartaTres = cartas.get(2);
 		return (cartaUno.sumarEnvido(cartaDos)>= 20 && cartaDos.sumarEnvido(cartaTres)>= 20);		
+	}
+
+	public Carta obtenerCartaMasAltaParaTruco() {
+		
+		try{
+			Carta mejorCarta = this.cartas.get(0);
+			for(Carta unaCarta : this.cartas){
+				mejorCarta = unaCarta.vs(mejorCarta);
+			}
+			return mejorCarta;
+		}catch(IndexOutOfBoundsException e){
+			throw new JugadorYaNoTieneMasCartasException();
+		}
 	}
 	
 }

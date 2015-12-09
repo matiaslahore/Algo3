@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modeloJugador;
 
-public class EstadoIAYaCantoEnvido extends EstadoIA {
+public class EstadoIAYaSeJugoElEnvido extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {

@@ -4,18 +4,13 @@ public class EstadoIACantaronRealEnvido extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		try{
-			if(jugadorIA.cantarRealEnvidoIA()){
-				jugadorIA.cantarRealEnvido();
-				return;
-			}
-			if(jugadorIA.quererRealEnvidoIA()){
-				jugadorIA.quiero();
-				return;
-			}
-			jugadorIA.noQuiero();
+		
+		if(jugadorIA.quererRealEnvidoIA()){
+			System.out.println("IA quiere Real Envido");
+			jugadorIA.quiero();
+			return;
 		}
-		catch(RuntimeException e){}
+		System.out.println("IA no quiere Real Envido");
+		jugadorIA.noQuiero();
 	}
-
 }
