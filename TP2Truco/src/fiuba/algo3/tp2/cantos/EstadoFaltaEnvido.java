@@ -32,6 +32,8 @@ public class EstadoFaltaEnvido extends EstadoCantoEnvido{
 	public int quiso(int puntajeEquipoGanador, int puntajeEquipoPerdedor) {
 		if (puntajeEquipoGanador<15) return 15-puntajeEquipoGanador;
 		
+		if (puntajeEquipoPerdedor<15 && puntajeEquipoGanador>=15) return 30-puntajeEquipoGanador;
+		
 		if (puntajeEquipoPerdedor>=15) return (30-puntajeEquipoPerdedor);
 		else return (15-puntajeEquipoPerdedor);
 	}
