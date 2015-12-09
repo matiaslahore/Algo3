@@ -8,6 +8,7 @@ public class EstadoIACantaronEnvido extends EstadoIA {
 		if(jugadorIA.cantarEnvidoIA()){
 			System.out.println("IA canta EnvidoEnvido");
 			jugadorIA.cantarEnvido();
+			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
 			return;
 		}
 		if(jugadorIA.quererEnvidoIA()){

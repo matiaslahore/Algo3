@@ -15,8 +15,11 @@ import fiuba.algo3.tp2.modeloDeCartas.Basto;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloDeCartas.Cinco;
 import fiuba.algo3.tp2.modeloDeCartas.Copa;
+import fiuba.algo3.tp2.modeloDeCartas.Dos;
+import fiuba.algo3.tp2.modeloDeCartas.Espada;
 import fiuba.algo3.tp2.modeloDeCartas.Oro;
 import fiuba.algo3.tp2.modeloDeCartas.Rey;
+import fiuba.algo3.tp2.modeloDeCartas.SieteDeEspada;
 import fiuba.algo3.tp2.modeloDeCartas.SieteDeOro;
 import fiuba.algo3.tp2.modeloDeCartas.Tres;
 import fiuba.algo3.tp2.modeloJugador.EstadoIACantaronEnvido;
@@ -65,8 +68,6 @@ public class PruebasJugadorIAConEnvidoTest {
 		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
 		jugadorConTurno.recibirCartas(cartasIA); //IA
 		jugadorConTurno.hacerJugarIA(); //IA
-
-		System.out.println(mesa.ronda);
 
 		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
 		jugadorConTurno.recibirCartas(cartasHumano); //HUMANO
@@ -197,7 +198,7 @@ public class PruebasJugadorIAConEnvidoTest {
 
 	
 	@Test
-	public void pruebaJugadorHumanoCantaEnvidoIARespondeEnvidoHumanoCantaRealEnvidoEIANoAcepta(){
+	public void pruebaJugadorHumanoCantaEnvidoIARespondeEnvidoHumanoCantaRealEnvidoEIANoAceptaCon28(){
 
 		jugadorConTurno  = mesa.siguienteJugadorConTurno();
 
@@ -220,5 +221,94 @@ public class PruebasJugadorIAConEnvidoTest {
 		
 		Assert.assertEquals(5, mesa.puntosEquipo(equipoUno));
 	} 
-}
+	
+	@Test
+	public void pruebaGanaHumanoEnLaRondaTresNoSeCantaNada(){
+		
+		Carta dosDeBasto = new Dos(new Basto());
+		Carta dosDeEspada = new Dos(new Espada());
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(dosDeEspada, dosDeBasto, cincoDeCopa));
 
+		Carta sieteDeEspada = new SieteDeEspada();
+		List<Carta> otrasCartasHumano =  new ArrayList<Carta>(Arrays.asList(sieteDeEspada , tresDeBasto, reyDeBasto));
+		
+		//RONDA 1
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasHumano);
+		jugadorConTurno.jugarCarta(reyDeBasto);
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		Assert.assertEquals("Jarvis", jugadorConTurno.obtenerNombre());
+		// la partida de truco con el lanzador de enventos setean los estados 
+		// automaticamente
+		jugadorConTurno.recibirCartas(otrasCartasIA);
+		jugadorConTurno.hacerJugarIA();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		jugadorConTurno.hacerJugarIA();
+
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.jugarCarta(sieteDeEspada);
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.jugarCarta(tresDeBasto);
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		Assert.assertEquals("Jarvis", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.hacerJugarIA();
+		
+		mesa.siguienteJugadorConTurno();
+		
+		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
+	}
+	
+	@Test
+	public void pruebaHumanoCantaTrucoEnRondaTresIANoAcepta(){
+		
+		Carta reyDeEspada = new Rey(new Espada());
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(reyDeEspada, anchoDeOro, cincoDeCopa));
+
+		Carta sieteDeEspada = new SieteDeEspada();
+		List<Carta> otrasCartasHumano =  new ArrayList<Carta>(Arrays.asList(sieteDeEspada , tresDeBasto, reyDeBasto));
+		
+		//RONDA 1
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasHumano);
+		jugadorConTurno.jugarCarta(reyDeBasto);
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		Assert.assertEquals("Jarvis", jugadorConTurno.obtenerNombre());
+		// la partida de truco con el lanzador de enventos setean los estados 
+		// automaticamente
+		jugadorConTurno.recibirCartas(otrasCartasIA);
+		jugadorConTurno.hacerJugarIA();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		jugadorConTurno.hacerJugarIA();
+
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.jugarCarta(sieteDeEspada);
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.cantarTruco();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		Assert.assertEquals("Jarvis", jugadorConTurno.obtenerNombre());
+		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronTruco());
+		jugadorConTurno.hacerJugarIA();
+		
+		mesa.siguienteJugadorConTurno();
+		
+		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
+	}
+}

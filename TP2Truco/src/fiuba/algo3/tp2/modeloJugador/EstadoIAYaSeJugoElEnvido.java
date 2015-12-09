@@ -5,7 +5,12 @@ public class EstadoIAYaSeJugoElEnvido extends EstadoIA {
 	@Override
 	public void manejador(IA jugadorIA) {
 		
-		jugadorIA.jugarCartaAleatoria();
+		if(jugadorIA.esMano()){			
+			jugadorIA.jugarCartaAleatoria();
+			return;
+		}
+		jugadorIA.jugarMejorCarta();
+		jugadorIA.setearEstado(new EstadoIARondaDosInteligente());
+		return;
 	}
-
 }
