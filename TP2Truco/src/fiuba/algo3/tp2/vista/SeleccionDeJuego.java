@@ -165,7 +165,7 @@ public class SeleccionDeJuego extends Application{
 		}
 		partida.cargarJugadoresEnEquipoDos(lista2);
 				
-		this.ventanasDelJuego= new VentanasDelJuego(partida);
+		//this.ventanasDelJuego= new VentanasDelJuego(partida);
 	}
 	
 	public void creacionDePartidaIa (boolean jugarConFlor){
@@ -183,7 +183,7 @@ public class SeleccionDeJuego extends Application{
 		
 		partida.cargarJugadoresEnEquipoDos(lista2);
 		
-        this.ventanasDelJuego= new VentanasDelJuego(partida);
+       //this.ventanasDelJuego= new VentanasDelJuego(partida);
 		
 	}
 	

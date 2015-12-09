@@ -1,11 +1,12 @@
 package fiuba.algo3.tp2.vista;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
+import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIA;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIASinFlor;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import javafx.application.Application;
@@ -23,7 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class VentanasDelJuego {
+public class VentanasDelJuego extends Application{
 
 	private ImagenesCarta imagenesCarta;
 	private boolean conFlor = true;
@@ -31,35 +32,10 @@ public class VentanasDelJuego {
 	private Stage stageJugadorConTurno;
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
-
+	
+	/*
 	public VentanasDelJuego (PartidaDeTruco partida){
-		
-		//creacion de la partida
-		//if (this.conFlor)
-		/*this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
-		//this.partida = new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
-
-		//cargar nombres de jugadores
-		ArrayList<String> lista1 = new ArrayList<String> ();
-		lista1.add("jugador1");
-		lista1.add("jugador3");
-		lista1.add("jugador5");
-		this.partida.cargarJugadoresEnEquipoUno(lista1);
-		ArrayList<String> lista2 = new ArrayList<String> ();
-		lista2.add("jugador2");
-		lista2.add("jugador4");
-		lista2.add("jugador6");
-		this.partida.cargarJugadoresEnEquipoDos(lista2);
-		this.partida.iniciar();
-		
-		
-		this.partida = new PartidaDeTrucoConIASinFlor("Equipo IA", "Equipo DOS");
-		ArrayList<String> lista2 = new ArrayList<String> ();
-		lista2.add("jugador2");
-		this.partida.cargarJugadoresEnEquipoDos(lista2);
-		this.partida.iniciar();*/
-		
-		this.partida=partida;
+		this.partida = partida;
 		this.partida.iniciar();
 		//VENTANAS DEL JUEGO
 		this.stageJugadorConTurno = new Stage();
@@ -75,8 +51,45 @@ public class VentanasDelJuego {
 		this.stageCartasEnMesa.setX(730);
 		this.stageCartasEnMesa.show();
 		this.imagenesCarta = new ImagenesCarta();
+	}*/
+		
+	public static void main(String[] args){
+		launch(args);
 	}
 
+	@Override
+	public void start(Stage stage) throws Exception {
+		imagenesCarta = new ImagenesCarta();
+		/*
+		//creacion de la partida
+		//if (this.conFlor)
+		this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
+		//this.partida = new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
+
+		//cargar nombres de jugadores
+		this.partida.cargarJugadoresEnEquipoUno(Arrays.asList("jugador1","jugador3","jugador5"));
+		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugador2","jugador4","jugador6"));
+		this.partida.iniciar();
+		*/
+		
+		this.partida = new PartidaDeTrucoConIASinFlor("EquipoIA","EquipoHumano");
+		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugadorHumano"));
+		this.partida.iniciar();
+		
+		//VENTANAS DEL JUEGO
+		this.stageJugadorConTurno = new Stage();
+		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
+		this.botonesDelJugador = botonesDelJugador(this.stageJugadorConTurno);
+		modificarStageJugador();
+		this.stageJugadorConTurno.setX(0);
+		this.stageJugadorConTurno.show();
+
+		this.stageCartasEnMesa = new Stage();
+		this.stageCartasEnMesa.setTitle("Cartas En Juego");
+		modificarStajeCartasEnMesa();
+		this.stageCartasEnMesa.setX(730);
+		this.stageCartasEnMesa.show();
+	}
 
 	private VBox botonesDelJugador(Stage stage) {
 		//etiqueta para mensajes
@@ -145,7 +158,6 @@ public class VentanasDelJuego {
 		return contenedorBotones;
 	}
 
-
 	public Scene cargarSceneDelJugador() {
 		//imagen de fondo de la mesa
 		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -173,7 +185,6 @@ public class VentanasDelJuego {
 		return scene;
 	}
 
-
 	@SuppressWarnings("unchecked")
 	public Group agregarCartasDelJugador(){
 		Group root = new Group();
@@ -200,7 +211,6 @@ public class VentanasDelJuego {
 		}
 		return root;
 	}
-
 
 	public Scene cargarSceneDeLaMesa() {
 		//puntos de los equipos
@@ -232,7 +242,6 @@ public class VentanasDelJuego {
 		Scene scene = new Scene(escena, 600, 480);
 		return scene;
 	}
-
 
 	public Group agregarCartasEnJuego(){
 		Group root = new Group();

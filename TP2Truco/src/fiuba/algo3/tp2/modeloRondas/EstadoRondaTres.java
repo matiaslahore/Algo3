@@ -30,7 +30,7 @@ public class EstadoRondaTres extends EstadoRondas{
 			ganadoresRonda.add(equipoGanador);
 		}
 		
-		System.out.println("RONDA TRES gana: " + equipoGanador + "\n");
+		System.out.println("RONDA TRES gana: " + equipoGanador.obtenerNombre() + "\n");
 				
 		this.juez.finalizoLaMano(equipoGanador);
 		
