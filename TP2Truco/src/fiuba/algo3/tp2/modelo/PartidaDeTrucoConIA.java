@@ -102,11 +102,11 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		this.jugadorTurnoActual.jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		} //dos veces a proposito..
