@@ -8,11 +8,11 @@ import javafx.scene.control.Label;
 public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
 
 	private PartidaDeTruco partida;
-	private VistaHardCodeada visual;
+	private VentanasDelJuego visual;
 	private Label etiqueta;
 
 	//constructor
-	public BotonIrseAlMazoEventHandler (PartidaDeTruco partida, VistaHardCodeada visual, Label etiqueta){
+	public BotonIrseAlMazoEventHandler (PartidaDeTruco partida, VentanasDelJuego visual, Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.etiqueta= etiqueta;

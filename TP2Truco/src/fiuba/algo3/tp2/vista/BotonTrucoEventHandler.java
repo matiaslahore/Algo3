@@ -12,10 +12,10 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 
 	private PartidaDeTruco partida;
 	private Label etiqueta;
-	private VistaHardCodeada visual;
+	private VentanasDelJuego visual;
 
 	//constructor
-	public BotonTrucoEventHandler (PartidaDeTruco partida, VistaHardCodeada visual, Label etiqueta){
+	public BotonTrucoEventHandler (PartidaDeTruco partida, VentanasDelJuego visual, Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.etiqueta= etiqueta;

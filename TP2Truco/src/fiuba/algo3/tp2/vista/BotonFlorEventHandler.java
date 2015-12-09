@@ -11,10 +11,10 @@ public class BotonFlorEventHandler implements EventHandler<ActionEvent>{
 
 	private PartidaDeTruco partida;
 	private Label etiqueta;
-	private VistaHardCodeada visual;
+	private VentanasDelJuego visual;
 
 	//constructor
-	public BotonFlorEventHandler (PartidaDeTruco partida, VistaHardCodeada visual, Label etiqueta){
+	public BotonFlorEventHandler (PartidaDeTruco partida, VentanasDelJuego visual, Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.etiqueta= etiqueta;

@@ -23,7 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class VistaHardCodeada extends Application{
+public class VentanasDelJuego {
 
 	private ImagenesCarta imagenesCarta;
 	private boolean conFlor = true;
@@ -32,13 +32,7 @@ public class VistaHardCodeada extends Application{
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
 
-	public static void main(String[] args){
-		launch(args);
-	}
-
-	@Override
-	public void start(Stage stage) throws Exception {
-		imagenesCarta = new ImagenesCarta();
+	public void VentanasDelJuego (){
 		
 		//creacion de la partida
 		//if (this.conFlor)
@@ -56,14 +50,14 @@ public class VistaHardCodeada extends Application{
 		lista2.add("jugador4");
 		lista2.add("jugador6");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
-		this.partida.iniciar();*/
+		this.partida.iniciar();
 		
 		
 		this.partida = new PartidaDeTrucoConIASinFlor("Equipo IA", "Equipo DOS");
 		ArrayList<String> lista2 = new ArrayList<String> ();
 		lista2.add("jugador2");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
-		this.partida.iniciar();
+		this.partida.iniciar();*/
 		
 		//VENTANAS DEL JUEGO
 		this.stageJugadorConTurno = new Stage();

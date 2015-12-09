@@ -12,9 +12,9 @@ public class TirarCartaEvent<MouseEvent> implements javafx.event.EventHandler {
 
 	private Carta carta;
 	private PartidaDeTruco partida;
-	private VistaHardCodeada visual;
+	private VentanasDelJuego visual;
 
-	public TirarCartaEvent(PartidaDeTruco partida, Carta carta, VistaHardCodeada visual){
+	public TirarCartaEvent(PartidaDeTruco partida, Carta carta, VentanasDelJuego visual){
 		this.partida = partida;
 		this.carta = carta;
 		this.visual = visual;

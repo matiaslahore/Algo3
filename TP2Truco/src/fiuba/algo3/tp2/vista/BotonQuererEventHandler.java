@@ -11,10 +11,10 @@ public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 
 	private PartidaDeTruco partida;
 	private Label etiqueta;
-	private VistaHardCodeada visual;
+	private VentanasDelJuego visual;
 
 	//constructor
-	public BotonQuererEventHandler (PartidaDeTruco partida, VistaHardCodeada visual, Label etiqueta){
+	public BotonQuererEventHandler (PartidaDeTruco partida, VentanasDelJuego visual, Label etiqueta){
 		this.partida = partida;
 		this.visual = visual;
 		this.etiqueta = etiqueta;

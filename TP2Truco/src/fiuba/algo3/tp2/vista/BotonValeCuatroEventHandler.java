@@ -12,10 +12,10 @@ public class BotonValeCuatroEventHandler implements EventHandler<ActionEvent>{
 
 	private PartidaDeTruco partida;
 	private Label etiqueta;
-	private VistaHardCodeada visual;
+	private VentanasDelJuego visual;
 
 	//constructor
-	public BotonValeCuatroEventHandler (PartidaDeTruco partida, VistaHardCodeada visual, Label etiqueta){
+	public BotonValeCuatroEventHandler (PartidaDeTruco partida, VentanasDelJuego visual, Label etiqueta){
 		this.partida= partida;
 		this.visual = visual;
 		this.etiqueta= etiqueta;

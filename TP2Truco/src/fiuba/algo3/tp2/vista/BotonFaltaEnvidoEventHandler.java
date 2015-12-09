@@ -11,10 +11,10 @@ public class BotonFaltaEnvidoEventHandler implements EventHandler<ActionEvent>{
 
 	private PartidaDeTruco partida;
 	private Label etiqueta;
-	private VistaHardCodeada visual;
+	private VentanasDelJuego visual;
 
 	//constructor
-	public BotonFaltaEnvidoEventHandler(PartidaDeTruco partida, VistaHardCodeada visual, Label etiqueta){
+	public BotonFaltaEnvidoEventHandler(PartidaDeTruco partida, VentanasDelJuego visual, Label etiqueta){
 		this.partida = partida;
 		this.visual = visual;
 		this.etiqueta = etiqueta;
