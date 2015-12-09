@@ -5,18 +5,18 @@ import javafx.stage.Stage;
 
 public class BotonEmpezarJuegoEventHandler<MouseEvent> implements javafx.event.EventHandler {
 	
-	Visualizador visualizador;
+	SeleccionDeJuego seleccionDeJuego;
 	Stage stage;
 	
-	public BotonEmpezarJuegoEventHandler (Visualizador visualizador, Stage stage){
-		this.visualizador=visualizador;
+	public BotonEmpezarJuegoEventHandler (SeleccionDeJuego seleccionDeJuego, Stage stage){
+		this.seleccionDeJuego=seleccionDeJuego;
 		this.stage=stage;
 	}
 	
 	@Override
 	public void handle(Event evento) {
 		this.stage.close();
-		this.visualizador.iniciarVentanaDelJuego(this.stage);
+		this.seleccionDeJuego.creacionDePartida();
 	}
 
 }
