@@ -36,7 +36,6 @@ public class Mesa {
 	}
 
 	public void iniciarRonda(){
-		repartir();
 		int indiceMano = 0;
 		this.ronda = new EstadoRondaUno(this.ronda, juez, ganadoresRonda,this.jugadores, indiceMano);
 	}

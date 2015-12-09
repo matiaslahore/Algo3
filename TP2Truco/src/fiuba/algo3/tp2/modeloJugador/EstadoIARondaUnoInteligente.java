@@ -7,6 +7,7 @@ public class EstadoIARondaUnoInteligente extends EstadoIA {
 	
 		if(jugadorIA.cantarEnvidoIA()){
 			jugadorIA.cantarEnvido();
+			System.out.print("IA CANTO ENVIDO");
 			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
 			return;
 		}
