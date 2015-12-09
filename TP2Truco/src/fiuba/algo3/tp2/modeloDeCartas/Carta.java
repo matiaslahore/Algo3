@@ -23,7 +23,7 @@ public abstract class Carta {
 	}
 	
 	public boolean hayParda(Carta contra){
-		return (this.vs(contra) != contra.vs(this));
+		return !(this.vs(contra).equals(contra.vs(this)));
 	}
 	
 	public abstract Carta vs(Carta contra);
