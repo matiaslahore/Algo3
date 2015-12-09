@@ -49,6 +49,7 @@ public class IA extends Jugador implements Oyente{
 
 	public void jugarMejorCarta() {
 		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(this.refMesa.obtenerUltimaCartaJugada()));
+			
 	}
 
 	@Override

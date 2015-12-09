@@ -311,4 +311,36 @@ public class PruebasJugadorIAConEnvidoTest {
 		
 		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
 	}
+	
+	@Test
+	public void pruebaIANoMataEnRondaDosYJuegaLaMasBaja(){
+		
+		Carta reyDeEspada = new Rey(new Espada());
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(reyDeEspada, anchoDeOro, cincoDeCopa));
+
+		Carta sieteDeEspada = new SieteDeEspada();
+		List<Carta> otrasCartasHumano =  new ArrayList<Carta>(Arrays.asList(sieteDeEspada , tresDeBasto, reyDeBasto));
+		
+		//RONDA 1
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		Assert.assertEquals("Jarvis", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasIA);
+		jugadorConTurno.hacerJugarIA();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasHumano);
+		jugadorConTurno.jugarCarta(tresDeBasto);
+	
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.jugarCarta(sieteDeEspada);
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno();
+		jugadorConTurno.hacerJugarIA();
+		
+		mesa.siguienteJugadorConTurno();
+		
+		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
+	}
 }

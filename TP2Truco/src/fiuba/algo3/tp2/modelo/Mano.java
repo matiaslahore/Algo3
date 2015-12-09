@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
+import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
 import fiuba.algo3.tp2.excepciones.JugadorYaNoTieneMasCartasException;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
@@ -99,11 +100,13 @@ public class Mano {
 				return copiaCartas.get(0);
 			case 2:
 				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
+				return copiaCartas.get(0);
 			case 3:
 				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
 				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
+				return copiaCartas.get(0);
 		}	
-		return copiaCartas.get(0);
+		throw new JugadorNoTieneMasCartasParaJugarException();
 	}
 
 	public Carta obtenerCarta(Carta unaCarta) {
