@@ -151,6 +151,22 @@ public class SeleccionDeJuego extends Application{
 		else
 			partida = new PartidaDeTrucoSinFlor(nombreEq1, nombreEq2);
 		
+		int i;
+		List<String> lista1 = new ArrayList<String> ();
+		List<String> lista2 = new ArrayList<String> ();
+		
+		for ( i=0; i<(this.cantidadJugadores/2) ; i++){
+			System.out.println(i +" eq1");
+			lista1.add(this.nombresJugadores.get(i).getText());
+		}
+		partida.cargarJugadoresEnEquipoUno(lista1);
+		
+		for (i=i ; i<this.cantidadJugadores ; i++){
+			System.out.println(i +" eq2");
+			lista2.add(this.nombresJugadores.get(i).getText());
+		}
+		partida.cargarJugadoresEnEquipoDos(lista2);
+				
 		this.ventanasDelJuego= new VentanasDelJuego(partida);
 	}
 	

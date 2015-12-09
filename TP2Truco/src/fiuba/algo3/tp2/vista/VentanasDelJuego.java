@@ -60,7 +60,7 @@ public class VentanasDelJuego {
 		this.partida.iniciar();*/
 		
 		this.partida=partida;
-		
+		this.partida.iniciar();
 		//VENTANAS DEL JUEGO
 		this.stageJugadorConTurno = new Stage();
 		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
