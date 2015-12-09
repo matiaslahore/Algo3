@@ -42,7 +42,7 @@ public class VistaHardCodeada extends Application{
 		
 		//creacion de la partida
 		//if (this.conFlor)
-		this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
+		/*this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
 		//this.partida = new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
 
 		//cargar nombres de jugadores
@@ -56,14 +56,14 @@ public class VistaHardCodeada extends Application{
 		lista2.add("jugador4");
 		lista2.add("jugador6");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
-		this.partida.iniciar();
+		this.partida.iniciar();*/
 		
 		
-		/*this.partida = new PartidaDeTrucoConIASinFlor("Equipo IA", "Equipo DOS");
+		this.partida = new PartidaDeTrucoConIASinFlor("Equipo IA", "Equipo DOS");
 		ArrayList<String> lista2 = new ArrayList<String> ();
 		lista2.add("jugador2");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
-		this.partida.iniciar();*/
+		this.partida.iniciar();
 		
 		//VENTANAS DEL JUEGO
 		this.stageJugadorConTurno = new Stage();

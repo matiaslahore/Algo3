@@ -9,6 +9,19 @@ public abstract class Carta {
 	
 	public Palo palo;
 	
+	//Funcion equals reimplementada para que usar funciones 
+	// de las listas como por ejemplo (unaLista.contains(unaCarta))
+	public boolean equals (Object obj) {	
+		Carta unaCarta = (Carta) obj;
+		if(unaCarta.getClass() == this.getClass()){
+			if(unaCarta.obtenerPalo().getClass() == this.obtenerPalo().getClass()){
+				return true;
+			}
+		}
+		return false;
+		//return (unaCarta.cartaComoString().equals(this.cartaComoString()));
+	}
+	
 	public boolean hayParda(Carta contra){
 		return (this.vs(contra) != contra.vs(this));
 	}
