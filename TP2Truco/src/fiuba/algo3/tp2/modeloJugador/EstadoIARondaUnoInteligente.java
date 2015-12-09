@@ -7,7 +7,7 @@ public class EstadoIARondaUnoInteligente extends EstadoIA {
 	
 		if(jugadorIA.cantarEnvidoIA()){
 			jugadorIA.cantarEnvido();
-			jugadorIA.setearEstado(new EstadoIACantoEnvido());
+			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
 			return;
 		}
 		if(jugadorIA.esMano()){			
