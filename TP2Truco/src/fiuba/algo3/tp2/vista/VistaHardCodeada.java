@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
+import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIASinFlor;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import javafx.application.Application;
@@ -38,7 +39,7 @@ public class VistaHardCodeada extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		imagenesCarta = new ImagenesCarta();
-		/*
+		
 		//creacion de la partida
 		//if (this.conFlor)
 		this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
@@ -56,13 +57,13 @@ public class VistaHardCodeada extends Application{
 		lista2.add("jugador6");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
 		this.partida.iniciar();
-		*/
 		
-		this.partida = new PartidaDeTrucoConIASinFlor("Equipo IA", "Equipo DOS");
+		
+		/*this.partida = new PartidaDeTrucoConIASinFlor("Equipo IA", "Equipo DOS");
 		ArrayList<String> lista2 = new ArrayList<String> ();
 		lista2.add("jugador2");
 		this.partida.cargarJugadoresEnEquipoDos(lista2);
-		this.partida.iniciar();
+		this.partida.iniciar();*/
 		
 		//VENTANAS DEL JUEGO
 		this.stageJugadorConTurno = new Stage();
