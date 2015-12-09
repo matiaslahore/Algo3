@@ -2,12 +2,16 @@ package fiuba.algo3.tp2.modeloJugador;
 
 import java.util.List;
 
+import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.modeloDeCartas.Copa;
+import fiuba.algo3.tp2.modeloDeCartas.Sota;
+import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 
 public class IA extends Jugador implements Oyente{
@@ -80,6 +84,16 @@ public class IA extends Jugador implements Oyente{
 	public void seCantoFaltaEnvido() {
 		this.setearEstado(new EstadoIACantaronFaltaEnvido());
 	}
+	
+	public boolean quererTrucoIA(){
+		try{
+			//Acepta si tiene mas que un Tres
+			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
+		}catch(JugadorNoTieneMasCartasParaJugarException e){
+			//si la ultima carta que jugo IA es mas que un diez acepta el truco sino no
+			return !(new Sota(new Copa()).equals((new Sota(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
+		}
+	}
 
 	@Override
 	public void seCantoFlor() {
@@ -109,13 +123,6 @@ public class IA extends Jugador implements Oyente{
 	//Inteligencia cantos Truco
 	public boolean cantarTrucoIA(){
 		return(this.truco >= 7);
-	}
-	
-	public boolean quererTrucoIA(){
-		return false;
-		//Acepta si tiene mas que un Tres
-		//return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
-		//return(this.truco >= 5);
 	}
 	
 	private Carta obtenerCartaMasAltaParaTruco() {
