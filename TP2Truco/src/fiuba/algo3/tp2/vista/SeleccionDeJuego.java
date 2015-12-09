@@ -25,6 +25,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class SeleccionDeJuego extends Application{
@@ -108,11 +111,17 @@ public class SeleccionDeJuego extends Application{
 		Image image = new Image(direccion);
 		ImageView contenedorImagen = new ImageView();
 		contenedorImagen.setImage(image);
-
+		
+		Label titulo = new Label("Fon-Truco");
+		titulo.setFont(Font.font("Calibri", FontWeight.BOLD, 32));
+		titulo.setTextFill(Color.WHITE);
+		titulo.setLayoutX(20);
+		
 		Stage stage = new Stage();
 		Group root = new Group();
 		root.getChildren().add(contenedorImagen);
-
+		root.getChildren().add(titulo);
+		
 		this.nombresEquipos= new ArrayList<TextField>();
 		this.nombresJugadores= new ArrayList<TextField>();
 
@@ -136,6 +145,7 @@ public class SeleccionDeJuego extends Application{
 		root.getChildren().add(botonEmpezarJuego);
 
 		Scene scene = new Scene(root, 350, 500);
+		stage.setTitle("Ingrese Datos");
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.show();
