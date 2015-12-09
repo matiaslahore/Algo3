@@ -31,6 +31,7 @@ public class BotonFlorContraRestoEventHandler implements EventHandler<ActionEven
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
 		this.visual.modificarStageJugador();
+		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }

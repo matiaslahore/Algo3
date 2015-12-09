@@ -32,6 +32,7 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
 		this.visual.modificarStageJugador();
+		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }
