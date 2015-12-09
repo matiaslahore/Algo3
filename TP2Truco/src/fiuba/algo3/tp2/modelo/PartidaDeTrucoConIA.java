@@ -38,12 +38,14 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
-			this.eventosIA.seCantoTruco();
-		}
+		this.eventosIA.seCantoTruco();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+			this.jugadorTurnoActual.hacerJugarIA();
+			this.jugadorTurnoActual = mesa.siguienteJugadorConTurno();
+		}
 	}
 	
 	@Override
@@ -118,7 +120,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		this.jugadorTurnoActual.irseAlMazo();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}
@@ -127,7 +129,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	public void quiero(){
 		this.jugadorTurnoActual.quiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	
+
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -138,8 +140,8 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	public void noQuiero(){
 		this.jugadorTurnoActual.noQuiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
+
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		}

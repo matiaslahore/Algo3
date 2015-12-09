@@ -6,6 +6,7 @@ public class EstadoIARondaTresInteligente extends EstadoIA {
 	public void manejador(IA jugadorIA) {
 		if(jugadorIA.esMano()){
 			jugadorIA.jugarCartaAleatoria();
+			jugadorIA.setearEstado(new EstadoIARondaUnoInteligente());
 			return;
 		}
 		jugadorIA.jugarMejorCarta();

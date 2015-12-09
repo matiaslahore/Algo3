@@ -5,13 +5,14 @@ public class EstadoIARondaUnoInteligente extends EstadoIA {
 	@Override
 	public void manejador(IA jugadorIA) {
 	
-		if(jugadorIA.cantarEnvidoIA()){
+		/*if(jugadorIA.cantarEnvidoIA()){
 			jugadorIA.cantarEnvido();
 			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
 			return;
-		}
+		}*/
 		if(jugadorIA.esMano()){			
 			jugadorIA.jugarCartaAleatoria();
+			jugadorIA.setearEstado(new EstadoIARondaDosInteligente());
 			return;
 		}
 		jugadorIA.jugarMejorCarta();

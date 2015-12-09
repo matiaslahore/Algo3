@@ -17,5 +17,6 @@ public class EstadoIACantaronTruco extends EstadoIA {
 		}
 		System.out.println("IA no quiere el truco");
 		jugadorIA.noQuiero();
+		jugadorIA.setearEstado(new EstadoIARondaUnoInteligente());
 	}
 }

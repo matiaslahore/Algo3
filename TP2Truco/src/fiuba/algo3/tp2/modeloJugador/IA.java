@@ -23,7 +23,7 @@ public class IA extends Jugador implements Oyente{
 	public void hacerJugarIA(){
 		this.estadoIA.manejador(this);
 	}	
-
+	
 	public void jugarCartaAleatoria() {
 		this.jugarCarta(this.manoDelJugador.obtenerCartaAleatoria());
 	}
@@ -55,60 +55,46 @@ public class IA extends Jugador implements Oyente{
 	@Override
 	public void seCantoTruco() {
 		this.setearEstado(new EstadoIACantaronTruco());
-		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoReTruco() {
 		this.setearEstado(new EstadoIACantaronReTruco());
-		this.hacerJugarIA();		
 	}
 
 	@Override
 	public void seCantoValeCuatro() {
 		this.setearEstado(new EstadoIACantaronValeCuatro());
-		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoEnvido() {
 		this.setearEstado(new EstadoIACantaronEnvido());
-		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoRealEnvido() {
 		this.setearEstado(new EstadoIACantaronRealEnvido());
-		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoFaltaEnvido() {
 		this.setearEstado(new EstadoIACantaronFaltaEnvido());
-		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoFlor() {
 		this.setearEstado(new EstadoIACantaronFlor());
-		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoContraFlor() {
 		this.setearEstado(new EstadoIACantaronContraFlor());
-		this.hacerJugarIA();
 	}
 
 	@Override
 	public void seCantoContraFlorAJuego() {
 		this.setearEstado(new EstadoIACantaronContraFlorAJuego());
-		this.hacerJugarIA();
-	}
-
-	@Override
-	public void jugarCarta() {
-		this.hacerJugarIA();
 	}
 
 	public int obtenerPuntosTruco() {
@@ -127,9 +113,9 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public boolean quererTrucoIA(){
-		
+		return false;
 		//Acepta si tiene mas que un Tres
-		return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
+		//return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
 		//return(this.truco >= 5);
 	}
 	
@@ -202,5 +188,10 @@ public class IA extends Jugador implements Oyente{
 	
 	public boolean quererContraFlorAJuegoIA(){
 		return(this.obtenerPuntosFlor() >= 35);
+	}
+
+	@Override
+	public void jugarCarta() {
+		
 	}
 }
