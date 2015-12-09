@@ -112,7 +112,7 @@ public class PruebasJugadorIAConEnvidoTest {
 	}
 
 	@Test
-	public void pruebaJugadorIALeCantanEnvidoRespondeEnvidoHumanoAceptaYGanaIA(){
+	public void pruebaJugadorIALeCantanEnvidoAceptaYGanaIA(){
 
 		//RONDA 1
 		jugadorConTurno = mesa.siguienteJugadorConTurno();
@@ -126,10 +126,7 @@ public class PruebasJugadorIAConEnvidoTest {
 		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronEnvido());
 		jugadorConTurno.hacerJugarIA();
 		
-		jugadorConTurno = mesa.siguienteJugadorConTurno();//Humano
-		jugadorConTurno.quiero();
-		
-		Assert.assertEquals(4, mesa.puntosEquipo(equipoIA));
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoIA));
 	}
 
 	@Test
@@ -189,16 +186,13 @@ public class PruebasJugadorIAConEnvidoTest {
 		jugadorConTurno.recibirCartas(cartasIA);
 		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronEnvido());
 		jugadorConTurno.hacerJugarIA();
-
-		jugadorConTurno = mesa.siguienteJugadorConTurno();
-		jugadorConTurno.quiero();
 		
-		Assert.assertEquals(4, mesa.puntosEquipo(equipoIA));
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoIA));
 	} 
 
 	
 	@Test
-	public void pruebaJugadorHumanoCantaEnvidoIARespondeEnvidoHumanoCantaRealEnvidoEIANoAceptaCon28(){
+	public void pruebaJugadorHumanoCantaEnvidoIAAceptaCon28(){
 
 		jugadorConTurno  = mesa.siguienteJugadorConTurno();
 
@@ -210,16 +204,10 @@ public class PruebasJugadorIAConEnvidoTest {
 		jugadorConTurno.recibirCartas(cartasIA);
 		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronEnvido());
 		jugadorConTurno.hacerJugarIA();
-
-		jugadorConTurno = mesa.siguienteJugadorConTurno();
-		jugadorConTurno.cantarRealEnvido();
 		
-		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
-		jugadorConTurno.recibirCartas(cartasIA);
-		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronRealEnvido());
-		jugadorConTurno.hacerJugarIA();
+		mesa.siguienteJugadorConTurno();
 		
-		Assert.assertEquals(5, mesa.puntosEquipo(equipoUno));
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoIA));
 	} 
 	
 	@Test
@@ -312,6 +300,7 @@ public class PruebasJugadorIAConEnvidoTest {
 		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
 	}
 	
+
 	@Test
 	public void pruebaIANoMataEnRondaDosYJuegaLaMasBaja(){
 		
@@ -342,5 +331,35 @@ public class PruebasJugadorIAConEnvidoTest {
 		mesa.siguienteJugadorConTurno();
 		
 		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
+	}
+	
+	@Test
+	public void pruebaHumanoCantaEnvidoIAAceptaYPierdeCon26(){
+		
+		Carta anchoDeCopa = new AnchoFalso(new Copa());
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(anchoDeCopa , anchoDeOro, cincoDeCopa));
+
+		Carta sieteDeEspada = new SieteDeEspada();
+		Carta cincoDeEspada = new Cinco(new Espada());
+		List<Carta> otrasCartasHumano =  new ArrayList<Carta>(Arrays.asList(sieteDeEspada , cincoDeEspada, reyDeBasto));
+		
+		//RONDA 1
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		Assert.assertEquals("Jarvis", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasIA);
+		jugadorConTurno.hacerJugarIA();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasHumano);
+		jugadorConTurno.cantarEnvido();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno();
+		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronEnvido());
+		jugadorConTurno.hacerJugarIA();
+		
+		mesa.siguienteJugadorConTurno();
+		
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoUno));
 	}
 }
