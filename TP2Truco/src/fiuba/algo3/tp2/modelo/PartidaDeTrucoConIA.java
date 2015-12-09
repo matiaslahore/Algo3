@@ -73,11 +73,12 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	public void cantarEnvido() {
 		this.jugadorTurnoActual.cantarEnvido();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
-			this.eventosIA.seCantoEnvido();
+		this.eventosIA.seCantoEnvido();
+	
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+			this.jugadorTurnoActual.hacerJugarIA();
+			this.jugadorTurnoActual = mesa.siguienteJugadorConTurno();
 		}
-		this.jugadorTurnoActual.hacerJugarIA();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 	
 	public void cantarRealEnvido() {

@@ -7,6 +7,7 @@ public class EstadoIAYaSeJugoElEnvido extends EstadoIA {
 		
 		if(jugadorIA.esMano()){			
 			jugadorIA.jugarCartaAleatoria();
+			jugadorIA.setearEstado(new EstadoIARondaDosInteligente());
 			return;
 		}
 		jugadorIA.jugarMejorCarta();

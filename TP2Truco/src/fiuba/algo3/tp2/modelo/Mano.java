@@ -128,7 +128,7 @@ public class Mano {
 			}
 			return mejorCarta;
 		}catch(IndexOutOfBoundsException e){
-			throw new JugadorYaNoTieneMasCartasException();
+			throw new JugadorNoTieneMasCartasParaJugarException();
 		}
 	}
 	

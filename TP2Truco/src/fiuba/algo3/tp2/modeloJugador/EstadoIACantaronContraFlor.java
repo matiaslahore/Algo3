@@ -4,18 +4,19 @@ public class EstadoIACantaronContraFlor extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		try{
-			if(jugadorIA.cantarContraFlorIA()){
-				jugadorIA.cantarContraFlor();
-				return;
-			}
-			if(jugadorIA.quererContraFlorIA()){
-				jugadorIA.quiero();
-				return;
-			}
-			jugadorIA.noQuiero();
+	
+		if(jugadorIA.cantarContraFlorIA()){
+			jugadorIA.cantarContraFlor();
+			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
+			return;
 		}
-		catch(RuntimeException e){}
+		if(jugadorIA.quererContraFlorIA()){
+			jugadorIA.quiero();
+			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
+			return;
+		}
+		jugadorIA.noQuiero();
+		jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
 	}
 
 }
