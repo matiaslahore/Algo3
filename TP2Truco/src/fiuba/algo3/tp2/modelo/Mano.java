@@ -73,12 +73,11 @@ public class Mano {
 		List<Carta> cartasQueMatan = new ArrayList<Carta>();
 		
 		for (Carta unaCarta : cartas){	
-			if (cartaDelContrario != unaCarta.vs(cartaDelContrario)){
+			if (!(cartaDelContrario.equals(unaCarta.vs(cartaDelContrario)))){
 				cartasQueMatan.add(unaCarta.vs(cartaDelContrario));
 			}
 		}
-		switch (cartasQueMatan.size()){
-			
+		switch (cartasQueMatan.size()){	
 			case 0:
 				return this.obtenerCartaMasBaja();
 			case 1:
@@ -93,20 +92,16 @@ public class Mano {
 	}
 
 	private Carta obtenerCartaMasBaja() {
-		List<Carta> copiaCartas = new ArrayList<Carta>();
-		copiaCartas = this.cartas;
-		switch (copiaCartas.size()){
-			case 1:
-				return copiaCartas.get(0);
-			case 2:
-				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
-				return copiaCartas.get(0);
-			case 3:
-				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
-				copiaCartas.remove(copiaCartas.get(0).vs(copiaCartas.get(1)));
-				return copiaCartas.get(0);
-		}	
-		throw new JugadorNoTieneMasCartasParaJugarException();
+		
+		if(this.cartas.size() == 0){ throw new JugadorNoTieneMasCartasParaJugarException(); }
+		
+		Carta cartaMasBaja = this.cartas.get(0);
+		for (Carta unaCarta : this.cartas){
+			if( cartaMasBaja.equals(unaCarta.vs(cartaMasBaja)) ){
+				cartaMasBaja = unaCarta;
+			}
+		}
+		return cartaMasBaja;
 	}
 
 	public Carta obtenerCarta(Carta unaCarta) {
