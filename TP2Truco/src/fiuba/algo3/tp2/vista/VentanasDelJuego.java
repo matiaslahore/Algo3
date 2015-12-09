@@ -276,13 +276,11 @@ public class VentanasDelJuego extends Application{
 	}
 
 	public void modificarStageJugador(){
-		System.out.println("ENTRA EN EL JUGADOR-----------------------------------------------");
 		Scene sceneCartasJugador = this.cargarSceneDelJugador();
 		this.stageJugadorConTurno.setScene(sceneCartasJugador);
 	}
 
 	public void modificarStajeCartasEnMesa(){
-		System.out.println("ENTRA EN LA MESA-----------------------------------------------");
 		Scene sceneCartasEnMesa = this.cargarSceneDeLaMesa();
 		this.stageCartasEnMesa.setScene(sceneCartasEnMesa);
 	}
