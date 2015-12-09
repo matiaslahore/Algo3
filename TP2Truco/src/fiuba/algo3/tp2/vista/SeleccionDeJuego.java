@@ -119,8 +119,7 @@ public class SeleccionDeJuego extends Application{
 		
 		Stage stage = new Stage();
 		Group root = new Group();
-		root.getChildren().add(contenedorImagen);
-		root.getChildren().add(titulo);
+		root.getChildren().addAll(contenedorImagen,titulo);
 		
 		this.nombresEquipos= new ArrayList<TextField>();
 		this.nombresJugadores= new ArrayList<TextField>();
