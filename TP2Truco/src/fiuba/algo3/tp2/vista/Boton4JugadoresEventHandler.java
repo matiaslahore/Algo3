@@ -20,7 +20,7 @@ public class Boton4JugadoresEventHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent actionEvent){
 		this.cantidadJugadores= 4;
-		this.seleccionDeJuego.creacionDePartida(this.check.isSelected(), cantidadJugadores);
+		this.seleccionDeJuego.creacionDeEquiposYJugadores(this.check.isSelected(), cantidadJugadores);
 	}
 
 }

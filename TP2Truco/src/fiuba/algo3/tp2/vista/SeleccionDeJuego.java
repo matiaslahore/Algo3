@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.vista;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIAConFlor;
@@ -17,9 +20,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class SeleccionDeJuego extends Application{
+	
+	private boolean conFlor;
+	private int cantidadJugadores;
+	private List<TextField> nombresEquipos;
+	private List<TextField> nombresJugadores;
 	
 	public static void main(String[] args)
 	{
@@ -80,37 +89,75 @@ public class SeleccionDeJuego extends Application{
 		box2.setLayoutY(270);
 		box2.getChildren().addAll(boton2Jugadores,boton4Jugadores,boton6Jugadores,botonJugarContraPc);
 		
-		
-		
 		Group root = new Group();
 		root.getChildren().addAll(contenedorImagen,box,box2);
-		
 		
 		
 		Scene scene = new Scene(root,500,375);
 		return scene;
 	}
 	
-	public PartidaDeTruco creacionDePartida(boolean jugarConFlor, int cantidadJugadores){
+	public void creacionDeEquiposYJugadores(boolean jugarConFlor, int cantidadJugadores){
+		
+		this.conFlor=jugarConFlor;
+		this.cantidadJugadores=cantidadJugadores;
+		
+		String direccion= "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
+		Image image = new Image(direccion);
+		ImageView contenedorImagen = new ImageView();
+		contenedorImagen.setImage(image);
+		
+		Stage stage = new Stage();
+		Group root = new Group();
+		root.getChildren().add(contenedorImagen);
+		
+		this.nombresEquipos= new ArrayList<TextField>();
+		this.nombresJugadores= new ArrayList<TextField>();
+		
+		int layoutY = 0;
+		for (int j=1; j<3 ; j++){
+		  layoutY+=50;	
+		  this.nombresEquipos.add(this.crearTextField(root,"INGRESE EL NOMBRE DEL EQUIPO "+j,layoutY));
+		  for (int i=1; i<((cantidadJugadores+2)/2); i++){
+			    layoutY+=50;	
+		    	this.nombresJugadores.add(this.crearTextField(root,"INGRESE EL NOMBRE DEL JUGADOR "+i+" DEL EQUIPO "+j,layoutY));
+		  }
+		}
+		
+		Button botonEmpezarJuego = new Button();
+		botonEmpezarJuego.setText("EMPEZAR JUEGO!");
+		BotonEmpezarJuegoEventHandler botonEmpezarJuegoEventHandler = new BotonEmpezarJuegoEventHandler(this, stage);
+		botonEmpezarJuego.setOnAction(botonEmpezarJuegoEventHandler);
+		botonEmpezarJuego.setLayoutY(470);
+		botonEmpezarJuego.setLayoutX(100);
+		
+		root.getChildren().add(botonEmpezarJuego);
+
+		Scene scene = new Scene(root, 300, 500);
+		stage.setScene(scene);
+		stage.show();
+			
+	}
 	
+	public void creacionDePartida(){
+		
 		PartidaDeTruco partida;
-		String nombreEq1 = "";
-		String nombreEq2 = "";
+		String nombreEq1 = this.nombresEquipos.get(0).getText();
+		String nombreEq2 = this.nombresEquipos.get(1).getText();
 		
-		
-		if (jugarConFlor)
-			partida = new PartidaDeTrucoConFlor(nombreEq1, nombreEq2);
+		if (this.conFlor)
+			partida = new PartidaDeTrucoConFlor(nombreEq1,nombreEq2);
 		else
 			partida = new PartidaDeTrucoSinFlor(nombreEq1, nombreEq2);
 		
-		return partida;
-			
+		
 	}
 	
 	public PartidaDeTruco creacionDePartidaIa (boolean jugarConFlor){
 		
 		PartidaDeTruco partida;
-		String nombreEq1 = "";
+		String nombreEq1 ="";
+		
 		if(jugarConFlor)
 			partida = new PartidaDeTrucoConIAConFlor(nombreEq1, "Pc");
 		else 
@@ -120,24 +167,21 @@ public class SeleccionDeJuego extends Application{
 		
 	}
 	
-	public void pedirNombrePorPantalla (String mensaje){
-		
-		TextField textoIngresado = new TextField();
-		textoIngresado.setPromptText("ingrese un nombre");
+	public TextField crearTextField(Group root, String mensaje, int layoutY){
 		
 		Label etiqueta = new Label();
 		etiqueta.setText(mensaje);
+		etiqueta.setLayoutY(layoutY);
+		etiqueta.setTextFill(Color.RED);
 		
-		Group root = new Group();
+		TextField textoIngresado = new TextField();
+		textoIngresado.setPromptText("ingrese un nombre");
+		textoIngresado.setLayoutY(layoutY+25);
+		
 		root.getChildren().add(etiqueta);
 		root.getChildren().add(textoIngresado);
 		
-		
-		Stage stage = new Stage();
-		Scene scene = new Scene(root, 300, 150);
-		stage.setScene(scene);
-		stage.show();
-		
+		return textoIngresado;
 		
 	}
 
