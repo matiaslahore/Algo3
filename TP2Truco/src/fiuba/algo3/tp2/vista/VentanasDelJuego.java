@@ -161,7 +161,6 @@ public class VentanasDelJuego extends Application{
 		Iterator<Carta> itr = listaCartasJugador.iterator();
 		while(itr.hasNext()) {
 			Carta carta = (Carta) itr.next();
-			System.out.println(carta.cartaComoString());
 			Image imgCarta = new Image(this.imagenesCarta.obtenerDireccionDeCarta(carta.cartaComoString()));
 			ImageView cartaComoImagen = new ImageView();
 			cartaComoImagen.setImage(imgCarta);
