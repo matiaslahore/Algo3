@@ -30,7 +30,7 @@ import fiuba.algo3.tp2.modeloDeCartas.Seis;
 
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public class PruebasSituacionesDeJuegoConFlor {
+public class PruebasCantoFlorTest {
 
 	private Mesa mesa;
 	private Equipo eq1;

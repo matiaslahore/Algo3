@@ -238,6 +238,7 @@ public class Juez {
 
 	public void anotarPuntosEnvido(Equipo equipoGanador, Equipo equipoPerdedor) {
 		this.puntosEnJuego = this.cantosEnvido.quiso(this.puntos.getPuntaje(equipoGanador), this.puntos.getPuntaje(equipoPerdedor));
+		this.cantosEnvido = new EstadoEnvidoFinalizado();
 		this.puntos.anotarPuntos(equipoGanador, puntosEnJuego);
 		this.puntosEnJuego = 1;
 	}
