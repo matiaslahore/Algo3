@@ -4,11 +4,6 @@ public class EstadoIACantaronContraFlorAJuego extends EstadoIA {
 
 	@Override
 	public void manejador(IA jugadorIA) {
-		if(jugadorIA.cantarContraFlorAJuegoIA()){
-			jugadorIA.cantarContraFlorAJuego();
-			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
-			return;
-		}
 		if(jugadorIA.quererContraFlorAJuegoIA()){
 			jugadorIA.quiero();
 			jugadorIA.setearEstado(new EstadoIAYaSeJugoElEnvido());
