@@ -9,7 +9,6 @@ import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIAConFlor;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIASinFlor;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoSinFlor;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -19,14 +18,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
@@ -102,6 +98,7 @@ public class SeleccionDeJuego extends Application{
 		return scene;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void creacionDeEquiposYJugadores(boolean jugarConFlor, int cantidadJugadores){
 
 		this.conFlor=jugarConFlor;
@@ -111,16 +108,16 @@ public class SeleccionDeJuego extends Application{
 		Image image = new Image(direccion);
 		ImageView contenedorImagen = new ImageView();
 		contenedorImagen.setImage(image);
-		
+
 		Label titulo = new Label("Fon-Truco");
 		titulo.setFont(Font.font("Calibri", FontWeight.BOLD, 32));
 		titulo.setTextFill(Color.WHITE);
 		titulo.setLayoutX(20);
-		
+
 		Stage stage = new Stage();
 		Group root = new Group();
 		root.getChildren().addAll(contenedorImagen,titulo);
-		
+
 		this.nombresEquipos= new ArrayList<TextField>();
 		this.nombresJugadores= new ArrayList<TextField>();
 
@@ -136,6 +133,7 @@ public class SeleccionDeJuego extends Application{
 
 		Button botonEmpezarJuego = new Button();
 		botonEmpezarJuego.setText("EMPEZAR JUEGO!");
+		@SuppressWarnings("rawtypes")
 		BotonEmpezarJuegoEventHandler botonEmpezarJuegoEventHandler = new BotonEmpezarJuegoEventHandler(this, stage);
 		botonEmpezarJuego.setOnAction(botonEmpezarJuegoEventHandler);
 		botonEmpezarJuego.setLayoutY(470);
@@ -166,21 +164,25 @@ public class SeleccionDeJuego extends Application{
 		List<String> lista1 = new ArrayList<String> ();
 		List<String> lista2 = new ArrayList<String> ();
 
-		for ( i=0; i<(this.cantidadJugadores/2) ; i++){
+		for (i = 0; i<(this.cantidadJugadores/2) ; i++){
 			lista1.add(this.nombresJugadores.get(i).getText());
 		}
 		partida.cargarJugadoresEnEquipoUno(lista1);
 
-		for (i=i ; i<this.cantidadJugadores ; i++){
+		for (i = i ; i<this.cantidadJugadores ; i++){
 			lista2.add(this.nombresJugadores.get(i).getText());
 		}
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
-		//this.ventanasDelJuego= new VentanasDelJuego(partida);
+		this.ventanasDelJuego = new VentanasDelJuego(partida);
+		try {
+			this.ventanasDelJuego.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void creacionDePartidaIa (boolean jugarConFlor){
-
 
 		PartidaDeTruco partida;
 
@@ -194,12 +196,16 @@ public class SeleccionDeJuego extends Application{
 
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
-		//this.ventanasDelJuego= new VentanasDelJuego(partida);
-
+		this.ventanasDelJuego = new VentanasDelJuego(partida);
+		try {
+			this.ventanasDelJuego.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public TextField crearTextField(Group root, String mensaje, int layoutY){
-		
+
 		Label etiqueta = new Label();
 		etiqueta.setText(mensaje);
 		etiqueta.setLayoutY(layoutY);
@@ -210,12 +216,11 @@ public class SeleccionDeJuego extends Application{
 		textoIngresado.setLayoutY(layoutY+25);
 		textoIngresado.setLayoutX(3);
 		textoIngresado.setPrefWidth(344);
-		
+
 		root.getChildren().add(etiqueta);
 		root.getChildren().add(textoIngresado);
 
 		return textoIngresado;
-
 	}
 
 }

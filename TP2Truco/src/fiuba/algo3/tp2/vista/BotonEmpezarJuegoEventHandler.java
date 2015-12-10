@@ -10,7 +10,7 @@ public class BotonEmpezarJuegoEventHandler<MouseEvent> implements javafx.event.E
 	
 	public BotonEmpezarJuegoEventHandler (SeleccionDeJuego seleccionDeJuego, Stage stage){
 		this.seleccionDeJuego=seleccionDeJuego;
-		this.stage=stage;
+		this.stage = stage;
 	}
 	
 	@Override

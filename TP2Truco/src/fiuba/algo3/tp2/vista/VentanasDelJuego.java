@@ -1,12 +1,9 @@
 package fiuba.algo3.tp2.vista;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
-import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
-import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIASinFlor;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -20,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,50 +33,14 @@ public class VentanasDelJuego extends Application{
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
 
-	/*
 	public VentanasDelJuego (PartidaDeTruco partida){
 		this.partida = partida;
-		this.partida.iniciar();
-		//VENTANAS DEL JUEGO
-		this.stageJugadorConTurno = new Stage();
-		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
-		this.botonesDelJugador = botonesDelJugador(this.stageJugadorConTurno);
-		modificarStageJugador();
-		this.stageJugadorConTurno.setX(0);
-		this.stageJugadorConTurno.show();
-
-		this.stageCartasEnMesa = new Stage();
-		this.stageCartasEnMesa.setTitle("Cartas En Juego");
-		modificarStajeCartasEnMesa();
-		this.stageCartasEnMesa.setX(730);
-		this.stageCartasEnMesa.show();
 		this.imagenesCarta = new ImagenesCarta();
-	}*/
-
-	public static void main(String[] args){
-		launch(args);
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		imagenesCarta = new ImagenesCarta();
-		/*
-		//creacion de la partida
-		//if (this.conFlor)
-		this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
-		//this.partida = new PartidaDeTrucoSinFlor("Equipo UNO", "Equipo DOS");
-
-		//cargar nombres de jugadores
-		this.partida.cargarJugadoresEnEquipoUno(Arrays.asList("jugador1","jugador3","jugador5"));
-		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugador2","jugador4","jugador6"));
 		this.partida.iniciar();
-		 */
-
-		this.partida = new PartidaDeTrucoConIASinFlor("EquipoIA","EquipoHumano");
-		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugadorHumano"));
-		this.partida.iniciar();
-
-		//VENTANAS DEL JUEGO
 
 		this.stageJugadorConTurno = new Stage();
 		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
@@ -252,7 +212,7 @@ public class VentanasDelJuego extends Application{
 		Group root = new Group();
 		double layoutX = 80;
 		double layoutY = 40;
-		
+
 		List<Carta> listaCartasJugador = this.partida.cartasEnJuego();
 		int i = 1;
 		for (Carta carta : listaCartasJugador) {
@@ -273,7 +233,7 @@ public class VentanasDelJuego extends Application{
 			}
 
 			i = i+1;
-			
+
 			root.getChildren().add(cartaComoImagen);
 		}
 
