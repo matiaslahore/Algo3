@@ -228,8 +228,6 @@ public class VentanasDelJuego extends Application{
 
 			layoutY += 50;
 			
-			System.out.println(cantidadJugadores);
-
 			if (i == cantidadJugadores) {
 				layoutY = 40;
 				layoutX += 150;
