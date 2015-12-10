@@ -121,15 +121,21 @@ public class Juez {
 	}
 
 	public ListaCircular<Jugador> listaDeJugadores() {
-		this.mesa.repartir();
-		if (esPicaPica()) return listaDeJugadoresPicaPica();
-		else return this.mesa.listaDeJugadores();
+		if (esPicaPica()){
+			return listaDeJugadoresPicaPica();
+		}
+		else {
+			mezclar();
+			this.mesa.repartir(); //mezcla y reparte
+			return this.mesa.listaDeJugadores();
+		}
 	}
 
 	public ListaCircular<Jugador> listaDeJugadoresPicaPica() {
 		ListaCircular<Jugador> nuevosJugadores = new ListaCircular<Jugador>();
 		nuevosJugadores.add(this.mesa.listaDeJugadores().get(this.indiceJugadorMano));
 		nuevosJugadores.add(this.mesa.listaDeJugadores().get(this.indiceJugadorMano + 3));
+		this.mesa.repartir(nuevosJugadores);
 		return nuevosJugadores;
 	}
 
@@ -139,6 +145,8 @@ public class Juez {
 
 	private boolean esPicaPica() {
 		if (this.mesa.cantidadDeJugadores() == 6 && rangoEstaEnPicaPica()){
+			if (this.cantidadJugadasPicaPica == 0) mezclar();
+			
 			if (cantidadJugadasPicaPica <= 3){
 				this.indiceJugadorQueComienza = 0;
 				return true;
@@ -164,7 +172,6 @@ public class Juez {
 		this.indiceJugadorQueComienza = this.indiceJugadorMano;
 		this.cantosTruco = new EstadoInicialTruco();
 		this.cantosEnvido = new EstadoInicialEnvido();
-		mezclar();
 		if (esPicaPica()){
 			actualizarCantidadJugadasPicaPica();
 		}

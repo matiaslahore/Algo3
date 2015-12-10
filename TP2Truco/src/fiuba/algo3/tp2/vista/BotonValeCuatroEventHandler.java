@@ -27,12 +27,14 @@ public class BotonValeCuatroEventHandler implements EventHandler<ActionEvent>{
 			this.partida.cantarQuieroValeCuatro();
 			etiqueta.setText("QUIERO VALE CUAAATRO!!!");
 			etiqueta.setTextFill(Color.web("#008000"));
+
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+
 		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e){
 			etiqueta.setText("NO PUEDE CANTAR QUIERO VALE CUATRO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }

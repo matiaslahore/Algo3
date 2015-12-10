@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
 import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
+import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import javafx.event.Event;
@@ -27,9 +28,11 @@ public class TirarCartaEvent<MouseEvent> implements javafx.event.EventHandler {
 
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
-
-		}catch(CartaInexistenteEnManoDeJugadorExeption | NoSePuedeJugarUnaCartaException e){
+			
+		} catch(CartaInexistenteEnManoDeJugadorExeption | NoSePuedeJugarUnaCartaException e){
 			//solo evito que se juege la carta, haciendo nada
+		} catch (NoSePuedeSeguirJugandoExcepcion e){
+			this.visual.cerrarVentanasJuego();
 		}
 	}
 

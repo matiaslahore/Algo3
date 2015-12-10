@@ -57,6 +57,8 @@ public class Maso {
 		
 		Random rnd = new Random();
 		int index = (int) (rnd.nextDouble() * (maso.size()));
+		System.out.println("cantida de cartas: "+ maso.size());
+		System.out.println("numero de carta " + index);
 		Carta CartaRetorno = this.maso.get(index);
 		this.maso.remove(index);
 		return CartaRetorno;

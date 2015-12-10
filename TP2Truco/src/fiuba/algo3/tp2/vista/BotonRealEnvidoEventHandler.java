@@ -26,12 +26,14 @@ public class BotonRealEnvidoEventHandler implements EventHandler<ActionEvent>{
 			this.partida.cantarRealEnvido();
 			etiqueta.setText("REAL ENVIDO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
+			
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+
 		} catch (CantoInvalidoException envidoError){
 			etiqueta.setText("NO PUEDE CANTAR REAL ENVIDO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }

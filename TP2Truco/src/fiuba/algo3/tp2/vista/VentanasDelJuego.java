@@ -66,7 +66,7 @@ public class VentanasDelJuego extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		imagenesCarta = new ImagenesCarta();
-		/*
+		
 		//creacion de la partida
 		//if (this.conFlor)
 		this.partida = new PartidaDeTrucoConFlor("Equipo UNO", "Equipo DOS");
@@ -76,12 +76,12 @@ public class VentanasDelJuego extends Application{
 		this.partida.cargarJugadoresEnEquipoUno(Arrays.asList("jugador1","jugador3","jugador5"));
 		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugador2","jugador4","jugador6"));
 		this.partida.iniciar();
-		*/
 		
+		/*
 		this.partida = new PartidaDeTrucoConIASinFlor("EquipoIA","EquipoHumano");
 		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugadorHumano"));
 		this.partida.iniciar();
-		
+		*/
 		//VENTANAS DEL JUEGO
 
 		this.stageJugadorConTurno = new Stage();

@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
+import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,12 +27,16 @@ public class BotonFlorEventHandler implements EventHandler<ActionEvent>{
 			this.partida.cantarFlor();
 			etiqueta.setText(" FLOR !");
 			etiqueta.setTextFill(Color.web("#FF0000"));
+
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+
 		} catch (CantoInvalidoException FlorError){
 			etiqueta.setText("NO PUEDE CANTAR FLOR");
 			etiqueta.setTextFill(Color.web("#FF0000"));
+		} catch (NoSePuedeSeguirJugandoExcepcion e){
+			this.visual.cerrarVentanasJuego();
 		}
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }

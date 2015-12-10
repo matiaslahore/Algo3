@@ -26,12 +26,14 @@ public class BotonContraFlorEventHandler implements EventHandler<ActionEvent>{
 			this.partida.cantarContraFlor();
 			etiqueta.setText("CONTRA FLOR");
 			etiqueta.setTextFill(Color.web("#FF0000"));
+
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+
 		} catch (CantoInvalidoException FlorContraRestoError){
 			etiqueta.setText("NO PUEDE CANTAR CONTRA FLOR");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }

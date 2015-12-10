@@ -26,12 +26,14 @@ public class BotonFaltaEnvidoEventHandler implements EventHandler<ActionEvent>{
 			this.partida.cantarFaltaEnvido();
 			etiqueta.setText("FALTA ENVIDO!");
 			etiqueta.setTextFill(Color.web("#FF0000"));
+		
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+
 		} catch (CantoInvalidoException FaltaEnvidoError){
 			etiqueta.setText("NO PUEDE CANTAR FALTA ENVIDO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }

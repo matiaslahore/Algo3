@@ -27,17 +27,16 @@ public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 			this.partida.quiero();
 			etiqueta.setText("QUIERO!");
 			etiqueta.setTextFill(Color.web("#008000"));
-		
+			
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
-			
+
 		} catch (CantoInvalidoException quererError){
 			etiqueta.setText("CANTO INVALIDO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		} catch (NoSePuedeSeguirJugandoExcepcion e){
 			this.visual.cerrarVentanasJuego();
 		}
-		
 	}
 
 }

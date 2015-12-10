@@ -27,12 +27,14 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 			this.partida.cantarTruco();
 			etiqueta.setText("TURCO A ESA MIERDA");
 			etiqueta.setTextFill(Color.web("#008000"));
+
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+
 		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e){
 			etiqueta.setText("NO PUEDE CANTAR TRUCO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }

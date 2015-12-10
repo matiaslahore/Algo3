@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista;
 
+import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,12 +21,16 @@ public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
 
 	@Override
 	public void handle(ActionEvent actionEvent){
-		this.partida.irseAlMazo();
+		try{
+			this.partida.irseAlMazo();
 
-		etiqueta.setText("ME VOY AL MAZO!");
-		
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
+			etiqueta.setText("ME VOY AL MAZO!");
+
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+		} catch (NoSePuedeSeguirJugandoExcepcion e){
+			this.visual.cerrarVentanasJuego();
+		}
 	}
 
 }

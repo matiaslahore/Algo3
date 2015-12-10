@@ -27,12 +27,14 @@ public class BotonReTrucoEventHandler implements EventHandler<ActionEvent>{
 			this.partida.cantarQuieroReTruco();
 			etiqueta.setText("QUIERO RE TRUCO!");
 			etiqueta.setTextFill(Color.web("#008000"));
+			
+			this.visual.modificarStageJugador();
+			this.visual.modificarStajeCartasEnMesa();
+
 		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e){
 			etiqueta.setText("NO PUEDE CANTAR QUIERO RE TRUCO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 		}
-		this.visual.modificarStageJugador();
-		this.visual.modificarStajeCartasEnMesa();
 	}
 
 }
