@@ -47,7 +47,8 @@ public class Mesa {
 		System.out.println("Mesa recibe: " + carta.cartaComoString());
 	}
 
-	public void repartirCartas() {
+	/* NO LO USA NADIE EN EL MODELO HABRIA QUE SACARLO
+	 * public void repartirCartas() {
 		Iterator<Jugador> itr = this.jugadores.iterator();
 		List<Carta> listaCartas = new ArrayList<Carta>();
 
@@ -56,7 +57,7 @@ public class Mesa {
 			listaCartas.addAll(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir()));
 			jugador.recibirCartas(listaCartas);
 		}
-	}
+	}*/
 
 	public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
 		Iterator<Jugador> itrEqUno = equipoUno.iterator();
@@ -205,14 +206,6 @@ public class Mesa {
 		this.ronda = this.ronda.irseAlMazo(jugador);
 	}
 
-	public boolean seCantoEnvido() {
-		return ronda.seCantoEnvido();
-	}
-
-	public boolean seCantoTruco() {
-		return this.ronda.seCantoTruco();
-	}
-
 	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
 		
 		for(Jugador unJugador : this.jugadores){
@@ -246,13 +239,23 @@ public class Mesa {
 	}
 	
 	public void repartir(){
-		for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
+		/*for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
 			Jugador unJugador = this.jugadores.get(i);
 			unJugador.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
+		}*/
+		//refactorizado
+		for(Jugador unJugador : this.jugadores){
+			List<Carta> listaDeCartas = new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir()));
+			unJugador.recibirCartas(listaDeCartas);	
 		}
 	}
+	
 
 	public ListaCircular<Jugador> listaDeJugadores() {
 		return this.jugadores;
+	}
+
+	public boolean terminoLaMano() {
+		return (this.ronda.getClass() == EstadoRondaUno.class);
 	}
 }
