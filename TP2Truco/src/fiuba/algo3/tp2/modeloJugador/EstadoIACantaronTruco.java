@@ -5,6 +5,7 @@ public class EstadoIACantaronTruco extends EstadoIA {
 	@Override
 	public void manejador(IA jugadorIA) {
 		if(jugadorIA.quererTrucoIA()){
+			jugadorIA.eventos.IAquisoTruco();
 			jugadorIA.quiero();
 			jugadorIA.setearEstado(new EstadoIATrucoQuerido());
 			System.out.println("IA quiere el truco");

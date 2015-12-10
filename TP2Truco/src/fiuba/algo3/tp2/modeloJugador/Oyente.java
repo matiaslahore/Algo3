@@ -25,4 +25,6 @@ public interface Oyente {
 	public void seFueAlMazo();
 
 	public void IACantoTruco();
+
+	public void IAquisoTruco();
 }

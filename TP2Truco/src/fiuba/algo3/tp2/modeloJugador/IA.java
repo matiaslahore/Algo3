@@ -1,11 +1,8 @@
 package fiuba.algo3.tp2.modeloJugador;
 
-import java.util.List;
-
 import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
 import fiuba.algo3.tp2.modelo.Equipo;
-import fiuba.algo3.tp2.modelo.Mano;
-import fiuba.algo3.tp2.modelo.Maso;
+import fiuba.algo3.tp2.modelo.EventosIA;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
@@ -17,12 +14,13 @@ import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 
 public class IA extends Jugador implements Oyente{
-
+	EventosIA eventos;
 	EstadoIA estadoIA;
 	
-	public IA(String name, Mesa mesa, Equipo team) {
+	public IA(String name, Mesa mesa, Equipo team, EventosIA eventos) {
 		super(name, mesa, team);
 		estadoIA = new EstadoIARondaUnoInteligente();
+		this.eventos = eventos;
 	}
 	
 	public void hacerJugarIA(){
@@ -190,5 +188,11 @@ public class IA extends Jugador implements Oyente{
 	@Override
 	public void IACantoTruco() {
 		// No hace nada aqui		
+	}
+
+	@Override
+	public void IAquisoTruco() {
+		// TODO Auto-generated method stub
+		
 	}
 }

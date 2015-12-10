@@ -5,7 +5,7 @@ import java.util.List;
 
 import fiuba.algo3.tp2.modeloJugador.Oyente;
 
-class EventosIA {
+public class EventosIA {
     private List<Oyente> listeners = new ArrayList<Oyente>();
 
     public void addListener(Oyente toAdd) {
@@ -66,5 +66,10 @@ class EventosIA {
 	public void IACantoTruco(){
 		for (Oyente hl : listeners)
             hl.IACantoTruco();
+	}
+
+	public void IAquisoTruco() {
+		for (Oyente hl : listeners)
+            hl.IAquisoTruco();
 	}
 }
