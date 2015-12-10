@@ -207,7 +207,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 	
 	@Override
 	public void IAquisoTruco() {
-		System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		System.out.println("IA quiso Trucoooooo" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
 	}
 
 }

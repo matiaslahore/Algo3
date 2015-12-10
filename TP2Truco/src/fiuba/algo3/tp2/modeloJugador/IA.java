@@ -17,10 +17,10 @@ public class IA extends Jugador implements Oyente{
 	EventosIA eventos;
 	EstadoIA estadoIA;
 	
-	public IA(String name, Mesa mesa, Equipo team, EventosIA eventos) {
+	public IA(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
 		estadoIA = new EstadoIARondaUnoInteligente();
-		this.eventos = eventos;
+		this.eventos = new EventosIA();
 	}
 	
 	public void hacerJugarIA(){
@@ -186,13 +186,8 @@ public class IA extends Jugador implements Oyente{
 	}
 
 	@Override
-	public void IACantoTruco() {
-		// No hace nada aqui		
-	}
+	public void IACantoTruco() {}
 
 	@Override
-	public void IAquisoTruco() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void IAquisoTruco() {}
 }
