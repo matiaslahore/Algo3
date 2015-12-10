@@ -32,6 +32,7 @@ public class VentanasDelJuego extends Application{
 	private Stage stageJugadorConTurno;
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
+	private Label etiqueta;
 
 	public VentanasDelJuego (PartidaDeTruco partida){
 		this.partida = partida;
@@ -58,7 +59,7 @@ public class VentanasDelJuego extends Application{
 
 	private VBox botonesDelJugador(Stage stage) {
 		//etiqueta para mensajes
-		Label etiqueta = new Label();
+		etiqueta = new Label();
 
 		//botones de opciones para el jugador actual.
 		Button botonEnvido = new Button("Envido");
@@ -168,7 +169,7 @@ public class VentanasDelJuego extends Application{
 			cartaComoImagen.setFitWidth(110);
 			cartaComoImagen.setLayoutX(layoutX);
 			cartaComoImagen.setLayoutY(150);
-			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this));
+			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this, this.etiqueta));
 
 			layoutX += 150;
 
