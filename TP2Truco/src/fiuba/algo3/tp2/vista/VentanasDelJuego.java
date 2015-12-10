@@ -33,9 +33,11 @@ public class VentanasDelJuego extends Application{
 	private Stage stageCartasEnMesa;
 	private VBox botonesDelJugador;
 	private Label etiqueta;
+	private int cantidadJugadores;
 
-	public VentanasDelJuego (PartidaDeTruco partida){
+	public VentanasDelJuego (PartidaDeTruco partida, int cantidadJugadores){
 		this.partida = partida;
+		this.cantidadJugadores = cantidadJugadores;
 		this.imagenesCarta = new ImagenesCarta();
 	}
 
@@ -225,8 +227,10 @@ public class VentanasDelJuego extends Application{
 			cartaComoImagen.setLayoutY(layoutY);
 
 			layoutY += 50;
+			
+			System.out.println(cantidadJugadores);
 
-			if (i == 6) {
+			if (i == cantidadJugadores) {
 				layoutY = 40;
 				layoutX += 150;
 				i = 0;

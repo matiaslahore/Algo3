@@ -33,7 +33,7 @@ public class SeleccionDeJuego extends Application{
 	private List<TextField> nombresEquipos;
 	private List<TextField> nombresJugadores;
 	private VentanasDelJuego ventanasDelJuego;
-
+	
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -174,7 +174,7 @@ public class SeleccionDeJuego extends Application{
 		}
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
-		this.ventanasDelJuego = new VentanasDelJuego(partida);
+		this.ventanasDelJuego = new VentanasDelJuego(partida, cantidadJugadores);
 		try {
 			this.ventanasDelJuego.start(new Stage());
 		} catch (Exception e) {
@@ -184,6 +184,8 @@ public class SeleccionDeJuego extends Application{
 
 	public void creacionDePartidaIa (boolean jugarConFlor){
 
+		this.cantidadJugadores = 2;
+		
 		PartidaDeTruco partida;
 
 		List<String> lista2 = new ArrayList<String> ();
@@ -196,7 +198,7 @@ public class SeleccionDeJuego extends Application{
 
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
-		this.ventanasDelJuego = new VentanasDelJuego(partida);
+		this.ventanasDelJuego = new VentanasDelJuego(partida, cantidadJugadores);
 		try {
 			this.ventanasDelJuego.start(new Stage());
 		} catch (Exception e) {
