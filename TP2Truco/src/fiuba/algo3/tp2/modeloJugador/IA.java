@@ -15,6 +15,7 @@ import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 
 public class IA extends Jugador implements Oyente{
+
 	EstadoIA estadoIA;
 	int truco;	
 	
@@ -35,7 +36,7 @@ public class IA extends Jugador implements Oyente{
 	public void recibirCartas(List<Carta> listaDeCartas){
 		manoDelJugador = new Mano(listaDeCartas);
 		this.envido = this.manoDelJugador.calcularEnvido();
-		this.truco = this.obtenerPuntosTruco();
+		//this.truco = this.obtenerPuntosTruco();
 	}
 	
 	public void setearEstado(EstadoIA estadoIA){
@@ -152,7 +153,8 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public boolean quererEnvidoIA(){
-		return(this.envido >= 25);
+		return true;
+		//return(this.envido >= 25);
 	}
 
 	public boolean cantarRealEnvidoIA(){
@@ -198,4 +200,8 @@ public class IA extends Jugador implements Oyente{
 
 	@Override
 	public void jugarCarta() {}
+
+	public boolean terminoLaMano() {
+		return this.refMesa.terminoLaMano();
+	}
 }
