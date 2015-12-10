@@ -6,7 +6,7 @@ import fiuba.algo3.tp2.excepciones.EquipoIANoPuedeCargarJugadores;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Oyente;
 
-public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
+public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyente {
 	EventosIA eventosIA;
 	
 	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
@@ -163,5 +163,46 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	@Override
 	public abstract void cantarContraFlorAJuego();
+	
+	//Metodos vacios para utlizar Oytente (No implementar nada aqui)
+	@Override
+	public void seCantoTruco() {}
+
+	@Override
+	public void seCantoReTruco() {}
+
+	@Override
+	public void seCantoValeCuatro() {}
+
+	@Override
+	public void seCantoEnvido() {}
+
+	@Override
+	public void seCantoRealEnvido() {}
+
+	@Override
+	public void seCantoFaltaEnvido() {}
+
+	@Override
+	public void seCantoFlor() {}
+
+	@Override
+	public void seCantoContraFlor() {}
+
+	@Override
+	public void seCantoContraFlorAJuego() {}
+
+	@Override
+	public void hacerJugarIA() {}
+
+	@Override
+	public void seFueAlMazo() {}
+
+	//Metodos a implementar, cuando la IA Canta alguno de los cantos, partida de truco debe
+	//pasar el mensaje
+	@Override
+	public void IACantoTruco() {
+		System.out.println("IA Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+	}
 
 }

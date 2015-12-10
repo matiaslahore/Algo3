@@ -186,4 +186,9 @@ public class IA extends Jugador implements Oyente{
 	public boolean terminoLaMano() {
 		return this.refMesa.terminoLaMano();
 	}
+
+	@Override
+	public void IACantoTruco() {
+		// No hace nada aqui		
+	}
 }

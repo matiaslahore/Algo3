@@ -62,4 +62,9 @@ class EventosIA {
 		for (Oyente hl : listeners)
             hl.seFueAlMazo();
 	}    
+	
+	public void IACantoTruco(){
+		for (Oyente hl : listeners)
+            hl.IACantoTruco();
+	}
 }

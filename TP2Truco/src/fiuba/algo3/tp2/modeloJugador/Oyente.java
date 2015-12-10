@@ -23,4 +23,6 @@ public interface Oyente {
 	public void hacerJugarIA();
 	
 	public void seFueAlMazo();
+
+	public void IACantoTruco();
 }

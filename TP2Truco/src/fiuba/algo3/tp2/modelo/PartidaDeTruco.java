@@ -5,7 +5,7 @@ import java.util.List;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public abstract class PartidaDeTruco {
+public abstract class PartidaDeTruco{
 	
 	Equipo equipoUno;
 	Equipo equipoDos;
