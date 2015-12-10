@@ -31,14 +31,7 @@ public abstract class Jugador {
 		this.envido = this.manoDelJugador.calcularEnvido();
 		this.tieneFlor = this.manoDelJugador.tieneFlor();
 	}
-	
-	/* ESTA ES LA QUE VA A IR A LO ULTIMO
-	 * public Carta jugarCarta(int n){
-		Carta actual = cartas.get(n-1); //-1 xq sino no da el index
-		cartas.remove(n-1);
-		return actual;
-	}*/
-	
+
 	public Equipo obtenerEquipo(){
 		return this.equipo;
 	}

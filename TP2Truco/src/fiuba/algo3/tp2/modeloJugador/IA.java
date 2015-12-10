@@ -8,8 +8,11 @@ import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modelo.Oyente;
+import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloDeCartas.Copa;
+import fiuba.algo3.tp2.modeloDeCartas.Dos;
+import fiuba.algo3.tp2.modeloDeCartas.Rey;
 import fiuba.algo3.tp2.modeloDeCartas.Sota;
 import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
@@ -30,13 +33,6 @@ public class IA extends Jugador implements Oyente{
 	
 	public void jugarCartaAleatoria() {
 		this.jugarCarta(this.manoDelJugador.obtenerCartaAleatoria());
-	}
-	
-	@Override
-	public void recibirCartas(List<Carta> listaDeCartas){
-		manoDelJugador = new Mano(listaDeCartas);
-		this.envido = this.manoDelJugador.calcularEnvido();
-		//this.truco = this.obtenerPuntosTruco();
 	}
 	
 	public void setearEstado(EstadoIA estadoIA){
@@ -86,14 +82,9 @@ public class IA extends Jugador implements Oyente{
 		this.setearEstado(new EstadoIACantaronFaltaEnvido());
 	}
 	
-	public boolean quererTrucoIA(){
-		try{
-			//Acepta si tiene mas que un Tres
-			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
-		}catch(JugadorNoTieneMasCartasParaJugarException e){
-			//si la ultima carta que jugo IA es mas que un diez acepta el truco sino no
-			return !(new Sota(new Copa()).equals((new Sota(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
-		}
+	@Override
+	public void seFueAlMazo() {
+		this.setearEstado(new EstadoIARondaUnoInteligente());
 	}
 
 	@Override
@@ -110,42 +101,39 @@ public class IA extends Jugador implements Oyente{
 	public void seCantoContraFlorAJuego() {
 		this.setearEstado(new EstadoIACantaronContraFlorAJuego());
 	}
-
-	public int obtenerPuntosTruco() {
-		//Escala max = 13+12+11= 36
-		int escala = 0;
-		Maso maso = new Maso();
-		List<Carta> cartasJugador = this.obtenerCartasDelJugador();
-		for(int i=0; i <= 2; i++){
-			escala += maso.obtenerRankingDeLaCarta(cartasJugador.get(i).cartaComoString());
-		}	
-		return escala;
-	}
-	//Inteligencia cantos Truco
-	public boolean cantarTrucoIA(){
-		return(this.truco >= 7);
-	}
 	
 	private Carta obtenerCartaMasAltaParaTruco() {
-		
 		return this.manoDelJugador.obtenerCartaMasAltaParaTruco();
 	}
-
-	public boolean cantarReTrucoIA(){
-		return(this.truco >= 18);
+	
+	public boolean quererTrucoIA(){
+		try{
+			//Acepta si tiene mas que un Dos
+			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Dos(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
+		}catch(JugadorNoTieneMasCartasParaJugarException e){
+			//si la ultima carta que jugo IA es mas que un diez acepta el truco sino no
+			return !(new Sota(new Copa()).equals((new Sota(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
+		}
 	}
 	
 	public boolean quererReTrucoIA(){
-		return(this.truco >= 15);
-	}
-	
-	public boolean cantarValeCuatroIA(){
-		return(this.truco >= 31);
+		try{
+			//Acepta si tiene mas que un Tres
+			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
+		}catch(JugadorNoTieneMasCartasParaJugarException e){
+			//si la ultima carta que jugo IA es mas que un Rey acepta el truco sino no
+			return !(new Rey(new Copa()).equals((new Rey(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
+		}
 	}
 	
 	public boolean quererValeCuatroIA(){
-		return(this.truco >= 28);
-	}
+		try{
+			//Acepta si tiene mas que un Tres
+			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
+		}catch(JugadorNoTieneMasCartasParaJugarException e){
+			//si la ultima carta que jugo IA es mas que un AnchoFalso acepta el truco sino no
+			return !(new AnchoFalso(new Copa()).equals((new AnchoFalso(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
+		}	}
 	
 	//Inteligencia cantos Envido
 	public boolean cantarEnvidoIA(){
@@ -153,8 +141,7 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public boolean quererEnvidoIA(){
-		return true;
-		//return(this.envido >= 25);
+		return(this.envido >= 25);
 	}
 
 	public boolean cantarRealEnvidoIA(){
@@ -197,9 +184,6 @@ public class IA extends Jugador implements Oyente{
 	public boolean quererContraFlorAJuegoIA(){
 		return(this.obtenerPuntosFlor() >= 35);
 	}
-
-	@Override
-	public void jugarCarta() {}
 
 	public boolean terminoLaMano() {
 		return this.refMesa.terminoLaMano();

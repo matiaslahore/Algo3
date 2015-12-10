@@ -4,8 +4,6 @@ import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.EquipoIANoPuedeCargarJugadores;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.modeloJugador.IA;
-import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	EventosIA eventosIA;
@@ -51,28 +49,43 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarQuieroReTruco() {
 		this.jugadorTurnoActual.cantarQuieroReTruco();
+		this.eventosIA.seCantoReTruco();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
-			this.eventosIA.seCantoReTruco();
+		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+			this.jugadorTurnoActual.hacerJugarIA();
+			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();		
 		}
-		this.jugadorTurnoActual.hacerJugarIA();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 	
 	@Override
 	public void cantarQuieroValeCuatro() {
 		this.jugadorTurnoActual.cantarQuieroValeCuatro();
+		this.eventosIA.seCantoValeCuatro();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
-			this.eventosIA.seCantoValeCuatro();
+		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+			this.jugadorTurnoActual.hacerJugarIA();
+			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();		
 		}
-		this.jugadorTurnoActual.hacerJugarIA();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 	
 	public void cantarEnvido() {
 		this.jugadorTurnoActual.cantarEnvido();
 		this.eventosIA.seCantoEnvido();	
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.jugadorTurnoActual.hacerJugarIA();
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+			this.jugadorTurnoActual.hacerJugarIA();
+			this.jugadorTurnoActual = mesa.siguienteJugadorConTurno();
+		}
+	}
+	
+	public void cantarRealEnvido() {
+		this.jugadorTurnoActual.cantarRealEnvido();
+		this.eventosIA.seCantoRealEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -82,24 +95,16 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		}
 	}
 	
-	public void cantarRealEnvido() {
-		this.jugadorTurnoActual.cantarRealEnvido();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
-			this.eventosIA.seCantoRealEnvido();
-		}
-		this.jugadorTurnoActual.hacerJugarIA();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
 	public void cantarFaltaEnvido() {
 		this.jugadorTurnoActual.cantarFaltaEnvido();
+		this.eventosIA.seCantoFaltaEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() != this.equipoUno.obtenerNombre()){
-			this.eventosIA.seCantoFaltaEnvido();
-		}
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+			this.jugadorTurnoActual.hacerJugarIA();
+			this.jugadorTurnoActual = mesa.siguienteJugadorConTurno();
+		}
 	}
 	
 	public void jugarCarta(Carta carta) {
@@ -113,15 +118,15 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		} //dos veces a proposito..
-		//explicacion: humano juega carta.. dsps va la maquina si llega a ganar la
-		//maquina esa mano, tiraria de nuevo la maquina.. x esos esos dos ifs
+		} 
+		//Hace dos veces lo mismo ya que humano juega carta, despues va la maquina, si gana la
+		//maquina esa ronda, tiraria de nuevo la maquina, entonces hacemos que vuelva a jugar
 	}
 	
 	public void irseAlMazo(){
 		this.jugadorTurnoActual.irseAlMazo();
+		this.eventosIA.seFueAlMazo();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -131,7 +136,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	public void quiero(){
 		this.jugadorTurnoActual.quiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-
+		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre() == this.equipoUno.obtenerNombre()){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -142,7 +147,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	public void noQuiero(){
 		this.jugadorTurnoActual.noQuiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-
+		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();
 			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();

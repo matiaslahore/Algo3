@@ -9,12 +9,7 @@ class EventosIA {
     public void addListener(Oyente toAdd) {
         listeners.add(toAdd);
     }
-    
-    public void jugarCarta(){
-    	for (Oyente hl : listeners)
-            hl.jugarCarta();
-    }
-
+  
     public void seCantoTruco() {
         // Notify everybody that may be interested.
         for (Oyente hl : listeners)
@@ -59,5 +54,10 @@ class EventosIA {
 	public void seCantoContraFlorAJuego(){
 		for (Oyente hl : listeners)
             hl.seCantoContraFlorAJuego();
+	}
+
+	public void seFueAlMazo() {
+		for (Oyente hl : listeners)
+            hl.seFueAlMazo();
 	}    
 }
