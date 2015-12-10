@@ -190,9 +190,9 @@ public class SeleccionDeJuego extends Application{
 		lista2.add("USTED");
 
 		if(jugarConFlor)
-			partida = new PartidaDeTrucoConIAConFlor("IA", "USTED");
+			partida = new PartidaDeTrucoConIAConFlor("Jarvis", "USTED");
 		else 
-			partida = new PartidaDeTrucoConIASinFlor("IA", "USTED");
+			partida = new PartidaDeTrucoConIASinFlor("Jarvis", "USTED");
 
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
