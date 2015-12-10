@@ -1,7 +1,8 @@
-package fiuba.algo3.tp2.vista;
+package fiuba.algo3.tp2.vista.botonesVentanasDeJuego;
 
 import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
+import fiuba.algo3.tp2.vista.VentanasDelJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;

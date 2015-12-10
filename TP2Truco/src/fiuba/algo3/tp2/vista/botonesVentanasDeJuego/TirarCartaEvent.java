@@ -1,10 +1,11 @@
-package fiuba.algo3.tp2.vista;
+package fiuba.algo3.tp2.vista.botonesVentanasDeJuego;
 
 import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
 import fiuba.algo3.tp2.excepciones.NoSePuedeJugarUnaCartaException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.vista.VentanasDelJuego;
 import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.scene.input.*;

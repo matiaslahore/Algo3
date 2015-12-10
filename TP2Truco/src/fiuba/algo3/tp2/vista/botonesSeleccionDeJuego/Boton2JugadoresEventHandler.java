@@ -1,11 +1,13 @@
-package fiuba.algo3.tp2.vista;
+package fiuba.algo3.tp2.vista.botonesSeleccionDeJuego;
 
+import fiuba.algo3.tp2.vista.SeleccionDeJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 
-public class Boton4JugadoresEventHandler implements EventHandler<ActionEvent> {
+public class Boton2JugadoresEventHandler implements EventHandler<ActionEvent> {
+	
 	
 	SeleccionDeJuego seleccionDeJuego;
 	CheckBox check;
@@ -13,7 +15,7 @@ public class Boton4JugadoresEventHandler implements EventHandler<ActionEvent> {
 	boolean conFlor;
 	Stage stage;
 	
-	public Boton4JugadoresEventHandler(SeleccionDeJuego seleccionDeJuego, CheckBox check,Stage stage){
+	public Boton2JugadoresEventHandler(SeleccionDeJuego seleccionDeJuego, CheckBox check, Stage stage){
 		
 		this.seleccionDeJuego= seleccionDeJuego;
 		this.check= check;
@@ -23,7 +25,7 @@ public class Boton4JugadoresEventHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent actionEvent){
 		this.stage.close();
-		this.cantidadJugadores= 4;
+		this.cantidadJugadores= 2;
 		this.seleccionDeJuego.creacionDeEquiposYJugadores(this.check.isSelected(), cantidadJugadores);
 	}
 

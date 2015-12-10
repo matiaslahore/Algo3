@@ -1,5 +1,6 @@
-package fiuba.algo3.tp2.vista;
+package fiuba.algo3.tp2.vista.botonesSeleccionDeJuego;
 
+import fiuba.algo3.tp2.vista.SeleccionDeJuego;
 import javafx.event.Event;
 import javafx.stage.Stage;
 
