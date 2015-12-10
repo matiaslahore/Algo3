@@ -4,10 +4,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import fiuba.algo3.tp2.excepciones.NoSePuedeSeguirJugandoExcepcion;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConFlor;
-import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIA;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIASinFlor;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import javafx.application.Application;
@@ -76,12 +74,12 @@ public class VentanasDelJuego extends Application{
 		this.partida.cargarJugadoresEnEquipoUno(Arrays.asList("jugador1","jugador3","jugador5"));
 		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugador2","jugador4","jugador6"));
 		this.partida.iniciar();
-		*/
-		
+		 */
+
 		this.partida = new PartidaDeTrucoConIASinFlor("EquipoIA","EquipoHumano");
 		this.partida.cargarJugadoresEnEquipoDos(Arrays.asList("jugadorHumano"));
 		this.partida.iniciar();
-		
+
 		//VENTANAS DEL JUEGO
 
 		this.stageJugadorConTurno = new Stage();
@@ -254,7 +252,7 @@ public class VentanasDelJuego extends Application{
 		Group root = new Group();
 		double layoutX = 80;
 		double layoutY = 40;
-
+		
 		List<Carta> listaCartasJugador = this.partida.cartasEnJuego();
 		int i = 1;
 		for (Carta carta : listaCartasJugador) {
@@ -275,7 +273,7 @@ public class VentanasDelJuego extends Application{
 			}
 
 			i = i+1;
-
+			
 			root.getChildren().add(cartaComoImagen);
 		}
 
@@ -291,21 +289,21 @@ public class VentanasDelJuego extends Application{
 		Scene sceneCartasEnMesa = this.cargarSceneDeLaMesa();
 		this.stageCartasEnMesa.setScene(sceneCartasEnMesa);
 	}
-	
+
 
 	public void cerrarVentanasJuego() {
 		this.stageCartasEnMesa.close();
 		this.stageJugadorConTurno.close();
-		
+
 		Stage menuFinalizacion = new Stage();
 		menuFinalizacion.setTitle("PARTIDA FINALIZADA");
-		
+
 		Scene sceneFinalizada = cargarSceneFinalizacion(menuFinalizacion);
 		menuFinalizacion.setScene(sceneFinalizada);
 		menuFinalizacion.setResizable(false);
 		menuFinalizacion.show();
 	}
-	
+
 	public Scene cargarSceneFinalizacion(Stage menuFinalizacion) {
 		Label nombreEquipo1 = new Label(this.partida.obtenerNombreDeEquipoUno());
 		nombreEquipo1.setTextFill(Color.WHITE);
@@ -313,34 +311,34 @@ public class VentanasDelJuego extends Application{
 		Label puntajeEquipo1 = new Label(Integer.toString(this.partida.obtenerPuntajeDeEquipoUno()));
 		puntajeEquipo1.setFont(Font.font(62));
 		puntajeEquipo1.setTextFill(Color.WHITE);
-		
+
 		Label nombreEquipo2 = new Label(this.partida.obtenerNombreDeEquipoDos());
 		nombreEquipo2.setTextFill(Color.WHITE);
 		nombreEquipo2.setFont(Font.font(22));
 		Label puntajeEquipo2 = new Label(Integer.toString(this.partida.obtenerPuntajeDeEquipoDos()));
 		puntajeEquipo2.setFont(Font.font(62));
 		puntajeEquipo2.setTextFill(Color.WHITE);
-		
+
 		VBox puntajeUno = new VBox(nombreEquipo1,puntajeEquipo1);
 		puntajeUno.setSpacing(30);
 		puntajeUno.setAlignment(Pos.CENTER);
 		VBox puntajeDos = new VBox(nombreEquipo2,puntajeEquipo2);
 		puntajeDos.setSpacing(30);
 		puntajeDos.setAlignment(Pos.CENTER);
-		
+
 		HBox puntajes = new HBox(puntajeUno, puntajeDos);
 		puntajes.setSpacing(30);
 		puntajes.setAlignment(Pos.CENTER);
-		
+
 		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fOpciones.jpg";
 		Image fondo = new Image(direccionImagen);
 		ImageView imagen = new ImageView();
 		imagen.setImage(fondo);
-		
+
 		Button volver = new Button("Inicio");
 		volver.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 		volver.setPrefSize(100, 20);
-		
+
 		volver.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent arg0) {
 				SeleccionDeJuego vista = new SeleccionDeJuego();
@@ -350,10 +348,10 @@ public class VentanasDelJuego extends Application{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				}
 			}
-		);
-		
+		}
+				);
+
 		HBox volverBox = new HBox(volver);
 		volverBox.setAlignment(Pos.BOTTOM_CENTER);
 
@@ -365,5 +363,5 @@ public class VentanasDelJuego extends Application{
 		Scene scene = new Scene(escena, 350, 300);
 		return scene;
 	}
-	
+
 }

@@ -168,6 +168,7 @@ public class Juez {
 	public void finalizoLaMano(Equipo equipo) {
 		anotarPuntos(equipo);
 		limpiarCartasEnJuegoDeRondaActual();
+		this.mesa.limpiarCartasJugadas();
 		this.indiceJugadorMano = this.indiceJugadorMano + 1;
 		this.indiceJugadorQueComienza = this.indiceJugadorMano;
 		this.cantosTruco = new EstadoInicialTruco();

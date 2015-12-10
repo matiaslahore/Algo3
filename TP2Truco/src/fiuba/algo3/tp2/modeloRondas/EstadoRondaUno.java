@@ -19,9 +19,6 @@ public class EstadoRondaUno extends EstadoRondas{
 		this.jugadores = this.juez.listaDeJugadores();
 
 		this.indiceJugadorManoDeLaRondaActual = this.juez.indiceJugadorQueComienza();
-
-		this.juez.limpiarCartasJugadas();
-		this.juez.puntosEnJuego(1);
 	}
 
 	public EstadoRondas siguienteRonda(){
