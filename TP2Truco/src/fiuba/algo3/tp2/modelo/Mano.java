@@ -26,7 +26,6 @@ public class Mano {
 	}
 	
 	public void borrarCarta(Carta unaCarta) {
-
 		this.cartas.remove(this.cartas.lastIndexOf(unaCarta));
 	}	
 		
@@ -73,7 +72,7 @@ public class Mano {
 		List<Carta> cartasQueMatan = new ArrayList<Carta>();
 		
 		for (Carta unaCarta : cartas){	
-			if (!(cartaDelContrario.equals(unaCarta.vs(cartaDelContrario)))){
+			if ( !(cartaDelContrario.equals(unaCarta.vs(cartaDelContrario))) ){
 				cartasQueMatan.add(unaCarta.vs(cartaDelContrario));
 			}
 		}

@@ -88,8 +88,10 @@ public class Juez {
 	}
 
 	public boolean termino() {
-		if (puntos.getPuntajeMaximo() >= 30) return true;
-		else return false;
+		if (puntos.getPuntajeMaximo() >= 30){
+			return true;
+		}
+		return false;
 	}
 
 	public void AumentarPuntosEnJuego(int puntos) {
@@ -108,10 +110,6 @@ public class Juez {
 		this.puntos.imprimirResultados();
 	}
 
-	public boolean seJugaronTodasLasCartas() {
-		return (this.cantidadDeCartasEnJuego() == this.mesa.cantidadDeJugadores());
-	}
-
 	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
 		return this.mesa.otroJugadorConFlor(equipoQueCanta);
 	}
@@ -124,11 +122,9 @@ public class Juez {
 		if (esPicaPica()){
 			return listaDeJugadoresPicaPica();
 		}
-		else {
-			mezclar();
-			this.mesa.repartir(); //mezcla y reparte
-			return this.mesa.listaDeJugadores();
-		}
+		this.mezclar();
+		this.mesa.repartir(); //mezcla y reparte
+		return this.mesa.listaDeJugadores();
 	}
 
 	public ListaCircular<Jugador> listaDeJugadoresPicaPica() {
@@ -139,24 +135,22 @@ public class Juez {
 		return nuevosJugadores;
 	}
 
-	private boolean rangoEstaEnPicaPica() {
+	private boolean rangoDePuntajeEstaEnPicaPica() {
 		return this.puntos.rangoEstaEnPicaPica();
 	}
 
 	private boolean esPicaPica() {
-		if (this.mesa.cantidadDeJugadores() == 6 && rangoEstaEnPicaPica()){
+		if (this.mesa.cantidadDeJugadores() == 6 && rangoDePuntajeEstaEnPicaPica()){
 			if (this.cantidadJugadasPicaPica == 0) mezclar();
 			
 			if (cantidadJugadasPicaPica <= 3){
 				this.indiceJugadorQueComienza = 0;
 				return true;
 			}
-			else {
-				cantidadJugadasPicaPica = 0;
-				this.indiceJugadorMano = this.indiceJugadorMano - 2;
-				this.indiceJugadorQueComienza = this.indiceJugadorMano;
-				return false;
-			}
+			cantidadJugadasPicaPica = 0;
+			this.indiceJugadorMano = this.indiceJugadorMano - 2;
+			this.indiceJugadorQueComienza = this.indiceJugadorMano;
+			return false;
 		}
 		return false;
 	}
@@ -166,8 +160,8 @@ public class Juez {
 	}
 
 	public void finalizoLaMano(Equipo equipo) {
-		anotarPuntos(equipo);
-		limpiarCartasEnJuegoDeRondaActual();
+		this.anotarPuntos(equipo);
+		this.limpiarCartasEnJuegoDeRondaActual();
 		this.mesa.limpiarCartasJugadas();
 		this.indiceJugadorMano = this.indiceJugadorMano + 1;
 		this.indiceJugadorQueComienza = this.indiceJugadorMano;

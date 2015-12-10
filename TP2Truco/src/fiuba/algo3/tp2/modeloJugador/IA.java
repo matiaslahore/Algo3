@@ -20,7 +20,6 @@ import fiuba.algo3.tp2.modeloDeCartas.Tres;
 public class IA extends Jugador implements Oyente{
 
 	EstadoIA estadoIA;
-	int truco;	
 	
 	public IA(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
@@ -48,8 +47,8 @@ public class IA extends Jugador implements Oyente{
 	}
 
 	public void jugarMejorCarta() {
-		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(this.refMesa.obtenerUltimaCartaJugada()));
-			
+		Carta ultimaCartaJugada = this.refMesa.obtenerUltimaCartaJugada();
+		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(ultimaCartaJugada));	
 	}
 
 	@Override
