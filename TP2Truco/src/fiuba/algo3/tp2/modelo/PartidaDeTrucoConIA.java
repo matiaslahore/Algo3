@@ -4,6 +4,7 @@ import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.EquipoIANoPuedeCargarJugadores;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.modeloJugador.Oyente;
 
 public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	EventosIA eventosIA;
