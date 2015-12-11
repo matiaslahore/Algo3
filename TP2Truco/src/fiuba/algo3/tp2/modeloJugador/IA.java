@@ -168,13 +168,6 @@ public class IA extends Jugador implements OyenteDePartida{
 		this.setearEstado(new EstadoIACantaronFaltaEnvido());
 	}
 	
-	/*
-	@Override
-	public void jugadorSeFueAlMazo() {
-		this.setearEstado(new EstadoIARondaUnoInteligente());
-	}
-	*/
-
 	@Override
 	public void seCantoFlor() {
 		this.setearEstado(new EstadoIACantaronFlor());
@@ -190,6 +183,7 @@ public class IA extends Jugador implements OyenteDePartida{
 		this.setearEstado(new EstadoIACantaronContraFlorAJuego());
 	}
 	
+	//Meodos vacios pero tienen que estar para usar el oyentePartida
 	@Override
 	public void seCantoEnvidoEnvido() {}
 
