@@ -130,6 +130,7 @@ public class VentanasDelJuego extends Application{
 		HBox contenedorEnvido = new HBox(30,botonEnvido,botonRealEnvido,botonFaltaEnvido);
 		HBox contenedorTruco = new HBox(30,botonTruco,botonReTruco,botonValeCuatro);
 		HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		
 		if (this.conFlor)
 			contenedorEnvido.getChildren().addAll(botonFlor,botonContraFlor,botonFlorContraResto);
 
