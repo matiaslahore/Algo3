@@ -1,7 +1,10 @@
 package fiuba.algo3.tp2.vista.botonesSeleccionDeJuego;
 
+import java.util.List;
+
 import fiuba.algo3.tp2.vista.SeleccionDeJuego;
 import javafx.event.Event;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class BotonEmpezarJuegoEventHandler<MouseEvent> implements javafx.event.EventHandler {
@@ -16,8 +19,10 @@ public class BotonEmpezarJuegoEventHandler<MouseEvent> implements javafx.event.E
 	
 	@Override
 	public void handle(Event evento) {
-		this.stage.close();
-		this.seleccionDeJuego.creacionDePartida();
+		if(this.seleccionDeJuego.validarCampos()){
+		  this.stage.close();
+		  this.seleccionDeJuego.creacionDePartida();
+		}
 	}
 
 }

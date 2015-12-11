@@ -38,6 +38,8 @@ public class SeleccionDeJuego extends Application{
 	private int cantidadJugadores;
 	private List<TextField> nombresEquipos;
 	private List<TextField> nombresJugadores;
+	private List<TextField> camposDeValidacion;
+	private List<Label> mensajesDeValidacion;
 	private VentanasDelJuego ventanasDelJuego;
 	
 	public static void main(String[] args)
@@ -130,15 +132,26 @@ public class SeleccionDeJuego extends Application{
 
 		this.nombresEquipos= new ArrayList<TextField>();
 		this.nombresJugadores= new ArrayList<TextField>();
+		this.camposDeValidacion= new ArrayList<TextField>();
+		this.mensajesDeValidacion= new ArrayList<Label>();
 
 		int layoutY = 0;
 		for (int j=1; j<3 ; j++){
-			layoutY+=50;	
-			this.nombresEquipos.add(this.crearTextField(root,"INGRESE EL NOMBRE DEL EQUIPO "+j,layoutY));
+			layoutY+=50; // dejo espacio
+			Label etiqueta = this.crearLabel("INGRESE EL NOMBRE DEL EQUIPO "+j, layoutY);
+			this.mensajesDeValidacion.add(etiqueta);
+			TextField campoDeIngreso = this.crearTextField(root,etiqueta,layoutY);
+			this.camposDeValidacion.add(campoDeIngreso);
+			this.nombresEquipos.add(campoDeIngreso);
 			for (int i=1; i<((cantidadJugadores+2)/2); i++){
-				layoutY+=50;	
-				this.nombresJugadores.add(this.crearTextField(root,"INGRESE EL NOMBRE DEL JUGADOR "+i+" DEL EQUIPO "+j,layoutY));
+				layoutY+=50;
+				Label etiqueta2 = this.crearLabel("INGRESE EL NOMBRE DEL JUGADOR "+i+" DEL EQUIPO "+j, layoutY);
+				this.mensajesDeValidacion.add(etiqueta2);
+				TextField campoDeIngreso2 = this.crearTextField(root,etiqueta2,layoutY);
+				this.camposDeValidacion.add(campoDeIngreso2);
+				this.nombresJugadores.add(campoDeIngreso2);
 			}
+			layoutY+=25;
 		}
 
 		Button botonEmpezarJuego = new Button();
@@ -146,8 +159,9 @@ public class SeleccionDeJuego extends Application{
 		@SuppressWarnings("rawtypes")
 		BotonEmpezarJuegoEventHandler botonEmpezarJuegoEventHandler = new BotonEmpezarJuegoEventHandler(this, stage);
 		botonEmpezarJuego.setOnAction(botonEmpezarJuegoEventHandler);
+		botonEmpezarJuego.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
 		botonEmpezarJuego.setLayoutY(470);
-		botonEmpezarJuego.setLayoutX(100);
+		botonEmpezarJuego.setLayoutX(200);
 		
 		Button botonVolver = new Button();
 		botonVolver.setText("Volver");
@@ -223,17 +237,37 @@ public class SeleccionDeJuego extends Application{
 			e.printStackTrace();
 		}
 	}
-
-	public TextField crearTextField(Group root, String mensaje, int layoutY){
-
+	
+	public boolean validarCampos (){
+		boolean camposValidos = true;
+		for (int j=0; j<this.camposDeValidacion.size(); j++){ 
+			if((this.camposDeValidacion.get(j).getText().equals(""))){
+				this.mensajesDeValidacion.get(j).setText("NOMBRE INVALIDO, REINGRESE");
+				this.mensajesDeValidacion.get(j).setTextFill(Color.web("#FF0000"));
+			    camposValidos = false; 
+			}
+		}
+		return camposValidos;
+	}
+	
+	public Label crearLabel(String mensaje,int layoutY){
+		
 		Label etiqueta = new Label();
+		etiqueta.setStyle("-fx-font-size: 10pt;");
 		etiqueta.setText(mensaje);
 		etiqueta.setLayoutY(layoutY);
 		etiqueta.setTextFill(Color.WHITE);
+		
+		return etiqueta;
+		
+	}
+
+	public TextField crearTextField(Group root, Label etiqueta, int layoutY){
+
 
 		TextField textoIngresado = new TextField();
 		textoIngresado.setPromptText("ingrese un nombre");
-		textoIngresado.setLayoutY(layoutY+25);
+		textoIngresado.setLayoutY(layoutY+15);
 		textoIngresado.setLayoutX(3);
 		textoIngresado.setPrefWidth(344);
 
