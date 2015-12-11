@@ -10,16 +10,6 @@ public class ControladorDeBotones implements OyenteDePartida {
 	}
 
 	@Override
-	public void seCantoEnvidoEnvido() {
-		//Aca vas a crear una neuva visual con todos los botones menos el de envido
-	}
-
-	@Override
-	public void seCantoRealEnvido() {
-		//lo mismo pero aca vas a crear todos menos los de envido y real envido
-	}
-
-	@Override
 	public void seCantoTruco() {
 		System.out.println("se Canto Truco");
 	}
@@ -74,6 +64,16 @@ public class ControladorDeBotones implements OyenteDePartida {
 	public void seCantoReTruco() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void seCantoEnvidoEnvido() {
+		//Aca vas a crear una neuva visual con todos los botones menos el de envido
+	}
+
+	@Override
+	public void seCantoRealEnvido() {
+		//lo mismo pero aca vas a crear todos menos los de envido y real envido
 	}
 
 }
