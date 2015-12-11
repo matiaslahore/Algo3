@@ -243,8 +243,8 @@ public class SeleccionDeJuego extends Application{
 		boolean camposValidos = true;
 		for (int j=0; j<this.camposDeValidacion.size(); j++){ 
 			if((this.camposDeValidacion.get(j).getText().equals(""))){
-				this.mensajesDeValidacion.get(j).setText("NOMBRE INVALIDO, REINGRESE");
-				this.mensajesDeValidacion.get(j).setTextFill(Color.web("#FF0000"));
+				this.camposDeValidacion.get(j).setText("NOMBRE INVALIDO, REINGRESE");
+				this.camposDeValidacion.get(j).setStyle("-fx-background-color: red;");
 			    camposValidos = false; 
 			}
 		}
