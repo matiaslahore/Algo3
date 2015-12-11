@@ -41,7 +41,6 @@ public class SeleccionDeJuego extends Application{
 	private List<TextField> camposDeValidacion;
 	private List<Label> mensajesDeValidacion;
 	private VentanasDelJuego ventanasDelJuego;
-	private ControladorDeBotones controladorDeBotones;
 	
 	public static void main(String[] args)
 	{
@@ -208,7 +207,7 @@ public class SeleccionDeJuego extends Application{
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
 		this.ventanasDelJuego = new VentanasDelJuego(partida, this.cantidadJugadores, this.conFlor);
-		this.controladorDeBotones = new ControladorDeBotones(partida);
+		
 		try {
 			this.ventanasDelJuego.start(new Stage());
 		} catch (Exception e) {

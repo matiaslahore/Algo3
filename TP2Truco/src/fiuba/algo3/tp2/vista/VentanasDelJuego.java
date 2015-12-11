@@ -48,6 +48,7 @@ public class VentanasDelJuego extends Application{
 	private VBox botonesDelJugador;
 	private Label etiqueta;
 	private int cantidadJugadores;
+	private ControladorDeBotones controladorDeBotones;
 
 	public VentanasDelJuego (PartidaDeTruco partida, int cantidadJugadores, boolean conFlor){
 		this.partida = partida;
@@ -58,6 +59,7 @@ public class VentanasDelJuego extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		this.controladorDeBotones = new ControladorDeBotones(partida);
 		this.partida.iniciar();
 
 		this.stageJugadorConTurno = new Stage();
