@@ -199,7 +199,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 	public void seFueAlMazo() {}
 
 	//Metodos a implementar, cuando la IA Canta alguno de los cantos, partida de truco debe
-	//pasar el mensaje
+	//pasar el mensaje a la parte visual
 	@Override
 	public void IACantoTruco() {
 		System.out.println("IA Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
