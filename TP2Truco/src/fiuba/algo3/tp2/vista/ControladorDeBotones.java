@@ -1,11 +1,12 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.modelo.OyenteDePartida;
+import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 
 public class ControladorDeBotones implements OyenteDePartida {
 
-	public ControladorDeBotones(){
-
+	public ControladorDeBotones(PartidaDeTruco partida){
+		partida.agregarOyentesALaPartida(this);
 	}
 
 	@Override
@@ -24,13 +25,13 @@ public class ControladorDeBotones implements OyenteDePartida {
 	}
 
 	@Override
-	public void seQuisoTruco() {
-		System.out.println("se Quiso Truco");
+	public void seQuiso() {
+		System.out.println("se Quiso ");
 	}
 
 	@Override
-	public void noSeQuisoTruco() {
-		System.out.println("No se Quiso Truco");
+	public void noSeQuiso() {
+		System.out.println("No se Quiso ");
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloJugador.OyenteJugador;
 
 public abstract class PartidaDeTruco implements OyenteJugador{
-	EventosDePartida eventosVista;
+	EventosDePartida eventosDePartida;
 	Equipo equipoUno;
 	Equipo equipoDos;
 	Mesa mesa;
@@ -19,7 +19,7 @@ public abstract class PartidaDeTruco implements OyenteJugador{
 		this.equipoUno = new Equipo(nombreEq1, mesa);
 		this.equipoDos = new Equipo(nombreEq2, mesa);
 		this.mesa.instanciarJuez(equipoUno, equipoDos);
-		this.eventosVista = new EventosDePartida();
+		this.eventosDePartida = new EventosDePartida();
 	}
 	
 	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
@@ -134,27 +134,32 @@ public abstract class PartidaDeTruco implements OyenteJugador{
 	}
 	
 	public void agregarOyenteDeVista(OyenteDePartida toAdd){
-		this.eventosVista.addListener(toAdd);
+		this.eventosDePartida.addListener(toAdd);
 	}
 	
 	//cuando el jugador Canta alguno de los cantos, partida de truco debe
 	//pasar el mensaje a la parte visual
+	
+	public void agregarOyentesALaPartida(OyenteDePartida oyente){
+		this.eventosDePartida.addListener(oyente);
+	}
+	
 	@Override
 	public void jugadorCantoTruco() {
-		System.out.println("IA Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		//this.eventosVista.seCantoTruco();
+		//System.out.println("jugadorr Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		this.eventosDePartida.seCantoTruco();
 	}
 	
 	@Override
 	public void jugadorQuiso() {
-		System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		//this.eventosVista.seQuiso();
+		//System.out.println("jugador quiso Truco" );
+		this.eventosDePartida.seQuiso();
 	}
 	
 	@Override
 	public void jugadorNoQuiso() {
-		System.out.println("IA no quiso el Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		//this.eventosVista.noSeQuiso();
+		//System.out.println("jugador no quiso el Truco" );
+		this.eventosDePartida.noSeQuiso();
 	}
 	
 	@Override
@@ -169,32 +174,32 @@ public abstract class PartidaDeTruco implements OyenteJugador{
 	
 	@Override
 	public void jugadorCantoEnvido(){
-		
+		System.out.println("Envidooo" );
 	}
 	
 	@Override
 	public void jugadorCantoRealEnvido(){
-		
+		System.out.println("RealEnvidooo" );
 	}
 	
 	@Override
 	public void jugadorCantoFaltaEnvido(){
-		
+		System.out.println("FalaEnvidooo" );
 	}
 	
 	@Override
 	public void jugadorCantoFlor(){
-		
+		System.out.println("Flor" );
 	}
 	
 	@Override
 	public void jugadorCantoContraFlor(){
-		
+		System.out.println("Contra flor" );
 	}
 	
 	@Override
 	public void jugadorCantoContraFlorAJuego(){
-		
+		System.out.println("CFAJ" );
 	}
 
 	@Override

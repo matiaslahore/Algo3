@@ -14,7 +14,7 @@ import fiuba.algo3.tp2.modeloDeCartas.Sota;
 import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 
-public class IA extends Jugador implements OyenteDePartida{
+public class IA extends Jugador{
 	EstadoIA estadoIA;
 	
 	public IA(String name, Mesa mesa, Equipo team) {
@@ -134,7 +134,7 @@ public class IA extends Jugador implements OyenteDePartida{
 		return this.refMesa.terminoLaMano();
 	}
 
-	
+	/*
 	@Override
 	public void seCantoTruco() {
 		this.setearEstado(new EstadoIACantaronTruco());
@@ -189,5 +189,5 @@ public class IA extends Jugador implements OyenteDePartida{
 
 	@Override
 	public void noSeQuiso() {}
-
+	*/
 }
