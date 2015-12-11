@@ -242,10 +242,12 @@ public class SeleccionDeJuego extends Application{
 	public boolean validarCampos (){
 		boolean camposValidos = true;
 		for (int j=0; j<this.camposDeValidacion.size(); j++){ 
-			if((this.camposDeValidacion.get(j).getText().equals(""))){
+			if((this.camposDeValidacion.get(j).getText().equals("")) ||(this.camposDeValidacion.get(j).getText().contains("NOMBRE INVALIDO, REINGRESE"))){
 				this.camposDeValidacion.get(j).setText("NOMBRE INVALIDO, REINGRESE");
-				this.camposDeValidacion.get(j).setStyle("-fx-background-color: red;");
+				this.camposDeValidacion.get(j).setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;");
 			    camposValidos = false; 
+			}
+			else{ this.camposDeValidacion.get(j).setStyle("-fx-text-box-border: white ;-fx-focus-color: white ;"); 
 			}
 		}
 		return camposValidos;
