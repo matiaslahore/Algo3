@@ -4,16 +4,17 @@ import java.util.List;
 
 import fiuba.algo3.tp2.excepciones.EquipoIANoPuedeCargarJugadores;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.modeloJugador.Oyente;
+import fiuba.algo3.tp2.modeloJugador.EventosJugador;
+import fiuba.algo3.tp2.modeloJugador.OyenteJugador;
 
-public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyente {
-	EventosIA eventosIA;
-	Eventos
+public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
+	EventosJugador eventosIA;
+	
 	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
 		super(nombreEquipoIA,nombreEquipo2);
 		this.equipoUno.cargarJugadorIA(this);
-		this.eventosIA = new EventosIA();
-		this.eventosIA.addListener((Oyente) equipoUno.obtenerJugadores().get(0));
+		this.eventosIA = new EventosJugador();
+		this.eventosIA.addListener((OyenteJugador) equipoUno.obtenerJugadores().get(0));
 	}
 	
 	public void iniciar() {
@@ -164,55 +165,5 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 	@Override
 	public abstract void cantarContraFlorAJuego();
 	
-	//Metodos vacios para utlizar Oytente (No implementar nada aqui)
-	@Override
-	public void seCantoTruco() {}
-
-	@Override
-	public void seCantoReTruco() {}
-
-	@Override
-	public void seCantoValeCuatro() {}
-
-	@Override
-	public void seCantoEnvido() {}
-
-	@Override
-	public void seCantoRealEnvido() {}
-
-	@Override
-	public void seCantoFaltaEnvido() {}
-
-	@Override
-	public void seCantoFlor() {}
-
-	@Override
-	public void seCantoContraFlor() {}
-
-	@Override
-	public void seCantoContraFlorAJuego() {}
-
-	@Override
-	public void hacerJugarIA() {}
-
-	@Override
-	public void seFueAlMazo() {}
-
-	//Metodos a implementar, cuando la IA Canta alguno de los cantos, partida de truco debe
-	//pasar el mensaje a la parte visual
-	@Override
-	public void IACantoTruco() {
-		System.out.println("IA Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-	}
-	
-	@Override
-	public void IAQuisoTruco() {
-		System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-	}
-	
-	@Override
-	public void IANoQuisoTruco() {
-		System.out.println("IA no quiso el Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-	}
 
 }

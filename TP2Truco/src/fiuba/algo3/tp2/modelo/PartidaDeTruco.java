@@ -4,9 +4,10 @@ import java.util.List;
 
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
+import fiuba.algo3.tp2.modeloJugador.OyenteJugador;
 
-public abstract class PartidaDeTruco{
-	
+public abstract class PartidaDeTruco implements OyenteJugador{
+	EventosDePartida eventosVista;
 	Equipo equipoUno;
 	Equipo equipoDos;
 	Mesa mesa;
@@ -16,8 +17,8 @@ public abstract class PartidaDeTruco{
 		this.mesa = new Mesa();
 		this.equipoUno = new Equipo(nombreEq1, mesa);
 		this.equipoDos = new Equipo(nombreEq2, mesa);
-		
 		this.mesa.instanciarJuez(equipoUno, equipoDos);
+		this.eventosVista = new EventosDePartida();
 	}
 	
 	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
@@ -121,5 +122,80 @@ public abstract class PartidaDeTruco{
 	public void cartearseParaHacerLosTest(Jugador unJugador, List<Carta> cartasParaJugador){
 		unJugador.recibirCartas(cartasParaJugador);
 	}
+	
+	public void agregarOyenteDeVista(OyenteDePartida toAdd){
+		this.eventosVista.addListener(toAdd);
+	}
+	
+	//cuando el jugador Canta alguno de los cantos, partida de truco debe
+	//pasar el mensaje a la parte visual
+	@Override
+	public void jugadorCantoTruco() {
+		//System.out.println("IA Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		this.eventosVista.seCantoTruco();
+	}
+	
+	@Override
+	public void jugadorQuisoTruco() {
+		//System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		this.eventosVista.seQuisoTruco();
+	}
+	
+	@Override
+	public void jugadorNoQuisoTruco() {
+		//System.out.println("IA no quiso el Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		this.eventosVista.noSeQuisoTruco();
+	}
+	
+	@Override
+	public void jugadorCantoReTruco(){
+		
+	}
+	
+	@Override
+	public void jugadorCantoValeCuatro(){
+		
+	}
+	
+	@Override
+	public void jugadorCantoEnvido(){
+		
+	}
+	
+	@Override
+	public void jugadorCantoRealEnvido(){
+		
+	}
+	
+	@Override
+	public void jugadorCantoFaltaEnvido(){
+		
+	}
+	
+	@Override
+	public void jugadorCantoFlor(){
+		
+	}
+	
+	@Override
+	public void jugadorCantoContraFlor(){
+		
+	}
+	
+	@Override
+	public void jugadorCantoContraFlorAJuego(){
+		
+	}
+
+	@Override
+	public void hacerJugarIA(){
+		
+	}
+	
+	@Override
+	public void jugadorSeFueAlMazo(){
+		
+	}
+
 	
 }

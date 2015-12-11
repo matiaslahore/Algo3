@@ -2,8 +2,8 @@ package fiuba.algo3.tp2.modeloJugador;
 
 import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
 import fiuba.algo3.tp2.modelo.Equipo;
-import fiuba.algo3.tp2.modelo.EventosIA;
 import fiuba.algo3.tp2.modelo.Mesa;
+import fiuba.algo3.tp2.modelo.OyenteDePartida;
 import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIA;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
@@ -14,14 +14,14 @@ import fiuba.algo3.tp2.modeloDeCartas.Sota;
 import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 
-public class IA extends Jugador implements Oyente{
-	EventosIA eventos;
+public class IA extends Jugador implements OyenteDePartida{
+	EventosJugador eventos;
 	EstadoIA estadoIA;
 	
 	public IA(String name, Mesa mesa, Equipo team, PartidaDeTrucoConIA partida) {
 		super(name, mesa, team);
 		estadoIA = new EstadoIARondaUnoInteligente();
-		this.eventos = new EventosIA();
+		this.eventos = new EventosJugador();
 		this.eventos.addListener(partida);
 	}
 	
@@ -50,56 +50,6 @@ public class IA extends Jugador implements Oyente{
 		this.jugarCarta(this.manoDelJugador.obtenerMejorCartaParaJugarContra(ultimaCartaJugada));	
 	}
 
-	@Override
-	public void seCantoTruco() {
-		this.setearEstado(new EstadoIACantaronTruco());
-	}
-
-	@Override
-	public void seCantoReTruco() {
-		this.setearEstado(new EstadoIACantaronReTruco());
-	}
-
-	@Override
-	public void seCantoValeCuatro() {
-		this.setearEstado(new EstadoIACantaronValeCuatro());
-	}
-
-	@Override
-	public void seCantoEnvido() {
-		this.setearEstado(new EstadoIACantaronEnvido());
-	}
-
-	@Override
-	public void seCantoRealEnvido() {
-		this.setearEstado(new EstadoIACantaronRealEnvido());
-	}
-
-	@Override
-	public void seCantoFaltaEnvido() {
-		this.setearEstado(new EstadoIACantaronFaltaEnvido());
-	}
-	
-	@Override
-	public void seFueAlMazo() {
-		this.setearEstado(new EstadoIARondaUnoInteligente());
-	}
-
-	@Override
-	public void seCantoFlor() {
-		this.setearEstado(new EstadoIACantaronFlor());
-	}
-
-	@Override
-	public void seCantoContraFlor() {
-		this.setearEstado(new EstadoIACantaronContraFlor());
-	}
-
-	@Override
-	public void seCantoContraFlorAJuego() {
-		this.setearEstado(new EstadoIACantaronContraFlorAJuego());
-	}
-	
 	private Carta obtenerCartaMasAltaParaTruco() {
 		return this.manoDelJugador.obtenerCartaMasAltaParaTruco();
 	}
@@ -187,12 +137,66 @@ public class IA extends Jugador implements Oyente{
 		return this.refMesa.terminoLaMano();
 	}
 
-	@Override
-	public void IACantoTruco() {}
-
-	@Override
-	public void IAQuisoTruco() {}
 	
 	@Override
-	public void IANoQuisoTruco() {}
+	public void seCantoTruco() {
+		this.setearEstado(new EstadoIACantaronTruco());
+	}
+
+	@Override
+	public void seCantoReTruco() {
+		this.setearEstado(new EstadoIACantaronReTruco());
+	}
+
+	@Override
+	public void seCantoValeCuatro() {
+		this.setearEstado(new EstadoIACantaronValeCuatro());
+	}
+
+	@Override
+	public void seCantoEnvido() {
+		this.setearEstado(new EstadoIACantaronEnvido());
+	}
+
+	@Override
+	public void seCantoRealEnvido() {
+		this.setearEstado(new EstadoIACantaronRealEnvido());
+	}
+
+	@Override
+	public void seCantoFaltaEnvido() {
+		this.setearEstado(new EstadoIACantaronFaltaEnvido());
+	}
+	
+	/*
+	@Override
+	public void jugadorSeFueAlMazo() {
+		this.setearEstado(new EstadoIARondaUnoInteligente());
+	}
+	*/
+
+	@Override
+	public void seCantoFlor() {
+		this.setearEstado(new EstadoIACantaronFlor());
+	}
+
+	@Override
+	public void seCantoContraFlor() {
+		this.setearEstado(new EstadoIACantaronContraFlor());
+	}
+
+	@Override
+	public void seCantoContraFlorAJuego() {
+		this.setearEstado(new EstadoIACantaronContraFlorAJuego());
+	}
+	
+	@Override
+	public void seCantoEnvidoEnvido() {}
+
+	@Override
+	public void seQuisoTruco() {}
+
+	@Override
+	public void noSeQuisoTruco() {}
+
 }
