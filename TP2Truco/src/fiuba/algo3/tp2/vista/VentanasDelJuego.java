@@ -40,7 +40,7 @@ import javafx.stage.Stage;
 public class VentanasDelJuego extends Application{
 
 	private ImagenesCarta imagenesCarta;
-	private boolean conFlor = true;
+	private boolean conFlor;
 	private PartidaDeTruco partida;
 	private Stage stageJugadorConTurno;
 	private Stage stageCartasEnMesa;
@@ -48,10 +48,11 @@ public class VentanasDelJuego extends Application{
 	private Label etiqueta;
 	private int cantidadJugadores;
 
-	public VentanasDelJuego (PartidaDeTruco partida, int cantidadJugadores){
+	public VentanasDelJuego (PartidaDeTruco partida, int cantidadJugadores, boolean conFlor){
 		this.partida = partida;
 		this.cantidadJugadores = cantidadJugadores;
 		this.imagenesCarta = new ImagenesCarta();
+		this.conFlor = conFlor;
 	}
 
 	@Override

@@ -206,7 +206,7 @@ public class SeleccionDeJuego extends Application{
 		}
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
-		this.ventanasDelJuego = new VentanasDelJuego(partida, cantidadJugadores);
+		this.ventanasDelJuego = new VentanasDelJuego(partida, this.cantidadJugadores, this.conFlor);
 		try {
 			this.ventanasDelJuego.start(new Stage());
 		} catch (Exception e) {
@@ -230,7 +230,7 @@ public class SeleccionDeJuego extends Application{
 
 		partida.cargarJugadoresEnEquipoDos(lista2);
 
-		this.ventanasDelJuego = new VentanasDelJuego(partida, cantidadJugadores);
+		this.ventanasDelJuego = new VentanasDelJuego(partida, this.cantidadJugadores, this.conFlor);
 		try {
 			this.ventanasDelJuego.start(new Stage());
 		} catch (Exception e) {
