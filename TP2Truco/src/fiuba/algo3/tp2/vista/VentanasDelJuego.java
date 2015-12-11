@@ -35,6 +35,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class VentanasDelJuego extends Application{
@@ -199,13 +200,18 @@ public class VentanasDelJuego extends Application{
 		Label puntajeEquipo1 = new Label();
 		String textoPuntaje = this.partida.obtenerNombreDeEquipoUno()+": "+ this.partida.obtenerPuntajeDeEquipoUno()+ " PUNTOS";
 		puntajeEquipo1.setText(textoPuntaje);
-		puntajeEquipo1.setTextFill(Color.web("#FF0000"));
+		puntajeEquipo1.setTextFill(Color.YELLOW);
+		puntajeEquipo1.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
+		
 		Label puntajeEquipo2 = new Label();
 		textoPuntaje = this.partida.obtenerNombreDeEquipoDos() +": "+ this.partida.obtenerPuntajeDeEquipoDos()+ " PUNTOS";
 		puntajeEquipo2.setText(textoPuntaje);
-		puntajeEquipo2.setTextFill(Color.web("#FFBB11"));
-
+		puntajeEquipo2.setTextFill(Color.GREEN);
+		puntajeEquipo2.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
+		
+		
 		HBox puntaje = new HBox(puntajeEquipo1,puntajeEquipo2);
+		puntaje.setLayoutX(130);
 		puntaje.setSpacing(30);
 
 		//imagen de fondo de la mesa
@@ -329,7 +335,8 @@ public class VentanasDelJuego extends Application{
 		}
 				);
 
-		HBox volverBox = new HBox(volver);
+		VBox volverBox = new VBox(volver);
+		volverBox.setPadding(new Insets(0, 0, 15, 0));
 		volverBox.setAlignment(Pos.BOTTOM_CENTER);
 
 		BorderPane escena = new BorderPane();
