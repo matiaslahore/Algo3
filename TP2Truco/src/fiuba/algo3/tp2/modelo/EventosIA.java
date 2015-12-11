@@ -68,8 +68,14 @@ public class EventosIA {
             hl.IACantoTruco();
 	}
 
-	public void IAquisoTruco() {
+	public void IAQuisoTruco() {
 		for (Oyente hl : listeners)
-            hl.IAquisoTruco();
+            hl.IAQuisoTruco();
 	}
+	
+	public void IANoQuisoTruco() {
+		for (Oyente hl : listeners)
+            hl.IANoQuisoTruco();
+	}
+
 }

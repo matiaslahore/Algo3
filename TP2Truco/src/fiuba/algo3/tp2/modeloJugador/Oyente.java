@@ -26,5 +26,7 @@ public interface Oyente {
 
 	public void IACantoTruco();
 
-	public void IAquisoTruco();
+	public void IAQuisoTruco();
+
+	public void IANoQuisoTruco();
 }

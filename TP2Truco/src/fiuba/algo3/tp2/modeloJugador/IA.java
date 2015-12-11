@@ -4,6 +4,7 @@ import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.EventosIA;
 import fiuba.algo3.tp2.modelo.Mesa;
+import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIA;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloDeCartas.Copa;
@@ -17,10 +18,11 @@ public class IA extends Jugador implements Oyente{
 	EventosIA eventos;
 	EstadoIA estadoIA;
 	
-	public IA(String name, Mesa mesa, Equipo team) {
+	public IA(String name, Mesa mesa, Equipo team, PartidaDeTrucoConIA partida) {
 		super(name, mesa, team);
 		estadoIA = new EstadoIARondaUnoInteligente();
 		this.eventos = new EventosIA();
+		this.eventos.addListener(partida);
 	}
 	
 	public void hacerJugarIA(){
@@ -189,5 +191,8 @@ public class IA extends Jugador implements Oyente{
 	public void IACantoTruco() {}
 
 	@Override
-	public void IAquisoTruco() {}
+	public void IAQuisoTruco() {}
+	
+	@Override
+	public void IANoQuisoTruco() {}
 }

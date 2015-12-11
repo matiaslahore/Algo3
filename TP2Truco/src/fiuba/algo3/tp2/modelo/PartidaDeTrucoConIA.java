@@ -11,7 +11,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 	
 	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
 		super(nombreEquipoIA,nombreEquipo2);
-		this.equipoUno.cargarJugadorIA(this.eventosIA);
+		this.equipoUno.cargarJugadorIA(this);
 		this.eventosIA = new EventosIA();
 		this.eventosIA.addListener((Oyente) equipoUno.obtenerJugadores().get(0));
 	}
@@ -206,8 +206,13 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 	}
 	
 	@Override
-	public void IAquisoTruco() {
-		System.out.println("IA quiso Trucoooooo" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+	public void IAQuisoTruco() {
+		System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+	}
+	
+	@Override
+	public void IANoQuisoTruco() {
+		System.out.println("IA no quiso el Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
 	}
 
 }
