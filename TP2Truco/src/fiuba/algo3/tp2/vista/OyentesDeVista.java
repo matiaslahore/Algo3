@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.vista;
 
-public interface ControladorDeVista {
+public interface OyentesDeVista {
 	
 	public void seCantoEnvidoEnvido();
 	

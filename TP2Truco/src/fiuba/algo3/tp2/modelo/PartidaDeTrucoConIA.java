@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modeloJugador.Oyente;
 
 public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyente {
 	EventosIA eventosIA;
-	
+	Eventos
 	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
 		super(nombreEquipoIA,nombreEquipo2);
 		this.equipoUno.cargarJugadorIA(this);

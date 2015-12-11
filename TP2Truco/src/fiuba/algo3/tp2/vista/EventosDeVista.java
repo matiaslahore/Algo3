@@ -5,22 +5,22 @@ import java.util.List;
 
 import fiuba.algo3.tp2.modeloJugador.Oyente;
 
-public class EventosControladorDeVista {
+public class EventosDeVista {
 
-	private List<ControladorDeVista> listeners = new ArrayList<ControladorDeVista>();
+	private List<OyentesDeVista> listeners = new ArrayList<OyentesDeVista>();
 
-    public void addListener(ControladorDeVista toAdd) {
+    public void addListener(OyentesDeVista toAdd) {
         listeners.add(toAdd);
     }
   
     public void seCantoEnvidoEnvido() {
         // Notify everybody that may be interested.
-        for (ControladorDeVista hl : listeners)
+        for (OyentesDeVista hl : listeners)
             hl.seCantoEnvidoEnvido();
     }
     
     public void seCantoRealEnvido() {
-        for (ControladorDeVista hl : listeners)
+        for (OyentesDeVista hl : listeners)
             hl.seCantoRealEnvido();
     }
 }    

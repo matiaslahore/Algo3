@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.vista;
 
-public class ControladorDeBotones implements ControladorDeVista {
+public class ControladorDeBotones implements OyentesDeVista {
 
 	@Override
 	public void seCantoEnvidoEnvido() {
