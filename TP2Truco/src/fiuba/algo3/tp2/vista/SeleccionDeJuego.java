@@ -13,6 +13,7 @@ import fiuba.algo3.tp2.vista.botonesSeleccionDeJuego.Boton4JugadoresEventHandler
 import fiuba.algo3.tp2.vista.botonesSeleccionDeJuego.Boton6JugadoresEventHandler;
 import fiuba.algo3.tp2.vista.botonesSeleccionDeJuego.BotonEmpezarJuegoEventHandler;
 import fiuba.algo3.tp2.vista.botonesSeleccionDeJuego.BotonJugarContraPcEventHandler;
+import fiuba.algo3.tp2.vista.botonesSeleccionDeJuego.BotonVolverEventHandler;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -47,6 +48,10 @@ public class SeleccionDeJuego extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 
+		this.cargarPantallaPrincipal(stage);
+	}
+	
+	public void cargarPantallaPrincipal (Stage stage){
 		stage.setTitle("FON-TRUCO Seleccion de juego");
 		stage.setScene(this.opcionesDeJuego(stage));
 		stage.setResizable(false);
@@ -143,8 +148,16 @@ public class SeleccionDeJuego extends Application{
 		botonEmpezarJuego.setOnAction(botonEmpezarJuegoEventHandler);
 		botonEmpezarJuego.setLayoutY(470);
 		botonEmpezarJuego.setLayoutX(100);
-
-		root.getChildren().add(botonEmpezarJuego);
+		
+		Button botonVolver = new Button();
+		botonVolver.setText("Volver");
+		BotonVolverEventHandler botonVolverEventHandler = new BotonVolverEventHandler (this,stage);
+		botonVolver.setOnAction(botonVolverEventHandler);
+	    botonVolver.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+	    botonVolver.setLayoutY(470);
+		botonVolver.setLayoutX(40);
+	    
+		root.getChildren().addAll(botonEmpezarJuego,botonVolver);
 
 		Scene scene = new Scene(root, 350, 500);
 		stage.setTitle("Ingrese Datos");
