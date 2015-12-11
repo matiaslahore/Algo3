@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
@@ -28,9 +29,18 @@ public abstract class PartidaDeTruco implements OyenteJugador{
 	public void cargarJugadoresEnEquipoDos(List<String> nombreJugadores) {
 		this.equipoDos.cargarJugadores(nombreJugadores);
 	}
+	
+	private void agregarmeComoOyenteDeLosJugadores(ArrayList<Jugador> jugadores){
+		for (Jugador jugador : jugadores)
+            jugador.cargarOyente(this);
+	}
 
 	public void iniciar() {
-		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(), equipoDos.obtenerJugadores());
+		ArrayList<Jugador> jugadoresEquipoUno = equipoUno.obtenerJugadores();
+		ArrayList<Jugador> jugadoresEquipoDos = equipoDos.obtenerJugadores();
+		this.agregarmeComoOyenteDeLosJugadores(jugadoresEquipoUno);
+		this.agregarmeComoOyenteDeLosJugadores(jugadoresEquipoDos);
+		this.mesa.sentarJugadores(jugadoresEquipoUno, jugadoresEquipoDos);
 		this.mesa.iniciarRonda();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
@@ -131,20 +141,20 @@ public abstract class PartidaDeTruco implements OyenteJugador{
 	//pasar el mensaje a la parte visual
 	@Override
 	public void jugadorCantoTruco() {
-		//System.out.println("IA Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		this.eventosVista.seCantoTruco();
+		System.out.println("IA Canto Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		//this.eventosVista.seCantoTruco();
 	}
 	
 	@Override
 	public void jugadorQuiso() {
-		//System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		this.eventosVista.seQuiso();
+		System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		//this.eventosVista.seQuiso();
 	}
 	
 	@Override
 	public void jugadorNoQuiso() {
-		//System.out.println("IA no quiso el Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		this.eventosVista.noSeQuiso();
+		System.out.println("IA no quiso el Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
+		//this.eventosVista.noSeQuiso();
 	}
 	
 	@Override
