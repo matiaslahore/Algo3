@@ -5,18 +5,6 @@ import java.util.List;
 
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonContraFlorEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonEnvidoEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonFaltaEnvidoEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonFlorContraRestoEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonFlorEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonIrseAlMazoEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonNoQuererEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonQuererEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonReTrucoEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonRealEnvidoEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonTrucoEventHandler;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonValeCuatroEventHandler;
 import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.TirarCartaEvent;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -41,11 +29,11 @@ import javafx.stage.Stage;
 public class VentanasDelJuego extends Application{
 
 	private ImagenesCarta imagenesCarta;
-	private boolean conFlor;
+
 	private PartidaDeTruco partida;
 	private Stage stageJugadorConTurno;
 	private Stage stageCartasEnMesa;
-	private VBox botonesDelJugador;
+//	private VBox botonesDelJugador;
 	private Label etiqueta;
 	private int cantidadJugadores;
 	private ControladorDeBotones controladorDeBotones;
@@ -54,17 +42,16 @@ public class VentanasDelJuego extends Application{
 		this.partida = partida;
 		this.cantidadJugadores = cantidadJugadores;
 		this.imagenesCarta = new ImagenesCarta();
-		this.conFlor = conFlor;
+		this.controladorDeBotones = new ControladorDeBotones(partida,conFlor,this);
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		this.controladorDeBotones = new ControladorDeBotones(partida);
 		this.partida.iniciar();
 
 		this.stageJugadorConTurno = new Stage();
 		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
-		this.botonesDelJugador = botonesDelJugador(this.stageJugadorConTurno);
+		this.controladorDeBotones.agregarStage(this.stageJugadorConTurno);
 		modificarStageJugador();
 		this.stageJugadorConTurno.setX(0);
 		this.stageJugadorConTurno.show();
@@ -76,74 +63,7 @@ public class VentanasDelJuego extends Application{
 		this.stageCartasEnMesa.show();
 	}
 
-	private VBox botonesDelJugador(Stage stage) {
-		//etiqueta para mensajes
-		etiqueta = new Label();
-
-		//botones de opciones para el jugador actual.
-		Button botonEnvido = new Button("Envido");
-		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, this, etiqueta);
-		botonEnvido.setOnAction(botonEnvidoEventHandler);
-
-		Button botonRealEnvido = new Button("Real Envido");
-		BotonRealEnvidoEventHandler botonRealEnvidoEventHandler = new BotonRealEnvidoEventHandler(this.partida, this, etiqueta);
-		botonRealEnvido.setOnAction(botonRealEnvidoEventHandler);
-
-		Button botonFaltaEnvido = new Button("Falta Envido");
-		BotonFaltaEnvidoEventHandler botonFaltaEnvidoEventHandler = new BotonFaltaEnvidoEventHandler(this.partida, this, etiqueta);
-		botonFaltaEnvido.setOnAction(botonFaltaEnvidoEventHandler);
-
-		Button botonFlor = new Button("Flor");
-		BotonFlorEventHandler botonFlorEventHandler = new BotonFlorEventHandler(this.partida, this, etiqueta);
-		botonFlor.setOnAction(botonFlorEventHandler);
-
-		Button botonContraFlor = new Button("Contra Flor");
-		BotonContraFlorEventHandler botonContraFlorEventHandler = new BotonContraFlorEventHandler(this.partida, this, etiqueta);
-		botonContraFlor.setOnAction(botonContraFlorEventHandler);
-
-		Button botonFlorContraResto = new Button("Flor X Resto");
-		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, this, etiqueta);
-		botonFlorContraResto.setOnAction(botonFlorContraRestoEventHandler);
-
-		Button botonTruco = new Button("Truco");
-		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, this, etiqueta);
-		botonTruco.setOnAction(botonTrucoEventHandler);
-
-		Button botonReTruco = new Button("ReTruco");
-		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, this, etiqueta);
-		botonReTruco.setOnAction(botonReTrucoEventHandler);
-
-		Button botonValeCuatro = new Button("ValeCuatro");
-		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, this, etiqueta);
-		botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
-
-		Button botonQuerer = new Button("Querer");
-		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, this, etiqueta);
-		botonQuerer.setOnAction(botonQuererEventHandler);
-
-		Button botonNoQuerer = new Button("No Querer");
-		BotonNoQuererEventHandler botonNoQuererEventHandler = new BotonNoQuererEventHandler(this.partida, this, etiqueta);
-		botonNoQuerer.setOnAction(botonNoQuererEventHandler);
-
-		Button botonIrseAlMazo = new Button("Irse al Mazo");
-		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, this, etiqueta);
-		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
-
-		//contenedores de los botones
-		HBox contenedorEnvido = new HBox(30,botonEnvido,botonRealEnvido,botonFaltaEnvido);
-		HBox contenedorTruco = new HBox(30,botonTruco,botonReTruco,botonValeCuatro);
-		HBox contenedorOpcion = new HBox(30,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-		
-		if (this.conFlor)
-			contenedorEnvido.getChildren().addAll(botonFlor,botonContraFlor,botonFlorContraResto);
-
-		VBox contenedorBotones = new VBox(contenedorOpcion,contenedorEnvido, contenedorTruco, etiqueta);
-		contenedorBotones.setSpacing(8);
-		contenedorBotones.setPadding(new Insets(20));
-
-		return contenedorBotones;
-	}
-
+	
 	public Scene cargarSceneDelJugador() {
 		//imagen de fondo de la mesa
 		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -163,7 +83,7 @@ public class VentanasDelJuego extends Application{
 		Group escena = new Group();
 
 		escena.getChildren().add(imagen); //carga el fondo
-		escena.getChildren().add(this.botonesDelJugador); //agregue botones sin las cartas
+		escena.getChildren().add(this.controladorDeBotones.botonesDelJugador()); //agregue botones sin las cartas
 		escena.getChildren().add(nombre);
 		escena.getChildren().add(agregarCartasDelJugador());
 
