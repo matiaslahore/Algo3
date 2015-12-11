@@ -10,70 +10,65 @@ public class EventosJugador {
         listeners.add(toAdd);
     }
   
-    public void seCantoTruco() {
+    public void jugadorCantoTruco() {
         // Notify everybody that may be interested.
         for (OyenteJugador hl : listeners)
             hl.jugadorCantoTruco();
     }
 
-	public void seCantoReTruco(){
+	public void jugadorCantoReTruco(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoReTruco();
 	}
 	
-	public void seCantoValeCuatro(){
+	public void jugadorCantoValeCuatro(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoValeCuatro();
 	}
 	
-	public void seCantoEnvido(){
+	public void jugadorCantoEnvido(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoEnvido();
 	}
 	
-	public void seCantoRealEnvido(){
+	public void jugadorCantoRealEnvido(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoRealEnvido();
 	}
 	
-	public void seCantoFaltaEnvido(){
+	public void jugadorCantoFaltaEnvido(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoFaltaEnvido();
 	}
 	
-	public void seCantoFlor(){
+	public void jugadorCantoFlor(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoFlor();
 	}
 	
-	public void seCantoContraFlor(){
+	public void jugadorCantoContraFlor(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoContraFlor();
 	}
 	
-	public void seCantoContraFlorAJuego(){
+	public void jugadorCantoContraFlorAJuego(){
 		for (OyenteJugador hl : listeners)
             hl.jugadorCantoContraFlorAJuego();
 	}
 
-	public void seFueAlMazo() {
+	public void jugadorSeFueAlMazo() {
 		for (OyenteJugador hl : listeners)
             hl.jugadorSeFueAlMazo();
 	}    
 	
-	public void IACantoTruco(){
+	public void jugadorQuiso() {
 		for (OyenteJugador hl : listeners)
-            hl.jugadorCantoTruco();
-	}
-
-	public void IAQuisoTruco() {
-		for (OyenteJugador hl : listeners)
-            hl.jugadorNoQuisoTruco();
+            hl.jugadorQuiso();
 	}
 	
-	public void IANoQuisoTruco() {
+	public void jugadorNoQuiso() {
 		for (OyenteJugador hl : listeners)
-            hl.jugadorNoQuisoTruco();
+            hl.jugadorNoQuiso();
 	}
 
 }

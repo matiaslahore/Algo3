@@ -9,7 +9,6 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 	@Override
 	public void cantarFlor() {		
 		this.jugadorTurnoActual.cantarFlor();
-		this.eventosIA.seCantoFlor();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -23,7 +22,6 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 	@Override
 	public void cantarContraFlor() {
 		this.jugadorTurnoActual.cantarContraFlor();
-		this.eventosIA.seCantoContraFlor();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -37,7 +35,6 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 	@Override
 	public void cantarContraFlorAJuego() {
 		this.jugadorTurnoActual.cantarContraFlorAJuego();
-		this.eventosIA.seCantoContraFlorAJuego();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();

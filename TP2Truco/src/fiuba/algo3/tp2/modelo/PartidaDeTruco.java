@@ -136,15 +136,15 @@ public abstract class PartidaDeTruco implements OyenteJugador{
 	}
 	
 	@Override
-	public void jugadorQuisoTruco() {
+	public void jugadorQuiso() {
 		//System.out.println("IA quiso Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		this.eventosVista.seQuisoTruco();
+		this.eventosVista.seQuiso();
 	}
 	
 	@Override
-	public void jugadorNoQuisoTruco() {
+	public void jugadorNoQuiso() {
 		//System.out.println("IA no quiso el Truco" );//Por ahora muestro esto por pantalla, despues se lo paso a la visual
-		this.eventosVista.noSeQuisoTruco();
+		this.eventosVista.noSeQuiso();
 	}
 	
 	@Override

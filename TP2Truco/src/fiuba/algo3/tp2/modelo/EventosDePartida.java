@@ -29,13 +29,13 @@ public class EventosDePartida {
             hl.seCantoTruco();
     }
     
-    public void seQuisoTruco() {
+    public void seQuiso() {
         for (OyenteDePartida hl : listeners)
-            hl.seQuisoTruco();
+            hl.seQuiso();
     }
     
-    public void noSeQuisoTruco() {
+    public void noSeQuiso() {
         for (OyenteDePartida hl : listeners)
-            hl.noSeQuisoTruco();
+            hl.noSeQuiso();
     }
 }    

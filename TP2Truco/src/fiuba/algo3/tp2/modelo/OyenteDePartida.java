@@ -8,22 +8,22 @@ public interface OyenteDePartida {
 
 	public void seCantoTruco();
 
-	public void seQuisoTruco();
+	public void seQuiso();
 
-	public void noSeQuisoTruco();
+	public void noSeQuiso();
 
 	public void seCantoFlor();
 
-	void seCantoContraFlorAJuego();
+	public void seCantoContraFlorAJuego();
 
-	void seCantoContraFlor();
+	public void seCantoContraFlor();
 
-	void seCantoFaltaEnvido();
+	public void seCantoFaltaEnvido();
 
-	void seCantoEnvido();
+	public void seCantoEnvido();
 
-	void seCantoValeCuatro();
+	public void seCantoValeCuatro();
 
-	void seCantoReTruco();
+	public void seCantoReTruco();
 	
 }

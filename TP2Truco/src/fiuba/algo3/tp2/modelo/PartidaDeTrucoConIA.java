@@ -8,13 +8,10 @@ import fiuba.algo3.tp2.modeloJugador.EventosJugador;
 import fiuba.algo3.tp2.modeloJugador.OyenteJugador;
 
 public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
-	EventosJugador eventosIA;
 	
 	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
 		super(nombreEquipoIA,nombreEquipo2);
-		this.equipoUno.cargarJugadorIA(this);
-		this.eventosIA = new EventosJugador();
-		this.eventosIA.addListener((OyenteJugador) equipoUno.obtenerJugadores().get(0));
+		this.equipoUno.cargarJugadorIA();
 	}
 	
 	public void iniciar() {
@@ -38,7 +35,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
-		this.eventosIA.seCantoTruco();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -51,7 +47,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarQuieroReTruco() {
 		this.jugadorTurnoActual.cantarQuieroReTruco();
-		this.eventosIA.seCantoReTruco();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
@@ -63,7 +58,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarQuieroValeCuatro() {
 		this.jugadorTurnoActual.cantarQuieroValeCuatro();
-		this.eventosIA.seCantoValeCuatro();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
@@ -74,7 +68,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void cantarEnvido() {
 		this.jugadorTurnoActual.cantarEnvido();
-		this.eventosIA.seCantoEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -87,7 +80,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void cantarRealEnvido() {
 		this.jugadorTurnoActual.cantarRealEnvido();
-		this.eventosIA.seCantoRealEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -99,7 +91,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void cantarFaltaEnvido() {
 		this.jugadorTurnoActual.cantarFaltaEnvido();
-		this.eventosIA.seCantoFaltaEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -127,7 +118,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void irseAlMazo(){
 		this.jugadorTurnoActual.irseAlMazo();
-		this.eventosIA.seFueAlMazo();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
 			this.jugadorTurnoActual.hacerJugarIA();

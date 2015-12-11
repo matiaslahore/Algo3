@@ -24,8 +24,8 @@ public interface OyenteJugador {
 	
 	public void jugadorSeFueAlMazo();
 
-	void jugadorQuisoTruco();
+	public void jugadorQuiso();
 
-	void jugadorNoQuisoTruco();
+	public void jugadorNoQuiso();
 
 }

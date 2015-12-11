@@ -15,14 +15,11 @@ import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 
 public class IA extends Jugador implements OyenteDePartida{
-	EventosJugador eventos;
 	EstadoIA estadoIA;
 	
-	public IA(String name, Mesa mesa, Equipo team, PartidaDeTrucoConIA partida) {
+	public IA(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
 		estadoIA = new EstadoIARondaUnoInteligente();
-		this.eventos = new EventosJugador();
-		this.eventos.addListener(partida);
 	}
 	
 	public void hacerJugarIA(){
@@ -188,9 +185,9 @@ public class IA extends Jugador implements OyenteDePartida{
 	public void seCantoEnvidoEnvido() {}
 
 	@Override
-	public void seQuisoTruco() {}
+	public void seQuiso() {}
 
 	@Override
-	public void noSeQuisoTruco() {}
+	public void noSeQuiso() {}
 
 }

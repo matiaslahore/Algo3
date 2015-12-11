@@ -7,16 +7,16 @@ import fiuba.algo3.tp2.excepciones.CartaInexistenteEnManoDeJugadorExeption;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mano;
 import fiuba.algo3.tp2.modelo.Mesa;
-import fiuba.algo3.tp2.modeloDeCartas.*;
+import fiuba.algo3.tp2.modeloDeCartas.Carta;
 
 public abstract class Jugador {
-
 	String nombre;
 	Equipo equipo;
 	Mano manoDelJugador;
 	Mesa refMesa;
 	int envido;
 	boolean tieneFlor;
+	EventosJugador eventosJugador;
 
 	public Jugador(String name, Mesa mesa, Equipo team){
 		nombre = name;
@@ -24,6 +24,11 @@ public abstract class Jugador {
 		equipo = team;
 		envido = 0;
 		tieneFlor = false;
+		this.eventosJugador = new EventosJugador();
+	}
+	
+	public void cargarOyente(OyenteJugador oyente){
+		this.eventosJugador.addListener(oyente);
 	}
 	
 	public void recibirCartas(List<Carta> listaDeCartas){
@@ -71,54 +76,70 @@ public abstract class Jugador {
 		return this.envido;
 	}
 	
+	//Inicio de Metodos de cantos
+	
 	public void cantarTruco (){
 		this.refMesa.cantarTruco(this);
+		this.eventosJugador.jugadorCantoTruco();
 	}
 	
 	public void cantarQuieroReTruco() {
 		this.refMesa.cantarQuieroReTruco(this);
+		this.eventosJugador.jugadorCantoReTruco();
 	}
 	
 	public void cantarQuieroValeCuatro() {
 		this.refMesa.cantarQuieroValeCuatro(this);
+		this.eventosJugador.jugadorCantoValeCuatro();
 	}
 	
 	public void cantarEnvido() throws CantoInvalidoException{
 		this.refMesa.cantarEnvido(this);
+		this.eventosJugador.jugadorCantoEnvido();
 	}
 	
 	public void cantarRealEnvido () throws CantoInvalidoException{
 		this.refMesa.cantarRealEnvido(this);
+		this.eventosJugador.jugadorCantoRealEnvido();
 	}
 	
 	public void cantarFaltaEnvido() throws CantoInvalidoException{
 		this.refMesa.cantarFaltaEnvido(this);
+		this.eventosJugador.jugadorCantoFaltaEnvido();
 	}
 	
 	public void cantarFlor() {
 		this.refMesa.cantarFlor(this);
+		this.eventosJugador.jugadorCantoFlor();
 	}
 	
 	public void cantarContraFlor() {
 		this.refMesa.cantarContraFlor(this);
+		this.eventosJugador.jugadorCantoContraFlor();
 	}
 	
 	public void cantarContraFlorAJuego() {
 		this.refMesa.cantarContraFlorAJuego(this);
+		this.eventosJugador.jugadorCantoContraFlorAJuego();
 	}
 	
 	public void quiero(){
 		this.refMesa.quiero(this);
+		this.eventosJugador.jugadorQuiso();
 	}
 
 	public void noQuiero(){
 		this.refMesa.noQuiero(this);
+		this.eventosJugador.jugadorNoQuiso();
 	}
 
 	public void irseAlMazo(){
 		this.refMesa.irseAlMazo(this);
+		this.eventosJugador.jugadorSeFueAlMazo();
 	}
 
+	//Fin de Metodos de cantos
+	
 	public boolean tieneFlor() {
 		return this.tieneFlor;
 	}
@@ -126,5 +147,6 @@ public abstract class Jugador {
 	public void mostrarCartas() {
 		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
 	}
+	
 	public abstract void hacerJugarIA();
 }
