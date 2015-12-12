@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.modelo.OyenteDePartida;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
 import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonContraFlorEventHandler;
 import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonEnvidoEventHandler;
@@ -21,7 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ControladorDeBotones implements OyenteDePartida {
+public class ControladorDeBotones {
 	
 	private boolean conFlor;
 	private Stage stage;
@@ -30,78 +29,11 @@ public class ControladorDeBotones implements OyenteDePartida {
 	VentanasDelJuego ventanaDelJuego;
 	
 	public ControladorDeBotones(PartidaDeTruco partida, boolean conFlor,VentanasDelJuego ventana){
-		partida.agregarOyentesALaPartida(this);
 		this.partida = partida;
 		this.conFlor = conFlor;
 		this.ventanaDelJuego = ventana;
 	}
 
-	@Override
-	public void seCantoTruco() {
-		System.out.println("se Canto Truco");
-	}
-
-	@Override
-	public void seQuiso() {
-		System.out.println("se Quiso ");
-	}
-
-	@Override
-	public void noSeQuiso() {
-		System.out.println("No se Quiso ");
-	}
-
-	@Override
-	public void seCantoFlor() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void seCantoContraFlorAJuego() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void seCantoContraFlor() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void seCantoFaltaEnvido() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void seCantoEnvido() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void seCantoValeCuatro() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void seCantoReTruco() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void seCantoEnvidoEnvido() {
-		//Aca vas a crear una neuva visual con todos los botones menos el de envido
-	}
-
-	@Override
-	public void seCantoRealEnvido() {
-		//lo mismo pero aca vas a crear todos menos los de envido y real envido
-	}
 	
 	public VBox botonesDelJugador() {
 		//etiqueta para mensajes
