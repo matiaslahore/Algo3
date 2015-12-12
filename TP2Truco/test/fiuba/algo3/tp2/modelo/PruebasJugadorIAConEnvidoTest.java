@@ -362,4 +362,35 @@ public class PruebasJugadorIAConEnvidoTest {
 		
 		Assert.assertEquals(2, mesa.puntosEquipo(equipoUno));
 	}
+	
+	@Test
+	public void pruebaHumanoCantaTrucoIAAcepta(){
+		
+		Carta anchoDeBasto = new AnchoDeBasto();
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(anchoDeBasto , anchoDeOro, cincoDeCopa));
+
+		Carta sieteDeEspada = new SieteDeEspada();
+		Carta cincoDeEspada = new Cinco(new Espada());
+		List<Carta> otrasCartasHumano =  new ArrayList<Carta>(Arrays.asList(sieteDeEspada , cincoDeEspada, reyDeBasto));
+		
+		//RONDA 1
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //IA
+		Assert.assertEquals("Jarvis", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasIA);
+		jugadorConTurno.hacerJugarIA();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno(); //HUMANO
+		Assert.assertEquals("Pepito", jugadorConTurno.obtenerNombre());
+		jugadorConTurno.recibirCartas(otrasCartasHumano);
+		jugadorConTurno.cantarTruco();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno();
+		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronTruco());
+		jugadorConTurno.hacerJugarIA();
+		
+		mesa.siguienteJugadorConTurno();
+		
+		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
+	}
+	
 }
