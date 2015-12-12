@@ -15,6 +15,8 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	}
 	
 	public void iniciar() {
+		//Pone a la ia como oyente de jugador
+		this.equipoDos.obtenerJugadores().get(0).cargarOyente((OyenteJugador)this.equipoUno.obtenerJugadores().get(0));
 		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(), equipoDos.obtenerJugadores());
 		this.mesa.iniciarRonda();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();

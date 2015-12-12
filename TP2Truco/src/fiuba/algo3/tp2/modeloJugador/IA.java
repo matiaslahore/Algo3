@@ -3,8 +3,6 @@ package fiuba.algo3.tp2.modeloJugador;
 import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
-import fiuba.algo3.tp2.modelo.OyenteDePartida;
-import fiuba.algo3.tp2.modelo.PartidaDeTrucoConIA;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloDeCartas.Copa;
@@ -14,7 +12,7 @@ import fiuba.algo3.tp2.modeloDeCartas.Sota;
 import fiuba.algo3.tp2.modeloDeCartas.Tres;
 
 
-public class IA extends Jugador{
+public class IA extends Jugador implements OyenteJugador{
 	EstadoIA estadoIA;
 	
 	public IA(String name, Mesa mesa, Equipo team) {
@@ -134,60 +132,59 @@ public class IA extends Jugador{
 		return this.refMesa.terminoLaMano();
 	}
 
-	/*
+	
 	@Override
-	public void seCantoTruco() {
+	public void jugadorCantoTruco() {
 		this.setearEstado(new EstadoIACantaronTruco());
 	}
 
 	@Override
-	public void seCantoReTruco() {
+	public void jugadorCantoReTruco() {
 		this.setearEstado(new EstadoIACantaronReTruco());
 	}
 
 	@Override
-	public void seCantoValeCuatro() {
+	public void jugadorCantoValeCuatro() {
 		this.setearEstado(new EstadoIACantaronValeCuatro());
 	}
 
 	@Override
-	public void seCantoEnvido() {
+	public void jugadorCantoEnvido() {
 		this.setearEstado(new EstadoIACantaronEnvido());
 	}
 
 	@Override
-	public void seCantoRealEnvido() {
+	public void jugadorCantoRealEnvido() {
 		this.setearEstado(new EstadoIACantaronRealEnvido());
 	}
 
 	@Override
-	public void seCantoFaltaEnvido() {
+	public void jugadorCantoFaltaEnvido() {
 		this.setearEstado(new EstadoIACantaronFaltaEnvido());
 	}
 	
 	@Override
-	public void seCantoFlor() {
+	public void jugadorCantoFlor() {
 		this.setearEstado(new EstadoIACantaronFlor());
 	}
 
 	@Override
-	public void seCantoContraFlor() {
+	public void jugadorCantoContraFlor() {
 		this.setearEstado(new EstadoIACantaronContraFlor());
 	}
 
 	@Override
-	public void seCantoContraFlorAJuego() {
+	public void jugadorCantoContraFlorAJuego() {
 		this.setearEstado(new EstadoIACantaronContraFlorAJuego());
 	}
+
+	@Override
+	public void jugadorSeFueAlMazo() {}
+
+	@Override
+	public void jugadorQuiso() {}
+
+	@Override
+	public void jugadorNoQuiso() {}
 	
-	//Meodos vacios pero tienen que estar para usar el oyentePartida
-	@Override
-	public void seCantoEnvidoEnvido() {}
-
-	@Override
-	public void seQuiso() {}
-
-	@Override
-	public void noSeQuiso() {}
-	*/
 }

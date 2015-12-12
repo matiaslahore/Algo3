@@ -18,7 +18,7 @@ public abstract class Jugador {
 	boolean tieneFlor;
 	EventosJugador eventosJugador;
 
-	public Jugador(String name, Mesa mesa, Equipo team){
+	public Jugador(String name, Mesa mesa, Equipo team){	
 		nombre = name;
 		refMesa = mesa;
 		equipo = team;
