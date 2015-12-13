@@ -5,7 +5,7 @@ import java.util.List;
 
 import fiuba.algo3.tp2.modeloJugador.Oyente;
 
-class EventosIA {
+class EventosJugador {
     private List<Oyente> listeners = new ArrayList<Oyente>();
 
     public void addListener(Oyente toAdd) {

@@ -14,10 +14,16 @@ import fiuba.algo3.tp2.modeloDeCartas.Tres;
 public class IA extends Jugador implements Oyente{
 
 	EstadoIA estadoIA;
+	EventosIA eventosIA;
 	
 	public IA(String name, Mesa mesa, Equipo team) {
 		super(name, mesa, team);
 		estadoIA = new EstadoIARondaUnoInteligente();
+		this.eventosIA = new EventosIA();
+	}
+	
+	public void agregarOyentesAEventosIA(OyenteIA oyente){
+		this.eventosIA.addListener(oyente);
 	}
 	
 	public void hacerJugarIA(){

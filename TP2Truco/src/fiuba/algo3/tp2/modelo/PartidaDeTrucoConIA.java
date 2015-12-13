@@ -2,18 +2,34 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.List;
 
-import fiuba.algo3.tp2.cantosPosibles.*;
+import fiuba.algo3.tp2.cantosPosibles.CantaronEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CantaronFaltaEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CantaronReTruco;
+import fiuba.algo3.tp2.cantosPosibles.CantaronRealEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CantaronTruco;
+import fiuba.algo3.tp2.cantosPosibles.CantaronValeCuatro;
+import fiuba.algo3.tp2.cantosPosibles.CanteEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CanteFaltaEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CanteReTruco;
+import fiuba.algo3.tp2.cantosPosibles.CanteRealEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CanteTruco;
+import fiuba.algo3.tp2.cantosPosibles.CanteValeCuatro;
+import fiuba.algo3.tp2.cantosPosibles.CantosIniciales;
 import fiuba.algo3.tp2.excepciones.EquipoIANoPuedeCargarJugadores;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
+import fiuba.algo3.tp2.modeloJugador.IA;
 import fiuba.algo3.tp2.modeloJugador.Oyente;
+import fiuba.algo3.tp2.modeloJugador.OyenteIA;
 
-public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
-	EventosIA eventosIA;
+public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements OyenteIA{
+	EventosJugador eventosIA;
 	
 	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
 		super(nombreEquipoIA,nombreEquipo2);
 		this.equipoUno.cargarJugadorIA();
-		this.eventosIA = new EventosIA();
+		IA ia = (IA)this.equipoUno.obtenerJugadores().get(0);
+		ia.agregarOyentesAEventosIA((OyenteIA)this);
+		this.eventosIA = new EventosJugador();
 		this.eventosIA.addListener((Oyente) equipoUno.obtenerJugadores().get(0));
 	}
 	
@@ -172,28 +188,33 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public abstract void cantarContraFlorAJuego();
 
-	
-	/////////////////////////////////////////////
+	//Mensajes de la IA a la partidadeTrucoCOnIA
+	@Override
 	public void meCantaronEnvido(){
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvido());
 	}
 	
+	@Override
 	public void meCantaronRealEnvido(){
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronRealEnvido());
 	}
 	
+	@Override
 	public void meCantaronFaltaEnvido(){
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFaltaEnvido());
 	}
 	
+	@Override
 	public void meCantaronTruco(){
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronTruco());
 	}
 	
+	@Override
 	public void meCantaronReTruco(){
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronReTruco());
 	}
 
+	@Override
 	public void meCantaronValeCuatro(){
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronValeCuatro());
 	}
