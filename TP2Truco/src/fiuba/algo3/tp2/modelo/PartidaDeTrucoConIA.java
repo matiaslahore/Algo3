@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.List;
 
+import fiuba.algo3.tp2.cantosPosibles.*;
 import fiuba.algo3.tp2.excepciones.EquipoIANoPuedeCargarJugadores;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Oyente;
@@ -37,6 +38,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteTruco());
 		this.eventosIA.seCantoTruco();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
@@ -50,6 +52,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarQuieroReTruco() {
 		this.jugadorTurnoActual.cantarQuieroReTruco();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteReTruco());
 		this.eventosIA.seCantoReTruco();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
@@ -62,6 +65,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public void cantarQuieroValeCuatro() {
 		this.jugadorTurnoActual.cantarQuieroValeCuatro();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteValeCuatro());
 		this.eventosIA.seCantoValeCuatro();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
@@ -73,6 +77,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void cantarEnvido() {
 		this.jugadorTurnoActual.cantarEnvido();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteEnvido());
 		this.eventosIA.seCantoEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
@@ -86,6 +91,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void cantarRealEnvido() {
 		this.jugadorTurnoActual.cantarRealEnvido();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteRealEnvido());
 		this.eventosIA.seCantoRealEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
@@ -98,6 +104,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void cantarFaltaEnvido() {
 		this.jugadorTurnoActual.cantarFaltaEnvido();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteFaltaEnvido());
 		this.eventosIA.seCantoFaltaEnvido();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.jugadorTurnoActual.hacerJugarIA();
@@ -126,6 +133,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	
 	public void irseAlMazo(){
 		this.jugadorTurnoActual.irseAlMazo();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantosIniciales());
 		this.eventosIA.seFueAlMazo();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
@@ -164,4 +172,30 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco {
 	@Override
 	public abstract void cantarContraFlorAJuego();
 
+	
+	/////////////////////////////////////////////
+	public void meCantaronEnvido(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvido());
+	}
+	
+	public void meCantaronRealEnvido(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronRealEnvido());
+	}
+	
+	public void meCantaronFaltaEnvido(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFaltaEnvido());
+	}
+	
+	public void meCantaronTruco(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronTruco());
+	}
+	
+	public void meCantaronReTruco(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronReTruco());
+	}
+
+	public void meCantaronValeCuatro(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronValeCuatro());
+	}
+	
 }
