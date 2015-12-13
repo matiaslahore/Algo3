@@ -156,8 +156,7 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public boolean quererFaltaEnvidoIA(){
-		return true;
-		//return(this.envido >= 31);
+		return(this.envido >= 31);
 	}
 	
 	//Inteligencia cantos Flor
