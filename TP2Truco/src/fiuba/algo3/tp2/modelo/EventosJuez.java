@@ -10,6 +10,11 @@ public class EventosJuez {
 	        listeners.add(toAdd);
 	    }
 	  
+	    public void cantoEnvidoEnvido() {
+	        for (OyenteJuez hl : listeners)
+	            hl.jugadorCantoEnvidoEnvido();
+	    }
+	    
 	    public void quisoTruco() {
 	        // Notify everybody that may be interested.
 	        for (OyenteJuez hl : listeners)

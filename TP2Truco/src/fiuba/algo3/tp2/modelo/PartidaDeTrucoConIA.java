@@ -2,6 +2,8 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.List;
 
+import fiuba.algo3.tp2.cantosPosibles.CantaronContraFlor;
+import fiuba.algo3.tp2.cantosPosibles.CantaronContraFlorxResto;
 import fiuba.algo3.tp2.cantosPosibles.CantaronEnvido;
 import fiuba.algo3.tp2.cantosPosibles.CantaronFaltaEnvido;
 import fiuba.algo3.tp2.cantosPosibles.CantaronFlor;
@@ -232,7 +234,7 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 
 	@Override
 	public void meCantaronContraFlorAJuego(){
-		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFlorAJuego());
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronContraFlorxResto());
 	}
 	
 }

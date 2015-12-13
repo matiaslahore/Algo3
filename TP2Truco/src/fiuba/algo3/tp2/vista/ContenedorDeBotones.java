@@ -94,7 +94,7 @@ public class ContenedorDeBotones {
 	public VBox botonesParaJugadorActual() {
 		CantosPosiblesEntreEquipos cantos = this.partida.cantosEquipoActual();
 
-		System.out.println(cantos);
+		System.out.println("Canto: " + cantos);
 		
 		if (cantos.getClass().equals(CantosIniciales.class)) {
 			return botonesParaCantosIniciales();
@@ -107,6 +107,21 @@ public class ContenedorDeBotones {
 		}
 		if (cantos.getClass().equals(CanteFlor.class)) {
 			return botonesParaCanteFlor();
+		}
+		if (cantos.getClass().equals(CanteContraFlor.class)) {
+			return botonesParaCanteContraFlor();
+		}
+		if (cantos.getClass().equals(CanteContraFlorxResto.class)) {
+			return botonesParaCanteContraFlorxResto();
+		}
+		if (cantos.getClass().equals(CantaronFlor.class)) {
+			return botonesParaCantaronFlor();
+		}
+		if (cantos.getClass().equals(CantaronContraFlor.class)) {
+			return botonesParaCantaronContraFlor();
+		}
+		if (cantos.getClass().equals(CantaronContraFlorxResto.class)) {
+			return botonesParaCantaronContraFlorxResto();
 		}
 		if (cantos.getClass().equals(CanteTruco.class)) {
 			return botonesParaCanteTruco();
@@ -146,9 +161,6 @@ public class ContenedorDeBotones {
 		}
 		if (cantos.getClass().equals(QuiseValeCuatro.class)) {
 			return botonesParaQuiseValeCuatro();
-		}
-		if (cantos.getClass().equals(QuiseEnvido.class)) {
-			return botonesParaQuiseEnvido();
 		}
 		return null;
 
@@ -323,6 +335,49 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaQuiseEnvido(){
+		return botonesParaRondaSinEnvido();
+	}
+	
+	private VBox botonesParaCantaronContraFlorxResto() {
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+
+		contenedorOpcion.setPadding(new Insets(padding));
+		contenedorEnvido.setPadding(new Insets(padding));
+
+		VBox botonesRealEnvido = new VBox(contenedorOpcion);
+
+		return botonesRealEnvido;
+	}
+
+	private VBox botonesParaCantaronContraFlor() {
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorEnvido = new HBox(spacing,botonFlorContraResto);
+
+		contenedorOpcion.setPadding(new Insets(padding));
+		contenedorEnvido.setPadding(new Insets(padding));
+
+		VBox botones = new VBox(contenedorOpcion,contenedorEnvido);
+
+		return botones;
+	}
+
+	private VBox botonesParaCantaronFlor() {
+		this.contenedorOpcion = new HBox(spacing,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorEnvido = new HBox(spacing,botonFlor,botonContraFlor,botonFlorContraResto);
+
+		contenedorOpcion.setPadding(new Insets(padding));
+		contenedorEnvido.setPadding(new Insets(padding));
+
+		VBox botones = new VBox(contenedorOpcion,contenedorEnvido);
+
+		return botones;
+	}
+
+	private VBox botonesParaCanteContraFlorxResto() {
+		return botonesParaRondaSinEnvido();
+	}
+
+	private VBox botonesParaCanteContraFlor() {
 		return botonesParaRondaSinEnvido();
 	}
 

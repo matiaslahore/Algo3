@@ -14,4 +14,6 @@ public interface OyenteJuez {
 	
 	public void seTerminoRondaUno();
 
+	public void jugadorCantoEnvidoEnvido();
+
 }

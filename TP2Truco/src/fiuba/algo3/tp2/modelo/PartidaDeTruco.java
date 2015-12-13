@@ -3,26 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-import fiuba.algo3.tp2.cantosPosibles.CantaronEnvido;
-import fiuba.algo3.tp2.cantosPosibles.CantaronFaltaEnvido;
-import fiuba.algo3.tp2.cantosPosibles.CantaronReTruco;
-import fiuba.algo3.tp2.cantosPosibles.CantaronRealEnvido;
-import fiuba.algo3.tp2.cantosPosibles.CantaronTruco;
-import fiuba.algo3.tp2.cantosPosibles.CantaronValeCuatro;
-import fiuba.algo3.tp2.cantosPosibles.CanteEnvido;
-import fiuba.algo3.tp2.cantosPosibles.CanteFaltaEnvido;
-import fiuba.algo3.tp2.cantosPosibles.CanteReTruco;
-import fiuba.algo3.tp2.cantosPosibles.CanteRealEnvido;
-import fiuba.algo3.tp2.cantosPosibles.CanteTruco;
-import fiuba.algo3.tp2.cantosPosibles.CanteValeCuatro;
-import fiuba.algo3.tp2.cantosPosibles.CantosDisponibles;
-import fiuba.algo3.tp2.cantosPosibles.CantosIniciales;
-import fiuba.algo3.tp2.cantosPosibles.CantosPosiblesEntreEquipos;
-import fiuba.algo3.tp2.cantosPosibles.QuiseEnvido;
-import fiuba.algo3.tp2.cantosPosibles.QuiseReTruco;
-import fiuba.algo3.tp2.cantosPosibles.QuiseTruco;
-import fiuba.algo3.tp2.cantosPosibles.QuiseValeCuatro;
-import fiuba.algo3.tp2.cantosPosibles.RondaSinEnvido;
+import fiuba.algo3.tp2.cantosPosibles.*;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
@@ -32,7 +13,7 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	Equipo equipoDos;
 	Mesa mesa;
 	Jugador jugadorTurnoActual;
-	
+
 	public PartidaDeTruco(String nombreEq1, String nombreEq2){
 		this.mesa = new Mesa();
 		this.equipoUno = new Equipo(nombreEq1, mesa);
@@ -43,11 +24,11 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		//this.cantosDisponibles.modificarCantos(equipoDos, new CantosIniciales());
 		this.mesa.agregarOyentesAlJuez((OyenteJuez)this);
 	}
-	
+
 	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
 		this.equipoUno.cargarJugadores(nombreJugadores);
 	}
-	
+
 	public void cargarJugadoresEnEquipoDos(List<String> nombreJugadores) {
 		this.equipoDos.cargarJugadores(nombreJugadores);
 	}
@@ -59,32 +40,32 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		this.mesa.iniciarRonda();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
-	
+
 	public int obtenerPuntajeDeEquipoUno() {
 		return this.mesa.puntosEquipo(equipoUno);
 	}
-	
+
 	public int obtenerPuntajeDeEquipoDos() {
 		return this.mesa.puntosEquipo(equipoDos);
 	}
-	
+
 	public String obtenerNombreDeEquipoUno() {
 		return this.equipoUno.obtenerNombre();
 	}
-	
+
 	public String obtenerNombreDeEquipoDos() {
 		return this.equipoDos.obtenerNombre();
 	}
-	
+
 	public List<Carta> obtenerCartasDelJugadorConTurno() {
 		return this.jugadorTurnoActual.obtenerCartasDelJugador();
 	}
-	
+
 	public void jugarCarta(Carta carta) {
 		this.jugadorTurnoActual.jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
-	
+
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteTruco());
@@ -133,7 +114,7 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantosIniciales());
 	}
-	
+
 	public void quiero(){
 		this.jugadorTurnoActual.quiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -143,11 +124,11 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		this.jugadorTurnoActual.noQuiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
-	
+
 	public abstract void cantarFlor();
-	
+
 	public abstract void cantarContraFlor();
-	
+
 	public abstract void cantarContraFlorAJuego();
 
 	public List<Carta> cartasEnJuego() {
@@ -157,7 +138,7 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	public String obtenerNombreDelJugadorConTurno() {
 		return this.jugadorTurnoActual.obtenerNombre();
 	}
-	
+
 	public void cartearseParaHacerLosTest(Jugador unJugador, List<Carta> cartasParaJugador){
 		unJugador.recibirCartas(cartasParaJugador);
 	}
@@ -165,42 +146,44 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	public CantosPosiblesEntreEquipos cantosEquipoActual(){
 		return this.cantosDisponibles.cantosPosibles(this.jugadorTurnoActual.obtenerEquipo());
 	}
-	
+
 	//LA PARTIDA ESCUCHA A JUEZ
-	
+	@Override
+	public void jugadorCantoEnvidoEnvido(){
+		if (this.jugadorTurnoActual.obtenerEquipo().equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvidoEnvido());		
+		}else{
+			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronEnvidoEnvido());		
+		}
+	}
+
 	@Override
 	public void jugadorQuisoTruco(){
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseTruco());
 	}
-	
+
 	@Override
 	public void jugadorQuisoReTruco(){
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseReTruco());
 	}
-	
+
 	@Override
 	public void jugadorQuisoValeCuatro(){
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseValeCuatro());
 	}
 
-	//la partida escucha de la rondaEnvido
-	//Ya es llamado desde juez
 	@Override
 	public void jugadorQuisoEnvido(){
 		this.cantosDisponibles.modificarCantos(equipoUno, new RondaSinEnvido());
 		this.cantosDisponibles.modificarCantos(equipoDos, new RondaSinEnvido());
 	}
 
-	//la partida escucha de RondaUno
-	//en este metodo el constructor de RondaUno puede mandar el evento
-	//Ya se llama desde juez
 	@Override
 	public void seComenzoRondaUno(){
 		this.cantosDisponibles.modificarCantos(equipoUno, new CantosIniciales());
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantosIniciales());
 	}
-	
-	//en este metodo, siguienteRonda de RondaUno puede mandar el evento, x ejemplo al principio del metodo siguienteRonda
+
 	@Override
 	public void seTerminoRondaUno(){
 		System.out.println("termino ronda uno");
@@ -210,5 +193,5 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		}
 		//este if es xq si no se canto nada, tengo q sacarle los envidos..
 	}
-		
+
 }
