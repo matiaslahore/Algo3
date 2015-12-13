@@ -195,14 +195,15 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	//Ya se llama desde juez
 	@Override
 	public void seComenzoRondaUno(){
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseEnvido());		
+		this.cantosDisponibles.modificarCantos(equipoUno, new CantosIniciales());
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantosIniciales());
 	}
 	
 	//en este metodo, siguienteRonda de RondaUno puede mandar el evento, x ejemplo al principio del metodo siguienteRonda
 	@Override
 	public void seTerminoRondaUno(){
 		System.out.println("termino ronda uno");
-		if (!this.cantosDisponibles.cantosPosibles(equipoUno).getClass().equals(CantosIniciales.class)){
+		if (this.cantosDisponibles.cantosPosibles(equipoUno).getClass().equals(CantosIniciales.class)){
 			this.cantosDisponibles.modificarCantos(equipoUno, new RondaSinEnvido());
 			this.cantosDisponibles.modificarCantos(equipoDos, new RondaSinEnvido());
 		}
