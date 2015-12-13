@@ -166,9 +166,8 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		return this.cantosDisponibles.cantosPosibles(this.jugadorTurnoActual.obtenerEquipo());
 	}
 	
+	//LA PARTIDA ESCUCHA A JUEZ
 	
-	
-	//la partida escucha de la rondaTruco
 	@Override
 	public void jugadorQuisoTruco(){
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseTruco());
@@ -185,6 +184,7 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	}
 
 	//la partida escucha de la rondaEnvido
+	//Ya es llamado desde juez
 	@Override
 	public void jugadorQuisoEnvido(){
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseEnvido());	
@@ -192,6 +192,7 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 
 	//la partida escucha de RondaUno
 	//en este metodo el constructor de RondaUno puede mandar el evento
+	//Ya se llama desde juez
 	@Override
 	public void seComenzoRondaUno(){
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseEnvido());		

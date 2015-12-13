@@ -239,7 +239,7 @@ public class Juez {
 		this.cantosEnvido = new EstadoEnvidoFinalizado();
 		this.tanteadorDeLaPartida.anotarPuntos(equipoGanador, puntosEnJuego);
 		this.puntosEnJuego = 1;
-		this.eventosJuez.quisoEnvido();
+		this.eventosJuez.quisoEnvido(); //se le mande un mensaje a partida de q quiso el envido
 	}
 
 }
