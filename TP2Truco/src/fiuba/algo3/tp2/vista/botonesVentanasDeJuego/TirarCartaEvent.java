@@ -29,7 +29,6 @@ public class TirarCartaEvent<MouseEvent> implements javafx.event.EventHandler {
 	public void handle(Event evento) {
 		try{
 			this.partida.jugarCarta(this.carta);
-            this.etiqueta.setText("");
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 			
