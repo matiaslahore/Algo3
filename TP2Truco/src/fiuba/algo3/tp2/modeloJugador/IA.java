@@ -1,5 +1,5 @@
 package fiuba.algo3.tp2.modeloJugador;
-import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
+import fiuba.algo3.tp2.excepciones.JugadorYaNoTieneMasCartasException;
 import fiuba.algo3.tp2.modelo.Equipo;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
@@ -103,7 +103,7 @@ public class IA extends Jugador implements Oyente{
 		try{
 			//Acepta si tiene mas que un Dos
 			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Dos(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
-		}catch(JugadorNoTieneMasCartasParaJugarException e){
+		}catch(JugadorYaNoTieneMasCartasException e){
 			//si la ultima carta que jugo IA es mas que un diez acepta el truco sino no
 			return !(new Sota(new Copa()).equals((new Sota(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
 		}
@@ -113,7 +113,7 @@ public class IA extends Jugador implements Oyente{
 		try{
 			//Acepta si tiene mas que un Tres
 			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
-		}catch(JugadorNoTieneMasCartasParaJugarException e){
+		}catch(JugadorYaNoTieneMasCartasException e){
 			//si la ultima carta que jugo IA es mas que un Rey acepta el truco sino no
 			return !(new Rey(new Copa()).equals((new Rey(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
 		}
@@ -123,7 +123,7 @@ public class IA extends Jugador implements Oyente{
 		try{
 			//Acepta si tiene mas que un Tres
 			return (this.obtenerCartaMasAltaParaTruco().getClass() == (new Tres(new Copa()).vs(this.obtenerCartaMasAltaParaTruco())).getClass());
-		}catch(JugadorNoTieneMasCartasParaJugarException e){
+		}catch(JugadorYaNoTieneMasCartasException e){
 			//si la ultima carta que jugo IA es mas que un AnchoFalso acepta el truco sino no
 			return !(new AnchoFalso(new Copa()).equals((new AnchoFalso(new Copa()).vs(this.refMesa.obtenerUltimaCartaJugada()))));
 		}	}

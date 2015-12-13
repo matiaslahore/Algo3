@@ -48,6 +48,5 @@ public class PruebasFuncionEqualsDeCarta {
 		listaDeCartas.add(anchoDeCopa);
 		
 		Assert.assertTrue(listaDeCartas.contains(new Dos(new Copa())));
-		
 	}
 }

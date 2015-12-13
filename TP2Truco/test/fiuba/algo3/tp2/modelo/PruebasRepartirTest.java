@@ -26,7 +26,6 @@ public class PruebasRepartirTest {
 		
 		ArrayList<Jugador> jugadores = equipo.obtenerJugadores();
 
-		//podria ser un metodo equipo.recibirCartas()
 		jugadores.get(0).recibirCartas(Arrays.asList(new SieteDeOro(), new Seis(new Oro()), new SieteFalso(new Copa())));
 		jugadores.get(1).recibirCartas(Arrays.asList(new Dos(new Oro()), new Tres(new Oro()), new Sota(new Copa())));
 		jugadores.get(2).recibirCartas(Arrays.asList(new Cinco(new Oro()), new Cuatro(new Oro()), new Rey(new Copa())));

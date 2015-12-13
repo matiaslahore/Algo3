@@ -197,10 +197,11 @@ public class PruebasJugadorIAConTrucoTest {
 	
 	
 	@Test
-	public void pruebaHumanoCantaTrucoIAAcepta(){
+	public void pruebaHumanoCantaTrucoIAAceptaYGana(){
 		
 		Carta anchoDeBasto = new AnchoDeBasto();
-		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(anchoDeBasto , anchoDeOro, cincoDeCopa));
+		Carta anchoDeEspada = new AnchoDeEspada();
+		List<Carta> otrasCartasIA = new ArrayList<Carta>(Arrays.asList(anchoDeBasto , anchoDeOro, anchoDeEspada));
 
 		Carta sieteDeEspada = new SieteDeEspada();
 		Carta cincoDeEspada = new Cinco(new Espada());
@@ -221,8 +222,17 @@ public class PruebasJugadorIAConTrucoTest {
 		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronTruco());
 		jugadorConTurno.hacerJugarIA();
 		
+		jugadorConTurno = mesa.siguienteJugadorConTurno();
+		jugadorConTurno.jugarCarta(cincoDeEspada);
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno();
+		jugadorConTurno.hacerJugarIA();
+		
+		jugadorConTurno = mesa.siguienteJugadorConTurno();
+		jugadorConTurno.jugarCarta(reyDeBasto);
+		
 		mesa.siguienteJugadorConTurno();
 		
-		Assert.assertEquals(1, mesa.puntosEquipo(equipoUno));
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoIA));
 	}
 }

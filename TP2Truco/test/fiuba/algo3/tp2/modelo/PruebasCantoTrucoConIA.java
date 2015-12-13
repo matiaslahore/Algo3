@@ -87,9 +87,9 @@ public class PruebasCantoTrucoConIA {
 	}
 	
 	@Test
-	public void jugadorIAConCartasMayoresOIgualesATresCaballosAceptaElReTruco(){
+	public void pruebaJugadorIAConUnaCartaMayorAUnTresAceptaElTruco(){
 		List<Carta> cartas = new ArrayList<Carta>();
-		cartas.add(new Caballo(new Basto()));
+		cartas.add(new Tres(new Basto()));
 		cartas.add(new Caballo(new Oro()));
 		cartas.add(new Caballo(new Copa()));
 		this.IA.recibirCartas(cartas);

@@ -26,7 +26,7 @@ public class PruebasJugadorIAConEnvidoTest {
 
 	public Jugador jugadorConTurno;	
 	public Mesa mesa;	
-	public Equipo equipoUno;
+	public Equipo equipoHumano;
 	public Equipo equipoIA;
 		
 	Carta tresDeCopa = new Tres(new Copa());
@@ -44,15 +44,15 @@ public class PruebasJugadorIAConEnvidoTest {
 	public void inicializarPruebas(){
 		mesa = new Mesa();
 
-		equipoUno = new Equipo("equipoUno", mesa);
+		equipoHumano = new Equipo("equipoUno", mesa);
 		equipoIA = new Equipo("equipoDos", mesa);
 
-		mesa.instanciarJuez(equipoUno, equipoIA);
+		mesa.instanciarJuez(equipoHumano, equipoIA);
 
 		equipoIA.cargarJugadorIA();
-		equipoUno.cargarJugadores(Arrays.asList("Pepito"));
+		equipoHumano.cargarJugadores(Arrays.asList("Pepito"));
 
-		mesa.sentarJugadores(equipoIA.obtenerJugadores(), equipoUno.obtenerJugadores());
+		mesa.sentarJugadores(equipoIA.obtenerJugadores(), equipoHumano.obtenerJugadores());
 		mesa.iniciarRonda();
 	}
 
@@ -108,7 +108,7 @@ public class PruebasJugadorIAConEnvidoTest {
 		((IA) jugadorConTurno).setearEstado(new EstadoIACantaronEnvido());
 		jugadorConTurno.hacerJugarIA();
 		
-		Assert.assertEquals(2, mesa.puntosEquipo(equipoIA));
+		Assert.assertEquals(1, mesa.puntosEquipo(equipoHumano));
 	} 
 
 	
@@ -158,6 +158,6 @@ public class PruebasJugadorIAConEnvidoTest {
 		
 		mesa.siguienteJugadorConTurno();
 		
-		Assert.assertEquals(2, mesa.puntosEquipo(equipoUno));
+		Assert.assertEquals(2, mesa.puntosEquipo(equipoHumano));
 	}	
 }
