@@ -1,13 +1,28 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import fiuba.algo3.tp2.cantosPosibles.CantaronEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CantaronFaltaEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CantaronReTruco;
+import fiuba.algo3.tp2.cantosPosibles.CantaronRealEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CantaronTruco;
+import fiuba.algo3.tp2.cantosPosibles.CantaronValeCuatro;
+import fiuba.algo3.tp2.cantosPosibles.CanteEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CanteFaltaEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CanteReTruco;
+import fiuba.algo3.tp2.cantosPosibles.CanteRealEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CanteTruco;
+import fiuba.algo3.tp2.cantosPosibles.CanteValeCuatro;
+import fiuba.algo3.tp2.cantosPosibles.CantosDisponibles;
+import fiuba.algo3.tp2.cantosPosibles.CantosIniciales;
 import fiuba.algo3.tp2.cantosPosibles.CantosPosiblesEntreEquipos;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class PartidaDeTruco {
-	
+	CantosDisponibles cantosDisponibles;
 	Equipo equipoUno;
 	Equipo equipoDos;
 	Mesa mesa;
@@ -17,8 +32,10 @@ public abstract class PartidaDeTruco {
 		this.mesa = new Mesa();
 		this.equipoUno = new Equipo(nombreEq1, mesa);
 		this.equipoDos = new Equipo(nombreEq2, mesa);
-		
 		this.mesa.instanciarJuez(equipoUno, equipoDos);
+		this.cantosDisponibles = new CantosDisponibles();
+		this.cantosDisponibles.modificarCantos(equipoUno, new CantosIniciales());
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvido());
 	}
 	
 	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
@@ -30,7 +47,9 @@ public abstract class PartidaDeTruco {
 	}
 
 	public void iniciar() {
-		this.mesa.sentarJugadores(equipoUno.obtenerJugadores(), equipoDos.obtenerJugadores());
+		ArrayList<Jugador> jugadoresEquipoUno = equipoUno.obtenerJugadores();
+		ArrayList<Jugador> jugadoresEquipoDos = equipoDos.obtenerJugadores();
+		this.mesa.sentarJugadores(jugadoresEquipoUno, jugadoresEquipoDos);
 		this.mesa.iniciarRonda();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
@@ -60,6 +79,57 @@ public abstract class PartidaDeTruco {
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 	
+	
+	public void cantarTruco() {
+		this.jugadorTurnoActual.cantarTruco();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteTruco());
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronTruco());
+	}
+
+	public void cantarQuieroReTruco() {
+		this.jugadorTurnoActual.cantarQuieroReTruco();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteReTruco());
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronReTruco());
+	}
+
+	public void cantarQuieroValeCuatro() {
+		this.jugadorTurnoActual.cantarQuieroValeCuatro();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteValeCuatro());
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronValeCuatro());
+	}
+
+	public void cantarEnvido() {
+		this.jugadorTurnoActual.cantarEnvido();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteEnvido());
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronEnvido());
+	}
+
+	public void cantarRealEnvido() {
+		this.jugadorTurnoActual.cantarRealEnvido();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteRealEnvido());
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronRealEnvido());
+	}
+
+	public void cantarFaltaEnvido() {
+		this.jugadorTurnoActual.cantarFaltaEnvido();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteFaltaEnvido());
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronFaltaEnvido());
+	}
+
+	public void irseAlMazo(){
+		this.jugadorTurnoActual.irseAlMazo();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantosIniciales());
+		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantosIniciales());
+	}
+	
+	/*
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -95,6 +165,8 @@ public abstract class PartidaDeTruco {
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 	
+	*/
+	
 	public void quiero(){
 		this.jugadorTurnoActual.quiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -123,9 +195,9 @@ public abstract class PartidaDeTruco {
 		unJugador.recibirCartas(cartasParaJugador);
 	}
 
-	public CantosPosiblesEntreEquipos cantosEquipoActual() {
-		// TODO Auto-generated method stub
-		return null;
+	public CantosPosiblesEntreEquipos cantosEquipoActual(){
+		return this.cantosDisponibles.cantosPosibles(this.jugadorTurnoActual.obtenerEquipo());
 	}
+
 	
 }

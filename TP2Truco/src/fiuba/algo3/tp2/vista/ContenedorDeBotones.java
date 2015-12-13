@@ -94,9 +94,8 @@ public class ContenedorDeBotones {
 	public VBox botonesParaJugadorActual() {
 		CantosPosiblesEntreEquipos cantos = this.partida.cantosEquipoActual();
 		System.out.println(cantos);
-		return this.botonesPara(cantos);
+		return(this.botonesPara(cantos));
 	}
-
 
 
 	private VBox botonesPara(CantosIniciales cantos){
