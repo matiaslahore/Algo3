@@ -212,16 +212,17 @@ public class Juez {
 	//EN EL CANTO ENVIDO, EL JUEZ CHEQUEA QUE SE PUEDA CANTAR
 	public void seCantoEnvido(Equipo equipoQueCanta) {
 		this.cantosEnvido = this.cantosEnvido.cantarEnvido(equipoQueCanta);
-		
-		//this.cantosEnvido.avisarAPartida(this.eventosJuez);
+		this.cantosEnvido.avisarAPartida(this.eventosJuez);
 	}
 
 	public void seCantoRealEnvido(Equipo equipoQueCanta) {
 		this.cantosEnvido = this.cantosEnvido.cantarRealEnvido(equipoQueCanta);
+		this.cantosEnvido.avisarAPartida(this.eventosJuez);
 	}
 
 	public void seCantoFaltaEnvido(Equipo equipoQueCanta) {
 		this.cantosEnvido = this.cantosEnvido.cantarFaltaEnvido(equipoQueCanta);
+		this.cantosEnvido.avisarAPartida(this.eventosJuez);
 	}
 
 	public void noQuisoEnvido() {

@@ -56,12 +56,14 @@ public class VentanasDelJuego extends Application{
 		//this.controladorDeBotones.agregarStage(this.stageJugadorConTurno);
 		modificarStageJugador();
 		this.stageJugadorConTurno.setX(0);
+		this.stageJugadorConTurno.setResizable(false);
 		this.stageJugadorConTurno.show();
 
 		this.stageCartasEnMesa = new Stage();
 		this.stageCartasEnMesa.setTitle("Cartas En Juego");
 		modificarStajeCartasEnMesa();
 		this.stageCartasEnMesa.setX(730);
+		this.stageCartasEnMesa.setResizable(false);
 		this.stageCartasEnMesa.show();
 	}
 	

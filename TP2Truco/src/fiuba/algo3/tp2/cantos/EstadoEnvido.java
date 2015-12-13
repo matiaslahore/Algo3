@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 
 public class EstadoEnvido extends EstadoCantoEnvido{
 	
@@ -30,5 +31,10 @@ public class EstadoEnvido extends EstadoCantoEnvido{
 	@Override
 	public int quiso(int puntajeEquipoGanador, int puntajeEquipoPerdedor) {
 		return 2;
+	}
+
+	@Override
+	public void avisarAPartida(EventosJuez eventosJuez) {
+		eventosJuez.cantoEnvido(this.equipoQueCanta);
 	}
 }

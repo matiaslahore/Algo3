@@ -20,4 +20,6 @@ public abstract class EstadoCantoEnvido {
 	
 	public abstract int quiso(int puntajeEquipoGanador, int puntajeEquipoPerdedor);
 
+	public abstract void avisarAPartida(EventosJuez eventosJuez);
+
 }

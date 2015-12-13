@@ -20,8 +20,6 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		this.equipoDos = new Equipo(nombreEq2, mesa);
 		this.mesa.instanciarJuez(equipoUno, equipoDos);
 		this.cantosDisponibles = new CantosDisponibles();
-		//this.cantosDisponibles.modificarCantos(equipoUno, new CantosIniciales());
-		//this.cantosDisponibles.modificarCantos(equipoDos, new CantosIniciales());
 		this.mesa.agregarOyentesAlJuez((OyenteJuez)this);
 	}
 
@@ -89,23 +87,17 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 
 	public void cantarEnvido() {
 		this.jugadorTurnoActual.cantarEnvido();
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteEnvido());
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronEnvido());
 	}
 
 	public void cantarRealEnvido() {
 		this.jugadorTurnoActual.cantarRealEnvido();
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteRealEnvido());
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronRealEnvido());
 	}
 
 	public void cantarFaltaEnvido() {
 		this.jugadorTurnoActual.cantarFaltaEnvido();
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteFaltaEnvido());
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantaronFaltaEnvido());
 	}
 
 	public void irseAlMazo(){
@@ -149,11 +141,42 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 
 	//LA PARTIDA ESCUCHA A JUEZ
 	@Override
-	public void jugadorCantoEnvidoEnvido(){
-		if (this.jugadorTurnoActual.obtenerEquipo().equals(equipoUno)) {
+	public void jugadorCantoEnvido(Equipo equipoQueCanta){
+		System.out.println("CANTARON ENVIDO");
+		if (equipoQueCanta.equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvido());		
+		}else{
+			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronEnvido());		
+		}
+	}
+	
+	@Override
+	public void jugadorCantoEnvidoEnvido(Equipo equipoQueCanta){
+		System.out.println("CANTARON ENVIDO ENVIDO");
+		if (equipoQueCanta.equals(equipoUno)) {
 			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvidoEnvido());		
 		}else{
 			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronEnvidoEnvido());		
+		}
+	}
+	
+	@Override
+	public void jugadorCantoRealEnvido(Equipo equipoQueCanta){
+		System.out.println("CANTARON REAL ENVIDO");
+		if (equipoQueCanta.equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronRealEnvido());		
+		}else{
+			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronRealEnvido());		
+		}
+	}
+	
+	@Override
+	public void jugadorCantoFaltaEnvido(Equipo equipoQueCanta){
+		System.out.println("CANTARON FALTA ENVIDO");
+		if (equipoQueCanta.equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFaltaEnvido());		
+		}else{
+			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronFaltaEnvido());		
 		}
 	}
 

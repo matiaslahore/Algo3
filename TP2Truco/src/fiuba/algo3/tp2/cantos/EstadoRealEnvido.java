@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 
 public class EstadoRealEnvido extends EstadoCantoEnvido{
 	
@@ -32,4 +33,10 @@ public class EstadoRealEnvido extends EstadoCantoEnvido{
 	public int quiso(int puntajeEquipoGanador, int puntajeEquipoPerdedor) {
 		return 3;
 	}
+	
+	@Override
+	public void avisarAPartida(EventosJuez eventosJuez) {
+		eventosJuez.cantoRealEnvido(this.equipoQueCanta);
+	}
+	
 }

@@ -25,7 +25,7 @@ public class BotonRealEnvidoEventHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent actionEvent){
 		try{
 			this.partida.cantarRealEnvido();
-			etiqueta.setText("REAL ENVIDO");
+			//etiqueta.setText("REAL ENVIDO");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 			
 			this.visual.modificarStageJugador();

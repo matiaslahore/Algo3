@@ -14,6 +14,12 @@ public interface OyenteJuez {
 	
 	public void seTerminoRondaUno();
 
-	public void jugadorCantoEnvidoEnvido();
+	public abstract void jugadorCantoEnvido(Equipo equipoQueCanta);
+	
+	public abstract void jugadorCantoEnvidoEnvido(Equipo equipoQueCanta);
+	
+	public abstract void jugadorCantoRealEnvido(Equipo equipoQueCanta);
+	
+	public abstract void jugadorCantoFaltaEnvido(Equipo equipoQueCanta);
 
 }
