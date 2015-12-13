@@ -6,11 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.colecciones.ListaCircular;
-import fiuba.algo3.tp2.cantos.EstadoCantoEnvido;
-import fiuba.algo3.tp2.cantos.EstadoCantoTruco;
-import fiuba.algo3.tp2.cantos.EstadoInicialEnvido;
-import fiuba.algo3.tp2.cantos.EstadoInicialTruco;
-import fiuba.algo3.tp2.cantos.EstadoEnvidoFinalizado;
+import fiuba.algo3.tp2.cantos.*;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
@@ -144,7 +140,7 @@ public class Juez {
 	private boolean esPicaPica() {
 		if (this.mesa.cantidadDeJugadores() == 6 && rangoDePuntajeEstaEnPicaPica()){
 			if (this.cantidadJugadasPicaPica == 0) mezclar();
-			
+
 			if (cantidadJugadasPicaPica <= 3){
 				this.indiceJugadorQueComienza = 0;
 				return true;
@@ -209,6 +205,8 @@ public class Juez {
 
 	public void quisoTruco() {
 		this.puntosEnJuego = this.cantosTruco.quiso();
+
+		this.cantosTruco.avisarAPartida(this.eventosJuez);
 	}
 
 	//EN EL CANTO ENVIDO, EL JUEZ CHEQUEA QUE SE PUEDA CANTAR

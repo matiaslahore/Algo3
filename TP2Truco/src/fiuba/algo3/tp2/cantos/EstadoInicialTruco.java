@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 
 public class EstadoInicialTruco extends EstadoCantoTruco {
 
@@ -33,5 +34,8 @@ public class EstadoInicialTruco extends EstadoCantoTruco {
 	public int noQuiso() {
 		return 0;
 	}
+
+	@Override
+	public void avisarAPartida(EventosJuez eventosJuez) {}
 
 }
