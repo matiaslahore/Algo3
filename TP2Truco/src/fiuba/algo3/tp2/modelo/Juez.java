@@ -242,4 +242,8 @@ public class Juez {
 		this.eventosJuez.quisoEnvido(); //se le mande un mensaje a partida de q quiso el envido
 	}
 
+	public void terminoRondaUno() {
+		this.eventosJuez.terminoRondaUno();
+	}
+
 }

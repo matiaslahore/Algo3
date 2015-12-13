@@ -23,6 +23,7 @@ public class EstadoRondaUno extends EstadoRondas{
 
 	public EstadoRondas siguienteRonda(){
 		this.ganadoresRonda.clear();
+		this.juez.terminoRondaUno();
 
 		int indiceCartaGanadora = this.juez.obtenerListaDeCartasEnJuego().lastIndexOf(this.juez.obtenerCartaGanadoraDeRonda());
 
