@@ -20,7 +20,7 @@ public class Juez {
 	Maso maso;
 	Mesa mesa;
 	EstadoRondas mano;
-	Puntos puntos;
+	Puntos tanteadorDeLaPartida;
 	int puntosEnJuego;
 	int cantidadJugadasPicaPica = 0;
 	int indiceJugadorMano;
@@ -33,7 +33,7 @@ public class Juez {
 		this.maso = new Maso();
 		this.mesa = mesa;
 		this.puntosEnJuego = 1;
-		this.puntos = new Puntos(equipoUno, equipoDos);
+		this.tanteadorDeLaPartida = new Puntos(equipoUno, equipoDos);
 		this.indiceJugadorMano = 0;
 
 		this.cantosTruco = new EstadoInicialTruco();
@@ -80,15 +80,11 @@ public class Juez {
 	}
 
 	public int puntosEquipo(Equipo equipo) {
-		return this.puntos.getPuntaje(equipo);
-	}
-
-	public int puntosEquipo(String equipo) {
-		return this.puntos.getPuntaje(equipo);
+		return this.tanteadorDeLaPartida.getPuntaje(equipo);
 	}
 
 	public boolean termino() {
-		if (puntos.getPuntajeMaximo() >= 30){
+		if (tanteadorDeLaPartida.getPuntajeMaximo() >= 30){
 			return true;
 		}
 		return false;
@@ -107,7 +103,7 @@ public class Juez {
 	}
 
 	public void imprimirResultados() {
-		this.puntos.imprimirResultados();
+		this.tanteadorDeLaPartida.imprimirResultados();
 	}
 
 	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
@@ -136,7 +132,7 @@ public class Juez {
 	}
 
 	private boolean rangoDePuntajeEstaEnPicaPica() {
-		return this.puntos.rangoEstaEnPicaPica();
+		return this.tanteadorDeLaPartida.rangoEstaEnPicaPica();
 	}
 
 	private boolean esPicaPica() {
@@ -227,19 +223,15 @@ public class Juez {
 		this.cantosEnvido = new EstadoEnvidoFinalizado();
 	}
 
-	public int obtenerPuntosFaltaEnvido(Equipo equipo) {
-		return this.puntos.puntosDeLaFalta(equipo);
-	}
-
 	public void anotarPuntos(Equipo equipo){
-		this.puntos.anotarPuntos(equipo, puntosEnJuego);
+		this.tanteadorDeLaPartida.anotarPuntos(equipo, puntosEnJuego);
 		this.puntosEnJuego = 1;
 	}
 
 	public void anotarPuntosEnvido(Equipo equipoGanador, Equipo equipoPerdedor) {
-		this.puntosEnJuego = this.cantosEnvido.quiso(this.puntos.getPuntaje(equipoGanador), this.puntos.getPuntaje(equipoPerdedor));
+		this.puntosEnJuego = this.cantosEnvido.quiso(this.tanteadorDeLaPartida.getPuntaje(equipoGanador), this.tanteadorDeLaPartida.getPuntaje(equipoPerdedor));
 		this.cantosEnvido = new EstadoEnvidoFinalizado();
-		this.puntos.anotarPuntos(equipoGanador, puntosEnJuego);
+		this.tanteadorDeLaPartida.anotarPuntos(equipoGanador, puntosEnJuego);
 		this.puntosEnJuego = 1;
 	}
 

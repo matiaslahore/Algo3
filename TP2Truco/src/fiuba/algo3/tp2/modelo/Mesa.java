@@ -20,7 +20,6 @@ public class Mesa {
 	ArrayList<Equipo> ganadoresRonda; 
 	ArrayList<Carta> cartasEnJuegoRondaActual;
 	ListaCircular<Jugador> jugadores;
-	Puntos puntos;
 	EstadoRondas ronda;
 	ArrayList<Carta> cartasJugadas;
 	
@@ -46,18 +45,6 @@ public class Mesa {
 		this.cartasJugadas.add(carta);
 		System.out.println("Mesa recibe: " + carta.cartaComoString());
 	}
-
-	/* NO LO USA NADIE EN EL MODELO HABRIA QUE SACARLO
-	 * public void repartirCartas() {
-		Iterator<Jugador> itr = this.jugadores.iterator();
-		List<Carta> listaCartas = new ArrayList<Carta>();
-
-		while(itr.hasNext()) {
-			Jugador jugador = (Jugador) itr.next();
-			listaCartas.addAll(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir()));
-			jugador.recibirCartas(listaCartas);
-		}
-	}*/
 
 	public void sentarJugadores(ArrayList<Jugador> equipoUno, ArrayList<Jugador> equipoDos) {
 		Iterator<Jugador> itrEqUno = equipoUno.iterator();
@@ -129,10 +116,6 @@ public class Mesa {
 	}
 
 	public int puntosEquipo(Equipo equipo) {
-		return this.juez.puntosEquipo(equipo);
-	}
-
-	public int puntosEquipo(String equipo) {
 		return this.juez.puntosEquipo(equipo);
 	}
 

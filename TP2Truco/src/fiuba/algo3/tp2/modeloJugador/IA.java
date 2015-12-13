@@ -1,11 +1,6 @@
 package fiuba.algo3.tp2.modeloJugador;
-
-import java.util.List;
-
 import fiuba.algo3.tp2.excepciones.JugadorNoTieneMasCartasParaJugarException;
 import fiuba.algo3.tp2.modelo.Equipo;
-import fiuba.algo3.tp2.modelo.Mano;
-import fiuba.algo3.tp2.modelo.Maso;
 import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
@@ -155,7 +150,8 @@ public class IA extends Jugador implements Oyente{
 	}
 	
 	public boolean quererFaltaEnvidoIA(){
-		return(this.envido >= 31);
+		return true;
+		//return(this.envido >= 31);
 	}
 	
 	//Inteligencia cantos Flor
