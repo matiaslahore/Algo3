@@ -6,11 +6,13 @@ import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 import fiuba.algo3.tp2.modelo.Juez;
+import fiuba.algo3.tp2.modelo.OyenteJuez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public abstract class EstadoRondas{
-
+	
 	Juez juez;
 	ArrayList<Equipo> ganadoresRonda;
 	ListaCircular<Jugador> jugadores;
@@ -29,7 +31,7 @@ public abstract class EstadoRondas{
 		this.refEstadoRonda = estadoRonda;
 		this.tantoEnJuego = new ArrayList<Integer>();
 	}
-
+	
 	public EstadoRondas acualizarRonda() {
 		if (this.juez.termino()){
 			return new EstadoPartidaFinalizada(refEstadoRonda, juez, ganadoresRonda,this.jugadores ,this.indiceJugadorManoDeLaRondaActual);

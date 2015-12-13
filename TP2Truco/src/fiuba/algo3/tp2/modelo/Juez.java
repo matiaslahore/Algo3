@@ -25,6 +25,7 @@ public class Juez {
 	int cantidadJugadasPicaPica = 0;
 	int indiceJugadorMano;
 	int indiceJugadorQueComienza;
+	EventosJuez eventosJuez;
 
 	private EstadoCantoTruco cantosTruco;
 	private EstadoCantoEnvido cantosEnvido;
@@ -35,9 +36,13 @@ public class Juez {
 		this.puntosEnJuego = 1;
 		this.tanteadorDeLaPartida = new Puntos(equipoUno, equipoDos);
 		this.indiceJugadorMano = 0;
-
 		this.cantosTruco = new EstadoInicialTruco();
 		this.cantosEnvido = new EstadoInicialEnvido();
+		this.eventosJuez = new EventosJuez();
+	}
+
+	public void agregarOyentes(OyenteJuez toAdd){
+		this.eventosJuez.addListener(toAdd);
 	}
 
 	public List<Carta> obtenerListaDeCartasEnJuego(){
@@ -115,6 +120,7 @@ public class Juez {
 	}
 
 	public ListaCircular<Jugador> listaDeJugadores() {
+		this.eventosJuez.comenzoRondaUno();
 		if (esPicaPica()){
 			return listaDeJugadoresPicaPica();
 		}
@@ -233,6 +239,7 @@ public class Juez {
 		this.cantosEnvido = new EstadoEnvidoFinalizado();
 		this.tanteadorDeLaPartida.anotarPuntos(equipoGanador, puntosEnJuego);
 		this.puntosEnJuego = 1;
+		this.eventosJuez.quisoEnvido();
 	}
 
 }

@@ -241,4 +241,9 @@ public class Mesa {
 	public boolean terminoLaMano() {
 		return (this.ronda.getClass() == EstadoRondaUno.class);
 	}
+	
+	public void agregarOyentesAlJuez(OyenteJuez unOyente){
+		this.juez.agregarOyentes(unOyente);
+	}
+
 }

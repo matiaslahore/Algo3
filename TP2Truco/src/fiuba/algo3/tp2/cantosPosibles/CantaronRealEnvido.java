@@ -1,5 +1,5 @@
 package fiuba.algo3.tp2.cantosPosibles;
 
-public class CantaronRealEnvido implements CantosPosiblesEntreEquipos {
+public class CantaronRealEnvido extends CantosPosiblesEntreEquipos {
 
 }

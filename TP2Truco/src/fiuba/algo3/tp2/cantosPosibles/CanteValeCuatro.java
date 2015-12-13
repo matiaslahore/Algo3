@@ -1,5 +1,5 @@
 package fiuba.algo3.tp2.cantosPosibles;
 
-public class CanteValeCuatro implements CantosPosiblesEntreEquipos {
+public class CanteValeCuatro extends CantosPosiblesEntreEquipos {
 
 }

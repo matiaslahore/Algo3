@@ -1,37 +1,47 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.cantosPosibles.*;
+import fiuba.algo3.tp2.cantosPosibles.CantosPosiblesEntreEquipos;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
-import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.*;
-import javafx.geometry.Insets;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonContraFlorEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonEnvidoEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonFaltaEnvidoEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonFlorContraRestoEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonFlorEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonIrseAlMazoEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonNoQuererEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonQuererEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonReTrucoEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonRealEnvidoEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonTrucoEventHandler;
+import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.BotonValeCuatroEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ContenedorDeBotones {
+	CreadorDeBotones creadorDeBotones;
+	PartidaDeTruco partida;
+	boolean conFlor;
+	Button botonEnvido;
+	Button botonRealEnvido;
+	Button botonFaltaEnvido;
+	Button botonFlor;
+	Button botonContraFlor;
+	Button botonFlorContraResto;
+	Button botonTruco;
+	Button botonReTruco;
+	Button botonValeCuatro;
+	Button botonQuerer;
+	Button botonNoQuerer;
+	Button botonIrseAlMazo;
 
-	private PartidaDeTruco partida;
-	private boolean conFlor;
-	private Button botonEnvido;
-	private Button botonRealEnvido;
-	private Button botonFaltaEnvido;
-	private Button botonFlor;
-	private Button botonContraFlor;
-	private Button botonFlorContraResto;
-	private Button botonTruco;
-	private Button botonReTruco;
-	private Button botonValeCuatro;
-	private Button botonQuerer;
-	private Button botonNoQuerer;
-	private Button botonIrseAlMazo;
+	HBox contenedorOpcion;
+	HBox contenedorEnvido;
+	HBox contenedorTruco;
 
-	private HBox contenedorOpcion;
-	private HBox contenedorEnvido;
-	private HBox contenedorTruco;
-
-	private int padding = 10;
-	private int spacing = 10;
+	int padding = 10;
+	int spacing = 10;
 
 	public ContenedorDeBotones(PartidaDeTruco partida, VentanasDelJuego visual, boolean conFlor){
 		this.partida = partida;
@@ -94,169 +104,8 @@ public class ContenedorDeBotones {
 	public VBox botonesParaJugadorActual() {
 		CantosPosiblesEntreEquipos cantos = this.partida.cantosEquipoActual();
 		System.out.println(cantos);
-		return(this.botonesPara(cantos));
+		return(this.creadorDeBotones.botonesPara(cantos));
 	}
-
-
-	private VBox botonesPara(CantosIniciales cantos){
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
-		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
-		if (this.conFlor) contenedorEnvido.getChildren().addAll(botonFlor);
-		this.contenedorTruco = new HBox(spacing,botonTruco);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorEnvido.setPadding(new Insets(padding));
-		contenedorTruco.setPadding(new Insets(padding));
-
-		VBox botonesRondaInicial = new VBox(contenedorOpcion,contenedorEnvido,contenedorTruco);
-
-		return botonesRondaInicial;
-	}
-
-	private VBox botonesPara(CanteEnvido cantos){
-		//sirve para flor cantada envido cantado, ronda dos y ronda tres
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
-		this.contenedorTruco = new HBox(spacing,botonTruco);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorTruco.setPadding(new Insets(padding));
-
-		VBox botonesRondaUno = new VBox(contenedorOpcion,contenedorTruco);
-
-		return botonesRondaUno;
-	}
-
-	private VBox botonesPara(CanteFlor cantos){
-		//sirve para flor cantada envido cantado, ronda dos y ronda tres
-		return botonesPara(new CanteEnvido());
-	}
-
-	private VBox botonesPara(CanteTruco cantos){
-		//sirve para los q no pueden cantar truco y cuando se canto el vale4
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-
-		VBox botonMazo = new VBox(contenedorOpcion);
-
-		return botonMazo;
-	}
-
-	private VBox botonesPara(CanteReTruco cantos){
-		//sirve para los q no pueden cantar truco y cuando se canto el vale4
-		return botonesPara(new CanteTruco());
-	}
-
-	private VBox botonesPara(CanteValeCuatro cantos){
-		//sirve para los q no pueden cantar truco y cuando se canto el vale4
-		return botonesPara(new CanteTruco());
-	}
-
-	/*private VBox botonesPara(QuiseTruco cantos){
-		//sirve para los q pueden cantar retruco
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
-		this.contenedorTruco = new HBox(spacing,botonReTruco);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorTruco.setPadding(new Insets(padding));
-
-		VBox botones = new VBox(contenedorOpcion);
-
-		return botones;
-	}*/
-
-	/*private VBox botonesPara(QuiseReTruco cantos){
-		//sirve para los q pueden cantar valeCuatro
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
-		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorTruco.setPadding(new Insets(padding));
-
-		VBox botones = new VBox(contenedorOpcion);
-
-		return botones;
-	}*/
-
-	private VBox botonesPara(CantaronTruco cantos){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-		this.contenedorTruco = new HBox(spacing,botonReTruco);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorTruco.setPadding(new Insets(padding));
-
-		VBox botonesTruco = new VBox(contenedorOpcion,contenedorTruco);
-
-		return botonesTruco;
-	}
-
-	private VBox botonesPara(CantaronReTruco cantos){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorTruco.setPadding(new Insets(padding));
-
-		VBox botonesReTruco = new VBox(contenedorOpcion,contenedorTruco);
-
-		return botonesReTruco;
-	}
-
-	private VBox botonesPara(CantaronValeCuatro cantos){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-
-		VBox botonesValeCuatro = new VBox(contenedorOpcion);
-
-		return botonesValeCuatro;
-	}
-
-	private VBox botonesPara(CantaronEnvido cantos){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorEnvido.setPadding(new Insets(padding));
-
-		VBox botonesEnvido = new VBox(contenedorOpcion,contenedorEnvido);
-
-		return botonesEnvido;
-	}
-
-	private VBox botonesPara(CantaronEnvidoEnvido cantos){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-		this.contenedorEnvido = new HBox(spacing,botonRealEnvido,botonFaltaEnvido);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorEnvido.setPadding(new Insets(padding));
-
-		VBox botonesEnvidoEnvido = new VBox(contenedorOpcion,contenedorEnvido);
-
-		return botonesEnvidoEnvido;
-	}
-
-	private VBox botonesPara(CantaronRealEnvido cantos){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-		this.contenedorEnvido = new HBox(spacing,botonFaltaEnvido);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-		contenedorEnvido.setPadding(new Insets(padding));
-
-		VBox botonesRealEnvido = new VBox(contenedorOpcion,contenedorEnvido);
-
-		return botonesRealEnvido;
-	}
-
-	private VBox botonesPara(CantaronFaltaEnvido cantos){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
-
-		contenedorOpcion.setPadding(new Insets(padding));
-
-		VBox botonesFaltaEnvido = new VBox(contenedorOpcion);
-
-		return botonesFaltaEnvido;
-	}
-
-
+	
+	
 }

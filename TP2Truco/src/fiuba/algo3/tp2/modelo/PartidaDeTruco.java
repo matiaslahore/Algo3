@@ -18,10 +18,15 @@ import fiuba.algo3.tp2.cantosPosibles.CanteValeCuatro;
 import fiuba.algo3.tp2.cantosPosibles.CantosDisponibles;
 import fiuba.algo3.tp2.cantosPosibles.CantosIniciales;
 import fiuba.algo3.tp2.cantosPosibles.CantosPosiblesEntreEquipos;
+import fiuba.algo3.tp2.cantosPosibles.QuiseEnvido;
+import fiuba.algo3.tp2.cantosPosibles.QuiseReTruco;
+import fiuba.algo3.tp2.cantosPosibles.QuiseTruco;
+import fiuba.algo3.tp2.cantosPosibles.QuiseValeCuatro;
+import fiuba.algo3.tp2.cantosPosibles.RondaSinEnvido;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
-public abstract class PartidaDeTruco {
+public abstract class PartidaDeTruco implements OyenteJuez{
 	CantosDisponibles cantosDisponibles;
 	Equipo equipoUno;
 	Equipo equipoDos;
@@ -35,7 +40,8 @@ public abstract class PartidaDeTruco {
 		this.mesa.instanciarJuez(equipoUno, equipoDos);
 		this.cantosDisponibles = new CantosDisponibles();
 		this.cantosDisponibles.modificarCantos(equipoUno, new CantosIniciales());
-		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvido());
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantosIniciales());
+		this.mesa.agregarOyentesAlJuez((OyenteJuez)this);
 	}
 	
 	public void cargarJugadoresEnEquipoUno(List<String> nombreJugadores) {
@@ -78,7 +84,6 @@ public abstract class PartidaDeTruco {
 		this.jugadorTurnoActual.jugarCarta(carta);
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
-	
 	
 	public void cantarTruco() {
 		this.jugadorTurnoActual.cantarTruco();
@@ -129,44 +134,6 @@ public abstract class PartidaDeTruco {
 		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CantosIniciales());
 	}
 	
-	/*
-	public void cantarTruco() {
-		this.jugadorTurnoActual.cantarTruco();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
-	public void cantarQuieroReTruco() {
-		this.jugadorTurnoActual.cantarQuieroReTruco();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
-	public void cantarQuieroValeCuatro() {
-		this.jugadorTurnoActual.cantarQuieroValeCuatro();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
-	public void cantarEnvido() {
-		this.jugadorTurnoActual.cantarEnvido();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
-	public void cantarRealEnvido() {
-		this.jugadorTurnoActual.cantarRealEnvido();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
-	public void cantarFaltaEnvido() {
-		this.jugadorTurnoActual.cantarFaltaEnvido();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
-	public void irseAlMazo(){
-		this.jugadorTurnoActual.irseAlMazo();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-	}
-	
-	*/
-	
 	public void quiero(){
 		this.jugadorTurnoActual.quiero();
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
@@ -198,6 +165,46 @@ public abstract class PartidaDeTruco {
 	public CantosPosiblesEntreEquipos cantosEquipoActual(){
 		return this.cantosDisponibles.cantosPosibles(this.jugadorTurnoActual.obtenerEquipo());
 	}
-
 	
+	
+	
+	//la partida escucha de la rondaTruco
+	@Override
+	public void jugadorQuisoTruco(){
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseTruco());
+	}
+	
+	@Override
+	public void jugadorQuisoReTruco(){
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseReTruco());
+	}
+	
+	@Override
+	public void jugadorQuisoValeCuatro(){
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseValeCuatro());
+	}
+
+	//la partida escucha de la rondaEnvido
+	@Override
+	public void jugadorQuisoEnvido(){
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseEnvido());	
+	}
+
+	//la partida escucha de RondaUno
+	//en este metodo el constructor de RondaUno puede mandar el evento
+	@Override
+	public void seComenzoRondaUno(){
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseEnvido());		
+	}
+	
+	//en este metodo, siguienteRonda de RondaUno puede mandar el evento, x ejemplo al principio del metodo siguienteRonda
+	@Override
+	public void seTerminoRondaUno(){
+		if (this.cantosDisponibles.cantosPosibles(equipoUno).getClass().equals(CantosIniciales.class)){
+			this.cantosDisponibles.modificarCantos(equipoUno, new RondaSinEnvido());
+			this.cantosDisponibles.modificarCantos(equipoDos, new RondaSinEnvido());
+		}
+		//este if es xq si no se canto nada, tengo q sacarle los envidos..
+	}
+		
 }
