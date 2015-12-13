@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.List;
 
+import fiuba.algo3.tp2.cantosPosibles.CantosPosiblesEntreEquipos;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
@@ -120,6 +121,11 @@ public abstract class PartidaDeTruco {
 	
 	public void cartearseParaHacerLosTest(Jugador unJugador, List<Carta> cartasParaJugador){
 		unJugador.recibirCartas(cartasParaJugador);
+	}
+
+	public CantosPosiblesEntreEquipos cantosEquipoActual() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
