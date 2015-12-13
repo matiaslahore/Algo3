@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 
 public abstract class EstadoCantoTruco {
 	Equipo equipoQueCanta;
@@ -18,5 +19,7 @@ public abstract class EstadoCantoTruco {
 	public abstract EstadoCantoTruco cantarQuieroReTruco(Equipo equipo);
 	
 	public abstract EstadoCantoTruco cantarQuieroValeCuatro(Equipo equipo);
+
+	public abstract void avisarAPartida(EventosJuez eventosJuez);
 	
 }

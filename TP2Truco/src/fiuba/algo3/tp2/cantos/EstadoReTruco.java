@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.cantos;
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.excepciones.EquipoQueCantaNoPuedeVolverACantarException;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 
 public class EstadoReTruco extends EstadoCantoTruco{
 
@@ -36,6 +37,11 @@ public class EstadoReTruco extends EstadoCantoTruco{
 			throw new EquipoQueCantaNoPuedeVolverACantarException();
 		}
 		return(new EstadoValeCuatro(equipo));
+	}
+
+	@Override
+	public void avisarAPartida(EventosJuez eventosJuez) {
+		eventosJuez.quisoReTruco();
 	}
 
 }

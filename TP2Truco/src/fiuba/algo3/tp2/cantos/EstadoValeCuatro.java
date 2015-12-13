@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 
 public class EstadoValeCuatro extends EstadoCantoTruco{
 	
@@ -32,6 +33,11 @@ public class EstadoValeCuatro extends EstadoCantoTruco{
 	@Override
 	public EstadoCantoTruco cantarQuieroValeCuatro(Equipo equipo) {
 		throw new CantoInvalidoException();
+	}
+
+	@Override
+	public void avisarAPartida(EventosJuez eventosJuez) {
+		eventosJuez.quisoValeCuatro();
 	}
 
 }
