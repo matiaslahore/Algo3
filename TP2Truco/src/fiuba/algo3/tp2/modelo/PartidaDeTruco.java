@@ -39,8 +39,8 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 		this.equipoDos = new Equipo(nombreEq2, mesa);
 		this.mesa.instanciarJuez(equipoUno, equipoDos);
 		this.cantosDisponibles = new CantosDisponibles();
-		this.cantosDisponibles.modificarCantos(equipoUno, new CantosIniciales());
-		this.cantosDisponibles.modificarCantos(equipoDos, new CantosIniciales());
+		//this.cantosDisponibles.modificarCantos(equipoUno, new CantosIniciales());
+		//this.cantosDisponibles.modificarCantos(equipoDos, new CantosIniciales());
 		this.mesa.agregarOyentesAlJuez((OyenteJuez)this);
 	}
 	
@@ -187,7 +187,8 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	//Ya es llamado desde juez
 	@Override
 	public void jugadorQuisoEnvido(){
-		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new QuiseEnvido());	
+		this.cantosDisponibles.modificarCantos(equipoUno, new RondaSinEnvido());
+		this.cantosDisponibles.modificarCantos(equipoDos, new RondaSinEnvido());
 	}
 
 	//la partida escucha de RondaUno

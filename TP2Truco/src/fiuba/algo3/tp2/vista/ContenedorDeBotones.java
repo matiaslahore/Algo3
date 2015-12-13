@@ -94,6 +94,8 @@ public class ContenedorDeBotones {
 	public VBox botonesParaJugadorActual() {
 		CantosPosiblesEntreEquipos cantos = this.partida.cantosEquipoActual();
 
+		System.out.println(cantos);
+		
 		if (cantos.getClass().equals(CantosIniciales.class)) {
 			return botonesParaCantosIniciales();
 		}
@@ -218,7 +220,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion);
+		VBox botones = new VBox(contenedorOpcion,contenedorTruco);
 
 		return botones;
 	}
@@ -231,7 +233,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion);
+		VBox botones = new VBox(contenedorOpcion,contenedorTruco);
 
 		return botones;
 	}
