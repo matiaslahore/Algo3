@@ -154,7 +154,10 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		
 		partidaDeTruco.cantarTruco();
 		partidaDeTruco.quiero();
+		
 		partidaDeTruco.cantarQuieroReTruco();
+		
+		
 	}
 	
 }

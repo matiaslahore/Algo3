@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.modelo;
+package fiuba.algo3.tp2.JugadorIA;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +7,9 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.Mesa;
 import fiuba.algo3.tp2.modeloDeCartas.AnchoFalso;
 import fiuba.algo3.tp2.modeloDeCartas.Basto;
 import fiuba.algo3.tp2.modeloDeCartas.Carta;

@@ -480,7 +480,7 @@ public class PruebasSituacionesDeJuegoTest {
 	}
 	
 	@Test
-	public void pruebaIrseAlMazoPartidaDosxDos(){
+	public void pruebaIrseAlMazoPartidaDosPorDos(){
 		eq1.cargarJugadores(Arrays.asList("j1"));
 		eq2.cargarJugadores(Arrays.asList("j2"));
 		
