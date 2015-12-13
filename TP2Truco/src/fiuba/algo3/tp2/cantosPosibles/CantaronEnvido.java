@@ -1,9 +1,7 @@
 package fiuba.algo3.tp2.cantosPosibles;
 
-public class CantaronEnvido implements CantosPosiblesEntreEquipos {
+import javafx.scene.layout.VBox;
 
-	public CantaronEnvido(){
-		
-	}
+public class CantaronEnvido implements CantosPosiblesEntreEquipos {
 	
 }

@@ -97,9 +97,7 @@ public class ContenedorDeBotones {
 		return this.botonesPara(cantos);
 	}
 
-	private VBox botonesPara(CantosPosiblesEntreEquipos cantos) {
-		return null;
-	}
+
 
 	private VBox botonesPara(CantosIniciales cantos){
 		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
