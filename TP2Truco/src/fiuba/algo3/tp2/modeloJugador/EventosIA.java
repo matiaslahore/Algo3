@@ -40,4 +40,19 @@ public class EventosIA {
 		    for (OyenteIA hl : listeners)
 		        hl.meCantaronValeCuatro();
 	    }
+	    
+	    public void canteFlor() {
+		    for (OyenteIA hl : listeners)
+		        hl.meCantaronFlor();
+	    }
+	    
+	    public void canteContraFlor() {
+		    for (OyenteIA hl : listeners)
+		        hl.meCantaronContraFlor();
+	    }
+	    
+	    public void canteContraFlorAJuego() {
+		    for (OyenteIA hl : listeners)
+		        hl.meCantaronContraFlorAJuego();
+	    }
 }

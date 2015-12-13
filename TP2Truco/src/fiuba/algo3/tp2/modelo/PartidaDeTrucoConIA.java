@@ -4,6 +4,7 @@ import java.util.List;
 
 import fiuba.algo3.tp2.cantosPosibles.CantaronEnvido;
 import fiuba.algo3.tp2.cantosPosibles.CantaronFaltaEnvido;
+import fiuba.algo3.tp2.cantosPosibles.CantaronFlor;
 import fiuba.algo3.tp2.cantosPosibles.CantaronReTruco;
 import fiuba.algo3.tp2.cantosPosibles.CantaronRealEnvido;
 import fiuba.algo3.tp2.cantosPosibles.CantaronTruco;
@@ -217,6 +218,21 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 	@Override
 	public void meCantaronValeCuatro(){
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronValeCuatro());
+	}
+	
+	@Override
+	public void meCantaronFlor(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFlor());
+	}
+	
+	@Override
+	public void meCantaronContraFlor(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronContraFlor());
+	}
+
+	@Override
+	public void meCantaronContraFlorAJuego(){
+		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFlorAJuego());
 	}
 	
 }

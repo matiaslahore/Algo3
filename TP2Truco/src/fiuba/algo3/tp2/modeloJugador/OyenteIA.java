@@ -13,5 +13,11 @@ public interface OyenteIA {
 	public void meCantaronReTruco();
 
 	public void meCantaronValeCuatro();
+
+	public void meCantaronFlor();
+
+	public void meCantaronContraFlor();
+
+	public void meCantaronContraFlorAJuego();
 	
 }
