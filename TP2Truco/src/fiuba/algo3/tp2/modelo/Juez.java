@@ -7,6 +7,7 @@ import java.util.List;
 
 import fiuba.algo3.colecciones.ListaCircular;
 import fiuba.algo3.tp2.cantos.*;
+import fiuba.algo3.tp2.excepciones.NoSeEncontroJugadorConFlorException;
 import fiuba.algo3.tp2.modeloDeCartas.*;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 import fiuba.algo3.tp2.modeloRondas.EstadoRondas;
@@ -25,6 +26,7 @@ public class Juez {
 
 	private EstadoCantoTruco cantosTruco;
 	private EstadoCantoEnvido cantosEnvido;
+	private EstadoCantoFlor cantosFlor;
 
 	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos){
 		this.maso = new Maso();
@@ -34,6 +36,7 @@ public class Juez {
 		this.indiceJugadorMano = 0;
 		this.cantosTruco = new EstadoInicialTruco();
 		this.cantosEnvido = new EstadoInicialEnvido();
+		this.cantosFlor = new EstadoInicialFlor();
 		this.eventosJuez = new EventosJuez();
 	}
 
@@ -107,8 +110,8 @@ public class Juez {
 		this.tanteadorDeLaPartida.imprimirResultados();
 	}
 
-	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
-		return this.mesa.otroJugadorConFlor(equipoQueCanta);
+	public Jugador otroJugadorConFlor() {
+		return this.mesa.otroJugadorConFlor(this.cantosFlor.equipoQueCanta());
 	}
 
 	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
@@ -165,6 +168,7 @@ public class Juez {
 		this.indiceJugadorQueComienza = this.indiceJugadorMano;
 		this.cantosTruco = new EstadoInicialTruco();
 		this.cantosEnvido = new EstadoInicialEnvido();
+		this.cantosFlor = new EstadoInicialFlor();
 		if (esPicaPica()){
 			actualizarCantidadJugadasPicaPica();
 		}
@@ -245,6 +249,36 @@ public class Juez {
 
 	public void terminoRondaUno() {
 		this.eventosJuez.terminoRondaUno();
+	}
+
+	public void seCantoFlor(Equipo equipoQueCanta) {
+		this.cantosFlor = this.cantosFlor.cantarFlor(equipoQueCanta);
+		this.cantosFlor.avisarAPartida(this.eventosJuez);
+	}
+	
+	public void seCantoContraFlor(Equipo equipoQueCanta) {
+		this.cantosFlor = this.cantosFlor.cantarContraFlor(equipoQueCanta);
+		this.cantosFlor.avisarAPartida(this.eventosJuez);
+	}
+	
+	public void seCantoContraFlorAJuego(Equipo equipoQueCanta) {
+		this.cantosFlor = this.cantosFlor.cantarContraFlorAJuego(equipoQueCanta);
+		this.cantosFlor.avisarAPartida(this.eventosJuez);
+	}
+
+	public void anotarPuntosFlor(Equipo equipoGanador) {
+		this.cantosEnvido = new EstadoEnvidoFinalizado(); //si hay flor no hay envido
+		this.tanteadorDeLaPartida.anotarPuntos(equipoGanador, this.cantosFlor.quiso());
+		this.puntosEnJuego = 1;
+		
+		this.eventosJuez.quisoEnvido();
+	}
+
+	public void noQuisoFlor() {
+		this.puntosEnJuego = this.cantosFlor.noQuiso();
+		this.cantosEnvido = new EstadoEnvidoFinalizado(); //si hay flor no hay envido
+	
+		this.eventosJuez.quisoEnvido();
 	}
 
 }

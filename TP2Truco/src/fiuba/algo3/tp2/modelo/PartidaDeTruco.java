@@ -142,37 +142,33 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	//LA PARTIDA ESCUCHA A JUEZ
 	@Override
 	public void jugadorCantoEnvido(Equipo equipoQueCanta){
-		System.out.println("CANTARON ENVIDO");
 		if (equipoQueCanta.equals(equipoUno)) {
 			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvido());		
 		}else{
 			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronEnvido());		
 		}
 	}
-	
+
 	@Override
 	public void jugadorCantoEnvidoEnvido(Equipo equipoQueCanta){
-		System.out.println("CANTARON ENVIDO ENVIDO");
 		if (equipoQueCanta.equals(equipoUno)) {
 			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronEnvidoEnvido());		
 		}else{
 			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronEnvidoEnvido());		
 		}
 	}
-	
+
 	@Override
 	public void jugadorCantoRealEnvido(Equipo equipoQueCanta){
-		System.out.println("CANTARON REAL ENVIDO");
 		if (equipoQueCanta.equals(equipoUno)) {
 			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronRealEnvido());		
 		}else{
 			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronRealEnvido());		
 		}
 	}
-	
+
 	@Override
 	public void jugadorCantoFaltaEnvido(Equipo equipoQueCanta){
-		System.out.println("CANTARON FALTA ENVIDO");
 		if (equipoQueCanta.equals(equipoUno)) {
 			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFaltaEnvido());		
 		}else{
@@ -209,12 +205,38 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 
 	@Override
 	public void seTerminoRondaUno(){
-		System.out.println("termino ronda uno");
 		if (this.cantosDisponibles.cantosPosibles(equipoUno).getClass().equals(CantosIniciales.class)){
 			this.cantosDisponibles.modificarCantos(equipoUno, new RondaSinEnvido());
 			this.cantosDisponibles.modificarCantos(equipoDos, new RondaSinEnvido());
 		}
 		//este if es xq si no se canto nada, tengo q sacarle los envidos..
+	}
+
+	@Override
+	public void jugadorCantoFlor(Equipo equipoQueCanta){
+		if (equipoQueCanta.equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFlor());		
+		}else{
+			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronFlor());		
+		}
+	}
+
+	@Override
+	public void jugadorCantoContraFlor(Equipo equipoQueCanta){
+		if (equipoQueCanta.equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronContraFlor());		
+		}else{
+			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronContraFlor());		
+		}
+	}
+
+	@Override
+	public void jugadorCantoContraFlorAJuego(Equipo equipoQueCanta){
+		if (equipoQueCanta.equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronContraFlorxResto());		
+		}else{
+			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronContraFlorxResto());		
+		}
 	}
 
 }

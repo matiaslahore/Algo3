@@ -22,7 +22,7 @@ public class Mesa {
 	ListaCircular<Jugador> jugadores;
 	EstadoRondas ronda;
 	ArrayList<Carta> cartasJugadas;
-	
+
 	public Mesa(){
 		jugadores = new ListaCircular<Jugador>();
 		ganadoresRonda = new ArrayList<Equipo>();
@@ -122,7 +122,7 @@ public class Mesa {
 	public List<Carta> obtenerCartasEnJuegoDeRondaActual() {
 		return this.cartasEnJuegoRondaActual;
 	}
-	
+
 	public List<Carta> obtenerListaDeCartasJugadas() {
 		return this.cartasJugadas;
 	}
@@ -130,7 +130,7 @@ public class Mesa {
 	public void limpiarCartasEnJuegoDeRondaActual() {
 		this.cartasEnJuegoRondaActual.clear();
 	}
-	
+
 	public void limpiarCartasJugadas() {
 		this.cartasJugadas.clear();
 	}
@@ -190,7 +190,7 @@ public class Mesa {
 	}
 
 	public Jugador otroJugadorConFlor(Equipo equipoQueCanta) {
-		
+
 		for(Jugador unJugador : this.jugadores){
 			if (unJugador.tieneFlor()){
 				if(unJugador.obtenerEquipo() != equipoQueCanta){
@@ -201,9 +201,8 @@ public class Mesa {
 		throw new NoSeEncontroJugadorConFlorException();
 	}
 
-
 	public boolean hayOtroEquipoConFlor(Equipo equipoQueCanta) {
-		
+
 		for(Jugador unJugador : this.jugadores){
 			if (unJugador.tieneFlor()){
 				if(unJugador.obtenerEquipo() != equipoQueCanta){
@@ -213,26 +212,21 @@ public class Mesa {
 		}
 		return false;
 	}
-	
+
 	public void repartir(List<Jugador> jugadores){
 		for ( int i = 0 ; i <= (jugadores.size() - 1) ; i=i+1 ){
 			Jugador unJugador = jugadores.get(i);
 			unJugador.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
 		}
 	}
-	
+
 	public void repartir(){
-		/*for ( int i = 0 ; i <= (this.jugadores.size() - 1) ; i=i+1 ){
-			Jugador unJugador = this.jugadores.get(i);
-			unJugador.recibirCartas(new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir())));
-		}*/
-		//refactorizado
 		for(Jugador unJugador : this.jugadores){
 			List<Carta> listaDeCartas = new ArrayList<Carta>(Arrays.asList(this.juez.repartir(), this.juez.repartir(), this.juez.repartir()));
 			unJugador.recibirCartas(listaDeCartas);	
 		}
 	}
-	
+
 
 	public ListaCircular<Jugador> listaDeJugadores() {
 		return this.jugadores;
@@ -241,7 +235,7 @@ public class Mesa {
 	public boolean terminoLaMano() {
 		return (this.ronda.getClass() == EstadoRondaUno.class);
 	}
-	
+
 	public void agregarOyentesAlJuez(OyenteJuez unOyente){
 		this.juez.agregarOyentes(unOyente);
 	}

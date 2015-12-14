@@ -42,27 +42,38 @@ public class EventosJuez {
 	}
 
 	public void cantoEnvido(Equipo equipoQueCanta) {
-		System.out.println("canto");
 		for (OyenteJuez hl : listeners)
 			hl.jugadorCantoEnvido(equipoQueCanta);
 	}
 
 	public void cantoEnvidoEnvido(Equipo equipoQueCanta) {
-		System.out.println("canto");
 		for (OyenteJuez hl : listeners)
 			hl.jugadorCantoEnvidoEnvido(equipoQueCanta);
 	}
 	
 	public void cantoRealEnvido(Equipo equipoQueCanta) {
-		System.out.println("canto");
 		for (OyenteJuez hl : listeners)
 			hl.jugadorCantoRealEnvido(equipoQueCanta);
 	}
 	
 	public void cantoFaltaEnvido(Equipo equipoQueCanta) {
-		System.out.println("canto");
 		for (OyenteJuez hl : listeners)
 			hl.jugadorCantoFaltaEnvido(equipoQueCanta);
+	}
+
+	public void cantoContraFlorAJuego(Equipo equipoQueCanta) {
+		for (OyenteJuez hl : listeners)
+			hl.jugadorCantoContraFlorAJuego(equipoQueCanta);
+	}
+	
+	public void cantoContraFlor(Equipo equipoQueCanta) {
+		for (OyenteJuez hl : listeners)
+			hl.jugadorCantoContraFlor(equipoQueCanta);
+	}
+	
+	public void cantoFlor(Equipo equipoQueCanta) {
+		for (OyenteJuez hl : listeners)
+			hl.jugadorCantoFlor(equipoQueCanta);
 	}
 
 

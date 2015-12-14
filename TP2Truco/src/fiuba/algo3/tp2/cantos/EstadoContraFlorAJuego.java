@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.cantos;
 
 import fiuba.algo3.tp2.excepciones.CantoInvalidoException;
 import fiuba.algo3.tp2.modelo.Equipo;
+import fiuba.algo3.tp2.modelo.EventosJuez;
 
 public class EstadoContraFlorAJuego extends EstadoCantoFlor{
 
@@ -33,6 +34,11 @@ public class EstadoContraFlorAJuego extends EstadoCantoFlor{
 	@Override
 	public int quiso() {
 		return 30;
+	}
+	
+	@Override
+	public void avisarAPartida(EventosJuez eventosJuez) {
+		eventosJuez.cantoContraFlorAJuego(this.equipoQueCanta);
 	}
 
 }

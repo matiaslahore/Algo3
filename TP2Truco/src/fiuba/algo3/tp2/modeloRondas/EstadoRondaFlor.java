@@ -11,14 +11,11 @@ import fiuba.algo3.tp2.modelo.Juez;
 import fiuba.algo3.tp2.modeloJugador.Jugador;
 
 public class EstadoRondaFlor extends EstadoRondas {
-	
-	private EstadoCantoFlor cantosFlor;
 
 	public EstadoRondaFlor(EstadoRondas estadoRonda, Juez juez, ArrayList<Equipo> ganadoresRonda,
-			ListaCircular<Jugador> listaDeJugadoresActual, int indiceJugadorManoDeLaRondaActual, EstadoCantoFlor tipoDeCanto) {
+			ListaCircular<Jugador> listaDeJugadoresActual, int indiceJugadorManoDeLaRondaActual) {
 		
 		super(estadoRonda, juez, ganadoresRonda, listaDeJugadoresActual, indiceJugadorManoDeLaRondaActual);
-		this.cantosFlor = tipoDeCanto;
 	}
 
 	@Override
@@ -31,7 +28,7 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 	
 	public Jugador turnoDe() {
-		Jugador jugador = this.juez.otroJugadorConFlor(this.cantosFlor.equipoQueCanta());
+		Jugador jugador = this.juez.otroJugadorConFlor();
 		return jugador;
 	}
 	
@@ -48,11 +45,9 @@ public class EstadoRondaFlor extends EstadoRondas {
 		int tantoGanador = this.juez.quienGanaElTanto(this.tantoEnJuego);
 		int indexTantoGanador = this.tantoEnJuego.indexOf(tantoGanador); //gana el q es mano tmb
 		
-		Jugador ganador = this.jugadores.get(this.indiceJugadorMano + indexTantoGanador);
+		Jugador jugadorGanador = this.jugadores.get(this.indiceJugadorMano + indexTantoGanador);
 		
-		this.juez.puntosEnJuego(this.cantosFlor.quiso());
-		
-		this.juez.anotarPuntos(ganador.obtenerEquipo());
+		this.juez.anotarPuntosFlor(jugadorGanador.obtenerEquipo());
 		
 		this.tantoEnJuego.clear();
 		
@@ -60,28 +55,32 @@ public class EstadoRondaFlor extends EstadoRondas {
 	}
 	
 	public EstadoRondas noQuiero(Jugador jugador) {
-		this.juez.puntosEnJuego(this.cantosFlor.noQuiso());
-		
+		this.juez.noQuisoFlor();
 		this.juez.anotarPuntos((this.jugadores.get(this.jugadores.indexOf(jugador) + 1)).obtenerEquipo());
+		
 		this.indiceJugadorMano = this.indiceJugadorMano + 1; //aumento quien empieza la prox mano
 		return this.refEstadoRonda;
 	}
 	
-	public EstadoRondas cantarContraFlor(Jugador jugador)throws CantoInvalidoException{
-		EstadoCantoFlor unTipoDeFlor = null;
-		unTipoDeFlor = this.cantosFlor.cantarContraFlor(jugador.obtenerEquipo());	
+	public EstadoRondas cantarFlor(Jugador jugador)throws CantoInvalidoException{
+		this.juez.seCantoFlor(jugador.obtenerEquipo());
+		
 		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual + 1;
-		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual, unTipoDeFlor);
+		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
+	}
+	
+	public EstadoRondas cantarContraFlor(Jugador jugador)throws CantoInvalidoException{
+		this.juez.seCantoContraFlor(jugador.obtenerEquipo());
+		
+		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual + 1;
+		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
 	
 	public EstadoRondas cantarContraFlorAJuego(Jugador jugador) throws CantoInvalidoException {
-		EstadoCantoFlor unTipoDeFlor = null;
-		unTipoDeFlor = this.cantosFlor.cantarContraFlorAJuego(jugador.obtenerEquipo());
+		this.juez.seCantoContraFlorAJuego(jugador.obtenerEquipo());
+		
 		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual + 1;
-		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual, unTipoDeFlor);
+		return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual);
 	}
-	
-	public boolean seCantoEnvido() {
-		return true;
-	}
+
 }

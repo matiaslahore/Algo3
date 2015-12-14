@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
+import fiuba.algo3.tp2.cantosPosibles.CantaronContraFlor;
+import fiuba.algo3.tp2.cantosPosibles.CantaronFlor;
+
 public interface OyenteJuez {
 
 	public void jugadorQuisoTruco();
@@ -14,12 +17,18 @@ public interface OyenteJuez {
 	
 	public void seTerminoRondaUno();
 
-	public abstract void jugadorCantoEnvido(Equipo equipoQueCanta);
+	public void jugadorCantoEnvido(Equipo equipoQueCanta);
 	
-	public abstract void jugadorCantoEnvidoEnvido(Equipo equipoQueCanta);
+	public void jugadorCantoEnvidoEnvido(Equipo equipoQueCanta);
 	
-	public abstract void jugadorCantoRealEnvido(Equipo equipoQueCanta);
+	public void jugadorCantoRealEnvido(Equipo equipoQueCanta);
 	
-	public abstract void jugadorCantoFaltaEnvido(Equipo equipoQueCanta);
+	public void jugadorCantoFaltaEnvido(Equipo equipoQueCanta);
+
+	public void jugadorCantoFlor(Equipo equipoQueCanta);
+	
+	public void jugadorCantoContraFlor(Equipo equipoQueCanta);
+	
+	public void jugadorCantoContraFlorAJuego(Equipo equipoQueCanta);
 
 }
