@@ -137,13 +137,13 @@ public class VentanasDelJuego extends Application{
 		Label puntajeEquipo1 = new Label();
 		String textoPuntaje = this.partida.obtenerNombreDeEquipoUno()+": "+ this.partida.obtenerPuntajeDeEquipoUno()+ " PUNTOS";
 		puntajeEquipo1.setText(textoPuntaje);
-		puntajeEquipo1.setTextFill(Color.YELLOW);
+		puntajeEquipo1.setTextFill(Color.GREEN);
 		puntajeEquipo1.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
 		
 		Label puntajeEquipo2 = new Label();
 		textoPuntaje = this.partida.obtenerNombreDeEquipoDos() +": "+ this.partida.obtenerPuntajeDeEquipoDos()+ " PUNTOS";
 		puntajeEquipo2.setText(textoPuntaje);
-		puntajeEquipo2.setTextFill(Color.GREEN);
+		puntajeEquipo2.setTextFill(Color.YELLOW);
 		puntajeEquipo2.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
 		
 		
