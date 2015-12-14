@@ -77,7 +77,7 @@ public class VentanasDelJuego extends Application{
 		ImageView imagen = new ImageView();
 		imagen.setImage(fondo);
 
-		BackgroundFill back = new BackgroundFill(Color.GRAY, null, null);
+		BackgroundFill back = new BackgroundFill(Color.SEAGREEN, null, null);
 		Background bk = new Background(back);
 		botonesDelJugador.setBackground(bk);
 		botonesDelJugador.setPrefSize(670, 140);
