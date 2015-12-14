@@ -18,6 +18,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -74,22 +77,30 @@ public class VentanasDelJuego extends Application{
 		ImageView imagen = new ImageView();
 		imagen.setImage(fondo);
 
+		BackgroundFill back = new BackgroundFill(Color.GRAY, null, null);
+		Background bk = new Background(back);
+		botonesDelJugador.setBackground(bk);
+		botonesDelJugador.setPrefSize(670, 140);
+		
 		//puntos de los equipos
 		Label nombreJugador = new Label();
 		String texto1 = "TRUNO DE: " + this.partida.obtenerNombreDelJugadorConTurno();
 		nombreJugador.setText(texto1);
-		nombreJugador.setTextFill(Color.web("#FF0000"));
+		nombreJugador.setTextFill(Color.YELLOW);
+		nombreJugador.setStyle("-fx-font-size: 16pt;");
 		HBox nombre = new HBox(nombreJugador);
+		nombre.setLayoutX(240);
+		nombre.setLayoutY(320);
 		nombre.setAlignment(Pos.CENTER);
-
+		
 		//escenario de imagenes de la mesa 
-		Group escena = new Group();
+		BorderPane escena = new BorderPane();
 
-		escena.getChildren().add(imagen); //carga el fondo
-		//escena.getChildren().add(this.controladorDeBotones.botonesDelJugador()); //agregue botones sin las cartas
-		escena.getChildren().add(this.botonesDelJugador);
-		escena.getChildren().add(nombre);
-		escena.getChildren().add(agregarCartasDelJugador());
+		BackgroundImage bkImage = new BackgroundImage(fondo, null, null, null, null);
+		escena.setBackground(new Background(bkImage));
+		escena.setTop(this.botonesDelJugador);
+		escena.setBottom(nombre);
+		escena.setCenter(agregarCartasDelJugador());
 
 		Scene scene = new Scene(escena, 670, 350);
 		return scene;
