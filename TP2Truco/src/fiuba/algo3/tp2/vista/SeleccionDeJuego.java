@@ -250,6 +250,13 @@ public class SeleccionDeJuego extends Application{
 			else{ this.camposDeValidacion.get(j).setStyle("-fx-text-box-border: white ;-fx-focus-color: white ;"); 
 			}
 		}
+		if ((this.camposDeValidacion.get(0).getText().equals(this.camposDeValidacion.get(((this.cantidadJugadores/2)+1)).getText()))||(this.camposDeValidacion.get((this.cantidadJugadores/2)+1).getText().equals("NOMBRE DE EQUIPO REPETIDO, REINGRESE"))){
+			this.camposDeValidacion.get(((this.cantidadJugadores/2)+1)).setText("NOMBRE DE EQUIPO REPETIDO, REINGRESE");
+			this.camposDeValidacion.get(((this.cantidadJugadores/2)+1)).setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;");
+			camposValidos = false;
+		}else{
+			this.camposDeValidacion.get(((this.cantidadJugadores/2)+1)).setStyle("-fx-text-box-border: white ;-fx-focus-color: white ;");
+		}
 		return camposValidos;
 	}
 	
