@@ -13,76 +13,76 @@ public class EventosIA {
 	public void canteEnvido() {
 		// Notify everybody that may be interested.
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: ENVIDO!");
+			hl.modificarMensajesIa("CPU CANTA: ENVIDO!");
 			hl.meCantaronEnvido();
 		}
 	}
 
 	public void canteRealEnvido() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: REAL ENVIDO");
+			hl.modificarMensajesIa("CPU CANTA: REAL ENVIDO");
 			hl.meCantaronRealEnvido();
 		}
 	}
 
 	public void canteFaltaEnvido() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: FALTA ENVIDO");
+			hl.modificarMensajesIa("CPU CANTA: FALTA ENVIDO");
 			hl.meCantaronFaltaEnvido();
 		}
 	}
 
 	public void canteTruco() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: TRUCO!");
+			hl.modificarMensajesIa("CPU CANTA: TRUCO!");
 			hl.meCantaronTruco();
 		}
 	}
 
 	public void canteReTruco() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: QUIERO RE TRUCO");
+			hl.modificarMensajesIa("CPU CANTA: QUIERO RE TRUCO");
 			hl.meCantaronReTruco();
 		}
 	}
 
 	public void canteValeCuatro() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: QUIERO VALE CUATRO");
+			hl.modificarMensajesIa("CPU CANTA: QUIERO VALE CUATRO");
 			hl.meCantaronValeCuatro();
 		}
 	}
 
 	public void canteFlor() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: FLOR");
+			hl.modificarMensajesIa("CPU CANTA: FLOR");
 			hl.meCantaronFlor();
 		}
 	}
 
 	public void canteContraFlor() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: CONTRA FLOR");
+			hl.modificarMensajesIa("CPU CANTA: CONTRA FLOR");
 			hl.meCantaronContraFlor();
 		}
 	}
 
 	public void canteContraFlorAJuego() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA CANTA: CONTRA FLOR A JUEGO!");
+			hl.modificarMensajesIa("CPU CANTA: CONTRA FLOR A JUEGO!");
 			hl.meCantaronContraFlorAJuego();
 		}
 	}
 	
 	public void cantaQuiero() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA DICE: QUIERO!");
+			hl.modificarMensajesIa("CPU DICE: QUIERO!");
 		}
 	}
 	
 	public void cantaNoQuiero() {
 		for (OyenteIA hl : listeners){
-			hl.modificarMensajesIa("IA DICE: NO, NO QUIERO!");
+			hl.modificarMensajesIa("CPU DICE: NO, NO QUIERO!");
 		}
 	}
 	
