@@ -93,7 +93,7 @@ public class VentanasDelJuego extends Application{
 		
 		//escenario de imagenes de la mesa 
 		BorderPane escena = new BorderPane();
-
+		
 		BackgroundImage bkImage = new BackgroundImage(fondo, null, null, null, null);
 		escena.setBackground(new Background(bkImage));
 		escena.setTop(this.botonesDelJugador);
@@ -281,6 +281,11 @@ public class VentanasDelJuego extends Application{
 
 		Scene scene = new Scene(escena, 350, 300);
 		return scene;
+	}
+	
+	public void cerrarVentanas(){
+		this.stageCartasEnMesa.close();
+		this.stageJugadorConTurno.close();	
 	}
 
 }

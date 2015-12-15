@@ -2,12 +2,16 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.cantosPosibles.*;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
+import fiuba.algo3.tp2.vista.botonesSeleccionDeJuego.BotonVolverEventHandler;
 import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ContenedorDeBotones {
 
@@ -25,6 +29,7 @@ public class ContenedorDeBotones {
 	private Button botonQuerer;
 	private Button botonNoQuerer;
 	private Button botonIrseAlMazo;
+	private Button botonVolver;
 
 	private HBox contenedorOpcion;
 	private HBox contenedorEnvido;
@@ -89,6 +94,21 @@ public class ContenedorDeBotones {
 		this.botonIrseAlMazo = new Button("Irse al Mazo");
 		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, visual, etiqueta);
 		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
+		
+		this.botonVolver = new Button();
+		botonVolver.setText("SALIR DEL JUEGO");
+		botonVolver.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent arg0) {
+				SeleccionDeJuego vista = new SeleccionDeJuego();
+				visual.cerrarVentanas();
+				try {
+					vista.start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});	
+	    botonVolver.setStyle("-fx-background-color: green; -fx-text-fill: white;");
 	}
 
 	public VBox botonesParaJugadorActual() {
@@ -171,9 +191,11 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantosIniciales(){
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
-		if (this.conFlor) contenedorEnvido.getChildren().addAll(botonFlor);
+		if (this.conFlor) {
+			contenedorEnvido.getChildren().add(botonFlor);
+		}
 		this.contenedorTruco = new HBox(spacing,botonTruco);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -181,13 +203,13 @@ public class ContenedorDeBotones {
 		contenedorTruco.setPadding(new Insets(padding));
 
 		VBox botonesRondaInicial = new VBox(contenedorOpcion,contenedorEnvido,contenedorTruco);
-
+        
 		return botonesRondaInicial;
 	}
 
 	private VBox botonesParaRondaSinEnvido(){
 		//sirve para flor cantada envido cantado, ronda dos y ronda tres
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
 		this.contenedorTruco = new HBox(spacing,botonTruco);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -209,7 +231,7 @@ public class ContenedorDeBotones {
 
 	private VBox botonesParaCanteTruco(){
 		//sirve para los q no pueden cantar truco y cuando se canto el vale4
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
@@ -230,7 +252,7 @@ public class ContenedorDeBotones {
 
 	private VBox botonesParaQuiseTruco(){
 		//sirve para los q pueden cantar retruco
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
 		this.contenedorTruco = new HBox(spacing,botonReTruco);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -243,7 +265,7 @@ public class ContenedorDeBotones {
 
 	private VBox botonesParaQuiseReTruco(){
 		//sirve para los q pueden cantar valeCuatro
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
 		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -259,7 +281,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronTruco(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorTruco = new HBox(spacing,botonReTruco);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -271,7 +293,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronReTruco(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -283,7 +305,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronValeCuatro(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
@@ -293,7 +315,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -305,7 +327,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronEnvidoEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorEnvido = new HBox(spacing,botonRealEnvido,botonFaltaEnvido);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -317,7 +339,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronRealEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorEnvido = new HBox(spacing,botonFaltaEnvido);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -329,7 +351,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronFaltaEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
@@ -343,7 +365,7 @@ public class ContenedorDeBotones {
 	}
 	
 	private VBox botonesParaCantaronContraFlorxResto() {
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
@@ -354,7 +376,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronContraFlor() {
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorEnvido = new HBox(spacing,botonFlorContraResto);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -366,7 +388,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronFlor() {
-		this.contenedorOpcion = new HBox(spacing,botonNoQuerer,botonIrseAlMazo);
+		this.contenedorOpcion = new HBox(spacing,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorEnvido = new HBox(spacing,botonFlor,botonContraFlor,botonFlorContraResto);
 
 		contenedorOpcion.setPadding(new Insets(padding));
