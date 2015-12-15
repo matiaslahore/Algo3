@@ -76,4 +76,9 @@ public class EventosJuez {
 			hl.jugadorCantoFlor(equipoQueCanta);
 	}
 
+	public void noQuisoEnvido() {
+		for (OyenteJuez hl : listeners)
+			hl.noQuisoEnvido();
+	}
+
 }

@@ -31,4 +31,6 @@ public interface OyenteJuez {
 	
 	public void jugadorCantoContraFlorAJuego(Equipo equipoQueCanta);
 
+	public void noQuisoEnvido();
+
 }

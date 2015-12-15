@@ -232,6 +232,7 @@ public class Juez {
 
 	public void noQuisoEnvido() {
 		this.puntosEnJuego = this.cantosEnvido.noQuiso();
+		this.eventosJuez.noQuisoEnvido();
 		this.cantosEnvido = new EstadoEnvidoFinalizado();
 	}
 
