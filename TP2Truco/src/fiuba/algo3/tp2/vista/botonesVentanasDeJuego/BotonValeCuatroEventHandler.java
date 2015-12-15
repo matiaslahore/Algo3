@@ -25,10 +25,10 @@ public class BotonValeCuatroEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
+			
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  QUIERO VALE CUAAATRO!!!");
+			etiqueta.setTextFill(Color.web("#FF0000"));
 			this.partida.cantarQuieroValeCuatro();
-			etiqueta.setText("QUIERO VALE CUAAATRO!!!");
-			etiqueta.setTextFill(Color.web("#008000"));
-
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 

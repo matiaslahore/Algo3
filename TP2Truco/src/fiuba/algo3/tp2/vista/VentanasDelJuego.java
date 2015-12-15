@@ -45,6 +45,7 @@ public class VentanasDelJuego extends Application{
 		this.partida = partida;
 		this.cantidadJugadores = cantidadJugadores;
 		this.imagenesCarta = new ImagenesCarta();
+		
 		this.contenedorBotones = new ContenedorDeBotones(this.partida, this, conFlor);
 	}
 
@@ -89,6 +90,8 @@ public class VentanasDelJuego extends Application{
 		nombre.setLayoutX(240);
 		nombre.setLayoutY(320);
 		nombre.setAlignment(Pos.CENTER);
+		
+		
 		
 		//escenario de imagenes de la mesa 
 		BorderPane escena = new BorderPane();

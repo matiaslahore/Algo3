@@ -25,10 +25,10 @@ public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.quiero();
-			etiqueta.setText("QUIERO!");
-			etiqueta.setTextFill(Color.web("#008000"));
 			
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " RESPONDIO QUIERO!");
+			etiqueta.setTextFill(Color.web("#FF0000"));
+			this.partida.quiero();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 

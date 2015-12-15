@@ -25,10 +25,10 @@ public class BotonNoQuererEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
+	
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " RESPONDIO NO QUIERO!");
+			etiqueta.setTextFill(Color.web("#FF0000"));
 			this.partida.noQuiero();
-			etiqueta.setText("NO QUIERO!");
-			etiqueta.setTextFill(Color.web("#008000"));
-
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 

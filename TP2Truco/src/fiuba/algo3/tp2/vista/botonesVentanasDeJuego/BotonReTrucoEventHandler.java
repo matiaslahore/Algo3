@@ -25,10 +25,10 @@ public class BotonReTrucoEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarQuieroReTruco();
-			etiqueta.setText("QUIERO RE TRUCO!");
-			etiqueta.setTextFill(Color.web("#008000"));
 			
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  QUIERO RE TRUCO!");
+			etiqueta.setTextFill(Color.web("#FF0000"));
+			this.partida.cantarQuieroReTruco();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 

@@ -25,10 +25,10 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
+			
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "   TRUCO!!!");
+			etiqueta.setTextFill(Color.web("#FF0000"));
 			this.partida.cantarTruco();
-			etiqueta.setText("TURCO A ESA MIERDA");
-			etiqueta.setTextFill(Color.web("#008000"));
-
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 

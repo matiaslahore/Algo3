@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class ContenedorDeBotones {
@@ -30,6 +32,8 @@ public class ContenedorDeBotones {
 	private Button botonNoQuerer;
 	private Button botonIrseAlMazo;
 	private Button botonVolver;
+	
+	private Label etiqueta;
 
 	private HBox contenedorOpcion;
 	private HBox contenedorEnvido;
@@ -41,11 +45,12 @@ public class ContenedorDeBotones {
 	public ContenedorDeBotones(PartidaDeTruco partida, VentanasDelJuego visual, boolean conFlor){
 		this.partida = partida;
 		this.conFlor = conFlor;
-		Label etiqueta = new Label();
-
-		this.contenedorOpcion = new HBox();
-		this.contenedorEnvido = new HBox();
-		this.contenedorTruco = new HBox();
+		
+		this.etiqueta = new Label();
+		etiqueta.setTextFill(Color.web("#cc5522"));
+		etiqueta.setLayoutY(200);
+		etiqueta.setLayoutX(200);
+		etiqueta.setFont(new Font("Arial Black",15));
 
 		this.botonEnvido = new Button("Envido");
 		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, visual, etiqueta);
@@ -196,12 +201,13 @@ public class ContenedorDeBotones {
 		if (this.conFlor) 
 			contenedorEnvido.getChildren().add(botonFlor);
 		this.contenedorTruco = new HBox(spacing,botonTruco);
+		
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesRondaInicial = new VBox(contenedorOpcion,contenedorEnvido,contenedorTruco);
+		VBox botonesRondaInicial = new VBox(contenedorOpcion,contenedorEnvido,contenedorTruco,this.etiqueta);
         
 		return botonesRondaInicial;
 	}
@@ -214,7 +220,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesRondaUno = new VBox(contenedorOpcion,contenedorTruco);
+		VBox botonesRondaUno = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
 
 		return botonesRondaUno;
 	}
@@ -234,7 +240,7 @@ public class ContenedorDeBotones {
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
-		VBox botonMazo = new VBox(contenedorOpcion);
+		VBox botonMazo = new VBox(contenedorOpcion,this.etiqueta);
 
 		return botonMazo;
 	}
@@ -257,7 +263,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorTruco);
+		VBox botones = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
 
 		return botones;
 	}
@@ -270,7 +276,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorTruco);
+		VBox botones = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
 
 		return botones;
 	}
@@ -286,7 +292,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesTruco = new VBox(contenedorOpcion,contenedorTruco);
+		VBox botonesTruco = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
 
 		return botonesTruco;
 	}
@@ -298,7 +304,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesReTruco = new VBox(contenedorOpcion,contenedorTruco);
+		VBox botonesReTruco = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
 
 		return botonesReTruco;
 	}
@@ -308,7 +314,7 @@ public class ContenedorDeBotones {
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
-		VBox botonesValeCuatro = new VBox(contenedorOpcion);
+		VBox botonesValeCuatro = new VBox(contenedorOpcion,this.etiqueta);
 
 		return botonesValeCuatro;
 	}
@@ -316,11 +322,13 @@ public class ContenedorDeBotones {
 	private VBox botonesParaCantaronEnvido(){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
-
+		if (this.conFlor) 
+			contenedorEnvido.getChildren().add(botonFlor);
+		
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesEnvido = new VBox(contenedorOpcion,contenedorEnvido);
+		VBox botonesEnvido = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
 
 		return botonesEnvido;
 	}
@@ -332,7 +340,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesEnvidoEnvido = new VBox(contenedorOpcion,contenedorEnvido);
+		VBox botonesEnvidoEnvido = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
 
 		return botonesEnvidoEnvido;
 	}
@@ -344,7 +352,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesRealEnvido = new VBox(contenedorOpcion,contenedorEnvido);
+		VBox botonesRealEnvido = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
 
 		return botonesRealEnvido;
 	}
@@ -354,7 +362,7 @@ public class ContenedorDeBotones {
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
-		VBox botonesFaltaEnvido = new VBox(contenedorOpcion);
+		VBox botonesFaltaEnvido = new VBox(contenedorOpcion,this.etiqueta);
 
 		return botonesFaltaEnvido;
 	}
@@ -369,7 +377,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesRealEnvido = new VBox(contenedorOpcion);
+		VBox botonesRealEnvido = new VBox(contenedorOpcion,this.etiqueta);
 
 		return botonesRealEnvido;
 	}
@@ -381,7 +389,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorEnvido);
+		VBox botones = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
 
 		return botones;
 	}
@@ -393,7 +401,7 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorEnvido);
+		VBox botones = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
 
 		return botones;
 	}

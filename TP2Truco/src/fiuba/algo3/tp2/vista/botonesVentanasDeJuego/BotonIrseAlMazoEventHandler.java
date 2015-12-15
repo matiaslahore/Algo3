@@ -23,10 +23,9 @@ public class BotonIrseAlMazoEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
+			
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " SE FUE AL MAZO!");
 			this.partida.irseAlMazo();
-
-			etiqueta.setText("ME VOY AL MAZO!");
-
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 		} catch (NoSePuedeSeguirJugandoExcepcion e){

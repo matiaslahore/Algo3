@@ -24,10 +24,10 @@ public class BotonFaltaEnvidoEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarFaltaEnvido();
-			etiqueta.setText("FALTA ENVIDO!");
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "   FALTA ENVIDO!");
 			etiqueta.setTextFill(Color.web("#FF0000"));
-		
+		    
+			this.partida.cantarFaltaEnvido();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 

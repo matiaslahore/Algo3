@@ -25,10 +25,10 @@ public class BotonFlorEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarFlor();
-			etiqueta.setText(" FLOR !");
+			
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  FLOR!");
 			etiqueta.setTextFill(Color.web("#FF0000"));
-
+			this.partida.cantarFlor();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStajeCartasEnMesa();
 

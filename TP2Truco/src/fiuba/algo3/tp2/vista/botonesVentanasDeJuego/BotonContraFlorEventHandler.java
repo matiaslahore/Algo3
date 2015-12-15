@@ -25,7 +25,7 @@ public class BotonContraFlorEventHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent actionEvent){
 		try{
 			this.partida.cantarContraFlor();
-			etiqueta.setText("CONTRA FLOR");
+			etiqueta.setText(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  CONTRA FLOR");
 			etiqueta.setTextFill(Color.web("#FF0000"));
 
 			this.visual.modificarStageJugador();
