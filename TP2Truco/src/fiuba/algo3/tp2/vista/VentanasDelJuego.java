@@ -253,11 +253,11 @@ public class VentanasDelJuego extends Application{
 		ImageView imagen = new ImageView();
 		imagen.setImage(fondo);
 
-		Button volver = new Button("Inicio");
-		volver.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
-		volver.setPrefSize(100, 20);
+		Button inicio = new Button("Inicio");
+		inicio.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
+		inicio.setPrefSize(100, 20);
 
-		volver.setOnAction(new EventHandler<ActionEvent>() {
+		inicio.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent arg0) {
 				SeleccionDeJuego vista = new SeleccionDeJuego();
 				menuFinalizacion.close();
@@ -270,7 +270,7 @@ public class VentanasDelJuego extends Application{
 		}
 				);
 
-		VBox volverBox = new VBox(volver);
+		VBox volverBox = new VBox(inicio);
 		volverBox.setPadding(new Insets(0, 0, 15, 0));
 		volverBox.setAlignment(Pos.BOTTOM_CENTER);
 
