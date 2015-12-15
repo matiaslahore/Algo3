@@ -16,20 +16,20 @@ public abstract class Jugador {
 	Mano manoDelJugador;
 	Mesa refMesa;
 	int envido;
-	boolean tieneFlor;
+	int tantoFlor;
 
 	public Jugador(String name, Mesa mesa, Equipo team){
 		nombre = name;
 		refMesa = mesa;
 		equipo = team;
 		envido = 0;
-		tieneFlor = false;
+		tantoFlor = 0;
 	}
 	
 	public void recibirCartas(List<Carta> listaDeCartas){
 		manoDelJugador = new Mano(listaDeCartas);
 		this.envido = this.manoDelJugador.calcularEnvido();
-		this.tieneFlor = this.manoDelJugador.tieneFlor();
+		this.tantoFlor = this.manoDelJugador.calcularPuntosFlor();
 	}
 
 	public Equipo obtenerEquipo(){
@@ -45,7 +45,8 @@ public abstract class Jugador {
 	}
 	
 	public int obtenerPuntosFlor(){
-		return this.manoDelJugador.calcularPuntosFlor();
+		return(this.tantoFlor);
+		//return this.manoDelJugador.calcularPuntosFlor();
 	}
 
 	public String verCartasEnManoComoString() {
@@ -120,7 +121,7 @@ public abstract class Jugador {
 	}
 
 	public boolean tieneFlor() {
-		return this.tieneFlor;
+		return(this.tantoFlor != 0);
 	}
 
 	public void mostrarCartas() {
