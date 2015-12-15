@@ -20,4 +20,6 @@ public interface OyenteIA {
 
 	public void meCantaronContraFlorAJuego();
 	
+	public void modificarMensajesIa(String mensaje);
+
 }

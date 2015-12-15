@@ -240,4 +240,8 @@ public class Mesa {
 		this.juez.agregarOyentes(unOyente);
 	}
 
+	public String ultimoGanadorEnvido() {
+		return this.juez.ultimoGanadorEnvido();
+	}
+
 }

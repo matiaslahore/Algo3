@@ -2,10 +2,7 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.cantosPosibles.*;
 import fiuba.algo3.tp2.modelo.PartidaDeTruco;
-import fiuba.algo3.tp2.vista.botonesSeleccionDeJuego.BotonVolverEventHandler;
 import fiuba.algo3.tp2.vista.botonesVentanasDeJuego.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +10,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 public class ContenedorDeBotones {
 
@@ -31,89 +27,65 @@ public class ContenedorDeBotones {
 	private Button botonQuerer;
 	private Button botonNoQuerer;
 	private Button botonIrseAlMazo;
-	private Button botonVolver;
-	
-	private Label etiqueta;
 
 	private HBox contenedorOpcion;
 	private HBox contenedorEnvido;
 	private HBox contenedorTruco;
 
-	private int padding = 10;
+	private int padding = 5;
 	private int spacing = 10;
 
 	public ContenedorDeBotones(PartidaDeTruco partida, VentanasDelJuego visual, boolean conFlor){
 		this.partida = partida;
 		this.conFlor = conFlor;
-		
-		this.etiqueta = new Label();
-		etiqueta.setTextFill(Color.web("#cc5522"));
-		etiqueta.setLayoutY(200);
-		etiqueta.setLayoutX(200);
-		etiqueta.setFont(new Font("Arial Black",15));
 
 		this.botonEnvido = new Button("Envido");
-		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, visual, etiqueta);
+		BotonEnvidoEventHandler botonEnvidoEventHandler = new BotonEnvidoEventHandler(this.partida, visual);
 		botonEnvido.setOnAction(botonEnvidoEventHandler);
 
 		this.botonRealEnvido = new Button("Real Envido");
-		BotonRealEnvidoEventHandler botonRealEnvidoEventHandler = new BotonRealEnvidoEventHandler(this.partida, visual, etiqueta);
+		BotonRealEnvidoEventHandler botonRealEnvidoEventHandler = new BotonRealEnvidoEventHandler(this.partida, visual);
 		botonRealEnvido.setOnAction(botonRealEnvidoEventHandler);
 
 		this.botonFaltaEnvido = new Button("Falta Envido");
-		BotonFaltaEnvidoEventHandler botonFaltaEnvidoEventHandler = new BotonFaltaEnvidoEventHandler(this.partida, visual, etiqueta);
+		BotonFaltaEnvidoEventHandler botonFaltaEnvidoEventHandler = new BotonFaltaEnvidoEventHandler(this.partida, visual);
 		botonFaltaEnvido.setOnAction(botonFaltaEnvidoEventHandler);
 
 		this.botonFlor = new Button("Flor");
-		BotonFlorEventHandler botonFlorEventHandler = new BotonFlorEventHandler(this.partida, visual, etiqueta);
+		BotonFlorEventHandler botonFlorEventHandler = new BotonFlorEventHandler(this.partida, visual);
 		botonFlor.setOnAction(botonFlorEventHandler);
 
 		this.botonContraFlor = new Button("Contra Flor");
-		BotonContraFlorEventHandler botonContraFlorEventHandler = new BotonContraFlorEventHandler(this.partida, visual, etiqueta);
+		BotonContraFlorEventHandler botonContraFlorEventHandler = new BotonContraFlorEventHandler(this.partida, visual);
 		botonContraFlor.setOnAction(botonContraFlorEventHandler);
 
 		this.botonFlorContraResto = new Button("Flor X Resto");
-		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, visual, etiqueta);
+		BotonFlorContraRestoEventHandler botonFlorContraRestoEventHandler = new BotonFlorContraRestoEventHandler(this.partida, visual);
 		botonFlorContraResto.setOnAction(botonFlorContraRestoEventHandler);
 
 		this.botonTruco = new Button("Truco");
-		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, visual, etiqueta);
+		BotonTrucoEventHandler botonTrucoEventHandler = new BotonTrucoEventHandler(this.partida, visual);
 		botonTruco.setOnAction(botonTrucoEventHandler);
 
 		this.botonReTruco = new Button("ReTruco");
-		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, visual, etiqueta);
+		BotonReTrucoEventHandler botonReTrucoEventHandler = new BotonReTrucoEventHandler(this.partida, visual);
 		botonReTruco.setOnAction(botonReTrucoEventHandler);
 
 		this.botonValeCuatro = new Button("ValeCuatro");
-		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, visual, etiqueta);
+		BotonValeCuatroEventHandler botonValeCuatroEventHandler = new BotonValeCuatroEventHandler(this.partida, visual);
 		botonValeCuatro.setOnAction(botonValeCuatroEventHandler);
 
 		this.botonQuerer = new Button("Querer");
-		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, visual, etiqueta);
+		BotonQuererEventHandler botonQuererEventHandler = new BotonQuererEventHandler(this.partida, visual);
 		botonQuerer.setOnAction(botonQuererEventHandler);
 
 		this.botonNoQuerer = new Button("No Querer");
-		BotonNoQuererEventHandler botonNoQuererEventHandler = new BotonNoQuererEventHandler(this.partida, visual, etiqueta);
+		BotonNoQuererEventHandler botonNoQuererEventHandler = new BotonNoQuererEventHandler(this.partida, visual);
 		botonNoQuerer.setOnAction(botonNoQuererEventHandler);
 
 		this.botonIrseAlMazo = new Button("Irse al Mazo");
-		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, visual, etiqueta);
+		BotonIrseAlMazoEventHandler botonIrseAlMazoEventHandler = new BotonIrseAlMazoEventHandler(this.partida, visual);
 		botonIrseAlMazo.setOnAction(botonIrseAlMazoEventHandler);
-		
-		this.botonVolver = new Button();
-		botonVolver.setText("SALIR DEL JUEGO");
-		botonVolver.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent arg0) {
-				SeleccionDeJuego vista = new SeleccionDeJuego();
-				visual.cerrarVentanas();
-				try {
-					vista.start(new Stage());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});	
-	    botonVolver.setStyle("-fx-background-color: green; -fx-text-fill: white;");
 	}
 
 	public VBox botonesParaJugadorActual() {
@@ -196,7 +168,7 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantosIniciales(){
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
 		if (this.conFlor) 
 			contenedorEnvido.getChildren().add(botonFlor);
@@ -207,20 +179,20 @@ public class ContenedorDeBotones {
 		contenedorEnvido.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesRondaInicial = new VBox(contenedorOpcion,contenedorEnvido,contenedorTruco,this.etiqueta);
+		VBox botonesRondaInicial = new VBox(contenedorOpcion,contenedorEnvido,contenedorTruco);
         
 		return botonesRondaInicial;
 	}
 
 	private VBox botonesParaRondaSinEnvido(){
 		//sirve para flor cantada envido cantado, ronda dos y ronda tres
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonTruco);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesRondaUno = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
+		VBox botonesRondaUno = new VBox(contenedorOpcion,contenedorTruco);
 
 		return botonesRondaUno;
 	}
@@ -236,11 +208,11 @@ public class ContenedorDeBotones {
 
 	private VBox botonesParaCanteTruco(){
 		//sirve para los q no pueden cantar truco y cuando se canto el vale4
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
-		VBox botonMazo = new VBox(contenedorOpcion,this.etiqueta);
+		VBox botonMazo = new VBox(contenedorOpcion);
 
 		return botonMazo;
 	}
@@ -257,26 +229,26 @@ public class ContenedorDeBotones {
 
 	private VBox botonesParaQuiseTruco(){
 		//sirve para los q pueden cantar retruco
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonReTruco);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
+		VBox botones = new VBox(contenedorOpcion,contenedorTruco);
 
 		return botones;
 	}
 
 	private VBox botonesParaQuiseReTruco(){
 		//sirve para los q pueden cantar valeCuatro
-		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
+		VBox botones = new VBox(contenedorOpcion,contenedorTruco);
 
 		return botones;
 	}
@@ -286,41 +258,41 @@ public class ContenedorDeBotones {
 	}
 
 	private VBox botonesParaCantaronTruco(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonReTruco);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesTruco = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
+		VBox botonesTruco = new VBox(contenedorOpcion,contenedorTruco);
 
 		return botonesTruco;
 	}
 
 	private VBox botonesParaCantaronReTruco(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorTruco.setPadding(new Insets(padding));
 
-		VBox botonesReTruco = new VBox(contenedorOpcion,contenedorTruco,this.etiqueta);
+		VBox botonesReTruco = new VBox(contenedorOpcion,contenedorTruco);
 
 		return botonesReTruco;
 	}
 
 	private VBox botonesParaCantaronValeCuatro(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
-		VBox botonesValeCuatro = new VBox(contenedorOpcion,this.etiqueta);
+		VBox botonesValeCuatro = new VBox(contenedorOpcion);
 
 		return botonesValeCuatro;
 	}
 
 	private VBox botonesParaCantaronEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
 		if (this.conFlor) 
 			contenedorEnvido.getChildren().add(botonFlor);
@@ -328,41 +300,41 @@ public class ContenedorDeBotones {
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesEnvido = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
+		VBox botonesEnvido = new VBox(contenedorOpcion,contenedorEnvido);
 
 		return botonesEnvido;
 	}
 
 	private VBox botonesParaCantaronEnvidoEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonRealEnvido,botonFaltaEnvido);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesEnvidoEnvido = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
+		VBox botonesEnvidoEnvido = new VBox(contenedorOpcion,contenedorEnvido);
 
 		return botonesEnvidoEnvido;
 	}
 
 	private VBox botonesParaCantaronRealEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonFaltaEnvido);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesRealEnvido = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
+		VBox botonesRealEnvido = new VBox(contenedorOpcion,contenedorEnvido);
 
 		return botonesRealEnvido;
 	}
 
 	private VBox botonesParaCantaronFaltaEnvido(){
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 
-		VBox botonesFaltaEnvido = new VBox(contenedorOpcion,this.etiqueta);
+		VBox botonesFaltaEnvido = new VBox(contenedorOpcion);
 
 		return botonesFaltaEnvido;
 	}
@@ -372,36 +344,36 @@ public class ContenedorDeBotones {
 	}
 	
 	private VBox botonesParaCantaronContraFlorxResto() {
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botonesRealEnvido = new VBox(contenedorOpcion,this.etiqueta);
+		VBox botonesRealEnvido = new VBox(contenedorOpcion);
 
 		return botonesRealEnvido;
 	}
 
 	private VBox botonesParaCantaronContraFlor() {
-		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonFlorContraResto);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
+		VBox botones = new VBox(contenedorOpcion,contenedorEnvido);
 
 		return botones;
 	}
 
 	private VBox botonesParaCantaronFlor() {
-		this.contenedorOpcion = new HBox(spacing,botonNoQuerer,botonIrseAlMazo,botonVolver);
+		this.contenedorOpcion = new HBox(spacing,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonFlor,botonContraFlor,botonFlorContraResto);
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
 
-		VBox botones = new VBox(contenedorOpcion,contenedorEnvido,this.etiqueta);
+		VBox botones = new VBox(contenedorOpcion,contenedorEnvido);
 
 		return botones;
 	}

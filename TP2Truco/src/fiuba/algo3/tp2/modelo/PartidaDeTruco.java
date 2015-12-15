@@ -238,5 +238,13 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronContraFlorxResto());		
 		}
 	}
+	
+	public String ganadorEnvido(){
+		return this.mesa.ultimoGanadorEnvido();		
+	}
+
+	public String mensajesEntreEquipos() {
+		return "";
+	}
 
 }

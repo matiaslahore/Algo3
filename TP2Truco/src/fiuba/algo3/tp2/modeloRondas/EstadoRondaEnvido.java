@@ -48,6 +48,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 		Equipo equipoPerdedor = (this.jugadores.get(this.indiceJugadorMano + indexTantoGanador + 1)).obtenerEquipo();
 		
 		this.juez.anotarPuntosEnvido(jugadorGanador.obtenerEquipo(), equipoPerdedor);
+		this.juez.ganadorDelTanto(jugadorGanador,tantoGanador);
 		
 		System.out.println("EL TANTO LO GANA: " + jugadorGanador.obtenerEquipo().obtenerNombre());
 		System.out.println("CON: " + tantoGanador);

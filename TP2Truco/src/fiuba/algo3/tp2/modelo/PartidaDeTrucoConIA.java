@@ -26,6 +26,7 @@ import fiuba.algo3.tp2.modeloJugador.OyenteIA;
 
 public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements OyenteIA{
 	EventosJugador eventosIA;
+	private String mensajesIa;
 	
 	public PartidaDeTrucoConIA(String nombreEquipoIA, String nombreEquipo2){
 		super(nombreEquipoIA,nombreEquipo2);
@@ -222,6 +223,14 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronValeCuatro());
 	}
 	
+	public String mensajesEntreEquipos() {
+		String mensaje = this.mensajesIa;
+		this.mensajesIa = "";
+		return mensaje;
+	}
 	
-	
+	@Override
+	public void modificarMensajesIa(String mensaje){
+		this.mensajesIa = mensaje;
+	}
 }

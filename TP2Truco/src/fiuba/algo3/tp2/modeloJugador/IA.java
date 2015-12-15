@@ -187,4 +187,15 @@ public class IA extends Jugador implements Oyente{
 	public boolean terminoLaMano() {
 		return this.refMesa.terminoLaMano();
 	}
+	
+	public void quiero(){
+		this.eventosIA.cantaQuiero();
+		this.refMesa.quiero(this);
+	}
+	
+	public void noQuiero(){
+		this.eventosIA.cantaNoQuiero();
+		this.refMesa.noQuiero(this);
+	}
+	
 }

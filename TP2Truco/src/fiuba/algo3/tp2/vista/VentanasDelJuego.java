@@ -36,16 +36,19 @@ public class VentanasDelJuego extends Application{
 	private PartidaDeTruco partida;
 	private Stage stageJugadorConTurno;
 	private Stage stageCartasEnMesa;
+	private Stage stageInformacion;
+	private Label etiquetaInformacion;
 	private VBox botonesDelJugador;
-	private Label etiqueta;
 	private int cantidadJugadores;
 	private ContenedorDeBotones contenedorBotones;
+
+	private Button botonVolver;
 
 	public VentanasDelJuego (PartidaDeTruco partida, int cantidadJugadores, boolean conFlor){
 		this.partida = partida;
 		this.cantidadJugadores = cantidadJugadores;
 		this.imagenesCarta = new ImagenesCarta();
-		
+
 		this.contenedorBotones = new ContenedorDeBotones(this.partida, this, conFlor);
 	}
 
@@ -53,6 +56,32 @@ public class VentanasDelJuego extends Application{
 	public void start(Stage stage) throws Exception {
 		this.partida.iniciar();
 
+		this.botonVolver = new Button();
+		botonVolver.setText("SALIR DEL JUEGO");
+		botonVolver.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent arg0) {
+				SeleccionDeJuego vista = new SeleccionDeJuego();
+				cerrarVentanas();
+				try {
+					vista.start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});	
+		botonVolver.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+
+		this.stageInformacion = new Stage();
+		this.stageInformacion.setTitle("Informacion del juego");
+		this.etiquetaInformacion = new Label();
+		etiquetaInformacion.setTextFill(Color.WHITE);
+		etiquetaInformacion.setStyle("-fx-font-size: 18pt;");
+		modificarStageInformacion("");
+		this.stageInformacion.setX(0);
+		this.stageInformacion.setY(400);
+		this.stageInformacion.setResizable(false);
+		this.stageInformacion.show();
+		
 		this.stageJugadorConTurno = new Stage();
 		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
 		this.modificarStageJugador();
@@ -62,12 +91,12 @@ public class VentanasDelJuego extends Application{
 
 		this.stageCartasEnMesa = new Stage();
 		this.stageCartasEnMesa.setTitle("Cartas En Juego");
-		modificarStajeCartasEnMesa();
+		modificarStageCartasEnMesa();
 		this.stageCartasEnMesa.setX(730);
 		this.stageCartasEnMesa.setResizable(false);
 		this.stageCartasEnMesa.show();
 	}
-	
+
 	public Scene cargarSceneDelJugador() {
 		//imagen de fondo de la mesa
 		String direccionImagen = "/fiuba/algo3/tp2/vista/imagenes/fondo.jpg";
@@ -79,7 +108,7 @@ public class VentanasDelJuego extends Application{
 		Background bk = new Background(back);
 		botonesDelJugador.setBackground(bk);
 		botonesDelJugador.setPrefSize(670, 140);
-		
+
 		//puntos de los equipos
 		Label nombreJugador = new Label();
 		String texto1 = "TRUNO DE: " + this.partida.obtenerNombreDelJugadorConTurno();
@@ -90,12 +119,10 @@ public class VentanasDelJuego extends Application{
 		nombre.setLayoutX(240);
 		nombre.setLayoutY(320);
 		nombre.setAlignment(Pos.CENTER);
-		
-		
-		
+
 		//escenario de imagenes de la mesa 
 		BorderPane escena = new BorderPane();
-		
+
 		BackgroundImage bkImage = new BackgroundImage(fondo, null, null, null, null);
 		escena.setBackground(new Background(bkImage));
 		escena.setTop(this.botonesDelJugador);
@@ -123,7 +150,7 @@ public class VentanasDelJuego extends Application{
 			cartaComoImagen.setFitWidth(110);
 			cartaComoImagen.setLayoutX(layoutX);
 			cartaComoImagen.setLayoutY(150);
-			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this, this.etiqueta));
+			cartaComoImagen.addEventHandler(MouseEvent.MOUSE_CLICKED, new TirarCartaEvent<MouseEvent>(this.partida, carta, this));
 
 			layoutX += 150;
 
@@ -139,14 +166,14 @@ public class VentanasDelJuego extends Application{
 		puntajeEquipo1.setText(textoPuntaje);
 		puntajeEquipo1.setTextFill(Color.GREEN);
 		puntajeEquipo1.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
-		
+
 		Label puntajeEquipo2 = new Label();
 		textoPuntaje = this.partida.obtenerNombreDeEquipoDos() +": "+ this.partida.obtenerPuntajeDeEquipoDos()+ " PUNTOS";
 		puntajeEquipo2.setText(textoPuntaje);
 		puntajeEquipo2.setTextFill(Color.YELLOW);
 		puntajeEquipo2.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
-		
-		
+
+
 		HBox puntaje = new HBox(puntajeEquipo1,puntajeEquipo2);
 		puntaje.setLayoutX(130);
 		puntaje.setSpacing(30);
@@ -185,7 +212,7 @@ public class VentanasDelJuego extends Application{
 			cartaComoImagen.setLayoutY(layoutY);
 
 			layoutY += 50;
-			
+
 			if (i == cantidadJugadores) {
 				layoutY = 40;
 				layoutX += 150;
@@ -201,19 +228,37 @@ public class VentanasDelJuego extends Application{
 	}
 
 	public void modificarStageJugador(){
-		this.botonesDelJugador = this.contenedorBotones.botonesParaJugadorActual();
+		String leyenda = this.partida.mensajesEntreEquipos();
+		if (!leyenda.isEmpty()) this.etiquetaInformacion.setText(leyenda);
+		
+		this.botonesDelJugador = new VBox(this.botonVolver);
+		this.botonesDelJugador.getChildren().add(this.contenedorBotones.botonesParaJugadorActual());
 		Scene sceneCartasJugador = this.cargarSceneDelJugador();
 		this.stageJugadorConTurno.setScene(sceneCartasJugador);
 	}
 
-	public void modificarStajeCartasEnMesa(){
+	public void modificarStageCartasEnMesa(){
 		Scene sceneCartasEnMesa = this.cargarSceneDeLaMesa();
 		this.stageCartasEnMesa.setScene(sceneCartasEnMesa);
+	}
+
+	public void modificarStageInformacion(String leyenda){
+		BorderPane escena = new BorderPane();
+		escena.setBackground(new Background(new BackgroundFill(Color.SEAGREEN, null, null)));
+		modificarEtiquetaInformacion(this.partida.mensajesEntreEquipos());
+		escena.setCenter(this.etiquetaInformacion);
+		Scene sceneInformacion = new Scene(escena, 670, 105);
+		this.stageInformacion.setScene(sceneInformacion);
+	}
+
+	public void modificarEtiquetaInformacion(String leyenda) {
+		this.etiquetaInformacion.setText(leyenda);
 	}
 
 	public void cerrarVentanasJuego() {
 		this.stageCartasEnMesa.close();
 		this.stageJugadorConTurno.close();
+		this.stageInformacion.close();
 
 		Stage menuFinalizacion = new Stage();
 		menuFinalizacion.setTitle("PARTIDA FINALIZADA");
@@ -284,10 +329,11 @@ public class VentanasDelJuego extends Application{
 		Scene scene = new Scene(escena, 350, 300);
 		return scene;
 	}
-	
+
 	public void cerrarVentanas(){
 		this.stageCartasEnMesa.close();
 		this.stageJugadorConTurno.close();	
+		this.stageInformacion.close();
 	}
 
 }

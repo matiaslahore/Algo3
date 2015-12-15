@@ -27,6 +27,7 @@ public class Juez {
 	private EstadoCantoTruco cantosTruco;
 	private EstadoCantoEnvido cantosEnvido;
 	private EstadoCantoFlor cantosFlor;
+	private String ultimoResultadoEnvido;
 
 	public Juez(Mesa mesa, Equipo equipoUno, Equipo equipoDos){
 		this.maso = new Maso();
@@ -279,6 +280,16 @@ public class Juez {
 		this.cantosEnvido = new EstadoEnvidoFinalizado(); //si hay flor no hay envido
 	
 		this.eventosJuez.quisoEnvido();
+	}
+
+	public void ganadorDelTanto(Jugador jugadorGanador, int tantoGanador) {
+		this.ultimoResultadoEnvido = (jugadorGanador.obtenerNombre() + " con: " + tantoGanador);
+	}
+	
+	public String ultimoGanadorEnvido(){
+		String ganador = this.ultimoResultadoEnvido;
+		this.ultimoResultadoEnvido = "";
+		return ganador;
 	}
 
 }
