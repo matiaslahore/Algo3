@@ -39,14 +39,12 @@ public class VentanasDelJuego extends Application{
 	private VBox botonesDelJugador;
 	private Label etiqueta;
 	private int cantidadJugadores;
-	private ControladorDeBotones controladorDeBotones;
 	private ContenedorDeBotones contenedorBotones;
 
 	public VentanasDelJuego (PartidaDeTruco partida, int cantidadJugadores, boolean conFlor){
 		this.partida = partida;
 		this.cantidadJugadores = cantidadJugadores;
 		this.imagenesCarta = new ImagenesCarta();
-		this.controladorDeBotones = new ControladorDeBotones(partida,conFlor,this);
 		this.contenedorBotones = new ContenedorDeBotones(this.partida, this, conFlor);
 	}
 
