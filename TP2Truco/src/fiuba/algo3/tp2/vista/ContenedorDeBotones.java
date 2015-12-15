@@ -103,6 +103,12 @@ public class ContenedorDeBotones {
 		if (cantos.getClass().equals(CanteEnvido.class)) {
 			return botonesParaCanteEnvido();
 		}
+		if (cantos.getClass().equals(CanteRealEnvido.class)) {
+			return botonesParaCanteEnvido();
+		}
+		if (cantos.getClass().equals(CanteFaltaEnvido.class)) {
+			return botonesParaCanteEnvido();
+		}
 		if (cantos.getClass().equals(CanteFlor.class)) {
 			return botonesParaCanteFlor();
 		}
