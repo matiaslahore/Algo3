@@ -22,4 +22,18 @@ public class PartidaDeTrucoConIASinFlor extends PartidaDeTrucoConIA {
 	public void cantarContraFlorAJuego() {
 		throw new SeEstaJugandoSinFlorException();
 	}
+	@Override
+	public void meCantaronFlor(){
+		throw new SeEstaJugandoSinFlorException();
+	}
+	
+	@Override
+	public void meCantaronContraFlor(){
+		throw new SeEstaJugandoSinFlorException();
+	}
+
+	@Override
+	public void meCantaronContraFlorAJuego(){
+		throw new SeEstaJugandoSinFlorException();
+	}
 }

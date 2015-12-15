@@ -222,19 +222,6 @@ public abstract class PartidaDeTrucoConIA extends PartidaDeTruco implements Oyen
 		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronValeCuatro());
 	}
 	
-	@Override
-	public void meCantaronFlor(){
-		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFlor());
-	}
 	
-	@Override
-	public void meCantaronContraFlor(){
-		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronContraFlor());
-	}
-
-	@Override
-	public void meCantaronContraFlorAJuego(){
-		this.cantosDisponibles.modificarCantos(equipoDos, new CantaronContraFlorxResto());
-	}
 	
 }
