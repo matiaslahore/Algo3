@@ -54,8 +54,7 @@ public class VentanasDelJuego extends Application{
 
 		this.stageJugadorConTurno = new Stage();
 		this.stageJugadorConTurno.setTitle("Cartas Del Jugador");
-		//this.controladorDeBotones.agregarStage(this.stageJugadorConTurno);
-		modificarStageJugador();
+		this.modificarStageJugador();
 		this.stageJugadorConTurno.setX(0);
 		this.stageJugadorConTurno.setResizable(false);
 		this.stageJugadorConTurno.show();

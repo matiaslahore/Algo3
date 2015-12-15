@@ -218,13 +218,14 @@ public class SeleccionDeJuego extends Application{
 	public void creacionDePartidaIa (boolean jugarConFlor){
 
 		this.cantidadJugadores = 2;
+		this.conFlor = jugarConFlor;
 		
 		PartidaDeTruco partida;
 
 		List<String> lista2 = new ArrayList<String> ();
 		lista2.add("USTED");
 
-		if(jugarConFlor)
+		if(this.conFlor)
 			partida = new PartidaDeTrucoConIAConFlor("CPU", "USTED");
 		else 
 			partida = new PartidaDeTrucoConIASinFlor("CPU", "USTED");
