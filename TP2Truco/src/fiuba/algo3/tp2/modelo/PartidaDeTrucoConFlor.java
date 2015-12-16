@@ -11,6 +11,7 @@ public class PartidaDeTrucoConFlor extends PartidaDeTruco{
 	@Override
 	public void cantarFlor() {
 		this.jugadorTurnoActual.cantarFlor();
+		this.cantosDisponibles.modificarCantos(this.jugadorTurnoActual.obtenerEquipo(), new CanteFlor());
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
 	}
 

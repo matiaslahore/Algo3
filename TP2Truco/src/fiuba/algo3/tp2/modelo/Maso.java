@@ -10,7 +10,7 @@ public class Maso {
 	ArrayList<Carta> maso = new ArrayList<Carta>();
 	
 	public Maso(){
-		
+		/*
 		this.maso.add(new AnchoDeEspada()); // R0
 		this.maso.add(new AnchoDeBasto()); // R1
 		this.maso.add(new SieteDeEspada()); // R2
@@ -39,6 +39,7 @@ public class Maso {
 		this.maso.add(new Sota(new Espada())); // R9
 		this.maso.add(new SieteFalso(new Basto())); // R10
 		this.maso.add(new SieteFalso(new Copa())); // R10
+		*/
 		this.maso.add(new Seis(new Oro())); // R11
 		this.maso.add(new Seis(new Copa())); // R11
 		this.maso.add(new Seis(new Basto())); // R11
