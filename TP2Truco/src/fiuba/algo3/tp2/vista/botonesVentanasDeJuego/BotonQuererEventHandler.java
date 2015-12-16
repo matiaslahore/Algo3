@@ -26,7 +26,7 @@ public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 			String ganador = partida.ganadorEnvido();
 			if (ganador.isEmpty())
 				visual.modificarEtiquetaInformacion(nombre + " DICE QUIERO!");
-			else visual.modificarEtiquetaInformacion("El envido lo gana " + ganador);
+			else visual.modificarEtiquetaInformacion("El tanto lo gana " + ganador);
 			
 			this.visual.modificarStageJugador();
 			this.visual.modificarStageCartasEnMesa();
