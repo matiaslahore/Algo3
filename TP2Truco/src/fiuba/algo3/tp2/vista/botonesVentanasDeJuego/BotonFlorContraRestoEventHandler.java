@@ -20,8 +20,8 @@ public class BotonFlorContraRestoEventHandler implements EventHandler<ActionEven
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarContraFlorAJuego();
 			visual.modificarEtiquetaInformacion(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  FLOR CONTRA EL RESTO!!");
+			this.partida.cantarContraFlorAJuego();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStageCartasEnMesa();
 

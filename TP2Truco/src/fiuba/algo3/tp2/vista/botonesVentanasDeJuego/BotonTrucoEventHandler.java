@@ -21,8 +21,8 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarTruco();
 			visual.modificarEtiquetaInformacion(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "   TRUCO!!!");
+			this.partida.cantarTruco();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStageCartasEnMesa();
 

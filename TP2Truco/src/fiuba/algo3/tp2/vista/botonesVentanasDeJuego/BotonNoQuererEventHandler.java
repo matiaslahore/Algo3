@@ -21,8 +21,8 @@ public class BotonNoQuererEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.noQuiero();
 			visual.modificarEtiquetaInformacion(this.partida.obtenerNombreDelJugadorConTurno() + " DICE NO QUIERO!");
+			this.partida.noQuiero();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStageCartasEnMesa();
 		} catch (CantoInvalidoException noQuererError){

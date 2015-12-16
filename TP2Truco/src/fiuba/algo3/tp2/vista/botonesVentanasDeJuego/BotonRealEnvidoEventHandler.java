@@ -20,8 +20,8 @@ public class BotonRealEnvidoEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarRealEnvido();
 			visual.modificarEtiquetaInformacion(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  REAL ENVIDO!");
+			this.partida.cantarRealEnvido();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStageCartasEnMesa();
 

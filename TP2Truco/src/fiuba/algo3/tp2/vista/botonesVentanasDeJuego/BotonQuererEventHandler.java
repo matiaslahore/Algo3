@@ -21,10 +21,11 @@ public class BotonQuererEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
+			String nombre = partida.obtenerNombreDelJugadorConTurno();
 			this.partida.quiero();
 			String ganador = partida.ganadorEnvido();
 			if (ganador.isEmpty())
-				visual.modificarEtiquetaInformacion(this.partida.obtenerNombreDelJugadorConTurno() + " DICE QUIERO!");
+				visual.modificarEtiquetaInformacion(nombre + " DICE QUIERO!");
 			else visual.modificarEtiquetaInformacion("El envido lo gana " + ganador);
 			
 			this.visual.modificarStageJugador();

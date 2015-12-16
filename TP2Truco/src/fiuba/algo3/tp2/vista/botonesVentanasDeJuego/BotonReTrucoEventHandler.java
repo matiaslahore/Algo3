@@ -21,8 +21,8 @@ public class BotonReTrucoEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarQuieroReTruco();
 			visual.modificarEtiquetaInformacion(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  QUIERO RE TRUCO!");
+			this.partida.cantarQuieroReTruco();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStageCartasEnMesa();
 		} catch (CantoInvalidoException | EquipoQueCantaNoPuedeVolverACantarException e){

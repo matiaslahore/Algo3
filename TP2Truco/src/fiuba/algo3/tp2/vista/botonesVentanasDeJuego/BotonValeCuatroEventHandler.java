@@ -21,8 +21,8 @@ public class BotonValeCuatroEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		try{
-			this.partida.cantarQuieroValeCuatro();
 			visual.modificarEtiquetaInformacion(this.partida.obtenerNombreDelJugadorConTurno() + " CANTO: "+ "  QUIERO VALE CUAAATRO!!!");
+			this.partida.cantarQuieroValeCuatro();
 			this.visual.modificarStageJugador();
 			this.visual.modificarStageCartasEnMesa();
 
