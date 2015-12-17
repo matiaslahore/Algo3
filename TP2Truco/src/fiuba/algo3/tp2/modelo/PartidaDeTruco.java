@@ -252,5 +252,9 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	public String mensajesEntreEquipos() {
 		return "";
 	}
+	
+	public boolean jugadorActualTieneFlor(){
+		return this.jugadorTurnoActual.tieneFlor();
+	}
 
 }

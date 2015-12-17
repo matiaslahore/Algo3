@@ -128,4 +128,10 @@ public abstract class Jugador {
 		System.out.println(this.manoDelJugador.verCartasEnManoComoString());
 	}
 	public abstract void hacerJugarIA();
+	
+	public boolean tengoFlor(){
+		if (tantoFlor == 0) return false;
+		else return true;
+	}
+	
 }

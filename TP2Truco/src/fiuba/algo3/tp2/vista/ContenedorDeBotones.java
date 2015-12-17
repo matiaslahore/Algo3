@@ -170,10 +170,9 @@ public class ContenedorDeBotones {
 	private VBox botonesParaCantosIniciales(){
 		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
-		if (this.conFlor) 
+		if (this.conFlor && this.partida.jugadorActualTieneFlor())
 			contenedorEnvido.getChildren().add(botonFlor);
 		this.contenedorTruco = new HBox(spacing,botonTruco);
-		
 
 		contenedorOpcion.setPadding(new Insets(padding));
 		contenedorEnvido.setPadding(new Insets(padding));
