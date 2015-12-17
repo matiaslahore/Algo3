@@ -1,5 +1,13 @@
 package fiuba.algo3.tp2.cantosPosibles;
 
-public class QuiseValeCuatro extends CantosPosiblesEntreEquipos{
+import fiuba.algo3.tp2.vista.ContenedorDeBotones;
+import javafx.scene.layout.VBox;
 
+public class QuiseValeCuatro implements CantosPosiblesEntreEquipos{
+
+	@Override
+	public VBox botonesParaCanto(ContenedorDeBotones contenedor) {
+		return contenedor.botonesPara(this);
+	}
+	
 }

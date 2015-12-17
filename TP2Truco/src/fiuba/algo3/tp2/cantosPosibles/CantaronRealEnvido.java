@@ -1,5 +1,13 @@
 package fiuba.algo3.tp2.cantosPosibles;
 
-public class CantaronRealEnvido extends CantosPosiblesEntreEquipos {
+import fiuba.algo3.tp2.vista.ContenedorDeBotones;
+import javafx.scene.layout.VBox;
 
+public class CantaronRealEnvido implements CantosPosiblesEntreEquipos {
+
+	@Override
+	public VBox botonesParaCanto(ContenedorDeBotones contenedor) {
+		return contenedor.botonesPara(this);
+	}
+	
 }

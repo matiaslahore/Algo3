@@ -91,83 +91,10 @@ public class ContenedorDeBotones {
 	public VBox botonesParaJugadorActual() {
 		CantosPosiblesEntreEquipos cantos = this.partida.cantosEquipoActual();
 
-		if (cantos.getClass().equals(CantosIniciales.class)) {
-			return botonesParaCantosIniciales();
-		}
-		if (cantos.getClass().equals(RondaSinEnvido.class)) {
-			return botonesParaRondaSinEnvido();
-		}
-		if (cantos.getClass().equals(CanteEnvido.class)) {
-			return botonesParaCanteEnvido();
-		}
-		if (cantos.getClass().equals(CanteRealEnvido.class)) {
-			return botonesParaCanteEnvido();
-		}
-		if (cantos.getClass().equals(CanteFaltaEnvido.class)) {
-			return botonesParaCanteEnvido();
-		}
-		if (cantos.getClass().equals(CanteFlor.class)) {
-			return botonesParaCanteFlor();
-		}
-		if (cantos.getClass().equals(CanteContraFlor.class)) {
-			return botonesParaCanteContraFlor();
-		}
-		if (cantos.getClass().equals(CanteContraFlorxResto.class)) {
-			return botonesParaCanteContraFlorxResto();
-		}
-		if (cantos.getClass().equals(CantaronFlor.class)) {
-			return botonesParaCantaronFlor();
-		}
-		if (cantos.getClass().equals(CantaronContraFlor.class)) {
-			return botonesParaCantaronContraFlor();
-		}
-		if (cantos.getClass().equals(CantaronContraFlorxResto.class)) {
-			return botonesParaCantaronContraFlorxResto();
-		}
-		if (cantos.getClass().equals(CanteTruco.class)) {
-			return botonesParaCanteTruco();
-		}
-		if (cantos.getClass().equals(CanteReTruco.class)) {
-			return botonesParaCanteReTruco();
-		}
-		if (cantos.getClass().equals(CanteValeCuatro.class)) {
-			return botonesParaCanteValeCuatro();
-		}
-		if (cantos.getClass().equals(CantaronTruco.class)) {
-			return botonesParaCantaronTruco();
-		}
-		if (cantos.getClass().equals(CantaronReTruco.class)) {
-			return botonesParaCantaronReTruco();
-		}
-		if (cantos.getClass().equals(CantaronValeCuatro.class)) {
-			return botonesParaCantaronValeCuatro();
-		}
-		if (cantos.getClass().equals(CantaronEnvido.class)) {
-			return botonesParaCantaronEnvido();
-		}
-		if (cantos.getClass().equals(CantaronEnvidoEnvido.class)) {
-			return botonesParaCantaronEnvidoEnvido();
-		}
-		if (cantos.getClass().equals(CantaronRealEnvido.class)) {
-			return botonesParaCantaronRealEnvido();
-		}
-		if (cantos.getClass().equals(CantaronFaltaEnvido.class)) {
-			return botonesParaCantaronFaltaEnvido();
-		}
-		if (cantos.getClass().equals(QuiseTruco.class)) {
-			return botonesParaQuiseTruco();
-		}
-		if (cantos.getClass().equals(QuiseReTruco.class)) {
-			return botonesParaQuiseReTruco();
-		}
-		if (cantos.getClass().equals(QuiseValeCuatro.class)) {
-			return botonesParaQuiseValeCuatro();
-		}
-		return null;
-
+		return cantos.botonesParaCanto(this);
 	}
 
-	private VBox botonesParaCantosIniciales(){
+	public VBox botonesPara(CantosIniciales canto){
 		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
 		if (this.conFlor && this.partida.jugadorActualTieneFlor())
@@ -183,7 +110,7 @@ public class ContenedorDeBotones {
 		return botonesRondaInicial;
 	}
 
-	private VBox botonesParaRondaSinEnvido(){
+	public VBox botonesPara(RondaSinEnvido canto){
 		//sirve para flor cantada envido cantado, ronda dos y ronda tres
 		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonTruco);
@@ -196,16 +123,28 @@ public class ContenedorDeBotones {
 		return botonesRondaUno;
 	}
 
-	private VBox botonesParaCanteEnvido(){
-		return botonesParaRondaSinEnvido();
+	public VBox botonesPara(CanteEnvido canto){
+		return botonesPara(new RondaSinEnvido());
+	}
+	
+	public VBox botonesPara(CanteRealEnvido canteRealEnvido) {
+		return botonesPara(new CanteEnvido());
+	}
+	
+	public VBox botonesPara(CanteFaltaEnvido canteRealEnvido) {
+		return botonesPara(new CanteEnvido());
 	}
 
-	private VBox botonesParaCanteFlor(){
+	public VBox botonesPara(CanteEnvidoEnvido canteEnvidoEnvido) {
+		return botonesPara(new CanteEnvido());
+	}
+
+	public VBox botonesPara(CanteFlor canto){
 		//sirve para flor cantada envido cantado, ronda dos y ronda tres
-		return botonesParaRondaSinEnvido();
+		return botonesPara(new RondaSinEnvido());
 	}
 
-	private VBox botonesParaCanteTruco(){
+	public VBox botonesPara(CanteTruco canto){
 		//sirve para los q no pueden cantar truco y cuando se canto el vale4
 		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 
@@ -216,17 +155,17 @@ public class ContenedorDeBotones {
 		return botonMazo;
 	}
 
-	private VBox botonesParaCanteReTruco(){
+	public VBox botonesPara(CanteReTruco canto){
 		//sirve para los q no pueden cantar truco y cuando se canto el vale4
-		return botonesParaCanteTruco();
+		return botonesPara(new CanteTruco());
 	}
 
-	private VBox botonesParaCanteValeCuatro(){
+	public VBox botonesPara(CanteValeCuatro canto){
 		//sirve para los q no pueden cantar truco y cuando se canto el vale4
-		return botonesParaCanteTruco();
+		return botonesPara(new CanteTruco());
 	}
 
-	private VBox botonesParaQuiseTruco(){
+	public VBox botonesPara(QuiseTruco canto){
 		//sirve para los q pueden cantar retruco
 		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonReTruco);
@@ -239,7 +178,7 @@ public class ContenedorDeBotones {
 		return botones;
 	}
 
-	private VBox botonesParaQuiseReTruco(){
+	public VBox botonesPara(QuiseReTruco canto){
 		//sirve para los q pueden cantar valeCuatro
 		this.contenedorOpcion = new HBox(spacing,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
@@ -252,11 +191,11 @@ public class ContenedorDeBotones {
 		return botones;
 	}
 	
-	private VBox botonesParaQuiseValeCuatro(){
-		return botonesParaCanteTruco();
+	public VBox botonesPara(QuiseValeCuatro canto){
+		return botonesPara(new CanteTruco());
 	}
 
-	private VBox botonesParaCantaronTruco(){
+	public VBox botonesPara(CantaronTruco canto){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonReTruco);
 
@@ -268,7 +207,7 @@ public class ContenedorDeBotones {
 		return botonesTruco;
 	}
 
-	private VBox botonesParaCantaronReTruco(){
+	public VBox botonesPara(CantaronReTruco canto){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorTruco = new HBox(spacing,botonValeCuatro);
 
@@ -280,7 +219,7 @@ public class ContenedorDeBotones {
 		return botonesReTruco;
 	}
 
-	private VBox botonesParaCantaronValeCuatro(){
+	public VBox botonesPara(CantaronValeCuatro canto){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -290,7 +229,7 @@ public class ContenedorDeBotones {
 		return botonesValeCuatro;
 	}
 
-	private VBox botonesParaCantaronEnvido(){
+	public VBox botonesPara(CantaronEnvido canto){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonEnvido,botonRealEnvido,botonFaltaEnvido);
 		if (this.conFlor) 
@@ -304,7 +243,7 @@ public class ContenedorDeBotones {
 		return botonesEnvido;
 	}
 
-	private VBox botonesParaCantaronEnvidoEnvido(){
+	public VBox botonesPara(CantaronEnvidoEnvido canto){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonRealEnvido,botonFaltaEnvido);
 
@@ -316,7 +255,7 @@ public class ContenedorDeBotones {
 		return botonesEnvidoEnvido;
 	}
 
-	private VBox botonesParaCantaronRealEnvido(){
+	public VBox botonesPara(CantaronRealEnvido canto){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonFaltaEnvido);
 
@@ -328,7 +267,7 @@ public class ContenedorDeBotones {
 		return botonesRealEnvido;
 	}
 
-	private VBox botonesParaCantaronFaltaEnvido(){
+	public VBox botonesPara(CantaronFaltaEnvido canto){
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -337,12 +276,8 @@ public class ContenedorDeBotones {
 
 		return botonesFaltaEnvido;
 	}
-
-	private VBox botonesParaQuiseEnvido(){
-		return botonesParaRondaSinEnvido();
-	}
 	
-	private VBox botonesParaCantaronContraFlorxResto() {
+	public VBox botonesPara(CantaronContraFlorxResto canto) {
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 
 		contenedorOpcion.setPadding(new Insets(padding));
@@ -353,7 +288,7 @@ public class ContenedorDeBotones {
 		return botonesRealEnvido;
 	}
 
-	private VBox botonesParaCantaronContraFlor() {
+	public VBox botonesPara(CantaronContraFlor canto) {
 		this.contenedorOpcion = new HBox(spacing,botonQuerer,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonFlorContraResto);
 
@@ -365,7 +300,7 @@ public class ContenedorDeBotones {
 		return botones;
 	}
 
-	private VBox botonesParaCantaronFlor() {
+	public VBox botonesPara(CantaronFlor canto) {
 		this.contenedorOpcion = new HBox(spacing,botonNoQuerer,botonIrseAlMazo);
 		this.contenedorEnvido = new HBox(spacing,botonFlor,botonContraFlor,botonFlorContraResto);
 
@@ -377,12 +312,13 @@ public class ContenedorDeBotones {
 		return botones;
 	}
 
-	private VBox botonesParaCanteContraFlorxResto() {
-		return botonesParaRondaSinEnvido();
+	public VBox botonesPara(CanteContraFlorxResto canto) {
+		return botonesPara(new RondaSinEnvido());
 	}
 
-	private VBox botonesParaCanteContraFlor() {
-		return botonesParaRondaSinEnvido();
+	public VBox botonesPara(CanteContraFlor canto) {
+		return botonesPara(new RondaSinEnvido());
 	}
+
 
 }
