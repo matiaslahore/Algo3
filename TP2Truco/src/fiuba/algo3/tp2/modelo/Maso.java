@@ -12,44 +12,44 @@ public class Maso {
 	public Maso(){
 		
 		this.maso.add(new AnchoDeEspada()); // R0
-		//this.maso.add(new AnchoDeBasto()); // R1
+		this.maso.add(new AnchoDeBasto()); // R1
 		this.maso.add(new SieteDeEspada()); // R2
-		//this.maso.add(new SieteDeOro()); // R3
-		//this.maso.add(new Tres(new Oro())); // R4
-		//this.maso.add(new Tres(new Copa())); // R4
-		//this.maso.add(new Tres(new Basto())); // R4
+		this.maso.add(new SieteDeOro()); // R3
+		this.maso.add(new Tres(new Oro())); // R4
+		this.maso.add(new Tres(new Copa())); // R4
+		this.maso.add(new Tres(new Basto())); // R4
 		this.maso.add(new Tres(new Espada())); // R4
-		//this.maso.add(new Dos(new Oro())); // R5
-		//this.maso.add(new Dos(new Copa())); // R5
-		//this.maso.add(new Dos(new Basto())); // R5
+		this.maso.add(new Dos(new Oro())); // R5
+		this.maso.add(new Dos(new Copa())); // R5
+		this.maso.add(new Dos(new Basto())); // R5
 		this.maso.add(new Dos(new Espada())); // R5
-		//this.maso.add(new AnchoFalso(new Copa())); // R6
-		//this.maso.add(new AnchoFalso(new Oro())); // R6
-		//this.maso.add(new Rey(new Oro())); // R7
-		//this.maso.add(new Rey(new Copa())); // R7
-		//this.maso.add(new Rey(new Basto())); // R7
+		this.maso.add(new AnchoFalso(new Copa())); // R6
+		this.maso.add(new AnchoFalso(new Oro())); // R6
+		this.maso.add(new Rey(new Oro())); // R7
+		this.maso.add(new Rey(new Copa())); // R7
+		this.maso.add(new Rey(new Basto())); // R7
 		this.maso.add(new Rey(new Espada())); // R7
-		//this.maso.add(new Caballo(new Oro())); // R8
-		//this.maso.add(new Caballo(new Copa())); // R8
-		//this.maso.add(new Caballo(new Basto())); // R8
+		this.maso.add(new Caballo(new Oro())); // R8
+		this.maso.add(new Caballo(new Copa())); // R8
+		this.maso.add(new Caballo(new Basto())); // R8
 		this.maso.add(new Caballo(new Espada())); // R8
-		//this.maso.add(new Sota(new Oro())); // R9
-		//this.maso.add(new Sota(new Copa())); // R9
-		//this.maso.add(new Sota(new Basto())); // R9
+		this.maso.add(new Sota(new Oro())); // R9
+		this.maso.add(new Sota(new Copa())); // R9
+		this.maso.add(new Sota(new Basto())); // R9
 		this.maso.add(new Sota(new Espada())); // R9
-		//this.maso.add(new SieteFalso(new Basto())); // R10
+		this.maso.add(new SieteFalso(new Basto())); // R10
 		this.maso.add(new SieteFalso(new Copa())); // R10
 		this.maso.add(new Seis(new Oro())); // R11
 		this.maso.add(new Seis(new Copa())); // R11
 		this.maso.add(new Seis(new Basto())); // R11
 		this.maso.add(new Seis(new Espada())); // R11
-		//this.maso.add(new Cinco(new Oro())); // R12
-		//this.maso.add(new Cinco(new Copa())); // R12
-		//this.maso.add(new Cinco(new Basto())); // R12
+		this.maso.add(new Cinco(new Oro())); // R12
+		this.maso.add(new Cinco(new Copa())); // R12
+		this.maso.add(new Cinco(new Basto())); // R12
 		this.maso.add(new Cinco(new Espada())); // R12
-		//this.maso.add(new Cuatro(new Oro())); // R13
-		//this.maso.add(new Cuatro(new Copa())); // R13
-		//this.maso.add(new Cuatro(new Basto())); // R13
+		this.maso.add(new Cuatro(new Oro())); // R13
+		this.maso.add(new Cuatro(new Copa())); // R13
+		this.maso.add(new Cuatro(new Basto())); // R13
 		this.maso.add(new Cuatro(new Espada())); // R13
 	}
 	
