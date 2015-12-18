@@ -106,6 +106,7 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	}
 
 	public EstadoRondas cantarFlor(Jugador jugador){
+		this.refEstadoRonda.indiceJugadorManoDeLaRondaActual += 1;
 		return(this.refEstadoRonda.cantarFlor(jugador));
 	}
 }

@@ -39,6 +39,7 @@ public class Juez {
 		this.cantosEnvido = new EstadoInicialEnvido();
 		this.cantosFlor = new EstadoInicialFlor();
 		this.eventosJuez = new EventosJuez();
+		this.ultimoResultadoEnvido = "";
 	}
 
 	public void agregarOyentes(OyenteJuez toAdd){
