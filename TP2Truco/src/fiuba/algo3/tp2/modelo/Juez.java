@@ -272,7 +272,6 @@ public class Juez {
 		this.cantosEnvido = new EstadoEnvidoFinalizado(); //si hay flor no hay envido
 		this.tanteadorDeLaPartida.anotarPuntos(equipoGanador, this.cantosFlor.quiso());
 		this.puntosEnJuego = 1;
-		
 		this.eventosJuez.quisoEnvido();
 	}
 

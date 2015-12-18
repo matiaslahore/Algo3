@@ -70,16 +70,15 @@ public class EstadoRondaUno extends EstadoRondas{
 
 	public EstadoRondas cantarFlor(Jugador jugador) throws CantoInvalidoException {
 		if (!jugador.tieneFlor()) throw new CantoInvalidoException();
-
+		
+		this.juez.seCantoFlor(jugador.obtenerEquipo());
+		
 		if (this.juez.hayOtroEquipoConFlor(jugador.obtenerEquipo())) {
-			this.juez.seCantoFlor(jugador.obtenerEquipo());
-			
 			this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual - 1; //asi dsps vuelve al q canto la mano
 			this.refEstadoRonda = this; //guardo estado de la ronda actual
 			return new EstadoRondaFlor(refEstadoRonda, juez, ganadoresRonda, this.jugadores, indiceJugadorManoDeLaRondaActual - 1);
 		}
-		juez.puntosEnJuego(3);
-		juez.anotarPuntos(jugador.obtenerEquipo());
+		juez.anotarPuntosFlor(jugador.obtenerEquipo());
 		this.indiceJugadorManoDeLaRondaActual = this.indiceJugadorManoDeLaRondaActual - 1;
 		return this;
 	}

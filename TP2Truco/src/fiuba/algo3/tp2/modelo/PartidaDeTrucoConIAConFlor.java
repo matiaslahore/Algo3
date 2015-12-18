@@ -13,15 +13,19 @@ public class PartidaDeTrucoConIAConFlor extends PartidaDeTrucoConIA {
 	@Override
 	public void cantarFlor() {		
 		this.jugadorTurnoActual.cantarFlor();
-		this.eventosIA.seCantoFlor();	
 		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		this.jugadorTurnoActual.hacerJugarIA();
-		this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
-		//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
 		if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+			this.eventosIA.seCantoFlor();	//IA se setea el estado seCantoFlor
 			this.jugadorTurnoActual.hacerJugarIA();
-			this.jugadorTurnoActual = mesa.siguienteJugadorConTurno();
+			this.jugadorTurnoActual = this.mesa.siguienteJugadorConTurno();
+			//verificar una vez que ande todo, siempre va a entrar aca asi que habria que sacar el if
+			if(this.jugadorTurnoActual.obtenerEquipo().obtenerNombre().equals(this.equipoUno.obtenerNombre())){
+				this.jugadorTurnoActual.hacerJugarIA();
+				this.jugadorTurnoActual = mesa.siguienteJugadorConTurno();
+			}
 		}
+		else
+			this.eventosIA.seTerminoElEnvido();
 	}
 
 	@Override

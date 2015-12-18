@@ -215,8 +215,10 @@ public abstract class PartidaDeTruco implements OyenteJuez{
 	@Override
 	public void jugadorCantoFlor(Equipo equipoQueCanta){
 		if (equipoQueCanta.equals(equipoUno)) {
+			this.cantosDisponibles.modificarCantos(equipoUno, new CanteFlor());	
 			this.cantosDisponibles.modificarCantos(equipoDos, new CantaronFlor());		
 		}else{
+			this.cantosDisponibles.modificarCantos(equipoDos, new CanteFlor());
 			this.cantosDisponibles.modificarCantos(equipoUno, new CantaronFlor());		
 		}
 	}

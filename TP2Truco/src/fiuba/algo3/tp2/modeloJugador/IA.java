@@ -197,5 +197,10 @@ public class IA extends Jugador implements Oyente{
 		this.eventosIA.cantaNoQuiero();
 		this.refMesa.noQuiero(this);
 	}
+
+	@Override
+	public void seTerminoEnvido() {
+		this.setearEstado(new EstadoIAYaSeJugoElEnvido());
+	}
 	
 }

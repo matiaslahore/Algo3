@@ -61,5 +61,10 @@ class EventosJugador {
 	public void seFueAlMazo() {
 		for (Oyente hl : listeners)
             hl.seFueAlMazo();
-	}    
+	}
+	
+	public void seTerminoElEnvido(){
+		for (Oyente hl : listeners)
+            hl.seTerminoEnvido();
+	}
 }

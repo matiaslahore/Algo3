@@ -104,4 +104,8 @@ public class EstadoRondaEnvido extends EstadoRondas{
 	public boolean seCantoEnvido() {
 		return true;
 	}
+
+	public EstadoRondas cantarFlor(Jugador jugador){
+		return(this.refEstadoRonda.cantarFlor(jugador));
+	}
 }
