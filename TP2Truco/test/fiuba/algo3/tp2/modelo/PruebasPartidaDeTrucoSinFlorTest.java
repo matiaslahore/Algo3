@@ -119,6 +119,7 @@ public class PruebasPartidaDeTrucoSinFlorTest {
 		partidaDeTruco.cantarFlor();
 	}
 	
+	//Canta truco dos veces produce excepcion
 	@Test(expected = CantoInvalidoException.class)
 	public void seCantaTrucoTrucoProduceException(){
 		partidaDeTruco = new PartidaDeTrucoSinFlor("equipoUno", "equipoDos");
